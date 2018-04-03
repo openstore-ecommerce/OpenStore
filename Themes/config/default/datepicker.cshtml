@@ -1,0 +1,27 @@
+﻿@using System.Web.ModelBinding
+@using NBrightCore.common
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.datepick.xlang.eur.js"></script>  
+<script>
+
+	$(function () {
+
+      // this test does not work in Chrome, so we're not using it.
+      //if (!Modernizr.inputtypes.date) {
+
+	    $.datepicker.setDefaults($.datepicker.regional['']);
+ 	    if ('@(Utils.GetCurrentCulture())' == 'en-GB') $.datepicker.setDefaults($.datepicker.regional['en-GB']);
+	    if ('@(Utils.GetCurrentCulture().Substring(0, 2))' == 'de') $.datepicker.setDefaults($.datepicker.regional['de']);
+	    if ('@(Utils.GetCurrentCulture().Substring(0, 2))' == 'fr') $.datepicker.setDefaults($.datepicker.regional['fr']);
+	    if ('@(Utils.GetCurrentCulture().Substring(0, 2))' == 'nl') $.datepicker.setDefaults($.datepicker.regional['nl']);
+	    if ('@(Utils.GetCurrentCulture().Substring(0, 2))' == 'ca') $.datepicker.setDefaults($.datepicker.regional['ca']);
+	    if ('@(Utils.GetCurrentCulture().Substring(0, 2))' == 'es') $.datepicker.setDefaults($.datepicker.regional['es']);
+	    if ('@(Utils.GetCurrentCulture().Substring(0, 2))' == 'it') $.datepicker.setDefaults($.datepicker.regional['it']);
+	    if ('@(Utils.GetCurrentCulture().Substring(0, 2))' == 'da') $.datepicker.setDefaults($.datepicker.regional['da']);
+	    if ('@(Utils.GetCurrentCulture().Substring(0, 2))' == 'sv') $.datepicker.setDefaults($.datepicker.regional['sv']);
+
+        $('input[datatype=date]').datepicker();
+
+        //}
+    });
+
+</script>

@@ -1,0 +1,750 @@
+[<tag id="backofficetabid" type="hidden" value="" />]<!-- hidden fields to store auto populated data -->
+[<tag id="ImageResize" const="true" type="hidden" value="700" />]<!-- This resize token affects all images uploaded on this page -->
+[<tag id="countrysortorder" type="postback" value="" persistance="True"/>]
+
+<style>
+  #countrylist { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #countrylist li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; }
+  html>body #countrylist li { height: 1.5em; line-height: 1.2em; }
+  .ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+  </style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.box-content').toggle(); // Initially hide all panels - Doesn't hide Products in cat - need to fox
+        //$('.merchantdetails div.box-content').toggle(); // Then open specific ones
+        $('.pageactions div.box-content').toggle();
+
+        // move common countries
+        var countries = [["AT", "BE", "BG", "BY", "CH", "CY", "CZ", "DE", "DK", "ES", "FI", "FR", "GI", "GR", "HU", "IE", "IT", "LU", "NL", "NO", "PL", "PT", "RO", "SE", "TR", "GB", "YU", "US", "CA"]];
+        for (i = 0; i < countries.length; i++) {
+            $('.eurocountries').append($('input[[value="Country:' + countries[[i]] + '"]]'));
+            var labselector = 'label[[for="' + $('input[[value="Country:' + countries[[i]] + '"]]').attr('id') + '"]]';
+            $('.eurocountries').append($(labselector));
+            $('.eurocountries').append('<br/>');
+        }
+
+        $('.checkAll').click(function() {
+            if ($(this).is(":checked")) {
+                $('input[[value*="Country:"]]:checkbox').prop('checked', true);
+            } else {
+                $('input[[value*="Country:"]]:checkbox').prop('checked', false);
+            }
+        });
+
+    });
+
+    $(function () {
+        $("#countrylist").sortable({ placeholder: "ui-state-highlight", update: function(event, ui) {
+            savecountrysortorder();
+        } });
+        $("#countrylist").disableSelection();
+        $("#countrylist").on("sortupdate", function (event, ui) { });
+    });
+
+    function savecountrysortorder() {
+        var l = '';
+        var listItems = $("#countrylist li");
+        listItems.each(function (idx) {
+            l += $(this).attr('value') + ';';
+        });
+        $('input[[id*="_countrysortorder_"]]').val(l);
+    };
+
+
+
+
+
+</script>
+
+<br />
+
+<div id="pageactionssource"><!-- Page actions are moved into header bar - also exist at page bottom-->
+	<div class="col-xs-9 col-sm-9">
+		<a href="javascript:void(0)" class="show-sidebar">
+		  <i class="fa fa-bars"></i>
+		</a>
+		<div class="actionbuttonwrapper">
+			[<tag id="cmdSave" type="linkbutton" cssclass="btn btn-primary" resourcekey="General.cmdSaveButton" commandname="save" />] 
+			[<tag id="cmdCancel" type="linkbutton" cssclass="btn btn-default" resourcekey="General.cmdCancelButton" commandname="cancel" />]
+	    </div>
+	</div>
+	<div class="col-xs-3 col-sm-3 top-panel-right">
+		[<tag type="selectlocalebutton" size="32"/>]
+	</div>
+</div>
+
+<div class="row merchantdetails">
+    	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-search"></i><span>[<tag type="valueof" resourcekey="Settings.merchantdetails" />]</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"><i class="fa fa-chevron-down"></i>
+					</a><a class="expand-link"><i class="fa fa-expand"></i></a>
+					<a class="close-link"><i class="fa fa-times"></i></a></div>
+				<div class="no-move">
+				</div>
+			</div>
+			<div class="box-content">
+				<div class="form-horizontal dnnForm">
+					<p class="page-header">[<tag type="valueof" resourcekey="Settings.emailaddresses" />]</p>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="labelof" resourcekey="Settings.adminemail" />]</label>
+						<div class="col-sm-5">
+							[<tag id="adminemail" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="labelof" resourcekey="Settings.manageremail" />]</label>
+						<div class="col-sm-5">
+							[<tag id="manageremail" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="labelof" resourcekey="Settings.supportemail" />]</label>
+						<div class="col-sm-5">
+							[<tag id="supportemail" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="labelof" resourcekey="Settings.salesemail"/>]</label>
+				        <div class="col-sm-5">
+				            [<tag id="salesemail" cssclass="form-control" type="textbox" maxlength="150" Text=""/>]
+				        </div>
+				    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="labelof" resourcekey="Settings.websiteurl" />]</label>
+                        <div class="col-sm-5">
+                            [<tag id="websiteurl" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+                        </div>
+                    </div>
+				    <p class="page-header">[<tag type="valueof" resourcekey="Settings.merchantaddress" />]</p>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.merchantattention" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storeattention" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.lblCompany" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storecompany" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.merchantpostbox" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storepostbox" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.lblAddress1" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storeaddressline1" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.lblAddress2" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storeaddressline2" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.lblCity" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storecity" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.lblRegion" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storeregion" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.lblPostCode" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storepostcode" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.lblCountry" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storecountry" cssclass="form-control" type="countrydropdown" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.lblPhone" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storephone" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.TaxNumber" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storetaxnumber" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<p class="page-header">[<tag type="valueof" resourcekey="Settings.bankingdetails" />]</p>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.bank" />]</label>
+						<div class="col-sm-5">
+							[<tag id="bankname" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.accountname" />]</label>
+						<div class="col-sm-5">
+							[<tag id="bankaccountname" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.accountnumber" />]</label>
+						<div class="col-sm-5">
+							[<tag id="bankaccountnumber" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.bankinginstructions" />]</label>[<tag type="editflag" />]
+						<div class="col-sm-5">
+							[<tag id="bankinginstructions" cssclass="form-control" type="textbox" height="100" maxlength="200" textmode="MultiLine" resourcekeysave="Notification.bankinginstructions" lang="{Settings:editlanguage}" />]
+						</div>
+					</div>
+					<p class="page-header">[<tag type="valueof" resourcekey="Settings.emailbranding" />]</p>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.storename" />]</label>
+						<div class="col-sm-5">
+							[<tag id="storename" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.logoimage" />]</label>
+					    <div class="col-sm-5">
+					        [<tag id="emaillogo" type="fileupload" cssclass="form-control" textwidth="0" maxlength="50" separator=" " />] 
+                			[<tag id="cmdUpload" type="linkbutton" cssclass="btn btn-default" resourcekey="General.cmdUploadFileButton" commandname="save" />] 
+                            [<tag type="if" xpath="genxml/hidden/hidemaillogo" textvalue="" display="{OFF}" />] 
+                    			[<tag id="cmdRemovelogo" type="linkbutton" cssclass="btn btn-danger" resourcekey="General.cmdRemoveButton" commandname="removelogo" />]
+							     <div style="clear:both;margin:20px 0;">[<tag type='imageof' xpath='genxml/hidden/emaillogourl' />]</div>
+					        [<tag type="endif" />]
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.emailmessage" />]</label>[<tag type="editflag" />]
+						<div class="col-sm-5">
+							[<tag id="emailmessage" cssclass="form-control" type="textbox" height="100" maxlength="200" textmode="MultiLine" resourcekeysave="Notification.emailmessage" lang="{Settings:editlanguage}" />]
+						</div>
+					</div>
+					<p class="page-header">[<tag type="valueof" resourcekey="Settings.socialnetworking" />]</p>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.twitterpage" />]</label>
+						<div class="col-sm-5">
+							[<tag id="twitterpage" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.facebookpage" />]</label>
+						<div class="col-sm-5">
+							[<tag id="facebookpage" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+						</div>
+					</div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.addthispubid" />]</label>
+                        <div class="col-sm-5">
+                            [<tag id="addthispubid" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+                        </div>
+                    </div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.sharingwidget" />]</label>
+						<div class="col-sm-5">
+							[<tag id="sharingwidget" cssclass="form-control" type="textbox" height="100" maxlength="1000" textmode="MultiLine" />]
+						</div>
+					</div>
+					<p class="page-header">[<tag type="valueof" resourcekey="Settings.cartmessages" />]</p>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.storepickupmessage" />]</label>[<tag type="editflag" />]
+						<div class="col-sm-5">
+							[<tag id="pickupmessage" cssclass="form-control" type="textbox" height="100" maxlength="200" textmode="MultiLine" resourcekeysave="Notification.pickupmessage" lang="{Settings:editlanguage}" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.successfulcheckoutmessage" />]</label>[<tag type="editflag" />]
+						<div class="col-sm-5">
+							[<tag id="checkoutsuccessmessage" cssclass="form-control" type="textbox" height="100" maxlength="200" textmode="MultiLine" resourcekeysave="Notification.checkoutsuccessmessage" lang="{Settings:editlanguage}" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.failedcheckoutmessage" />]</label>[<tag type="editflag" />]
+						<div class="col-sm-5">
+							[<tag id="checkoutfailmessage" cssclass="form-control" type="textbox" height="100" maxlength="200" textmode="MultiLine" resourcekeysave="Notification.checkoutfailmessage" lang="{Settings:editlanguage}" />]
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+	    <div class="box">
+	        <div class="box-header">
+	            <div class="box-name">
+	                <i class="fa fa-search"></i><span>[<tag type="valueof" resourcekey="Settings.folders" />]</span>
+	            </div>
+	            <div class="box-icons">
+	                <a class="collapse-link"><i class="fa fa-chevron-down"></i>
+	                </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+	                <a class="close-link"><i class="fa fa-times"></i></a></div>
+	            <div class="no-move">
+	            </div>
+	        </div>
+	        <div class="box-content">
+	            <div class="form-horizontal dnnForm">
+	                <div class="form-group">
+	                    <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.folderimages" />]</label>
+	                    <div class="col-sm-5">[<tag id="folderimages" cssclass="form-control" type="textbox" width="300" maxlength="150" Text="NBStore\images" />]</div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.folderdocs" />]</label>
+	                    <div class="col-sm-5">[<tag id="folderdocs" cssclass="form-control" type="textbox" width="300" maxlength="150" Text="NBStore\docs" />]</div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.folderuploads" />]</label>
+	                    <div class="col-sm-5">[<tag id="folderuploads" cssclass="form-control" type="textbox" width="300" maxlength="150" Text="NBStore\uploads" />]</div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.folderclientuploads"/>]</label>
+	                    <div class="col-sm-5">[<tag id="folderclientuploads" cssclass="form-control" type="textbox" width="300" maxlength="150" Text="NBStore\clientuploads"/>]
+	                    </div>
+	                </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.allowupload' />]</label>
+                        <div class="col-sm-5">
+                            <div class="dnnFormItem">
+                                [<tag id="allowupload" type="checkbox" checked="False" />]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.fileregexpr" />]</label>
+                        <div class="col-sm-5">[<tag id="fileregexpr" cssclass="form-control" type="textbox" width="300" maxlength="250" Text="^.*\.(txt|gif|jpe?g|jpg|pdf|doc|docx|xls|xlsx|zip|csv|xml)" />]</div>
+                    </div>
+
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-search"></i><span>[<tag type="valueof" resourcekey="Settings.storeconfiguration" />]</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"><i class="fa fa-chevron-down"></i>
+					</a><a class="expand-link"><i class="fa fa-expand"></i></a>
+					<a class="close-link"><i class="fa fa-times"></i></a></div>
+				<div class="no-move">
+				</div>
+			</div>
+			<div class="box-content">
+				<div class="form-horizontal dnnForm">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.pagesize" />]</label>
+						<div class="col-sm-2">
+							[<tag id="pagesize" cssclass="form-control" type="textbox" Text="30" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.productlisttab" />]</label>
+						<div class="col-sm-5">
+							[<tag id="productlisttab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.productdetailtab" />]</label>
+						<div class="col-sm-5">
+							[<tag id="ddldetailtabid" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+						</div>
+					</div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.productsearchtab" />]</label>
+                        <div class="col-sm-5">
+                            [<tag id="productsearchtab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.productsearchmod" />]</label>
+                        <div class="col-sm-5">
+                            [<tag id="productsearchmod" cssclass="form-control" type="textbox" Text="" />]
+                        </div>
+                    </div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.carttab" />]</label>
+						<div class="col-sm-5">
+							[<tag id="carttab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+						</div>
+					</div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.checkout" />]</label>
+                        <div class="col-sm-5">
+                            [<tag id="checkouttab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+                        </div>
+                    </div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.paymenttab" />]</label>
+						<div class="col-sm-5">
+							[<tag id="paymenttab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.backofficeexittab" />]</label>
+						<div class="col-sm-5">
+							[<tag id="exittab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+						</div>
+					</div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.favoritestab" />]</label>
+                        <div class="col-sm-5">
+                            [<tag id="favoritestab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+                        </div>
+                        <div class="col-sm-2" style="padding:0px">
+                            <div class="dnnFormItem">
+                                [<tag id="enablefavorites" type="checkbox" checked="False" />] [<tag type="valueof" resourcekey="Settings.Enabled" />]
+                            </div>
+                        </div>
+                    </div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.ordermanagertab" />]</label>
+						<div class="col-sm-5">
+							[<tag id="ordermanagertab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+						</div>
+						<div class="col-sm-2" style="padding:0px">
+				            <div class="dnnFormItem">
+								[<tag id="enablemyorders" type="checkbox" checked="False" />] [<tag type="valueof" resourcekey="Settings.Enabled" />]
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.profiletab" />]</label>
+						<div class="col-sm-5">
+							[<tag id="profiletab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+						</div>
+						<div class="col-sm-2" style="padding:0px">
+				            <div class="dnnFormItem">
+								[<tag id="enablemyprofile" type="checkbox" checked="False" />] [<tag type="valueof" resourcekey="Settings.Enabled" />]
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.addressestab" />]</label>
+						<div class="col-sm-5">
+							[<tag id="addressestab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+						</div>
+						<div class="col-sm-2" style="padding:0px">
+				            <div class="dnnFormItem">
+								[<tag id="enablemyaddress" type="checkbox" checked="False" />] [<tag type="valueof" resourcekey="Settings.Enabled" />]
+							</div>
+						</div>
+					</div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.logintab" />]</label>
+                        <div class="col-sm-5">
+                            [<tag id="logintab" cssclass="form-control" type="dropdownlist" datatabs="1" />]
+                        </div>
+                    </div>
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.minimumstocklevel" />]</label>
+				        <div class="col-sm-2">
+				            [<tag id="minimumstocklevel" cssclass="form-control" type="textbox" Text="0" />]
+				        </div>
+				    </div>
+    			    <div class="form-group">                
+                    <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.defaultthemefolder" />]</label>
+                    	<div class="col-sm-5">
+                    		[<tag id="themefolder" cssclass="form-control" type="textbox" Text="Default" />]                    	        
+                    	</div>
+				    </div>
+				<div class="form-group">
+				    <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.emailthemefolder"/>]</label>
+				    <div class="col-sm-5">
+				        [<tag id="emailthemefolder" cssclass="form-control" type="textbox" Text="Default"/>]
+				    </div>
+				</div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">CKEditor CDN</label>
+                        <div class="col-sm-5">
+                            [<tag id="ckeditorcdn" cssclass="form-control" type="textbox" Text="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js" />]
+                        </div>
+                    </div>
+				<div class="form-group">
+	                    <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.cataloguemode" />]</label>
+                    	<div class="col-sm-5">
+				    <div class="dnnFormItem">
+		                    	[<tag id="cataloguemode" type="checkbox" checked="False" />]
+							</div>
+                    	</div>
+                    </div>
+	                <div class="form-group">
+	                    <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.pageactions" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+		                    	[<tag id="pageactions" type="checkbox" checked="False" />]
+				            </div>
+				        </div>
+				    </div>
+	                <div class="form-group">
+	                    <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.devoptions" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+		                    	[<tag id="devoptions" type="checkbox" checked="False" />]
+				            </div>
+				        </div>
+				    </div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='General.DebugMode' />]</label>
+						<div class="col-sm-5">
+							<div class="dnnFormItem">
+								[<tag id="debug.mode" type="checkbox" resourcekey="Settings.debugmode" />]
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.debugfileout' />]</label>
+						<div class="col-sm-5">
+							<div class="dnnFormItem">
+								[<tag id="debugfileout" type="checkbox" resourcekey='Settings.debugfileoutmsg' />]
+							</div>
+						</div>
+					</div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.enablefilelogging' />]</label>
+                        <div class="col-sm-5">
+                            <div class="dnnFormItem">
+                                [<tag id="enablefilelogging" type="checkbox" resourcekey="Settings.enablefileloggingmsg" />]
+                            </div>
+                        </div>
+                    </div>
+    			    <div class="form-group">                
+                    	<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.AdminPin" />]</label><!-- Need to move this -->
+                    	<div class="col-sm-2">
+                    	    [<tag id="adminpin" cssclass="form-control" type="textbox" maxlength="4" Text="1234" />]
+                    	</div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.enabledealer" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="enabledealer" type="checkbox" checked="False" />]
+				            </div>
+				        </div>
+				    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.dealerrole" />]</label>
+                        <div class="col-sm-2">
+                            [<tag id="dealerrole" cssclass="form-control" type="textbox" Text="Dealer" />]
+                        </div>
+                    </div>
+    			    <div class="form-group">                
+                    	<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.orderprefix" />]</label>
+                    	<div class="col-sm-2">
+                    	    [<tag id="orderprefix" cssclass="form-control" type="textbox" maxlength="4" Text="" />]
+                    	</div>
+				    </div>                    
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.copyorderto' />]</label>
+						<div class="col-sm-5">
+							<div class="dnnFormItem">
+								[<tag id="copyorderto" type="checkbox" checked="True" />]
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.subscribenewsletter' />]</label>
+						<div class="col-sm-5">
+							<div class="dnnFormItem">
+								[<tag id="subscribenewsletter" type="checkbox" checked="True" />]
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.checkoutpromocode' />]</label>
+						<div class="col-sm-5">
+							<div class="dnnFormItem">
+								[<tag id="checkoutpromocode" type="checkbox" checked="True" />]
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.checkouttaxcode' />]</label>
+						<div class="col-sm-5">
+							<div class="dnnFormItem">
+								[<tag id="checkouttaxcode" type="checkbox" checked="True" />]
+							</div>
+						</div>
+					</div>
+    			    <div class="form-group">                
+                    	<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.productimageresize" />]</label>
+                    	<div class="col-sm-2">
+                    	    [<tag id="productimageresize" cssclass="form-control" type="textbox" maxlength="4" Text="960" />]
+                    	</div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.groupresults' />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="chkgroupresults" type="checkbox" Text="" checked="False" />]
+				            </div>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.shareproducts' />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="shareproducts" type="checkbox" Text="" checked="False" />]
+                                [<tag type='valueof' resourcekey='Settings.shareproductsmsg' />]
+				            </div>
+				        </div>
+				    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.sharecategories' />]</label>
+                        <div class="col-sm-5">
+                            <div class="dnnFormItem">
+                                [<tag id="sharecategories" type="checkbox" Text="" checked="False" />]
+                                [<tag type='valueof' resourcekey='Settings.sharecategoriesmsg' />]
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.shareorders' />]</label>
+                        <div class="col-sm-5">
+                            <div class="dnnFormItem">
+                                [<tag id="shareorders" type="checkbox" Text="" checked="False" />]
+                                [<tag type='valueof' resourcekey='Settings.shareordersmsg' />]
+                            </div>
+                        </div>
+                    </div>
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.alloweditorder' />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="alloweditorder" type="checkbox" Text="" checked="False" />]
+				            </div>
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type='valueof' resourcekey='Settings.friendlyurlids' />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="friendlyurlids" type="checkbox" Text="" checked="False" />]
+				            </div>
+				        </div>
+				    </div>
+    			    <div class="form-group">                
+                    	<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.bonoimageicon" />]</label>
+                    	<div class="col-sm-3">
+                    	    [<tag id="bonoimageicon" cssclass="form-control" type="textbox" maxlength="40" Text="" />]
+                    	    <script type="text/javascript">
+							$(document).ready(function() {
+							                if ($('input[[id*="bonoimageicon"]]').val() == '') $('input[[id*="bonoimageicon"]]').val('<i class="fa fa-picture-o fa-5x"></i>');
+							});
+							</script>
+                    	</div>
+				    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.boclass" />]</label>
+                        <div class="col-sm-3">
+                            [<tag id="boclass" cssclass="form-control" type="textbox" maxlength="40" Text="" />]
+                            <script type="text/javascript">
+							$(document).ready(function() {
+							    if ($('input[[id*="boclass"]]').val() == '') $('input[[id*="boclass"]]').val('nbstore');
+							});
+                            </script>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box culturesettings no-drop">
+		    <div class="box-header">
+		        <div class="box-name">
+		            <i class="fa fa-search"></i><span>[<tag type="valueof" resourcekey="Settings.countrydetails" />]</span>
+		        </div>
+		        <div class="box-icons">
+		            <a class="collapse-link"><i class="fa fa-chevron-down"></i>
+		            </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+		            <a class="close-link"><i class="fa fa-times"></i></a></div>
+		        <div class="no-move">
+		        </div>
+		    </div>
+		
+		    <div class="box-content">
+		        <div class="form-horizontal dnnForm">
+		            <div class="form-group">
+		                <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.merchantculture" />]</label>
+		                <div class="col-sm-5">[<tag id="merchantculturecode" cssclass="s2_with_tag populate placeholder" type="culturecodedropdown"/>]
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.currencycode" />]</label>
+		                <div class="col-sm-5">[<tag id="currencyculturecode" cssclass="s2_with_tag populate placeholder" type="culturecodedropdown"/>]
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Settings.currencysymbol"/>]</label>
+		                <div class="col-sm-2">
+		                    [<tag id="currencysymbol" cssclass="form-control" type="textbox" maxlength="4" Text="$"/>]
+		                </div>
+		            </div>
+		        </div>
+		        <div class="form-horizontal dnnForm countrylist">
+		            <div class="form-group">
+		                <div class="col-sm-3 eurocountries">
+		                    <p class="page-header">[<tag type="valueof" resourcekey="Settings.commoncountries" />]</p>
+		                </div>
+		                <div class="col-sm-6">
+		                    <p class="page-header">[<tag type="valueof" resourcekey="Settings.selectedcountries" />]</p>[<tag type="countrylist" id="countrylist"/>]
+		                </div>
+		            </div>
+
+		        </div>
+		        <div class="form-horizontal dnnForm countryselection">
+		            <p class="page-header">[<tag type="valueof" resourcekey="Settings.othercountries" />] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" class="checkAll" /> [<tag type="valueof" resourcekey="Settings.checkall" />]</p>
+		            [<tag id="countrycodelist" type="dnn:countrycheckboxlist" RepeatColumns="4"/>]
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+[<tag type="if" function="settings" key="pageactions" testvalue="True" display="{ON}" />]
+<div class="row pageactions"><!-- Page actions - also at top -->
+	<div class="col-md-12">
+		<div class="box">
+			<div class="box-content">
+				<div class="col-sm-6">
+					[<tag id="cmdSave2" type="linkbutton" cssclass="btn btn-primary" resourcekey="General.cmdSaveButton" commandname="save" />] 
+					[<tag id="cmdCancel2" type="linkbutton" cssclass="btn btn-default" resourcekey="General.cmdCancelButton" commandname="cancel" />]
+				</div>
+				<div class="col-sm-6 text-right">
+				[<tag type="selectlocalebutton" size="32"/>]
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+[<tag type="endif" />]
+

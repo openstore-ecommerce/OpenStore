@@ -1,0 +1,125 @@
+/* GENERAL */
+/* Menu */
+.clientmenuwrapper {float:left;width:24%;margin:0 4% 0 0;}
+.clientmenu, .clientmenu * {margin:0;padding:0;list-style:none;font-size:14px;}
+.clientmenu li {margin-bottom:12px;}
+.clientmenu a {
+  display: block;
+  font-weight: 400;
+  color: #202020;
+  font-size: 18px;
+  height: 36px;
+  text-transform: uppercase;
+  padding: 0 16px;
+  height: 48px;
+  line-height: 48px;
+  background: #efefef;
+  color: #202020;
+  text-decoration: none !important;
+  border: #e1e1e1 solid 1px;
+}
+.clientmenu a:hover {background:#777777;color:white;}
+/* Sections */
+.myorders, .myaddresses, .myprofile, .myshoppinglists {float:left;width:72%;}
+
+/* ADDRESS BOOK */
+/* List */
+#checkoutselectaddress {list-style:none;padding:0;margin:30px 0 0;}
+#checkoutselectaddress li {display:block;float:left;margin:0 5% 30px 0;width:45%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:20px;border:#e1e1e1 solid 1px;}
+#checkoutselectaddress li.defaultaddress {background:#efefef;}
+#checkoutselectaddress h3 {margin:0;}
+#checkoutselectaddress .addresstype {margin:0 0 20px 0;}
+#checkoutselectaddress .addressbuttons {margin:10px 0 0 0;}
+/* Address Edit */
+#addressinput .formrow input[type=text], .formrow input[type=email], .formrow select, .formrow textarea{box-sizing:border-box;width:100%;margin:0 0 15px;}
+#addressinput{}
+#addressinput .leftside{float:left;width:48%;}
+#addressinput .rightside{float:right;width:48%;}
+#addressinput H6{font-size:12px;font-weight:normal;margin:0 0 5px;text-transform:uppercase;font-family:inherit;}
+
+/* ORDERS */
+/* Search */
+.ordersearch {margin-bottom:30px;overflow:hidden;}
+.ordersearch div {float:left;margin:0 15px 0 0;}
+.ordersearch:after {content:"";display:table;clear:both;}
+/* List */
+.orders {border-collapse:collapse;border-spacing:0;width:100%;margin:0;padding:0;}
+.orders tr {background:#F5F5F5;border-bottom:4px solid white;}
+.orders td {vertical-align:top;border:none;padding:10px;}
+/* Detail */
+#orderadmin {max-width:860px;clear:both;}
+#orderadmin .actions {margin-bottom:20px;}
+#orderadmin .leftside {float:left;width:57%;margin-right:6%;}
+#orderadmin .rightside {float:left;width:37%;}
+#orderadmin .address {margin-bottom:10px;}
+#orderadmin .mainaddress {background:#F5F5F5;padding:10px;}
+#orderadmin .billaddress {float:left;width:47%;margin-right:6%;line-height:160%;margin-bottom:15px;}
+#orderadmin .shipaddress {float:left;width:47%;line-height:160%;margin-bottom:15px;min-width:145px;}
+#orderadmin .storeaddress {float:left;width:100%;line-height:160%;}
+#orderadmin .dropdown-menu > li > a {display:inline-block;width:100%;}
+.orders .dropdown-menu > li > a {display:inline-block;width:100%;}
+/* The default DNN input styling is not applied to date inputs - fixed here but only for default skin */
+.ordersearch input[type=date] {background:none repeat scroll 0 0 #f3f3f3;border:1px solid #bfbfbf;border-radius:0;box-shadow:0 1px 0 0 rgba(255, 255, 255, 0.8), 0 1px 2px 0 rgba(0, 0, 0, 0.1) inset;color:#666666;font-size:13px;margin-bottom:20px;padding:9px;}
+/* Detail Table */
+.orderdetailitems {border-collapse:collapse;border-spacing:0;width:100%;margin:0;padding:0;}
+.orderdetailitems th {border:none !important;padding:10px;}
+.orderdetailitems tr {border-bottom:1px solid #dddddd;}
+.orderdetailitems tr.active {background:#F5F5F5;}
+.orderdetailitems td {vertical-align:top;border:none;padding:10px;}
+
+/* SHOPPING LISTS */
+.shoppinglistproducts {}
+.shoppinglistproducts .product {border-top:#eae8e8 solid 1px;border-right:#eae8e8 solid 1px;border-left:#eae8e8 solid 1px;padding:10px;}
+.shoppinglistproducts .product:after {content:"";display:table;clear:both;}
+.shoppinglistproducts .productimg {display:block;float:left;width:50px;height:50px;margin-right:10px;}
+.shoppinglistproducts .product div.image {display:table-cell;text-align:center;vertical-align:middle;width:inherit;height:50px;}
+.shoppinglistproducts .product div.image img {max-height:50px;}
+.shoppinglistproducts .product div.noimage {display:table-cell;text-align:center;vertical-align:middle;width:inherit;font-size:24px;line-height:50px;opacity:0.1;height:50px;}
+.shoppinglistproducts .product div.noimage a:link {color:#efefef;}
+.shoppinglistproducts .product .description {float:left;}
+.shoppinglistproducts .product div.price {font-size:18px;color:#222222;font-weight:700;}
+.shoppinglistproducts .product .price .from {font-size:12px;}
+.shoppinglistproducts .product .price .old {font-size:12px;text-decoration:line-through;}
+.shoppinglistproducts .product .price .sale {background:#757370;color:white;padding:0 3px;margin-left:3px;}
+.shoppinglistproducts .product .price .ttc {margin-left:3px;font-size:14px;}
+.shoppinglistproducts .product .buttons {float:right;}
+.shoppinglistproducts .product .buttons a.actionbutton {margin-left:6px;}
+.shoppinglistproducts .product .buttons a.actionbutton i.fa {margin-right:0;}
+.slp-footer {border:#eae8e8 solid 1px;padding:10px;}
+.slp-footer a {color:white !important;}
+/* Get rid of blue for active accordion */
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border: 1px solid #c5c5c5;
+    background: #f6f6f6;
+    font-weight: normal;
+    color: #454545;
+}
+
+/* PROFILE */
+/* Profile form is now using DNN default styles */
+#profileinput {}
+
+/**********************************************************/
+/* MEDIA QUERIES */
+/**********************************************************/
+
+/* Responsive layout - Any screen at less than 768px - Most tablets */
+@media only screen 
+and (min-width : 481px) 
+and (max-width : 768px) {
+#addressinput{min-width:240px;width:100%;float:none;}
+#checkoutselectaddress li{width:48%;margin:0 2% 24px 0;min-width:240px;}
+#orderadmin .orders .removecolumn{display:none;}
+}
+
+/* Responsive layout - Any screen at less than 480px - Most phones */
+@media only screen 
+and (min-width : 0px) 
+and (max-width : 480px) {
+#addressinput{width:100%;float:none;}
+#checkoutselectaddress li{width:100%;margin:0 0 15px 0;min-width:240px;}
+#orderadmin .leftside{margin:0 0 15px;width:100%;}
+#orderadmin .rightside{margin:0;width:100%;}
+#orderadmin .rightside .text-right{text-align:left !important;}
+#orderadmin .panel{padding:15px;}
+}

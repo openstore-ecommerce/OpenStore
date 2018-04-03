@@ -1,0 +1,18 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var groupref = info.GetXmlProperty("genxml/hidden/selectedgroupref");
+
+
+}
+
+<div>
+@CategorySelectList(info, "genxml/dropdownlist/selectproperty", "class='selectproperty form-control' size='8' update='no' itemid='" + @info.ItemID + "' ", false, 20, false, false, 0, "", "", false, true, groupref, ">", info.Lang)
+</div>

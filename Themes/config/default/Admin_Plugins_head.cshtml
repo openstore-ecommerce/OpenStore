@@ -1,0 +1,23 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+<div style="display:none;" id="actionreturn"></div>
+
+<!-- In this template we are using a function defined in nbbajax.js and jquery.genxmlajax.js so include the script here -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js"></script>
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.genxmlajax.js"></script>
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/admin_plugins.js"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<!-- Recycle bin for elements removed -->
+<div style="display: none;" id="recyclebin"></div>
+
+<div id="confirmdeletemsg" style="display: none;">@ResourceKeyJS("General.cmdDeleteButton", "", "confirm")</div>
+<div id="confirmresetmsg" style="display: none;">@ResourceKeyJS("General.cmdResetButton", "", "confirm")</div>

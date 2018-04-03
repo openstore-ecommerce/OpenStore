@@ -1,0 +1,76 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using DotNetNuke.Entities.Portals
+@using NBrightCore.render
+@using NBrightDNN
+@using NBrightCore.common
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var ajaxInfo = (NBrightInfo)Model.List.First();
+    var portalId = PortalSettings.Current.PortalId;
+    var catid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/catid");
+}
+
+
+
+@{
+    var strOut = "";
+}
+
+@if (catid > 0)
+{
+    var catData = new CategoryData(catid, Model.Lang);
+
+    foreach (GroupData selGroup in catData.GetFilterGroups(Model.Lang))
+    {
+        var propList = NBrightBuyUtils.BuildCatList(1, false, false, selGroup.Info.ItemID, "", "", false, true, selGroup.Ref, "", "");
+        strOut += "<div class='h3-headline'>" + selGroup.Name + "</div>";
+        strOut += "<ul>";
+        foreach (var item in propList)
+        {
+            strOut += "<li><input type='checkbox' value='" + selGroup.Ref + "-" + item.Key + "' />" + item.Value + "</li>";
+        }
+        strOut += "</ul>";
+    }
+}
+
+@foreach (var selGroup in Model.Settings.Where(kv => kv.Key.StartsWith("selectedfilterssort-")).OrderBy(kv => kv.Value == "" ? -1 : int.Parse(kv.Value)))
+{
+    var groupRef = selGroup.Key.Substring(selGroup.Key.IndexOf("-") + 1);
+
+    // is it selected?
+    var isSelected = Model.Settings.Any(kv => kv.Key == "selectedfilters-" + groupRef && kv.Value.ToLower() == "true");
+
+    if (!isSelected)
+    {
+        continue;
+    }
+    var nbc = new NBrightBuyController();
+    var groupnbi = nbc.GetByGuidKey(portalId, -1, "GROUP", groupRef);
+    var grouplang = nbc.GetDataLang(groupnbi.ItemID, Model.Lang);
+    var propList = NBrightBuyUtils.BuildCatList(1, false, false, groupnbi.ItemID, "", "", false, true, groupRef, "", "");
+    strOut += "<div class='h3-headline'>" + grouplang.GetXmlProperty("genxml/textbox/groupname") + "</div>";
+    strOut += "<ul>";
+    foreach (var item in propList)
+    {
+         strOut += "<li><input type='checkbox' value='" + groupRef + "-" + item.Key + "' />" + item.Value + "</li>";
+    }
+    strOut += "</ul>";
+}
+
+
+@if (strOut != "")
+{
+    <div class="nbs-ajaxfilter">
+
+        <div class="h2-headline">@ResourceKey("General.filter")</div>
+
+        @HtmlOf(strOut)
+
+    </div>
+}

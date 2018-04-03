@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Zoekinstellingen op product</value>
+  </data>
+  <data name="emailmessage.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Dank u voor uw bestelling. Wij zijn hier om te helpen! Aarzel niet om contact voor alle vragen met betrekking tot uw bestelling.</value>
+  </data>
+  <data name="lblbasicsettings.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Algemene</value>
+  </data>
+  <data name="lblcatreflist.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Een CSV-lijst van categorie/groep Refs moet worden weergegeven op het zoekformulier. bijvoorbeeld (Cat2, Cat1, Cat3) dit alleen van toepassing op de geretourneerde categorieën uit bovenliggende Ref selectie, als er geen Ref lijst is opgegeven alle geretourneerde categorieën zal worden weergegeven.</value>
+  </data>
+  <data name="lblcatreflist.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Categorie Ref lijst: </value>
+  </data>
+  <data name="lblcatreflist1.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Een CSV-lijst van categorie/groep Refs moet worden weergegeven op het zoekformulier. bijvoorbeeld (Cat2, Cat1, Cat3) dit alleen van toepassing op de geretourneerde categorieën uit bovenliggende Ref selectie, als er geen Ref lijst is opgegeven alle geretourneerde categorieën zal worden weergegeven.</value>
+  </data>
+  <data name="lblcatreflist1.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Categorie/groep Ref lijst: </value>
+  </data>
+  <data name="lblcatreflist2.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Een CSV-lijst van categorie/groep Refs moet worden weergegeven op het zoekformulier. bijvoorbeeld (Cat2, Cat1, Cat3) dit alleen van toepassing op de geretourneerde categorieën uit bovenliggende Ref selectie, als er geen Ref lijst is opgegeven alle geretourneerde categorieën zal worden weergegeven.</value>
+  </data>
+  <data name="lblcatreflist2.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Categorie/groep Ref lijst: </value>
+  </data>
+  <data name="lblcatrepeatcolumns.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Het aantal kolommen dat moet worden weergegeven.</value>
+  </data>
+  <data name="lblcatrepeatcolumns.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Kolommen: </value>
+  </data>
+  <data name="lblcatrepeatcolumns1.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Het aantal kolommen dat moet worden weergegeven.</value>
+  </data>
+  <data name="lblcatrepeatcolumns1.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Kolommen: </value>
+  </data>
+  <data name="lblcatrepeatcolumns2.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Het aantal kolommen dat moet worden weergegeven.</value>
+  </data>
+  <data name="lblcatrepeatcolumns2.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Kolommen: </value>
+  </data>
+  <data name="lblcatsearchtype.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Type zoekactie te doen op meerdere geselecteerde categorieën</value>
+  </data>
+  <data name="lblcatsearchtype.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Type categorie zoeken</value>
+  </data>
+  <data name="lblcatselect.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">De categorie zoeken inschakelen</value>
+  </data>
+  <data name="lblcatselect.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Categorie groep zoeken</value>
+  </data>
+  <data name="lbldescription.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Inschakelen van het product beschrijving tekst zoeken</value>
+  </data>
+  <data name="lbldescription.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Beschrijving tekst zoeken</value>
+  </data>
+  <data name="lbldisplaylevels.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Aantal sub niveaus van de categorieën weer te geven.</value>
+  </data>
+  <data name="lbldisplaylevels.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Niveaus weergeven:</value>
+  </data>
+  <data name="lbldisplaylevels1.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Aantal sub niveaus van de categorieën weer te geven.</value>
+  </data>
+  <data name="lbldisplaylevels1.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Niveaus weergeven:</value>
+  </data>
+  <data name="lbldisplaylevels2.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Aantal sub niveaus van de categorieën weer te geven.</value>
+  </data>
+  <data name="lbldisplaylevels2.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Niveaus weergeven:</value>
+  </data>
+  <data name="lblfiltermode.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Modus voor zoekmodule.  Search = Zoek opties zal worden statische; Filter = Zoek opties zal worden dynamisch op basis van categorie menuselectie, de categorie selectie zal ook persistent is voor zoekopdrachten.</value>
+  </data>
+  <data name="lblfiltermode.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Search-modus: </value>
+  </data>
+  <data name="lblgroupselect1.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Hiermee activeert u een AND-component in een tweede rubriek groep "Groep 2".</value>
+  </data>
+  <data name="lblgroupselect1.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Activeren en zoeken van groep 2: </value>
+  </data>
+  <data name="lblgroupselect2.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Hiermee activeert u een AND-component op een derde categorie groep "Groep 3".</value>
+  </data>
+  <data name="lblgroupselect2.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Activeren en zoek groep 3: </value>
+  </data>
+  <data name="lblhidden.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Verborgen</value>
+  </data>
+  <data name="lblinstock.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Voorraad Checkbox: </value>
+  </data>
+  <data name="lblorderselector.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Sort Order Selector</value>
+  </data>
+  <data name="lblparentcatref.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Alle categorieën onder dit bovenliggende categorie zal worden teruggegeven.  Als u niet opgeeft alle categorieën zal worden teruggegeven.</value>
+  </data>
+  <data name="lblparentcatref.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Categorie/groep bovenliggende Ref: </value>
+  </data>
+  <data name="lblparentcatref1.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Alle categorieën onder dit bovenliggende categorie zal worden teruggegeven.  Als u niet opgeeft alle categorieën zal worden teruggegeven.</value>
+  </data>
+  <data name="lblparentcatref1.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Categorie/groep bovenliggende Ref: </value>
+  </data>
+  <data name="lblparentcatref2.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Alle categorieën onder dit bovenliggende categorie zal worden teruggegeven.  Als u niet opgeeft alle categorieën zal worden teruggegeven.</value>
+  </data>
+  <data name="lblparentcatref2.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Categorie/groep bovenliggende Ref: </value>
+  </data>
+  <data name="lblpricerange.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Prijs bereik selectie inschakelen</value>
+  </data>
+  <data name="lblpricerange.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Prijsklasse</value>
+  </data>
+  <data name="lblprimarybuttonclass.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Primaire muisknop CSS-class: </value>
+  </data>
+  <data name="lblRedirectTab.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Pagina weer te geven van de resultaten: </value>
+  </data>
+  <data name="lblsearchtemplate.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Sjabloon: </value>
+  </data>
+  <data name="lblsecondarybuttonclass.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Secundaire knop CSS-class: </value>
+  </data>
+  <data name="lbltargetmodulekey.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Module sleutel van de module die zal de resultaten weergeven.</value>
+  </data>
+  <data name="lbltargetmodulekey.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Doel Module sleutel: </value>
+  </data>
+  <data name="lbltextsearch.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">De soort volgorde selector inschakelen</value>
+  </data>
+  <data name="lbltextsearch.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Tekst zoeken</value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Naam van het thema te gebruiken voor deze productlist.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Themagebied: </value>
+  </data>
+  <data name="lblthemesettings.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Thema-instellingen</value>
+  </data>
+  <data name="lbltxtmanufacturer.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">De fabrikant tekstzoekbewerking inschakelen</value>
+  </data>
+  <data name="lbltxtmanufacturer.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve"> Fabrikant zoeken in tekst</value>
+  </data>
+  <data name="lbltxtseoname.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">De SEO naam tekstzoekbewerking inschakelen</value>
+  </data>
+  <data name="lbltxtseoname.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">SEO naam zoeken in tekst</value>
+  </data>
+  <data name="lbltxtseopagetitle.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">De SEOpage titel tekst zoeken inschakelen</value>
+  </data>
+  <data name="lbltxtseopagetitle.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">SEO paginatitel tekst zoeken</value>
+  </data>
+  <data name="lbltxtsummary.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">De samenvatting tekstzoekbewerking inschakelen</value>
+  </data>
+  <data name="lbltxtsummary.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Samenvattende tekst zoeken</value>
+  </data>
+  <data name="lbltxttagwords.Help" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Zoeken door de tag woorden tekst inschakelen</value>
+  </data>
+  <data name="lbltxttagwords.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve"> Label woorden tekst Search</value>
+  </data>
+  <data name="rblfiltermode.data" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Zoek;Filter</value>
+  </data>
+  <data name="themehidden.Text" lastModified="2014-11-29 13:52:10">
+    <value xml:space="preserve">Oude thema-instellingen zijn uitgeschakeld, bijgewerkt met nieuwe thema activeren. </value>
+  </data>
+</root>

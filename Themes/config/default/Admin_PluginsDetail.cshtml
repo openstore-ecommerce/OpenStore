@@ -1,0 +1,251 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Portals
+@using NBrightCore.common
+@using NBrightDNN
+@using NBrightDNN.render
+@using Nevoweb.DNN.NBrightBuy.Components
+
+
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Themes/classicrazor/resx")
+
+@{
+    var plugin = (PluginRecord)Model.List.First();
+}
+
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+<span id="pluginsdatasection">
+
+    <input id="itemid" type="hidden" value="@plugin.Info().ItemID" />
+    <input id="editlanguage" type="hidden" value="@plugin.Info().Lang" />
+    <input id="index" type="hidden" value="@plugin.Info().GetXmlPropertyInt("genxml/hidden/index").ToString()" />
+
+    <!-- postback fields to keep ajax populated data for update: datatype='coded' so we don't corrupt the return XML -->
+    <input id="xmlupdatemodeldata" type="hidden" datatype="coded" value="" />
+    <input id="uilang1" type="hidden" value="@Utils.GetCurrentCulture()" />
+
+    <br />
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-name">
+                        <i class="fa fa-search"></i><span>@ResourceKey("Plugins.ui")</span>
+                    </div>
+                    <div class="box-icons">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                        <a class="close-link"><i class="fa fa-times"></i></a>
+                    </div>
+                    <div class="no-move">
+                    </div>
+                </div>
+
+                <div class="box-content">
+                    <div class="form-horizontal dnnForm">
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                @ResourceKey("Plugins.lblctrl")
+                            </label>
+                            <div class="col-sm-6">
+                                @TextBox(plugin.Info(), "genxml/textbox/ctrl", "class='form-control' maxlength='50'")
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                @ResourceKey("Plugins.lblname")
+                            </label>
+                            <div class="col-sm-6">
+                                @TextBox(plugin.Info(), "genxml/textbox/name", "class='form-control' maxlength='50'")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                @ResourceKey("Plugins.lblicon")
+                            </label>
+                            <div class="col-sm-6">
+                                @TextBox(plugin.Info(), "genxml/textbox/icon", "class='form-control' maxlength='50'")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                @ResourceKey("Plugins.lblgroup")
+                            </label>
+                            <div class="col-sm-6">
+                                @TextBox(plugin.Info(), "genxml/textbox/group", "class='form-control' maxlength='50'")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                @ResourceKey("Plugins.lblpath")
+                            </label>
+                            <div class="col-sm-6">
+                                @TextBox(plugin.Info(), "genxml/textbox/path", "class='form-control' maxlength='350'")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                @ResourceKey("Plugins.lblhelp")
+                            </label>
+                            <div class="col-sm-6">
+                                @TextBox(plugin.Info(), "genxml/textbox/help", "class='form-control' ")
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                @ResourceKey("Plugins.lblroles")
+                            </label>
+                            <div class="col-sm-6">
+                                @CheckBoxList(plugin.Info(), "genxml/checkboxlist/securityroles", ResourceKey("General.roles").ToString(), ResourceKey("General.roles").ToString())
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                @ResourceKey("Plugins.lbldescription")
+                            </label>
+                            <div class="col-sm-6">
+                                @TextArea(plugin.Info(), "genxml/textbox/description", "class='form-control' height='100'")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">
+                                @ResourceKey("Plugins.lblhidden")
+                            </label>
+                            <div class="col-sm-6">
+                                @CheckBox(plugin.Info(), "genxml/checkbox/hidden", "", "class='form-control'")
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div>
+                        @plugin.Info().GUIDKey / @plugin.Info().ItemID
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
+
+</span>
+
+
+<h3>@ResourceKey("Plugins.interfaces")</h3>
+<br />
+<div class="editmodels">
+    <div class="form-horizontal dnnForm">
+        <div class="col-sm-12">
+            <div class="form-group form-inline">
+                <a class="btn btn-primary" id="addmodels">@ResourceKey("General.cmdAddButton")</a>
+                <a class="btn btn-warning" id="undomodel" style="display: none;">@ResourceKey("General.UndoButton")</a>
+            </div>
+            <ul id="pluginsmodels">
+                @{
+                    var lp1 = 1;
+                }
+                @foreach (var nbiModel in plugin.GetInterfaces())
+                {
+                    <li class="modelitem form-group">
+                        <!-- class="modelitem" is needed for JS postback update -->
+                        <a class="sortelementUp"><i class="fa fa-caret-up fa-2x fa-fw"></i></a>
+                        <a class="sortelementDown"><i class="fa fa-caret-down fa-2x fa-fw"></i></a>
+
+                        <div class="col-sm-12 form-horizontal">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label class="control-label">@ResourceKey("Plugins.assembly")</label>
+                                    @TextBox(nbiModel, "genxml/textbox/assembly_" + lp1, "class='form-control input-sm' maxlength='250' ", "")
+                                </div>
+                                <div class="col-sm-5">
+                                    <label class="control-label">@ResourceKey("Plugins.namespaceclass")</label>
+                                    @TextBox(nbiModel, "genxml/textbox/namespaceclass_" + lp1, "class='form-control input-sm' maxlength='250' ", "")
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="control-label">@ResourceKey("Plugins.lblprovidertype")</label>
+                                    @DropDownList(nbiModel, "genxml/dropdownlist/providertype_" + lp1, ResourceKey("Plugins.providertype", "", "datavalue").ToString(), ResourceKey("Plugins.providertype", "", "data").ToString(), "class='form-control'")
+                                </div>
+                                <div class="col-sm-1">
+                                    <label class="control-label">@ResourceKey("General.Active")</label>
+                                    @CheckBox(nbiModel, "genxml/checkbox/active_" + lp1, "", "class='form-control'")
+                                    <label class="control-label">@ResourceKey("General.Default")</label>
+                                    @CheckBox(nbiModel, "genxml/checkbox/default_" + lp1, "", "class='form-control'")
+                                </div>
+                                <div class="col-sm-1 text-right">
+                                    <a class="removemodel btn btn-danger">
+                                        @ResourceKey("General.cmdRemoveButton")
+                                    </a>
+                                </div>
+                                <div class="col-sm-1">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    lp1 += 1;
+                }
+            </ul>
+        </div>
+    </div>
+
+</div>
+    
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i><span>XML</span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-down"></i>
+                    </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                    <a class="close-link"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="no-move">
+                </div>
+            </div>
+
+            <div class="box-content collapse">
+                <div class="form-horizontal dnnForm">
+
+
+                    @plugin.Info().XMLData
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+</div>
+
+
+
+<div class="clearfix">
+</div>
+
+
+

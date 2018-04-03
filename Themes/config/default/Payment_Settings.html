@@ -1,0 +1,53 @@
+<script>
+
+    $(document).ready(function () {
+
+
+        $(function () {
+            $("#accordion").accordion({
+                heightStyle: "content",
+                header: "h3",
+                collapsible: true,
+                active: 0
+            });
+        });
+
+        $('.themefolder').change(function () {
+            alert('[<tag type="valueof" resourcekey="ProductViewSettings.themehidden" />]');
+            $('.themesettings').html('');
+        });
+
+    });
+
+</script>
+<div id="dnnPanel-ArchivesTemplateSettings">
+    <h2 class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded">[<tag type="valueof" resourcekey="ProductViewSettings.lblbasicsettings" />]</a></h2>
+    <fieldset>
+        <div class="dnnFormItem">
+            [<tag id="lbltheme" type="dnn:labelcontrol" />][<tag id="themefolder" cssclass="themefolder" type="textbox" width="150" maxlength="50" text="ClassicRazor" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lblpaymentoktemplate" type="dnn:labelcontrol" />][<tag id="paymentoktemplate" type="textbox" width="150" maxlength="50" text="paymentok.html" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lblpaymentfailtemplate" type="dnn:labelcontrol" />][<tag id="paymentfailtemplate" type="textbox" width="150" maxlength="50" text="paymentfail.html" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lbldisplaydetailtemplate" type="dnn:labelcontrol" />][<tag id="paymentordersummary" type="textbox" width="150" maxlength="50" text="paymentheader.html" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lblpaymentfooter" type="dnn:labelcontrol" />][<tag id="paymentfooter" type="textbox" width="150" maxlength="50" text="paymentfooter.html" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lblorderingsystem" type="dnn:labelcontrol" />][<tag id="orderingsystem" type="checkbox" Text="" checked="False" />]
+        </div>
+    </fieldset>
+
+    <div class="themesettings">
+    <h2 class="dnnFormSectionHead"><a href="">[<tag type="valueof" resourcekey="AddressAdminSettings.lblthemesettings" />]</a></h2>
+    <fieldset>
+        [Template:CheckoutSettings.html]
+    </fieldset>
+    </div>
+    
+</div>

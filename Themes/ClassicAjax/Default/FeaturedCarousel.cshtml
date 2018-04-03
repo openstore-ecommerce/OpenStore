@@ -1,0 +1,86 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Web
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@AddPreProcessMetaData("itemlistname", Model.GetSetting("itemlistname"), Model.FullTemplateName, Model.ModuleId.ToString())
+
+@AddPreProcessMetaData("orderby", "{bycategoryproduct}", Model.FullTemplateName, Model.ModuleId.ToString()) <!-- set default to manual sort on category product -->
+
+<div class="nbs">
+
+    <div class="carousel-wrapper">
+
+    <div class="carousel-header">
+      <div class="carousel-cycle-nav">
+        <span id="carouselprev"><i class="fa fa-angle-left"></i></span><span id="carouselnext"><i class="fa fa-angle-right"></i></span>
+      </div>
+      <div class="h2-headline">@(ResourceKey("General.promo"))</div>
+    </div>
+
+    <div class="cycle-slideshow" data-cycle-fx="carousel" data-cycle-carousel-visible="4" data-cycle-carousel-vertical="true" data-cycle-fx="scrollHorz" data-cycle-slides=".carouselproduct" data-cycle-timeout="0" data-cycle-pause-on-hover="true" data-cycle-prev="#carouselprev" data-cycle-next="#carouselnext">
+
+        @{
+            var lang = "";
+        }
+
+        @foreach (NBrightInfo info in Model.List)
+            {
+                var product = new ProductData(info.ItemID, info.Lang);
+                lang = info.Lang;
+
+            <div class="carouselproduct">
+
+                <div class="carouselflex">
+
+                <div class="productimg">
+                  @if (product.Imgs.Count > 0)
+                  {
+                      <div class="image">
+                          <img title="@(info.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary"))" src="@ProductImageUrl(info, 80, 0)">
+                      </div>
+                  }
+                  else
+                  {
+                      <div class="noimage">
+                          @(Model.GetSettingHtmlOf("noimageicon"))
+                      </div>
+                  }
+                </div>
+
+                <div class="description">
+
+                  <a href="@EntryUrl(info,Model)"><span>@info.GetXmlProperty("genxml/textbox/manufacturer")</span>@ProductName(info)</a>
+
+                  <div class="price">
+                      @if (product.IsOnSale)
+                      {
+                          <span class="old">@(NBrightBuyUtils.FormatToStoreCurrency(product.FromPrice()))</span>
+                          <span class="sale">@(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))</span>
+                      }
+                      else
+                      {
+                          @(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))
+                      }
+                  </div>
+
+                  <!-- fields required to send required ajax data to server -->
+                  <span class="entryid@(info.ItemID)">
+                      <input id="@(info.ItemID)_productid" type="hidden" value="@(info.ItemID)">
+                  </span>
+
+                </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+    </div>
+
+</div>

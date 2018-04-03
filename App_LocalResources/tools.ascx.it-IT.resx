@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="languageresetto.Text" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">Copia</value>
+  </data>
+  <data name="languageresetwarning.Text" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">ATTENZIONE !!! - I tui dati di "{tolanguage}" verranno sovrascritti.</value>
+  </data>
+  <data name="languagetoreset.Text" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">a</value>
+  </data>
+  <data name="purgecarts.confirm" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">Pulire i Carrelli?</value>
+  </data>
+  <data name="purgecarts.Text" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">Pulire Carrelli</value>
+  </data>
+  <data name="purgecartsdays.Text" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">Giorni per mantenere i carrelli</value>
+  </data>
+  <data name="resetlangauge.confirm" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">Il ripristino della lingua non sarà recuperabile. Sei sicuro?</value>
+  </data>
+  <data name="resetlangauge.Text" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">Ripristina lingua</value>
+  </data>
+  <data name="ValidateStore.confirm" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">Eseguire convalida negozio? Questa operazione potrebbe richiedere un po 'di tempo!</value>
+  </data>
+  <data name="ValidateStore.Text" lastModified="2015-11-20 16:11:10">
+    <value xml:space="preserve">Convalida Negozio</value>
+  </data>
+</root>

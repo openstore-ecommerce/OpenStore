@@ -1,0 +1,138 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Collections.Generic
+@using System.Linq
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Entities.Portals
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var ordData = (OrderData)Model.List.First();
+    var nbi = ordData.GetInfo();
+    var emaillang = Model.Lang;
+    if (emaillang == "")
+    {
+        emaillang = ordData.ClientLang;
+    }
+    if (emaillang == "")
+    {
+        emaillang = ordData.Lang;
+    }
+}
+
+<html>
+
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<title>Print Order</title>
+<style type="text/css">
+    #outlook a {
+        padding: 0;
+    }
+    /* Force Outlook to provide a "view in browser" button. */
+    .ExternalClass {
+        width: 100%;
+        display: block !important;
+    }
+        /* Force Hotmail to display emails at full width */
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+            line-height: 100%;
+        }
+    /* Forces Hotmail to display normal line spacing */
+    body {
+      margin: 0;
+      padding: 1cm 0;
+    }
+    body {
+      -webkit-text-size-adjust: none;
+      -ms-text-size-adjust: none;
+    }
+    /* Prevents Webkit and Windows Mobile platforms from changing default font sizes. */
+    body, .Normal, td, th {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: normal;
+      font-size: 14px;
+      color: #555555;
+    }
+    .orderprint {width:21cm;margin:0 auto;}
+    .orderprint .leftside {float:left;width:57%;margin-right:6%;}
+    .orderprint .rightside {float:left;width:37%;}
+    .orderprint .address {margin-bottom:10px;}
+    .orderprint .mainaddress {background:#F5F5F5;padding:10px;}
+    .orderprint .billaddress {float:left;width:47%;margin-right:6%;line-height:160%;margin-bottom:15px;}
+    .orderprint .shipaddress {float:left;width:47%;line-height:160%;margin-bottom:15px;min-width:145px;}
+    .orderprint .storeaddress {float:left;width:100%;line-height:160%;}
+    .orderdetailitems {border-collapse:collapse;border-spacing:0;width:100%;margin:0;padding:0;}
+    .orderdetailitems th {border:none !important;padding:10px;}
+    .orderdetailitems tr {border-bottom:1px solid #dddddd;}
+    .orderdetailitems tr.active {background:#F5F5F5;}
+    .orderdetailitems td {vertical-align:top;border:none;padding:10px;}
+    .text-right {text-align:right;}
+</style>
+<script>
+$(document).ready(function () {
+  window.print();
+});
+</script>
+</head>
+
+<body bottommargin="0" leftmargin="0" rightmargin="0" topmargin="0" style="margin:0;padding:0">
+
+<div class="orderprint">
+    @if (ordData != null)
+    {
+        <div class="shipaddress">
+            @if (nbi.GetXmlProperty("genxml/pickuppointaddr") == "")
+            {
+                if (nbi.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/rblshippingoptions") == "2")
+                {
+                    <div class="address mainaddress">
+                        @if (nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/company") != "")
+                        {
+                            <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/company")</div>
+                        }
+                        else
+                        {
+                            <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/firstname") @nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/lastname")</div>
+                        }
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/unit")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/street")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/city")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/region")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/dropdownlist/region/@selectedtext")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/postalcode")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/dropdownlist/country/@selectedtext")</div>
+                    </div>
+                }
+                if (nbi.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/rblshippingoptions") == "1")
+                {
+                    <div class="address mainaddress">
+                        @if (nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/company") != "")
+                        {
+                            <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/company")</div>
+                        }
+                        else
+                        {
+                            <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/firstname") @nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/lastname")</div>
+                        }
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/unit")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/street")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/city")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/region")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/region/@selectedtext")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/postalcode")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext")</div>
+                    </div>
+                }
+            }
+
+        </div>
+    }
+</div>
+
+</body>
+</html>

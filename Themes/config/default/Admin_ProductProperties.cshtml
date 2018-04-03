@@ -1,0 +1,21 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var prdData = new ProductData(info.ItemID, info.PortalId, info.Lang);
+}
+
+@foreach (var nbiCat in prdData.GetProperties())
+{
+    <tr>
+        <td style="white-space:nowrap" title="Reference code: @nbiCat.grouptyperef">@nbiCat.groupname</td>
+        <td title="Breadcrumb: @nbiCat.breadcrumb">@nbiCat.categoryname</td>
+        <td><a class="removegroupcategory" itemid="@info.ItemID" categoryid="@nbiCat.categoryid">@ResourceKey("General.cmdRemoveIcon")</a><span class="hidden">@nbiCat.categoryid</span></td>
+    </tr>
+}

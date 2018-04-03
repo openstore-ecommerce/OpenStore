@@ -1,0 +1,143 @@
+﻿@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Globalization
+@using System.Linq
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Themes/classicrazor/resx")
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<br />
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i><span>@ResourceKey("Clients.FindaClient")</span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                    <a class="close-link"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="no-move">
+                </div>
+            </div>
+            <div class="box-content">
+                <div class="form-horizontal dnnForm">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">@ResourceKey("General.Search")</label>
+                        <div class="col-sm-2">
+                            <input id="clientAdmin_searchtext" class="form-control" type="text">
+                        </div>
+                        <div class="col-sm-6">
+                            <a id="clientAdmin_cmdSearch" class="btn btn-primary primarybutton" href="javascript:void(0)"><i title="Search" class="fa fa-search fa-fw fa-lg"></i> @ResourceKey("General.Search")</a>
+                            <a id="clientAdmin_cmdReset" class="btn btn-default secondarybutton" href="javascript:void(0)"><i title="Reset" class="fa fa-refresh fa-fw fa-lg"></i> @ResourceKey("General.Reset")</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row clientslist">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header no-box-header">
+                <div class="box-name">
+                    <i class="fa fa-table"></i>
+                    <span>@ResourceKey("General.Clients")</span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="expand-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-hover table-responsive">
+                    <thead>
+                    <tr>
+                        <th>@ResourceKey("General.Client")</th>
+                        <th>@ResourceKey("General.Email")</th>
+                        <th>@ResourceKey("General.Username")</th>
+                        <th class="centered">@ResourceKey("General.Authorised")</th>
+                        <th class="centered">@ResourceKey("General.Password")</th>
+                        <th class="centered">@ResourceKey("General.Deleted")</th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (NBrightInfo nbi in Model.List)
+                        {
+
+                            <tr>
+                                <td>@nbi.GetXmlProperty("genxml/textbox/firstname") @nbi.GetXmlProperty("genxml/textbox/lastname")</td>
+                                <td>@nbi.GetXmlProperty("genxml/textbox/email")</td>
+                                <td>@nbi.GetXmlProperty("genxml/textbox/username")</td>
+                                <td class="centered">
+                                    @{
+                                        var icon1 = "fa-circle fa-2x";
+                                        if (@nbi.GetXmlPropertyBool("genxml/textbox/authorised"))
+                                        {
+                                            icon1 = "fa-check-circle fa-2x";
+                                        }
+                                    }
+                                    <i class="fa @icon1"></i>
+                                </td>
+                                <td class="centered">
+                                    @{
+                                        var icon2 = "fa-circle fa-2x";
+                                        if (@nbi.GetXmlPropertyBool("genxml/textbox/updatepassword"))
+                                        {
+                                            icon2 = "fa-check-circle fa-2x";
+                                        }
+                                    }
+                                    <i class="fa @icon2"></i>
+                                </td>
+                                <td class="centered">
+                                    @{
+                                        var icon3 = "fa-circle fa-2x";
+                                        if (@nbi.GetXmlPropertyBool("genxml/textbox/isdeleted"))
+                                        {
+                                            icon3 = "fa-check-circle fa-2x";
+                                        }
+                                    }
+                                    <i class="fa @icon3"></i>
+                                </td>
+                                <td class="nowrap text-right">
+                                    <a href='javascript:void(0)' class='cmd_viewclient' itemid="@nbi.ItemID"><i title="View and Edit" class="fa fa-edit fa-fw fa-2x"></i></a>
+                                </td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

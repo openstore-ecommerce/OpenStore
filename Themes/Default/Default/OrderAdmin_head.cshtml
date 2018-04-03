@@ -1,0 +1,198 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Portals
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+
+@RenderTemplate("/DesktopModules/NBright/NBrightBuy/Themes/config/default/datepicker.cshtml", Model)
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/Default/css/ClientAccount.css" rel="stylesheet">
+
+<!-- fields required to send required ajax cart to server -->
+<span id="orderadminsearch">
+    <input id="userid" type="hidden" value="@Model.GetSetting("userid")"></input>
+    <input id="razortemplate" type="hidden" value=""></input>
+    <input id='editlang' type='hidden' value='@Model.GetUrlParam("language")'></input> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
+    <input id="uilang" type="hidden" value="@Model.GetUrlParam("language")"></input> <!-- default to current language -->
+    <input id="pagesize" type="hidden" value="20"></input>
+    <input id="pagenumber" type="hidden" value="1"></input>
+    <input id="searchtext" type="hidden" value=""></input>
+    <input id="dtesearchdatefrom" type="hidden" value="" datatype='date' ></input>
+    <input id="dtesearchdateto" type="hidden" value="" datatype='date'></input>
+    <input id="searchorderstatus" type="hidden" value=""></input>
+    <input id="selecteditemid" type="hidden" value=""></input>    
+    <input id="entitytypecode" type="hidden" value="@Model.GetSetting("entitytypecode")" />
+    <input id="themefolder" type="hidden" value="@Model.GetSetting("themefolder")" />
+</span>
+
+    <style>
+        /* Order Status Colors */
+        .orderstatus {
+            border-radius: 3px;
+            display: inline-block;
+            color: white;
+            padding: 4px 8px;
+            background: #bbbbbb;
+            font-size: 12px;
+        }
+        /* Grey */
+        .orderstatus010 {
+        }
+        /* Incomplete */
+        .orderstatus020 {
+            background: #2d3538;
+        }
+        /* Waiting for Bank - Black */
+        .orderstatus030 {
+        }
+        /* Cancelled */
+        .orderstatus040 {
+            background: #acc413;
+        }
+        /* Payment OK - Green */
+        .orderstatus050 {
+            background: #c93200;
+        }
+        /* Payment Not Verified - Red */
+        .orderstatus060 {
+            background: #ea690b;
+        }
+        /* Waiting for Payment - Orange */
+        .orderstatus070 {
+            background: #eb2659;
+        }
+        /* Waiting for Stock - Pink */
+        .orderstatus080 {
+            background: #eb2659;
+        }
+        /* Waiting - Pink */
+        .orderstatus090 {
+            background: #893658;
+        }
+        /* Shipped - Purple */
+        .orderstatus100 {
+            background: #1aa8e3;
+        }
+        /* Completed - Blue */
+        .orderstatus110 {
+        }
+        /* Archived */
+        .orderstatus120 {
+            background: #eb2659;
+        }
+        /* Being Manufactured - Pink */
+    </style>
+
+
+    <script>
+
+        $(document).ready(function() {
+            // start load all ajax data, continued by js in product.js file
+            $('.processing').show();
+            $('#razortemplate').val('OrderAdminList.cshtml');
+            nbxget('orderadmin_getlist', '#orderadminsearch', '#datadisplay');
+
+            $(document).on("nbxgetcompleted", OrderAdmin_nbxgetCompleted); // assign a completed event for the ajax calls
+
+            // function to do actions after an ajax call has been made.
+            function OrderAdmin_nbxgetCompleted(e) {
+
+                $('.processing').hide();
+
+                if (e.cmd == 'orderadmin_getlist') {
+
+                    $('#OrderAdmin_searchtext').val($('#searchtext').val());
+                    $('#OrderAdmin_datesearchfrom').val($('#dtesearchdatefrom').val());
+                    $('#OrderAdmin_datesearchto').val($('#dtesearchdateto').val());
+                    $('#OrderAdmin_searchorderstatus').val($('#searchorderstatus').val());
+
+                    // editbutton created by list, so needs to be assigned on each render of list.
+                    $('.cmd_vieworder').unbind("click");
+                    $('.cmd_vieworder').click(function () {
+                        $('.processing').show();
+                        $('#razortemplate').val('OrderAdminDetail.cshtml');
+                        $('#selecteditemid').val($(this).attr('itemid'));
+                        nbxget('orderadmin_getdetail', '#orderadminsearch', '#datadisplay');
+                    });
+
+                    $('.cmd_repeatorder').unbind("click");
+                    $('.cmd_repeatorder').click(function () {
+                        $('.processing').show();
+                        $('#selecteditemid').val($(this).attr('itemid'));
+                        nbxget('orderadmin_reorder', '#orderadminsearch', '#datadisplay');
+                    });
+
+                    $('.cmdPg').unbind("click");
+                    $('.cmdPg').click(function () {
+                        $('.processing').show();
+                        $('#pagenumber').val($(this).attr('pagenumber'));
+                        nbxget('orderadmin_getlist', '#orderadminsearch', '#datadisplay');
+                    });
+
+                    $('#OrderAdmin_cmdSearch').unbind("click");
+                    $('#OrderAdmin_cmdSearch').click(function () {
+                        $('.processing').show();
+                        $('#pagenumber').val('1');
+                        $('#searchtext').val($('#OrderAdmin_searchtext').val());
+                        $('#dtesearchdatefrom').val($('#OrderAdmin_datesearchfrom').val());
+                        $('#dtesearchdateto').val($('#OrderAdmin_datesearchto').val());
+                        $('#searchorderstatus').val($('#OrderAdmin_searchorderstatus').val());
+
+                        nbxget('orderadmin_getlist', '#orderadminsearch', '#datadisplay');
+                    });
+
+                    $('#OrderAdmin_cmdReset').unbind("click");
+                    $('#OrderAdmin_cmdReset').click(function () {
+                        $('.processing').show();
+                        $('#pagenumber').val('1');
+                        $('#searchtext').val('');
+                        $('#dtesearchdatefrom').val('');
+                        $('#dtesearchdateto').val('');
+                        $('#searchorderstatus').val('');
+
+                        nbxget('orderadmin_getlist', '#orderadminsearch', '#datadisplay');
+                    });
+
+                }
+
+                if (e.cmd == 'orderadmin_getdetail') {
+
+                    $('#OrderAdmin_cmdReturn').unbind("click");
+                    $('#OrderAdmin_cmdReturn').click(function () {
+                        $('.processing').show();
+                        $('#razortemplate').val('OrderAdminList.cshtml');
+                        $('#selecteditemid').val('');
+                        nbxget('orderadmin_getlist', '#orderadminsearch', '#datadisplay');
+                    });
+
+                    $('#OrderAdmin_cmdReOrder').unbind("click");
+                    $('#OrderAdmin_cmdReOrder').click(function () {
+                        $('.processing').show();
+                        $('#selecteditemid').val($(this).attr('itemid'));
+                        nbxget('orderadmin_reorder', '#orderadminsearch', '#datadisplay');
+                    });                    
+
+                }
+
+
+                if (e.cmd == 'orderadmin_reorder') {
+                    $('.processing').show();
+                    @{
+                        var redirecturl = Globals.NavigateURL(StoreSettings.Current.CartTabId, "");
+                    }
+                    window.location = "@(redirecturl)";
+                }
+
+            };
+
+        });
+
+    </script>
+

@@ -1,0 +1,49 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Globalization
+@using System.Linq
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+@using NBrightCore.common;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+<ul id="selectlistwrapper" class="productlist">
+
+
+@foreach (NBrightInfo nbi in Model.List)
+{
+    <li class="selproductid@(nbi.ItemID)">
+	<ul class="selectlistitem">
+        @if (nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
+                {
+            <li class="image name" data-toggle="tooltip" data-original-title="@nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")" /></li>
+        }
+        else
+        {
+            <li class="noimage name" data-toggle="tooltip" data-original-title="@nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")"><i class="fa fa-picture-o fa-4x"></i></li>
+        }
+
+
+	    <li class="title name">
+	        @nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")
+	    </li>
+	    <li class="additem">
+	        <a title="Add" class="selectproduct selectproductid@(nbi.ItemID)" itemid="@(nbi.ItemID)"><i class="fa fa-plus-square fa-lg"></i></a>
+	    </li>
+
+	</ul>
+</li>
+
+
+}
+
+    <div class="clearfix"></div>
+</ul>

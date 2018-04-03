@@ -1,0 +1,17 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System
+@using System.Linq
+@using System.Web.UI.HtmlControls
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath","/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    // assign Model, so we can resolve var in VS
+    var info = (NBrightInfo)Model.List.First();
+}
+
+
+
+

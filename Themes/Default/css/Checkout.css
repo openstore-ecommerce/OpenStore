@@ -1,0 +1,131 @@
+/* Checkout Steps */
+.checkoutsteps {background:#efefef;font-size:12px;color:#3f3030;margin-bottom:20px;}
+.checkoutsteps:after {content:"";display:table;clear:both;}
+.checkoutstepsheader {background:#dedede;padding:12px 24px;font-weight:bold;float:left;}
+.checkoutsteps ol {counter-reset:li;list-style:none;padding:0;margin:0;}
+.checkoutsteps li {position:relative;display:block;padding:6px 36px 6px 24px;margin:6px 0;float:left;color:#747474;}
+.checkoutsteps li:before {content:counter(li);counter-increment:li;position:absolute;left:-12px;top:50%;margin-top:-12px;background:white;color:#a7a7a7;height:24px;width:24px;line-height:22px;text-align:center;-moz-border-radius:12px;-webkit-border-radius:12px;border-radius:12px;}
+.checkoutsteps li.activestep {color:#3f3030;}
+.checkoutsteps li.activestep:before {background:#56a9df;color:white;}
+
+/* Checkout */
+#cartdetails{overflow:hidden;padding:1%;}/* some padding for panel shadows */
+#cartdetails h3{margin:0 0 20px;padding:0;}
+#cartdetails .formrow{clear:both;}
+/*#cartlist .formrow{clear:both;text-align:right;}*/
+#cartdetails .chooseaddress{background:#fefff4;box-shadow:none;padding:3px;}
+#cartdetails .formrow input[type=text], .formrow input[type=email], .formrow select, .formrow textarea{box-sizing:border-box;width:100%;margin:0 0 15px;}
+#cartdetails .leftside{float:left;width:48%;}
+#cartdetails .rightside{float:right;width:48%;}
+#shippingoptions{margin-bottom:10px;}
+.checkoutship input{vertical-align:-2px;margin:0 0 0 10px;}
+.checkoutship label{line-height:22px;margin:0 0 0 6px;}
+#checkoutdetails .primarybutton{margin-right:0;}
+.checkoutextra .summaryleft{float:left;width:43%;min-width:240px;overflow:hidden;margin-bottom:25px;}
+.checkoutextra .summaryright{float:right;min-width:240px;width:45%;}
+.summaryleft .newscheckbox{padding-top:26px;}
+.checkoutdetails{list-style:none outside none;margin:0;padding:0 0 15px;display:inline-block;}
+.checkoutdetails li{line-height:180%;}
+.checkoutdetails li div{display:inline-block;width:140px;}
+.checkoutdetails li.total{border-top:2px solid #bbbbbb;margin-bottom:12px;}
+.checkoutdetails .submission{margin-top:15px;}
+.checkoutdetails .dnnForm{margin-bottom:4px}
+.productdetail .purchasing{}
+#cartempty{}
+#cartbilladdress, #cartshippingoptions, #cartshippingmethods, #cartextra, #cartlist, #payment, #addressinput{overflow:hidden;box-sizing:border-box;}
+#cartbilladdress{float:left;width:47%;margin-bottom:30px;min-width:240px;}
+#cartshippingoptions{float:right;width:47%;margin-bottom:30px;min-width:240px;}
+#cartshippingmethods{clear:both;width:100%;margin-bottom:30px;}
+#cartextra{clear:both;width:100%;margin-bottom:30px;}
+#cartlist{clear:both;width:100%;margin-bottom:30px;overflow:visible;}
+#cartlist .secondarybutton{margin-right:0;}
+#cartdetails .radiobuttonlist .dnnRadiobutton{margin:0 0 9px;}
+#cartdetails .radiobuttonlist .dnnBoxLabel{margin-right:15px;}
+#shippingmethods {margin:0 0 20px 0;}
+.addressbookmessage {font-style:italic;margin:0 0 20px 0;}
+
+/* cartlist Table - www.csstablegenerator.com */
+#cartlist{}
+#cartlist table{margin:0 0 20px 0;padding:0px;width:100%;border-collapse:collapse;border-spacing:0;width:100%;}
+#cartlist table tr:nth-child(odd){background-color:#f2f2f2;}
+#cartlist table tr:nth-child(even){background-color:#ffffff;}
+#cartlist table td{vertical-align:middle;text-align:center;padding:6px;font-family:inherit;font-weight:normal;border:1px solid #DDDDDD;padding:10px;text-align:center;}
+#cartlist table tr:last-child td{}
+#cartlist table tr td:last-child{}
+#cartlist table tr:last-child td:last-child{}
+#cartlist table th{background:#777777;color:#FFFFFF;line-height:34px;padding:0 10px;}
+#cartlist table tr:first-child td:first-child{}
+#cartlist table tr:first-child td:last-child{}
+
+/* cartlist items */
+#cartlist .detailscolumn .noimage{float:left;height:100px;margin-right:12px;width:100px;}
+#cartlist .detailscolumn .image{float:left;height:100px;margin-right:12px;width:100px;}
+#cartlist .detailscolumn img{width:100%;height:100%;}
+#cartlist .detailscolumn .details{overflow:hidden;}
+#cartlist .detailscolumn{text-align:left;}
+#cartlist .detailscolumn .title{font-weight:bold;}
+#cartlist .cartlistoptions{clear:both;}
+#cartlist .ui-spinner{font-size:17px;}
+#cartlist .deleteitem{}
+#cartlist .fa-times-circle{color:#666;}
+#cartlist .fa-times-circle:hover{color:#C80000;}
+#cartlist .quantityfields {min-width:70px;}
+#cartlist .quantityfields a {display:block;float:left;width:24px;height:24px;background:white;color:#aaaaaa;font-size:9px;text-decoration:none;line-height:24px;text-align:center;border:#dfdddd solid 1px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+#cartlist .quantityfields a:hover {text-decoration:none;background:#aaaaaa;color:white;}
+#cartlist .quantityfields input {text-align:center;outline:none;background:#f4f4f4;border:none;border-top:#dfdddd solid 1px;border-bottom:#dfdddd solid 1px;font-size:14px;font-weight:700;width:22px !important;height:24px;line-height:26px;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+input.quantity {float:left;}
+
+/* Payment */
+#payment{margin:20px 0 0 0;}
+#payment .paymentlogo{float:right;margin:0 0 15px 15px;}
+#payment h1{font-size:38px;line-height:100%;margin:24px;opacity:0.5;}
+.paymentcomplete, .paymentfailed{margin:20px 0 0 0;}
+
+/* default payment button */
+.paybutton{background:#42403f;color:#FFFFFF;}
+.paybutton:hover{background:#757370;color:#FFFFFF;}
+.paybutton{display:inline-block;font-weight:bold;line-height:35px;padding:0 10px;margin:10px 10px 10px 0;text-align:center;width:45%;border:medium none;text-decoration:none;box-sizing:border-box;cursor:pointer;}
+.paybutton{font-family:sans-serif;display:inline-block;font-weight:bold;font-size:13px;line-height:35px;padding:0 10px;margin:10px 10px 10px 0;min-width:120px;text-align:center;border:medium none;text-decoration:none;box-sizing:border-box;cursor:pointer;}
+.paybutton:hover{text-decoration:none;}
+
+/**********************************************************/
+/* MEDIA QUERIES */
+/**********************************************************/
+
+/* Responsive layout - Any screen at less than 768px - Most tablets */
+@media only screen 
+and (min-width : 481px) 
+and (max-width : 768px) {
+#cartbilladdress, #cartshippingoptions, #cartshippingmethods, #cartextra, #payment{min-width:240px;width:100%;float:none;}
+.checkoutextra .summaryleft,.checkoutextra .summaryright,.checkoutextra .checkoutdetails{width:100%;}
+#checkoutitemlist .detailscolumn .details{clear:left;}
+#checkoutitemlist .detailscolumn .noimage{height:160px;margin-right:0;width:160px;}
+#checkoutitemlist .detailscolumn .image{height:160px;margin-right:0;width:160px;}
+#checkoutitemlist .detailscolumn .image{height:160px;width:160px;}
+#chronopostrelaistemplate #relais{float:none;margin:0 0 25px;width:100%;}
+#chronopostrelaistemplate #map-canvas{width:100%;height:400px;float:none;}
+#payment h1{font-size:28px;margin:24px 58px;}
+.paymentcomplete, .paymentfailed{width:80%;}
+.currencyconverter, .ccinfo{display:table-row;}
+.checkoutsteps {display: none !important;}
+}
+
+/* Responsive layout - Any screen at less than 480px - Most phones */
+@media only screen 
+and (min-width : 0px) 
+and (max-width : 480px) {
+#cartbilladdress, #cartshippingoptions, #cartshippingmethods, #cartextra, #cartlist, #payment{width:100%;float:none;}
+#cartlist{padding:0;}
+.checkoutextra .summaryleft, .checkoutextra .summaryright, .checkoutextra .checkoutdetails{float:none;min-width:210px;width:100%;}
+#checkoutitemlist .detailscolumn .details{clear:left;}
+#checkoutitemlist .detailscolumn .noimage{height:130px;margin-right:0;width:130px;}
+#checkoutitemlist .detailscolumn .image{height:130px;margin-right:0;width:130px;}
+.pricecolumn, .removecolumn{display:none;}
+#chronopostrelaistemplate #relais{float:none;margin:0 0 25px;width:100%;}
+#chronopostrelaistemplate #map-canvas{width:100%;height:320px;float:none;}
+#payment .paymentlogo{float:none;margin:0 0 15px;}
+#payment h1{font-size:22px;margin:15px;}
+.paymentcomplete, .paymentfailed{width:100%;}
+.currencyconverter, .ccinfo{display:table-row;}
+.checkoutsteps {display: none !important;}
+}

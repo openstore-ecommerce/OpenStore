@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="addtobasket.Text" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="addtobasketicon.Text" xml:space="preserve">
+    <value>&lt;span title="Add to basket" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-shopping-cart fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="editicon.Text" xml:space="preserve">
+    <value>&lt;i title="Edit Product" class="fa fa-edit"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="description.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="documentation.Text" xml:space="preserve">
+    <value>Downloads</value>
+  </data>
+  <data name="models.Text" xml:space="preserve">
+    <value>Models</value>
+  </data>
+  <data name="related.Text" xml:space="preserve">
+    <value>Related Products</value>
+  </data>
+  <data name="convertor.Text" xml:space="preserve">
+    <value>Currency Converter</value>
+  </data>
+  <data name="return.Text" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="pricerequest.Text" xml:space="preserve">
+    <value>Price request</value>
+  </data>
+  <data name="emailmsg.Text" xml:space="preserve">
+    <value>Please inform me of the price of this product at</value>
+  </data>
+  <data name="noimage.Text" xml:space="preserve">
+    <value>&lt;i class="fa fa-camera"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="from.Text" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="fromlower.Text" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="emailprice.Text" xml:space="preserve">
+    <value>Email for price</value>
+  </data>
+  <data name="normally.Text" xml:space="preserve">
+    <value>Normal Retail</value>
+  </data>
+  <data name="onsale.Text" xml:space="preserve">
+    <value>Sale</value>
+  </data>
+  <data name="onsaleflag.Text" xml:space="preserve">
+    <value>On Sale!</value>
+  </data>
+  <data name="retail.Text" xml:space="preserve">
+    <value>Retail</value>
+  </data>
+  <data name="dealer.Text" xml:space="preserve">
+    <value>Dealer</value>
+  </data>
+  <data name="holidaymsg.Text" xml:space="preserve">
+    <value>Closed for holiday</value>
+  </data>
+  <data name="outofstock.Text" xml:space="preserve">
+    <value>Out of Stock</value>
+  </data>
+  <data name="outofstockflag.Text" xml:space="preserve">
+    <value>Out of Stock</value>
+  </data>
+  <data name="instock.Text" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="downloadableproduct.Text" xml:space="preserve">
+    <value>This is a downloadable product. Retrieve it from your account orders page after purchase.</value>
+  </data>
+  <data name="model.Text" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="code.Text" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="price.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="saleprice.Text" xml:space="preserve">
+    <value>Sale price</value>
+  </data>
+  <data name="dealerprice.Text" xml:space="preserve">
+    <value>Dealer price</value>
+  </data>
+  <data name="stock.Text" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="reserved.Text" xml:space="preserve">
+    <value>Reserved</value>
+  </data>
+  <data name="remaining.Text" xml:space="preserve">
+    <value>Remaining</value>
+  </data>
+  <data name="download.Text" xml:space="preserve">
+    <value>Download this file &lt;i class='fa fa-download'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="purchasabledocument.Text" xml:space="preserve">
+    <value>Download here after purchase &lt;i class='fa fa-exclamation-circle'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="filebullets.Text" xml:space="preserve">
+    <value>&lt;i class='fa-li fa fa-file-o'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="currencyconvertormsg.Text" xml:space="preserve">
+    <value>&lt;p&gt;If it is not already displayed, select your target currency and click the 
+button to convert. The result is calculated based on current market exchange 
+rates.&lt;/p&gt;&lt;p&gt;Banks and other institutions charge you fees for conversion and 
+handling of foreign currencies and so the final price on your credit card bill 
+will likely be a few percent higher than the result displayed here. Use this 
+just as a guide.&lt;/p&gt;&lt;p style="font-size:11px;font-style:italic"&gt;This service 
+is provided by foreignexchangeresource.com&lt;/p&gt;</value>
+  </data>
+  <data name="debugmode.Text" xml:space="preserve">
+    <value>Debug mode is on - Caching is off</value>
+  </data>
+  <data name="returnicon.Text" xml:space="preserve">
+    <value>&lt;span title="Return to list" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-reply fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="view.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="share.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="viewicon.Text" xml:space="preserve">
+    <value>&lt;span title="Information" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-search fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="wishlistadd.Text" xml:space="preserve">
+    <value>Add to favorites</value>
+  </data>
+  <data name="wishlistaddicon.Text" xml:space="preserve">
+    <value>&lt;span title="Add to favorites" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-star-o fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="wishlistremove.Text" xml:space="preserve">
+    <value>Remove from favorites</value>
+  </data>
+  <data name="wishlistremoveicon.Text" xml:space="preserve">
+    <value>&lt;span title="Remove from favorites" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-star fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="choosemodel.Text" xml:space="preserve">
+    <value>Select Model</value>
+  </data>
+  <data name="addtobasketicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="Add to basket" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-shopping-cart fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="viewicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="View details" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-search fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="wishlistaddicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="Add to favorites" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-star-o fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="wishlistremoveicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="Remove from favorites" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-star fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="productunavailable.Text" xml:space="preserve">
+    <value>This product is currently unavailable.</value>
+  </data>
+  <data name="addedtobasket.Text" xml:space="preserve">
+    <value>Item added to basket</value>
+  </data>
+  <data name="products.Text" xml:space="preserve">
+    <value>products</value>
+  </data>
+  <data name="promo.Text" xml:space="preserve">
+    <value>Promotional offer</value>
+  </data>
+  <data name="promoflag.Text" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
+  <data name="references.Text" xml:space="preserve">
+    <value>References</value>
+  </data>
+  <data name="recommend.Text" xml:space="preserve">
+    <value>With this product, we recommend :</value>
+  </data>
+  <data name="orderby.Text" xml:space="preserve">
+    <value>Default sort,Sort by price (low to high),Sort by price (high to low),Sort by reference,Sort by name</value>
+  </data>
+  <data name="favorites.Text" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="searchresults.Text" xml:space="preserve">
+    <value>Search Results</value>
+  </data>
+  <data name="endoflineflag.Text" xml:space="preserve">
+    <value>End Of Line!</value>
+  </data>
+  <data name="wishlistclearall.Text" xml:space="preserve">
+    <value>Clear all favorites</value>
+  </data>
+  <data name="wishlistclearallicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="Clear all favorites" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-close fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="articles.Text" xml:space="preserve">
+    <value>items</value>
+  </data>
+  <data name="clientfileuploadmsg.Text" xml:space="preserve">
+    <value>Please select the file(s) required.</value>
+  </data>
+  <data name="clientfileuploadmsgend.Text" xml:space="preserve">
+    <value>File upload complete</value>
+  </data>
+  <data name="article.Text" xml:space="preserve">
+    <value>item</value>
+  </data>
+  <data name="page404title.Text" xml:space="preserve">
+    <value>The page you are looking for doesn't exist (404)</value>
+  </data>
+  <data name="productnotfound.Text" xml:space="preserve">
+    <value>404 - Product Not Found</value>
+  </data>
+  <data name="addicon.Text" xml:space="preserve">
+    <value>&lt;span title="Add" class="fa-stack"&gt;
+  &lt;i class="fa fa-plus fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-plus-o fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="cancelicon.Text" xml:space="preserve">
+    <value>&lt;span title="Cancel" class="fa-stack"&gt;
+  &lt;i class="fa fa-times fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-times-o fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="productdetail.Text" xml:space="preserve">
+    <value>Product Details</value>
+  </data>
+</root>

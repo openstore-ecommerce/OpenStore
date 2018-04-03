@@ -1,0 +1,47 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using DotNetNuke.Common
+@using NBrightDNN
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<input id="checkouturl" type="hidden" value="@(Globals.NavigateURL(Model.GetSettingInt("checkouttabid")))">
+
+
+<h1>@ResourceKey("CartView.YourBasket")</h1>
+<div class="checkoutsteps">
+    <div class="checkoutstepsheader">@ResourceKey("CartView.CartstepsProcess")</div>
+    <ol>
+        <li class="step1 activestep">@ResourceKey("CartView.CartstepsRecap")</li>
+        <li class="step2">@ResourceKey("CartView.CartstepsAddresses")</li>
+        <li class="step3">@ResourceKey("CartView.CartstepsShipping")</li>
+        <li class="step4">@ResourceKey("CartView.CartstepsPayment")</li>
+        <li class="step5">@ResourceKey("CartView.CartstepsConfirm")</li>
+    </ol>
+</div>
+
+<div id="cartlist" style="">
+
+        <div id="cartdetails" class="nbs dnnform" style="display: none;">
+
+            <div id="checkoutitemlist"></div>
+
+            <div style="clear: both;">
+                <a href="javascript:void(0)" id="cmdDeleteCart" class="secondarybutton clearcart">@ResourceKey("CartView.cmdClearCart")</a>
+                <a href="javascript:void(0)" id="cmdRecalcCart" class="secondarybutton recalculatecart">@ResourceKey("CartView.UpdateCart")</a>
+                <a href="javascript:void(0)" id="cmdGoCheckout" class="primarybutton">@ResourceKey("CartView.Next")</a>
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+    $(document).ready(function () {
+        // show cart list
+        $('.processing').show();
+        $('#themefolder').val('@Model.GetSetting("themefolder")');
+        $('#carttemplate').val('FullCartList.cshtml');
+        nbxget('cart_rendercartlist', '#productajaxview', '#checkoutitemlist');
+    });
+</script>
+

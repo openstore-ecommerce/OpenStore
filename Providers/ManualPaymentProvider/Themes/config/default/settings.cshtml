@@ -1,0 +1,56 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+    @using System.Linq
+    @using DotNetNuke.Common
+    @using DotNetNuke.Entities.Portals
+    @using DotNetNuke.Entities.Users
+    @using NBrightDNN
+    @using Nevoweb.DNN.NBrightBuy.Components
+
+    @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Providers/ManualPaymentProvider/App_LocalResources")
+    @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+    @{
+    var info = (NBrightInfo)Model.List.First();
+    }
+
+    <script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Providers/ManualPaymentProvider/Themes/config/js/manualpayment.js"></script>
+
+<br />
+
+<div id="pageactionssource">
+    <!-- Page actions are moved into header bar - also exist at page bottom-->
+    <div class="col-xs-9 col-sm-9">
+        <a href="#" class="show-sidebar">
+            <i class="fa fa-bars"></i>
+        </a>
+        <div class="actionbuttonwrapper">
+            <a id="manualpayment_cmdSave" class="btn btn-primary" href="javascript:void(0);">@ResourceKey("General.cmdSaveButton")</a>
+        </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 top-panel-right">
+        @EditLangaugeButton();
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="manualpaymentreturnmsg"></div>
+
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i><span>Manual Payment</span>
+                </div>
+            </div>
+            <div class="box-content manualpaymentdata">
+
+                @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Providers\\ManualPaymentProvider\\Themes/config\\Default\\settingsfields.cshtml", Model)
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+

@@ -1,0 +1,111 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+    @using System.Linq
+    @using DotNetNuke.Common
+    @using DotNetNuke.Entities.Portals
+    @using DotNetNuke.Entities.Users
+    @using NBrightDNN
+    @using Nevoweb.DNN.NBrightBuy.Components
+
+    @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Providers/ManualPaymentProvider/App_LocalResources")
+    @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+    @{
+    var info = (NBrightInfo)Model.List.First();
+    }
+
+                <div class="form-horizontal dnnForm">
+
+                    <input id="itemid" type="hidden" value="@info.ItemID"/>
+                    <input id="uilang" type="hidden" value="@info.Lang"/>
+                    <input id="nextlang" type="hidden" value="@info.Lang" />
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5">
+                                <h3>@ResourceKey("ManualPayment.checkoutdisplay")</h3>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">@ResourceKey("ManualPayment.Title")</label>
+                            <div class="col-sm-5">
+                                @NBrightTextBox(info, "genxml/lang/genxml/textbox/manualpaymenttitle", "maxlength='150'", ResourceKey("ManualPayment.ManualPayment", info.Lang).ToString())
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">@ResourceKey("ManualPayment.Message")</label>
+                            <div class="col-sm-5">
+                                @NBrightTextArea(info, "genxml/lang/genxml/textbox/manualpaymentmessage", "height='100' maxlength='200' textmode='MultiLine' ", ResourceKey("ManualPayment.DefaultMessage", info.Lang).ToString())
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">@ResourceKey("ManualPayment.buttontext")</label>
+                            <div class="col-sm-5">
+                                @NBrightTextBox(info, "genxml/lang/genxml/textbox/buttontext", "maxlength='150'", ResourceKey("ManualPayment.Continue", info.Lang).ToString())
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">@ResourceKey("ManualPayment.checkouttemplate")</label>
+                            <div class="col-sm-5">
+                                @TextBox(info, "genxml/textbox/checkouttemplate", "class='form-control'", "methodselection.cshtml")
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-5">
+                                    <h3>@ResourceKey("ManualPayment.returndisplay")</h3>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@ResourceKey("ManualPayment.Title")</label>
+                                <div class="col-sm-5">
+                                    @NBrightTextBox(info, "genxml/lang/genxml/textbox/rtntitle", "maxlength='150'", ResourceKey("CartView.PaymentComplete", info.Lang).ToString())
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">@ResourceKey("ManualPayment.Message")</label>
+                                <div class="col-sm-5">
+                                    @NBrightTextArea(info, "genxml/lang/genxml/textbox/rtnmessage", "height='300' textmode='MultiLine' ", ResourceKey("Notification.checkoutsuccessmessage", info.Lang).ToString())
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-5">
+                                <h3>@ResourceKey("ManualPayment.processoptions")</h3>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">@ResourceKey("ManualPayment.movetostatus")</label>
+                            <div class="col-sm-5">
+                                @{
+                                    var ostatus = info.GetXmlProperty("genxml/dropdownlist/orderstatus");
+                                    if (ostatus == "")
+                                    {
+                                        ostatus = "060";
+                                    }
+                                }
+                                @OrderStatusDropDownList("orderstatus", ostatus, "form-control")
+                            </div>
+                        </div>
+                    </div>
+
+
+                    </div>
+         

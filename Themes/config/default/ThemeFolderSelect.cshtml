@@ -1,0 +1,20 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using System.Web.UI.HtmlControls
+@using NBrightDNN
+
+@AddMetaData("resourcepath","/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var providercontrolpath = info.GetXmlProperty("genxml/dropdownlist/providercontrolpath").Trim('/');
+    if (providercontrolpath == "")
+    {
+        providercontrolpath = "NBrightBuy";
+    }
+    // set this from hidden field.  Workaround: The dropdownlst is not set if we don't load correct controlpath to the template
+    info.SetXmlProperty("genxml/dropdownlist/themefolder", info.GetXmlProperty("genxml/hidden/themefolder"));
+}
+
+@DnnLabel("lblthemefolder", "Settings.Theme")
+@FolderSelectList(info, "genxml/dropdownlist/themefolder", "/DesktopModules/NBright/" + providercontrolpath + "/Themes", " class='form-control' ")

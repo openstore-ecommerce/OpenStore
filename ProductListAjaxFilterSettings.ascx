@@ -1,0 +1,2 @@
+<%@ Control Language="C#" AutoEventWireup="false" Inherits="Nevoweb.DNN.NBrightBuy.AjaxProductListFilterSettings" Codebehind="AjaxProductListFilterSettings.ascx.cs" %>
+<asp:PlaceHolder ID="phData" runat="server"></asp:PlaceHolder>

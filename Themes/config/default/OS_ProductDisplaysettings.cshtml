@@ -1,0 +1,137 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using System.Web.UI.HtmlControls
+@using NBrightDNN
+
+@AddMetaData("resourcepath","/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        //use to chnage the them folder dropdown on entry and on change.
+        nbxget('renderthemefolders', '#themedata', '#themefolders');
+        $('#providercontrolpath').change(function () {
+            nbxget('renderthemefolders', '#themedata', '#themefolders');
+        });
+
+    });
+
+</script>
+
+<div id="nbrightbuysettings">
+
+    <div>
+        Ref: @info.GetXmlProperty("genxml/hidden/modref")
+    </div>
+
+    <h2 class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded">@ResourceKey("ProductViewSettings.lblbasicsettings")</a></h2>
+    <fieldset>
+        <div id="themedata">
+            <input id="lang" type="hidden" value="@Model.GetUrlParam("language")" /> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
+            <input id="uilang" type="hidden" value="@Model.GetUrlParam("language")" /> 
+            <input id="editlang" type="hidden" value="" /> <!-- culture code being edited -->
+            <input id="moduleid" type="hidden" value="@info.ModuleId" />
+            <input id="tabid" type="hidden" value="@Model.GetUrlParam("tabid")" />
+            <input id="index" type="hidden" value="" />
+            <input id="themefolder" type="hidden" value="@info.GetXmlProperty("genxml/dropdownlist/themefolder")" />
+            <input id="razortemplate" type="hidden" value="ProductDisplaysettings.cshtml" />
+            <div class="dnnFormItem">
+                <div>
+                    @DnnLabel("lblcontrolpayth", "Settings.providercontrolpath")
+                    @FolderSelectList(info, "genxml/dropdownlist/providercontrolpath", "/DesktopModules/NBright", " class='form-control' ")
+                </div>
+            </div>
+            <div class="dnnFormItem">
+                <div id="themefolders">
+                    @DnnLabel("lblthemefolder", "Settings.Theme")
+                    @FolderSelectList(info, "genxml/dropdownlist/themefolder", "/DesktopModules/NBright/NBrightBuy/Themes", " class='form-control' ")
+                </div>
+            </div>
+            <div class="dnnFormItem">
+                <div>
+                    @DnnLabel("lblEntityTypeCode", "ProductViewSettings.EntityTypeCode")
+                    @TextBox(info, "genxml/textbox/entitytypecode", "width='300px' class='form-control' ", "ResourceKey:EntityTypeCode.EntityTypeCode")
+                </div>
+            </div>
+            <div class="dnnFormItem">
+                <div>
+                    @DnnLabel("lbltemplate", "Settings.razorlisttemplate")
+                    @NBrightTextBox(info, "genxml/textbox/razorlisttemplate", "", "ProductDisplayList.cshtml")
+                </div>
+            </div>
+            <div class="dnnFormItem">
+                <div>
+                    @DnnLabel("lbltemplate", "Settings.razordetailtemplate")
+                    @NBrightTextBox(info, "genxml/textbox/razordetailtemplate", "", "ProductDisplayDetail.cshtml")
+                </div>
+            </div>
+
+            <div class="dnnFormItem">
+                <div>
+                    @DnnLabel("lbldetailtab", "Settings.productdetailtab")
+                    @TabSelectListOnTabId(info, "genxml/dropdownlist/ddldetailtabid", "", true)
+                </div>
+            </div>
+
+            <div class="dnnFormItem">
+                @DnnLabel("lblpagesize", "Settings.pagesize")
+                @TextBox(info, "genxml/textbox/pagesize", "width='300'", "64")
+            </div>
+
+            <div class="dnnFormItem">
+                @DnnLabel("lbldisplaytype", "ProductViewSettings.displaytype")@RadioButtonList(info, "genxml/radiobuttonlist/displaytype", "0,1,2", "Normal,Search,Selected list", "0")
+            </div>
+            <div class="dnnFormItem">
+                    @DnnLabel("lbltemplate", "Settings.itemlistname")
+                    @NBrightTextBox(info, "genxml/textbox/itemlistname", "", "nbsfavorites0")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lbldefaultcatid", "ProductViewSettings.lbldefaultcatid")
+                @CategoryDropDownList(info, "genxml/dropdownlist/defaultcatid", "width='300'", true, 20, true, false, 0, "", ".")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lbldefaultproperty", "ProductViewSettings.lbldefaultproperty")
+                @PropertyDropDownList(info, "genxml/dropdownlist/defaultpropertyid", "width='300'", true, true, false, 0, "", ".")
+            </div>
+            <div class="dnnFormItem staticlist">
+                @DnnLabel("lblstaticlist", "ProductViewSettings.lblstaticlist")@CheckBox(info, "genxml/checkbox/staticlist", "", " class='dnnCheckbox' ") @CheckBox(info, "genxml/checkbox/caturlfilter", "ResourceKey:ProductViewSettings.caturlfilter", " class='dnnCheckbox' ")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lbllistonly", "ProductViewSettings.lbllistonly")@CheckBox(info, "genxml/checkbox/listonly", "", " class='dnnCheckbox' ")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lblcascaderesults", "ProductViewSettings.lblcascaderesults")@CheckBox(info, "genxml/checkbox/chkcascaderesults", "", " class='dnnCheckbox' ", true)
+            </div>
+            <div class="dnnFormItem detailmoduleref">
+                @DnnLabel("lbldetailmoduleref", "ProductViewSettings.lbldetailmoduleref")@TextBox(info, "genxml/textbox/detailmodulekey", "width='300'")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lblreturntab", "ProductViewSettings.lblreturntab")@TabSelectListOnTabId(info, "genxml/dropdownlist/ddllisttabid", "", true) @info.GetXmlProperty("genxml/dropdownlist/ddllisttabid")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lbldefaultlistmodule", "ProductViewSettings.lbldefaultlistmodule")@CheckBox(info, "genxml/checkbox/chkdefaultlistmodule", "", " class='dnnCheckbox' ")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lblreturnlimit", "ProductViewSettings.lblreturnlimit")@TextBox(info, "genxml/textbox/returnlimit", "width='75'", "0")
+            </div>
+
+            <hr/>
+
+
+        </div>
+
+                <div id="settingsdata"></div>
+
+</fieldset>
+    
+</div>
+
+
+
+
+

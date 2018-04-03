@@ -1,0 +1,110 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Web
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<!-- Product List Body -->
+<div id="listwrapper" class="productlist">
+
+@{
+    var lang = "";
+}
+
+<div class="addedtobasket" style="display:none;">@ResourceKey("ProductView.addedtobasket")</div>
+
+@foreach (NBrightInfo info in Model.List)
+    {
+        var product = new ProductData(info.ItemID, info.Lang);
+        lang = info.Lang;
+
+    <div class="product">
+
+        <!-- Shopping List buttons -->
+        <a id="shoppinglistadd-@(info.ItemID)" href="#shoppinglistpopup" class="shoppinglistadd actionbutton absec" itemid="@(info.ItemID)"><i class="fa fa-star-o"></i></a>
+        <a id="shoppinglistremove-@(info.ItemID)" href="javascript:void(0)" class="shoppinglistremove actionbutton absec" itemid="@(info.ItemID)" style="display:none;"><i class="fa fa-star"></i></a>
+        <script>
+            if (IsInFavorites(@(info.ItemID))) {
+                $('#shoppinglistadd-@(info.ItemID)').hide();
+                $('#shoppinglistremove-@(info.ItemID)').show();
+            } else {
+                $('#shoppinglistadd-@(info.ItemID)').show();
+                $('#shoppinglistremove-@(info.ItemID)').hide();
+            }
+        </script>
+
+        <div class="product-overlay">
+            @if (!Model.GetSettingBool("cataloguemode"))
+            {
+                if (product.Models.Count > 1)
+                {
+                <a href="@EntryUrl(info,Model)" class="actionbutton"><i class="fa fa-search"></i>@ResourceKey("ProductView.productdetail")</a>
+                }
+                else
+                {
+                <a href="javascript:void(0);" class="actionbutton addtobasket" itemid="@(info.ItemID)"><i class="fa fa-shopping-cart"></i>@ResourceKey("ProductView.addtobasket")</a>
+                }
+            }
+        </div>
+
+        <div class="productimg">
+          @if (product.Imgs.Count > 0)
+          {
+              <div class="image">
+                  <img title="@(info.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary"))" src="@ProductImageUrl(info, 160, 0)">
+              </div>
+          }
+          else
+          {
+              <div class="noimage">
+                  <i class="fa fa-picture-o"></i>
+              </div>
+          }
+        </div>
+
+        <div class="description">
+            <h2><a href="@EntryUrl(info,Model)"><span>@info.GetXmlProperty("genxml/textbox/manufacturer")</span>@ProductName(info)</a></h2>
+
+            <div class="price">
+                @if (product.Models.Count > 1)
+                {
+                    <span class="from">@ResourceKey("ProductView.from")</span>
+                }
+
+                @if (product.IsOnSale)
+                {
+                    <span class="old">@(NBrightBuyUtils.FormatToStoreCurrency(product.FromPrice()))</span>
+                    <span class="sale">@(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))</span>
+                }
+                else
+                {
+                    @(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))
+                }
+            </div>
+
+            <div class="flags">
+            @if (product.IsOnSale)
+            {
+                <span class="onsaleflag">@ResourceKey("ProductView.promoflag")</span>
+            }
+            @if (!product.IsInStock)
+            {
+                <span class="outofstockflag">@ResourceKey("ProductView.outofstockflag")</span>
+            }
+            </div>
+
+        </div>
+
+        <!-- fields required to send required ajax data to server -->
+        <span class="entryid@(info.ItemID)">
+            <input id="@(info.ItemID)_productid" type="hidden" value="@(info.ItemID)">
+            <input id="@(info.ItemID)_shopitemid" type="hidden" value="@(info.ItemID)">
+            <input id="@(info.ItemID)_uilang" type="hidden" value="@(info.Lang)">
+        </span>
+
+    </div>
+}
+
+</div>

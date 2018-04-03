@@ -1,0 +1,692 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using NBrightCore.common
+@using NBrightDNN
+@using NBrightDNN.render
+@using Nevoweb.DNN.NBrightBuy.Components
+
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Themes/classicrazor/resx")
+
+@{
+    var ordData = (OrderData)Model.List.First();
+    var nbi = ordData.GetInfo();
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+
+<script type="text/javascript">
+
+        $(document).ready(function() {
+
+        var filecount = 0;
+        var filesdone = 0;
+
+        $('input[id*="optionfilelist"]').val('');
+        $("#orderstatus").val('@(ordData.OrderStatus)');
+
+        $(function () {
+            'use strict';
+            // Change this to the location of your server-side upload handler:
+            var url = '/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=fileupload&itemid=' + @nbi.ItemID;
+
+            $('#optionfile').fileupload({
+                    url: url,
+                    maxFileSize: 5000000,
+                    acceptFileTypes: /(\.|\/)(pdf|zip|gif|jpe?g|png)$/i,
+                    dataType: 'json'
+                }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled')
+                .bind('fileuploadadd', function (e, data) {
+                    $.each(data.files, function (index, file) {
+                        $('#optionfilelist').val($('#optionfilelist').val() + file.name);
+                        filesdone = filesdone + 1;
+                    });
+                }).bind('fileuploadchange', function (e, data) {
+                    filecount = data.files.length;
+                })
+                .bind('fileuploaddrop', function (e, data) {
+                    filecount = data.files.length;
+                }).bind('fileuploadstop', function (e) {
+                    if (filesdone == filecount) {
+                        $('.processing').show();
+                        filesdone = 0;
+                        nbxget('orderadmin_save', '#orderadmin', '#actionreturn');
+                    }
+                });
+
+
+        });
+
+        });
+
+</script>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $('input[datatype=date]').datepicker();
+    });
+
+    $(document).ready(function() {
+        $('.box-content').toggle(); // Initially hide all panels
+        $('.orderdetail div.box-content').toggle(); // Then open specific ones
+    });
+</script>
+
+
+<div id="orderadmin" class="orderdetail">
+
+<!-- fields for ajax postback -->
+<input id="lang" type="hidden" value="@Model.Lang"/> <!-- default to current language -->
+<input id="itemid" type="hidden" value="@ordData.PurchaseInfo.ItemID"/> 
+
+
+@if (ordData != null)
+    {
+
+        <div class="row">
+        <div class="col-xs-12">
+        <div class="box">
+        <div class="box-content">
+        <br/>
+
+        <div class="col-xs-3 billaddress">
+            <!-- Always show billing address -->
+            <h4>@ResourceKey("General.BillTo")</h4>
+            <div class="address">
+                <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/company")</div>
+                <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/unit")</div>
+                <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/street")</div>
+                <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/city")</div>
+                <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/region")</div>
+                <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/region/@selectedtext")</div>
+                <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/postalcode")</div>
+                <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext")</div>
+            </div>
+            <div class="address">
+                <div>
+                    <b>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/firstname") @nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/lastname")</b>
+                </div>
+                <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/telephone")</div>
+                <div>
+                    <a href="mailto:@(nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/email"))">@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/email")</a>
+                </div>
+                <div>
+                    <a href="mailto:@(nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress"))">@nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress")</a>
+                </div>
+            </div>
+
+            <div class="address">
+                <div>
+                    <b>@ResourceKey("OrderAdmin.PaymentMethod")</b>
+                </div>
+                <div>
+                    @if (nbi.GetXmlProperty("genxml/paymentproviderkey") == "manualpayment")
+                    {
+                        @ResourceKey("General.manualpayment")
+                    }
+                    else
+                    {
+                        @ResourceKey("General.creditcardpayment")
+                    }
+                </div>
+            </div>
+            <div class="address">
+                <div>
+                    <span class="orderstatus orderstatus@(nbi.GetXmlProperty("genxml/dropdownlist/orderstatus"))">@ResourceKey("General.orderstatus" + nbi.GetXmlProperty("genxml/dropdownlist/orderstatus"))</span>
+                </div>
+            </div>
+            @if (nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/promocode") != "")
+            {
+                <div class="address">
+                    <div>
+                        <b>@ResourceKey("General.PromotionalCode")</b>
+                    </div>
+                    <div>@nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/promocode")</div>
+                </div>
+            }
+            @if (nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/taxnumber") != "")
+            {
+                <div class="address">
+                    <div>
+                        <b>@ResourceKey("General.TaxNumber")</b>
+                    </div>
+                    <div>@nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/taxnumber")</div>
+                </div>
+            }
+            @if (nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/extramessage") != "")
+            {
+                <div class="address">
+                    <div>
+                        <b>@ResourceKey("General.lblspecialinstructions")</b>
+                    </div>
+                    <div>@nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/extramessage")</div>
+                </div>
+            }
+
+            <div class="address">
+                <div>
+                    <b>@ResourceKey("OrderAdmin.clientlanguage")</b>
+                </div>
+                <div><img src="/Images/Flags/@(ordData.ClientLang).gif" /> (@(ordData.ClientLang))</div>
+            </div>
+             
+
+        </div>
+
+        <div class="col-xs-3 shipaddress">
+            @if (nbi.GetXmlProperty("genxml/pickuppointaddr") == "")
+            {
+                <h4>@ResourceKey("General.ShipTo")</h4>
+
+                if (nbi.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/rblshippingoptions") == "2")
+                {
+                    <div class="address">
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/company")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/unit")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/street")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/city")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/region")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/dropdownlist/region/@selectedtext")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/postalcode")</div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/dropdownlist/country/@selectedtext")</div>
+                    </div>
+                    <div class="address person">
+                        <div>
+                            <b>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/firstname") @nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/lastname")</b>
+                        </div>
+                        <div>@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/telephone")</div>
+                        <div>
+                            <a href="mailto:@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/email")">@nbi.GetXmlProperty("genxml/shipaddress/genxml/textbox/email")</a>
+                        </div>
+                    </div>
+                }
+                if (nbi.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/rblshippingoptions") == "1")
+                {
+                    <div class="address">
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/company")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/unit")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/street")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/city")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/region")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/region/@selectedtext")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/postalcode")</div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext")</div>
+                    </div>
+                    <div class="address person">
+                        <div>
+                            <b>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/firstname") @nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/lastname")</b>
+                        </div>
+                        <div>@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/telephone")</div>
+                        <div>
+                            <a href="mailto:@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/email")">@nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/email")</a>
+                        </div>
+                    </div>
+                }
+            }
+
+            <div class="address">
+                <div>
+                    <b>@ResourceKey("Notification.ShippingMethod")</b>
+                </div><!-- Show shipping method -->
+                <div>
+                    @{
+                        var shipdisplay = nbi.GetXmlProperty("genxml/extrainfo/genxml/hidden/shippingdisplayanme");
+                        if (shipdisplay == "")
+                        {
+                            shipdisplay = nbi.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/shippingprovider/@selectedtext");
+                        }
+                        if (shipdisplay == "")
+                        {
+                            shipdisplay = nbi.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/shippingprovider");
+                        }
+                    }
+                    @(shipdisplay)
+                </div>
+            </div>
+
+            @if (nbi.GetXmlProperty("genxml/pickuppointaddr") != "")
+            {
+                <div class="address">
+                    <div>
+                        <b>@ResourceKey("General.PickupReference")</b>
+                    </div>
+                    <div>@nbi.GetXmlProperty("genxml/pickuppointref")</div>
+                    <div>
+                        <b>@ResourceKey("General.PickupAddress")</b>
+                    </div>
+                    <div>@nbi.GetXmlProperty("genxml/pickuppointaddr")</div>
+                </div>
+            }
+
+            <div class="address">
+
+                @if (nbi.GetXmlProperty("genxml/textbox/shippingdate") != "")
+                {
+                    <div>
+                        <b>@ResourceKey("General.shippingdate")</b>
+                    </div>
+                    <div>@DateOf(nbi.GetXmlPropertyRaw("genxml/textbox/shippingdate"))</div>
+                }
+            </div>
+            <div class="address">
+                @if (nbi.GetXmlProperty("genxml/textbox/trackingcode") != "")
+                {
+                    <div>
+                        <b>@ResourceKey("Notification.TrackingNumber")</b>
+                    </div>
+                    <div>@nbi.GetXmlProperty("genxml/textbox/trackingcode")</div>
+                }
+            </div>
+
+            @if (nbi.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/rblshippingoptions") == "3")
+            {
+                <div class="address">
+                    <div>
+                        <b>@ResourceKey("Notification.ShippingOption")</b>
+                    </div><!-- Show store pickup options if selected -->
+                    <div>@nbi.GetXmlProperty("genxml/extrainfo/genxml/radiobuttonlist/rblshippingoptions/@selectedtext")</div>
+                    @ResourceKey("Notification.pickupmessage")
+                </div>
+            }
+
+        </div>
+
+        <div class="col-xs-6 text-right storeaddress">
+            <div class="address">
+                <div>
+                    <b>@Model.GetSetting("storecompany")</b>
+                </div>
+                @if (Model.GetSetting("storeattention") != "")
+                {
+                    <div>@ResourceKey("General.Att"): @Model.GetSetting("storeattention")</div>
+                }
+                <div>@Model.GetSetting("storeaddressline1")</div>
+                <div>@Model.GetSetting("storeaddressline2")</div>
+                <div>@Model.GetSetting("storecity"), @Model.GetSetting("storeregion") @Model.GetSetting("storepostcode")</div>
+                <div>@Utils.DecodeInternalField(Model.GetSetting("storecountrytext"))</div>
+
+                @if (Model.GetSetting("storetaxnumber") != "")
+                {
+                    <div>@ResourceKey("General.Taxno"): @Model.GetSetting("storetaxnumber")</div>
+                }
+
+                @if (Model.GetSetting("salesemail") != "")
+                {
+                    <div>@ResourceKey("General.Sales"): @Model.GetSetting("salesemail")</div>
+                }
+
+                @if (Model.GetSetting("supportemail") != "")
+                {
+                    <div>@ResourceKey("General.Support"): @Model.GetSetting("supportemail")</div>
+                }
+
+                @if (Model.GetSetting("websiteurl") != "")
+                {
+                    <div>@ResourceKey("General.Web"): @Model.GetSetting("websiteurl")</div>
+                }
+
+                @if (Model.GetSetting("storephone") != "")
+                {
+                    <div>@ResourceKey("General.Ph"): @Model.GetSetting("storephone")</div>
+                }
+            </div>
+            <h3 class="invoice-header">@ResourceKey("General.OrderNumber") @nbi.GetXmlProperty("genxml/ordernumber")</h3>
+            <p>@ResourceKey("General.OrderDate"): @DateOf(nbi.GetXmlPropertyRaw("genxml/createddate"))</p>
+            <p>@nbi.ItemID</p>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <!-- custom order details -->
+        <div>
+            @RenderRazorInjectTemplate(nbi, "Admin_OrdersCustom.cshtml")
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="col-sm col-sm-12 form-inline text-right">
+            <hr/>
+            <div class="form-group">
+                    <a id="OrderAdmin_cmdReOrder" class="btn btn-default" href="javascript:void(0)" itemid="@nbi.ItemID">@ResourceKey("OrderAdmin.cmdReOrderButton")</a>
+                    @if (Model.GetSettingBool("alloweditorder"))
+                    {
+                        <a id="OrderAdmin_cmdEditOrder" class="btn btn-default" href="javascript:void(0)" itemid="@nbi.ItemID">@ResourceKey("OrderAdmin.cmdEditOrder")</a>
+                    }
+                    @if (nbi.UserId > 0)
+                {
+                        <a id="OrderAdmin_cmdViewClient" class="btn btn-default" href="/Admin/NBS-Back-Office/uid/@(nbi.UserId)/ctrl/clients">@ResourceKey("Clients.cmdViewClientButton")</a>
+                    }                    
+                <div class="btn-group dropup">
+                    <button type="button" class="btn btn-default"><i class="fa fa-envelope fa-fw fa-lg"></i> @ResourceKey("OrderAdmin.EmailOrder")</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">@ResourceKey("OrderAdmin.ToggleDropdown")</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a id="OrderAdmin_cmdEmailAmended" href="javascript:void(0)">@ResourceKey("OrderAdmin.cmdEmailAmended")</a></li>
+                        <li><a id="OrderAdmin_cmdEmailValidated" href="javascript:void(0)">@ResourceKey("OrderAdmin.cmdEmailValidated")</a></li>
+                        <li><a id="OrderAdmin_cmdEmailShipped" href="javascript:void(0)">@ResourceKey("OrderAdmin.cmdEmailShipped")</a></li>
+                        <li><a id="OrderAdmin_cmdEmailReceipt" href="javascript:void(0)">@ResourceKey("OrderAdmin.cmdEmailReceipt")</a></li>
+                    </ul>
+                </div>&nbsp;&nbsp;
+                <div class="btn-group dropup">
+                    <button type="button" class="btn btn-default"><i class="fa fa-print fa-fw fa-lg"></i> @ResourceKey("OrderAdmin.PrintOrder")</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">@ResourceKey("OrderAdmin.ToggleDropdown")</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a id="OrderAdmin_cmdPrintOrder" href="/DesktopModules/NBright/NBrightBuy/PrintView.aspx?itemid=@(nbi.ItemID)&printcode=printorder&printtype=OrderCreated&language=@(Utils.GetCurrentCulture())" target="_blank">@ResourceKey("OrderAdmin.cmdPrintOrder")</a></li>
+                        <li><a id="OrderAdmin_cmdPrintReceipt" href="/DesktopModules/NBright/NBrightBuy/PrintView.aspx?itemid=@(nbi.ItemID)&printcode=printorder&printtype=OrderReceipt&language=@(Utils.GetCurrentCulture())" target="_blank">@ResourceKey("OrderAdmin.cmdPrintReceipt")</a></li>
+                        <li><a id="OrderAdmin_cmdPrintDeliveryLabel" href="/DesktopModules/NBright/NBrightBuy/PrintView.aspx?itemid=@(nbi.ItemID)&printcode=printorder&printtype=shiplabel&language=@(Utils.GetCurrentCulture())" target="_blank">@ResourceKey("OrderAdmin.cmdPrintDeliveryLabel")</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <label class="control-label">@ResourceKey("OrderAdmin.emailmsg")</label>
+                @NBrightTextArea(nbi, "genxml/textbox/emailmsg", " height='100' ", "")
+            </div>
+        </div>
+
+
+        <div class="clearfix"></div>
+
+
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="box">
+                    <div class="box-header">
+                        <div class="box-name">
+                            <i class="fa fa-search"></i><span>@ResourceKey("OrderAdmin.ProcessOrder")</span>
+                        </div>
+                        <div class="box-icons">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                            <a class="close-link"><i class="fa fa-times"></i></a>
+                        </div>
+                        <div class="no-move">
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <div class="form-horizontal dnnForm">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">@ResourceKey("General.trackingcode")</label>
+                                <div class="col-sm-5">
+                                    @NBrightTextBox(nbi, "genxml/textbox/trackingcode", " class='form-control' ")
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">@ResourceKey("General.shippingdate")</label>
+                                <div class="col-sm-5">
+                                    @NBrightTextBox(nbi, "genxml/textbox/shippingdate", " class='form-control' datatype='date' type='text' ")
+                                    <input id="dteshippingdate" type="hidden" value="" datatype="date"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">@ResourceKey("General.status")</label>
+                                <div class="col-sm-5">
+                                    @OrderStatusDropDownList("orderstatus", "", "form-control")
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">@ResourceKey("General.Invoice")</label>
+                                <div class="col-sm-5">
+                                    @if (nbi.GetXmlProperty("genxml/hidden/invoicefilename") != "")
+                                    {
+                                        <a class="documentlink btn btn-primary" href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@nbi.GetXmlProperty("genxml/hidden/invoicedownloadname")&filename=@nbi.GetXmlProperty("genxml/hidden/invoicefilerelpath")'>@ResourceKey("OrderAdmin.downloadinvoice")</a>
+                                        <a id="OrderAdmin_cmdDeleteInvoice" class="btn btn-primary" href="javascript:void(0)">@ResourceKey("OrderAdmin.cmdDeleteInvoice")</a>
+                                    }
+                                    else
+                                    {
+                                        <span class="dnnInputFileWrapper dnnSecondaryAction">
+                                            @ResourceKey("OrderAdmin.choosefile")
+                                            <input id='optionfile' update='save' class="normalFileUpload form-control" type='file' name="files[]" />
+                                        </span>
+                                    }
+                                    <input id='optionfilelist' update='save' type='hidden'/>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="box">
+                    <div class="box-header">
+                        <div class="box-name">
+                            <i class="fa fa-search"></i><span>@ResourceKey("OrderAdmin.OrderHistory")</span>
+                        </div>
+                        <div class="box-icons">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                            <a class="close-link"><i class="fa fa-times"></i></a>
+                        </div>
+                        <div class="no-move">
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <div class="form-horizontal dnnForm">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <table class="table table-hover">
+                                        @{
+                                            var auditList = new List<NBrightInfo>();
+                                            var xmlNodList2 = nbi.XMLDoc.SelectNodes("genxml/audit/genxml");
+                                            foreach (XmlNode n in xmlNodList2)
+                                            {
+                                                var nb = new NBrightInfo();
+                                                nb.XMLData = n.OuterXml;
+                                                auditList.Add(nb);
+                                            }
+
+                                            foreach (NBrightInfo nbiaudit in auditList)
+                                            {
+
+                                                <tr>
+                                                    <td width="200px" class="text-right">
+                                                        <b>@DateOf(nbiaudit.GetXmlProperty("genxml/date"))</b>
+                                                    </td>
+                                                    <td width="100px" class="text-right">@nbiaudit.GetXmlProperty("genxml/username")</td>
+                                                    <td>
+                                                        @if (nbiaudit.GetXmlProperty("genxml/type") == "email")
+                                                        {
+                                                            <span class='orderstatus orderstatus000'>Email: @nbiaudit.GetXmlProperty("genxml/emailsubject")</span><br />
+                                                        }
+                                                        @if (nbiaudit.GetXmlProperty("genxml/status") != "")
+                                                        {
+                                                            <span class="orderstatus orderstatus@(nbiaudit.GetXmlProperty("genxml/status"))">@ResourceKey("General.orderstatus" + nbiaudit.GetXmlProperty("genxml/status"))</span>
+                                                        }
+
+                                                        @BreakOf(nbiaudit, "genxml/msg")
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+
+                                    </table>
+                                    <hr/>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label class="control-label">@ResourceKey("OrderAdmin.addnotes")</label>
+                                    @NBrightTextArea(nbi, "genxml/textbox/auditnotes", " height='100' ", "")
+                                    <a id="OrderAdmin_addauditnote" class="btn btn-primary OrderAdmin_cmdSave" href="javascript:void(0)">@ResourceKey("General.cmdAddButton")</a>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clearfix"></div>
+        <div class="col-xs-12 table-responsive">
+            <br/>
+
+            <table class="table table-hover orderdetailitems">
+                <thead>
+                <tr>
+                    <th>@ResourceKey("General.Item")</th>
+                    <th class="text-center removecolumn">@ResourceKey("General.Code")</th>
+                    <th class="text-center removecolumn">@ResourceKey("General.Qty")</th>
+                    <th class="text-right">@ResourceKey("General.unit")</th>
+                    <th class="text-right">@ResourceKey("General.Total")</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @foreach (NBrightInfo nbiitem in ordData.GetCartItemList())
+                {
+
+                    <tr>
+                        <td class="m-ticker">
+                            <div>
+                                <b> <a href="@EntryUrl(nbiitem,Model)">@nbiitem.GetXmlProperty("genxml/productname")&nbsp;@nbiitem.GetXmlProperty("genxml/modeldesc")</a></b>
+                            </div>
+
+                            @{
+                                var fileList = new List<NBrightInfo>();
+                                var xmlNodfileList = nbiitem.XMLDoc.SelectNodes("genxml/clientfiles/file");
+                                foreach (XmlNode n in xmlNodfileList)
+                                {
+                                    var nbfile = new NBrightInfo();
+                                    nbfile.XMLData = n.OuterXml;
+                                    fileList.Add(nbfile);
+                                }
+
+                                foreach (NBrightInfo nbifile in fileList)
+                                {
+                                    <div>
+                                        <a class="btn btn-default primarybutton" href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@nbifile.GetXmlProperty("file/name")&filename=@nbifile.GetXmlProperty("file/url")'>@nbifile.GetXmlProperty("file/name")</a>
+                                    </div>
+                                }
+                            }
+
+                            <div>
+
+                                @{
+                                    var optList = new List<NBrightInfo>();
+                                    var xmlNodList = nbiitem.XMLDoc.SelectNodes("genxml/options/option");
+                                    foreach (XmlNode n in xmlNodList)
+                                    {
+                                        var nb = new NBrightInfo();
+                                        nb.XMLData = n.OuterXml;
+                                        optList.Add(nb);
+                                    }
+
+                                    var lp = 0;
+                                    foreach (NBrightInfo nbiopt in optList)
+                                    {
+                                        if (nbiopt.GetXmlProperty("option/optname") != "" && ((nbiopt.GetXmlProperty("option/optvaltext") != "" && nbiopt.GetXmlProperty("option/optvalueid") != "False") || nbiopt.GetXmlProperty("option/optvalueid") == "True"))
+                                        {
+                                            <span>
+                                                @if (lp > 0)
+                                                {
+                                                    <span>,</span>
+                                                }
+                                                @nbiopt.GetXmlProperty("option/optname"): @nbiopt.GetXmlProperty("option/optvaltext")
+                                                @if (nbiopt.GetXmlPropertyDouble("option/optvalcost") > 0)
+                                                {
+                                                    @CurrencyOf(nbiopt.GetXmlPropertyDouble("option/optvalcost"))
+                                                }
+                                            </span>
+                                            lp += 1;
+                                        }
+                                    }
+                                }
+
+                            </div>
+                        </td>
+                        <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/modelref")</td>
+                        <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/qty")</td>
+                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedcost"))</td>
+                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedtotalcost"))</td>
+                    </tr>
+
+                }
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Subtotal")</td>
+                    <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/appliedsubtotal"))</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Discount")</td>
+                    <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/applieddiscount"))</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Shipping")</td>
+                    <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/appliedshipping"))</td>
+                </tr>
+                <tr>
+                    <td><small>@ResourceKey("OrderAdmin.VATincluded")</small></td>
+                    <td></td>
+                    <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Tax")</td>
+                    <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/taxcost"))</td>
+                </tr>
+                <tr class="active">
+                    <td></td>
+                    <td></td>
+                    <td colspan="2" class="text-right removecolumn"><b>@ResourceKey("General.Total")</b></td>
+                    <td class="text-right"><b>@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/appliedtotal"))</b></td>
+                </tr>
+                @if (nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/extramessage") != "")
+                {
+                    <tr class="noborders">
+                        <td colspan="5">
+                            <div>
+                                <b>@ResourceKey("General.lblspecialinstructions")</b>
+                            </div>
+                            <div>@nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/extramessage")</div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+
+        </div>
+
+
+    }
+    else
+    {
+        <div>ERROR READING ORDER DATA</div>
+    }
+
+
+                </div>
+

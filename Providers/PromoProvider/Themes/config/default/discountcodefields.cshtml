@@ -1,0 +1,71 @@
+﻿@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Globalization
+@using System.Linq
+@using System.Web.UI.WebControls
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Providers/PromoProvider/App_LocalResources/")
+
+@{
+    // assign Model, so we can resolve var in VS
+    var info = (NBrightInfo)Model.List.First();
+
+    if (info.Lang == "")
+    {
+        <label>@ResourceKey("Promo.langerror")</label>
+    }
+
+}
+
+
+<input id="itemid" type="hidden" value="@info.ItemID" ></input>
+<input id="editlang" type="hidden" value="@info.Lang" ></input>
+<input id="lang" type="hidden" value="@Utils.GetCurrentCulture()" /> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
+
+<div class="col-xs-12 col-sm-12">
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="col-sm-5">
+                <label>@ResourceKey("Promo.code")</label>
+                @TextBox(info, "genxml/textbox/code", "class='form-control'")
+            </div>
+            <div class="col-sm-7">
+                <label>@ResourceKey("Promo.name")</label>
+                @TextBox(info, "genxml/textbox/name", "class='form-control'")
+            </div>
+            <div class="col-sm-12">
+                <label>@ResourceKey("Promo.description")</label><img src='/Images/Flags/@(info.Lang).gif' width='16px' />
+                @TextBox(info, "genxml/lang/genxml/textbox/description", "class='form-control' maxlength='250' ")
+            </div>
+            <div class="col-sm-4">
+                <label>@ResourceKey("Promo.validuntil")</label>
+                @TextBox(info, "genxml/textbox/validuntil", "class='form-control' datatype='date' autocomplete='off'")
+            </div>
+            <div class="col-sm-2">
+                <label>@ResourceKey("Promo.usagelimit")</label>
+                @TextBox(info, "genxml/textbox/usagelimit", "class='form-control'")
+            </div>
+        </div>
+    </div>
+
+    @{
+        var rk1 = ResourceKey("Promo.typevalue").ToString();
+        var rk2 = ResourceKey("Promo.typedata").ToString();
+        var rk3 = ResourceKey("Promo.disabled").ToString();
+    }
+    
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="col-sm-2">
+                <label>@RadioButtonList(info, "genxml/radiobuttonlist/amounttype", rk1, rk2, "", "1")</label>
+                @TextBox(info, "genxml/textbox/amount", "class='form-control' datatype='double'")
+            </div>
+            <div class="col-sm-2">
+                <br/>
+                @CheckBox(info, "genxml/checkbox/disabled", rk3, "")
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,74 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<script>
+  $( function() {
+      $('input[datatype=date]').datepicker();
+  } );
+</script>
+
+<!-- Client Menu -->
+@RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Default\\Default\\ClientMenu.cshtml", Model)
+
+<div class="nbs myorders">
+
+<h1>@ResourceKey("Clients.ClientmenuOrders")</h1>
+
+<div class="formrow">
+    <div class="ordersearch">
+        <div>
+            <label>@ResourceKey("General.Search")</label>
+            <input id="OrderAdmin_searchtext" class="form-control" type="text">
+        </div>
+        <div>
+            <label>@ResourceKey("General.From")</label>
+            <input id="OrderAdmin_datesearchfrom" class="form-control" datatype="date" type="text">
+        </div>
+        <div>
+            <label>@ResourceKey("General.To")</label>
+            <input id="OrderAdmin_datesearchto" class="form-control" datatype="date" type="text">
+        </div>
+        <div>
+            <label>@ResourceKey("General.status")</label>
+            @OrderStatusDropDownList("OrderAdmin_searchorderstatus", "", "", true)
+        </div>
+        <div>
+            <a id="OrderAdmin_cmdSearch" class="primarybutton" href="javascript:void(0)"><i class="fa fa-search"></i> @ResourceKey("General.Search")</a>
+            <a id="OrderAdmin_cmdReset" class="secondarybutton" href="javascript:void(0)"><i class="fa fa-refresh"></i> @ResourceKey("General.Reset")</a>
+        </div>
+    </div>
+</div>
+
+<div id="orderadmin">
+    <table class="orders">
+        <tbody>
+
+        @foreach (NBrightInfo nbi in Model.List)
+        {
+                <tr>
+                    <td><strong>Commande n°@(nbi.GetXmlProperty("genxml/ordernumber"))</strong></td>
+                    <td>@(nbi.GetXmlProperty("genxml/createddate"))</td>
+                    <td>@CurrencyOf(nbi.GetXmlPropertyDouble("genxml/appliedtotal"))</td>
+                    <td><strong>@ResourceKey("General.orderstatus" + nbi.GetXmlProperty("genxml/dropdownlist/orderstatus"))</strong></td>
+                    <td class="nowrap text-right"><a href='javascript:void(0)' class='cmd_vieworder' itemid="@nbi.ItemID"><i class="fa fa-plus-circle fa-lg"></i></a></td>
+                </tr>
+        }
+
+        </tbody>
+    </table>
+
+</div>
+
+</div>
+
+<div class="clearfix"></div>

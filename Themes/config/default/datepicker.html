@@ -1,0 +1,23 @@
+﻿<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.datepick.xlang.eur.js"></script>  
+<script>
+
+	$(function () {
+
+	    // this test does not work in Chrome, so we're not using it.
+	    //if (!Modernizr.inputtypes.date) {
+
+	   $.datepicker.setDefaults($.datepicker.regional[['']]);
+	   if ('[<tag type="culturecode" />]' == 'en-GB') $.datepicker.setDefaults($.datepicker.regional[['en-GB']]);
+	   if ('[<tag type="culturecode" />]' == 'fr-FR') $.datepicker.setDefaults($.datepicker.regional[['fr']]);
+	   if ('[<tag type="culturecode" />]' == 'nl-NL') $.datepicker.setDefaults($.datepicker.regional[['nl']]);
+	   if ('[<tag type="culturecode" />]' == 'de-DE') $.datepicker.setDefaults($.datepicker.regional[['de']]);
+	   if ('[<tag type="culturecode" />]' == 'es-ES') $.datepicker.setDefaults($.datepicker.regional[['es']]);
+	   if ('[<tag type="culturecode" />]' == 'it-IT') $.datepicker.setDefaults($.datepicker.regional[['it']]);
+
+        $('input[[datatype=date]]').datepicker();
+
+	    //}
+
+    }); 
+
+</script>

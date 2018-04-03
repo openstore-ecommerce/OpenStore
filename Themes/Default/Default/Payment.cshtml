@@ -1,0 +1,62 @@
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<div id="cartlist" style="">
+
+    <!-- Layout template -->
+    <div id="cartdetails" class="nbs dnnform">
+
+        <div id="datadisplay">
+
+            @{
+                // assign Model, so we can resolve var in VS
+                var cart = (CartData)Model.List.First();
+                var info = cart.PurchaseInfo;
+            }
+
+            @if (Model.GetSettingBool("carttitle"))
+            {
+                <h1>@ResourceKey("CartView.YourBasket")</h1>
+            }
+            @if (Model.GetSettingBool("cartsteps"))
+            {
+                <div class="checkoutsteps">
+                    <div class="checkoutstepsheader">@ResourceKey("CartView.CartstepsProcess")</div>
+                    <ol>
+                        <li class="step1">@ResourceKey("CartView.CartstepsRecap")</li>
+                        <li class="step2">@ResourceKey("CartView.CartstepsAddresses")</li>
+                        <li class="step3">@ResourceKey("CartView.CartstepsShipping")</li>
+                        <li class="step4 activestep">@ResourceKey("CartView.CartstepsPayment")</li>
+                        <li class="step5">@ResourceKey("CartView.CartstepsConfirm")</li>
+                    </ol>
+                </div>
+            }
+
+
+
+            <div id="payment">
+
+                <div class="formrow paymenttotal">
+                    <h2>
+                        @ResourceKey("CartView.Totaltopay") : @CurrencyOf(info.GetXmlPropertyDouble("genxml/appliedtotal"))
+                    </h2>
+                </div>
+                <hr/>
+                @PaymentProviderList(info, "")
+
+            </div>
+
+            <div>
+                <a href="javascript:history.back()" class="secondarybutton">@ResourceKey("Cartview.Previous")</a>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>

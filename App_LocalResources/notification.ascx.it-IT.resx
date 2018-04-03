@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountName.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Nome dell'Account</value>
+  </data>
+  <data name="AccountNumber.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Numero dell'Account</value>
+  </data>
+  <data name="addressbookupdated_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Indirizzo Aggiornato con successo</value>
+  </data>
+  <data name="AddressUpdate.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Indirizzo Aggiornato</value>
+  </data>
+  <data name="Bank.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Banca</value>
+  </data>
+  <data name="bankinginstructions.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Si prega di effettuare il pagamento online al più presto possibile sul conto di cui sopra. Inserire il numero d'ordine nel campo di riferimento e inserire il proprio nome se è diverso dal nome del vostro Account.</value>
+  </data>
+  <data name="BillingAddress.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Indirizzo di fatturazione</value>
+  </data>
+  <data name="categoryactionsave_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Categoria Aggiornata con successo</value>
+  </data>
+  <data name="checkoutfailmessage.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">L'ordine è stato annullato o il pagamento non è andato a buon fine. Contatta la tua banca se avete bisogno di assistenza con la vostra carta di credito, o contattaci se credete che ci sia un problema con il processo di checkout.</value>
+  </data>
+  <data name="checkoutsuccessmessage.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Grazie per il vostro ordine. Riceverete una conferma via e-mail contenente tutti i dettagli dell'ordine. Verifica le cartelle di posta elettronica indesiderata, se non lo ricevete entro 30 minuti. Prendere nota del numero qui sotto se volete contattarci e richiedere informazioni su questo ordine.</value>
+  </data>
+  <data name="Collection.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Collezione Dettagli</value>
+  </data>
+  <data name="completed_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Operazione completata.</value>
+  </data>
+  <data name="Contactus.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Contattaci</value>
+  </data>
+  <data name="deletecompleted_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Cancellazione Completata.</value>
+  </data>
+  <data name="emailmessage.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Grazie per il vostro ordine. Siamo qui per aiutarti! Contattaci durante l'orario d'ufficio dal Lunedi al Venerdì, o venite a trovarci in negozio se avete domande sul vostro ordine.</value>
+  </data>
+  <data name="general_error.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Errore sconosciuto</value>
+  </data>
+  <data name="general_fail.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Operazione Fallita</value>
+  </data>
+  <data name="general_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Operazione Riuscita</value>
+  </data>
+  <data name="general_warning.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Avvertenza Operazione</value>
+  </data>
+  <data name="groupactionsave_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Aggiornamento gruppo con successo</value>
+  </data>
+  <data name="InsertReference.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Inserire il Riferimento</value>
+  </data>
+  <data name="ManualPayment.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Assegno o Pagamento Bancario</value>
+  </data>
+  <data name="nopin_fail.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">PIN Admin non valido</value>
+  </data>
+  <data name="noproviderdata_warning.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Nessun provider dei dati può essere trovato. Assicurarsi di aver salvato i dati del provider nel back office.</value>
+  </data>
+  <data name="notifytemplate_error.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">&lt;div class="nbsnotify nbsnotifyerror bg-danger"&gt;{message}&lt;/div&gt;</value>
+  </data>
+  <data name="notifytemplate_fail.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">&lt;div class="nbsnotify nbsnotifyfail bg-danger"&gt;{message}&lt;/div&gt;</value>
+  </data>
+  <data name="notifytemplate_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">&lt;div class="nbsnotify bg-success"&gt;{message}&lt;/div&gt;</value>
+  </data>
+  <data name="notifytemplate_warning.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">&lt;div class="nbsnotify nbsnotifywarning bg-warning"&gt;{message}&lt;/div&gt;</value>
+  </data>
+  <data name="orderactionemailamended_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine modificato e-mail inviata</value>
+  </data>
+  <data name="orderactionemailreceipt_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ricevuta dell'Ordine e-mail inviata</value>
+  </data>
+  <data name="orderactionemailshipped_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine Spedito e-mail inviata</value>
+  </data>
+  <data name="orderactionemailvalidated_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine Convalidato e-mail inviata</value>
+  </data>
+  <data name="orderactionprintorder_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine Stampato</value>
+  </data>
+  <data name="orderactionprintreceipt_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ricevuta stampata</value>
+  </data>
+  <data name="orderactionsave_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Aggiornamento Ordine con successo</value>
+  </data>
+  <data name="OrderAmended.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine modificato</value>
+  </data>
+  <data name="orderamended_emailsubject.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine Modificato</value>
+  </data>
+  <data name="OrderCreated.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine confermato</value>
+  </data>
+  <data name="OrderCreatedClient.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine confermato</value>
+  </data>
+  <data name="ordercreatedemailsubject.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine confermato</value>
+  </data>
+  <data name="OrderReceipt.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ricevuta dell'Ordine</value>
+  </data>
+  <data name="orderreceipt_emailsubject.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ricevuta Ordine</value>
+  </data>
+  <data name="OrderShipped.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine spedito</value>
+  </data>
+  <data name="ordershipped_emailsubject.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine Spedito</value>
+  </data>
+  <data name="OrderValidated.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine convalidato</value>
+  </data>
+  <data name="ordervalidated_emailsubject.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Ordine Convalidato</value>
+  </data>
+  <data name="outofstock.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Esaurito</value>
+  </data>
+  <data name="pickupmessage.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Siete invitati a ritirare il vostro ordine direttamente da noi in negozio negli orari di apertura. Vi preghiamo di chiamarci se si vuole assicurare che sia pronto per il ritiro.</value>
+  </data>
+  <data name="ProfileRegistered.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Profilo Registrato</value>
+  </data>
+  <data name="profileregistered_emailsubject.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Nuovo Profilo Registrato</value>
+  </data>
+  <data name="profileupdated_emailsubject.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Profilo Aggiornato</value>
+  </data>
+  <data name="profileupdated_fail.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Impossibile registrare l'utente, si prega di controllare le informazioni del profilo.</value>
+  </data>
+  <data name="profileupdated_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Il tuo profilo è stato aggiornato.</value>
+  </data>
+  <data name="profileupdatedcaptcha_fail.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Codice di sicurezza non valido.</value>
+  </data>
+  <data name="profileupdatedclientrole_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">I tuoi dati sono stati salvati, riceverete una e-mail quando il tuo account è stato convalidato e si è in grado di accedere al negozio.</value>
+  </data>
+  <data name="profileupdatedexists_fail.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Utente già registrato. Per iscriversi si prega di provare con un nome utente / e-mail diverso.</value>
+  </data>
+  <data name="removeuser_fail.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Il Cliente ha ordini esistenti, non è possibile rimuovere l'Utente</value>
+  </data>
+  <data name="settingssetup_fail.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">E' necessario effettuare la configurazione del Negozio.</value>
+  </data>
+  <data name="ShippingAddress.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Indirizzo di spedizione</value>
+  </data>
+  <data name="ShippingDate.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Data di spedizione</value>
+  </data>
+  <data name="ShippingMethod.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Metodo di spedizione</value>
+  </data>
+  <data name="ShippingOption.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Opzione Di Spedizione</value>
+  </data>
+  <data name="stockadjusted.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Qtà regolata per corrispondere la disponibilità di magazzino</value>
+  </data>
+  <data name="terms.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">I Termini e Condizioni devono essere accettati.</value>
+  </data>
+  <data name="TrackingNumber.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Numero di Tracciamento</value>
+  </data>
+  <data name="validatecompleted_ok.Text" lastModified="2015-11-11 17:05:32">
+    <value xml:space="preserve">Validazione Completata.</value>
+  </data>
+</root>

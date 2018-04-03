@@ -1,0 +1,27 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using NBrightCore.common
+@using NBrightDNN
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+    <div id="cartlist" style="">
+        <!-- Layout template -->
+        <div id="cartdetails" class="nbs dnnform">
+            <div id="checkoutdisplay"></div>
+            <div id="cartactions" style="display: none;">
+                <div style="clear: both;">
+                    <a href="javascript:void(0)" id="cmdPrev" class="primarybutton">@ResourceKey("CartView.Previous")</a>
+                    <a href="javascript:void(0)" id="cmdDeleteCart" class="secondarybutton clearcart">@ResourceKey("CartView.cmdClearCart")</a>
+                    <a href="javascript:void(0)" id="cmdRecalcCart" class="secondarybutton recalculatecart">@ResourceKey("CartView.UpdateCart")</a>
+                    <a href="javascript:void(0)" id="cmdNext" class="primarybutton">@ResourceKey("CartView.Next")</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function () {
+        processCartStep('start');
+    });
+</script>

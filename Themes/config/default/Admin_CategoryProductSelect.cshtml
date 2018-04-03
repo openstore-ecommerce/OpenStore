@@ -1,0 +1,83 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Globalization
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+@using NBrightCore.common;
+@using NBrightDNN.render
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.box-content').toggle(); // Initially hide all panels - Doesn't hide Products in cat - need to fox
+            $('.categoryselectproducts div.box-content').toggle();
+            $('#razortemplate').val('Admin_ProductSelectList.cshtml');
+            nbxget('category_getproductselectlist', '#categoryadminsearch', '#productselectlist');
+        });
+    </script>
+
+    <div id="nbsnotify"></div>
+    <div id="loader" class="processing" style="display:none;">@ResourceKey("General.ProcessingDiv")</div>
+
+    <br />
+
+<!-- All "id" for the divs/ul are required for ajax in this section -->
+<div id="productselectsection">
+    <div class="row categoryselectproducts">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-name">
+                        <i class="fa fa-search"></i><span>@ResourceKey("General.Products")</span>
+                    </div>
+                    <div class="box-icons">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                        <a class="close-link"><i class="fa fa-times"></i></a>
+                    </div>
+                    <div class="no-move">
+                    </div>
+                </div>
+                <div class="box-content">
+                    <div class="form-horizontal dnnForm">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label">@ResourceKey("General.Search")</label>
+                                <div class="col-sm-3">
+                                    @TextBox(info, "genxml/textbox/txtproductselectsearch", "update='no' class='form-control'")
+                                </div>
+                                <label class="col-sm-1 control-label">@ResourceKey("General.Category")</label>
+                                <div class="col-sm-3">
+                                    @CategoryDropDownList(info, "genxml/dropdownlist/ddlsearchcategory", "class='select2-container s2_with_tag populate placeholder'", true, 20, true, false, 0, "", "", false, true, "", ">", "")
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="btn btn-primary" href="javascript:void(0)" id="selectsearch">@ResourceKey("General.cmdSearchIcon")</a>
+                                    <a class="btn btn-default" href="javascript:void(0)" id="selectreset">@ResourceKey("General.cmdResetIcon")</a>
+                                    <a class="btn btn-default" href="javascript:void(0)" id="returnfromselect">@ResourceKey("General.cmdReturnButton")</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div id="productselectlist">
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using DotNetNuke.Entities.Portals
+@using NBrightDNN
+@using NBrightCore.common
+
+<div id="ajaxfiltermodulesettings" style="display: none;">
+    <input id="filter_propertyfiltertypeinside" type="hidden" value="@Model.GetSetting("filtertypeinsideproperty")" />
+    <input id="filter_propertyfiltertypeoutside" type="hidden" value="@Model.GetSetting("filtertypeoutsideproperty")" />
+    <input id="filter_moduleid" type="hidden" value="@Model.ModuleId" />
+</div>

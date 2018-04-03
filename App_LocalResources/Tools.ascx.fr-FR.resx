@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="languageresetto.Text" lastModified="2016-12-15 16:51:08">
+    <value xml:space="preserve">Copier</value>
+  </data>
+  <data name="languageresetwarning.Text" lastModified="2016-12-15 16:51:08">
+    <value xml:space="preserve">ATTENTION !!! Vos "{tolanguage}" données seront écrasées.</value>
+  </data>
+  <data name="languagetoreset.Text" lastModified="2016-12-15 16:51:08">
+    <value xml:space="preserve">vers</value>
+  </data>
+  <data name="purgecarts.confirm" lastModified="2016-12-15 16:51:08">
+    <value xml:space="preserve">Nettoyer les paniers ?</value>
+  </data>
+  <data name="purgecarts.Text" lastModified="2016-12-15 16:51:08">
+    <value xml:space="preserve">Nettoyer les paniers</value>
+  </data>
+  <data name="purgecartsdays.Text" lastModified="2016-12-15 16:51:08">
+    <value xml:space="preserve">Nombre de jours à conserver les paniers </value>
+  </data>
+  <data name="ValidateStore.confirm">
+    <value xml:space="preserve">Valider la boutique? Ceci risque de prendre du temps !</value>
+  </data>
+  <data name="ValidateStore.Text">
+    <value xml:space="preserve">Valider boutique</value>
+  </data>
+</root>

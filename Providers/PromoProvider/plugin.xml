@@ -1,0 +1,398 @@
+<root> 
+<genxml>
+  <files />
+  <hidden>
+    <index>19</index>
+  </hidden>
+  <textbox>
+    <ctrl>
+      <![CDATA[vouchers]]>
+    </ctrl>
+    <name>
+      <![CDATA[Vouchers]]>
+    </name>
+    <icon>
+      <![CDATA[]]>
+    </icon>
+    <group>
+      <![CDATA[Promotions]]>
+    </group>
+    <path>
+      <![CDATA[/DesktopModules/NBright/NBrightBuy/Providers/PromoProvider/DiscountCodes.ascx]]>
+    </path>
+    <help>
+      <![CDATA[]]>
+    </help>
+    <roles>
+      <![CDATA[Manager,Editor,Administrators]]>
+    </roles>
+    <description>
+      <![CDATA[]]>
+    </description>
+    <assembly>
+      <![CDATA[]]>
+    </assembly>
+    <namespaceclass>
+      <![CDATA[]]>
+    </namespaceclass>
+  </textbox>
+  <checkbox>
+    <hidden>
+      <![CDATA[False]]>
+    </hidden>
+    <active>
+      <![CDATA[False]]>
+    </active>
+  </checkbox>
+  <dropdownlist>
+    <providertype selectedtext="UI_x0020_Only">
+      <![CDATA[01]]>
+    </providertype>
+  </dropdownlist>
+  <checkboxlist />
+  <radiobuttonlist />
+</genxml>
+<genxml>
+  <files />
+  <hidden>
+    <plugintemplate>
+      <![CDATA[]]>
+    </plugintemplate>
+    <index>19</index>
+  </hidden>
+  <textbox>
+    <ctrl>
+      <![CDATA[grouppromo]]>
+    </ctrl>
+    <name>
+      <![CDATA[Group]]>
+    </name>
+    <icon>
+      <![CDATA[]]>
+    </icon>
+    <group>
+      <![CDATA[Promotions]]>
+    </group>
+    <path>
+      <![CDATA[/DesktopModules/NBright/NBrightBuy/Providers/PromoProvider/CategoryPromo.ascx]]>
+    </path>
+    <help>
+      <![CDATA[]]>
+    </help>
+    <roles>
+      <![CDATA[Manager,Editor,Administrators]]>
+    </roles>
+    <description>
+      <![CDATA[]]>
+    </description>
+    <assembly>
+      <![CDATA[]]>
+    </assembly>
+    <namespaceclass>
+      <![CDATA[]]>
+    </namespaceclass>
+  </textbox>
+  <checkbox>
+    <hidden>
+      <![CDATA[False]]>
+    </hidden>
+    <active>
+      <![CDATA[True]]>
+    </active>
+  </checkbox>
+  <dropdownlist>
+    <providertype selectedtext="UI_x0020_Only">
+      <![CDATA[01]]>
+    </providertype>
+  </dropdownlist>
+  <checkboxlist />
+  <radiobuttonlist />
+</genxml>
+<genxml>
+  <files />
+  <hidden>
+    <plugintemplate>
+      <![CDATA[]]>
+    </plugintemplate>
+    <index>20</index>
+  </hidden>
+  <textbox>
+    <ctrl>
+      <![CDATA[multibuypromo]]>
+    </ctrl>
+    <name>
+      <![CDATA[Multi-Buy]]>
+    </name>
+    <icon>
+      <![CDATA[]]>
+    </icon>
+    <group>
+      <![CDATA[Promotions]]>
+    </group>
+    <path>
+      <![CDATA[/DesktopModules/NBright/NBrightBuy/Providers/PromoProvider/MultiBuyPromo.ascx]]>
+    </path>
+    <help>
+      <![CDATA[]]>
+    </help>
+    <roles>
+      <![CDATA[Manager,Editor,Administrators]]>
+    </roles>
+    <description>
+      <![CDATA[]]>
+    </description>
+    <assembly>
+      <![CDATA[]]>
+    </assembly>
+    <namespaceclass>
+      <![CDATA[]]>
+    </namespaceclass>
+  </textbox>
+  <checkbox>
+    <hidden>
+      <![CDATA[False]]>
+    </hidden>
+    <active>
+      <![CDATA[True]]>
+    </active>
+  </checkbox>
+  <dropdownlist>
+    <providertype selectedtext="UI_x0020_Only">
+      <![CDATA[01]]>
+    </providertype>
+  </dropdownlist>
+  <checkboxlist />
+  <radiobuttonlist />
+</genxml>
+<genxml>
+  <files />
+  <hidden>
+    <plugintemplate>
+      <![CDATA[]]>
+    </plugintemplate>
+    <index>21</index>
+  </hidden>
+  <textbox>
+    <ctrl>
+      <![CDATA[promogroupscheduler]]>
+    </ctrl>
+    <name>
+      <![CDATA[Promo Group Scheduler]]>
+    </name>
+    <icon>
+      <![CDATA[]]>
+    </icon>
+    <group>
+      <![CDATA[]]>
+    </group>
+    <path>
+      <![CDATA[]]>
+    </path>
+    <help>
+      <![CDATA[]]>
+    </help>
+    <roles>
+      <![CDATA[Manager,Editor,Administrators]]>
+    </roles>
+    <description>
+      <![CDATA[]]>
+    </description>
+    <assembly>
+      <![CDATA[NBrightBuy.PromoProvider]]>
+    </assembly>
+    <namespaceclass>
+      <![CDATA[Nevoweb.DNN.NBrightBuy.Providers.PromoProvider.GroupPromoScheudler]]>
+    </namespaceclass>
+  </textbox>
+  <checkbox>
+    <hidden>
+      <![CDATA[True]]>
+    </hidden>
+    <active>
+      <![CDATA[True]]>
+    </active>
+  </checkbox>
+  <dropdownlist>
+    <providertype selectedtext="Scheduler">
+      <![CDATA[05]]>
+    </providertype>
+  </dropdownlist>
+  <checkboxlist />
+  <radiobuttonlist />
+</genxml>
+<genxml>
+  <files />
+  <hidden>
+    <plugintemplate>
+      <![CDATA[]]>
+    </plugintemplate>
+    <index>22</index>
+  </hidden>
+  <textbox>
+    <ctrl>
+      <![CDATA[promomultibuyscheduler]]>
+    </ctrl>
+    <name>
+      <![CDATA[Multi-Buy Scheduler]]>
+    </name>
+    <icon>
+      <![CDATA[]]>
+    </icon>
+    <group>
+      <![CDATA[Promotions]]>
+    </group>
+    <path>
+      <![CDATA[]]>
+    </path>
+    <help>
+      <![CDATA[]]>
+    </help>
+    <roles>
+      <![CDATA[Manager,Editor,Administrators]]>
+    </roles>
+    <description>
+      <![CDATA[]]>
+    </description>
+    <assembly>
+      <![CDATA[NBrightBuy.PromoProvider]]>
+    </assembly>
+    <namespaceclass>
+      <![CDATA[Nevoweb.DNN.NBrightBuy.Providers.PromoProvider.MultiBuyPromoScheudler]]>
+    </namespaceclass>
+  </textbox>
+  <checkbox>
+    <hidden>
+      <![CDATA[True]]>
+    </hidden>
+    <active>
+      <![CDATA[True]]>
+    </active>
+  </checkbox>
+  <dropdownlist>
+    <providertype selectedtext="Scheduler">
+      <![CDATA[05]]>
+    </providertype>
+  </dropdownlist>
+  <checkboxlist />
+  <radiobuttonlist />
+</genxml>
+<genxml>
+  <files />
+  <hidden>
+    <plugintemplate>
+      <![CDATA[]]>
+    </plugintemplate>
+    <index>23</index>
+  </hidden>
+  <textbox>
+    <ctrl>
+      <![CDATA[promotions]]>
+    </ctrl>
+    <name>
+      <![CDATA[Promotions]]>
+    </name>
+    <icon>
+      <![CDATA[]]>
+    </icon>
+    <group>
+      <![CDATA[]]>
+    </group>
+    <path>
+      <![CDATA[]]>
+    </path>
+    <help>
+      <![CDATA[]]>
+    </help>
+    <roles>
+      <![CDATA[]]>
+    </roles>
+    <description>
+      <![CDATA[]]>
+    </description>
+    <assembly>
+      <![CDATA[NBrightBuy.PromoProvider]]>
+    </assembly>
+    <namespaceclass>
+      <![CDATA[Nevoweb.DNN.NBrightBuy.Providers.PromoProvider.CalcPromo]]>
+    </namespaceclass>
+  </textbox>
+  <checkbox>
+    <hidden>
+      <![CDATA[True]]>
+    </hidden>
+    <active>
+      <![CDATA[True]]>
+    </active>
+  </checkbox>
+  <dropdownlist>
+    <providertype selectedtext="Promotions">
+      <![CDATA[04]]>
+    </providertype>
+  </dropdownlist>
+  <checkboxlist />
+  <radiobuttonlist />
+</genxml>
+<genxml>
+  <files />
+  <hidden>
+    <plugintemplate>
+      <![CDATA[]]>
+    </plugintemplate>
+    <index>25</index>
+  </hidden>
+  <textbox>
+    <ctrl>
+      <![CDATA[promoevents]]>
+    </ctrl>
+    <name>
+      <![CDATA[Promo Events]]>
+    </name>
+    <icon>
+      <![CDATA[]]>
+    </icon>
+    <group>
+      <![CDATA[]]>
+    </group>
+    <path>
+      <![CDATA[]]>
+    </path>
+    <help>
+      <![CDATA[]]>
+    </help>
+    <roles>
+      <![CDATA[]]>
+    </roles>
+    <description>
+      <![CDATA[]]>
+    </description>
+    <assembly>
+      <![CDATA[NBrightBuy.PromoProvider]]>
+    </assembly>
+    <namespaceclass>
+      <![CDATA[Nevoweb.DNN.NBrightBuy.Providers.PromoProvider.PromoEvents]]>
+    </namespaceclass>
+  </textbox>
+  <checkbox>
+    <hidden>
+      <![CDATA[True]]>
+    </hidden>
+    <active>
+      <![CDATA[True]]>
+    </active>
+  </checkbox>
+  <dropdownlist>
+    <providertype selectedtext="Events">
+      <![CDATA[06]]>
+    </providertype>
+  </dropdownlist>
+  <checkboxlist />
+  <radiobuttonlist />
+</genxml>
+</root>
+
+
+
+
+
+
+

@@ -1,0 +1,133 @@
+[<tag id="resourcepath" type="meta" value="/DesktopModules/NBright/NBrightBuy/App_LocalResources/" />]
+[<tag id="plugintemplate" type="hidden" value=""/>]
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+				    <i class="fa fa-search"></i><span>Plugin UI Settings</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"><i class="fa fa-chevron-up"></i>
+					</a><a class="expand-link"><i class="fa fa-expand"></i></a>
+					<a class="close-link"><i class="fa fa-times"></i></a></div>
+				<div class="no-move">
+				</div>
+			</div>
+			<div class="box-content dnnForm">
+			    <div class="form-horizontal dnnForm">
+			        
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lblctrl" />]</label>
+			            <div class="col-sm-5">
+			                [<tag id="ctrl" type="textbox" cssclass="form-control" maxlength="50" />]
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lblname" />]</label>
+			            <div class="col-sm-5">
+			                [<tag id="name" type="textbox" cssclass="form-control" maxlength="50" />]
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lblicon" />]</label>
+			            <div class="col-sm-5">
+			                [<tag id="icon" type="textbox" cssclass="form-control" maxlength="50" />]
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lblgroup" />]</label>
+			            <div class="col-sm-5">
+			                [<tag id="group" type="textbox" cssclass="form-control" maxlength="50" />]
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lblpath" />]</label>
+			            <div class="col-sm-5">
+			                [<tag id="path" type="textbox" cssclass="form-control" />]
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lblhelp" />]</label>
+			            <div class="col-sm-5">
+			                [<tag id="help" type="textbox" cssclass="form-control" />]
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lblroles" />]</label>
+			            <div class="col-sm-5">
+			                [<tag id="roles" type="textbox" cssclass="form-control"  />]
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lbldescription" />]</label>
+			            <div class="col-sm-5">
+			                [<tag id="description" type="textbox" cssclass="form-control" height="100" textmode="MultiLine" />]
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lblhidden"/>]</label>
+			            <div class="col-sm-5">
+			                [<tag id="hidden" type="checkbox" text=""/>]
+			            </div>
+			        </div>
+                    <!-- Special template injected for setting by plugin -->
+			        [Template:PluginTemplate]
+
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+				    <i class="fa fa-search"></i><span>Plugin Provider Settings</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"><i class="fa fa-chevron-up"></i>
+					</a><a class="expand-link"><i class="fa fa-expand"></i></a>
+					<a class="close-link"><i class="fa fa-times"></i></a></div>
+				<div class="no-move">
+				</div>
+			</div>
+			<div class="box-content dnnForm">
+				<div class="form-horizontal dnnForm">
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.lblprovidertype" />]</label>
+				        <div class="col-sm-5">
+			                [<tag id="providertype" type="dropdownlist" cssclass="form-control" resourcekey="Plugins.providertype" />]
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.assembly" />]</label>
+				        <div class="col-sm-5">
+			                [<tag id="assembly" type="textbox" cssclass="form-control" />]
+				        </div>
+				    </div>
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Plugins.namespaceclass" />]</label>
+				        <div class="col-sm-5">
+			                [<tag id="namespaceclass" type="textbox" cssclass="form-control" />]
+				        </div>
+				    </div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.Active" />]</label>
+						<div class="col-sm-5">
+							[<tag id="active" type="checkbox" text="" />]
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+	</div>
+</div>
+

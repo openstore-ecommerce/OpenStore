@@ -1,0 +1,147 @@
+<div class="row hidden"><!-- Not being used/yet -->
+	<div id="breadcrumb" class="col-md-12">
+		<ol class="breadcrumb">
+			<li>Utilities</li>
+			<li><a href="javascript:void(0)">[<tag type="valueof" resourcekey="General.Import" />]</a></li>
+		</ol>
+	</div>
+</div>
+
+<div class="row hidden"><!-- Not being used/yet -->
+	<div class="col-md-12">
+		<h4 class="page-header">[<tag type="valueof" resourcekey="General.Export" />]</h4>
+		<p><i class="fa fa-info"></i>Some information about these options on this page here.</p>
+	</div>
+</div>
+
+<br />
+
+<div id="pageactionssource"><!-- Page actions are moved into header bar - also exist at page bottom-->
+	<div class="col-xs-9 col-sm-9">
+		<a href="javascript:void(0)" class="show-sidebar">
+		  <i class="fa fa-bars"></i>
+		</a>
+		<div class="actionbuttonwrapper">
+			[<tag id="cmdImport" type="linkbutton" cssclass="btn btn-primary" resourcekey="General.Import" commandname="import" />] 
+	    </div>
+	</div>
+	<div class="col-xs-3 col-sm-3 top-panel-right">
+		<!-- No language selector on this page-->
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+				    <i class="fa fa-search"></i><span>[<tag type="valueof" resourcekey="General.Import" />]</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"><i class="fa fa-chevron-up"></i>
+					</a><a class="expand-link"><i class="fa fa-expand"></i></a>
+					<a class="close-link"><i class="fa fa-times"></i></a></div>
+				<div class="no-move">
+				</div>
+			</div>
+			<div class="box-content">
+				<div class="form-horizontal dnnForm">
+
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.Products" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="importproducts" type="checkbox" resourcekey="" checked="True" />]
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.Categories" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="importcategories" type="checkbox" resourcekey="" checked="True"  />]
+				            </div>
+				        </div>
+				    </div>
+                    
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.Properties" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="importproperties" type="checkbox" resourcekey="" checked="True" />]
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.Settings" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="importsettings" type="checkbox" resourcekey="" />]
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.Orders" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                [<tag id="importorders" type="checkbox" resourcekey="" />]
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.DataXML" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                 [<tag id="datafile" type="fileupload" cssclass="form-control" textwidth="0" separator=" " />]
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.ImageZip" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                 [<tag id="imagefile" type="fileupload" textwidth="0" />]				                
+				            </div>
+				        </div>
+				    </div>
+
+				    <div class="form-group">
+				        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="General.DocumentZip" />]</label>
+				        <div class="col-sm-5">
+				            <div class="dnnFormItem">
+				                 [<tag id="docsfile" type="fileupload" textwidth="0" />]  				                
+				            </div>
+				        </div>
+				    </div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+	</div>
+</div>
+
+[<tag type="if" function="settings" key="pageactions" testvalue="True" display="{ON}" />]
+<div class="row pageactions"><!-- Page actions - also at top -->
+	<div class="col-md-12">
+		<div class="box">
+			<div class="box-content">
+				<div class="col-sm-6">
+					[<tag id="cmdImport1" type="linkbutton" cssclass="btn btn-primary" resourcekey="General.Import" commandname="import" />] 
+				</div>
+				<div class="col-sm-6 text-right">
+				<!-- No language selector on this page-->
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+[<tag type="endif" />]
+

@@ -1,0 +1,15 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/Default/css/Checkout.css" rel="stylesheet">
+
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/Default/js/payment.js"></script>
+
+<!-- fields required to send required ajax cart to server -->
+<span id="Paymentsearch">
+    <input id="userid" type="hidden" value="@Model.GetSetting("userid")"></input>
+    <input id="razortemplate" type="hidden" value=""></input>
+    <input id='editlang' type='hidden' value='@Model.GetUrlParam("language")'></input> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
+    <input id="uilang" type="hidden" value="@Model.GetUrlParam("language")"></input> <!-- default to current language -->
+    <input id="themefolder" type="hidden" value="@Model.GetSetting("themefolder")" />
+    <input id="selectedindex" type="hidden" value=""></input>
+</span>

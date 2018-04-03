@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2015-11-11 06:50:18">
+    <value xml:space="preserve">Impostazioni indirizzo Admin</value>
+  </data>
+  <data name="emailmanageropt.data" lastModified="2015-11-11 06:50:18">
+    <value xml:space="preserve">Su Indirizzo predefinito modificare solo; sugli eventuali cambiamenti di indirizzo</value>
+  </data>
+  <data name="lblbasicsettings.Text" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Generico</value>
+  </data>
+  <data name="lblemailmanager.Help" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Email Manager sui cambiamenti indirizzo</value>
+  </data>
+  <data name="lblemailmanager.Text" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Email Manager:</value>
+  </data>
+  <data name="lblemailtemplate.Help" lastModified="2015-11-11 07:51:22">
+    <value xml:space="preserve">E-mail da inviare quando un indirizzo è aggiornato.</value>
+  </data>
+  <data name="lblemailtemplate.Text" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Modello email:</value>
+  </data>
+  <data name="lblinputform.Help" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Template da utilizzare come inserimento per l'indirizzo.</value>
+  </data>
+  <data name="lblinputform.Text" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Modulo di input del modello:</value>
+  </data>
+  <data name="lbllistbody.Help" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Template da utilizzare come corpo indirizzo, questo viene ripetuto per ogni indirizzo.</value>
+  </data>
+  <data name="lbllistbody.Text" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Body Indirizzo:</value>
+  </data>
+  <data name="lbllistfooter.Help" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Modello da utilizzare come footer Indirizzo.</value>
+  </data>
+  <data name="lbllistfooter.Text" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Footer Indirizzo:</value>
+  </data>
+  <data name="lbllistheader.Help" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Modello da utilizzare come intestazione Indirizzo.</value>
+  </data>
+  <data name="lbllistheader.Text" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Intestazione Indirizzo:</value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Nome del tema da utilizzare per questo elenco di indirizzi.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2015-11-11 11:00:46">
+    <value xml:space="preserve">Tema:</value>
+  </data>
+</root>

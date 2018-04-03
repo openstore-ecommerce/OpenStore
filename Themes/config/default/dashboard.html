@@ -1,0 +1,76 @@
+[<tag id="resourcepath" type="meta" value="/DesktopModules/NBright/NBrightBuy/App_LocalResources/" />]
+
+<div id="pageactionssource"><!-- Page actions are moved into header bar - also exist at page bottom-->
+	<div class="col-xs-9 col-sm-9">
+		<a href="javascript:void(0)" class="show-sidebar">
+		  <i class="fa fa-bars"></i>
+		</a>
+		<div class="actionbuttonwrapper">
+			[<tag id="cmdRefresh" type="linkbutton" resourcekey="General.Refresh" cssclass="btn btn-primary" commandname="refresh" commandargument="ItemID" />]
+	    </div>
+	</div>
+	<div class="col-xs-3 col-sm-3 top-panel-right">
+		<!-- No language in this page -->
+	</div>
+</div>
+
+<br/>
+
+<script type="text/javascript">
+
+function xGraphOrderTotals(){
+	
+	var data = {
+		"xScale": "ordinal",
+		"yScale": "linear",
+		"main": [[
+			{
+			"className": ".ordertotals",
+			"data": [[
+			[<tag type="xchartorderrevenue" />]
+			]]
+			}
+		]]
+	};
+	
+	var myChart = new xChart('bar', data, '#orderstats');
+
+}
+
+	$( document ).ready(function() {
+		xGraphOrderTotals();
+	});
+
+</script>
+
+<div class="row dashboard">
+
+	<div class="col-xs-12 col-sm-8">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-table"></i>
+					<span>[<tag type="valueof" resourcekey="General.MontlyRevenue" />]</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a class="close-link">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content">
+
+			<div style="width: 100%; height: 200px;" id="orderstats"></div>
+			
+			</div>
+		</div>
+
+
+

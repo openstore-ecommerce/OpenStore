@@ -1,0 +1,1358 @@
+﻿
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/************************************************************/
+
+-------------------------------------------------------------------------------
+--------------                       TABLES                        ------------
+-------------------------------------------------------------------------------
+
+-- CREATE NBrightBuy
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+	-- Do NOT drop table, may be an upgrade
+	--DROP TABLE {databaseOwner}[{objectQualifier}NBrightBuy]
+	print 'do not drop table NBrightBuy'
+END
+
+if NOT exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+
+
+CREATE TABLE {databaseOwner}[{objectQualifier}NBrightBuy] (
+	[ItemId] [int] IDENTITY (1, 1) NOT NULL ,
+	[PortalId] [int] NULL ,
+	[ModuleId] [int] NULL ,
+	[TypeCode] [nvarchar](50) NULL ,
+	[XMLData] [xml] NULL ,
+	[GUIDKey] [nvarchar](250) NULL ,
+	[ModifiedDate] [datetime] NULL ,
+	[TextData] [nvarchar](MAX) NULL ,
+	[XrefItemId] [int] NULL ,
+	[ParentItemId] [int] NULL ,
+	[Lang] [nvarchar] (50) NULL ,
+	[UserId] [int] NOT NULL CONSTRAINT [DF_NBrightBuy_UserId] DEFAULT ((-1)),
+	[LegacyItemId] [int] NULL,
+	CONSTRAINT [PK_NBrightBuy] PRIMARY KEY  CLUSTERED 
+	(
+		[ItemId]
+	)  ON [PRIMARY] 
+) ON [PRIMARY]
+
+-- Index NBrightBuy
+ CREATE  INDEX [IX_NBrightBuyXref] ON {databaseOwner}[{objectQualifier}NBrightBuy]([XrefItemId]) ON [PRIMARY]
+ CREATE  INDEX [IX_NBrightBuyMod] ON {databaseOwner}[{objectQualifier}NBrightBuy]([ModuleId]) ON [PRIMARY]
+ CREATE  INDEX [IX_NBrightBuyParent] ON {databaseOwner}[{objectQualifier}NBrightBuy]([ParentItemId]) ON [PRIMARY]
+ CREATE  INDEX [IX_NBrightBuyPortal] ON {databaseOwner}[{objectQualifier}NBrightBuy]([PortalId]) ON [PRIMARY]
+ CREATE  INDEX [IX_NBrightBuyType] ON {databaseOwner}[{objectQualifier}NBrightBuy]([TypeCode]) ON [PRIMARY]
+ CREATE  INDEX [IX_NBrightBuyUserId] ON {databaseOwner}[{objectQualifier}NBrightBuy]([UserId]) ON [PRIMARY]
+ CREATE  INDEX [IX_NBrightBuyLegacyItemId] ON {databaseOwner}[{objectQualifier}NBrightBuy]([LegacyItemId]) ON [PRIMARY]
+ CREATE  INDEX [IX_NBrightBuyLang] ON {databaseOwner}[{objectQualifier}NBrightBuy]([Lang]) ON [PRIMARY]
+
+END
+
+GO
+-- CREATE NBrightBuyIdx
+-------------------------------------------------------------------------------
+--------------              Create Index Table                     ------------
+-- Create an index table. This is so we can get performance on sorting         --
+-- The standard way of creating a XML index and calculated columns for indexing --
+-- works OK for selection, but selection is already fairly quick in a small DB --
+-- but sorting by calculated columns seems no quicker than sorting the XML     --
+-- directly.  Therefore we are implementing a index table to help speed it up  --
+-- NOTE: if extra fields need orderby, they will need to be added + the trigger --
+-- Primary Key has been created for Azure install, which always requires a primary key --
+-------------------------------------------------------------------------------
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuyIdx]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+	--DROP TABLE {databaseOwner}[{objectQualifier}NBrightBuyIdx]
+	print 'do not drop table NBrightBuyIdx'
+END
+
+
+if NOT exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuyIdx]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+
+CREATE TABLE {databaseOwner}[{objectQualifier}NBrightBuyIdx](
+	[ItemId] [int] NOT NULL,
+	[ProductRef] [nvarchar](255) NULL,
+	[ProductName] [nvarchar](255) NULL,
+	[Manufacturer] [nvarchar](255) NULL,
+	[Summary] [nvarchar](255) NULL,
+	[SEOName] [nvarchar](255) NULL,
+	[TagWords] [nvarchar](255) NULL,
+	[SEOPageTitle] [nvarchar](255) NULL,
+	[FromPrice] [decimal](10, 2) NULL,
+	[Qty] [int] NULL,
+	[TypeCode] [nvarchar](50) NULL,
+	[Lang] [nvarchar](50) NOT NULL,
+	[Visible] [bit] NULL,
+ CONSTRAINT [PK_NBrightBuyIdx] PRIMARY KEY CLUSTERED 
+(
+	[ItemId] ASC,
+	[Lang] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+-- Index NBrightBuyIdx
+CREATE  INDEX [IX_NBrightBuyIdxItemId] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([ItemId]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxProductRef] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([ProductRef]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxProductName] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([ProductName]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxManufacturer] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([Manufacturer]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxSummary] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([Summary]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxSEOName] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([SEOName]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxTagWords] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([TagWords]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxSEOPageTitle] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([SEOPageTitle]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxFromPrice] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([FromPrice]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxQty] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([Qty]) ON [PRIMARY]
+CREATE  INDEX [IX_NBrightBuyIdxVisible] ON {databaseOwner}[{objectQualifier}NBrightBuyIdx]([Visible]) ON [PRIMARY]
+
+END
+
+GO
+
+-- CREATE NBrightBuyLang
+---------------------------------------------------------------------------------
+--------------            Create XML Language Table                  ------------
+-- Create an index table for XML merge. This is so we can get performance on   --
+-- XML merge.  The format we require for localization is slow, so we build the --
+-- merge XML structure in this table so we can return the data quick.          --
+---------------------------------------------------------------------------------
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuyLang]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+--DROP TABLE {databaseOwner}[{objectQualifier}NBrightBuyLang]
+	print 'do not drop table NBrightBuyLang'
+END
+GO
+
+if not exists (select * from dbo.sysobjects where id = object_id(N'[NBrightBuyLang]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+BEGIN
+
+CREATE TABLE {databaseOwner}[{objectQualifier}NBrightBuyLang](
+	[ParentItemId] [int] NOT NULL,
+	[Lang] [nvarchar](50) NOT NULL,
+	[XMLData] [xml] NULL,
+ CONSTRAINT [PK_NBrightBuyLang] PRIMARY KEY CLUSTERED 
+(
+	[ParentItemId] ASC,
+	[Lang] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+END
+
+GO
+
+
+-------------------------------------------------------------------------------
+--------------                       FUNCTIONS                     ------------
+-------------------------------------------------------------------------------
+
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuyLangMerge]') and OBJECTPROPERTY(id, N'IsScalarFunction') = 1)
+drop function {databaseOwner}[{objectQualifier}NBrightBuyLangMerge]
+GO
+
+CREATE FUNCTION {databaseOwner}[{objectQualifier}NBrightBuyLangMerge](@xmllangdata AS XML,@xmlbasedata AS XML)
+RETURNS XML
+BEGIN
+
+DECLARE @rtndata AS XML
+
+IF NOT @xmlbasedata IS NULL
+BEGIN
+	IF NOT @xmllangdata IS NULL
+	BEGIN
+		SET @xmlbasedata.modify('insert <lang/> as last into /genxml[1]')
+		SET @xmlbasedata.modify('insert sql:variable("@xmllangdata") as last into /genxml[1]/lang[1]')
+	END
+	SET @rtndata = @xmlbasedata
+END
+ELSE
+BEGIN
+	-- is not a language record so just return the language data
+	SET @rtndata = ISNULL(@xmllangdata,'')
+END
+
+RETURN @rtndata
+
+END
+
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+-------------------------------------------------------------------------------
+--------------                       SPROCS                        ------------
+-------------------------------------------------------------------------------
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_DashboardStats]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_DashboardStats]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_DashboardStats]
+@PortalId int
+AS
+BEGIN
+
+declare @rtndata as nvarchar(max)
+declare @getdata as nvarchar(max)
+
+SET @rtndata = '<root>'
+SET @rtndata +=  (select count(itemid) as [totalproducts] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'PRD' and PortalId = @PortalId FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [hiddenproducts] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'PRD' and PortalId = @PortalId and [XMLData].value('(genxml/checkbox/chkishidden)[1]','nvarchar(max)') = 'True' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [activeproducts] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'PRD' and PortalId = @PortalId and [XMLData].value('(genxml/checkbox/chkishidden)[1]','nvarchar(max)') = 'False' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select sum([XMLData].value('(genxml/appliedtotal)[1]','decimal(10,2)')) as [totalrevenue] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select sum([XMLData].value('(genxml/applieddiscount)[1]','decimal(10,2)')) as [applieddiscount] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select sum([XMLData].value('(genxml/appliedshipping)[1]','decimal(10,2)')) as [appliedshipping] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [totalorders] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (SELECT count(U.UserId) as [clientcount] FROM    {databaseOwner}{objectQualifier}vw_Users U WHERE U.PortalId = @PortalId  FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select (sum([XMLData].value('(genxml/appliedtotal)[1]','decimal(10,2)')) / count(itemid)) as [avgorder] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+
+
+SET @rtndata +=  (select count(itemid) as [status1] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '010' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status2] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '020' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status3] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status4] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '040' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status5] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '050' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status6] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '060' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status7] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '070' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status8] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '080' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status9] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '090' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status10] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '100' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status11] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '110' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status12] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '120' FOR XML RAW , ELEMENTS)
+	
+
+SET @getdata =  (SELECT [ItemId] as [itemid]
+      ,[PortalId] as [portalid]
+      ,[ModuleId] as [moduleid]
+      ,[TypeCode] as [typecode]
+      ,[XMLData] as [genxml]
+      ,[GUIDKey] as [guidkey]
+      ,[ModifiedDate] as [modifieddate]
+      ,[TextData] as [textdata]
+      ,[XrefItemId] as [xrefitemId]
+      ,[ParentItemId] as [parentitemId]
+      ,[Lang] as [lang]
+      ,[UserId] as [userid]
+      ,[LegacyItemId] as [legacyitemid]
+  FROM {databaseOwner}[{objectQualifier}NBrightBuy]
+  where typecode = 'ORDER'
+  and PortalId = @PortalId
+  and (GUIDKey = '040' or GUIDKey = '050'  or GUIDKey = '060')
+  order by ModifiedDate desc FOR XML RAW ('item'), root ('orders'), ELEMENTS)
+
+  SET @rtndata += ISNULL(@getdata,'') 
+
+
+  DECLARE @temptable TABLE(
+createdmonth int,
+createdyear int,
+appliedtotal decimal(10,2)
+);
+
+INSERT INTO @temptable
+select month(isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'')) as createdmonth
+	  ,year(isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'')) as createdyear
+	  ,isnull([XMLData].value('(genxml/appliedtotal)[1]','decimal(10,2)'),0) as appliedtotal
+  FROM {databaseOwner}[{objectQualifier}NBrightBuy]
+  where typecode = 'ORDER' and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030'
+  and PortalId = @PortalId
+  and isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'') > dateadd(M,-25,GETDATE())
+  
+set @getdata = (select createdyear, createdmonth, sum(appliedtotal) as appliedtotal, count(createdyear) as [ordercount]  from @temptable
+ group by createdyear, createdmonth
+ order by createdyear, createdmonth desc FOR XML RAW ('item'), root ('orderstats'), ELEMENTS)
+
+  SET @rtndata += ISNULL(@getdata,'') 
+
+
+SET @rtndata += '</root>'
+
+select @rtndata
+
+END
+
+GO
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_MoveProductinCateogry]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_MoveProductinCateogry]
+GO
+
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}NBrightBuy_MoveProductinCateogry]    Script Date: 27/03/2015 11:31:23 ******/
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_MoveProductinCateogry] 
+@PortalId int, 
+@ModuleId int,
+@ReturnLimit int = 0,
+@Lang nvarchar(10) = '',
+@ExtaParams nvarchar(max) = ''
+AS
+BEGIN
+
+
+DECLARE @categoryid int
+DECLARE @moveproductid int
+DECLARE @movetoproductid int
+
+SET @categoryid = convert(int,LTRIM(RTRIM(PARSENAME(replace(@ExtaParams,';','. '), 3))))
+SET @moveproductid = convert(int,LTRIM(RTRIM(PARSENAME(replace(@ExtaParams,';','. '), 2))))
+SET @movetoproductid = convert(int,LTRIM(RTRIM(PARSENAME(replace(@ExtaParams,';','. '), 1))))
+
+declare @newpos decimal(10,5)
+declare @itemid int
+declare @newintpos int
+declare @currentpos int
+
+DECLARE db_cursor CURSOR FOR  
+select itemid,ROW_NUMBER() Over (ORDER BY [XMLdata].value('(genxml/sort)[1]','decimal(10,5)') ) As Rank
+ from {databaseOwner}[{objectQualifier}NBrightBuy]
+where XrefItemId  = @categoryid
+order by [XMLdata].value('(genxml/sort)[1]','decimal(10,5)')
+
+OPEN db_cursor   
+FETCH NEXT FROM db_cursor INTO @itemid,@newintpos
+WHILE @@FETCH_STATUS = 0   
+BEGIN   
+	update {databaseOwner}[{objectQualifier}NBrightBuy] set XMLData = '<genxml><sort>' + convert(nvarchar(max),@newintpos) + '</sort></genxml>' where itemid = @itemid
+    FETCH NEXT FROM db_cursor INTO @itemid,@newintpos 
+END   
+
+CLOSE db_cursor   
+DEALLOCATE db_cursor 
+
+set @currentpos = (select top 1 [XMLdata].value('(genxml/sort)[1]','decimal(10,5)')  from {databaseOwner}[{objectQualifier}NBrightBuy] where XrefItemId = @categoryid and ParentItemId = @moveproductid)
+set @newpos = (select top 1 [XMLdata].value('(genxml/sort)[1]','decimal(10,5)')  from {databaseOwner}[{objectQualifier}NBrightBuy] where XrefItemId = @categoryid and ParentItemId = @movetoproductid)
+
+IF (@currentpos > @newpos)
+BEGIN
+set @newpos = @newpos - 0.5
+END
+ ELSE
+BEGIN
+set @newpos = @newpos + 0.5
+END
+
+update {databaseOwner}[{objectQualifier}NBrightBuy] set XMLData = '<genxml><sort>' + convert(nvarchar(max),@newpos) + '</sort></genxml>' where  XrefItemId = @categoryid and ParentItemId = @moveproductid
+
+DECLARE db_cursor CURSOR FOR  
+select itemid,ROW_NUMBER() Over (ORDER BY [XMLdata].value('(genxml/sort)[1]','decimal(10,5)') ) As Rank
+ from {databaseOwner}[{objectQualifier}NBrightBuy]
+where XrefItemId  = @categoryid
+order by [XMLdata].value('(genxml/sort)[1]','decimal(10,5)')
+
+OPEN db_cursor   
+FETCH NEXT FROM db_cursor INTO @itemid,@newintpos
+WHILE @@FETCH_STATUS = 0   
+BEGIN   
+	update {databaseOwner}[{objectQualifier}NBrightBuy] set XMLData = '<genxml><sort>' + convert(nvarchar(max),@newintpos) + '</sort></genxml>' where itemid = @itemid
+    FETCH NEXT FROM db_cursor INTO @itemid,@newintpos
+END   
+
+CLOSE db_cursor   
+DEALLOCATE db_cursor 
+
+END
+GO
+
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_CleanData]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_CleanData]
+GO
+
+CREATE   PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_CleanData]
+AS
+begin
+
+/***  Clean ALL data that is not linked to a module.  i.e. modules that have been deleted. **/
+delete from {databaseOwner}{objectQualifier}NBrightBuy where moduleid not in (select moduleid from {databaseOwner}{objectQualifier}Modules) and moduleid > 0 
+	
+end
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_Delete]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_Delete]
+GO
+
+
+CREATE   PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_Delete]
+@ItemID int
+AS
+begin
+
+if @ItemId > 0 Begin
+
+	delete from {databaseOwner}[{objectQualifier}NBrightBuy] 
+	where ItemId = @ItemId
+	
+	-- Delete all linked child records.
+	delete from {databaseOwner}[{objectQualifier}NBrightBuy] 
+	where ParentItemId = @ItemId
+
+	delete from {databaseOwner}[{objectQualifier}NBrightBuy] 
+	where XrefItemId = @ItemId
+
+end
+	
+end
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_Update]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_Update]
+GO
+
+
+CREATE   PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_Update]
+(
+@ItemId int,
+@PortalId int, 
+@ModuleId int,
+@TypeCode nvarchar(50),
+@XMLData xml,
+@GUIDKey nvarchar(250),
+@ModifiedDate datetime,
+@TextData nvarchar(MAX),
+@XrefItemId int,
+@ParentItemId int,
+@UserId int,
+@Lang nvarchar(10)
+)
+AS
+BEGIN
+
+	if not exists (select ItemID from {databaseOwner}[{objectQualifier}NBrightBuy] where ItemID = @ItemID
+ )
+	begin
+		insert into {databaseOwner}[{objectQualifier}NBrightBuy]
+		(
+PortalId, 
+ModuleId,
+TypeCode,
+XMLData,
+GUIDKey,
+ModifiedDate,
+TextData,
+XrefItemId,
+ParentItemId,
+UserId,
+Lang
+		)
+		values
+		(
+@PortalId, 
+@ModuleId,
+@TypeCode,
+@XMLData,
+@GUIDKey,
+@ModifiedDate,
+@TextData,
+@XrefItemId,
+@ParentItemId,
+@UserId,
+@Lang
+		)
+		
+		set @ItemID = @@IDENTITY
+
+	end
+	else
+	begin
+		Update {databaseOwner}[{objectQualifier}NBrightBuy]
+		set 
+PortalId = @PortalId, 
+ModuleId = @ModuleId,
+TypeCode = @TypeCode,
+XMLData = @XMLData,
+GUIDKey = @GUIDKey,
+ModifiedDate = @ModifiedDate,
+TextData = @TextData,
+XrefItemId = @XrefItemId,
+ParentItemId = @ParentItemId,
+UserId = @UserId,
+Lang = @Lang
+		where ItemId = @ItemId
+ 
+	end
+	
+	select @ItemID
+
+END
+
+
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_Get]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_Get]
+GO
+
+
+CREATE     PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_Get]
+@ItemID int,
+@TypeCodeLang nvarchar(50),
+@Lang nvarchar(10)
+AS
+begin
+	select
+	NB1.[ItemId]
+	,[PortalId]
+	,[ModuleId]
+	,[TypeCode]
+	,ISNULL(NB2.[XMLData],NB1.[XMLData]) as [XMLData]
+	,[GUIDKey]
+	,[ModifiedDate]
+	,[TextData]
+	,[XrefItemId]
+	,NB1.[ParentItemId]
+	,ISNULL(NB2.[Lang],ISNULL(NB1.[Lang],'')) as [Lang] 
+	,[UserId]
+	from {databaseOwner}[{objectQualifier}NBrightBuy] as NB1
+	left join {databaseOwner}[{objectQualifier}NBrightBuyLang] as NB2 on NB2.ParentItemId = NB1.ItemId and NB2.lang = @Lang 
+	where NB1.ItemId = @ItemId
+end
+
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetListCount]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetListCount]
+GO
+
+CREATE  PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetListCount]
+@PortalId int, 
+@ModuleId int,
+@TypeCode nvarchar(50),
+@Filter nvarchar(max),
+@TypeCodeLang nvarchar(50) = '',
+@Lang nvarchar(10) = ''
+
+AS
+begin
+
+-- This SPROC return the Get List COUNT with LANGAUGE and NO PAGING
+
+	SET NOCOUNT ON
+	  DECLARE
+		 @STMT nvarchar(max)         -- SQL to execute
+		,@recct int                  -- total # of records (for paging interface)
+
+	IF (@PortalId >= 0) BEGIN
+
+		IF (@ModuleId >= 0) BEGIN
+			SET @Filter = ' and (PortalId = '''  + Convert(nvarchar(10),@PortalId) + ''' or PortalId = ''-1'') and (ModuleId = ''' + Convert(nvarchar(10),@ModuleId) + ''' or ModuleId = ''-1'') ' + @Filter
+		END ELSE BEGIN
+			SET @Filter = ' and (PortalId = '''  + Convert(nvarchar(10),@PortalId) + '''  or PortalId = ''-1'') ' + @Filter
+		END 
+
+	END 
+
+	SET @Filter = REPLACE(@Filter,'[XMLData]','ISNULL(NB2.[XMLData],NB1.[XMLData])')
+
+	-- Return records without paging.
+	set @STMT = ' SELECT  @recct = COUNT(NB1.[ItemId]) FROM {databaseOwner}[{objectQualifier}NBrightBuy] as NB1 ' 	
+	set @STMT = @STMT + ' left join  {databaseOwner}[{objectQualifier}NBrightBuyIdx] as NB3 on NB3.ItemId = NB1.ItemId and NB3.[Lang] = ''' + @Lang + ''''	
+	set @STMT = @STMT + '  left join {databaseOwner}[{objectQualifier}NBrightBuyLang] as NB2 on NB2.ParentItemId = NB1.ItemId and NB2.lang = ''' + @Lang + '''' 
+	
+	IF (RIGHT(@TypeCode,1) = '%')
+	BEGIN
+		set @STMT = @STMT + ' WHERE NB1.TypeCode Like ''' + @TypeCode + ''' ' + @Filter 
+	END ELSE
+	BEGIN
+		IF (@TypeCode = '')
+		BEGIN
+			set @STMT = @STMT + ' WHERE NB1.TypeCode != '''' ' + @Filter 
+		END ELSE
+		BEGIN
+			set @STMT = @STMT + ' WHERE NB1.TypeCode = ''' + @TypeCode + ''' ' + @Filter  
+		END
+	END
+               
+	EXEC sp_executeSQL @STMT, @params = N'@recct INT OUTPUT', @recct = @recct OUTPUT
+	SELECT @recct AS recct       -- return the total # of records
+
+end
+
+GO
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetListLangNoPage]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetListLangNoPage]
+GO
+
+CREATE    PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetListLangNoPage]
+@PortalId int, 
+@ModuleId int,
+@TypeCode nvarchar(50),
+@Filter nvarchar(max),
+@OrderBy nvarchar(500),
+@ReturnLimit int = 0,
+@TypeCodeLang nvarchar(50) = '',
+@Lang nvarchar(10) = ''
+
+AS
+begin
+
+-- This SPROC return the Get List with LANGAUGE and NO PAGING
+
+	SET NOCOUNT ON
+	  DECLARE
+		 @STMT nvarchar(max)         -- SQL to execute
+		,@rtnFields nvarchar(max)
+		,@NB4cascade nvarchar(max)
+
+	IF (@PortalId >= 0) BEGIN
+
+		IF (@ModuleId >= 0) BEGIN
+			SET @Filter = ' and (NB1.PortalId = '''  + Convert(nvarchar(10),@PortalId) + ''' or NB1.PortalId = ''-1'') and (NB1.ModuleId = ''' + Convert(nvarchar(10),@ModuleId) + ''' or NB1.ModuleId = ''-1'') ' + @Filter
+		END ELSE BEGIN
+			SET @Filter = ' and (NB1.PortalId = '''  + Convert(nvarchar(10),@PortalId) + '''  or NB1.PortalId = ''-1'') ' + @Filter
+		END 
+
+	END 
+
+	SET @Filter = REPLACE(@Filter,'[XMLData]','ISNULL(NB2.[XMLData],NB1.[XMLData])')
+	SET @OrderBy = REPLACE(@OrderBy,'[XMLData]','ISNULL(NB2.[XMLData],NB1.[XMLData])')
+
+	set @rtnFields = ' NB1.[ItemId] '
+	set @rtnFields = @rtnFields + ',ISNULL(NB2.[XMLData],NB1.[XMLData]) as [XMLData] '				
+	set @rtnFields = @rtnFields + ',ISNULL(NB2.[Lang],ISNULL(NB1.[Lang],'''')) as [Lang] '	 
+ 
+	set @rtnFields = @rtnFields + ',NB1.[PortalId] '
+	set @rtnFields = @rtnFields + ',NB1.[ModuleId] '
+	set @rtnFields = @rtnFields + ',NB1.[TypeCode] '
+	set @rtnFields = @rtnFields + ',NB1.[GUIDKey] '
+	set @rtnFields = @rtnFields + ',NB1.[ModifiedDate] '
+	set @rtnFields = @rtnFields + ',NB1.[TextData] '
+	set @rtnFields = @rtnFields + ',NB1.[XrefItemId] '
+	set @rtnFields = @rtnFields + ',NB1.[ParentItemId] '
+	set @rtnFields = @rtnFields + ',NB1.[UserId] '
+
+
+	-- Return records without paging.
+	set @STMT = ' SELECT ' 
+				
+	if @ReturnLimit > 0 
+	begin
+		set @STMT = @STMT + ' top ' + convert(nvarchar(10),@ReturnLimit)
+	end
+
+	set @STMT = @STMT + @rtnFields + ' FROM {databaseOwner}[{objectQualifier}NBrightBuy] as NB1 '
+
+	set @STMT = @STMT + ' left join  {databaseOwner}[{objectQualifier}NBrightBuyIdx] as NB3 on NB3.ItemId = NB1.ItemId and NB3.[Lang] = ''' + @Lang + ''''
+
+	set @STMT = @STMT + '  left join {databaseOwner}[{objectQualifier}NBrightBuyLang] as NB2 on NB2.ParentItemId = NB1.ItemId and NB2.[Lang] = ''' + @Lang + ''''
+	
+	IF (@OrderBY like '%{bycategoryproduct}%')
+	BEGIN
+		DECLARE @categoryid nvarchar(max)
+		SET @categoryid = LTRIM(RTRIM(replace(@OrderBY ,'{bycategoryproduct}','')))
+		if (@categoryid != '')
+		BEGIN
+				SET @NB4cascade = ''				
+				IF CHARINDEX('CATCASCADE',@filter) > 0  SET @NB4cascade = 'or NB4.TypeCode = ''CATCASCADE'''
+
+				SET @OrderBY = ' order by NB4.[XMLdata].value(''(genxml/sort)[1]'',''int''), NB3.productname  '
+				set @STMT = @STMT + '  left join {databaseOwner}[{objectQualifier}NBrightBuy] as NB4 on (NB4.TypeCode = ''CATXREF'' ' + @NB4cascade + ' ) and NB4.ParentItemId = NB1.ItemId and NB4.XrefItemId = ' + @categoryid + ' '
+		END ELSE
+		BEGIN
+				SET @OrderBY = ' order by NB3.productname '
+		END
+	END
+
+	IF (RIGHT(@TypeCode,1) = '%')
+	BEGIN
+		set @STMT = @STMT + ' WHERE NB1.TypeCode Like ''' + @TypeCode + ''' ' + @Filter + ' ' + @OrderBy
+	END ELSE
+	BEGIN
+		IF (@TypeCode = '')
+		BEGIN
+			set @STMT = @STMT + ' WHERE NB1.TypeCode != '''' ' + @Filter + @OrderBy
+		END ELSE
+		BEGIN
+			set @STMT = @STMT + ' WHERE NB1.TypeCode = ''' + @TypeCode + ''' ' + @Filter  + ' ' + @OrderBy
+		END
+	END
+    
+	EXEC sp_executeSQL @STMT                 -- return requested records
+
+end
+GO
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetListLangPage]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetListLangPage]
+GO
+
+CREATE    PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetListLangPage]
+@PortalId int, 
+@ModuleId int,
+@TypeCode nvarchar(50),
+@Filter nvarchar(max),
+@OrderBy nvarchar(500),
+@ReturnLimit int = 0,
+@pageNum int = 0,
+@PageSize int = 0,
+@RecordCount int = 0,
+@TypeCodeLang nvarchar(50) = '',
+@Lang nvarchar(10) = ''
+
+AS
+begin
+
+-- This SPROC return the Get List with LANGAUGE and PAGING
+
+	SET NOCOUNT ON
+	  DECLARE
+		 @STMT nvarchar(max)         -- SQL to execute
+		,@rtnFields nvarchar(max)
+		,@NB4cascade nvarchar(max)
+
+	IF (@PortalId >= 0) BEGIN
+
+		IF (@ModuleId >= 0) BEGIN
+			SET @Filter = ' and (NB1.PortalId = '''  + Convert(nvarchar(10),@PortalId) + ''' or NB1.PortalId = ''-1'') and (NB1.ModuleId = ''' + Convert(nvarchar(10),@ModuleId) + ''' or NB1.ModuleId = ''-1'') ' + @Filter
+		END ELSE BEGIN
+			SET @Filter = ' and (NB1.PortalId = '''  + Convert(nvarchar(10),@PortalId) + '''  or NB1.PortalId = ''-1'') ' + @Filter
+		END 
+
+	END 
+
+	SET @Filter = REPLACE(@Filter,'[XMLData]','ISNULL(NB2.[XMLData],NB1.[XMLData])')
+	SET @OrderBy = REPLACE(@OrderBy,'[XMLData]','ISNULL(NB2.[XMLData],NB1.[XMLData])')
+
+	set @rtnFields = ' NB1.[ItemId] '
+	set @rtnFields = @rtnFields + ',ISNULL(NB2.[XMLData],NB1.[XMLData]) as [XMLData] '				
+	set @rtnFields = @rtnFields + ',ISNULL(NB2.[Lang],ISNULL(NB1.[Lang],'''')) as [Lang] '	 
+ 
+	set @rtnFields = @rtnFields + ',NB1.[PortalId] '
+	set @rtnFields = @rtnFields + ',NB1.[ModuleId] '
+	set @rtnFields = @rtnFields + ',NB1.[TypeCode] '
+	set @rtnFields = @rtnFields + ',NB1.[GUIDKey] '
+	set @rtnFields = @rtnFields + ',NB1.[ModifiedDate] '
+	set @rtnFields = @rtnFields + ',NB1.[TextData] '
+	set @rtnFields = @rtnFields + ',NB1.[XrefItemId] '
+	set @rtnFields = @rtnFields + ',NB1.[ParentItemId] '
+	set @rtnFields = @rtnFields + ',NB1.[UserId] '
+
+
+
+			-- Do Paging
+		SET @STMT = 'DECLARE @recct int '
+		set @STMT = @STMT + ' SET @recct = ' + Convert(nvarchar(5),@RecordCount) 
+		
+		set @STMT = @STMT + '   DECLARE @lbound int, @ubound int '
+
+		SET @pageNum = ABS(@pageNum)
+		SET @pageSize = ABS(@pageSize)
+		IF @pageNum < 1 SET @pageNum = 1
+		IF @pageSize < 1 SET @pageSize = 1
+
+		set @STMT = @STMT + ' SET @lbound = ' + convert(nvarchar(50),((@pageNum - 1) * @pageSize))
+		set @STMT = @STMT + ' SET @ubound = @lbound + ' + convert(nvarchar(50),(@pageSize + 1))
+		set @STMT = @STMT + ' IF @lbound >= @recct BEGIN '
+		set @STMT = @STMT + '   SET @ubound = @recct + 1 '
+		set @STMT = @STMT + '   SET @lbound = @ubound - (' + convert(nvarchar(50),(@pageSize + 1)) + ') ' -- return the last page of records if no records would be on the specified page '
+		set @STMT = @STMT + ' END '
+		
+		-- Default order by clause
+		if @OrderBy = '' 
+		Begin
+			set @OrderBy = ' ORDER BY ModifiedDate DESC '
+		End
+		
+		set @STMT = @STMT + ' SELECT '
+		if @ReturnLimit > 0 
+		begin
+			set @STMT = @STMT + ' top ' + convert(nvarchar(10),@ReturnLimit)
+		end
+		
+		set @STMT = @STMT + @rtnFields		
+
+		DECLARE @categoryid nvarchar(max)
+		declare @NB4join nvarchar(max)
+		SET @NB4join = ''
+		IF (@OrderBY like '%{bycategoryproduct}%')
+		BEGIN
+			SET @categoryid = LTRIM(RTRIM(replace(@OrderBY ,'{bycategoryproduct}','')))
+			if (@categoryid != '')
+			BEGIN
+				SET @NB4cascade = ''				
+				IF CHARINDEX('CATCASCADE',@filter) > 0  SET @NB4cascade = 'or NB4.TypeCode = ''CATCASCADE'''
+
+				SET @OrderBY = ' order by NB4.[XMLdata].value(''(genxml/sort)[1]'',''int''), NB3.productname  '
+				set @NB4join = '  left join {databaseOwner}[{objectQualifier}NBrightBuy] as NB4 on (NB4.TypeCode = ''CATXREF'' ' + @NB4cascade + ' ) and NB4.ParentItemId = NB1.ItemId and NB4.XrefItemId = ' + @categoryid + ' '
+			END ELSE
+			BEGIN
+					SET @OrderBY = ' order by NB3.productname '
+			END
+		END
+
+		set @STMT = @STMT + ' FROM    (
+								SELECT  ROW_NUMBER() OVER(' + @orderBy + ') AS row, '
+		set @STMT = @STMT + @rtnFields		
+		set @STMT = @STMT + ' FROM {databaseOwner}[{objectQualifier}NBrightBuy]  as NB1 '
+		set @STMT = @STMT + ' left join  {databaseOwner}[{objectQualifier}NBrightBuyIdx] as NB3 on NB3.ItemId = NB1.ItemId and NB3.[Lang] = ''' + @Lang + ''''
+		set @STMT = @STMT + ' left join {databaseOwner}[{objectQualifier}NBrightBuyLang] as NB2 on NB2.ParentItemId = NB1.ItemId and NB2.[Lang] = ''' + @Lang + ''' ' 
+
+			set @STMT = @STMT + @NB4join
+
+		
+			IF (RIGHT(@TypeCode,1) = '%')
+			BEGIN
+				set @STMT = @STMT + 'WHERE NB1.TypeCode Like ''' + @TypeCode + ''' ' + @Filter  
+			END ELSE
+			BEGIN
+				IF (@TypeCode = '')
+				BEGIN
+					set @STMT = @STMT + 'WHERE NB1.TypeCode != ''''' + @Filter  
+				END ELSE
+				BEGIN
+					set @STMT = @STMT + 'WHERE NB1.TypeCode = ''' + @TypeCode + ''' ' + @Filter  
+				END
+			END	                                                              
+			
+			set @STMT = @STMT + ' ) AS NB1 '
+			set @STMT = @STMT + ' left join  {databaseOwner}[{objectQualifier}NBrightBuyIdx] as NB3 on NB3.ItemId = NB1.ItemId and NB3.[Lang] = ''' + @Lang + ''''
+			set @STMT = @STMT + ' left join {databaseOwner}[{objectQualifier}NBrightBuyLang] as NB2 on NB2.ParentItemId = NB1.ItemId and NB2.[Lang] = ''' + @Lang + ''' '
+			set @STMT = @STMT + @NB4join
+			set @STMT = @STMT + ' WHERE row > @lbound AND row < @ubound '
+
+		EXEC sp_executeSQL @STMT                 -- return requested records
+
+
+end
+GO
+
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetList]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetList]
+GO
+
+CREATE    PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetList]
+@PortalId int, 
+@ModuleId int,
+@TypeCode nvarchar(50),
+@Filter nvarchar(max),
+@OrderBy nvarchar(500),
+@ReturnLimit int = 0,
+@pageNum int = 0,
+@PageSize int = 0,
+@RecordCount int = 0,
+@TypeCodeLang nvarchar(50) = '',
+@Lang nvarchar(10) = ''
+
+AS
+begin
+
+	IF @pageSize = 0 BEGIN
+		-- NO PAGING
+		   exec {databaseOwner}[{objectQualifier}NBrightBuy_GetListLangNoPage] @PortalId,@ModuleId,@TypeCode,@Filter,@OrderBy, @ReturnLimit ,@TypeCodeLang,@Lang
+	END ELSE BEGIN
+		-- PAGING
+		   exec {databaseOwner}[{objectQualifier}NBrightBuy_GetListLangPage] @PortalId,@ModuleId,@TypeCode,@Filter,@OrderBy, @ReturnLimit ,@pageNum,@PageSize,@RecordCount,@TypeCodeLang,@Lang
+	END
+end
+GO
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUsers]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUsers]
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUsers]
+@PortalId int, 
+@FilterText nvarchar(max),
+@ReturnLimit int = 0,
+@pageNum int = 0,
+@PageSize int = 0,
+@RecordCount int = 0
+AS
+begin
+
+		DECLARE @recct int 
+		SET @recct = @RecordCount
+		
+		DECLARE @lbound int, @ubound int;
+
+		SET @pageNum = ABS(@pageNum);
+		SET @pageSize = ABS(@pageSize);
+		IF @pageNum < 1 SET @pageNum = 1;
+		IF @pageSize < 1 SET @pageSize = 1;
+
+		SET @lbound = ((@pageNum - 1) * @pageSize);;
+		SET @ubound = @lbound + (@pageSize + 1);
+		IF @lbound >= @recct BEGIN 
+		   SET @ubound = @recct + 1 ;
+		   SET @lbound = @ubound - (@pageSize + 1);  -- return the last page of records if no records would be on the specified page '
+		END ;
+
+
+		with [UsersBy] as (
+			SELECT 
+			U.UserId as ItemId,
+			U.PortalId,
+			'<genxml><textbox>' +
+			'<username>' + U.Username + '</username>' +
+			'<firstname>' + U.FirstName   + '</firstname>' +
+			'<lastname>' + U.LastName  + '</lastname>' +
+			'<displayname>' + U.DisplayName  + '</displayname>' +
+			'<email>' + U.Email  + '</email>' +
+			'<authorised>' + convert(nvarchar(1),U.Authorised)  + '</authorised>' +
+			'<updatepassword>' + convert(nvarchar(1),U.UpdatePassword)  + '</updatepassword>' +
+			'<isdeleted>' + convert(nvarchar(1),U.IsDeleted)  + '</isdeleted>' +
+			'</textbox></genxml>' as XMLData,
+					
+			ROW_NUMBER() OVER (ORDER BY Email ASC) AS ROWID
+				FROM    {databaseOwner}{objectQualifier}vw_Users U
+				WHERE U.PortalId = @PortalId 
+					AND (LOWER(U.Username) LIKE LOWER(@FilterText) 
+					OR LOWER(U.FirstName) LIKE LOWER(@FilterText) 
+					OR LOWER(U.LastName) LIKE LOWER(@FilterText) 
+					OR LOWER(U.DisplayName) LIKE LOWER(@FilterText) 
+					OR LOWER(U.Email) LIKE LOWER(@FilterText))
+		)
+		select ItemId,PortalId,XMLData  
+			from [UsersBy]
+			where ROWID > @lbound AND ROWID < @ubound 
+
+
+
+end
+
+GO
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUsersCount]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUsersCount]
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUsersCount]
+@PortalId int, 
+@FilterText nvarchar(max)
+AS
+begin
+
+	SELECT count(U.UserId)
+	FROM    {databaseOwner}{objectQualifier}vw_Users U
+	WHERE U.PortalId = @PortalId 
+			AND (LOWER(U.Username) LIKE LOWER(@FilterText) 
+			OR LOWER(U.FirstName) LIKE LOWER(@FilterText) 
+			OR LOWER(U.LastName) LIKE LOWER(@FilterText) 
+			OR LOWER(U.DisplayName) LIKE LOWER(@FilterText) 
+			OR LOWER(U.Email) LIKE LOWER(@FilterText))
+end
+
+
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetData]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetData]
+GO
+
+CREATE     PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetData]
+@ItemID int
+AS
+begin
+	select
+	[ItemId]
+	,[PortalId]
+	,[ModuleId]
+	,[TypeCode]
+	,[XMLData]
+	,[GUIDKey]
+	,[ModifiedDate]
+	,[TextData]
+	,[XrefItemId]
+	,[ParentItemId]
+	,[Lang] 
+	,[UserId]
+	from {databaseOwner}[{objectQualifier}NBrightBuy] as NB1
+	where NB1.ItemId = @ItemId
+end
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetDataLang]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetDataLang]
+GO
+
+CREATE     PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetDataLang]
+@ParentItemId int,
+@Lang nvarchar(10)
+AS
+begin
+
+	declare @typecodelang nvarchar(max)
+	set @typecodelang = (select typecode from {databaseOwner}[{objectQualifier}NBrightBuy] where itemid = @ParentItemId) + 'LANG'
+
+	select
+	[ItemId]
+	,[PortalId]
+	,[ModuleId]
+	,[TypeCode]
+	,[XMLData]
+	,[GUIDKey]
+	,[ModifiedDate]
+	,[TextData]
+	,[XrefItemId]
+	,[ParentItemId]
+	,[Lang] 
+	,[UserId]
+	from {databaseOwner}[{objectQualifier}NBrightBuy] as NB1
+	where NB1.ParentItemId = @ParentItemId and NB1.Lang = @Lang and TypeCode = @typecodelang
+end
+GO
+
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUserProductClient]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUserProductClient]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUserProductClient]
+@PortalId int, 
+@ProductId int
+AS
+begin
+
+SELECT 
+U.UserId as ItemId,
+U.PortalId,
+'<genxml><textbox>' +
+'<username>' + U.Username + '</username>' +
+'<firstname>' + U.FirstName   + '</firstname>' +
+'<lastname>' + U.LastName  + '</lastname>' +
+'<displayname>' + U.DisplayName  + '</displayname>' +
+'<email>' + U.Email  + '</email>' +
+'<authorised>' + convert(nvarchar(1),U.Authorised)  + '</authorised>' +
+'<updatepassword>' + convert(nvarchar(1),U.UpdatePassword)  + '</updatepassword>' +
+'<isdeleted>' + convert(nvarchar(1),U.IsDeleted)  + '</isdeleted>' +
+'</textbox></genxml>' as XMLData			
+	FROM    {databaseOwner}{objectQualifier}vw_Users U
+	WHERE U.PortalId = @PortalId 
+	and U.UserId IN (select userid from {databaseOwner}[{objectQualifier}NBrightBuy] where portalid = @PortalId and typecode = 'USERPRDXREF' and parentitemid = @ProductId)
+
+end
+
+GO
+
+
+-------------------------------------------------------------------------------
+----------         Triggers for the index table                    ------------
+-------------------------------------------------------------------------------
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}Trigger_NBrightBuyIdx]') and OBJECTPROPERTY(id, N'IsTrigger') = 1)
+DROP TRIGGER {databaseOwner}[{objectQualifier}Trigger_NBrightBuyIdx]
+GO
+
+CREATE TRIGGER {databaseOwner}[{objectQualifier}Trigger_NBrightBuyIdx]
+  ON {databaseOwner}[{objectQualifier}NBrightBuy]
+ AFTER INSERT, UPDATE, DELETE
+ AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+	DECLARE @ParentItemId int
+	DECLARE @ItemId int	
+	DECLARE @Lang nvarchar(10)
+	DECLARE @insertItemId int
+	DECLARE @ProductRef nvarchar(max)
+	DECLARE @ProductName nvarchar(max)
+	DECLARE @Manufacturer nvarchar(max)
+	DECLARE @Summary nvarchar(max)
+	DECLARE @SEOName nvarchar(max)
+	DECLARE @TagWords nvarchar(max)
+	DECLARE @SEOPageTitle nvarchar(max)
+	DECLARE @FromPrice nvarchar(max)
+	DECLARE @Qty nvarchar(max)
+	DECLARE @TypeCode nvarchar(max)
+	DECLARE @Visible bit
+	DECLARE @chkarchived nvarchar(max)
+	DECLARE @chkisdeleted nvarchar(max)
+	DECLARE @chkishidden nvarchar(max)
+	
+	-- delete all idx records for item
+	IF EXISTS(SELECT * FROM DELETED)
+	BEGIN
+		DECLARE deleted_cursor CURSOR LOCAL FOR
+		SELECT ItemId,Lang,TypeCode,ParentItemId FROM DELETED
+
+		OPEN deleted_cursor
+		FETCH NEXT FROM deleted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
+		WHILE @@FETCH_STATUS = 0
+		BEGIN
+
+			delete from {databaseOwner}[{objectQualifier}NBrightBuyIdx] where ItemId = @itemId
+			and itemid not in (select ItemId FROM inserted where TypeCode = 'PRD')
+
+			if (ISNULL(@Lang,'') = '')
+			BEGIN
+				delete from {databaseOwner}[{objectQualifier}NBrightBuyLang] where ParentItemId = @ItemId
+			END
+			ELSE
+			BEGIN
+				delete from {databaseOwner}[{objectQualifier}NBrightBuyLang] where ParentItemId = @ParentItemId and Lang = @Lang
+			END
+
+		FETCH NEXT FROM deleted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
+		END
+
+		CLOSE deleted_cursor;
+		DEALLOCATE deleted_cursor;
+
+	END
+
+	DECLARE inserted_cursor CURSOR LOCAL FOR
+	SELECT ItemId, Lang, TypeCode, ParentItemId FROM inserted 
+
+	OPEN inserted_cursor
+	FETCH NEXT FROM inserted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+
+		-----------------------------------------------------------------------
+		---- UPDATE NBrightBuyLang table ----
+
+		DECLARE @XMLData1 as xml
+		DECLARE @XMLData2 as xml
+		DECLARE @LangLang nvarchar(10)
+
+		IF ISNULL(@Lang,'') = ''
+		BEGIN
+			-- Update All language records.
+
+			select @XMLData1 = XMLData from {databaseOwner}[{objectQualifier}NBrightBuy] where ItemId = @ItemId
+
+			DECLARE idxData2 CURSOR LOCAL FOR
+			select Lang, XMLData from {databaseOwner}[{objectQualifier}NBrightBuy] where ParentItemId = @ItemId and ISNULL(Lang,'') != ''
+
+			OPEN idxData2
+			FETCH NEXT FROM idxData2 INTO @LangLang, @XMLData2
+			WHILE @@FETCH_STATUS = 0
+			BEGIN
+				if Exists(Select ParentItemId from {databaseOwner}[{objectQualifier}NBrightBuyLang] where ParentItemId = @ItemId and Lang = @LangLang)
+				BEGIN
+					update {databaseOwner}[{objectQualifier}NBrightBuyLang] Set XMLData = {databaseOwner}[{objectQualifier}NBrightBuyLangMerge](@XMLData2,@XMLData1)
+					where ParentItemId = @ItemId and Lang = @LangLang 
+				END 
+				ELSE
+				BEGIN
+					insert into {databaseOwner}[{objectQualifier}NBrightBuyLang] (ParentItemId, Lang, XMLData) values (@ItemId, @LangLang, {databaseOwner}[{objectQualifier}NBrightBuyLangMerge](@XMLData2,@XMLData1))
+				END
+			FETCH NEXT FROM idxData2 INTO @LangLang, @XMLData2
+			END
+
+			CLOSE idxData2;
+			DEALLOCATE idxData2;
+
+		END
+		ELSE
+		BEGIN
+			select @XMLData1 = XMLData from {databaseOwner}[{objectQualifier}NBrightBuy] where ItemId = @ParentItemId
+			select @XMLData2 = XMLData from {databaseOwner}[{objectQualifier}NBrightBuy] where ParentItemId = @ParentItemId and Lang = @Lang 
+
+			-- Update single Language record
+			if Exists(Select ParentItemId from {databaseOwner}[{objectQualifier}NBrightBuyLang] where ParentItemId = @ParentItemId and Lang = @Lang)
+			BEGIN
+				update {databaseOwner}[{objectQualifier}NBrightBuyLang] Set XMLData = {databaseOwner}[{objectQualifier}NBrightBuyLangMerge](@XMLData2,@XMLData1)
+				where ParentItemId = @ParentItemId and Lang = @Lang 
+			END 
+			ELSE
+			BEGIN
+				insert into {databaseOwner}[{objectQualifier}NBrightBuyLang] (ParentItemId, Lang, XMLData) values (@ParentItemId, @Lang, {databaseOwner}[{objectQualifier}NBrightBuyLangMerge](@XMLData2,@XMLData1))
+			END
+		END
+
+
+		-----------------------------------------------------------------------
+
+		if (@TypeCode = 'PRDLANG') SET @ItemId = @ParentItemId  -- If we're just updating a langauge record we still need to process all the records to get the full index.
+
+		-- rebuild index records for item.
+
+		DECLARE idxData CURSOR LOCAL FOR
+		select NB1.[ItemId]  
+		,NB1.[XMLData].value('(genxml/textbox/txtproductref)[1]', 'nvarchar(150)') as ProductRef
+		,NB2.[XMLData].value('(genxml/textbox/txtproductname)[1]', 'nvarchar(150)') as ProductName
+		,NB2.[XMLData].value('(genxml/textbox/txtmanufacturer)[1]', 'nvarchar(150)') as Manufacturer
+		,NB2.[XMLData].value('(genxml/textbox/txtsummary)[1]', 'nvarchar(255)') as Summary
+		,NB2.[XMLData].value('(genxml/textbox/txtseoname)[1]', 'nvarchar(255)') as SEOName
+		,NB2.[XMLData].value('(genxml/textbox/txttagwords)[1]', 'nvarchar(255)') as TagWords
+		,NB2.[XMLData].value('(genxml/textbox/txtseopagetitle)[1]', 'nvarchar(255)') as SEOPageTitle
+		,NB1.[XMLData].value('(genxml/models/genxml/textbox/txtunitcost[not(number((.)[1]) > number((../../../genxml/textbox/txtunitcost)[1]))][1])[1]', 'decimal(10,2)') as FromPrice
+		,NB1.[XMLData].value('(genxml/models/genxml/textbox/txtqtyremaining[not(number((.)[1]) > number((../../../genxml/textbox/txtqtyremaining)[1]))][1])[1]', 'int') as Qty
+		,NB1.TypeCode
+		,NB2.Lang 
+		,NB1.[XMLData].value('(genxml/checkbox/chkarchived)[1]', 'nvarchar(5)') as chkarchived
+		,NB1.[XMLData].value('(genxml/checkbox/chkisdeleted)[1]', 'nvarchar(5)') as chkisdeleted
+		,NB1.[XMLData].value('(genxml/checkbox/chkishidden)[1]', 'nvarchar(5)') as chkishidden	
+		FROM {databaseOwner}[{objectQualifier}NBrightBuy] as NB1 
+		left join {databaseOwner}[{objectQualifier}NBrightBuy] as NB2 on NB2.ParentItemId = NB1.ItemId and NB2.TypeCode = 'PRDLANG'
+		where NB1.typecode = 'PRD' and NB1.ItemID = @ItemID
+
+
+		OPEN idxData
+		FETCH NEXT FROM idxData INTO @insertItemId,@ProductRef,@ProductName,@Manufacturer,@Summary,@SEOName,@TagWords,@SEOPageTitle,@FromPrice,@Qty,@TypeCode,@Lang,@chkarchived,@chkisdeleted,@chkishidden
+		WHILE @@FETCH_STATUS = 0
+		BEGIN
+	
+			SET @Visible = 1
+			if (LOWER(@chkarchived) = 'true' or LOWER(@chkisdeleted) = 'true' or LOWER(@chkishidden) = 'true')
+			BEGIN
+				SET @Visible = 0
+			END
+
+			IF EXISTS (select ItemId from {databaseOwner}[{objectQualifier}NBrightBuyIdx] where ItemId = @ItemID and Lang = @Lang)
+			BEGIN
+		
+				UPDATE {databaseOwner}[{objectQualifier}NBrightBuyIdx]	
+				SET ProductRef = @ProductRef
+				,ProductName = @ProductName
+				,Manufacturer = @Manufacturer
+				,Summary = @Summary
+				,SEOName = @SEOName
+				,TagWords = @TagWords
+				,SEOPageTitle = @SEOPageTitle
+				,FromPrice = @FromPrice
+				,Qty = @Qty
+				,TypeCode = @TypeCode
+				,Visible = @Visible
+				where ItemId = @ItemID and Lang = @Lang
+
+			END
+			ELSE
+			BEGIN
+				IF NOT @Lang IS NULL  -- we don't want to insert record unless whe have the full key.
+				BEGIN
+
+					INSERT {databaseOwner}[{objectQualifier}NBrightBuyIdx]	
+					(ItemId,ProductRef,ProductName,Manufacturer,Summary,SEOName,TagWords,SEOPageTitle,FromPrice,Qty,TypeCode,Lang,Visible)
+					VALUES
+					(@ItemId,@ProductRef,@ProductName,@Manufacturer,@Summary,@SEOName,@TagWords,@SEOPageTitle,@FromPrice,@Qty,@TypeCode,@Lang,@Visible)
+		
+				END
+			END
+
+		FETCH NEXT FROM idxData INTO @insertItemId,@ProductRef,@ProductName,@Manufacturer,@Summary,@SEOName,@TagWords,@SEOPageTitle,@FromPrice,@Qty,@TypeCode,@Lang,@chkarchived,@chkisdeleted,@chkishidden
+		END
+
+		CLOSE idxData;
+		DEALLOCATE idxData;
+	
+	FETCH NEXT FROM inserted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
+	END
+
+	CLOSE inserted_cursor;
+	DEALLOCATE inserted_cursor;
+	
+END
+GO
+
+
+
+

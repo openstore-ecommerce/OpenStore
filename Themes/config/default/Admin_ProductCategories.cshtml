@@ -1,0 +1,28 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var prdData = new ProductData(info.ItemID, info.PortalId, info.Lang);
+}
+
+@foreach (var nbiCat in prdData.GetCategories("cat"))
+{
+    var displaydefault = "";
+    if (nbiCat.isdefault)
+    {
+        displaydefault = "-check";
+    }
+
+    <tr>
+        <td style="white-space:nowrap">@nbiCat.categoryname</td>
+        <td>@nbiCat.breadcrumb</td>
+        <td><a class="defaultcategory" categoryid="@nbiCat.categoryid" itemid="@info.ItemID"><i class="fa fa@(displaydefault)-circle fa-2x"></i></a></td>
+        <td><a class="removecategory" categoryid="@nbiCat.categoryid"  itemid="@info.ItemID">@ResourceKey("General.cmdRemoveIcon")</a></td>
+    </tr>
+}

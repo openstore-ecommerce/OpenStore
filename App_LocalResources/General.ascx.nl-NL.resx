@@ -1,0 +1,990 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountUpdate.Text">
+    <value xml:space="preserve">Gebruiker Account Update</value>
+  </data>
+  <data name="AccountUpdateMessage.Text">
+    <value xml:space="preserve">De volgende website gebruiker accountprofiel is bijgewerkt. Wijzig uw records indien nodig.</value>
+  </data>
+  <data name="Actions.Text">
+    <value xml:space="preserve">Acties</value>
+  </data>
+  <data name="ActivateStock.Text">
+    <value xml:space="preserve">Activeren van voorraad</value>
+  </data>
+  <data name="Active.Text">
+    <value xml:space="preserve">Actieve</value>
+  </data>
+  <data name="Address.Text">
+    <value xml:space="preserve">Adres</value>
+  </data>
+  <data name="AddressBook.Text">
+    <value xml:space="preserve">Adresboek</value>
+  </data>
+  <data name="AddressEditor.Text">
+    <value xml:space="preserve">Adres Editor</value>
+  </data>
+  <data name="AdminPin.Text">
+    <value xml:space="preserve">Beheerder PIN</value>
+  </data>
+  <data name="Amount.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Bedrag</value>
+  </data>
+  <data name="Any.Text">
+    <value xml:space="preserve">Elke</value>
+  </data>
+  <data name="Archived.Text">
+    <value xml:space="preserve">Gearchiveerd</value>
+  </data>
+  <data name="Att.Text">
+    <value xml:space="preserve">ATT</value>
+  </data>
+  <data name="Authorised.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Toegestaan</value>
+  </data>
+  <data name="availabledate.Text">
+    <value xml:space="preserve">Beschikbare datum</value>
+  </data>
+  <data name="Barcode.Text">
+    <value xml:space="preserve">Barcode</value>
+  </data>
+  <data name="BillTo.Text">
+    <value xml:space="preserve">Stuur factuur naar</value>
+  </data>
+  <data name="Breadcrumb.Text">
+    <value xml:space="preserve">Kruimelpad</value>
+  </data>
+  <data name="Catalogue.Text">
+    <value xml:space="preserve">Catalogus</value>
+  </data>
+  <data name="Categories.Text">
+    <value xml:space="preserve">Categorieën</value>
+  </data>
+  <data name="Category.Text">
+    <value xml:space="preserve">Categorie</value>
+  </data>
+  <data name="ChooseAddress.Text">
+    <value xml:space="preserve">Een opgeslagen adres invoegen</value>
+  </data>
+  <data name="cmdAdd.Text">
+    <value xml:space="preserve">Toevoegen</value>
+  </data>
+  <data name="cmdAdd.ToolTip">
+    <value xml:space="preserve">Nieuwe toevoegen</value>
+  </data>
+  <data name="cmdAddButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Nieuwe toevoegen" class="fa fa-plus-circle fa-fw fa-lg"&gt;&lt;/i&gt; Toevoegen</value>
+  </data>
+  <data name="cmdAddIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Nieuwe toevoegen" class="fa fa-plus-circle fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdAddProducts.Text">
+    <value xml:space="preserve">Producten toevoegen</value>
+  </data>
+  <data name="cmdCancel.Text">
+    <value xml:space="preserve">Annuleren</value>
+  </data>
+  <data name="cmdCancel.ToolTip">
+    <value xml:space="preserve">Annuleren</value>
+  </data>
+  <data name="cmdCancelButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Annuleren" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt;Annuleren</value>
+  </data>
+  <data name="cmdCancelSelect.Text">
+    <value xml:space="preserve">Selecteer annuleren</value>
+  </data>
+  <data name="cmdClear.Text">
+    <value xml:space="preserve">Duidelijk</value>
+  </data>
+  <data name="cmdClear.ToolTip">
+    <value xml:space="preserve">Gegevens wissen</value>
+  </data>
+  <data name="cmdDelete.confirm">
+    <value xml:space="preserve">Item verwijderen?</value>
+  </data>
+  <data name="cmdDelete.Text">
+    <value xml:space="preserve">Verwijderen</value>
+  </data>
+  <data name="cmdDelete.ToolTip">
+    <value xml:space="preserve">Verwijderen</value>
+  </data>
+  <data name="cmdDeleteButton.confirm">
+    <value xml:space="preserve">Record verwijderen?</value>
+  </data>
+  <data name="cmdDeleteButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Verwijderen" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt;Verwijderen</value>
+  </data>
+  <data name="cmdDeleteFile.commandname">
+    <value xml:space="preserve">DeleteFile</value>
+  </data>
+  <data name="cmdDeleteFile.confirm">
+    <value xml:space="preserve">Bestand verwijderen?</value>
+  </data>
+  <data name="cmdDeleteFile.ToolTip">
+    <value xml:space="preserve">Bestand verwijderen</value>
+  </data>
+  <data name="cmdDeleteIcon.confirm">
+    <value xml:space="preserve">Item verwijderen?</value>
+  </data>
+  <data name="cmdDeleteIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Bestand" class="fa fa-minus-square fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdDeleteLang.confirm">
+    <value xml:space="preserve">Item taal Record verwijderen?</value>
+  </data>
+  <data name="cmdDeleteLang.Text">
+    <value xml:space="preserve">Taal verwijderen</value>
+  </data>
+  <data name="cmdDeleteLang.ToolTip">
+    <value xml:space="preserve">Langauge Record verwijderen</value>
+  </data>
+  <data name="cmdDownloadButton.Text">
+    <value xml:space="preserve">&lt;i title="Download" class="fa fa-download fa-fw fa-lg"&gt;&lt;/i&gt; downloaden</value>
+  </data>
+  <data name="cmdEdit.Text">
+    <value xml:space="preserve">Bewerken</value>
+  </data>
+  <data name="cmdEdit.ToolTip">
+    <value xml:space="preserve">Bewerken</value>
+  </data>
+  <data name="cmdEditButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Bewerken" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt;Bewerken</value>
+  </data>
+  <data name="cmdEditIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Bewerken" class="fa fa-edit fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdExit.confirm">
+    <value xml:space="preserve">Afsluiten?</value>
+  </data>
+  <data name="cmdExit.Text">
+    <value xml:space="preserve">Uitgang</value>
+  </data>
+  <data name="cmdExit.ToolTip">
+    <value xml:space="preserve">Uitgang</value>
+  </data>
+  <data name="cmdExport.Text">
+    <value xml:space="preserve">Exporteren</value>
+  </data>
+  <data name="cmdExport.ToolTip">
+    <value xml:space="preserve">Module gegevens exporteren</value>
+  </data>
+  <data name="cmdFolder.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Map</value>
+  </data>
+  <data name="cmdFolderIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Open" class="fa fa-folder fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdMove.Text">
+    <value xml:space="preserve">Verplaatsen</value>
+  </data>
+  <data name="cmdMyAddressBookIcon.Text" xml:space="preserve">
+    <value>&lt;i class="fa fa-home fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdMyAccount.Text" xml:space="preserve">
+    <value>&lt;i class="fa fa-user fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdMyOrdersIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Mijn bestellingen" class="fa fa-credit-card fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdOk.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">OK</value>
+  </data>
+  <data name="cmdRemove.Text">
+    <value xml:space="preserve">Verwijderen</value>
+  </data>
+  <data name="cmdRemoveButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Verwijderen" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt;Verwijderen</value>
+  </data>
+  <data name="cmdRemoveIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Verwijderen" class="fa fa-minus-square fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdReset.Text">
+    <value xml:space="preserve">Reset</value>
+  </data>
+  <data name="cmdReset.ToolTip">
+    <value xml:space="preserve">Reset gegevens</value>
+  </data>
+  <data name="cmdResetButton.Text">
+    <value xml:space="preserve">&lt;i title="Reset" class="fa fa-refresh fa-fw fa-lg"&gt;&lt;/i&gt; opnieuw instellen</value>
+  </data>
+  <data name="cmdResetIcon.Text">
+    <value xml:space="preserve">&lt;i title="Reset" class="fa fa-refresh fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdResetSearch.Text">
+    <value xml:space="preserve">Reset</value>
+  </data>
+  <data name="cmdResetSearch.ToolTip">
+    <value xml:space="preserve">Reset zoekcriteria</value>
+  </data>
+  <data name="cmdReturn.Text">
+    <value xml:space="preserve">Terugkeren</value>
+  </data>
+  <data name="cmdReturn.ToolTip">
+    <value xml:space="preserve">Terugkeren</value>
+  </data>
+  <data name="cmdReturnButton.Text">
+    <value xml:space="preserve">&lt;i title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; retourneren</value>
+  </data>
+  <data name="cmdReturnIcon.Text">
+    <value xml:space="preserve">&lt;i title="Return" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; retourneren</value>
+  </data>
+  <data name="cmdSave.Text">
+    <value xml:space="preserve">Opslaan</value>
+  </data>
+  <data name="cmdSave.ToolTip">
+    <value xml:space="preserve">Opslaan</value>
+  </data>
+  <data name="cmdSaveAsButton.confirm">
+    <value xml:space="preserve">Opslaan als een nieuwe record?</value>
+  </data>
+  <data name="cmdSaveAsButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Opslaan als" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt;Opslaan als</value>
+  </data>
+  <data name="cmdSaveButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Opslaan" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt;Opslaan</value>
+  </data>
+  <data name="cmdSaveExit.confirm" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Opslaan en afsluiten?</value>
+  </data>
+  <data name="cmdSaveExit.Text">
+    <value xml:space="preserve">Afsluiten</value>
+  </data>
+  <data name="cmdSaveExit.ToolTip">
+    <value xml:space="preserve">Afsluiten</value>
+  </data>
+  <data name="cmdSaveIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Opslaan" class="fa fa-save fa-fw fa-2x"&gt;&lt;/i&gt;Opslaan</value>
+  </data>
+  <data name="cmdSearch.Text">
+    <value xml:space="preserve">Zoeken</value>
+  </data>
+  <data name="cmdSearch.ToolTip">
+    <value xml:space="preserve">Zoeken</value>
+  </data>
+  <data name="cmdSearchButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Zoeken" class="fa fa-search fa-fw fa-lg"&gt;&lt;/i&gt;Zoeken</value>
+  </data>
+  <data name="cmdSearchIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Zoeken" class="fa fa-search fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdSelect.Text">
+    <value xml:space="preserve">Selecteer</value>
+  </data>
+  <data name="cmdSelect.ToolTip">
+    <value xml:space="preserve">Selecteer</value>
+  </data>
+  <data name="cmdSort.Text">
+    <value xml:space="preserve">Sorteren</value>
+  </data>
+  <data name="cmdSort.ToolTip">
+    <value xml:space="preserve">Sorteren</value>
+  </data>
+  <data name="cmdUpdateExit.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Opslaan uitgang</value>
+  </data>
+  <data name="cmdUpdateExit.ToolTip" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Opslaan uitgang</value>
+  </data>
+  <data name="cmdUploadFile.commandname">
+    <value xml:space="preserve">uploadfile</value>
+  </data>
+  <data name="cmdUploadFile.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Uploaden</value>
+  </data>
+  <data name="cmdUploadFile.ToolTip">
+    <value xml:space="preserve">Bestand uploaden</value>
+  </data>
+  <data name="cmdUploadFileButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Uploaden" class="fa fa-upload fa-fw fa-lg"&gt;&lt;/i&gt; Uploaden</value>
+  </data>
+  <data name="Code.Text">
+    <value xml:space="preserve">Code</value>
+  </data>
+  <data name="Confirm.Text">
+    <value xml:space="preserve">Weet je het zeker?</value>
+  </data>
+  <data name="Copy.Text">
+    <value xml:space="preserve">Kopie</value>
+  </data>
+  <data name="copyorderto.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Kopiëren van deze bestelling te</value>
+  </data>
+  <data name="CopyTo.Text">
+    <value xml:space="preserve">Kopiëren naar</value>
+  </data>
+  <data name="CopyToButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Kopiëren naar" class="fa fa-copy fa-fw fa-lg"&gt;&lt;/i&gt;Kopiëren naar</value>
+  </data>
+  <data name="CopyToIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Kopiëren" class="fa fa-copy fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="Cost.Text">
+    <value xml:space="preserve">Kosten</value>
+  </data>
+  <data name="creditcardpayment.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Credit card</value>
+  </data>
+  <data name="Customer.Text">
+    <value xml:space="preserve">Klant</value>
+  </data>
+  <data name="DataXML.Text">
+    <value xml:space="preserve">XML-gegevensbestand</value>
+  </data>
+  <data name="Dealer.Text">
+    <value xml:space="preserve">Dealer</value>
+  </data>
+  <data name="DebugMessage.Text">
+    <value xml:space="preserve">Debug modus is ingeschakeld - Caching is uitgeschakeld</value>
+  </data>
+  <data name="DebugMode.Text">
+    <value xml:space="preserve">Debug modus</value>
+  </data>
+  <data name="Default.Text">
+    <value xml:space="preserve">Standaard</value>
+  </data>
+  <data name="delay.Text">
+    <value xml:space="preserve">Vertraging</value>
+  </data>
+  <data name="Delete.Text">
+    <value xml:space="preserve">Verwijderen</value>
+  </data>
+  <data name="Deleted.Text">
+    <value xml:space="preserve">Verwijderd</value>
+  </data>
+  <data name="Depth.Text">
+    <value xml:space="preserve">Diepte</value>
+  </data>
+  <data name="Description.Text">
+    <value xml:space="preserve">Beschrijving</value>
+  </data>
+  <data name="Detail.Text">
+    <value xml:space="preserve">Detail</value>
+  </data>
+  <data name="Details.Text">
+    <value xml:space="preserve">Details</value>
+  </data>
+  <data name="Disable.Text">
+    <value xml:space="preserve">Uitschakelen</value>
+  </data>
+  <data name="Discount.Text">
+    <value xml:space="preserve">Korting</value>
+  </data>
+  <data name="Documents.Text">
+    <value xml:space="preserve">Documenten</value>
+  </data>
+  <data name="DocumentZip.Text">
+    <value xml:space="preserve">Document Zip-bestand</value>
+  </data>
+  <data name="Download.Text">
+    <value xml:space="preserve">Downloaden</value>
+  </data>
+  <data name="Downloads.Text">
+    <value xml:space="preserve">Downloads</value>
+  </data>
+  <data name="Editor.Text">
+    <value xml:space="preserve">Redacteur</value>
+  </data>
+  <data name="Email.Text">
+    <value xml:space="preserve">E-mail</value>
+  </data>
+  <data name="Enter.Text">
+    <value xml:space="preserve">Voer in</value>
+  </data>
+  <data name="Export.confirm">
+    <value xml:space="preserve">Geselecteerde gegevens exporteren?</value>
+  </data>
+  <data name="Export.Text">
+    <value xml:space="preserve">Exporteren</value>
+  </data>
+  <data name="ExportDocuments.confirm">
+    <value xml:space="preserve">Documenten exporteren?</value>
+  </data>
+  <data name="ExportDocuments.Text">
+    <value xml:space="preserve">Exportdocumenten</value>
+  </data>
+  <data name="ExportImages.confirm">
+    <value xml:space="preserve">Afbeeldingen exporteren? </value>
+  </data>
+  <data name="ExportImages.Text">
+    <value xml:space="preserve">Afbeeldingen exporteren</value>
+  </data>
+  <data name="Extra.Text">
+    <value xml:space="preserve">Extra</value>
+  </data>
+  <data name="ExtraCost.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Extra kosten</value>
+  </data>
+  <data name="FileName.Text">
+    <value xml:space="preserve">Bestandsnaam</value>
+  </data>
+  <data name="Find.Text">
+    <value xml:space="preserve">Zoeken</value>
+  </data>
+  <data name="From.Text">
+    <value xml:space="preserve">Van</value>
+  </data>
+  <data name="Height.Text">
+    <value xml:space="preserve">Hoogte</value>
+  </data>
+  <data name="Hidden.Text">
+    <value xml:space="preserve">Verborgen</value>
+  </data>
+  <data name="Image.Text">
+    <value xml:space="preserve">Afbeelding</value>
+  </data>
+  <data name="Images.Text">
+    <value xml:space="preserve">Afbeeldingen</value>
+  </data>
+  <data name="ImageZip.Text">
+    <value xml:space="preserve">Afbeelding Zip-bestand</value>
+  </data>
+  <data name="Import.confirm">
+    <value xml:space="preserve">Gegevens importeren?</value>
+  </data>
+  <data name="Import.Text">
+    <value xml:space="preserve">Importeren</value>
+  </data>
+  <data name="Invoice.Text">
+    <value xml:space="preserve">Factuur</value>
+  </data>
+  <data name="Item.Text">
+    <value xml:space="preserve">Item</value>
+  </data>
+  <data name="Keywords.Text">
+    <value xml:space="preserve">Trefwoorden</value>
+  </data>
+  <data name="lblAddress1.Text">
+    <value xml:space="preserve">Adresregel 1</value>
+  </data>
+  <data name="lblAddress2.Text">
+    <value xml:space="preserve">Adresregel 2</value>
+  </data>
+  <data name="lblcartlist.Text">
+    <value xml:space="preserve">Artikelen in winkelwagen</value>
+  </data>
+  <data name="lblCity.Text">
+    <value xml:space="preserve">Plaats</value>
+  </data>
+  <data name="lblcollectionoptions.Text">
+    <value xml:space="preserve">Mogelijkheden voor de verzameling</value>
+  </data>
+  <data name="lblCompany.Text">
+    <value xml:space="preserve">Bedrijf</value>
+  </data>
+  <data name="lblCountry.Text">
+    <value xml:space="preserve">Land</value>
+  </data>
+  <data name="lblFirstName.Text">
+    <value xml:space="preserve">Voornaam</value>
+  </data>
+  <data name="lblLastName.Text">
+    <value xml:space="preserve">Achternaam</value>
+  </data>
+  <data name="lblordersummary.Text">
+    <value xml:space="preserve">Overzicht van bestelling</value>
+  </data>
+  <data name="lblPhone.Text">
+    <value xml:space="preserve">Telefoon</value>
+  </data>
+  <data name="lblPostCode.Text">
+    <value xml:space="preserve">Postcode</value>
+  </data>
+  <data name="lblRegion.Text">
+    <value xml:space="preserve">Streek</value>
+  </data>
+  <data name="lblshippingoptions.Text">
+    <value xml:space="preserve">Verzendopties</value>
+  </data>
+  <data name="lblspecialinstructions.Text">
+    <value xml:space="preserve">Speciale instructies</value>
+  </data>
+  <data name="lblTotals.Text">
+    <value xml:space="preserve">Totaal</value>
+  </data>
+  <data name="lblTown.Text">
+    <value xml:space="preserve">Stad</value>
+  </data>
+  <data name="List.Text">
+    <value xml:space="preserve">Lijst</value>
+  </data>
+  <data name="manualpayment.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Handmatig</value>
+  </data>
+  <data name="Max.Text">
+    <value xml:space="preserve">Max</value>
+  </data>
+  <data name="Message.Text">
+    <value xml:space="preserve">Bericht</value>
+  </data>
+  <data name="Meta.Text">
+    <value xml:space="preserve">Meta</value>
+  </data>
+  <data name="Min.Text">
+    <value xml:space="preserve">Min</value>
+  </data>
+  <data name="Models.Text">
+    <value xml:space="preserve">Modellen</value>
+  </data>
+  <data name="modelstatus.Code">
+    <value xml:space="preserve">010,020,030,040,050</value>
+  </data>
+  <data name="modelstatus.Text">
+    <value xml:space="preserve">Beschikbaar, niet in voorraad, voorradig met leverancier, Pre-orde, speciale</value>
+  </data>
+  <data name="Modified.Text">
+    <value xml:space="preserve">Gewijzigd</value>
+  </data>
+  <data name="MoveTo.Text">
+    <value xml:space="preserve">Verplaatsen naar</value>
+  </data>
+  <data name="MoveToButton.Text">
+    <value xml:space="preserve">&lt;i title="Move To" class="fa fa-cut fa-fw fa-lg"&gt;&lt;/i&gt; verplaatsen naar</value>
+  </data>
+  <data name="Name.Text">
+    <value xml:space="preserve">Naam</value>
+  </data>
+  <data name="New.Text">
+    <value xml:space="preserve">Nieuw</value>
+  </data>
+  <data name="Number.Text">
+    <value xml:space="preserve">Nummer</value>
+  </data>
+  <data name="OptionalAddress.Text">
+    <value xml:space="preserve">Optionele Address</value>
+  </data>
+  <data name="Options.Text">
+    <value xml:space="preserve">Opties</value>
+  </data>
+  <data name="Order.Text">
+    <value xml:space="preserve">Bestelling</value>
+  </data>
+  <data name="OrderBy.Text">
+    <value xml:space="preserve">Sorteren</value>
+  </data>
+  <data name="OrderDate.Text">
+    <value xml:space="preserve">Datum</value>
+  </data>
+  <data name="OrderNumber.Text">
+    <value xml:space="preserve">Bestelling</value>
+  </data>
+  <data name="Orders.Text">
+    <value xml:space="preserve">Bestellingen</value>
+  </data>
+  <data name="orderstatus.Code">
+    <value xml:space="preserve">010,020,030,040,050,060,070,080,090,100,110</value>
+  </data>
+  <data name="orderstatus.Text">
+    <value xml:space="preserve">Onvolledige, wachten op Bank, geannuleerd, betaling OK, betaling niet geverifieerd, wachten op betaling, voorraad, wachten, wachten verzonden, gesloten, is gearchiveerd</value>
+  </data>
+  <data name="Parent.Text">
+    <value xml:space="preserve">Bovenliggende</value>
+  </data>
+  <data name="Password.Text">
+    <value xml:space="preserve">Wachtwoord</value>
+  </data>
+  <data name="Percentage.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Percentage</value>
+  </data>
+  <data name="Ph.Text">
+    <value xml:space="preserve">PH</value>
+  </data>
+  <data name="PickupAddress.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Ophaaladres</value>
+  </data>
+  <data name="PickupReference.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Verzamelen verwijzing</value>
+  </data>
+  <data name="Price.Text">
+    <value xml:space="preserve">Prijs</value>
+  </data>
+  <data name="PrimaryAddress.Text">
+    <value xml:space="preserve">Primaire adres</value>
+  </data>
+  <data name="PrimaryAddressMessage.Text">
+    <value xml:space="preserve">Controleer of dat het adres van uw primaire klant is altijd actuele en accurate.</value>
+  </data>
+  <data name="Processing.Text">
+    <value xml:space="preserve">Verwerking</value>
+  </data>
+  <data name="ProcessingDiv.Text">
+    <value xml:space="preserve">&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="Product.Text">
+    <value xml:space="preserve">Product</value>
+  </data>
+  <data name="Products.Text">
+    <value xml:space="preserve">Producten</value>
+  </data>
+  <data name="PromotionalCode.Text">
+    <value xml:space="preserve">Promotiecode</value>
+  </data>
+  <data name="Properties.Text">
+    <value xml:space="preserve">Eigenschappen</value>
+  </data>
+  <data name="Property.Text">
+    <value xml:space="preserve">Eigenschap</value>
+  </data>
+  <data name="Purchase.Text">
+    <value xml:space="preserve">Aankoop</value>
+  </data>
+  <data name="Qty.Text">
+    <value xml:space="preserve">Aantal</value>
+  </data>
+  <data name="Quantity.Text">
+    <value xml:space="preserve">Aantal</value>
+  </data>
+  <data name="Ref.Text">
+    <value xml:space="preserve">Ref</value>
+  </data>
+  <data name="Refresh.Text">
+    <value xml:space="preserve">Vernieuwen</value>
+  </data>
+  <data name="Register.Text">
+    <value xml:space="preserve">Registreren</value>
+  </data>
+  <data name="Related.Text">
+    <value xml:space="preserve">Gerelateerde</value>
+  </data>
+  <data name="Remove.Text">
+    <value xml:space="preserve">Verwijderen</value>
+  </data>
+  <data name="RemoveAll.confirm">
+    <value xml:space="preserve">Wees voorzichtig. U gaat verwijderen van al uw producten. Als u akkoord gaat, klikt u op valideren. Om terug te komen aan uw winkelwagentje, klikt u op Annuleren</value>
+  </data>
+  <data name="RemoveAll.Text">
+    <value xml:space="preserve">Verwijder alle</value>
+  </data>
+  <data name="RemoveAllButton.Text">
+    <value xml:space="preserve">&lt;i title="Remove All" class="fa fa-eraser fa-fw fa-lg"&gt;&lt;/i&gt; alles verwijderen</value>
+  </data>
+  <data name="RemovefromStore.confirm">
+    <value xml:space="preserve">Duidelijk alle geselecteerde gegevens uit de winkel. Weet je het zeker?</value>
+  </data>
+  <data name="RemovefromStore.Text">
+    <value xml:space="preserve">Uit archief verwijderen</value>
+  </data>
+  <data name="RequiredField.errormessage">
+    <value xml:space="preserve">Verplicht veld</value>
+  </data>
+  <data name="RequiredField.Text">
+    <value xml:space="preserve">Vereist</value>
+  </data>
+  <data name="Reset.Text">
+    <value xml:space="preserve">Reset</value>
+  </data>
+  <data name="SalePrice.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Sale prijs</value>
+  </data>
+  <data name="Sales.Text">
+    <value xml:space="preserve">Verkoop</value>
+  </data>
+  <data name="Save.Text">
+    <value xml:space="preserve">Opslaan</value>
+  </data>
+  <data name="SaveChanges.Text">
+    <value xml:space="preserve">Wijzigingen opslaan</value>
+  </data>
+  <data name="Search.Text">
+    <value xml:space="preserve">Zoeken</value>
+  </data>
+  <data name="SEO.Text">
+    <value xml:space="preserve">SEO</value>
+  </data>
+  <data name="Settings.Text">
+    <value xml:space="preserve">Instellingen</value>
+  </data>
+  <data name="Shipping.Text">
+    <value xml:space="preserve">Verzending</value>
+  </data>
+  <data name="shippingdate.Text">
+    <value xml:space="preserve">Verzenddatum</value>
+  </data>
+  <data name="shippingmethods.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Verzendmethoden</value>
+  </data>
+  <data name="ShipTo.Text">
+    <value xml:space="preserve">Verzenden naar</value>
+  </data>
+  <data name="status.Text">
+    <value xml:space="preserve">Status</value>
+  </data>
+  <data name="Stock.Text">
+    <value xml:space="preserve">Voorraad</value>
+  </data>
+  <data name="Submit.Text">
+    <value xml:space="preserve">Opslaan</value>
+  </data>
+  <data name="Subtotal.Text">
+    <value xml:space="preserve">Subtotaal</value>
+  </data>
+  <data name="Summary.Text">
+    <value xml:space="preserve">Samenvatting</value>
+  </data>
+  <data name="Support.Text">
+    <value xml:space="preserve">Ondersteuning</value>
+  </data>
+  <data name="Tags.Text">
+    <value xml:space="preserve">Tags</value>
+  </data>
+  <data name="Tax.Text">
+    <value xml:space="preserve">Belasting</value>
+  </data>
+  <data name="Taxno.Text">
+    <value xml:space="preserve">BTW Nummer</value>
+  </data>
+  <data name="TaxNumber.Text">
+    <value xml:space="preserve">BTW nummer</value>
+  </data>
+  <data name="Templates.Text">
+    <value xml:space="preserve">Sjablonen</value>
+  </data>
+  <data name="Title.Text">
+    <value xml:space="preserve">Titel</value>
+  </data>
+  <data name="To.Text">
+    <value xml:space="preserve">Aan</value>
+  </data>
+  <data name="Tools.Text">
+    <value xml:space="preserve">Hulpprogramma 's</value>
+  </data>
+  <data name="Total.Text">
+    <value xml:space="preserve">Totaal</value>
+  </data>
+  <data name="trackingcode.Text">
+    <value xml:space="preserve">Code voor het bijhouden</value>
+  </data>
+  <data name="Type.Text">
+    <value xml:space="preserve">Type</value>
+  </data>
+  <data name="Undo.Text">
+    <value xml:space="preserve">Ongedaan maken</value>
+  </data>
+  <data name="UndoButton.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Ongedaan maken" class="fa fa-undo fa-fw fa-lg"&gt;&lt;/i&gt;Ongedaan maken</value>
+  </data>
+  <data name="UndoIcon.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">&lt;i title="Ongedaan maken" class="fa fa-undo fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="unit.Text">
+    <value xml:space="preserve">Eenheid</value>
+  </data>
+  <data name="Update.Text">
+    <value xml:space="preserve">Update</value>
+  </data>
+  <data name="Upload.Text">
+    <value xml:space="preserve">Upload </value>
+  </data>
+  <data name="UploadImage.Text">
+    <value xml:space="preserve">Afbeelding uploaden</value>
+  </data>
+  <data name="Username.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Gebruikersnaam</value>
+  </data>
+  <data name="Value.Text">
+    <value xml:space="preserve">Waarde</value>
+  </data>
+  <data name="Voucher.Text" lastModified="2014-11-29 12:17:28">
+    <value xml:space="preserve">Waardebon</value>
+  </data>
+  <data name="Web.Text">
+    <value xml:space="preserve">Web</value>
+  </data>
+  <data name="Weight.Text">
+    <value xml:space="preserve">Gewicht</value>
+  </data>
+  <data name="Width.Text">
+    <value xml:space="preserve">Breedte</value>
+  </data>
+  <data name="ActiveProducts.Text">
+    <value>Active Products</value>
+  </data>
+  <data name="AreYouSure.Text">
+    <value>Weet je het zeker?</value>
+  </data>
+  <data name="Article.Text">
+    <value>Artikel</value>
+  </data>
+  <data name="attrcode.Text">
+    <value>Attribute Code</value>
+  </data>
+  <data name="AverageRevenue.Text">
+    <value>Gemiddelde opbrengst</value>
+  </data>
+  <data name="basket.Text">
+    <value>Winkelwagen</value>
+  </data>
+  <data name="Cart.Text">
+    <value>Winkelwagen</value>
+  </data>
+  <data name="Clients.Text">
+    <value>Members</value>
+  </data>
+  <data name="cmdAddFiles.Text">
+    <value>&lt;i title="Add New" class="fa fa-plus-circle fa-fw fa-lg"&gt;&lt;/i&gt; Add</value>
+  </data>
+  <data name="cmdDelete.noText">
+    <value>NOPP</value>
+  </data>
+  <data name="cmdDelete.yesText">
+    <value>YEPPPP</value>
+  </data>
+  <data name="cmdEditIconSmall.Text">
+    <value>&lt;i title="Edit product in store" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdExtLinkSmall.Text">
+    <value>&lt;i title="View product in store" class="fa fa-external-link fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdFilter.Text">
+    <value>Filter</value>
+  </data>
+  <data name="cmdMoveIcon.Text">
+    <value>&lt;i title="Move to here" class="fa fa-arrow-circle-left fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdResetFilters.Text">
+    <value>&amp;lt;i class="fa fa-times-circle"&amp;gt;&amp;lt;/i&amp;gt; Reset filter(s)</value>
+  </data>
+  <data name="cmdSaveExitButton.Text">
+    <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Opslaan en afsluiten</value>
+  </data>
+  <data name="Configuration.Text">
+    <value>Configuratie</value>
+  </data>
+  <data name="CustomerCount.Text">
+    <value>Customer Count</value>
+  </data>
+  <data name="dashsummary.Text">
+    <value>Dashboard</value>
+  </data>
+  <data name="favorites.Text">
+    <value>Favorites</value>
+  </data>
+  <data name="filterkeywords.Text">
+    <value>Keyword(s)</value>
+  </data>
+  <data name="findanorder.Text">
+    <value>Find an order</value>
+  </data>
+  <data name="findaproduct.Text">
+    <value>Find a product</value>
+  </data>
+  <data name="hello.Text">
+    <value>Hi there</value>
+  </data>
+  <data name="HiddenProducts.Text">
+    <value>Hidden Products</value>
+  </data>
+  <data name="History.Text">
+    <value>History</value>
+  </data>
+  <data name="logoff.Text">
+    <value>Log Off</value>
+  </data>
+  <data name="MontlyRevenue.Text">
+    <value>Maandelijkse opbrengst</value>
+  </data>
+  <data name="nbsid.Text">
+    <value>NBS ID</value>
+  </data>
+  <data name="nbsref.Text">
+    <value>NBS Ref.</value>
+  </data>
+  <data name="OrderCount.Text">
+    <value>Order Count</value>
+  </data>
+  <data name="orderstatus010.Text">
+    <value>Incomplete</value>
+  </data>
+  <data name="orderstatus020.Text">
+    <value>Waiting for Bank</value>
+  </data>
+  <data name="orderstatus030.Text">
+    <value>Geannuleerd</value>
+  </data>
+  <data name="orderstatus040.Text">
+    <value>Betaling ok</value>
+  </data>
+  <data name="orderstatus050.Text">
+    <value>Payment Not Verified</value>
+  </data>
+  <data name="orderstatus060.Text">
+    <value>Wacht op betaling</value>
+  </data>
+  <data name="orderstatus070.Text">
+    <value>Waiting for Stock</value>
+  </data>
+  <data name="orderstatus080.Text">
+    <value>Waiting</value>
+  </data>
+  <data name="orderstatus090.Text">
+    <value>Verstuurd</value>
+  </data>
+  <data name="orderstatus100.Text">
+    <value>Completed</value>
+  </data>
+  <data name="orderstatus110.Text">
+    <value>Archived</value>
+  </data>
+  <data name="orderstatus120.Text">
+    <value>Being Manufactured</value>
+  </data>
+  <data name="Owners.Text">
+    <value>Members</value>
+  </data>
+  <data name="pagesize.Text">
+    <value>Aantal weergeven</value>
+  </data>
+  <data name="productswithprop.Text">
+    <value>Products with this property</value>
+  </data>
+  <data name="Promotion.Text">
+    <value>Promotion</value>
+  </data>
+  <data name="propertygroup.Text">
+    <value>Group Type</value>
+  </data>
+  <data name="propertytypes.Text">
+    <value>Property types</value>
+  </data>
+  <data name="relatedproducts.Text">
+    <value>Related products</value>
+  </data>
+  <data name="selectable.Text">
+    <value>Selectable</value>
+  </data>
+  <data name="seoname.Text">
+    <value>SEO Name</value>
+  </data>
+  <data name="seotitle.Text">
+    <value>SEO Title</value>
+  </data>
+  <data name="StatusofOrders.Text">
+    <value>Status of Orders</value>
+  </data>
+  <data name="TotalDiscounts.Text">
+    <value>Total Discounts</value>
+  </data>
+  <data name="TotalProducts.Text">
+    <value>Total Products</value>
+  </data>
+  <data name="TotalRevenue.Text">
+    <value>Total Revenue</value>
+  </data>
+  <data name="TotalShipping.Text">
+    <value>Totale verzendkosten </value>
+  </data>
+  <data name="updated.Text">
+    <value>Updated</value>
+  </data>
+</root>

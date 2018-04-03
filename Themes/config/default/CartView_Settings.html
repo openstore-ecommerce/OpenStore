@@ -1,0 +1,76 @@
+<script>
+
+    $(document).ready(function () {
+
+
+        $(function () {
+            $("#accordion").accordion({
+                heightStyle: "content",
+                header: "h3",
+                collapsible: true,
+                active: 0
+            });
+        });
+
+        $('.themefolder').change(function () {
+            alert('[<tag type="valueof" resourcekey="ProductViewSettings.themehidden" />]');
+            $('.themesettings').html('');
+        });
+
+        $('.ddlcarttype').change(function () {
+            if ($(this).val() == '1')
+			{
+				$('input[[id*="txtdisplayheader"]]').val('minicartheader.html');
+				$('input[[id*="txtdisplaybody"]]').val('minicartbody.html');
+				$('input[[id*="txtdisplayfooter"]]').val('minicartfooter.html');
+			}
+            if ($(this).val() == '2')
+			{
+				$('input[[id*="txtdisplayheader"]]').val('checkoutheader.html');
+				$('input[[id*="txtdisplaybody"]]').val('checkoutbody.html');
+				$('input[[id*="txtdisplayfooter"]]').val('checkoutfooter.html');
+			}
+            if ($(this).val() == '3')
+			{
+				$('input[[id*="txtdisplayheader"]]').val('fullcartheader.html');
+				$('input[[id*="txtdisplaybody"]]').val('fullcartbody.html');
+				$('input[[id*="txtdisplayfooter"]]').val('fullcartfooter.html');
+			}
+        });
+
+		
+    });
+
+</script>
+<div id="dnnPanel-ArchivesTemplateSettings">
+    <h2 class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded">[<tag type="valueof" resourcekey="ProductViewSettings.lblbasicsettings" />]</a></h2>
+    <fieldset>
+		<h2>[<tag type="valueof" resourcekey="CartViewSettings.carttemplates" />]</h2>
+        <div class="dnnFormItem">
+            [<tag id="lblcarttype" type="dnn:labelcontrol" />][<tag id="ddlcarttype" cssclass="ddlcarttype" type="dropdownlist" resourcekey="CartViewSettings.ddlcarttype" width="200" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lbllistheader" type="dnn:labelcontrol" />][<tag id="txtdisplayheader" type="textbox" width="300" maxlength="250" Text="minicartheader.html" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lbllistbody" type="dnn:labelcontrol" />][<tag id="txtdisplaybody" type="textbox" width="300" maxlength="250" Text="minicartbody.html" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lbllistfooter" type="dnn:labelcontrol" />][<tag id="txtdisplayfooter" type="textbox" width="300" maxlength="250"  Text="minicartfooter.html"/>]
+        </div>
+        <div class="dnnFormItem">
+        [<tag id="lblPaymentTab" type="dnn:labelcontrol" />][<tag id="PaymentTab" type="dropdownlist" datatabs="blank" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lbltheme" type="dnn:labelcontrol" />][<tag id="themefolder" cssclass="themefolder" type="textbox" width="150" maxlength="50" text="Cygnus" />]
+        </div>
+    </fieldset>
+
+    <div class="themesettings">
+    <h2 class="dnnFormSectionHead"><a href="">[<tag type="valueof" resourcekey="CartViewSettings.lblthemesettings" />]</a></h2>
+    <fieldset>
+        [Template:CartViewSettings.html]
+    </fieldset>
+    </div>
+    
+</div>

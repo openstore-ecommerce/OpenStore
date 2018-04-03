@@ -1,0 +1,104 @@
+<script>
+
+    $(document).ready(function() {
+
+
+        $(function() {
+            $("#accordion").accordion({
+                heightStyle: "content",
+                header: "h3",
+                collapsible: true,
+                active: 0
+            });
+        });
+
+        $('.themefolder').change(function() {
+            alert('[<tag type="valueof" resourcekey="ProductViewSettings.themehidden" />]');
+            $('.themesettings').html('');
+        });
+
+        $('select[[id*="ddlmenutype"]]').change(function() {
+            if ($(this).val() == 'DrillDown') {
+                $('.treeclass').hide();
+                $('.alwaysshow').show();
+                $('input[[id*="txtdisplayheader"]]').val('catmenuheader.html');
+                $('input[[id*="txtdisplaybody"]]').val('catmenubody.html');
+                $('input[[id*="txtdisplayfooter"]]').val('catmenufooter.html');
+            }
+            if ($(this).val() == 'Treeview') {
+                $('.alwaysshow').hide();
+                $('.treeclass').show();
+                $('input[[id*="txtdisplayheader"]]').val('cattreeheader.html');
+                $('input[[id*="txtdisplaybody"]]').val('cattreebody.html');
+                $('input[[id*="txtdisplayfooter"]]').val('cattreefooter.html');
+            }
+        });
+
+        if ($('select[[id*="ddlmenutype"]]').val() == 'DrillDown') {
+            $('.treeclass').hide();
+            $('.alwaysshow').show();
+        }
+        if ($('select[[id*="ddlmenutype"]]').val() == 'Treeview') {
+            $('.alwaysshow').hide();
+            $('.treeclass').show();
+        }
+
+    });
+
+</script>
+
+
+<div id="dnnPanel-ArchivesTemplateSettings">
+    <h2 class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded">[<tag type="valueof" resourcekey="ProductViewSettings.lblbasicsettings" />]</a></h2>
+    <fieldset>
+        <div class="dnnFormItem">
+            [<tag id="lbltheme" type="dnn:labelcontrol" />][<tag id="themefolder" cssclass="themefolder" type="textbox" width="150" maxlength="50" text="Cygnus" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lbldefaultcatid" type="dnn:labelcontrol" />][<tag id="defaultcatid" type="catdropdown" allowblank="1" width="300" />][<tag type="valueof" xpath="genxml/catref" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lbldetailtab" type="dnn:labelcontrol" />][<tag id="ddllisttabid" type="dropdownlist" datatabs="blank" width="300" />][Settings:ddllisttabid]
+        </div>
+		<div class="dnnFormItem">
+		[<tag id="lbltargetmodulekey" type="dnn:labelcontrol" />][<tag id="targetmodulekey" type="textbox" width="300" maxlength="250" text="ProductView" />]<br/>
+		</div>
+        <div class="dnnFormItem">
+            [<tag id="lblmenutype" type="dnn:labelcontrol" />][<tag id="ddlmenutype" type="dropdownlist" data="DrillDown;Treeview" value="DrillDown" width="100" />]
+        </div>
+        <div class="dnnFormItem alwaysshow">
+            [<tag id="lblalwaysshow" type="dnn:labelcontrol" />][<tag id="alwaysshow" type="checkbox" Text="" checked="True" />]
+        </div>
+        <div class="dnnFormItem treeclass">
+            [<tag id="lbltreeidentclass" type="dnn:labelcontrol" />][<tag id="treeidentclass" type="textbox" width="150" maxlength="150" text="nbrightbuy_catmenu" />]
+        </div>
+        <div class="dnnFormItem treeclass">
+            [<tag id="lbltreerootclass" type="dnn:labelcontrol" />][<tag id="treerootclass" type="textbox" width="150" maxlength="150" text="" />]
+        </div>
+    </fieldset>
+
+    <h2 class="dnnFormSectionHead"><a href="">[<tag type="valueof" resourcekey="ProductViewSettings.lbladvancedsettings" />]</a></h2>
+    <fieldset>
+
+        <div class="dnnFormItem">
+            [<tag id="lbllistheader" type="dnn:labelcontrol" />][<tag id="txtdisplayheader" type="textbox" width="300" maxlength="250" Text="catmenuheader.html" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lbllistbody" type="dnn:labelcontrol" />][<tag id="txtdisplaybody" type="textbox" width="300" maxlength="250" Text="catmenubody.html" />]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="lbllistfooter" type="dnn:labelcontrol" />][<tag id="txtdisplayfooter" type="textbox" width="300" maxlength="250"  Text="catmenufooter.html"/>]
+        </div>
+        <div class="dnnFormItem">
+            [<tag id="injectseo" type="dnn:labelcontrol" />][<tag id="injectseo" type="checkbox" Text="" checked="False" />]
+        </div>
+    </fieldset>
+
+    <div class="themesettings">
+    <h2 class="dnnFormSectionHead"><a href="">[<tag type="valueof" resourcekey="ProductViewSettings.lblthemesettings" />]</a></h2>
+    <fieldset>
+        [Template:CategoryMenuSettings.html]
+    </fieldset>
+    </div>
+    
+</div>

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Impostazioni Menu di Categoria</value>
+  </data>
+  <data name="injectseo.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Inietta i dati SEO di categoria selezionati nella pagina, questo è fatto anche della vista del prodotto, quindi se hai una vista del prodotto sulla pagina questo non è richiesto.</value>
+  </data>
+  <data name="injectseo.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Iniettare SEO</value>
+  </data>
+  <data name="lbladvancedsettings.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Avanzato</value>
+  </data>
+  <data name="lblalwaysshow.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Mostra sempre il menu sulla fine del ramo e per la vista del prodotto quando non esistono record di categoria. (Root elenco delle categorie verrà mostrato)</value>
+  </data>
+  <data name="lblalwaysshow.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Mostra Sempre :</value>
+  </data>
+  <data name="lblbasicsettings.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Generale</value>
+  </data>
+  <data name="lbldefaultcatid.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Visualizza Categoria principale il menu inizia visulizzando un vuoto a partire dalla radice.</value>
+  </data>
+  <data name="lbldefaultcatid.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Visulizzazione Categoria radice:</value>
+  </data>
+  <data name="lbldepth.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Profondità che il menu visualizzerà.</value>
+  </data>
+  <data name="lbldepth.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Profondità:</value>
+  </data>
+  <data name="lbldetailtab.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">La pagina a cui l'utente verrà reindirizzato quando si fa clic su una Categoria. Se vuoto viene utilizzata la pagina corrente.</value>
+  </data>
+  <data name="lbldetailtab.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Elenco prodotti Pagina:</value>
+  </data>
+  <data name="lblitembottommargin.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Margine inferiore in px voce Categoria:</value>
+  </data>
+  <data name="lblitemgutter.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Gutter in px voce Categoria:</value>
+  </data>
+  <data name="lblitemheight.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Altezza voce Categoria (incl unità o auto):</value>
+  </data>
+  <data name="lblitemimagecontainerheight.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Altezza voce contenitore immagine Categoria (incl unità o auto):</value>
+  </data>
+  <data name="lblitemwidth.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Larghezza in px Voce Categoria:</value>
+  </data>
+  <data name="lbllistbody.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Template da utilizzare come categoria corpo, questo viene ripetuto per ciascuna categoria.</value>
+  </data>
+  <data name="lbllistbody.Text" lastModified="2015-11-11 15:31:38">
+    <value xml:space="preserve">Body Categoria:</value>
+  </data>
+  <data name="lbllistbodyfoot.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Template da utilizzare come fine categoria, questo viene ripetuto per ciascuna categoria.</value>
+  </data>
+  <data name="lbllistbodyfoot.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Fine Categoria:</value>
+  </data>
+  <data name="lbllistfooter.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Modello da utilizzare come footer categoria di menu.</value>
+  </data>
+  <data name="lbllistfooter.Text" lastModified="2015-11-11 15:31:38">
+    <value xml:space="preserve">Footer Menu:</value>
+  </data>
+  <data name="lbllistheader.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Modello da utilizzare come intestazione categoria di menu.</value>
+  </data>
+  <data name="lbllistheader.Text" lastModified="2015-11-11 15:31:38">
+    <value xml:space="preserve">Intestazione Menu:</value>
+  </data>
+  <data name="lblmenutype.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Menu Display Tipo</value>
+  </data>
+  <data name="lblmenutype.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Tipo Menu:</value>
+  </data>
+  <data name="lblnoimageicon.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Icona Segnaposto immagine (fontawesome.io):</value>
+  </data>
+  <data name="lblplaceholderimage.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Abilita Segnaposto immagine:</value>
+  </data>
+  <data name="lbltargetmodulekey.Help" lastModified="2015-11-11 14:13:01">
+    <value xml:space="preserve">Tasto del modulo che visualizzerà i risultati.</value>
+  </data>
+  <data name="lbltargetmodulekey.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Obiettivo Modulo chiave:</value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Nome del tema da utilizzare per questa Lista prodotti.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Tema:</value>
+  </data>
+  <data name="lblthemesettings.Text" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Impostazioni del tema</value>
+  </data>
+  <data name="lblthumbnailheight.Text" lastModified="2015-11-11 14:13:01">
+    <value xml:space="preserve">Altezza in px immagine categoria o 0 per auto:</value>
+  </data>
+  <data name="lblthumbnailwidth.Text" lastModified="2015-11-11 14:13:01">
+    <value xml:space="preserve">Larghezza in px immagine categoria o 0 per auto:</value>
+  </data>
+  <data name="lbltreebehaviour.Text" lastModified="2015-11-11 14:13:01">
+    <value xml:space="preserve">Auto-collapse Menu ad albero:</value>
+  </data>
+  <data name="lbltreeidentclass.Help" lastModified="2015-11-11 14:13:01">
+    <value xml:space="preserve">Identificare nome CSS della classe per essere sistemata su una radice "ul" della struttura ad albero. Questo verrà utilizzato per identificare l'albero a Javascipt.</value>
+  </data>
+  <data name="lbltreeidentclass.Text" lastModified="2015-11-11 14:13:01">
+    <value xml:space="preserve">Identificare Classe Css:</value>
+  </data>
+  <data name="lbltreerootclass.Help" lastModified="2015-11-11 09:34:01">
+    <value xml:space="preserve">Nome opzionale classe CSS da posizionare sulla radice "ul" della struttura ad albero. Per styling l'albero.</value>
+  </data>
+  <data name="lbltreerootclass.Text" lastModified="2015-11-11 14:13:01">
+    <value xml:space="preserve">Stile Classe Css:</value>
+  </data>
+  <data name="themehidden.Text" lastModified="2015-11-11 14:13:01">
+    <value xml:space="preserve">Le vecchie impostazioni del tema sono state disabilitate, aggiorna per attivare un nuovo tema.</value>
+  </data>
+</root>

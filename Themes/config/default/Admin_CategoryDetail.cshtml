@@ -1,0 +1,322 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Globalization
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+@using NBrightCore.common;
+@using NBrightDNN.render
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var catData = new CategoryData(info.ItemID, info.Lang);
+}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.box-content').toggle(); // Initially hide all panels - Doesn't hide Products in cat - need to fox
+            $('.categorydetails div.box-content').toggle(); // Then open specific ones
+            $('.pageactions div.box-content').toggle();
+            $('.categoryselectproducts div.box-content').toggle();
+            $('.categoryproducts div.box-content').toggle();
+        });
+
+    </script>
+
+    <div id="confirmmsg" style="display: none;">
+        @ResourceKey("General.Confirm");
+    </div>
+
+    <div id="nbsnotify"></div>
+    <div id="loader" class="processing" style="display:none;">@ResourceKey("General.ProcessingDiv")</div>
+
+    <br />
+
+    <div id="categorydatasection">
+
+        <div id="categorydata">
+
+            <input id="itemid" type="hidden" value="@info.ItemID" />
+            <input id="editlanguage" type="hidden" value="@info.Lang" />
+
+            <!-- Is this hidden tag required -->
+            <div class="hidden">@TextBox(info, "genxml/dropdownlist/ddlgrouptype", "","cat")</div><!-- Required - Sets grouptype to only categories and hides the field -->
+
+            <div class="row categorydetails">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="box-name">
+                                <i class="fa fa-search"></i><span>@ResourceKey("General.Category") : @info.GetXmlProperty("genxml/lang/genxml/textbox/txtcategoryname")</span>
+                            </div>
+                            <div class="box-icons">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                                <a class="close-link"><i class="fa fa-times"></i></a>
+                            </div>
+                            <div class="no-move">
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <div class="form-horizontal dnnForm">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">@ResourceKey("General.Name")</label>@LangFlag(info.Lang)
+                                            @TextBox(info, "genxml/lang/genxml/textbox/txtcategoryname", "maxlength='250' class='form-control'", "")
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">@ResourceKey("General.Parent")</label>
+                                            @CategoryDropDownList(info, "genxml/dropdownlist/ddlparentcatid", "class='select2-container s2_with_tag populate placeholder'", true,20,true,true,0,"","..",false,true,"cat",">",info.Lang)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">@ResourceKey("General.Description")</label>@LangFlag(info.Lang)
+                                            @TextArea(info, "genxml/lang/genxml/textbox/txtcategorydesc", "class='form-control' rows='4' maxlength='200'", "")
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <label class="control-label">@ResourceKey("General.Image")</label>
+                                                </div>
+                                                <div id="progress" class="progress">
+                                                    <div class="progress-bar progress-bar-success"></div>
+                                                </div>
+
+                                                @if (info.GetXmlProperty("genxml/hidden/imageurl") != "")
+                                                {
+                                                    <div id="categoryimages" class="form-group">
+                                                        <div class="col-sm-12">
+                                                            <img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=160&h=0&src=@info.GetXmlProperty("genxml/hidden/imageurl")"/>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div>
+                                                    <a class="btn btn-success fileinput-button">
+                                                        @ResourceKey("General.cmdAddFiles")
+                                                        <!-- The file input field used as target for the file upload widget -->
+                                                        <input id="fileupload" class="normalFileUpload" type="file" name="files[]" multiple>
+                                                    </a>
+                                                    <a id="removeimage" class="btn btn-danger">@ResourceKey("General.Remove")</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <label class="control-label">@ResourceKey("General.seoname")</label>@LangFlag(info.Lang)
+                                            @TextBox(info, "genxml/lang/genxml/textbox/txtseoname", "class='form-control' maxlength='250'", "")
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="control-label">@ResourceKey("General.seotitle")</label>@LangFlag(info.Lang)
+                                            @TextBox(info, "genxml/lang/genxml/textbox/txtseopagetitle", "class='form-control' maxlength='250'", "")
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">@ResourceKey("General.Meta") @ResourceKey("General.Tags")</label>@LangFlag(info.Lang)
+                                            @TextArea(info, "genxml/lang/genxml/textbox/txtmetakeywords", "class='form-control' maxlength='250' rows='2'", "")
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label class="control-label">@ResourceKey("General.Meta") @ResourceKey("General.Description")</label>@LangFlag(info.Lang)
+                                            @TextArea(info, "genxml/lang/genxml/textbox/txtmetadescription", "class='form-control' rows='2' maxlength='250'", "")
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">@ResourceKey("General.attrcode")</label>
+                                            @GroupSelectList(info, "genxml/dropdownlist/ddlattrcode", "class='s2_with_tag populate'", true,"3")
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            @CheckBox(info, "genxml/checkbox/chkishidden","")
+                                            <label class="control-label">@ResourceKey("General.Hidden")</label>
+                                            @CheckBox(info, "genxml/checkbox/chkdisable", "")
+                                            <label class="control-label">@ResourceKey("General.Disable")</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12" style="text-align:right;">
+                                            <label class="control-label">@ResourceKey("General.nbsref") :</label> @info.GUIDKey / <label class="control-label">@ResourceKey("General.nbsid") :</label> @info.ItemID
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row categorymessage">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="box-name">
+                                <i class="fa fa-search"></i><span>@ResourceKey("General.Message") @ResourceKey("General.Editor")</span>
+                            </div>
+                            <div class="box-icons">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-down"></i>
+                                </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                                <a class="close-link"><i class="fa fa-times"></i></a>
+                            </div>
+                            <div class="no-move">
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <div class="form-horizontal dnnForm">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label class="control-label sr-only">@ResourceKey("General.Message")</label>@LangFlag(info.Lang)
+                                            @CkEditor(info, "genxml/lang/genxml/edt/message", "class='form-control' height='400' width='100%'")
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row categoryfiltergroups">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="box-name">
+                                <i class="fa fa-search"></i><span>@ResourceKey("General.filtergroups")</span>
+                            </div>
+                            <div class="box-icons">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-down"></i>
+                                </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                                <a class="close-link"><i class="fa fa-times"></i></a>
+                            </div>
+                            <div class="no-move">
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <div class="form-horizontal dnnForm">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                            <div class="col-md-3 fixlist">
+                                                @GroupSelectList(info, "genxml/dropdownlist/selectgrouptype", "class='selectgrouptype form-control' size='8'", false)
+                                                <br />
+                                            </div>
+                                        <div class="col-md-9 filtergroupsection">
+                                            @RenderRazorInjectTemplate(info, "Admin_CategoryFilterGroups.cshtml")
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="row categoryproducts">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="box-name">
+                                <i class="fa fa-search"></i><span>@ResourceKey("General.Products")</span>
+                            </div>
+                            <div class="box-icons">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                                <a class="close-link"><i class="fa fa-times"></i></a>
+                            </div>
+                            <div class="no-move">
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <div class="form-horizontal dnnForm">
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        <a id="productselect" class="btn btn-primary">@ResourceKey("General.cmdAddButton")</a>
+                                        <a id="removeall" class="btn btn-danger">@ResourceKey("General.RemoveAllButton")</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a id="moveto" class="btn btn-default" confirm="@ResourceKey("General.Confirm")">@ResourceKey("General.MoveToButton")</a>
+                                        <a id="copyto" class="btn btn-default" confirm="@ResourceKey("General.Confirm")">@ResourceKey("General.CopyToButton")</a>
+                                            @CategoryDropDownList(info, "genxml/dropdownlist/selectcatid", "class='select2-container s2_with_tag populate placeholder' style='width: 300px;'", true, 20, true, true, 0, "", "..", false, true, "cat", ">", info.Lang)
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div>
+                                            @TaxRateDropDown(info, "genxml/dropdownlist/taxrate", "tax", "class='taxratedropdown input-sm'")
+                                            <a id="producttax" class="btn btn-primary">@ResourceKey("General.cmdAddButton")</a>
+                                            <br/>@ResourceKey("General.ApplyTax")
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div id="productlist">
+
+                                            <ul id="selectlistwrapper" class="productlist">
+
+                                                @foreach (NBrightInfo nbiXref in catData.GetDirectArticles())
+                                                {
+                                                    var prdData = new ProductData(nbiXref.ParentItemId,info.Lang); 
+                                                    <li class="productid@(prdData.DataRecord.ItemID)">
+
+                                                        <input id="parentitemid" type="hidden" value="@prdData.DataRecord.ItemID" />
+                                                        <input id="xrefitemid" type="hidden" value="@nbiXref.ItemID" />
+
+                                                        <ul class="productlistitem">
+
+                                                            @if (prdData.DataRecord.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
+                                                            {
+                                                                <li class="image name" data-toggle="tooltip" data-original-title="@prdData.ProductName"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@prdData.DataRecord.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")" /></li>
+                                                            }
+                                                            else
+                                                            {
+                                                                <li class="noimage name" data-toggle="tooltip" data-original-title="@prdData.ProductName"><i class="fa fa-picture-o fa-4x"></i></li>
+                                                            }
+
+                                                            <li class="title">@prdData.ProductName</li>
+                                                            <li class="removeitem"><a class="removeproduct" itemid="@prdData.DataRecord.ItemID"><i title="Remove" class="fa fa-minus-square fa-fw fa-lg"></i></a></li>
+                                                        </ul>
+                                                    </li>
+                                                }
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

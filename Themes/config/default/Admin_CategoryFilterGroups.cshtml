@@ -1,0 +1,33 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var catData = new CategoryData(info.ItemID, info.Lang);
+}
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>@ResourceKey("General.group")</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="productgroupcategories">
+
+
+        @foreach (GroupData grpData in catData.GetFilterGroups(info.Lang))
+        {
+            <tr>
+                <td style="white-space:nowrap" title="Reference code: @grpData.Ref">@grpData.Name</td>
+                <td><a class="removegroupcategory" itemid="@info.ItemID" groupid="@grpData.Info.ItemID">@ResourceKey("General.cmdRemoveIcon")</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>

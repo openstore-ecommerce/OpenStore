@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Impostazioni Profilo Form</value>
+  </data>
+  <data name="emailsubject.Text" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Aggiornamento Profilo Utente</value>
+  </data>
+  <data name="lblclientrole.Help" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Gli utenti riceveranno un messaggio che devono aspettare per livello di sicurezza (ruolo) "Cliente" prima che il negozio sia accessibile.</value>
+  </data>
+  <data name="lblclientrole.Text" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Attivare ruolo di sicurezza del Cliente:</value>
+  </data>
+  <data name="lblemailregisteredclienttemplate.Help" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">E-mail da inviare al Cliente al momento della registrazione. (Se vuoto nessuna Email viene inviata)</value>
+  </data>
+  <data name="lblemailregisteredclienttemplate.Text" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Template Email di registrazione Cliente:</value>
+  </data>
+  <data name="lblemailregisteredtemplate.Help" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">E-mail da inviare al Gestore quando si registra un Cliente. (Se vuoto nessuna Email viene inviata)</value>
+  </data>
+  <data name="lblemailregisteredtemplate.Text" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Template Email Registrato:</value>
+  </data>
+  <data name="lblemailtemplate.Help" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">E-mail da inviare quando un profilo viene aggiornato. (Se vuoto nessuna Email viene inviata)</value>
+  </data>
+  <data name="lblemailtemplate.Text" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Modello Email:</value>
+  </data>
+  <data name="lblinputform.Help" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Template da utilizzare per l'nserimento dell'indirizzo.</value>
+  </data>
+  <data name="lblinputform.Text" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Template form di inserimento:</value>
+  </data>
+  <data name="lblredirecttab.Help" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Pagina di reindirizzamento dopo l'aggiornamento</value>
+  </data>
+  <data name="lblredirecttab.Text" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Pagina di reindirizzamento:</value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Nome del tema da utilizzare per questa lista della spesa.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2015-11-20 16:08:40">
+    <value xml:space="preserve">Tema :</value>
+  </data>
+</root>

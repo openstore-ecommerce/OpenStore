@@ -1,0 +1,62 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+@using DotNetNuke.Entities.Users
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/jquery/jquery-2.1.0.min.js"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.genxmlajax.js"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js"></script>
+
+<style>
+.processing{}
+.processing .fa{color:#68ABE1;vertical-align:middle;}
+</style>
+
+<!-- fields required to send required ajax cart to server -->
+<span id="orderprint">
+    <input id="userid" type="hidden" value="@UserController.Instance.GetCurrentUserInfo().UserID"/>
+    <input id="razortemplate" type="hidden" value=""/>
+    <input id="selecteditemid" type="hidden" value='@Model.GetUrlParam("itemid")' />    
+    <input id='editlang' type='hidden' value='@Model.GetUrlParam("language")'/> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
+    <input id='lang' type='hidden' value='@Model.GetUrlParam("language")'/> <!-- default to current language -->
+    <input id='printtype' type='hidden' value='@Model.GetUrlParam("printtype")' /> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->    
+</span>
+
+<script>
+
+    $(document).ready(function () {
+        $('.processing').show();
+
+        @{
+            var jsout = "OrderPrintOutput.cshtml";
+            if (@Model.GetUrlParam("printtype") == "shiplabel")
+            {
+                jsout = "OrderLabelOutput.cshtml";
+            }
+        }
+        $('#razortemplate').val('@(jsout)');
+        nbxget('orderadmin_getdetail', '#orderprint', '#datadisplay');
+
+        $(document).on("nbxgetcompleted", OrderPrint_nbxgetCompleted); // assign a completed event for the ajax calls
+
+        // function to do actions after an ajax call has been made.
+        function OrderPrint_nbxgetCompleted(e) {
+
+            $('.processing').hide();
+
+        };
+
+    });
+
+</script>
+
+
+<div id="datadisplay"></div>

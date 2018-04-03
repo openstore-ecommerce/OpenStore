@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="amount.Text">
+    <value xml:space="preserve">Montant</value>
+  </data>
+  <data name="applydaterange.Text">
+    <value xml:space="preserve">Appliquer fourchette de dates</value>
+  </data>
+  <data name="buyproperty.Text">
+    <value xml:space="preserve">Si le client achète des produits de ce groupe de propriété</value>
+  </data>
+  <data name="buyqty.Text">
+    <value xml:space="preserve">Quantité de </value>
+  </data>
+  <data name="code.Text">
+    <value xml:space="preserve">Code</value>
+  </data>
+  <data name="deletemsg.Text">
+    <value xml:space="preserve">Supprimer entrée?</value>
+  </data>
+  <data name="description.Text">
+    <value xml:space="preserve">Description</value>
+  </data>
+  <data name="disabled.Text">
+    <value xml:space="preserve">Désactivé</value>
+  </data>
+  <data name="groupselect.Text" lastModified="2016-12-15 16:52:44">
+    <value xml:space="preserve">Groupe de produits</value>
+  </data>
+  <data name="helpmsg.Text">
+    <value xml:space="preserve">&lt;b&gt;Les promotions sont calculées par le planificateur. Assurez-vous que le planificateur de NBStore soit activé.&lt;/b&gt;&lt;div&gt;"Exécution entre fourchette de dates" calcule les prix soldés une fois par jour et à la date de fin, les supprime.&lt;br/&gt;"Exécution unique" met à jour le champ prix soldé sélectionné puis ne recalcule plus la remise.&lt;br/&gt;"Exécution permanente" recalcule les prix soldés une fois par jour. &lt;br/&gt; Pour supprimer les prix calculés via l'une de ces méthodes, sélectionner "Suppression des promotions" et exécuter.&lt;/div&gt;</value>
+  </data>
+  <data name="langerror.Text">
+    <value xml:space="preserve">ERREUR! Cette promotion possède une entrée linguistique invalide. Supprimer cette promotion et la recréer comme une nouvelle promotion.</value>
+  </data>
+  <data name="lastcalculated.Text">
+    <value xml:space="preserve">Calculé pour la dernière fois</value>
+  </data>
+  <data name="multibuyhelpmsg.Text" lastModified="2016-12-15 16:52:44">
+    <value xml:space="preserve">&lt;b&gt;Les promotions sont calculées par le planificateur. Assurez-vous que le planificateur NBS soit activé.&lt;/b&gt;</value>
+  </data>
+  <data name="name.Text">
+    <value xml:space="preserve">Nom</value>
+  </data>
+  <data name="nextproduct.Text">
+    <value xml:space="preserve">Promotion à appliquer au prochain produit ("Quantité de" +1)</value>
+  </data>
+  <data name="overwrite.Text">
+    <value xml:space="preserve">Ecraser tout prix soldé sur les produits sélectionnés</value>
+  </data>
+  <data name="percentage.Text">
+    <value xml:space="preserve">Pourcentage (%)</value>
+  </data>
+  <data name="processorder.Text">
+    <value xml:space="preserve">Séquence du processus</value>
+  </data>
+  <data name="runfreq.Text">
+    <value xml:space="preserve">Exécution entre fourchette de dates,Exécution unique,Exécution permanente,Suppression des promotions</value>
+  </data>
+  <data name="typedata.Text">
+    <value xml:space="preserve">Montant,Pourcentage (%)</value>
+  </data>
+  <data name="typeselect.Text">
+    <value xml:space="preserve">Type de groupe</value>
+  </data>
+  <data name="typeselecttext.Text" lastModified="2016-12-15 16:52:44">
+    <value xml:space="preserve">Catégorie,Propriété,Tout</value>
+  </data>
+  <data name="typevalue.Text">
+    <value xml:space="preserve">1,2</value>
+  </data>
+  <data name="usage.Text">
+    <value xml:space="preserve">Utilisation</value>
+  </data>
+  <data name="usagelimit.Text">
+    <value xml:space="preserve">Limite nombre d'utilisations</value>
+  </data>
+  <data name="validfrom.Text">
+    <value xml:space="preserve">Valide à partir de (inclus)</value>
+  </data>
+  <data name="validuntil.Text">
+    <value xml:space="preserve">Valide jusqu'à (inclus)</value>
+  </data>
+  <data name="whichpricedata.Text">
+    <value xml:space="preserve">Prix soldé,Prix revendeur,Prix revendeur soldé,Prix soldé revendeur et Prix soldé</value>
+  </data>
+  <data name="whichpricemsg.Text">
+    <value xml:space="preserve">Champ prix à mettre à jour lors des calculs de promotions :</value>
+  </data>
+  <data name="whichpricevalue.Text">
+    <value xml:space="preserve">1,2,3,4</value>
+  </data>
+</root>

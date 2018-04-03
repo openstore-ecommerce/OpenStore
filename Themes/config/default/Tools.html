@@ -1,0 +1,204 @@
+
+<div id="nbsnotify"></div>
+
+<br />
+
+<div id="pageactionssource"><!-- Page actions are moved into header bar - also exist at page bottom-->
+	<div class="col-xs-9 col-sm-9">
+		<a href="javascript:void(0)" class="show-sidebar">
+		  <i class="fa fa-bars"></i>
+		</a>
+		<div class="actionbuttonwrapper">
+			<!-- No buttons-->
+		</div>
+	</div>
+	<div class="col-xs-3 col-sm-3 top-panel-right">
+			<!-- No language-->
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+				    <i class="fa fa-search"></i><span>[<tag type="valueof" resourcekey="Tools.ValidateStore" />]</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"><i class="fa fa-chevron-up"></i>
+					</a><a class="expand-link"><i class="fa fa-expand"></i></a>
+					<a class="close-link"><i class="fa fa-times"></i></a></div>
+				<div class="no-move">
+				</div>
+			</div>
+		    <div class="box-content dnnForm">
+				<div class="form-inline">
+					[<tag id="ValidateStore" type="linkbutton" cssclass="btn btn-primary" resourcekey="Tools.ValidateStore" commandname="validatestore" />]&nbsp;&nbsp;
+					[<tag id="purgecarts" type="linkbutton" cssclass="btn btn-primary" resourcekey="Tools.purgecarts" commandname="purgecarts" />]&nbsp;&nbsp;
+					<label class="">[<tag type="valueof" resourcekey="Tools.purgecartsdays" />]</label>&nbsp;&nbsp;[<tag id="purgecartsdays" type="textbox" cssclass="form-control" maxlength="3" width="60px" Text="14" />] 
+				</div>
+		    </div>
+
+			</div>
+		</div>
+	<div class="clearfix">
+	</div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i><span>[<tag type="valueof" resourcekey="General.RemovefromStore" />]</span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i>
+                    </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                    <a class="close-link"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="no-move">
+                </div>
+            </div>
+
+            <div class="box-content dnnForm">
+                <div class="form-inline">
+                    <label class="">[<tag type="valueof" resourcekey="General.AdminPin"/>]</label>&nbsp;&nbsp;[<tag id="txtclearpass" type="textbox" cssclass="form-control" maxlength="50"/>]
+                </div>
+            </div>
+            <div class="box-content dnnForm">
+
+                <div class="form-inline dnnForm">
+
+                    <div class="row spacer">
+                        <label class="col-sm-2 control-label text-right">[<tag type="valueof" resourcekey="General.Products"/>]</label>
+                        [<tag id="clearproducts" type="checkbox" resourcekey=""/>]
+                    </div>
+                    <div class="row spacer">
+                        <label class="col-sm-2 control-label text-right">[<tag type="valueof" resourcekey="General.Categories"/>]</label>
+                        [<tag id="clearcategories" type="checkbox" resourcekey=""/>]
+                    </div>
+                    <div class="row spacer">
+                        <label class="col-sm-2 control-label text-right">[<tag type="valueof" resourcekey="General.Properties"/>]</label>
+                        [<tag id="clearpropertiesonly" type="checkbox" resourcekey=""/>]
+                    </div>
+                    <div class="row spacer">
+                        <label class="col-sm-2 control-label text-right">[<tag type="valueof" resourcekey="General.Properties"/>] (Groups)</label>
+                        [<tag id="clearproperties" type="checkbox" resourcekey=""/>]
+                    </div>
+                    <div class="row spacer">
+                        <label class="col-sm-2 control-label text-right">[<tag type="valueof" resourcekey="General.Orders"/>]</label>
+                        [<tag id="clearorders" type="checkbox" resourcekey=""/>]
+                    </div>
+                </div>
+                <div class="form-inline">
+                    [<tag id="storecleardown" type="linkbutton" cssclass="btn btn-danger" resourcekey="General.RemovefromStore" commandname="cleardownstore"/>]&nbsp;&nbsp;
+                </div>
+            </div>
+
+            <div class="box-content dnnForm">
+                <div class="form-inline">
+                    [<tag id="resetlangauge" type="linkbutton" cssclass="btn btn-danger" resourcekey="Tools.resetlangauge" commandname="resetlangauge"/>]&nbsp;&nbsp;
+                    <label class="">[<tag type="valueof" resourcekey="Tools.languageresetto"/>]</label>&nbsp;&nbsp;[<tag id="languageresetto" type="culturecodedropdown" cssclass="form-control"/>]
+                    <label class="">[<tag type="valueof" resourcekey="Tools.languagetoreset"/>]</label>&nbsp;&nbsp;[<tag id="languagetoreset" type="culturecodedropdown" cssclass="form-control"/>]
+                </div>
+                <div class="resetwarningmsg" style="display: none;">[<tag type="valueof" resourcekey="Tools.languageresetwarning"/>]
+                </div>
+                <div class="resetwarning bg-danger" style="display: none;"></div>
+            </div>
+
+            <div class="box-content dnnForm">
+                <div class="form-inline">
+                    [<tag id="resetportalmenu" type="linkbutton" cssclass="btn btn-danger" resourcekey="Tools.resetportalmenu" commandname="resetportalmenu"/>]&nbsp;&nbsp;
+                </div>
+            </div>
+
+            <div class="box-content dnnForm">
+                <div class="form-inline">
+                    [<tag id="purgeimages" type="linkbutton" cssclass="btn btn-danger" resourcekey="Tools.purgeimages" commandname="purgeimages"/>]&nbsp;&nbsp;
+                    <div>[<tag type="valueof" resourcekey="Tools.purgeimageswarn"/>]
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i><span>[<tag type="valueof" resourcekey="Tools.customprovider" />]</span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                    <a class="close-link"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="no-move">
+                </div>
+            </div>
+
+            <div class="box-content">
+                <div class="form-horizontal dnnForm">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Tools.providerassembly" />]</label>
+                        <div class="col-sm-6">
+                            [<tag id="providerassembly" type="textbox" cssclass="form-control" />]
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Tools.providernamespaceclass" />]</label>
+                        <div class="col-sm-6">
+                            [<tag id="providernamespaceclass" type="textbox" cssclass="form-control" />]
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">[<tag type="valueof" resourcekey="Tools.paramdata" />]</label>
+                        <div class="col-sm-6">
+                            [<tag id="paramdata" type="textbox" cssclass="form-control" />]
+                        </div>
+                    </div>
+                    [<tag id="runcustomprovider" type="linkbutton" cssclass="btn btn-danger" resourcekey="Tools.runcustomprovider" commandname="runcustomprovider" />]&nbsp;&nbsp;
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("select[[id*='_languageresetto_']]").change(function () {
+            showresetwarning();
+        });
+        $("select[[id*='_languagetoreset_']]").change(function () {
+            showresetwarning();
+        });
+
+        function showresetwarning() {
+            var msg = $('.resetwarningmsg').html().replace('{tolanguage}', $("select[[id*='_languagetoreset_']] option:selected").text());
+            $('.resetwarning').html(msg);
+            $('.resetwarning').show();
+        }
+
+    });
+</script>
+

@@ -1,0 +1,63 @@
+
+
+<!-- loading display to cover buttons, to stop multiple clicks -->
+<div id="loader" class="processing" style="display:none;"><i class="glyphicon glyphicon-cog"></i></div>
+
+<!-- Load these scripts to use nbrightajax functions -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js"></script>
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.genxmlajax.js"></script>
+
+<!-- Global CSS -->
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/css/global.css" rel="stylesheet">
+
+
+<script>
+    $(document).ready(function() {
+
+        if ($('#themefolder').val() != "config" && $('#themefolder').val() != "") {
+            nbxget('getsettings', '#themedata', '#settingsdata');
+        }
+
+        // hijack cmdupdate button (so we can do ajax update before postback.)
+        var hrefction = $('a[id*="_cmdUpdate"]').attr('href');
+        $('a[id*="_cmdUpdate"]').attr('href', '#');
+        $('a[id*="_cmdUpdate"]').click(function () {
+            nbxget('savesettings', '#nbrightbuysettings');
+        });
+
+        $('#themefolder').change(function () {
+            $('#settingsdata').html('');
+            $('#loader').show('');
+            if ($('#themefolder').val() != "config") {
+                nbxget('getsettings', '#themedata', '#settingsdata');
+            } else {
+                $('#themefolder').val('');
+                $('#loader').hide('');
+            }
+        });
+
+        // ajx update complated listener
+        $(document).on('nbxgetcompleted', function (event) {
+            if (event.cmd == 'savesettings') {
+                $('a[id*="_cmdUpdate"]').unbind('click'); // disable event 
+                eval(hrefction);
+            }
+
+            if (event.cmd == 'getsettings') {
+                $('#loader').hide('');
+            }
+
+            //NBS - Tooltips
+            $('[data-toggle="tooltip"]').tooltip({
+                animation: 'true',
+                placement: 'auto top',
+                viewport: { selector: '#content', padding: 0 },
+                delay: { show: 100, hide: 200 }
+            });
+
+        });
+
+    });
+
+
+</script>

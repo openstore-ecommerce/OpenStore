@@ -1,0 +1,12 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+}
+    <div class="col-sm-12">
+        <img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=160&h=0&src=@info.GetXmlProperty("genxml/hidden/imageurl")" />
+    </div>

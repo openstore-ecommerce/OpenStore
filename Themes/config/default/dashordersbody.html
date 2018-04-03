@@ -1,0 +1,11 @@
+[<tag id="resourcepath" type="meta" value="/DesktopModules/NBright/NBrightBuy/App_LocalResources/" />]
+
+<tr>
+    <td>[<tag type="orderstatusdisplay" />]</td>
+    <td>[<tag type='valueof' xpath='genxml/ordernumber' />]</td>
+    <td>[<tag type='valueof' xpath='genxml/createddate' datatype='date' format='dd MMM yyyy H:mm' />]</td>
+	[<tag type="if" function="settings" key="cataloguemode" testvalue="True" display="{OFF}" />]<!-- Catalogue mode -->
+    <td class="text-right">[<tag type="currencyof" xpath="genxml/appliedtotal" />]</td>
+    [<tag type="endif"  />]
+</tr>
+

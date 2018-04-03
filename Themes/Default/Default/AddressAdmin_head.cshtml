@@ -1,0 +1,25 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Portals
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/Default/css/ClientAccount.css" rel="stylesheet">
+
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/Default/js/AddressAdmin.js"></script>
+
+<!-- fields required to send required ajax cart to server -->
+<span id="addressadminsearch">
+    <input id="userid" type="hidden" value="@Model.GetSetting("userid")"></input>
+    <input id="razortemplate" type="hidden" value=""></input>
+    <input id='editlang' type='hidden' value='@Model.GetUrlParam("language")'></input> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
+    <input id="uilang" type="hidden" value="@Model.GetUrlParam("language")"></input> <!-- default to current language -->
+    <input id="themefolder" type="hidden" value="@Model.GetSetting("themefolder")" />
+    <input id="selectedindex" type="hidden" value=""></input>    
+</span>
+
+

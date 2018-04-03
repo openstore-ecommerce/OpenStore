@@ -1,0 +1,248 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+<!-- fields required to send required ajax cart to server -->
+<span id="clientadminsearch">
+    <input id="userid" type="hidden" value="@UserController.Instance.GetCurrentUserInfo().UserID"/>
+    <input id="razortemplate" type="hidden" value=""/>
+    <input id="themefolder" type="hidden" value="config"/>
+    <input id='editlang' type='hidden' value='@Model.GetUrlParam("language")'/> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
+    <input id="lang" type="hidden" value="@Model.GetUrlParam("language")"/> <!-- default to current language -->
+    <input id="pagesize" type="hidden" value="20"/>
+    <input id="pagenumber" type="hidden" value="1"/>
+    <input id="searchtext" type="hidden" value=""/>
+    <input id="selecteditemid" type="hidden" value=""/>    
+    <input id="emailtype" type="hidden" value=""/>
+    <input id="emailsubject" type="hidden" value=""/>    
+    <input id="emailmessage" type="hidden" value="" />    
+</span>
+
+<input id="useridparam" type="hidden" value="@Model.GetUrlParam("uid")" /> <!-- uid param, diplay detail -->
+
+<div style="display: none;" id="actionreturn"></div>
+
+<!-- Needed for CKEditor -->
+<script src="@StoreSettings.Current.Get("ckeditorcdn")"></script>
+
+<!-- Scripts to do ajax calls -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.genxmlajax.js"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js" type="text/javascript"></script>
+
+
+
+<script>
+
+    $(document).ready(function() {
+        // start load all ajax data, continued by js in product.js file
+        $('.processing').show();
+
+        if ($('#useridparam').val() != '') {
+            $('#razortemplate').val('Admin_clientsDetail.cshtml');
+            $('#selecteditemid').val($('#useridparam').val());
+            nbxget('client.admin_getdetail', '#clientadminsearch', '#datadisplay');
+        } else {
+            $('#razortemplate').val('Admin_ClientsList.cshtml');
+            nbxget('client.admin_getlist', '#clientadminsearch', '#datadisplay');
+        }
+
+        $(document).on("nbxgetcompleted", Admin_client_nbxgetCompleted); // assign a completed event for the ajax calls
+
+        // function to do actions after an ajax call has been made.
+        function Admin_client_nbxgetCompleted(e) {
+
+            $('.processing').hide();
+
+            //NBS - Tooltips
+            $('[data-toggle="tooltip"]').tooltip({
+                animation: 'true',
+                placement: 'auto top',
+                viewport: { selector: '#content', padding: 0 },
+                delay: { show: 100, hide: 200 }
+            });
+
+
+            if (e.cmd == 'client.admin_getlist') {
+
+                $("#clientAdmin_cmdSave").hide();
+                $("#clientAdmin_cmdReturn").hide();
+
+                $('#clientAdmin_searchtext').val($('#searchtext').val());
+
+                // editbutton created by list, so needs to be assigned on each render of list.
+                $('.cmd_viewclient').unbind("click");
+                $('.cmd_viewclient').click(function() {
+                    $('.processing').show();
+                    $('#razortemplate').val('Admin_clientsDetail.cshtml');
+                    $('#selecteditemid').val($(this).attr('itemid'));
+                    nbxget('client.admin_getdetail', '#clientadminsearch', '#datadisplay');
+                });
+
+                $('.cmdPg').unbind("click");
+                $('.cmdPg').click(function() {
+                    $('.processing').show();
+                    $('#pagenumber').val($(this).attr('pagenumber'));
+                    nbxget('client.admin_getlist', '#clientadminsearch', '#datadisplay');
+                });
+
+                $('#clientAdmin_cmdSearch').unbind("click");
+                $('#clientAdmin_cmdSearch').click(function() {
+                    $('.processing').show();
+                    $('#pagenumber').val('1');
+                    $('#searchtext').val($('#clientAdmin_searchtext').val());
+                    $('#dtesearchdatefrom').val($('#clientAdmin_datesearchfrom').val());
+                    $('#dtesearchdateto').val($('#clientAdmin_datesearchto').val());
+                    $('#searchclientstatus').val($('#clientAdmin_searchclientstatus').val());
+
+                    nbxget('client.admin_getlist', '#clientadminsearch', '#datadisplay');
+                });
+
+                $('#clientAdmin_cmdReset').unbind("click");
+                $('#clientAdmin_cmdReset').click(function() {
+                    $('.processing').show();
+                    $('#pagenumber').val('1');
+                    $('#searchtext').val('');
+                    $('#dtesearchdatefrom').val('');
+                    $('#dtesearchdateto').val('');
+                    $('#searchclientstatus').val('');
+
+                    nbxget('client.admin_getlist', '#clientadminsearch', '#datadisplay');
+                });
+
+            }
+
+            if (e.cmd == 'client.admin_getdetail' || e.cmd == 'client.validateuser' || e.cmd == 'client.unauthoriseuser' || e.cmd == 'client.resetpass'
+                || e.cmd == 'client.unlockuser' || e.cmd == 'client.deleteuser' || e.cmd == 'client.removeuser' || e.cmd == 'client.restoreuser'
+                || e.cmd == 'client.addvouchercode' || e.cmd == 'client.adddiscountcode'
+                ) {
+
+                $("#clientAdmin_cmdSave").show();
+                $("#clientAdmin_cmdReturn").show();
+
+                $('#clientAdmin_cmdReturn').unbind("click");
+                $('#clientAdmin_cmdReturn').click(function() {
+                    $('.processing').show();
+                    $('#razortemplate').val('Admin_clientsList.cshtml');
+                    $('#selecteditemid').val('');
+                    nbxget('client.admin_getlist', '#clientadminsearch', '#datadisplay');
+                });
+
+                $('#clientAdmin_cmdSave').unbind("click");
+                $('#clientAdmin_cmdSave').click(function() {
+                    $('.processing').show();
+                    //move data to update postback field
+                    $('#xmlupdatediscountcodedata').val($.fn.genxmlajaxitems('#clientdiscountcodes', '.discountcode'));
+                    //move data to update postback field
+                    $('#xmlupdatevouchercodedata').val($.fn.genxmlajaxitems('#clientvouchercodes', '.vouchercode'));
+                    nbxget('client.admin_save', '#clientdatasection', '#actionreturn');
+                });
+
+                $('#cmdValidateUser').unbind("click");
+                $('#cmdValidateUser').click(function() {
+                    $('.processing').show();
+                    nbxget('client.validateuser', '#clientselectparams', '#datadisplay');
+                });
+                $('#cmdUnAuthoriseUser').unbind("click");
+                $('#cmdUnAuthoriseUser').click(function() {
+                    $('.processing').show();
+                    nbxget('client.unauthoriseuser', '#clientselectparams', '#datadisplay');
+                });
+                $('#cmdResetPass').unbind("click");
+                $('#cmdResetPass').click(function() {
+                    $('.processing').show();
+                    nbxget('client.resetpass', '#clientselectparams', '#datadisplay');
+                });
+                $('#cmdUnlockUser').unbind("click");
+                $('#cmdUnlockUser').click(function() {
+                    $('.processing').show();
+                    nbxget('client.unlockuser', '#clientselectparams', '#datadisplay');
+                });
+                $('#cmdDeleteUser').unbind("click");
+                $('#cmdDeleteUser').click(function() {
+                    $('.processing').show();
+                    nbxget('client.deleteuser', '#clientselectparams', '#datadisplay');
+                });
+                $('#cmdRemoveUser').unbind("click");
+                $('#cmdRemoveUser').click(function() {
+                    $('.processing').show();
+                    nbxget('client.removeuser', '#clientselectparams', '#datadisplay');
+                });
+                $('#cmdRestoreUser').unbind("click");
+                $('#cmdRestoreUser').click(function() {
+                    $('.processing').show();
+                    nbxget('client.restoreuser', '#clientselectparams', '#datadisplay');
+                });
+                $('#cmdCreateOrder').unbind("click");
+                $('#cmdCreateOrder').click(function() {
+                    $('.processing').show();
+                    nbxget('client.createorder', '#clientselectparams', '#datadisplay');
+                });
+
+                //$('#clientdiscountcodes').change(function () {
+                //    $('.removediscountcode').click(function () { removeelement($(this).parent().parent().parent().parent()); });
+                //    if (!Modernizr.inputtypes.date) $('input[id*="validuntil"]').datepicker();
+                //});
+                //$('#clientvouchercodes').change(function () {
+                //    $('.removevouchercode').click(function () { removeelement($(this).parent().parent().parent().parent()); });
+                //    if (!Modernizr.inputtypes.date) $('input[id*="validuntil"]').datepicker();
+                //});
+
+                $('#adddiscountcode').click(function () {
+                    $('.processing').show();
+                    $('input[id*="addqty"]').val($('input[id*="txtadddiscountcodeqty"]').val());
+                    nbxget('client.adddiscountcode', '#clientselectparams', '#datadisplay');
+                });
+                $('#addvouchercode').click(function () {
+                    $('.processing').show();
+                    $('input[id*="addqty"]').val($('input[id*="txtaddvouchercodeqty"]').val());
+                    nbxget('client.addvouchercode', '#clientselectparams', '#datadisplay');
+                });
+
+                if (e.cmd == 'client.admin_getdetail') {
+                    $('.box-content').toggle(); // Initially hide all panels
+                    //$('.clientdetail div.box-content').toggle(); // Then open specific ones
+
+                    $('.customerdetails div.box-content').toggle(); // Then open specific ones
+                    $('.customeractions div.box-content').toggle();
+                    //$('.pageactions div.box-content').toggle();
+
+                    //$('.customerdiscount div.box-content').toggle();
+                    //$('.customervoucher div.box-content').toggle();
+                }
+
+                $(function () {
+                    $('input[datatype=date]').datepicker();
+                });
+
+                function removeelement(elementtoberemoved) {
+                    $(elementtoberemoved).remove();
+                }
+
+                $('.removediscountcode').click(function () { removeelement($(this).parent().parent().parent().parent()); });
+                $('.removevouchercode').click(function () { removeelement($(this).parent().parent().parent().parent()); });
+
+            }
+
+            if (e.cmd == 'client.createorder') {
+                $('.processing').show();
+                @{
+                    var param = new string[3];
+                    var tabid = StoreSettings.Current.GetInt("productlisttab");
+                    var productlisturl = NBrightBuyUtils.AdminUrl(tabid,param);
+                }
+                window.location.href = '@productlisturl';
+            }
+
+            };
+
+        });
+
+    </script>
+
+
+

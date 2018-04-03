@@ -1,0 +1,53 @@
+		<genxml>
+			<files />
+			<hidden>
+				<index>0</index>
+			</hidden>
+			<textbox>
+				<ctrl>
+					<![CDATA[discountcodes]]>
+				</ctrl>
+				<name>
+					<![CDATA[]]>
+				</name>
+				<icon>
+					<![CDATA[]]>
+				</icon>
+				<group>
+					<![CDATA[]]>
+				</group>
+				<path>
+					<![CDATA[]]>
+				</path>
+				<help>
+					<![CDATA[]]>
+				</help>
+				<roles>
+					<![CDATA[]]>
+				</roles>
+				<description>
+					<![CDATA[]]>
+				</description>
+				<assembly>
+					<![CDATA[NBrightBuy.DiscountCodesProvider]]>
+				</assembly>
+				<namespaceclass>
+					<![CDATA[Nevoweb.DNN.NBrightBuy.Providers.DiscountCodesProvider]]>
+				</namespaceclass>
+			</textbox>
+			<checkbox>
+				<hidden>
+					<![CDATA[True]]>
+				</hidden>
+				<active>
+					<![CDATA[True]]>
+				</active>
+			</checkbox>
+			<dropdownlist>
+				<providertype selectedtext="DiscountCode">
+					<![CDATA[08]]>
+				</providertype>
+			</dropdownlist>
+			<checkboxlist />
+			<radiobuttonlist />
+		</genxml>

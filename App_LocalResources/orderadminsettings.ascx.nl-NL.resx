@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Volgorde Beheerdersinstellingen</value>
+  </data>
+  <data name="detailtemplates.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Detail sjablonen</value>
+  </data>
+  <data name="lbladvancedsettings.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Geavanceerde</value>
+  </data>
+  <data name="lblbasicsettings.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Algemene</value>
+  </data>
+  <data name="lbldetailbody.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als lichaam</value>
+  </data>
+  <data name="lbldetailbody.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Volgorde Detail lichaam: </value>
+  </data>
+  <data name="lbldetailfooter.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als voettekst.</value>
+  </data>
+  <data name="lbldetailfooter.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Volgorde Detail voettekst: </value>
+  </data>
+  <data name="lbldetailheader.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als koptekst.</value>
+  </data>
+  <data name="lbldetailheader.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Detail orderkop: </value>
+  </data>
+  <data name="lblitemdetailbody.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als item lijst lichaam</value>
+  </data>
+  <data name="lblitemdetailbody.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Volgorde Detail Item lijst lichaam: </value>
+  </data>
+  <data name="lblitemdetailfooter.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als voettekst.</value>
+  </data>
+  <data name="lblitemdetailfooter.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Volgorde Detail Item lijst voettekst: </value>
+  </data>
+  <data name="lblitemdetailheader.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als koptekst.</value>
+  </data>
+  <data name="lblitemdetailheader.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Detail Item lijst orderkop: </value>
+  </data>
+  <data name="lbllistbody.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als lichaam, dit wordt herhaald voor elke order.</value>
+  </data>
+  <data name="lbllistbody.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Volgorde lijst lichaam: </value>
+  </data>
+  <data name="lbllistfooter.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als voettekst.</value>
+  </data>
+  <data name="lbllistfooter.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Volgorde lijst voettekst: </value>
+  </data>
+  <data name="lbllistheader.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als koptekst.</value>
+  </data>
+  <data name="lbllistheader.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Lijst orderkop: </value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Naam van het thema te gebruiken voor deze kar lijst.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Themagebied: </value>
+  </data>
+  <data name="lblthemesettings.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Thema-instellingen</value>
+  </data>
+  <data name="listtemplates.Text" lastModified="2014-11-29 13:54:16">
+    <value xml:space="preserve">Lijstsjablonen</value>
+  </data>
+</root>

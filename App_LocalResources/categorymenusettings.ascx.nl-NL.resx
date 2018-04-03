@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblitembottommargin.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Categorie Item ondermarge in px: </value>
+  </data>
+  <data name="lblitemgutter.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Categorie Item goot in px: </value>
+  </data>
+  <data name="lblitemheight.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Categorie Item hoogte (incl eenheid of auto): </value>
+  </data>
+  <data name="lblitemimagecontainerheight.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Categorie Item Container afbeeldingshoogte (incl eenheid of auto): </value>
+  </data>
+  <data name="lblitemwidth.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Categorie Item breedte in px: </value>
+  </data>
+  <data name="lblnoimageicon.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Pictogram afbeelding als tijdelijke aanduiding (fontawesome.io): </value>
+  </data>
+  <data name="lblplaceholderimage.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Tijdelijke aanduiding voor afbeelding inschakelen </value>
+  </data>
+  <data name="lblthumbnailheight.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Categorie afbeeldingshoogte in px of 0 voor auto: </value>
+  </data>
+  <data name="lblthumbnailwidth.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Breedte van categorie afbeelding in px of 0 voor auto: </value>
+  </data>
+  <data name="lbltreebehaviour.Text" lastModified="2014-11-29 13:59:40">
+    <value xml:space="preserve">Auto-ineenstorting Tree Menu: </value>
+  </data>
+</root>

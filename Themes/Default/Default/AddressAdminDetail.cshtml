@@ -1,0 +1,106 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Collections.Generic
+@using System.Linq
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common.Utilities
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+}
+
+<!-- Client Menu -->
+@RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Default\\Default\\ClientMenu.cshtml", Model)
+
+<div class="nbs myaddresses">
+
+    <div id="addressdata">
+
+        <input id="uilang" type="hidden" value="@Model.GetUrlParam("language")"/> <!-- default to current language -->
+        <input id="addrindex" type="hidden" value="@info.GetXmlProperty("genxml/selectedindex")"/>
+
+        <div class="addressbuttons">
+            <a class="primarybutton AddressAdmin_cmdSave" href="javascript:void(0)"  index="@info.GetXmlProperty("genxml/selectedindex")"> @ResourceKey("General.cmdSaveButton")</a>
+            <a class="secondarybutton AddressAdmin_cmdCancel" href="javascript:void(0)" index="@info.GetXmlProperty("genxml/selectedindex")"> @ResourceKey("General.cmdCancelButton")</a>
+        </div>
+
+        <div class="formrow">
+            <div class="leftside">
+                <label>@ResourceKey("General.AddressName")</label>
+                @NBrightTextBox(info, "genxml/textbox/addressname", "class='required'")
+            </div>
+            <div class="leftside">
+                <label>@ResourceKey("General.lblFirstName")</label>
+                @NBrightTextBox(info, "genxml/textbox/firstname")
+            </div>
+            <div class="rightside">
+                <label>@ResourceKey("General.lblLastName")</label>
+                @NBrightTextBox(info, "genxml/textbox/lastname")
+            </div>
+        </div>
+
+        <div class="formrow">
+            <div class="leftside">
+                <label>@ResourceKey("General.lblPhone")</label>
+                @NBrightTextBox(info, "genxml/textbox/telephone")
+            </div>
+            <div class="rightside">
+                <label>@ResourceKey("General.Email")</label>
+                @NBrightTextBox(info, "genxml/textbox/email", "required name='billemail' class='required' type='email' datatype='email'")
+            </div>
+        </div>
+
+        <div class="formrow">
+            <label>@ResourceKey("General.lblCompany")</label>
+            @NBrightTextBox(info, "genxml/textbox/company")
+        </div>
+
+        <div class="formrow">
+            <label>@ResourceKey("General.lblAddress1")</label>
+            @NBrightTextBox(info, "genxml/textbox/unit")
+        </div>
+
+        <div class="formrow">
+            <label>@ResourceKey("General.lblAddress2")</label>
+            @NBrightTextBox(info, "genxml/textbox/street")
+        </div>
+
+        <div class="formrow">
+            <div class="leftside">
+                <label>@ResourceKey("General.lblCity")</label>
+                @NBrightTextBox(info, "genxml/textbox/city")
+            </div>
+            <div class="rightside">
+                <label>@ResourceKey("General.lblPostCode")</label>
+                @NBrightTextBox(info, "genxml/textbox/postalcode", "required name='billpostalcode' class='required'")
+            </div>
+        </div>
+
+        <div class="formrow">
+            <div class="leftside checkoutbillformcountrydiv">
+                <label>@ResourceKey("General.lblCountry")</label>
+                @CountrySelectList(info, "genxml/dropdownlist/country", "required name='billcountry' class='required' class='checkoutbillformcountry'")
+                <!-- hidden data field required to render ajax region update -->
+                <input id="carttemplate" type="hidden" value="CheckoutRegion.cshtml">
+                <input id="carttheme" type="hidden" value="ClassicAjax">
+                <input id="uilang" type="hidden" value="@Utils.GetCurrentCulture()">
+                <input id="region" type="hidden" value="@info.GetXmlProperty("genxml/dropdownlist/region")">
+                <input id="xpath" type="hidden" value="genxml/dropdownlist/region">
+                <input id="billregion" type="hidden" value="">
+            </div>
+            <div class="rightside checkoutbillformregiondiv">
+                <label>@ResourceKey("General.lblRegion")</label>
+                @RegionSelect(info, "genxml/dropdownlist/region", "", "", false)
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="clearfix"></div>

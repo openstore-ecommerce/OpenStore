@@ -1,0 +1,2 @@
+<%@ Control Language="C#" AutoEventWireup="false" Inherits="Nevoweb.DNN.NBrightBuy.OrderRazorAdminSettings" Codebehind="OrderRazorAdminSettings.ascx.cs" %>
+<asp:PlaceHolder ID="phData" runat="server"></asp:PlaceHolder>

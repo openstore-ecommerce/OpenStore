@@ -1,0 +1,44 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var prdData = new ProductData(info.ItemID, info.PortalId, info.Lang);
+}
+
+@{
+    var lp2 = 1;
+}
+@foreach (var nbiOptions in prdData.Options)
+{
+    <li class="optionitem form-group">
+        <!-- class="optionitem" is needed for JS postback update -->
+        <a class="sortelementUp"><i class="fa fa-caret-up fa-2x fa-fw"></i></a>
+        <a class="sortelementDown"><i class="fa fa-caret-down fa-2x fa-fw"></i></a>
+
+        <input id="optionid" type="hidden" value="@nbiOptions.GetXmlProperty("genxml/hidden/optionid")" />
+
+        <div class="col-sm-12 form-horizontal">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label class="control-label">@ResourceKey("General.Name")</label>@LangFlag(info.Lang)&nbsp;
+                    @CheckBox(nbiOptions, "genxml/checkbox/optrequired_" + lp2, "", "")
+                    <label class="control-label">@ResourceKey("General.RequiredField")</label>
+                    @TextBox(nbiOptions, "genxml/lang/genxml/textbox/txtoptiondesc_" + lp2, "class='form-control input-sm' maxlength='250' ", "")
+                </div>
+                <div class="col-sm-6">
+                    <label class="control-label">&nbsp;</label><br><a class="selectoption btn btn-success input-sm" itemid="@nbiOptions.GetXmlProperty("genxml/hidden/optionid")">@ResourceKey("General.cmdEditButton")</a>
+                    <label class="control-label">&nbsp;</label><a class="removeoption btn btn-danger input-sm">@ResourceKey("General.cmdRemoveButton")</a>
+                </div>
+            </div>
+        </div>
+    </li>
+    lp2 += 1;
+}
+
+

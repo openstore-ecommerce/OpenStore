@@ -1,0 +1,13 @@
+﻿@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Collections.Generic
+@using System.Linq
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<!-- Custom Order Details, this is usually created at portal level to deal with portal speciifc plugins/payment gateways which need to display extra data -->
+<!-- Model is passed in as the order data -->

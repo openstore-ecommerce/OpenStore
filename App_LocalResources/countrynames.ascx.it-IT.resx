@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Country:AD.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Andorra</value>
+  </data>
+  <data name="Country:AE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Emirati Arabi Uniti</value>
+  </data>
+  <data name="Country:AF.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Afghanistan</value>
+  </data>
+  <data name="Country:AG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Antigua e Barbuda</value>
+  </data>
+  <data name="Country:AI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Anguilla</value>
+  </data>
+  <data name="Country:AL.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Albania</value>
+  </data>
+  <data name="Country:AM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Armenia</value>
+  </data>
+  <data name="Country:AN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Antille Olandesi</value>
+  </data>
+  <data name="Country:AO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Angola</value>
+  </data>
+  <data name="Country:AQ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Antartide</value>
+  </data>
+  <data name="Country:AR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Argentina</value>
+  </data>
+  <data name="Country:AS.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Samoa</value>
+  </data>
+  <data name="Country:AT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Austria</value>
+  </data>
+  <data name="Country:AU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Australia</value>
+  </data>
+  <data name="Country:AW.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Aruba</value>
+  </data>
+  <data name="Country:AZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Azerbaijan</value>
+  </data>
+  <data name="Country:BA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Bosnia Erzegovina</value>
+  </data>
+  <data name="Country:BB.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Barbados</value>
+  </data>
+  <data name="Country:BD.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Bangladesh</value>
+  </data>
+  <data name="Country:BE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Belgio</value>
+  </data>
+  <data name="Country:BF.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Burkina Faso</value>
+  </data>
+  <data name="Country:BG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Bulgaria</value>
+  </data>
+  <data name="Country:BH.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Bahrain</value>
+  </data>
+  <data name="Country:BI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Burundi</value>
+  </data>
+  <data name="Country:BJ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Benin</value>
+  </data>
+  <data name="Country:BM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Bermuda</value>
+  </data>
+  <data name="Country:BN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Brunei Darussalam</value>
+  </data>
+  <data name="Country:BO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Bolivia</value>
+  </data>
+  <data name="Country:BR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Brasile</value>
+  </data>
+  <data name="Country:BS.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Bahamas</value>
+  </data>
+  <data name="Country:BT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Bhutan</value>
+  </data>
+  <data name="Country:BV.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isola Bouvet</value>
+  </data>
+  <data name="Country:BW.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Botswana</value>
+  </data>
+  <data name="Country:BY.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Bielorussia</value>
+  </data>
+  <data name="Country:BZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Belize</value>
+  </data>
+  <data name="Country:CA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Canada</value>
+  </data>
+  <data name="Country:CC.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Cocos</value>
+  </data>
+  <data name="Country:CD.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Congo - Kinshasa</value>
+  </data>
+  <data name="Country:CF.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">AUTO</value>
+  </data>
+  <data name="Country:CG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Congo - Brazzaville</value>
+  </data>
+  <data name="Country:CH.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Svizzera</value>
+  </data>
+  <data name="Country:CI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Costa d'Avorio</value>
+  </data>
+  <data name="Country:CK.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isole Cook</value>
+  </data>
+  <data name="Country:CL.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Chile</value>
+  </data>
+  <data name="Country:CM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Camerun</value>
+  </data>
+  <data name="Country:CN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Cina</value>
+  </data>
+  <data name="Country:CO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Britannico</value>
+  </data>
+  <data name="Country:CR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Costa Rica</value>
+  </data>
+  <data name="Country:CU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Cuba</value>
+  </data>
+  <data name="Country:CV.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Capo Verde</value>
+  </data>
+  <data name="Country:CX.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isola di Natale</value>
+  </data>
+  <data name="Country:CY.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Cipro</value>
+  </data>
+  <data name="Country:CZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Repubblica Ceca</value>
+  </data>
+  <data name="Country:DE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Germania</value>
+  </data>
+  <data name="Country:DJ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Djibouti</value>
+  </data>
+  <data name="Country:DK.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Danimarca</value>
+  </data>
+  <data name="Country:DM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Dominique</value>
+  </data>
+  <data name="Country:DO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Repubblica Dominicana</value>
+  </data>
+  <data name="Country:DZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Algeria</value>
+  </data>
+  <data name="Country:EC.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Ecuador</value>
+  </data>
+  <data name="Country:EE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Estonia</value>
+  </data>
+  <data name="Country:EG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Egitto</value>
+  </data>
+  <data name="Country:EH.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Sahara occidentale</value>
+  </data>
+  <data name="Country:ER.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">L'Eritrea</value>
+  </data>
+  <data name="Country:ES.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Spagna</value>
+  </data>
+  <data name="Country:ET.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Etiopia</value>
+  </data>
+  <data name="Country:FI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Finlandia</value>
+  </data>
+  <data name="Country:FJ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Fiji</value>
+  </data>
+  <data name="Country:FK.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isole Falkland</value>
+  </data>
+  <data name="Country:FM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Micronesia</value>
+  </data>
+  <data name="Country:FO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isole Faroe)</value>
+  </data>
+  <data name="Country:FR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Francia</value>
+  </data>
+  <data name="Country:GA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Gabon</value>
+  </data>
+  <data name="Country:GB.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Regno Unito</value>
+  </data>
+  <data name="Country:GD.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Grenada</value>
+  </data>
+  <data name="Country:GE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Georgia</value>
+  </data>
+  <data name="Country:GF.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Francese per il francese</value>
+  </data>
+  <data name="Country:GH.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Ghana</value>
+  </data>
+  <data name="Country:GI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Gibilterra</value>
+  </data>
+  <data name="Country:GL.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Groenlandia</value>
+  </data>
+  <data name="Country:GM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Gambia</value>
+  </data>
+  <data name="Country:GN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">La Guinea</value>
+  </data>
+  <data name="Country:GP.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Guadalupa</value>
+  </data>
+  <data name="Country:GQ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Guinea Equatoriale</value>
+  </data>
+  <data name="Country:GR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Grecia</value>
+  </data>
+  <data name="Country:GS.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">S. Georgia e S. Isole Sandwich</value>
+  </data>
+  <data name="Country:GT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Guatemala</value>
+  </data>
+  <data name="Country:GU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Guam</value>
+  </data>
+  <data name="Country:GW.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Guinea-Bissau</value>
+  </data>
+  <data name="Country:GY.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Guyana</value>
+  </data>
+  <data name="Country:HK.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Hong Kong</value>
+  </data>
+  <data name="Country:HM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Heard e McDonald</value>
+  </data>
+  <data name="Country:HN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Honduras</value>
+  </data>
+  <data name="Country:HR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Croazia (Hrvatska)</value>
+  </data>
+  <data name="Country:HT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Haiti</value>
+  </data>
+  <data name="Country:HU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Ungheria</value>
+  </data>
+  <data name="Country:ID.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Indonesia</value>
+  </data>
+  <data name="Country:IE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Irlanda</value>
+  </data>
+  <data name="Country:IL.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Israele</value>
+  </data>
+  <data name="Country:IN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">India</value>
+  </data>
+  <data name="Country:IO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Territorio britannico dell'Oceano Indiano</value>
+  </data>
+  <data name="Country:IQ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Iraq</value>
+  </data>
+  <data name="Country:IR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Ho corso</value>
+  </data>
+  <data name="Country:IS.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Islanda</value>
+  </data>
+  <data name="Country:IT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Italia</value>
+  </data>
+  <data name="Country:JM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Giamaica</value>
+  </data>
+  <data name="Country:JO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Giordania</value>
+  </data>
+  <data name="Country:JP.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Giappone</value>
+  </data>
+  <data name="Country:KE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Kenia</value>
+  </data>
+  <data name="Country:KG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Kirghizistan</value>
+  </data>
+  <data name="Country:KH.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Cambogia</value>
+  </data>
+  <data name="Country:KI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Kiribati</value>
+  </data>
+  <data name="Country:KM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Comore</value>
+  </data>
+  <data name="Country:KN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Saint Kitts e Nevis</value>
+  </data>
+  <data name="Country:KP.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Corea del nord</value>
+  </data>
+  <data name="Country:KR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Corea del Sud</value>
+  </data>
+  <data name="Country:KW.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Kuwait</value>
+  </data>
+  <data name="Country:KY.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isole Cayman</value>
+  </data>
+  <data name="Country:KZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Kazakistan</value>
+  </data>
+  <data name="Country:LA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Laos</value>
+  </data>
+  <data name="Country:LB.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Libano</value>
+  </data>
+  <data name="Country:LC.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Santa Lucia</value>
+  </data>
+  <data name="Country:LI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Liechtenstein</value>
+  </data>
+  <data name="Country:LK.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Sri Lanka</value>
+  </data>
+  <data name="Country:LR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Liberia</value>
+  </data>
+  <data name="Country:LS.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Lesoto</value>
+  </data>
+  <data name="Country:LT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Lituania</value>
+  </data>
+  <data name="Country:LU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Lussemburgo</value>
+  </data>
+  <data name="Country:LV.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Lettonia</value>
+  </data>
+  <data name="Country:LY.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Libia</value>
+  </data>
+  <data name="Country:MA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Marocco</value>
+  </data>
+  <data name="Country:MC.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Monaco</value>
+  </data>
+  <data name="Country:MD.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Moldova</value>
+  </data>
+  <data name="Country:ME.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Montenegro</value>
+  </data>
+  <data name="Country:MG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Madagascar</value>
+  </data>
+  <data name="Country:MH.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isole Marshall</value>
+  </data>
+  <data name="Country:MK.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Macedonia</value>
+  </data>
+  <data name="Country:ML.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Mali</value>
+  </data>
+  <data name="Country:MM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Myanmar</value>
+  </data>
+  <data name="Country:MN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Mongolia</value>
+  </data>
+  <data name="Country:MO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Macao</value>
+  </data>
+  <data name="Country:MP.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isole Marianne settentrionali</value>
+  </data>
+  <data name="Country:MQ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Martinica</value>
+  </data>
+  <data name="Country:MR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Mauritania</value>
+  </data>
+  <data name="Country:MS.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Montserrat</value>
+  </data>
+  <data name="Country:MT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Malta</value>
+  </data>
+  <data name="Country:MU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Mauritius</value>
+  </data>
+  <data name="Country:MV.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Maldive</value>
+  </data>
+  <data name="Country:MW.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Malawi</value>
+  </data>
+  <data name="Country:MX.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Messico</value>
+  </data>
+  <data name="Country:MY.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Malaysia</value>
+  </data>
+  <data name="Country:MZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Mozambico</value>
+  </data>
+  <data name="Country:NA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Namibia</value>
+  </data>
+  <data name="Country:NC.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Nuova Caledonia</value>
+  </data>
+  <data name="Country:NE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Niger</value>
+  </data>
+  <data name="Country:NF.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Norfolk Island</value>
+  </data>
+  <data name="Country:NG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Nigeria</value>
+  </data>
+  <data name="Country:NI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Nicaragua</value>
+  </data>
+  <data name="Country:NL.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Paesi Bassi</value>
+  </data>
+  <data name="Country:NO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Norvegia</value>
+  </data>
+  <data name="Country:NP.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Nepal</value>
+  </data>
+  <data name="Country:NR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Nauru</value>
+  </data>
+  <data name="Country:NU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Niue</value>
+  </data>
+  <data name="Country:NZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Nuova Zelanda</value>
+  </data>
+  <data name="Country:OM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Oman</value>
+  </data>
+  <data name="Country:PA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Panama</value>
+  </data>
+  <data name="Country:PE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Perù</value>
+  </data>
+  <data name="Country:PF.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Polinesia francese</value>
+  </data>
+  <data name="Country:PG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Papua Nuova Guinea</value>
+  </data>
+  <data name="Country:PH.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Filippine</value>
+  </data>
+  <data name="Country:PK.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Pakistan</value>
+  </data>
+  <data name="Country:PL.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Polonia</value>
+  </data>
+  <data name="Country:PM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Saint-Pierre e Miquelon</value>
+  </data>
+  <data name="Country:PN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Pitcairn</value>
+  </data>
+  <data name="Country:PR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Puerto Rico</value>
+  </data>
+  <data name="Country:PT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Portogallo</value>
+  </data>
+  <data name="Country:PW.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Palau</value>
+  </data>
+  <data name="Country:PY.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Paraguay</value>
+  </data>
+  <data name="Country:QA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Qatar</value>
+  </data>
+  <data name="Country:RE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">INCONTRO</value>
+  </data>
+  <data name="Country:RO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Romania</value>
+  </data>
+  <data name="Country:RS.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Serbia</value>
+  </data>
+  <data name="Country:RU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Federazione Russa</value>
+  </data>
+  <data name="Country:RW.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Ruanda</value>
+  </data>
+  <data name="Country:SA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Arabia Saudita</value>
+  </data>
+  <data name="Country:SB.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isole Salomone</value>
+  </data>
+  <data name="Country:SC.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Seychelles</value>
+  </data>
+  <data name="Country:SD.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Sudan</value>
+  </data>
+  <data name="Country:SE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Svezia</value>
+  </data>
+  <data name="Country:SG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Singapore</value>
+  </data>
+  <data name="Country:SH.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Sant'Elena</value>
+  </data>
+  <data name="Country:SI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Slovenia</value>
+  </data>
+  <data name="Country:SJ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Svalbard e Jan Mayen</value>
+  </data>
+  <data name="Country:SK.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Slovacchia</value>
+  </data>
+  <data name="Country:SL.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Sierra Leone</value>
+  </data>
+  <data name="Country:SM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">San Marino</value>
+  </data>
+  <data name="Country:SN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Senegal</value>
+  </data>
+  <data name="Country:SO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Somalia</value>
+  </data>
+  <data name="Country:SR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Suriname</value>
+  </data>
+  <data name="Country:ST.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Sao Tome e Principe</value>
+  </data>
+  <data name="Country:SU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Unione Sovietica</value>
+  </data>
+  <data name="Country:SV.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Salvador</value>
+  </data>
+  <data name="Country:SY.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Siria</value>
+  </data>
+  <data name="Country:SZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Swaziland</value>
+  </data>
+  <data name="Country:TC.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Turco e Caicos</value>
+  </data>
+  <data name="Country:TD.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Chad</value>
+  </data>
+  <data name="Country:TF.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Territori Francesi del Sud</value>
+  </data>
+  <data name="Country:TG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Andare</value>
+  </data>
+  <data name="Country:TH.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Thailandia</value>
+  </data>
+  <data name="Country:TJ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Tagikistan</value>
+  </data>
+  <data name="Country:TK.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Tokelau</value>
+  </data>
+  <data name="Country:TL.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Timor Est</value>
+  </data>
+  <data name="Country:TM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Turkmenistan</value>
+  </data>
+  <data name="Country:TN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Tunisia</value>
+  </data>
+  <data name="Country:TO.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Tonga</value>
+  </data>
+  <data name="Country:TP.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Timor Est</value>
+  </data>
+  <data name="Country:TR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Tacchino</value>
+  </data>
+  <data name="Country:TT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Trinidad e Tobago</value>
+  </data>
+  <data name="Country:TV.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Tuvalu</value>
+  </data>
+  <data name="Country:TW.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Taiwan</value>
+  </data>
+  <data name="Country:TZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Tanzania</value>
+  </data>
+  <data name="Country:UA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Ucraina</value>
+  </data>
+  <data name="Country:UG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Uganda</value>
+  </data>
+  <data name="Country:UM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Stati Uniti Isole Minori</value>
+  </data>
+  <data name="Country:US.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Stati Uniti</value>
+  </data>
+  <data name="Country:UY.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Uruguay</value>
+  </data>
+  <data name="Country:UZ.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Uzbekistan</value>
+  </data>
+  <data name="Country:VC.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Saint Vincent e Grenadine</value>
+  </data>
+  <data name="Country:VE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Venezuela</value>
+  </data>
+  <data name="Country:VG.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isole Vergini Britanniche</value>
+  </data>
+  <data name="Country:VI.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Isole Vergini Americane</value>
+  </data>
+  <data name="Country:VN.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Vietnam</value>
+  </data>
+  <data name="Country:VU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Vanuatu</value>
+  </data>
+  <data name="Country:WF.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Wallis and Futuna</value>
+  </data>
+  <data name="Country:WS.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Samoa</value>
+  </data>
+  <data name="Country:YE.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Yemen</value>
+  </data>
+  <data name="Country:YT.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Mayotte</value>
+  </data>
+  <data name="Country:YU.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Yugoslavia</value>
+  </data>
+  <data name="Country:ZA.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Sud Africa</value>
+  </data>
+  <data name="Country:ZM.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Zambia</value>
+  </data>
+  <data name="Country:ZR.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Zaire</value>
+  </data>
+  <data name="Country:ZW.Text" lastModified="2015-11-11 16:16:07">
+    <value xml:space="preserve">Zimbabwe</value>
+  </data>
+</root>

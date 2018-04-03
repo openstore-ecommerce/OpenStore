@@ -1,0 +1,69 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using System.Web
+@using DotNetNuke.Entities.Portals
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<span><input id="productid" type="hidden" value=""></span>
+
+<!-- Client Menu -->
+@RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Default\\Default\\ClientMenu.cshtml", Model)
+
+<div class="nbs myshoppinglists">
+
+<h1>@ResourceKey("Clients.ClientmenuShoppingLists")</h1>
+
+@if (Model.Settings.ContainsKey("listkeys"))
+{
+
+    var cw = new ItemListData(PortalSettings.Current.PortalId, UserController.Instance.GetCurrentUserInfo().UserID);
+    var listarray = Model.Settings["listkeys"].Split('*');
+    var itemlist = Model.List;
+
+    <div id="accordion">
+
+    @foreach (var listkey in listarray)
+    {
+        var newlist = new List<object>();
+        if (listkey != "")
+        {
+
+            foreach (NBrightInfo i in itemlist)
+            {
+                if (i.GetXmlProperty("genxml/listkey") == listkey)
+                {
+                    newlist.Add(i);
+                }
+            }
+            Model.List = newlist;
+
+            <h3>@cw.listnames[listkey]</h3>
+
+            <div>
+            @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Default\\Default\\ItemListProducts.cshtml", Model)
+            <div class="slp-footer"><a class="wishlistremoveall primarybutton" listkey="@(listkey)"><i class="fa fa-trash"></i> @ResourceKey("ProductView.wishlistclearall")</a></div>
+            </div>
+
+        }
+    }
+
+    </div>
+
+}
+else
+{
+    <p>@ResourceKey("General.nolistfound")</p>
+}
+
+</div>
+
+<div class="clearfix"></div>
+
+<!-- return area for ajax data -->
+<div id="datareturn" style="display:none;"></div>

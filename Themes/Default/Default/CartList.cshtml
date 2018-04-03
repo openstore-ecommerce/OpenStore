@@ -1,0 +1,166 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<input id="cmdClearCart" type="hidden" value="@ResourceKeyJS("CartView.cmdClearCart", "", "confirm")">
+
+@{
+    // assign Model, so we can resolve var in VS
+    var cart = (CartData)Model.List.First();
+    var info = cart.PurchaseInfo;
+}
+
+    <table cellspacing="0" class="StackThis large-only">
+        <tr>
+            <th class="detailscolumn">@ResourceKey("General.lblcartlist")</th>
+            <th class="quantitycolumn">@ResourceKey("General.Quantity")</th>
+            @if (!Model.GetSettingBool("cataloguemode"))
+            {
+                <th class="pricecolumn">@ResourceKey("General.Price")</th>
+                <th class="totalcolumn">@ResourceKey("General.Total")</th>
+            }
+            <th class="removecolumn">@ResourceKey("General.Remove")</th>
+        </tr>
+        @{
+            XmlNodeList nodList = info.XMLDoc.SelectNodes("genxml/items/*");
+            if (nodList != null)
+            {
+                var lp = 0;
+                foreach (XmlNode itemxml in nodList)
+                {
+                    lp += 1;
+                    var nbi = new NBrightInfo();
+                    nbi.XMLData = itemxml.OuterXml; // use NBrightInfo class, just to make life eaiser.
+
+                    <tr class="cartdatarow">
+                        <td class="detailscolumn">
+                            @if (nbi.GetXmlProperty("genxml/productxml/genxml/imgs/genxml[1]/hidden/imageurl") == "")
+                            {
+                                <div class="noimage">
+                                    <i class="fa fa-camera"></i>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="image">
+                                    <img title="@(nbi.GetXmlProperty("genxml/summary"))" src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=100&src=@(Model.GetSetting("uploadrelpath"))/@(nbi.GetXmlProperty("genxml/productxml/genxml/imgs/genxml[1]/hidden/imageurl"))"/>
+                                </div>
+                            }
+
+                            <div class="details">
+                                <!-- Details -->
+                                <div class="title">
+                                    <a href="@EntryUrl(nbi, Model)">
+                                        @if (nbi.GetXmlProperty("genxml/productname") == nbi.GetXmlProperty("genxml/modeldesc"))
+                                        {
+                                            @(nbi.GetXmlProperty("genxml/productname"))
+                                        }
+                                        else
+                                        {
+                                            @(nbi.GetXmlProperty("genxml/productname"))
+                                            @(nbi.GetXmlProperty("genxml/modeldesc"))
+                                        }
+                                    </a>
+                                </div>
+                                <div class="cartlistoptions">
+                                    @{
+                                        XmlNodeList nodClientFileList = nbi.XMLDoc.SelectNodes("genxml/clientfiles/file");
+                                        if (nodClientFileList != null)
+                                        {
+                                            foreach (XmlNode cfilexml in nodClientFileList)
+                                            {
+                                                var nbiClientFile = new NBrightInfo();
+                                                nbiClientFile.XMLData = cfilexml.OuterXml; // use NBrightInfo class, just to make life eaiser.
+                                                <div>
+                                                    @(nbiClientFile.GetXmlProperty("file/name"))
+                                                </div>
+                                            }
+                                        }
+
+                                        XmlNodeList nodOptList = nbi.XMLDoc.SelectNodes("genxml/options/option");
+                                        if (nodOptList != null)
+                                        {
+                                            foreach (XmlNode optxml in nodOptList)
+                                            {
+                                                var nbiOpt = new NBrightInfo();
+                                                nbiOpt.XMLData = optxml.OuterXml; // use NBrightInfo class, just to make life eaiser.
+                                                if (nbiOpt.GetXmlProperty("option/optname") != "")
+                                                {
+                                                    <div>
+                                                        @(nbiOpt.GetXmlProperty("option/optname")):
+                                                        <div style="display: inline-block">
+                                                            @(nbiOpt.GetXmlProperty("option/optvaltext"))
+                                                            @if (nbiOpt.GetXmlPropertyDouble("option/optvalcost") > 0)
+                                                            {
+                                                                @NBrightBuyUtils.FormatToStoreCurrency(nbiOpt.GetXmlPropertyDouble("option/optvalcost"))
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        }
+                                    }
+                                </div>
+                                @if (nbi.GetXmlProperty("genxml/modelref") != "")
+                                {
+                                    <div class="cartlistref">
+                                        @ResourceKey("General.Code"):
+                                        @if (nbi.GetXmlProperty("genxml/productname") == nbi.GetXmlProperty("genxml/modelref"))
+                                        {
+                                            @(nbi.GetXmlProperty("genxml/txtproductref"))
+                                        }
+                                        else
+                                        {
+                                            @(nbi.GetXmlProperty("genxml/txtproductref"))
+                                            @(nbi.GetXmlProperty("genxml/modelref"))
+                                        }
+                                    </div>
+                                }
+                            </div>
+
+                        </td>
+                        <td class="quantitycolumn">
+                            <!-- This is required, so mergecart can work on update -->
+                            <input id="itemcode_@(lp)" value="@(nbi.GetXmlProperty("genxml/itemcode"))" type="hidden"/> 
+
+                            <div class="quantityfields">
+                                <a class="qtyminus" href="javascript:void(0)" itemcode="@(nbi.GetXmlProperty("genxml/itemcode"))"><i class="fa fa-minus"></i></a>
+                                @NBrightTextBox(nbi, "genxml/qty_" + lp, "class='quantity itemcode" + nbi.GetXmlProperty("genxml/itemcode") + "'", "1")
+                                <a class="qtyplus" href="javascript:void(0)" itemcode="@(nbi.GetXmlProperty("genxml/itemcode"))" ><i class="fa fa-plus"></i></a>
+                            </div>
+
+                            <!-- Stock adjustment message -->
+                            @if (nbi.GetXmlProperty("genxml/validatecode") == "STOCKADJ")
+                            {
+                                @ResourceKey("Notification.stockadjusted")
+                            }
+                            @if (nbi.GetXmlProperty("genxml/validatecode") == "OUTOFSTOCK")
+                            {
+                                @ResourceKey("Notification.outofstock")
+                            }
+                        </td>
+                        @if (!Model.GetSettingBool("cataloguemode"))
+                        {
+                            <td class="pricecolumn">@NBrightBuyUtils.FormatToStoreCurrency(nbi.GetXmlPropertyDouble("genxml/appliedcost"))</td>
+                            <td class="totalcolumn">@NBrightBuyUtils.FormatToStoreCurrency(nbi.GetXmlPropertyDouble("genxml/appliedtotalcost"))</td>
+                        }
+                        <td class="removecolumn">
+                            <a href="javascript:void(0)" class="removeitem" idx="@(lp)" itemcode="@(nbi.GetXmlProperty("genxml/itemcode"))"><i class="fa fa-times-circle fa-2x"></i></a>
+                        </td>
+                    </tr>
+
+
+                }
+            }
+        }
+
+    </table>

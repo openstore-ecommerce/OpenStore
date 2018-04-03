@@ -1,0 +1,1690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F850303-BEC5-4247-9126-1E58F1402205}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nevoweb.DNN.NBrightBuy</RootNamespace>
+    <AssemblyName>NBrightBuy</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Nonshipping>true</Nonshipping>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetNuke, Version=7.2.0.607, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\DotNetNuke.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Instrumentation, Version=8.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\bin\DotNetNuke.Instrumentation.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Web.DDRMenu">
+      <HintPath>..\..\..\bin\DotNetNuke.Web.DDRMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data">
+      <HintPath>..\..\..\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NBrightCore">
+      <HintPath>..\..\..\bin\NBrightCore.dll</HintPath>
+    </Reference>
+    <Reference Include="NBrightDNN">
+      <HintPath>..\..\..\bin\NBrightDNN.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\..\..\bin\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\bin\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\AddressBook.ascx.cs">
+      <DependentUpon>AddressBook.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddressBook.ascx.designer.cs">
+      <DependentUpon>AddressBook.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PropertiesValue.ascx.cs">
+      <DependentUpon>PropertiesValue.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PropertiesValue.ascx.designer.cs">
+      <DependentUpon>PropertiesValue.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Categories.ascx.cs">
+      <DependentUpon>Categories.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Categories.ascx.designer.cs">
+      <DependentUpon>Categories.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Clients.ascx.cs">
+      <DependentUpon>Clients.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Clients.ascx.designer.cs">
+      <DependentUpon>Clients.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\BackOffice.ascx.cs">
+      <DependentUpon>BackOffice.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\BackOffice.ascx.designer.cs">
+      <DependentUpon>BackOffice.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Tools.ascx.cs">
+      <DependentUpon>Tools.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Tools.ascx.designer.cs">
+      <DependentUpon>Tools.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Import.ascx.cs">
+      <DependentUpon>Import.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Import.ascx.designer.cs">
+      <DependentUpon>Import.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Export.ascx.cs">
+      <DependentUpon>Export.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Export.ascx.designer.cs">
+      <DependentUpon>Export.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EditLanguage.ascx.cs">
+      <DependentUpon>EditLanguage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EditLanguage.ascx.designer.cs">
+      <DependentUpon>EditLanguage.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Products.ascx.cs">
+      <DependentUpon>Products.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Products.ascx.designer.cs">
+      <DependentUpon>Products.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PropertyGroups.ascx.cs">
+      <DependentUpon>PropertyGroups.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PropertyGroups.ascx.designer.cs">
+      <DependentUpon>PropertyGroups.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Settings.ascx.cs">
+      <DependentUpon>Settings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Settings.ascx.designer.cs">
+      <DependentUpon>Settings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DashSummary.ascx.cs">
+      <DependentUpon>DashSummary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DashSummary.ascx.designer.cs">
+      <DependentUpon>DashSummary.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Plugins.ascx.cs">
+      <DependentUpon>Plugins.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Plugins.ascx.designer.cs">
+      <DependentUpon>Plugins.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Menu.ascx.cs">
+      <DependentUpon>Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Menu.ascx.designer.cs">
+      <DependentUpon>Menu.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Orders.ascx.cs">
+      <DependentUpon>Orders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Orders.ascx.designer.cs">
+      <DependentUpon>Orders.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\NBrightBuyFrontOfficeBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\NBrightBuyAdminBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\NBrightBuyBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\NBrightBuySettingBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductListAjaxFilter.ascx.cs">
+      <DependentUpon>ProductListAjaxFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductListAjaxFilter.ascx.designer.cs">
+      <DependentUpon>ProductListAjaxFilter.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductListAjaxFilterSettings.ascx.cs">
+      <DependentUpon>ProductListAjaxFilterSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductListAjaxFilterSettings.ascx.designer.cs">
+      <DependentUpon>ProductListAjaxFilterSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Address\AddressFunctions.cs" />
+    <Compile Include="Components\Cart\CartFunctions.cs" />
+    <Compile Include="Components\ItemLists\ItemListsFunctions.cs" />
+    <Compile Include="Components\Plugins\PluginUtils.cs" />
+    <Compile Include="Components\Plugins\PluginFunctions.cs" />
+    <Compile Include="Components\Properties\PropertyData.cs" />
+    <Compile Include="Components\Properties\PropertyFunctions.cs" />
+    <Compile Include="Components\Categories\CategoryFunctions.cs" />
+    <Compile Include="Components\Clients\ClientFunctions.cs" />
+    <Compile Include="Components\Interfaces\CustomActionInterface.cs" />
+    <Compile Include="Components\Interfaces\PromoInterface.cs" />
+    <Compile Include="Components\Interfaces\AjaxInterface.cs" />
+    <Compile Include="Components\Logging.cs" />
+    <Compile Include="Components\Orders\OrderFunctions.cs" />
+    <Compile Include="Components\Payments\PaymentFunctions.cs" />
+    <Compile Include="Components\Product\ProductData.cs" />
+    <Compile Include="Components\Product\ProductFunctions.cs" />
+    <Compile Include="Components\Product\ProductUtils.cs" />
+    <Compile Include="ItemListRazor.ascx.cs">
+      <DependentUpon>ItemListRazor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ItemListRazor.ascx.designer.cs">
+      <DependentUpon>ItemListRazor.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemListRazorSettings.ascx.cs">
+      <DependentUpon>ItemListRazorSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ItemListRazorSettings.ascx.designer.cs">
+      <DependentUpon>ItemListRazorSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductRazorSearch.ascx.cs">
+      <DependentUpon>ProductRazorSearch.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductRazorSearch.ascx.designer.cs">
+      <DependentUpon>ProductRazorSearch.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductRazorSearchSettings.ascx.cs">
+      <DependentUpon>ProductRazorSearchSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductRazorSearchSettings.ascx.designer.cs">
+      <DependentUpon>ProductRazorSearchSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryRazorMenuSettings.ascx.cs">
+      <DependentUpon>CategoryRazorMenuSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoryRazorMenuSettings.ascx.designer.cs">
+      <DependentUpon>CategoryRazorMenuSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryRazorMenu.ascx.cs">
+      <DependentUpon>CategoryRazorMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoryRazorMenu.ascx.designer.cs">
+      <DependentUpon>CategoryRazorMenu.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Categories\CatMenuRazorBuilder.cs" />
+    <Compile Include="Components\Interfaces\EntityTypeInterface.cs" />
+    <Compile Include="OrderRazorAdmin.ascx.cs">
+      <DependentUpon>OrderRazorAdmin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderRazorAdmin.ascx.designer.cs">
+      <DependentUpon>OrderRazorAdmin.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderRazorAdminSettings.ascx.cs">
+      <DependentUpon>OrderRazorAdminSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderRazorAdminSettings.ascx.designer.cs">
+      <DependentUpon>OrderRazorAdminSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductAjaxView.ascx.cs">
+      <DependentUpon>ProductAjaxView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductAjaxView.ascx.designer.cs">
+      <DependentUpon>ProductAjaxView.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductAjaxViewSettings.ascx.cs">
+      <DependentUpon>ProductAjaxViewSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductAjaxViewSettings.ascx.designer.cs">
+      <DependentUpon>ProductAjaxViewSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileRazorFormSettings.ascx.cs">
+      <DependentUpon>ProfileRazorFormSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfileRazorFormSettings.ascx.designer.cs">
+      <DependentUpon>ProfileRazorFormSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileRazorForm.ascx.cs">
+      <DependentUpon>ProfileRazorForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfileRazorForm.ascx.designer.cs">
+      <DependentUpon>ProfileRazorForm.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Cart\CartData.cs" />
+    <Compile Include="Components\Categories\CategoryUtils.cs" />
+    <Compile Include="Components\Categories\CatMenuBuilder.cs" />
+    <Compile Include="Components\ClassInfo.cs" />
+    <Compile Include="Components\Address\AddressData.cs" />
+    <Compile Include="Components\Clients\ClientData.cs" />
+    <Compile Include="Components\Categories\CategoryData.cs" />
+    <Compile Include="Components\CatProdXref.cs" />
+    <Compile Include="Components\GroupData.cs" />
+    <Compile Include="Components\Interfaces\SchedulerInterface.cs" />
+    <Compile Include="Components\Interfaces\DiscountCodeInterface.cs" />
+    <Compile Include="Components\Interfaces\FilterInterface.cs" />
+    <Compile Include="Components\Interfaces\PaymentsInterface.cs" />
+    <Compile Include="Components\ProfileData.cs" />
+    <Compile Include="Components\Plugins\PluginData.cs" />
+    <Compile Include="Components\PurchaseData.cs" />
+    <Compile Include="Components\Orders\OrderData.cs" />
+    <Compile Include="Components\RequestForm.cs" />
+    <Compile Include="Components\Scheduler.cs" />
+    <Compile Include="Components\UserData.cs" />
+    <Compile Include="Components\Interfaces\ShippingInterface.cs" />
+    <Compile Include="Components\Interfaces\EventInterface.cs" />
+    <Compile Include="Components\Interfaces\TaxInterface.cs" />
+    <Compile Include="Components\ItemLists\ItemListData.cs" />
+    <Compile Include="Components\DdrMenuInterface.cs" />
+    <Compile Include="Components\GrpCatController.cs" />
+    <Compile Include="Components\ModSettings.cs" />
+    <Compile Include="Components\NavigationData.cs" />
+    <Compile Include="Components\StoreSettings.cs" />
+    <Compile Include="AddressAdmin.ascx.cs">
+      <DependentUpon>AddressAdmin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddressAdmin.ascx.designer.cs">
+      <DependentUpon>AddressAdmin.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddressAdminSettings.ascx.cs">
+      <DependentUpon>AddressAdminSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddressAdminSettings.ascx.designer.cs">
+      <DependentUpon>AddressAdminSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Container.ascx.cs">
+      <DependentUpon>Container.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Container.ascx.designer.cs">
+      <DependentUpon>Container.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.ascx.cs">
+      <DependentUpon>Payment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Payment.ascx.designer.cs">
+      <DependentUpon>Payment.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentSettings.ascx.cs">
+      <DependentUpon>PaymentSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentSettings.ascx.designer.cs">
+      <DependentUpon>PaymentSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintView.aspx.cs">
+      <DependentUpon>PrintView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrintView.aspx.designer.cs">
+      <DependentUpon>PrintView.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CartRazorViewSettings.ascx.cs">
+      <DependentUpon>CartRazorViewSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartRazorViewSettings.ascx.designer.cs">
+      <DependentUpon>CartRazorViewSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CartRazorView.ascx.cs">
+      <DependentUpon>CartRazorView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartRazorView.ascx.designer.cs">
+      <DependentUpon>CartRazorView.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductRazorViewSettings.ascx.cs">
+      <DependentUpon>ProductRazorViewSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductRazorViewSettings.ascx.designer.cs">
+      <DependentUpon>ProductRazorViewSettings.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductRazorView.ascx.cs">
+      <DependentUpon>ProductRazorView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductRazorView.ascx.designer.cs">
+      <DependentUpon>ProductRazorView.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NBrightThumb.ashx.cs">
+      <DependentUpon>NBrightThumb.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="render\GenXmlTemplateExt.cs" />
+    <Compile Include="Components\DataProvider.cs" />
+    <Compile Include="Components\NBrightBuyController.cs" />
+    <Compile Include="Components\SqlDataProvider\SqlDataProvider.cs" />
+    <Compile Include="Components\NBrightBuyUtils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="render\NBrightBuyRazorTokens.cs" />
+    <Compile Include="XmlConnector.ashx.cs">
+      <DependentUpon>XmlConnector.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\AddressBook.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\PropertiesValue.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Categories.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Clients.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\BackOffice.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Tools.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Import.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Export.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\EditLanguage.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Products.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\PropertyGroups.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Settings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\DashSummary.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Plugins.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Menu.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Orders.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ProductListAjaxFilter.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ProductListAjaxFilterSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Installation\Readme_NBS_Upgrade.txt" />
+    <Content Include="ItemListRazor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ItemListRazorSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Plugins\readme.txt" />
+    <Content Include="ProductRazorSearch.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ProductRazorSearchSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="CategoryRazorMenuSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="CategoryRazorMenu.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="OrderRazorAdmin.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="OrderRazorAdminSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ProfileRazorFormSettings.ascx" />
+    <Content Include="ProductAjaxView.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ProductAjaxViewSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ProfileRazorFormSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ProfileRazorForm.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="AddressAdmin.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="AddressAdminSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Container.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Payment.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="PaymentSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="PrintView.aspx" />
+    <Content Include="CartRazorViewSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="CartRazorView.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ProductRazorViewSettings.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="ProductRazorView.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Skins\OpenStoreBO\OpenStoreBO.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Skins\OpenStoreBO\OpenStoreBO.doctype.xml" />
+    <Content Include="Themes\ClassicAjax\css\classicajax.css" />
+    <Content Include="Themes\ClassicAjax\css\colorbox.css" />
+    <Content Include="Themes\ClassicAjax\css\images\animated-overlay.gif" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-bg_flat_55_fbf9ee_40x100.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-bg_flat_65_ffffff_40x100.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-bg_flat_75_cccccc_40x100.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-bg_flat_75_dadada_40x100.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-bg_flat_75_e6e6e6_40x100.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-bg_flat_95_fef1ec_40x100.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="Themes\ClassicAjax\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Themes\config\img\asterisk.png" />
+    <Content Include="Themes\config\img\invalid.png" />
+    <Content Include="Themes\config\img\openstore-logo.png" />
+    <Content Include="Themes\Default\css\ClientAccount.css" />
+    <Content Include="Themes\Default\css\Checkout.css" />
+    <Content Include="Themes\Default\img\email-facebook.gif" />
+    <Content Include="Themes\Default\img\email-twitter.gif" />
+    <Content Include="Themes\Default\js\AddressAdmin.js" />
+    <Content Include="Themes\Default\js\cart.js" />
+    <Content Include="Themes\Default\js\checkout.js" />
+    <Content Include="Themes\Default\js\payment.js" />
+    <Content Include="Themes\ClassicAjax\img\close.png" />
+    <Content Include="Themes\ClassicAjax\img\email-facebook.gif" />
+    <Content Include="Themes\ClassicAjax\img\email-twitter.gif" />
+    <Content Include="Themes\ClassicAjax\img\loading.gif" />
+    <Content Include="Themes\ClassicAjax\img\loading_background.png" />
+    <Content Include="Themes\ClassicAjax\img\overlay.png" />
+    <Content Include="Themes\ClassicAjax\js\jquery.colorbox-min.js" />
+    <Content Include="Themes\ClassicAjax\js\jquery.cookie.min.js" />
+    <Content Include="Themes\ClassicAjax\js\jquery.cycle2.carousel.min.js" />
+    <Content Include="Themes\ClassicAjax\js\jquery.cycle2.min.js" />
+    <Content Include="Themes\ClassicAjax\js\jquery.navgoco.js" />
+    <Content Include="Themes\ClassicAjax\js\jquery.navgoco.min.js" />
+    <Content Include="Themes\Default\js\product.js" />
+    <None Include="Installation\04.00.00.SqlDataProvider" />
+    <None Include="Installation\Uninstall.SqlDataProvider" />
+    <None Include="README.md" />
+    <None Include="Themes\ClassicAjax\css\images\Thumbs.db" />
+    <None Include="Themes\ClassicAjax\Default\FrontOfficePageBody.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\FrontOfficePageHeader.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplayAjax.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplayAjax_pageinject.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplayAjaxList.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplayAjaxList_paging.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplayAjaxSettings.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductListAjaxFilter.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductListAjaxFilter_pageinject.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\CategoryMenu.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\CategoryMenuDrill.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\CategoryMenuDrillLink.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\CategoryMenuLink.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\CategoryMenuLinkAjax.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\SearchAdvanced.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\Search.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\Featured.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\FeaturedCarousel.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\FeaturedCarousel_head.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\FeaturedCycle.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\FeaturedCycle_head.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ItemListPopupBody.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\MiniCart.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\MiniCartSettings.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplayDetail.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplayDetail_seohead.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplayList.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplayListBody.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\ProductDisplaySettings.cshtml" />
+    <None Include="Themes\config\default\Admin_CategoryFilterGroups.cshtml" />
+    <None Include="Themes\config\default\Admin_Plugins.cshtml" />
+    <None Include="Themes\config\default\Admin_PluginsList.cshtml" />
+    <None Include="Themes\config\default\Admin_Plugins_head.cshtml" />
+    <None Include="Themes\config\default\Admin_PluginsDetail.cshtml" />
+    <None Include="Themes\config\default\Admin_Property.cshtml" />
+    <None Include="Themes\config\default\Admin_PropertyDetail.cshtml" />
+    <None Include="Themes\config\default\Admin_PropertyImages.cshtml" />
+    <None Include="Themes\config\default\Admin_PropertyList.cshtml" />
+    <None Include="Themes\config\default\Admin_PropertyProducts.cshtml" />
+    <None Include="Themes\config\default\Admin_PropertyProductSelect.cshtml" />
+    <None Include="Themes\config\default\Admin_CategoryProductSelect.cshtml" />
+    <None Include="Themes\config\default\Admin_PropertySearch.cshtml" />
+    <None Include="Themes\config\default\Admin_Property_head.cshtml" />
+    <None Include="Themes\config\default\Admin_Clients.cshtml" />
+    <None Include="Themes\config\default\Admin_Orders.cshtml" />
+    <None Include="Themes\config\default\Admin_OrdersCustom.cshtml" />
+    <None Include="Themes\config\default\Admin_ClientsDetail.cshtml" />
+    <None Include="Themes\config\default\Admin_OrdersDetail.cshtml" />
+    <None Include="Themes\config\default\Admin_ClientsList.cshtml" />
+    <None Include="Themes\config\default\Admin_OrdersList.cshtml" />
+    <None Include="Themes\config\default\Admin_Clients_head.cshtml" />
+    <None Include="Themes\config\default\Admin_Category.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductClients.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductClientSelect.cshtml" />
+    <None Include="Themes\config\default\Admin_CategoryList.cshtml" />
+    <None Include="Themes\config\default\Admin_CategoryImages.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductOptions.cshtml" />
+    <None Include="Themes\config\default\Admin_CategoryProducts.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductRelated.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductPropertySelect.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductProperties.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductCategories.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductDocs.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductImages.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductOptionValues.cshtml" />
+    <None Include="Themes\config\default\Admin_Product.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductDetail.cshtml" />
+    <None Include="Themes\config\default\Admin_CategorySearch.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductSelectList.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductList.cshtml" />
+    <None Include="Themes\config\default\Admin_ProductSearch.cshtml" />
+    <None Include="Themes\config\default\Admin_Category_head.cshtml" />
+    <None Include="Themes\config\default\Admin_Product_head.cshtml" />
+    <None Include="Themes\config\default\modelfields.cshtml" />
+    <None Include="Themes\config\default\OS_Paymentsettings.cshtml" />
+    <None Include="Themes\config\default\OS_ProductListAjaxFilterSettings.cshtml" />
+    <None Include="Themes\config\default\OS_AddressAdminsettings.cshtml" />
+    <None Include="Themes\config\default\OS_OrderAdminsettings.cshtml" />
+    <None Include="Themes\config\default\OS_DisplaySearchSettings.cshtml" />
+    <None Include="Themes\config\default\OS_CategoryMenuSettings.cshtml" />
+    <None Include="Themes\config\default\OS_Checkoutsettings.cshtml" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Plugins\menu.config" />
+    <Content Include="Themes\config\css\backoffice.css" />
+    <Content Include="Themes\config\css\global.css" />
+    <Content Include="Themes\config\default\ajaxincludes.html" />
+    <Content Include="Themes\config\default\backoffice.html" />
+    <Content Include="Themes\config\default\backofficepageheader.html" />
+    <Content Include="Themes\config\default\CartView_Settings.html" />
+    <None Include="Themes\config\default\Admin_CategoryDetail.cshtml" />
+    <Content Include="Themes\config\default\CategoryMenu_Settings.html" />
+    <None Include="Themes\config\default\clientfields.cshtml" />
+    <Content Include="Themes\config\default\clientselectbody.html" />
+    <Content Include="Themes\config\default\clientselectfooter.html" />
+    <Content Include="Themes\config\default\clientselectheader.html" />
+    <Content Include="Themes\config\default\css\style-nbb.css" />
+    <Content Include="Themes\config\default\css\style.css" />
+    <Content Include="Themes\config\default\css\style.min.css" />
+    <Content Include="Themes\config\default\dashboard.html" />
+    <Content Include="Themes\config\default\dashordersbody.html" />
+    <Content Include="Themes\config\default\dashordersfooter.html" />
+    <Content Include="Themes\config\default\dashordersheader.html" />
+    <None Include="Themes\config\default\datepicker.cshtml" />
+    <Content Include="Themes\config\default\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Themes\config\default\img\8962691008_7f489395c9_m.jpg" />
+    <Content Include="Themes\config\default\img\8985207189_01ea27882d_m.jpg" />
+    <Content Include="Themes\config\default\img\9036958611_fa1bb7f827_m.jpg" />
+    <Content Include="Themes\config\default\img\9041440555_2175b32078_m.jpg" />
+    <Content Include="Themes\config\default\img\avatar.jpg" />
+    <Content Include="Themes\config\default\img\chevron-left.png" />
+    <Content Include="Themes\config\default\img\chevron-right.png" />
+    <Content Include="Themes\config\default\img\devoops_getdata.gif" />
+    <Content Include="Themes\config\default\img\devoops_pattern_b10.png" />
+    <Content Include="Themes\config\default\img\logo-200.png" />
+    <Content Include="Themes\config\default\img\logo.png" />
+    <Content Include="Themes\config\default\img\sort-asc.png" />
+    <Content Include="Themes\config\default\img\sort-desc.png" />
+    <Content Include="Themes\config\default\img\sort.png" />
+    <Content Include="Themes\config\default\img\times.png" />
+    <Content Include="Themes\config\default\img\ui-accordion-down.png" />
+    <Content Include="Themes\config\default\img\ui-accordion-right.png" />
+    <Content Include="Themes\config\default\img\ui-left.png" />
+    <Content Include="Themes\config\default\img\ui-right.png" />
+    <Content Include="Themes\config\default\js\devoops-nbb.js" />
+    <Content Include="Themes\config\default\js\devoops.js" />
+    <Content Include="Themes\config\default\js\devoops.min.js" />
+    <Content Include="Themes\config\default\ordersexport.html" />
+    <Content Include="Themes\config\default\plugins\bootstrapvalidator\bootstrapValidator.css" />
+    <Content Include="Themes\config\default\plugins\bootstrapvalidator\bootstrapValidator.js" />
+    <Content Include="Themes\config\default\plugins\bootstrapvalidator\bootstrapValidator.min.css" />
+    <Content Include="Themes\config\default\plugins\bootstrapvalidator\bootstrapValidator.min.js" />
+    <Content Include="Themes\config\default\plugins\bootstrap\bootstrap-theme.css" />
+    <Content Include="Themes\config\default\plugins\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Themes\config\default\plugins\bootstrap\bootstrap.css" />
+    <Content Include="Themes\config\default\plugins\bootstrap\bootstrap.js" />
+    <Content Include="Themes\config\default\plugins\bootstrap\bootstrap.min.css" />
+    <Content Include="Themes\config\default\plugins\bootstrap\bootstrap.min.js" />
+    <Content Include="Themes\config\default\plugins\d3\d3.v3.js" />
+    <Content Include="Themes\config\default\plugins\d3\d3.v3.min.js" />
+    <Content Include="Themes\config\default\plugins\datatables\copy_csv_xls_pdf.swf" />
+    <Content Include="Themes\config\default\plugins\datatables\dataTables.bootstrap.js" />
+    <Content Include="Themes\config\default\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="Themes\config\default\plugins\datatables\TableTools.js" />
+    <Content Include="Themes\config\default\plugins\datatables\TableTools_orig.js" />
+    <Content Include="Themes\config\default\plugins\datatables\ZeroClipboard.js" />
+    <Content Include="Themes\config\default\plugins\fancybox\blank.gif" />
+    <Content Include="Themes\config\default\plugins\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Themes\config\default\plugins\fancybox\fancybox_loading.gif" />
+    <Content Include="Themes\config\default\plugins\fancybox\fancybox_overlay.png" />
+    <Content Include="Themes\config\default\plugins\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Themes\config\default\plugins\fancybox\fancybox_sprite.png" />
+    <Content Include="Themes\config\default\plugins\fancybox\helpers\fancybox_buttons.png" />
+    <Content Include="Themes\config\default\plugins\fancybox\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="Themes\config\default\plugins\fancybox\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Themes\config\default\plugins\fancybox\helpers\jquery.fancybox-media.js" />
+    <Content Include="Themes\config\default\plugins\fancybox\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="Themes\config\default\plugins\fancybox\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Themes\config\default\plugins\fancybox\jquery.fancybox.css" />
+    <Content Include="Themes\config\default\plugins\fancybox\jquery.fancybox.js" />
+    <Content Include="Themes\config\default\plugins\fancybox\jquery.fancybox.pack.js" />
+    <Content Include="Themes\config\default\plugins\fineuploader\edit.gif" />
+    <Content Include="Themes\config\default\plugins\fineuploader\fineuploader-5.0.1.css" />
+    <Content Include="Themes\config\default\plugins\fineuploader\fineuploader-5.0.1.min.css" />
+    <Content Include="Themes\config\default\plugins\fineuploader\iframe.xss.response-5.0.1.js" />
+    <Content Include="Themes\config\default\plugins\fineuploader\jquery.fineuploader-5.0.1.js" />
+    <Content Include="Themes\config\default\plugins\fineuploader\jquery.fineuploader-5.0.1.min.js" />
+    <Content Include="Themes\config\default\plugins\fineuploader\loading.gif" />
+    <Content Include="Themes\config\default\plugins\fineuploader\processing.gif" />
+    <Content Include="Themes\config\default\plugins\flot\jquery.flot.js" />
+    <Content Include="Themes\config\default\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="Themes\config\default\plugins\flot\jquery.flot.time.js" />
+    <Content Include="Themes\config\default\plugins\flot\LICENSE.txt" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\fullcalendar.css" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\fullcalendar.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\gcal.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\all.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\ar-ma.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\ar.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\bg.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\ca.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\cs.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\da.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\de.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\el.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\en-au.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\en-ca.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\en-gb.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\es.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\fa.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\fi.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\fr-ca.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\fr.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\hi.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\hr.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\hu.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\it.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\ja.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\ko.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\lt.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\lv.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\nl.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\pl.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\pt-br.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\pt.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\ro.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\ru.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\sk.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\sl.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\sv.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\th.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\tr.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\uk.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\zh-cn.js" />
+    <Content Include="Themes\config\default\plugins\fullcalendar\lang\zh-tw.js" />
+    <Content Include="Themes\config\default\plugins\jQuery-Knob\jquery.knob.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-af.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-am.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-bg.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ca.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-cs.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-da.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-de.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-el.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-es.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-et.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-eu.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-fi.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-fr.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-gl.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-he.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-hr.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-hu.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-id.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-it.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ja.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ko.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-lt.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-nl.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-no.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-pl.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-pt-BR.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-pt.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ro.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-ru.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-sk.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-sr-RS.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-sr-YU.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-sv.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-th.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-tr.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-uk.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-vi.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-zh-CN.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\i18n\jquery-ui-timepicker-zh-TW.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\index.html" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\jquery-ui-sliderAccess.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\jquery-ui-timepicker-addon.css" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\jquery-ui-timepicker-addon.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\jquery-ui-timepicker-addon.min.css" />
+    <Content Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\jquery-ui-timepicker-addon.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery-ui-i18n.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-af.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ar-DZ.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ar.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-az.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-be.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-bg.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-bs.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ca.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-cs.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-cy-GB.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-da.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-de.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-el.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-en-AU.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-en-GB.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-en-NZ.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-eo.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-es.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-et.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-eu.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-fa.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-fi.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-fo.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-fr-CA.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-fr-CH.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-fr.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-gl.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-he.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-hi.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-hr.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-hu.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-hy.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-id.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-is.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-it.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ja.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ka.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-kk.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-km.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ko.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ky.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-lb.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-lt.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-lv.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-mk.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ml.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ms.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-nb.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-nl-BE.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-nl.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-nn.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-no.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-pl.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-pt-BR.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-pt.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-rm.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ro.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ru.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-sk.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-sl.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-sq.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-sr-SR.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-sr.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-sv.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-ta.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-th.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-tj.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-tr.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-uk.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-vi.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-zh-CN.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-zh-HK.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\i18n\jquery.ui.datepicker-zh-TW.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\jquery-ui-nbb.css" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\jquery-ui.css" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\jquery-ui.js" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Themes\config\default\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Themes\config\default\plugins\jquery\jquery-2.1.0.min.js" />
+    <Content Include="Themes\config\default\plugins\justified-gallery\jquery.justifiedgallery.css" />
+    <Content Include="Themes\config\default\plugins\justified-gallery\jquery.justifiedgallery.js" />
+    <Content Include="Themes\config\default\plugins\justified-gallery\jquery.justifiedgallery.min.css" />
+    <Content Include="Themes\config\default\plugins\justified-gallery\jquery.justifiedgallery.min.js" />
+    <Content Include="Themes\config\default\plugins\justified-gallery\loading.gif" />
+    <Content Include="Themes\config\default\plugins\moment\langs.js" />
+    <Content Include="Themes\config\default\plugins\moment\langs.min.js" />
+    <Content Include="Themes\config\default\plugins\moment\moment-with-langs.js" />
+    <Content Include="Themes\config\default\plugins\moment\moment-with-langs.min.js" />
+    <Content Include="Themes\config\default\plugins\moment\moment.min.js" />
+    <Content Include="Themes\config\default\plugins\morris\morris.js" />
+    <Content Include="Themes\config\default\plugins\morris\morris.min.js" />
+    <Content Include="Themes\config\default\plugins\raphael\raphael-min.js" />
+    <Content Include="Themes\config\default\plugins\raphael\raphael.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2-bootstrap.css" />
+    <Content Include="Themes\config\default\plugins\select2\select2-spinner.gif" />
+    <Content Include="Themes\config\default\plugins\select2\select2.css" />
+    <Content Include="Themes\config\default\plugins\select2\select2.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2.min.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2.png" />
+    <Content Include="Themes\config\default\plugins\select2\select2x2.png" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_ar.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_bg.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_ca.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_cs.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_da.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_de.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_el.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_es.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_et.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_eu.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_fa.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_fi.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_fr.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_gl.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_he.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_hr.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_hu.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_id.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_is.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_it.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_ja.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_ko.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_lt.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_lv.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_mk.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_ms.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_nl.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_no.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_pl.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_pt-BR.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_pt-PT.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_ro.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_ru.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_sk.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_sv.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_th.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_tr.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_ua.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_vi.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_zh-CN.js" />
+    <Content Include="Themes\config\default\plugins\select2\select2_locale_zh-TW.js" />
+    <Content Include="Themes\config\default\plugins\sparkline\jquery.sparkline.js" />
+    <Content Include="Themes\config\default\plugins\sparkline\jquery.sparkline.min.js" />
+    <Content Include="Themes\config\default\plugins\tagsinput\jquery.tagsinput.css" />
+    <Content Include="Themes\config\default\plugins\tagsinput\jquery.tagsinput.js" />
+    <Content Include="Themes\config\default\plugins\xcharts\xcharts.css" />
+    <Content Include="Themes\config\default\plugins\xcharts\xcharts.js" />
+    <Content Include="Themes\config\default\plugins\xcharts\xcharts.min.css" />
+    <Content Include="Themes\config\default\plugins\xcharts\xcharts.min.js" />
+    <Content Include="Themes\config\default\Checkout_Settings.html" />
+    <Content Include="Themes\config\default\extrapaymentdata.html" />
+    <Content Include="Themes\config\default\extrashippingdata.html" />
+    <Content Include="Themes\config\default\datepicker.html" />
+    <Content Include="Themes\config\default\Payment_Settings.html" />
+    <Content Include="Themes\config\default\Tools.html" />
+    <Content Include="Themes\config\default\import.html" />
+    <Content Include="Themes\config\default\export.html" />
+    <Content Include="Themes\config\default\selecteditlanguage.html" />
+    <Content Include="Themes\config\default\grouplistbody.html" />
+    <Content Include="Themes\config\default\grouplistfooter.html" />
+    <Content Include="Themes\config\default\grouplistheader.html" />
+    <Content Include="Themes\config\default\menufooter.html" />
+    <Content Include="Themes\config\default\menuheader.html" />
+    <Content Include="Themes\config\default\pluginsdetail.html" />
+    <Content Include="Themes\config\default\pluginsdetailfooter.html" />
+    <Content Include="Themes\config\default\pluginsdetailheader.html" />
+    <Content Include="Themes\config\default\pluginsfooter.html" />
+    <Content Include="Themes\config\default\pluginsheader.html" />
+    <None Include="Themes\config\default\Admin_Orders_head.cshtml" />
+    <None Include="Themes\config\default\OS_ProductDisplayAjaxsettings.cshtml" />
+    <None Include="Themes\config\default\OS_ItemListsettings.cshtml" />
+    <None Include="Themes\config\default\ThemeFolderSelect.cshtml" />
+    <None Include="Themes\config\default\OS_ProductDisplaysettings.cshtml" />
+    <None Include="Themes\config\default\OS_ProfileFormsettings.cshtml" />
+    <Content Include="Themes\config\default\settingsbody.html" />
+    <Content Include="Themes\config\img\flags\16\af-ZA.png" />
+    <Content Include="Themes\config\img\flags\16\ar-AE.png" />
+    <Content Include="Themes\config\img\flags\16\ar-BH.png" />
+    <Content Include="Themes\config\img\flags\16\ar-DZ.png" />
+    <Content Include="Themes\config\img\flags\16\ar-EG.png" />
+    <Content Include="Themes\config\img\flags\16\ar-IQ.png" />
+    <Content Include="Themes\config\img\flags\16\ar-JO.png" />
+    <Content Include="Themes\config\img\flags\16\ar-KW.png" />
+    <Content Include="Themes\config\img\flags\16\ar-LB.png" />
+    <Content Include="Themes\config\img\flags\16\ar-LY.png" />
+    <Content Include="Themes\config\img\flags\16\ar-MA.png" />
+    <Content Include="Themes\config\img\flags\16\ar-OM.png" />
+    <Content Include="Themes\config\img\flags\16\ar-QA.png" />
+    <Content Include="Themes\config\img\flags\16\ar-SA.png" />
+    <Content Include="Themes\config\img\flags\16\ar-SY.png" />
+    <Content Include="Themes\config\img\flags\16\ar-TN.png" />
+    <Content Include="Themes\config\img\flags\16\ar-YE.png" />
+    <Content Include="Themes\config\img\flags\16\be-BY.png" />
+    <Content Include="Themes\config\img\flags\16\bg-BG.png" />
+    <Content Include="Themes\config\img\flags\16\ca-ES.png" />
+    <Content Include="Themes\config\img\flags\16\cs-CZ.png" />
+    <Content Include="Themes\config\img\flags\16\Cy-az-AZ.png" />
+    <Content Include="Themes\config\img\flags\16\Cy-sr-SP.png" />
+    <Content Include="Themes\config\img\flags\16\Cy-uz-UZ.png" />
+    <Content Include="Themes\config\img\flags\16\da-DK.png" />
+    <Content Include="Themes\config\img\flags\16\de-AT.png" />
+    <Content Include="Themes\config\img\flags\16\de-CH.png" />
+    <Content Include="Themes\config\img\flags\16\de-DE.png" />
+    <Content Include="Themes\config\img\flags\16\de-LI.png" />
+    <Content Include="Themes\config\img\flags\16\de-LU.png" />
+    <Content Include="Themes\config\img\flags\16\div-MV.png" />
+    <Content Include="Themes\config\img\flags\16\el-GR.png" />
+    <Content Include="Themes\config\img\flags\16\en-AU.png" />
+    <Content Include="Themes\config\img\flags\16\en-BZ.png" />
+    <Content Include="Themes\config\img\flags\16\en-CA.png" />
+    <Content Include="Themes\config\img\flags\16\en-CB.png" />
+    <Content Include="Themes\config\img\flags\16\en-GB.png" />
+    <Content Include="Themes\config\img\flags\16\en-IE.png" />
+    <Content Include="Themes\config\img\flags\16\en-JM.png" />
+    <Content Include="Themes\config\img\flags\16\en-NZ.png" />
+    <Content Include="Themes\config\img\flags\16\en-PH.png" />
+    <Content Include="Themes\config\img\flags\16\en-TT.png" />
+    <Content Include="Themes\config\img\flags\16\en-US.png" />
+    <Content Include="Themes\config\img\flags\16\en-US_OLD.png" />
+    <Content Include="Themes\config\img\flags\16\en-ZA.png" />
+    <Content Include="Themes\config\img\flags\16\en-ZW.png" />
+    <Content Include="Themes\config\img\flags\16\es-AR.png" />
+    <Content Include="Themes\config\img\flags\16\es-BO.png" />
+    <Content Include="Themes\config\img\flags\16\es-CL.png" />
+    <Content Include="Themes\config\img\flags\16\es-CO.png" />
+    <Content Include="Themes\config\img\flags\16\es-CR.png" />
+    <Content Include="Themes\config\img\flags\16\es-DO.png" />
+    <Content Include="Themes\config\img\flags\16\es-EC.png" />
+    <Content Include="Themes\config\img\flags\16\es-ES.png" />
+    <Content Include="Themes\config\img\flags\16\es-GT.png" />
+    <Content Include="Themes\config\img\flags\16\es-HN.png" />
+    <Content Include="Themes\config\img\flags\16\es-MX.png" />
+    <Content Include="Themes\config\img\flags\16\es-NI.png" />
+    <Content Include="Themes\config\img\flags\16\es-PA.png" />
+    <Content Include="Themes\config\img\flags\16\es-PE.png" />
+    <Content Include="Themes\config\img\flags\16\es-PR.png" />
+    <Content Include="Themes\config\img\flags\16\es-PY.png" />
+    <Content Include="Themes\config\img\flags\16\es-SV.png" />
+    <Content Include="Themes\config\img\flags\16\es-UY.png" />
+    <Content Include="Themes\config\img\flags\16\es-VE.png" />
+    <Content Include="Themes\config\img\flags\16\et-EE.png" />
+    <Content Include="Themes\config\img\flags\16\eu-ES.png" />
+    <Content Include="Themes\config\img\flags\16\fa-IR.png" />
+    <Content Include="Themes\config\img\flags\16\fi-FI.png" />
+    <Content Include="Themes\config\img\flags\16\fo-FO.png" />
+    <Content Include="Themes\config\img\flags\16\fr-BE.png" />
+    <Content Include="Themes\config\img\flags\16\fr-CA.png" />
+    <Content Include="Themes\config\img\flags\16\fr-CH.png" />
+    <Content Include="Themes\config\img\flags\16\fr-FR.png" />
+    <Content Include="Themes\config\img\flags\16\fr-LU.png" />
+    <Content Include="Themes\config\img\flags\16\fr-MC.png" />
+    <Content Include="Themes\config\img\flags\16\gl-ES.png" />
+    <Content Include="Themes\config\img\flags\16\gu-IN.png" />
+    <Content Include="Themes\config\img\flags\16\he-IL.png" />
+    <Content Include="Themes\config\img\flags\16\hi-IN.png" />
+    <Content Include="Themes\config\img\flags\16\hr-HR.png" />
+    <Content Include="Themes\config\img\flags\16\hu-HU.png" />
+    <Content Include="Themes\config\img\flags\16\hy-AM.png" />
+    <Content Include="Themes\config\img\flags\16\id-ID.png" />
+    <Content Include="Themes\config\img\flags\16\is-IS.png" />
+    <Content Include="Themes\config\img\flags\16\it-CH.png" />
+    <Content Include="Themes\config\img\flags\16\it-IT.png" />
+    <Content Include="Themes\config\img\flags\16\ja-JP.png" />
+    <Content Include="Themes\config\img\flags\16\ka-GE.png" />
+    <Content Include="Themes\config\img\flags\16\kk-KZ.png" />
+    <Content Include="Themes\config\img\flags\16\kn-IN.png" />
+    <Content Include="Themes\config\img\flags\16\ko-KR.png" />
+    <Content Include="Themes\config\img\flags\16\kok-IN.png" />
+    <Content Include="Themes\config\img\flags\16\ky-KZ.png" />
+    <Content Include="Themes\config\img\flags\16\Lt-az-AZ.png" />
+    <Content Include="Themes\config\img\flags\16\lt-LT.png" />
+    <Content Include="Themes\config\img\flags\16\Lt-sr-SP.png" />
+    <Content Include="Themes\config\img\flags\16\Lt-uz-UZ.png" />
+    <Content Include="Themes\config\img\flags\16\lv-LV.png" />
+    <Content Include="Themes\config\img\flags\16\mk-MK.png" />
+    <Content Include="Themes\config\img\flags\16\mn-MN.png" />
+    <Content Include="Themes\config\img\flags\16\mr-IN.png" />
+    <Content Include="Themes\config\img\flags\16\ms-BN.png" />
+    <Content Include="Themes\config\img\flags\16\ms-MY.png" />
+    <Content Include="Themes\config\img\flags\16\nb-NO.png" />
+    <Content Include="Themes\config\img\flags\16\nl-BE.png" />
+    <Content Include="Themes\config\img\flags\16\nl-NL.png" />
+    <Content Include="Themes\config\img\flags\16\nn-NO.png" />
+    <Content Include="Themes\config\img\flags\16\none.png" />
+    <Content Include="Themes\config\img\flags\16\pa-IN.png" />
+    <Content Include="Themes\config\img\flags\16\pl-PL.png" />
+    <Content Include="Themes\config\img\flags\16\pt-BR.png" />
+    <Content Include="Themes\config\img\flags\16\pt-PT.png" />
+    <Content Include="Themes\config\img\flags\16\ro-RO.png" />
+    <Content Include="Themes\config\img\flags\16\ru-RU.png" />
+    <Content Include="Themes\config\img\flags\16\sa-IN.png" />
+    <Content Include="Themes\config\img\flags\16\sk-SK.png" />
+    <Content Include="Themes\config\img\flags\16\sl-SI.png" />
+    <Content Include="Themes\config\img\flags\16\sq-AL.png" />
+    <Content Include="Themes\config\img\flags\16\sv-FI.png" />
+    <Content Include="Themes\config\img\flags\16\sv-SE.png" />
+    <Content Include="Themes\config\img\flags\16\sw-KE.png" />
+    <Content Include="Themes\config\img\flags\16\syr-SY.png" />
+    <Content Include="Themes\config\img\flags\16\ta-IN.png" />
+    <Content Include="Themes\config\img\flags\16\te-IN.png" />
+    <Content Include="Themes\config\img\flags\16\th-TH.png" />
+    <Content Include="Themes\config\img\flags\16\tr-TR.png" />
+    <Content Include="Themes\config\img\flags\16\tt-RU.png" />
+    <Content Include="Themes\config\img\flags\16\uk-UA.png" />
+    <Content Include="Themes\config\img\flags\16\ur-PK.png" />
+    <Content Include="Themes\config\img\flags\16\vi-VN.png" />
+    <Content Include="Themes\config\img\flags\16\zh-CHS.png" />
+    <Content Include="Themes\config\img\flags\16\zh-CHT.png" />
+    <Content Include="Themes\config\img\flags\16\zh-CN.png" />
+    <Content Include="Themes\config\img\flags\16\zh-HK.png" />
+    <Content Include="Themes\config\img\flags\16\zh-MO.png" />
+    <Content Include="Themes\config\img\flags\16\zh-SG.png" />
+    <Content Include="Themes\config\img\flags\16\zh-TW.png" />
+    <Content Include="Themes\config\img\flags\24\af-ZA.png" />
+    <Content Include="Themes\config\img\flags\24\ar-AE.png" />
+    <Content Include="Themes\config\img\flags\24\ar-BH.png" />
+    <Content Include="Themes\config\img\flags\24\ar-DZ.png" />
+    <Content Include="Themes\config\img\flags\24\ar-EG.png" />
+    <Content Include="Themes\config\img\flags\24\ar-IQ.png" />
+    <Content Include="Themes\config\img\flags\24\ar-JO.png" />
+    <Content Include="Themes\config\img\flags\24\ar-KW.png" />
+    <Content Include="Themes\config\img\flags\24\ar-LB.png" />
+    <Content Include="Themes\config\img\flags\24\ar-LY.png" />
+    <Content Include="Themes\config\img\flags\24\ar-MA.png" />
+    <Content Include="Themes\config\img\flags\24\ar-OM.png" />
+    <Content Include="Themes\config\img\flags\24\ar-QA.png" />
+    <Content Include="Themes\config\img\flags\24\ar-SA.png" />
+    <Content Include="Themes\config\img\flags\24\ar-SY.png" />
+    <Content Include="Themes\config\img\flags\24\ar-TN.png" />
+    <Content Include="Themes\config\img\flags\24\ar-YE.png" />
+    <Content Include="Themes\config\img\flags\24\be-BY.png" />
+    <Content Include="Themes\config\img\flags\24\bg-BG.png" />
+    <Content Include="Themes\config\img\flags\24\ca-ES.png" />
+    <Content Include="Themes\config\img\flags\24\cs-CZ.png" />
+    <Content Include="Themes\config\img\flags\24\Cy-az-AZ.png" />
+    <Content Include="Themes\config\img\flags\24\Cy-sr-SP.png" />
+    <Content Include="Themes\config\img\flags\24\Cy-uz-UZ.png" />
+    <Content Include="Themes\config\img\flags\24\da-DK.png" />
+    <Content Include="Themes\config\img\flags\24\de-AT.png" />
+    <Content Include="Themes\config\img\flags\24\de-CH.png" />
+    <Content Include="Themes\config\img\flags\24\de-DE.png" />
+    <Content Include="Themes\config\img\flags\24\de-LI.png" />
+    <Content Include="Themes\config\img\flags\24\de-LU.png" />
+    <Content Include="Themes\config\img\flags\24\div-MV.png" />
+    <Content Include="Themes\config\img\flags\24\el-GR.png" />
+    <Content Include="Themes\config\img\flags\24\en-AU.png" />
+    <Content Include="Themes\config\img\flags\24\en-BZ.png" />
+    <Content Include="Themes\config\img\flags\24\en-CA.png" />
+    <Content Include="Themes\config\img\flags\24\en-CB.png" />
+    <Content Include="Themes\config\img\flags\24\en-GB.png" />
+    <Content Include="Themes\config\img\flags\24\en-IE.png" />
+    <Content Include="Themes\config\img\flags\24\en-JM.png" />
+    <Content Include="Themes\config\img\flags\24\en-NZ.png" />
+    <Content Include="Themes\config\img\flags\24\en-PH.png" />
+    <Content Include="Themes\config\img\flags\24\en-TT.png" />
+    <Content Include="Themes\config\img\flags\24\en-US.png" />
+    <Content Include="Themes\config\img\flags\24\en-US_OLD.png" />
+    <Content Include="Themes\config\img\flags\24\en-ZA.png" />
+    <Content Include="Themes\config\img\flags\24\en-ZW.png" />
+    <Content Include="Themes\config\img\flags\24\es-AR.png" />
+    <Content Include="Themes\config\img\flags\24\es-BO.png" />
+    <Content Include="Themes\config\img\flags\24\es-CL.png" />
+    <Content Include="Themes\config\img\flags\24\es-CO.png" />
+    <Content Include="Themes\config\img\flags\24\es-CR.png" />
+    <Content Include="Themes\config\img\flags\24\es-DO.png" />
+    <Content Include="Themes\config\img\flags\24\es-EC.png" />
+    <Content Include="Themes\config\img\flags\24\es-ES.png" />
+    <Content Include="Themes\config\img\flags\24\es-GT.png" />
+    <Content Include="Themes\config\img\flags\24\es-HN.png" />
+    <Content Include="Themes\config\img\flags\24\es-MX.png" />
+    <Content Include="Themes\config\img\flags\24\es-NI.png" />
+    <Content Include="Themes\config\img\flags\24\es-PA.png" />
+    <Content Include="Themes\config\img\flags\24\es-PE.png" />
+    <Content Include="Themes\config\img\flags\24\es-PR.png" />
+    <Content Include="Themes\config\img\flags\24\es-PY.png" />
+    <Content Include="Themes\config\img\flags\24\es-SV.png" />
+    <Content Include="Themes\config\img\flags\24\es-UY.png" />
+    <Content Include="Themes\config\img\flags\24\es-VE.png" />
+    <Content Include="Themes\config\img\flags\24\et-EE.png" />
+    <Content Include="Themes\config\img\flags\24\eu-ES.png" />
+    <Content Include="Themes\config\img\flags\24\fa-IR.png" />
+    <Content Include="Themes\config\img\flags\24\fi-FI.png" />
+    <Content Include="Themes\config\img\flags\24\fo-FO.png" />
+    <Content Include="Themes\config\img\flags\24\fr-BE.png" />
+    <Content Include="Themes\config\img\flags\24\fr-CA.png" />
+    <Content Include="Themes\config\img\flags\24\fr-CH.png" />
+    <Content Include="Themes\config\img\flags\24\fr-FR.png" />
+    <Content Include="Themes\config\img\flags\24\fr-LU.png" />
+    <Content Include="Themes\config\img\flags\24\fr-MC.png" />
+    <Content Include="Themes\config\img\flags\24\gl-ES.png" />
+    <Content Include="Themes\config\img\flags\24\gu-IN.png" />
+    <Content Include="Themes\config\img\flags\24\he-IL.png" />
+    <Content Include="Themes\config\img\flags\24\hi-IN.png" />
+    <Content Include="Themes\config\img\flags\24\hr-HR.png" />
+    <Content Include="Themes\config\img\flags\24\hu-HU.png" />
+    <Content Include="Themes\config\img\flags\24\hy-AM.png" />
+    <Content Include="Themes\config\img\flags\24\id-ID.png" />
+    <Content Include="Themes\config\img\flags\24\is-IS.png" />
+    <Content Include="Themes\config\img\flags\24\it-CH.png" />
+    <Content Include="Themes\config\img\flags\24\it-IT.png" />
+    <Content Include="Themes\config\img\flags\24\ja-JP.png" />
+    <Content Include="Themes\config\img\flags\24\ka-GE.png" />
+    <Content Include="Themes\config\img\flags\24\kk-KZ.png" />
+    <Content Include="Themes\config\img\flags\24\kn-IN.png" />
+    <Content Include="Themes\config\img\flags\24\ko-KR.png" />
+    <Content Include="Themes\config\img\flags\24\kok-IN.png" />
+    <Content Include="Themes\config\img\flags\24\ky-KZ.png" />
+    <Content Include="Themes\config\img\flags\24\Lt-az-AZ.png" />
+    <Content Include="Themes\config\img\flags\24\lt-LT.png" />
+    <Content Include="Themes\config\img\flags\24\Lt-sr-SP.png" />
+    <Content Include="Themes\config\img\flags\24\Lt-uz-UZ.png" />
+    <Content Include="Themes\config\img\flags\24\lv-LV.png" />
+    <Content Include="Themes\config\img\flags\24\mk-MK.png" />
+    <Content Include="Themes\config\img\flags\24\mn-MN.png" />
+    <Content Include="Themes\config\img\flags\24\mr-IN.png" />
+    <Content Include="Themes\config\img\flags\24\ms-BN.png" />
+    <Content Include="Themes\config\img\flags\24\ms-MY.png" />
+    <Content Include="Themes\config\img\flags\24\nb-NO.png" />
+    <Content Include="Themes\config\img\flags\24\nl-BE.png" />
+    <Content Include="Themes\config\img\flags\24\nl-NL.png" />
+    <Content Include="Themes\config\img\flags\24\nn-NO.png" />
+    <Content Include="Themes\config\img\flags\24\none.png" />
+    <Content Include="Themes\config\img\flags\24\pa-IN.png" />
+    <Content Include="Themes\config\img\flags\24\pl-PL.png" />
+    <Content Include="Themes\config\img\flags\24\pt-BR.png" />
+    <Content Include="Themes\config\img\flags\24\pt-PT.png" />
+    <Content Include="Themes\config\img\flags\24\ro-RO.png" />
+    <Content Include="Themes\config\img\flags\24\ru-RU.png" />
+    <Content Include="Themes\config\img\flags\24\sa-IN.png" />
+    <Content Include="Themes\config\img\flags\24\sk-SK.png" />
+    <Content Include="Themes\config\img\flags\24\sl-SI.png" />
+    <Content Include="Themes\config\img\flags\24\sq-AL.png" />
+    <Content Include="Themes\config\img\flags\24\sv-FI.png" />
+    <Content Include="Themes\config\img\flags\24\sv-SE.png" />
+    <Content Include="Themes\config\img\flags\24\sw-KE.png" />
+    <Content Include="Themes\config\img\flags\24\syr-SY.png" />
+    <Content Include="Themes\config\img\flags\24\ta-IN.png" />
+    <Content Include="Themes\config\img\flags\24\te-IN.png" />
+    <Content Include="Themes\config\img\flags\24\th-TH.png" />
+    <Content Include="Themes\config\img\flags\24\tr-TR.png" />
+    <Content Include="Themes\config\img\flags\24\tt-RU.png" />
+    <Content Include="Themes\config\img\flags\24\uk-UA.png" />
+    <Content Include="Themes\config\img\flags\24\ur-PK.png" />
+    <Content Include="Themes\config\img\flags\24\vi-VN.png" />
+    <Content Include="Themes\config\img\flags\24\zh-CHS.png" />
+    <Content Include="Themes\config\img\flags\24\zh-CHT.png" />
+    <Content Include="Themes\config\img\flags\24\zh-CN.png" />
+    <Content Include="Themes\config\img\flags\24\zh-HK.png" />
+    <Content Include="Themes\config\img\flags\24\zh-MO.png" />
+    <Content Include="Themes\config\img\flags\24\zh-SG.png" />
+    <Content Include="Themes\config\img\flags\24\zh-TW.png" />
+    <Content Include="Themes\config\img\flags\32\af-ZA.png" />
+    <Content Include="Themes\config\img\flags\32\ar-AE.png" />
+    <Content Include="Themes\config\img\flags\32\ar-BH.png" />
+    <Content Include="Themes\config\img\flags\32\ar-DZ.png" />
+    <Content Include="Themes\config\img\flags\32\ar-EG.png" />
+    <Content Include="Themes\config\img\flags\32\ar-IQ.png" />
+    <Content Include="Themes\config\img\flags\32\ar-JO.png" />
+    <Content Include="Themes\config\img\flags\32\ar-KW.png" />
+    <Content Include="Themes\config\img\flags\32\ar-LB.png" />
+    <Content Include="Themes\config\img\flags\32\ar-LY.png" />
+    <Content Include="Themes\config\img\flags\32\ar-MA.png" />
+    <Content Include="Themes\config\img\flags\32\ar-OM.png" />
+    <Content Include="Themes\config\img\flags\32\ar-QA.png" />
+    <Content Include="Themes\config\img\flags\32\ar-SA.png" />
+    <Content Include="Themes\config\img\flags\32\ar-SY.png" />
+    <Content Include="Themes\config\img\flags\32\ar-TN.png" />
+    <Content Include="Themes\config\img\flags\32\ar-YE.png" />
+    <Content Include="Themes\config\img\flags\32\be-BY.png" />
+    <Content Include="Themes\config\img\flags\32\bg-BG.png" />
+    <Content Include="Themes\config\img\flags\32\ca-ES.png" />
+    <Content Include="Themes\config\img\flags\32\cs-CZ.png" />
+    <Content Include="Themes\config\img\flags\32\Cy-az-AZ.png" />
+    <Content Include="Themes\config\img\flags\32\Cy-sr-SP.png" />
+    <Content Include="Themes\config\img\flags\32\Cy-uz-UZ.png" />
+    <Content Include="Themes\config\img\flags\32\da-DK.png" />
+    <Content Include="Themes\config\img\flags\32\de-AT.png" />
+    <Content Include="Themes\config\img\flags\32\de-CH.png" />
+    <Content Include="Themes\config\img\flags\32\de-DE.png" />
+    <Content Include="Themes\config\img\flags\32\de-LI.png" />
+    <Content Include="Themes\config\img\flags\32\de-LU.png" />
+    <Content Include="Themes\config\img\flags\32\div-MV.png" />
+    <Content Include="Themes\config\img\flags\32\el-GR.png" />
+    <Content Include="Themes\config\img\flags\32\en-AU.png" />
+    <Content Include="Themes\config\img\flags\32\en-BZ.png" />
+    <Content Include="Themes\config\img\flags\32\en-CA.png" />
+    <Content Include="Themes\config\img\flags\32\en-CB.png" />
+    <Content Include="Themes\config\img\flags\32\en-GB.png" />
+    <Content Include="Themes\config\img\flags\32\en-IE.png" />
+    <Content Include="Themes\config\img\flags\32\en-JM.png" />
+    <Content Include="Themes\config\img\flags\32\en-NZ.png" />
+    <Content Include="Themes\config\img\flags\32\en-PH.png" />
+    <Content Include="Themes\config\img\flags\32\en-TT.png" />
+    <Content Include="Themes\config\img\flags\32\en-US.png" />
+    <Content Include="Themes\config\img\flags\32\en-US_OLD.png" />
+    <Content Include="Themes\config\img\flags\32\en-ZA.png" />
+    <Content Include="Themes\config\img\flags\32\en-ZW.png" />
+    <Content Include="Themes\config\img\flags\32\es-AR.png" />
+    <Content Include="Themes\config\img\flags\32\es-BO.png" />
+    <Content Include="Themes\config\img\flags\32\es-CL.png" />
+    <Content Include="Themes\config\img\flags\32\es-CO.png" />
+    <Content Include="Themes\config\img\flags\32\es-CR.png" />
+    <Content Include="Themes\config\img\flags\32\es-DO.png" />
+    <Content Include="Themes\config\img\flags\32\es-EC.png" />
+    <Content Include="Themes\config\img\flags\32\es-ES.png" />
+    <Content Include="Themes\config\img\flags\32\es-GT.png" />
+    <Content Include="Themes\config\img\flags\32\es-HN.png" />
+    <Content Include="Themes\config\img\flags\32\es-MX.png" />
+    <Content Include="Themes\config\img\flags\32\es-NI.png" />
+    <Content Include="Themes\config\img\flags\32\es-PA.png" />
+    <Content Include="Themes\config\img\flags\32\es-PE.png" />
+    <Content Include="Themes\config\img\flags\32\es-PR.png" />
+    <Content Include="Themes\config\img\flags\32\es-PY.png" />
+    <Content Include="Themes\config\img\flags\32\es-SV.png" />
+    <Content Include="Themes\config\img\flags\32\es-UY.png" />
+    <Content Include="Themes\config\img\flags\32\es-VE.png" />
+    <Content Include="Themes\config\img\flags\32\et-EE.png" />
+    <Content Include="Themes\config\img\flags\32\eu-ES.png" />
+    <Content Include="Themes\config\img\flags\32\fa-IR.png" />
+    <Content Include="Themes\config\img\flags\32\fi-FI.png" />
+    <Content Include="Themes\config\img\flags\32\fo-FO.png" />
+    <Content Include="Themes\config\img\flags\32\fr-BE.png" />
+    <Content Include="Themes\config\img\flags\32\fr-CA.png" />
+    <Content Include="Themes\config\img\flags\32\fr-CH.png" />
+    <Content Include="Themes\config\img\flags\32\fr-FR.png" />
+    <Content Include="Themes\config\img\flags\32\fr-LU.png" />
+    <Content Include="Themes\config\img\flags\32\fr-MC.png" />
+    <Content Include="Themes\config\img\flags\32\gl-ES.png" />
+    <Content Include="Themes\config\img\flags\32\gu-IN.png" />
+    <Content Include="Themes\config\img\flags\32\he-IL.png" />
+    <Content Include="Themes\config\img\flags\32\hi-IN.png" />
+    <Content Include="Themes\config\img\flags\32\hr-HR.png" />
+    <Content Include="Themes\config\img\flags\32\hu-HU.png" />
+    <Content Include="Themes\config\img\flags\32\hy-AM.png" />
+    <Content Include="Themes\config\img\flags\32\id-ID.png" />
+    <Content Include="Themes\config\img\flags\32\is-IS.png" />
+    <Content Include="Themes\config\img\flags\32\it-CH.png" />
+    <Content Include="Themes\config\img\flags\32\it-IT.png" />
+    <Content Include="Themes\config\img\flags\32\ja-JP.png" />
+    <Content Include="Themes\config\img\flags\32\ka-GE.png" />
+    <Content Include="Themes\config\img\flags\32\kk-KZ.png" />
+    <Content Include="Themes\config\img\flags\32\kn-IN.png" />
+    <Content Include="Themes\config\img\flags\32\ko-KR.png" />
+    <Content Include="Themes\config\img\flags\32\kok-IN.png" />
+    <Content Include="Themes\config\img\flags\32\ky-KZ.png" />
+    <Content Include="Themes\config\img\flags\32\Lt-az-AZ.png" />
+    <Content Include="Themes\config\img\flags\32\lt-LT.png" />
+    <Content Include="Themes\config\img\flags\32\Lt-sr-SP.png" />
+    <Content Include="Themes\config\img\flags\32\Lt-uz-UZ.png" />
+    <Content Include="Themes\config\img\flags\32\lv-LV.png" />
+    <Content Include="Themes\config\img\flags\32\mk-MK.png" />
+    <Content Include="Themes\config\img\flags\32\mn-MN.png" />
+    <Content Include="Themes\config\img\flags\32\mr-IN.png" />
+    <Content Include="Themes\config\img\flags\32\ms-BN.png" />
+    <Content Include="Themes\config\img\flags\32\ms-MY.png" />
+    <Content Include="Themes\config\img\flags\32\nb-NO.png" />
+    <Content Include="Themes\config\img\flags\32\nl-BE.png" />
+    <Content Include="Themes\config\img\flags\32\nl-NL.png" />
+    <Content Include="Themes\config\img\flags\32\nn-NO.png" />
+    <Content Include="Themes\config\img\flags\32\none.png" />
+    <Content Include="Themes\config\img\flags\32\pa-IN.png" />
+    <Content Include="Themes\config\img\flags\32\pl-PL.png" />
+    <Content Include="Themes\config\img\flags\32\pt-BR.png" />
+    <Content Include="Themes\config\img\flags\32\pt-PT.png" />
+    <Content Include="Themes\config\img\flags\32\ro-RO.png" />
+    <Content Include="Themes\config\img\flags\32\ru-RU.png" />
+    <Content Include="Themes\config\img\flags\32\sa-IN.png" />
+    <Content Include="Themes\config\img\flags\32\sk-SK.png" />
+    <Content Include="Themes\config\img\flags\32\sl-SI.png" />
+    <Content Include="Themes\config\img\flags\32\sq-AL.png" />
+    <Content Include="Themes\config\img\flags\32\sv-FI.png" />
+    <Content Include="Themes\config\img\flags\32\sv-SE.png" />
+    <Content Include="Themes\config\img\flags\32\sw-KE.png" />
+    <Content Include="Themes\config\img\flags\32\syr-SY.png" />
+    <Content Include="Themes\config\img\flags\32\ta-IN.png" />
+    <Content Include="Themes\config\img\flags\32\te-IN.png" />
+    <Content Include="Themes\config\img\flags\32\th-TH.png" />
+    <Content Include="Themes\config\img\flags\32\tr-TR.png" />
+    <Content Include="Themes\config\img\flags\32\tt-RU.png" />
+    <Content Include="Themes\config\img\flags\32\uk-UA.png" />
+    <Content Include="Themes\config\img\flags\32\ur-PK.png" />
+    <Content Include="Themes\config\img\flags\32\vi-VN.png" />
+    <Content Include="Themes\config\img\flags\32\zh-CHS.png" />
+    <Content Include="Themes\config\img\flags\32\zh-CHT.png" />
+    <Content Include="Themes\config\img\flags\32\zh-CN.png" />
+    <Content Include="Themes\config\img\flags\32\zh-HK.png" />
+    <Content Include="Themes\config\img\flags\32\zh-MO.png" />
+    <Content Include="Themes\config\img\flags\32\zh-SG.png" />
+    <Content Include="Themes\config\img\flags\32\zh-TW.png" />
+    <Content Include="Themes\config\js\admin_plugins.js" />
+    <Content Include="Themes\config\js\admin_property.js" />
+    <Content Include="Themes\config\js\admin_category.js" />
+    <Content Include="Themes\config\js\admin_product.js" />
+    <Content Include="Themes\config\js\js.cookie.js" />
+    <Content Include="Themes\config\js\nbsfavoritescookie.js" />
+    <Content Include="Themes\config\js\imagesloaded.pkgd.min.js" />
+    <Content Include="Themes\config\js\jquery.datepick.xlang.eur.js" />
+    <Content Include="Themes\config\js\jquery.fileupload.js" />
+    <Content Include="Themes\config\js\jquery.genxmlajax.js" />
+    <Content Include="Themes\config\js\jquery.storage.js" />
+    <Content Include="Themes\config\js\jquery.validate.min.js" />
+    <Content Include="Themes\config\js\masonry.pkgd.min.js" />
+    <Content Include="Themes\config\js\nbbajax.js" />
+    <Content Include="Themes\config\js\nbbitemlist.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_LocalResources\AddressAdminSettings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\addressadminsettings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\addressadminsettings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\AddressAdminSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\AjaxProductListFilterSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\CartView.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\cartview.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\CartView.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\CartView.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\CartViewSettings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\cartviewsettings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\cartviewsettings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\CartViewSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\categorymenu.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\categorymenu.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\CategoryMenu.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\CategoryMenuSettings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\categorymenusettings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\categorymenusettings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\CategoryMenuSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\CheckoutSettings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\checkoutsettings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\checkoutsettings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\CheckoutSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\Clients.ascx.en-GB.resx" />
+    <EmbeddedResource Include="App_LocalResources\Clients.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\clients.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\Clients.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\Clients.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\CountryNames.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\countrynames.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\CountryNames.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\EntityTypeCode.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\General.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\general.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\General.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\General.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\Notification.ascx.en-GB.resx" />
+    <EmbeddedResource Include="App_LocalResources\Notification.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\notification.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\Notification.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\Notification.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\OrderAdmin.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\orderadmin.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\OrderAdmin.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\OrderAdmin.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\OrderAdminSettings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\orderadminsettings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\orderadminsettings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\OrderAdminSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\PaymentSettings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\paymentsettings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\paymentsettings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\PaymentSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\Plugins.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\plugins.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\plugins.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\Plugins.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductSearch.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\productsearch.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductSearch.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductSearch.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductSearchSettings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\productsearchsettings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductSearchSettings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductSearchSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductView.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\productview.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductView.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductView.ascx.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\ProductViewSettings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\productviewsettings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductViewSettings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProductViewSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProfileFormSettings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\profileformsettings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\profileformsettings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\ProfileFormSettings.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\Settings.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\settings.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\settings.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\Settings.ascx.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Tools.ascx.fr-FR.resx" />
+    <EmbeddedResource Include="App_LocalResources\tools.ascx.it-IT.resx" />
+    <EmbeddedResource Include="App_LocalResources\tools.ascx.nl-NL.resx" />
+    <EmbeddedResource Include="App_LocalResources\Tools.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenStore.dnn">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NBrightThumb.ashx" />
+    <None Include="Themes\config\default\localizedatejs.cshtml" />
+    <None Include="Themes\config\default\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Themes\config\default\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Themes\config\default\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Themes\config\default\fileuploadjs.cshtml" />
+    <None Include="Themes\config\default\OS_FullCartsettings.cshtml" />
+    <None Include="Themes\config\default\plugins\bootstrapvalidator\bootstrapValidator.scss" />
+    <None Include="Themes\config\default\plugins\bootstrap\bootstrap-theme.css.map" />
+    <None Include="Themes\config\default\plugins\bootstrap\bootstrap.css.map" />
+    <None Include="Themes\config\default\plugins\d3\LICENSE" />
+    <None Include="Themes\config\default\plugins\fineuploader\LICENSE" />
+    <None Include="Themes\config\default\plugins\jQuery-Knob\LICENSE" />
+    <None Include="Themes\config\default\plugins\jquery-ui-timepicker-addon\LICENSE-MIT" />
+    <None Include="Themes\config\default\plugins\justified-gallery\README.md" />
+    <None Include="Themes\config\default\plugins\moment\LICENSE" />
+    <None Include="Themes\config\default\plugins\select2\bower.json" />
+    <None Include="Themes\config\default\plugins\select2\LICENSE" />
+    <None Include="Themes\config\default\plugins\select2\README.md" />
+    <None Include="Themes\config\default\plugins\select2\release.sh" />
+    <None Include="Themes\config\default\plugins\select2\select2.jquery.json" />
+    <None Include="Themes\config\default\plugins\select2\select2_locale_en.js.template" />
+    <None Include="Themes\config\default\plugins\xcharts\LICENSE" />
+    <None Include="Themes\config\default\plugins\xcharts\README.md" />
+    <None Include="Themes\config\default\OS_MiniCartsettings.cshtml" />
+    <None Include="Themes\config\default\productfields.cshtml" />
+    <None Include="Themes\config\default\productviewsettings.cshtml" />
+    <None Include="Themes\config\default\setup.config" />
+    <None Include="Themes\config\default\settingspageheader.cshtml" />
+    <None Include="Themes\config\img\flags\16\Thumbs.db" />
+    <None Include="Themes\config\img\flags\24\Thumbs.db" />
+    <None Include="Themes\config\img\flags\32\Thumbs.db" />
+    <None Include="Themes\Default\Default\AddClientRole.cshtml" />
+    <None Include="Themes\Default\Default\FullCart_head.cshtml" />
+    <None Include="Themes\Default\Default\Checkout_head.cshtml" />
+    <None Include="Themes\Default\Default\ClientMenu.cshtml" />
+    <None Include="Themes\Default\Default\AddressAdmin.cshtml" />
+    <None Include="Themes\Default\Default\AddressAdminDetail.cshtml" />
+    <None Include="Themes\Default\Default\AddressAdminList.cshtml" />
+    <None Include="Themes\Default\Default\AddressAdminsettings.cshtml" />
+    <None Include="Themes\Default\Default\AddressAdmin_head.cshtml" />
+    <None Include="Themes\Default\Default\CartList.cshtml" />
+    <None Include="Themes\Default\Default\Checkout.cshtml" />
+    <None Include="Themes\Default\Default\CheckoutAddress.cshtml" />
+    <None Include="Themes\Default\Default\CheckoutList.cshtml" />
+    <None Include="Themes\Default\Default\CheckoutRegion.cshtml" />
+    <None Include="Themes\Default\Default\Checkoutsettings.cshtml" />
+    <None Include="Themes\Default\Default\CheckoutTotals.cshtml" />
+    <None Include="Themes\Default\Default\CheckoutSummary.cshtml" />
+    <None Include="Themes\Default\Default\FullCart.cshtml" />
+    <None Include="Themes\Default\Default\FullCartList.cshtml" />
+    <None Include="Themes\Default\Default\FullCartsettings.cshtml" />
+    <None Include="Themes\Default\Default\ItemList.cshtml" />
+    <None Include="Themes\Default\Default\ItemListProducts.cshtml" />
+    <None Include="Themes\Default\Default\ItemListsettings.cshtml" />
+    <None Include="Themes\Default\Default\ItemList_head.cshtml" />
+    <None Include="Themes\Default\Default\OrderAdmin.cshtml" />
+    <None Include="Themes\Default\Default\OrderAdminDetail.cshtml" />
+    <None Include="Themes\Default\Default\OrderAdminList.cshtml" />
+    <None Include="Themes\Default\Default\OrderAdminsettings.cshtml" />
+    <None Include="Themes\Default\Default\OrderAdmin_head.cshtml" />
+    <None Include="Themes\Default\Default\Payment.cshtml" />
+    <None Include="Themes\Default\Default\PaymentList.cshtml" />
+    <None Include="Themes\Default\Default\Paymentsettings.cshtml" />
+    <None Include="Themes\Default\Default\Payment_head.cshtml" />
+    <None Include="Themes\Default\Default\ProductNotFound.cshtml" />
+    <None Include="Themes\Default\Default\ProductNotFound_head.cshtml" />
+    <None Include="Themes\Default\Default\Profileform.cshtml" />
+    <None Include="Themes\Default\Default\ProfileFormsettings.cshtml" />
+    <None Include="Themes\Default\Default\ProfileForm_head.cshtml" />
+    <None Include="Themes\Default\Default\ProfileHome.cshtml" />
+    <None Include="Themes\Default\Default\ProfileHome_head.cshtml" />
+    <None Include="Themes\Default\Default\OrderHtmlOutput.cshtml" />
+    <None Include="Themes\Default\Default\OrderLabelOutput.cshtml" />
+    <None Include="Themes\Default\Default\OrderPrintOutput.cshtml" />
+    <None Include="Themes\Default\Default\payment_fail.cshtml" />
+    <None Include="Themes\Default\Default\payment_ok.cshtml" />
+    <None Include="Themes\Default\Default\printorder.cshtml" />
+    <None Include="Web.config" />
+    <None Include="XmlConnector.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Providers\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <Extension>zip</Extension>
+    <DNNFileName>OpenStore</DNNFileName>
+    <PackageName>OpenStore</PackageName>
+  </PropertyGroup>
+  <Import Project="BuildScripts\ModulePackage.Targets" />
+  <Target Name="AfterBuild" DependsOnTargets="PackageAndDeploy">
+  </Target>
+  <Import Project="packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

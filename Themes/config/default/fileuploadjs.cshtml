@@ -1,0 +1,93 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using System.Web.UI.HtmlControls
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@{
+    // assign Model, so we can resolve var in VS
+    var product = (ProductData)Model.List.First();
+    var info = (NBrightInfo)product.Info;
+}
+
+<!-- The basic File Upload plugin -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.fileupload.js"></script>
+
+<script>
+
+    // file upload  (Needs to be in template to get itemid from token)
+
+    var filecount = 0;
+    var filesdone = 0;
+
+    $(function () {
+        'use strict';
+        // Change this to the location of your server-side upload handler:
+        var url = '/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=fileupload&itemid=@(info.ItemID)';
+        $('#fileupload').fileupload({
+            url: url,
+            maxFileSize: 5000000,
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+            dataType: 'json'
+        }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled')
+            .bind('fileuploadprogressall', function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css('width', progress + '%');
+            })
+            .bind('fileuploadadd', function (e, data) {
+                $.each(data.files, function (index, file) {
+                    $('input[id*="imguploadlist"]').val($('input[id*="imguploadlist"]').val() + file.name + ',');
+                    filesdone = filesdone + 1;
+                });
+            })
+            .bind('fileuploadchange', function (e, data) {
+                filecount = data.files.length;
+                $('.processing').show();
+            })
+            .bind('fileuploaddrop', function (e, data) {
+                filecount = data.files.length;
+                $('.processing').show();
+            })
+            .bind('fileuploadstop', function (e) {
+                if (filesdone == filecount) {
+                    nbxget('updateproductimages', '#productselectparams', '#productimages'); // load images
+                    filesdone = 0;
+                    $('input[id*="imguploadlist"]').val('');
+                }
+
+            });
+
+        $('#document').fileupload({
+            url: url,
+            maxFileSize: 5000000,
+            acceptFileTypes: /(\.|\/)(zip|png)$/i,
+            dataType: 'json'
+        }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled')
+            .bind('fileuploadprogressall', function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#docprogress .docprogress-bar').css('width', progress + '%');
+            })
+            .bind('fileuploadadd', function (e, data) {
+                $.each(data.files, function (index, file) {
+                    $('input[id*="docuploadlist"]').val($('input[id*="docuploadlist"]').val() + file.name + ',');
+                    filesdone = filesdone + 1;
+                });
+            }).bind('fileuploadchange', function (e, data) {
+                filecount = data.files.length;
+                $('.docprocessing').show();
+            })
+            .bind('fileuploaddrop', function (e, data) {
+                filecount = data.files.length;
+                $('.docprocessing').show();
+            }).bind('fileuploadstop', function (e) {
+                if (filesdone == filecount) {
+                    nbxget('updateproductdocs', '#productselectparams', '#productdocs'); // load images
+            }
+            filesdone = 0;
+            $('input[id*="docuploadlist"]').val('');
+    });
+
+    });
+
+</script>

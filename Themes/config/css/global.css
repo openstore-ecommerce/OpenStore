@@ -1,0 +1,118 @@
+/*#Body {background:#FFF}Temporary white for DNN skin */
+.dnnEditState .DnnModule{opacity:1 !important;transition:none !important;}/* Fix DNN */
+
+/* Global links Fix */
+.nbs a {text-decoration:none !important;}
+
+/* Common */
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+.nbs{}
+
+/* Debug mode message */
+.debug{clear:both;background:#AB0000;color:#FFFFFF;font-weight:bold;padding:2px;text-align:center;}
+
+/* Default buttons */
+/**********MODIFIED**********.nbs .primarybutton,.nbs .secondarybutton,.nbs .warningbutton{display:inline-block;font-weight:bold;line-height:35px;padding:0 10px;margin:10px 10px 10px 0;max-width:120px;text-align:center;width:45%;border:medium none;text-decoration:none;box-sizing:border-box;cursor:pointer;}*/
+.nbs .primarybutton,.nbs .secondarybutton,.nbs .warningbutton{font-family:sans-serif;display:inline-block;font-weight:bold;font-size:13px;line-height:35px;padding:0 10px;margin:10px 10px 10px 0;min-width:120px;text-align:center;border:medium none;text-decoration:none;box-sizing:border-box;cursor:pointer;}
+.nbs .primarybutton:hover,.nbs .secondarybutton:hover,.nbs .warningbutton:hover{text-decoration:none;}
+.nbs .primarybutton{background:#42403f;color:#FFFFFF;}
+.nbs .primarybutton:hover{background:#757370;color:#FFFFFF;}
+.nbs .secondarybutton{background:#C2C2C2;color:#FFFFFF;}
+.nbs .secondarybutton:hover{background:#777777;color:#FFFFFF;}
+.nbs .warningbutton{background:#c62222;color:#FFFFFF;}
+.nbs .warningbutton:hover{background:#DD2222;color:#FFFFFF;}
+
+/**********REMOVED*********** Alert overlays */
+
+/* Checkout and Customer panel style */
+.panel {background:#ffffff;border-radius:5px;box-shadow:1px 1px 6px rgba(159, 159, 159, 0.56);padding:22px 30px 26px;}
+
+/* General Form Styles */
+.formrow:after, .radiobuttonlist:after {content:"";display:table;clear:both;}
+.formrow label {display:block;font-size:14px;font-weight:normal;line-height:normal;margin:0 0 5px;}
+.formrow input[type=text], .formrow input[type=email], .formrow select, .formrow textarea {border:1px solid #dddddd;box-sizing:border-box;height:30px;padding:0 7px;width:100%;margin:0 0 15px;}
+.formrow select {padding-right:0;}
+.formrow input[type=radio] {float:left;margin:2px 6px 0 10px;}
+.formrow input[type=checkbox] {float:left;margin:2px 6px 0 10px;}
+.submissioncheck {margin:0 0 9px 0 !important;}
+.submissioncheck label {text-transform:none;font-style:italic;}
+/* === HTML5 Validation Styles === */
+.nbs input:required {background:#fff url("/DesktopModules/NBright/NBrightBuy/Themes/config/img/asterisk.png") no-repeat 98% center;outline:none !important;}
+.nbs input:focus:invalid {background:#fff url("/DesktopModules/NBright/NBrightBuy/Themes/config/img/invalid.png") no-repeat 98% center;}
+.error {color:#d45252;}
+
+/* Misc */
+.large{font-size:115%}
+.larger{font-size:150%}
+.nowrap{white-space:nowrap;}
+.text-right{text-align:right !important;}
+/* Gallagher clearfix */
+.clearfix:before, .clearfix:after{content:" ";display:table;}
+.clearfix:after{clear:both;}
+.clearfix{*zoom:1;}
+.noborders, .noborders th, .noborders td{border:none !important;}
+/* Custom strike for sale pricing */
+.strikethrough{position:relative;white-space:nowrap;}
+.strikethrough:after{border-top:2px solid #D00000;position:absolute;content:"";right:-3px;top:45%;left:-3px;opacity:0.5}
+input[type=radio].invalid{box-shadow:0 0 4px #ff0000;}
+
+/* Loading Div */
+.processing, .processingwait {background:rgba(255, 255, 255, 0.8);height:100%;width:100%;transition:all 0.4s ease-in-out 0s;position:fixed;top:0;left:0;text-align:center;z-index:9998;}
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  border-top-color: #00a3de;
+  animation: spinner .6s linear infinite;
+  z-index: 9999;
+}
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+/* For sortable checkboxlist */
+.checkboxlist-sortable .dnnCheckboxLabel {
+    cursor: move;
+}
+
+/**********************************************************/
+/* MEDIA QUERIES */
+/**********************************************************/
+
+/* Responsive layout - Any screen at less than 768px - Most tablets */
+@media only screen 
+and (min-width : 481px) 
+and (max-width : 768px) {
+.panel{padding:30px 60px;}
+}
+
+/* Responsive layout - Any screen at less than 480px - Most phones */
+@media only screen 
+and (min-width : 0px) 
+and (max-width : 480px) {
+.panel{padding:15px;margin-bottom:15px;}
+}
+
+/**********NOT USED***********/
+/* Responsive layout - iPhones in portrait and landscape view
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) {
+}*/
+/* Responsive layout - iPads in portrait and landscape view
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+} */

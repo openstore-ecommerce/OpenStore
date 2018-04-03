@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text">
+    <value xml:space="preserve">Paramètres vue produit</value>
+  </data>
+  <data name="displaytype.Help" lastModified="2016-12-15 16:47:45">
+    <value xml:space="preserve">Type de liste à afficher (normal, liste produits normale. Recherche, recherche résultats des produits. Liste sélectionnée, Liste des favoris)</value>
+  </data>
+  <data name="displaytype.Text" lastModified="2016-12-15 16:47:45">
+    <value xml:space="preserve">Type d'affichage</value>
+  </data>
+  <data name="lbladvancedsettings.Text">
+    <value xml:space="preserve">Avancés</value>
+  </data>
+  <data name="lblallowzeroprice.Text">
+    <value xml:space="preserve">Permettre l'achat à prix Zéro : </value>
+  </data>
+  <data name="lblbasicsettings.Text">
+    <value xml:space="preserve">Général</value>
+  </data>
+  <data name="lblcascaderesults.Help">
+    <value xml:space="preserve">Si une catégorie parente est sélectionnée, tous les produits des catégories enfants seront aussi affichés.</value>
+  </data>
+  <data name="lblcascaderesults.Text">
+    <value xml:space="preserve">Résultats en cascade : </value>
+  </data>
+  <data name="lblcataloguemode.Text">
+    <value xml:space="preserve">Mode Catalogue : </value>
+  </data>
+  <data name="lblcategorydetails.Text">
+    <value xml:space="preserve">Voir la catégorie Détails : </value>
+  </data>
+  <data name="lblcurrencyconverter.Text">
+    <value xml:space="preserve">Activer le convertisseur de devises : </value>
+  </data>
+  <data name="lbldefaultcatid.Help">
+    <value xml:space="preserve">Catégorie par défaut à afficher pour la liste, si aucune autre catégorie n'est sélectionnée. Déselectionner si le token "sqlfilter" est utilisé dans le gabarit de l'entête.</value>
+  </data>
+  <data name="lbldefaultcatid.Text">
+    <value xml:space="preserve">Catégorie par défaut : </value>
+  </data>
+  <data name="lbldefaultlistmodule.Help">
+    <value xml:space="preserve">Utiliser ce module comme le module retour par défaut pour la liste produits. Ceci indique au menu DDR la page de redirection lorsque plusieurs pages sont utilisées avec le menu DDR. Si aucune page par défaut n'est paramétrée, le menu DDR redirigera vers la page actuelle.</value>
+  </data>
+  <data name="lbldefaultlistmodule.Text">
+    <value xml:space="preserve">Module liste par défaut : </value>
+  </data>
+  <data name="lbldefaultproperty.Help">
+    <value xml:space="preserve">Définit la liste par défaut avec les produits ayant cette propriété attachée.</value>
+  </data>
+  <data name="lbldefaultproperty.Text">
+    <value xml:space="preserve">Propriété par défaut pour la liste : </value>
+  </data>
+  <data name="lbldetailbody.Help">
+    <value xml:space="preserve">Gabarit à utiliser pour le corps du détail produit.</value>
+  </data>
+  <data name="lbldetailbody.Text">
+    <value xml:space="preserve">Corps détail produit : </value>
+  </data>
+  <data name="lbldetailfooter.Help">
+    <value xml:space="preserve">Gabarit à utiliser pour le pied de page du détail produit.</value>
+  </data>
+  <data name="lbldetailfooter.Text">
+    <value xml:space="preserve">Pied de page détail produit : </value>
+  </data>
+  <data name="lbldetailheader.Help">
+    <value xml:space="preserve">Gabarit à utiliser pour l'entête du détail produit.</value>
+  </data>
+  <data name="lbldetailheader.Text">
+    <value xml:space="preserve">Entête détail produit : </value>
+  </data>
+  <data name="lbldetailimages.Text">
+    <value xml:space="preserve">Images détail produit : </value>
+  </data>
+  <data name="lbldetailmoduleref.Help">
+    <value xml:space="preserve">Clé du module détails pour l'affichage du produit. Si laissé vide, tous les modules de vue du produit de la page afficheront les détails de l'entrée. Ceci s'active en utilisant les tokens de paramètres des attribus modkey dans le gabarit de liste du "nbs:entrylink".</value>
+  </data>
+  <data name="lbldetailmoduleref.Text">
+    <value xml:space="preserve">Clé module détail produit : </value>
+  </data>
+  <data name="lbldetailtab.Help">
+    <value xml:space="preserve">La page vers laquelle sera redirigée l'utilisateur lorsqu'il cliquera sur "Voir les produits". Si laissé vide, la page actuelle est utilisée. Ceci s'active en utilisant les tokens de paramètres des attribus tabid dans le token de gabarit de liste "nbs:entrylink".</value>
+  </data>
+  <data name="lbldetailtab.Text">
+    <value xml:space="preserve">Page détails produit : </value>
+  </data>
+  <data name="lbldisplayfeatures.Text">
+    <value xml:space="preserve">Fonctionnalités d'affichage : </value>
+  </data>
+  <data name="lblfacebookid.Help">
+    <value xml:space="preserve">Numéro d'identification de Facebook Page Insights. Peut être un ID de fb:admins unique ou une liste séparée par des virgules des identificateurs. Référence https://developers.facebook.com/docs/insights/</value>
+  </data>
+  <data name="lblfacebookid.Text">
+    <value xml:space="preserve">Numéro de l'ID Facebook : </value>
+  </data>
+  <data name="lblgalleryheight.Text">
+    <value xml:space="preserve">Hauteur de la galerie d'images en px ou 0 pour auto : </value>
+  </data>
+  <data name="lblgallerywidth.Text">
+    <value xml:space="preserve">Largeur de la galerie d'images en px ou 0 pour auto : </value>
+  </data>
+  <data name="lblholidaymode.Text">
+    <value xml:space="preserve">Mode vacances : </value>
+  </data>
+  <data name="lblimageheight.Text">
+    <value xml:space="preserve">Hauteur de l'image détail produit en px ou 0 pour auto : </value>
+  </data>
+  <data name="lblimagewidth.Text">
+    <value xml:space="preserve">Largeur de l'image détail produit en px ou 0 pour auto : </value>
+  </data>
+  <data name="lblitembottommargin.Text">
+    <value xml:space="preserve">Marge inférieure de l'entrée Liste en px : </value>
+  </data>
+  <data name="lblitemgutter.Text">
+    <value xml:space="preserve">Gouttière de l'entrée Liste en px : </value>
+  </data>
+  <data name="lblitemheight.Text">
+    <value xml:space="preserve">Hauteur de l'entrée Liste (incl unité ou auto) : </value>
+  </data>
+  <data name="lblitemimagecontainerheight.Text">
+    <value xml:space="preserve">Hauteur du container Image de l'entrée Liste (inclure unité ou auto) : </value>
+  </data>
+  <data name="lblitemwidth.Text">
+    <value xml:space="preserve">Largeur de l'entrée Liste en px : </value>
+  </data>
+  <data name="lbllightboxspeed.Help">
+    <value xml:space="preserve">Vitesse d'animation pour la lightbox</value>
+  </data>
+  <data name="lbllightboxspeed.Text">
+    <value xml:space="preserve">Vitesse de la LightBox en ms : </value>
+  </data>
+  <data name="lbllistbody.Help">
+    <value xml:space="preserve">Gabarit à utiliser comme corps de liste produits, ceci est répété pour chaque produit.</value>
+  </data>
+  <data name="lbllistbody.Text">
+    <value xml:space="preserve">Corps de liste produits : </value>
+  </data>
+  <data name="lbllistfooter.Help">
+    <value xml:space="preserve">Gabarit à utiliser pour le pied de page de la liste produits.</value>
+  </data>
+  <data name="lbllistfooter.Text">
+    <value xml:space="preserve">Pied de page liste produits : </value>
+  </data>
+  <data name="lbllistheader.Help">
+    <value xml:space="preserve">Gabarit à utiliser pour l'entête de la liste produits.</value>
+  </data>
+  <data name="lbllistheader.Text">
+    <value xml:space="preserve">Entête liste produits : </value>
+  </data>
+  <data name="lbllistimages.Text">
+    <value xml:space="preserve">Images de la liste : </value>
+  </data>
+  <data name="lbllistonly.Help">
+    <value xml:space="preserve">N'afficher que la vue liste pour ce module, la vue détails ne sera pas affichée pour ce module.</value>
+  </data>
+  <data name="lbllistonly.Text">
+    <value xml:space="preserve">Vue liste uniquement : </value>
+  </data>
+  <data name="lblmodeldisplaytype.Text" lastModified="2016-12-15 16:47:45">
+    <value xml:space="preserve">Méthode d'affichage des modèles</value>
+  </data>
+  <data name="lblmodelstable.Text">
+    <value xml:space="preserve">Afficher le Tableau des modèles : </value>
+  </data>
+  <data name="lblmoduleref.Help">
+    <value xml:space="preserve">Clé module unique. Ceci est utilisé pour identifier le module parmi les autres modules NBS.</value>
+  </data>
+  <data name="lblmoduleref.Text">
+    <value xml:space="preserve">Clé module : </value>
+  </data>
+  <data name="lblnoimageicon.Text">
+    <value xml:space="preserve">Espace réservé Image icône (fontawesome.io) : </value>
+  </data>
+  <data name="lblogobjecttype.Help">
+    <value xml:space="preserve">Ouvrir le Type de graphe Explorateur - normalement « site Web ». Référence https://developers.facebook.com/docs/reference/opengraph/ </value>
+  </data>
+  <data name="lblogobjecttype.Text">
+    <value xml:space="preserve">Type d'objet graphique ouvert : </value>
+  </data>
+  <data name="lblpagesize.Help">
+    <value xml:space="preserve">Le nombre de produits à afficher sur chaque page.</value>
+  </data>
+  <data name="lblpagesize.Text">
+    <value xml:space="preserve">Taille de la page : </value>
+  </data>
+  <data name="lblplaceholderimage.Text">
+    <value xml:space="preserve">Activez l'espace réservé Image : </value>
+  </data>
+  <data name="lblproductcode.Text">
+    <value xml:space="preserve">Voir la Code/Réf : </value>
+  </data>
+  <data name="lblrelatedimageheight.Text">
+    <value xml:space="preserve">Hauteur de l'Image associée en px ou 0 pour auto : </value>
+  </data>
+  <data name="lblrelatedimages.Text">
+    <value xml:space="preserve">Images des produits associés : </value>
+  </data>
+  <data name="lblrelatedimagewidth.Text">
+    <value xml:space="preserve">Largeur de l'Image associée en px ou 0 pour auto : </value>
+  </data>
+  <data name="lblrelateditembottommargin.Text">
+    <value xml:space="preserve">Marge inférieure de l'entrée associée en px : </value>
+  </data>
+  <data name="lblrelateditemgutter.Text">
+    <value xml:space="preserve">Gouttière de l'entrée associée en px : </value>
+  </data>
+  <data name="lblrelateditemheight.Text">
+    <value xml:space="preserve">Hauteur de l'entrée associée (inclure unité ou auto) : </value>
+  </data>
+  <data name="lblrelateditemimagecontainerheight.Text">
+    <value xml:space="preserve">Hauteur du container Image de l'entrée associée (inclure unité ou auto) : </value>
+  </data>
+  <data name="lblrelateditemwidth.Text">
+    <value xml:space="preserve">Largeur de l'entrée associée en px ou 0 pour auto : </value>
+  </data>
+  <data name="lblreturnlimit.Help">
+    <value xml:space="preserve">Le nombre maximum de produits qu'affichera le module.  (zéro correspond à aucune limite paramétrée)</value>
+  </data>
+  <data name="lblreturnlimit.Text">
+    <value xml:space="preserve">Limite retour produit</value>
+  </data>
+  <data name="lblreturntab.Help">
+    <value xml:space="preserve">La page vers laquelle est redirigée l'utilisateur lorsqu'il clique sur "Retourner à la liste". Si laissé vide, la page actuelle est utilisée. Ceci est activé en utilisant les token de paramètres des attribus tabid dans le token de gabarit "nbs:returnlink".</value>
+  </data>
+  <data name="lblreturntab.Text">
+    <value xml:space="preserve">Page liste : </value>
+  </data>
+  <data name="lblshowstock.Text">
+    <value xml:space="preserve">Afficher le stock : </value>
+  </data>
+  <data name="lblsocialseodata.Text">
+    <value xml:space="preserve">Social et SEO : </value>
+  </data>
+  <data name="lblstaticlist.Help">
+    <value xml:space="preserve">Les listes statiques utiliseront toujours les catégories par défaut, quelle que soit la catégorie sélectionnée. Celles-ci sont utilisées pour afficher les produits phares ou les produits en promotion.</value>
+  </data>
+  <data name="lblstaticlist.Text">
+    <value xml:space="preserve">Liste statique : </value>
+  </data>
+  <data name="lbltabbedcontent.Text">
+    <value xml:space="preserve">Activer les onglets : </value>
+  </data>
+  <data name="lbltheme.Help">
+    <value xml:space="preserve">Nom du thème à utiliser pour cette liste produits.</value>
+  </data>
+  <data name="lbltheme.Text">
+    <value xml:space="preserve">Thème : </value>
+  </data>
+  <data name="lblthemesettings.Text">
+    <value xml:space="preserve">Paramètres du thème</value>
+  </data>
+  <data name="lblthumbnailheight.Text">
+    <value xml:space="preserve">Hauteur de l'image de liste produits en px ou 0 pour auto : </value>
+  </data>
+  <data name="lblthumbnailwidth.Text">
+    <value xml:space="preserve">Largeur de l'image de liste produits en px ou 0 pour auto : </value>
+  </data>
+  <data name="lbltwittersite.Help">
+    <value xml:space="preserve">Le nom d'utilisateur Twitter du site, y compris le symbole @. Peut être le même que l'utilisateur de Twitter. Référence https://dev.twitter.com/docs/cards/markup-reference</value>
+  </data>
+  <data name="lbltwittersite.Text">
+    <value xml:space="preserve">Site Web de Twitter @username : </value>
+  </data>
+  <data name="lbltwitteruser.Help">
+    <value xml:space="preserve">Le nom d'utilisateur Twitter, y compris le symbole de l'affiche contenu @. Peut être le même que l'utilisateur du site Twitter. Référence https://dev.twitter.com/docs/cards/markup-reference</value>
+  </data>
+  <data name="lbltwitteruser.Text">
+    <value xml:space="preserve">Utilisateur de Twitter @username : </value>
+  </data>
+  <data name="lblwishlist.Text">
+    <value xml:space="preserve">Activer la liste de souhaits : </value>
+  </data>
+  <data name="themehidden.Text">
+    <value xml:space="preserve">Les anciens paramètres du thème ont été désactivés, mettre à jour pour activer le nouveau thème. </value>
+  </data>
+</root>

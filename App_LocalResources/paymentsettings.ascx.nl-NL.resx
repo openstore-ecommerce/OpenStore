@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2014-11-29 13:53:54">
+    <value xml:space="preserve">Betaling instellingen</value>
+  </data>
+  <data name="lbldisplaydetailtemplate.Help" lastModified="2014-11-29 13:53:54">
+    <value xml:space="preserve">Sjabloon wordt weergegeven boven de betaling methode selectie, als een samenvatting voor Selecteer betalingsmethode.  Als geen providers voor betalingsverwerking bestaat wordt deze sjabloon niet gebruikt.</value>
+  </data>
+  <data name="lbldisplaydetailtemplate.Text" lastModified="2014-11-29 13:53:54">
+    <value xml:space="preserve">Samenvatting Header sjabloon: </value>
+  </data>
+  <data name="lblpaymentfailtemplate.Help" lastModified="2014-11-29 13:53:54">
+    <value xml:space="preserve">Sjabloon weergegeven wanneer de transactie mislukt.</value>
+  </data>
+  <data name="lblpaymentfailtemplate.Text" lastModified="2014-11-29 13:53:54">
+    <value xml:space="preserve">Betaling Fail sjabloon:</value>
+  </data>
+  <data name="lblpaymentfooter.Text" lastModified="2014-11-29 13:53:54">
+    <value xml:space="preserve">Samenvatting voettekst sjabloon: </value>
+  </data>
+  <data name="lblpaymentoktemplate.Help" lastModified="2014-11-29 13:53:54">
+    <value xml:space="preserve">Sjabloon weergegeven wanneer de betaling succesvol is geweest. Als geen providers voor betalingsverwerking bestaan dan de bestelling wordt automatisch verwerkt en deze sjabloon direct wordt weergegeven.</value>
+  </data>
+  <data name="lblpaymentoktemplate.Text" lastModified="2014-11-29 13:53:54">
+    <value xml:space="preserve">Betaling succesvol sjabloon: </value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2014-11-29 13:53:54">
+    <value xml:space="preserve">Themagebied: </value>
+  </data>
+</root>

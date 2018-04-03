@@ -1,0 +1,42 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Portals
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightPayBox/App_LocalResources")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+}
+
+
+<div class="nbs paymentcomplete">
+
+    <div class="formrow">
+        <h3>@info.GetXmlProperty("genxml/lang/genxml/textbox/rtntitle")</h3>
+        <p>@BreakOf(@info.GetXmlProperty("genxml/lang/genxml/textbox/rtnmessage"))</p>
+    </div>
+
+    <div class="formrow">
+        <b>@ResourceKey("OrderAdmin.ordernumber"):</b> @info.GetXmlProperty("genxml/ordernumber")
+    </div>
+
+    @if (UserController.Instance.GetCurrentUserInfo().UserID > 0)
+    {
+        <div class="formrow">
+            <a class="primarybutton" href="/tabid/@(Model.GetSetting("ordermanagertab"))/eid/@(info.ItemID)">@ResourceKey("CartView.ViewOrder")</a>
+        </div>
+    }
+    else
+    {
+        <div class="formrow">
+            <a class="primarybutton" href="/tabid/@(Model.GetSetting("productlisttab"))">@ResourceKey("CartView.returntostore")</a>
+        </div>
+    }
+
+
+</div>

@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Product weergave-instellingen</value>
+  </data>
+  <data name="lbladvancedsettings.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Geavanceerde</value>
+  </data>
+  <data name="lblallowzeroprice.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Nul-prijs aankoop toestaan: </value>
+  </data>
+  <data name="lblbasicsettings.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Algemene</value>
+  </data>
+  <data name="lblcascaderesults.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Als een bovenliggende categorie is geselecteerd, zal ook alle producten in kinderen categorieën worden weergegeven.</value>
+  </data>
+  <data name="lblcascaderesults.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Trapsgewijs resultaten: </value>
+  </data>
+  <data name="lblcataloguemode.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Catalogus-modus: </value>
+  </data>
+  <data name="lblcategorydetails.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Categorie Details weergeven: </value>
+  </data>
+  <data name="lblcurrencyconverter.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Valutacalculator inschakelen </value>
+  </data>
+  <data name="lbldefaultcatid.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Standaardcategorie moet worden weergegeven door de lijst, als geen andere rubriek geselecteerd.  Vink dit als de "sqlfilter" token in de koptekst-sjabloon gebruikt.</value>
+  </data>
+  <data name="lbldefaultcatid.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Standaardcategorie: </value>
+  </data>
+  <data name="lbldefaultlistmodule.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Stel deze module als de module standaard terugkeer voor de productlijst.  Dit vertellen de DDRMenu welke pagina omleiden naar wanneer meerdere pagina's worden gebruikt met de DDRMenu.  Als geen standaard is ingesteld zal de DDRMenu terugkeren naar de huidige pagina.</value>
+  </data>
+  <data name="lbldefaultlistmodule.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Standaard lijst Module: </value>
+  </data>
+  <data name="lbldefaultproperty.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">De standaardlijst ingesteld op producten met deze eigenschap gekoppeld.</value>
+  </data>
+  <data name="lbldefaultproperty.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Standaardeigenschap voor lijst: </value>
+  </data>
+  <data name="lbldetailbody.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als product detail lichaam.</value>
+  </data>
+  <data name="lbldetailbody.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Detail lichaam: </value>
+  </data>
+  <data name="lbldetailfooter.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als product detail voettekst.</value>
+  </data>
+  <data name="lbldetailfooter.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Detail voettekst: </value>
+  </data>
+  <data name="lbldetailheader.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als product detail kop.</value>
+  </data>
+  <data name="lbldetailheader.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Detail kop: </value>
+  </data>
+  <data name="lbldetailimages.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Detail beelden: </value>
+  </data>
+  <data name="lbldetailmoduleref.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Module sleutel van de detail-module om het Product weer te geven.  Als dit veld leeg kunnen alle Productoverzicht modules op de pagina het item detail weergeven.  Dit wordt geactiveerd met behulp van de instellingen-token op het kenmerk modkey van de "nbs:entrylink" token in de lijstsjabloon.</value>
+  </data>
+  <data name="lbldetailmoduleref.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Detail Module sleutel: </value>
+  </data>
+  <data name="lbldetailtab.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">De pagina de gebruiker wordt doorgestuurd naar wanneer de "Weergave Product" knop wordt geklikt.  De huidige pagina wordt gebruikt als dit veld leeg.  Dit wordt geactiveerd met behulp van de instellingen-token op de tabid kenmerk van de "nbs:entrylink" token in de lijstsjabloon.</value>
+  </data>
+  <data name="lbldetailtab.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Pagina met productgegevens: </value>
+  </data>
+  <data name="lbldisplayfeatures.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Voorzieningen weergeven: </value>
+  </data>
+  <data name="lblfacebookid.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Facebook-ID-nummer voor pagina inzichten. Kunnen een één fb:admins ID of een door komma's gescheiden lijst met id's. Verwijzen https://developers.facebook.com/docs/insights/</value>
+  </data>
+  <data name="lblfacebookid.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Facebook-ID-nummer: </value>
+  </data>
+  <data name="lblgalleryheight.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Galerij afbeeldingshoogte in px of 0 voor auto: </value>
+  </data>
+  <data name="lblgallerywidth.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Galerij afbeeldingsbreedte in px of 0 voor auto: </value>
+  </data>
+  <data name="lblholidaymode.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Vakantie modus: </value>
+  </data>
+  <data name="lblimageheight.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Details afbeeldingshoogte in px of 0 voor auto: </value>
+  </data>
+  <data name="lblimagewidth.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">De breedte van de afbeelding van het Details in px of 0 voor auto: </value>
+  </data>
+  <data name="lblitembottommargin.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijstitem ondermarge in px: </value>
+  </data>
+  <data name="lblitemgutter.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijstitem goot in px: </value>
+  </data>
+  <data name="lblitemheight.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijstitem hoogte (incl eenheid of auto): </value>
+  </data>
+  <data name="lblitemimagecontainerheight.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijst Item Container afbeeldingshoogte (incl eenheid of auto): </value>
+  </data>
+  <data name="lblitemwidth.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijstitem breedte in px: </value>
+  </data>
+  <data name="lbllightboxspeed.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">De snelheid van de animatie voor lightbox</value>
+  </data>
+  <data name="lbllightboxspeed.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">LightBox snelheid in ms: </value>
+  </data>
+  <data name="lbllistbody.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als product lijst lichaam, dit wordt herhaald voor elk product.</value>
+  </data>
+  <data name="lbllistbody.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijst lichaam: </value>
+  </data>
+  <data name="lbllistfooter.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als product lijst voettekst.</value>
+  </data>
+  <data name="lbllistfooter.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijst voettekst: </value>
+  </data>
+  <data name="lbllistheader.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als product lijst header.</value>
+  </data>
+  <data name="lbllistheader.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">List Header: </value>
+  </data>
+  <data name="lbllistimages.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijst met afbeeldingen: </value>
+  </data>
+  <data name="lbllistonly.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Alleen lijst weergave voor deze module, geen detailweergave wordt weergegeven op deze module.</value>
+  </data>
+  <data name="lbllistonly.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Alleen lijst: </value>
+  </data>
+  <data name="lblmodelstable.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Toon modellen tabel: </value>
+  </data>
+  <data name="lblmoduleref.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Unieke Module sleutel.  Dit wordt gebruikt om te identificeren deze module aan andere NBS-modules.</value>
+  </data>
+  <data name="lblmoduleref.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Module sleutel: </value>
+  </data>
+  <data name="lblnoimageicon.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Pictogram afbeelding als tijdelijke aanduiding (fontawesome.io): </value>
+  </data>
+  <data name="lblogobjecttype.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Open grafiektype object - normaal 'website'. Verwijzen https://developers.facebook.com/docs/reference/opengraph/ </value>
+  </data>
+  <data name="lblogobjecttype.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Object Type van open grafiek: </value>
+  </data>
+  <data name="lblpagesize.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Aantal producten moet worden weergegeven op elke pagina.</value>
+  </data>
+  <data name="lblpagesize.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Paginaformaat: </value>
+  </data>
+  <data name="lblplaceholderimage.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Tijdelijke aanduiding voor afbeelding inschakelen </value>
+  </data>
+  <data name="lblproductcode.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Toon Code/Ref: </value>
+  </data>
+  <data name="lblrelatedimageheight.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Verwante afbeeldingshoogte in px of 0 voor auto: </value>
+  </data>
+  <data name="lblrelatedimages.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Verwant productafbeeldingen: </value>
+  </data>
+  <data name="lblrelatedimagewidth.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Verwante afbeeldingsbreedte in px of 0 voor auto: </value>
+  </data>
+  <data name="lblrelateditembottommargin.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Gerelateerde Item ondermarge in px: </value>
+  </data>
+  <data name="lblrelateditemgutter.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Gerelateerde Item goot in px: </value>
+  </data>
+  <data name="lblrelateditemheight.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Gerelateerde Item hoogte (incl eenheid of auto): </value>
+  </data>
+  <data name="lblrelateditemimagecontainerheight.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Gerelateerde Item Container afbeeldingshoogte (incl eenheid of auto): </value>
+  </data>
+  <data name="lblrelateditemwidth.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Gerelateerde Item breedte in px of 0 voor auto: </value>
+  </data>
+  <data name="lblreturnlimit.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Maximum aantal producten die door de module zal worden weergegeven.  (nul is geen limiet ingesteld)</value>
+  </data>
+  <data name="lblreturnlimit.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Product terugkeer Spelstructuur</value>
+  </data>
+  <data name="lblreturntab.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">De pagina de gebruiker wordt teruggestuurd naar wanneer op de knop "Terug naar lijst" wordt geklikt.  De huidige pagina wordt gebruikt als dit veld leeg.  Dit wordt geactiveerd met behulp van de instellingen-token op de tabid kenmerk van het token van de "nbs:returnlink" in de detail-sjabloon.</value>
+  </data>
+  <data name="lblreturntab.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijstpagina: </value>
+  </data>
+  <data name="lblshowstock.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Toon de voorraad: </value>
+  </data>
+  <data name="lblsocialseodata.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Sociale en SEO: </value>
+  </data>
+  <data name="lblstaticlist.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Statische lijsten gebruikt altijd de standaardcategorieën, ongeacht eventuele categorie geselecteerd.  Deze worden gebruikt voor weergave van aanbevolen producten of producten op promotie.</value>
+  </data>
+  <data name="lblstaticlist.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Statische lijst: </value>
+  </data>
+  <data name="lbltabbedcontent.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Tabbladen inschakelen </value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Naam van het thema te gebruiken voor deze productlist.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Themagebied: </value>
+  </data>
+  <data name="lblthemesettings.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Thema-instellingen</value>
+  </data>
+  <data name="lblthumbnailheight.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijst afbeeldingshoogte in px of 0 voor auto: </value>
+  </data>
+  <data name="lblthumbnailwidth.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Lijst de breedte van de afbeelding in px of 0 voor auto: </value>
+  </data>
+  <data name="lbltwittersite.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">De naam van de Twitter-gebruiker van de website, met inbegrip van het symbool @. Mag hetzelfde zijn als de Twitter gebruiker. Verwijzen https://dev.twitter.com/docs/cards/markup-reference</value>
+  </data>
+  <data name="lbltwittersite.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Twitter Website @username: </value>
+  </data>
+  <data name="lbltwitteruser.Help" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">De naam van de Twitter-gebruiker, met inbegrip van het @-symbool van de inhoud poster. Mag hetzelfde zijn als de gebruiker van de Twitter-website. Verwijzen https://dev.twitter.com/docs/cards/markup-reference</value>
+  </data>
+  <data name="lbltwitteruser.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Twitter gebruiker @username: </value>
+  </data>
+  <data name="lblwishlist.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Verlanglijst inschakelen </value>
+  </data>
+  <data name="themehidden.Text" lastModified="2014-11-29 13:48:59">
+    <value xml:space="preserve">Oude thema-instellingen zijn uitgeschakeld, bijgewerkt met nieuwe thema activeren. </value>
+  </data>
+</root>

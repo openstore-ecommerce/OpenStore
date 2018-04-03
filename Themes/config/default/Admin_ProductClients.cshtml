@@ -1,0 +1,22 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var prdData = new ProductData(info.ItemID, info.PortalId, info.Lang);
+}
+
+@foreach (var nbiClient in prdData.GetClients())
+{
+    <tr>
+        <td>@nbiClient.GetXmlProperty("genxml/textbox/firstname") @nbiClient.GetXmlProperty("genxml/textbox/lastname")</td>
+        <td>@nbiClient.GetXmlProperty("genxml/textbox/email")</td>
+        <td>@nbiClient.GetXmlProperty("genxml/textbox/username")</td>
+        <td><a title="Add" class="removeclient selectuserid@(nbiClient.ItemID)" itemid="@(nbiClient.ItemID)"><i class="fa fa-minus-square"></i></a></td>
+    </tr>
+}

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Actions.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Azioni</value>
+  </data>
+  <data name="AmountUsed.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Importo Usato</value>
+  </data>
+  <data name="ClientmenuAddresses.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">I miei indirizzi</value>
+  </data>
+  <data name="ClientmenuManage.Text" lastModified="2015-11-11 15:39:58">
+    <value xml:space="preserve">Gestione account</value>
+  </data>
+  <data name="ClientmenuOrders.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">I miei ordini</value>
+  </data>
+  <data name="ClientmenuProfile.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Il mio profilo</value>
+  </data>
+  <data name="ClientmenuTitle.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Il mio account</value>
+  </data>
+  <data name="cmdCreateOrder.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Creare ordine</value>
+  </data>
+  <data name="cmdDeleteUser.confirm" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Eliminare cliente?</value>
+  </data>
+  <data name="cmdDeleteUser.Text" lastModified="2015-11-11 15:39:58">
+    <value xml:space="preserve">Elimina Cliente</value>
+  </data>
+  <data name="cmdRemoveUser.confirm" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Rimuovere l'utente dal sistema?</value>
+  </data>
+  <data name="cmdRemoveUser.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Rimuovi utente</value>
+  </data>
+  <data name="cmdResetPass.confirm" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Ripristina User Password e inviare e-mail con una nuova password?</value>
+  </data>
+  <data name="cmdResetPass.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Resettare la password</value>
+  </data>
+  <data name="cmdSearch.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Ricerca</value>
+  </data>
+  <data name="cmdUnlockUser.confirm" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Sblocca utente?</value>
+  </data>
+  <data name="cmdUnlockUser.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Sblocca utente</value>
+  </data>
+  <data name="cmdValidateUser.confirm" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Autorizzare l'utente e concedere l'accesso ruolo cliente?</value>
+  </data>
+  <data name="cmdValidateUser.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Convalida utente</value>
+  </data>
+  <data name="cmdViewAddressBook.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Rubrica</value>
+  </data>
+  <data name="cmdViewClient.Text" lastModified="2015-11-11 15:39:58">
+    <value xml:space="preserve">Vista Cliente</value>
+  </data>
+  <data name="cmdViewClientButton.Text" lastModified="2015-11-11 15:39:58">
+    <value xml:space="preserve">&lt;i  title="View Client" class="fa fa-user fa-fw fa-lg"&gt;&lt;/i&gt; Vedi Cliente</value>
+  </data>
+  <data name="cmdViewClientIcon.Text" lastModified="2015-11-11 15:39:58">
+    <value xml:space="preserve">&lt;i  title="View Client" class="fa fa-user fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdViewOrders.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Visualizza ordini</value>
+  </data>
+  <data name="customerinfos.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Informazioni cliente</value>
+  </data>
+  <data name="FindaClient.Text" lastModified="2015-11-11 15:39:58">
+    <value xml:space="preserve">Trova un Cliente</value>
+  </data>
+  <data name="lblauthorised.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Autorizzato</value>
+  </data>
+  <data name="lblDisplayName.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Mostra il nome</value>
+  </data>
+  <data name="lblEmail.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">E-mail</value>
+  </data>
+  <data name="lblFirstName.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Nome</value>
+  </data>
+  <data name="lblisdeleted.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Viene eliminato</value>
+  </data>
+  <data name="lblLastName.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Cognome</value>
+  </data>
+  <data name="lblupdatepassword.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Aggiorna password</value>
+  </data>
+  <data name="lblUserID.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">ID utente</value>
+  </data>
+  <data name="lblUserName.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Nome Utente</value>
+  </data>
+  <data name="Notes.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Note</value>
+  </data>
+  <data name="notsale.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Non valida per i prodotti in vendita</value>
+  </data>
+  <data name="Ordering.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Ordinazione</value>
+  </data>
+  <data name="usageleft.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Uso</value>
+  </data>
+  <data name="UserAccount.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Account utente</value>
+  </data>
+  <data name="UserID.Header" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">ID utente</value>
+  </data>
+  <data name="userlockedout.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Utente Locked Out</value>
+  </data>
+  <data name="validcategory.Text" lastModified="2015-11-11 15:39:58">
+    <value xml:space="preserve">Categoria Valida</value>
+  </data>
+  <data name="validuntil.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Valido fino a</value>
+  </data>
+  <data name="VoucherAmount.Text" lastModified="2015-11-11 14:32:07">
+    <value xml:space="preserve">Buono</value>
+  </data>
+</root>

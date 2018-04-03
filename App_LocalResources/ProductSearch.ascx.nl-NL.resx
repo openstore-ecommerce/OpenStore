@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CheckAll.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Controleer alle</value>
+  </data>
+  <data name="ddlOrderBy.data" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Prijs;Prijs Aflopend;Productnaam;Fabrikant;Referentiecode;Voorraad</value>
+  </data>
+  <data name="NoCategorySelected.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Geen rubriek geselecteerd</value>
+  </data>
+  <data name="OnlyInStock.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Alleen Items In voorraad</value>
+  </data>
+  <data name="PriceRange.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Prijsklasse</value>
+  </data>
+  <data name="PriceRangeSeperator.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Aan</value>
+  </data>
+  <data name="Processing.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">&lt;i class='fa fa-refresh fa-spin fa-2x'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="RefineSearch.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Verfijn uw zoekopdracht</value>
+  </data>
+  <data name="Reset.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Duidelijk</value>
+  </data>
+  <data name="Search.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Zoeken</value>
+  </data>
+  <data name="SearchText.Text" lastModified="2014-11-29 13:53:05">
+    <value xml:space="preserve">Tekst zoeken</value>
+  </data>
+</root>

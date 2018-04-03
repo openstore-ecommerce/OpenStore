@@ -1,0 +1,39 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+<!-- This template is injected into the details page head section -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js"></script>
+
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/Default/css/ClientAccount.css" rel="stylesheet">
+
+<!-- return element for update -->
+<div id="profileupdated" style="display:none;"></div>
+
+<!-- Quantity Input -->
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('.profilesubmit').click(function(e) {
+        nbxget('updateprofile', '#profileinputform', '#profileupdated');
+    });
+
+    $('#profileupdated').change(function (e) {
+        alert("Profile Updated");
+    });
+
+    $('.profileformcountry').unbind();
+    $('.profileformcountry').change(function () {
+        $('.checkoutbillformregiondiv').hide();
+        nbxget('renderpostdata', '.profileformcountrydiv', '.profileformregiondiv');
+    });
+
+    $('.profileformregiondiv').unbind();
+    $('.profilebillformregiondiv').change(function () {
+        $('.profileformregiondiv').show();
+    });
+
+});
+</script>
+

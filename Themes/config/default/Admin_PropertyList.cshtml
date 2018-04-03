@@ -1,0 +1,123 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Globalization
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+@using NBrightCore.common;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<br />
+
+<div class="row">
+
+    <div class="categorybreadcrumbs">@CategoryBreadCrumb(true,Model)</div>
+
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-table"></i>
+                    <span>@ResourceKey("General.Properties")</span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="expand-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content">
+                <div class="form-group">
+                <table class="table table-striped table-hover categorylist">
+                    <thead>
+                    <tr>
+                        <th>@ResourceKey("General.Ref")</th>
+                        <th>@ResourceKey("General.Name")</th>
+                        <th> </th>
+                        <th> </th>
+                        <th> </th>
+                        <th> </th>
+                        <th>@ResourceKey("General.Hidden")</th>
+                    </tr>
+                    </thead>
+                    <tbody class="propertyfields">
+                        @if (Model.List.Count > 0)
+                        {
+                            int lp = 0;
+                            foreach (NBrightInfo nbi in Model.List)
+                            {
+                                lp += 1;
+                                <tr class="propertyitemfields">
+                                    @if (nbi.GetXmlProperty("genxml/textbox/propertyref") == "")
+                                    {
+                                        <td style="width: 20%">
+                                            @NBrightTextBox(nbi, "genxml/textbox/propertyref", "class='form-control' maxlength='150' lp='" + lp + "'")
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td style="width: 20%">
+                                            @nbi.GetXmlProperty("genxml/textbox/propertyref")
+                                        </td>
+                                    }
+                                    <td style="width: 80%">
+                                        @NBrightTextBox(nbi, "genxml/textbox/txtcategoryname", "class='form-control categorynametextbox ' maxlength='150' lp='" + lp + "'")
+                                    </td>
+                                    <td>
+                                        @LangFlag(nbi.Lang)
+                                    </td>
+                                    <td>
+                                        <input id="categorylang_@(lp)" type="hidden" value="@nbi.Lang"/>
+                                        <input id="itemid_@(lp)" type="hidden" value="@nbi.ItemID"/>
+                                        <input id="isdirty_@(lp)" type="hidden" value="false"/>
+                                        <a title="Move" href="javascript:void(0)" class="selectrecord" itemid="@nbi.ItemID"><i class="fa fa-sort fa-fw fa-2x"></i></a>
+                                        <a title="Cancel Move" href="javascript:void(0)" class="selectcancel" itemid="@nbi.ItemID" style="display: none;"><i class="fa fa-times-circle fa-fw fa-2x"></i></a>
+                                        <span style="display: none;" class="selectmove" itemid="@nbi.ItemID" parentlist="@nbi.GetXmlProperty("genxml/parentlist")" >
+                                        <a class="cmdmove" itemid="@(nbi.ItemID)" href="javascript:void(0)">@ResourceKey("General.cmdMoveIcon")</a>
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <a class="propertyAdmin_cmdEdit" itemid="@(nbi.ItemID)" href="javascript:void(0)">@ResourceKey("General.cmdEditIcon")</a>
+                                    </td>
+                                    <td>
+                                        <a class="propertyAdmin_cmdDelete" itemid="@(nbi.ItemID)" href="javascript:void(0)">@ResourceKey("General.cmdDeleteIcon")</a>
+                                    </td>
+                                    <td class="centered">
+                                        @{
+                                            var checkdisplay = "";
+                                        }
+                                        @if (nbi.GetXmlPropertyBool("genxml/checkbox/chkishidden"))
+                                        {
+                                            checkdisplay = "-check";
+                                        }
+                                        <a href="javascript:void(0)">
+                                            <i class="fa fa@(checkdisplay)-circle fa-2x selectchangehidden" itemid="@nbi.ItemID"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,48 @@
+@using DotNetNuke.Entities.Users
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+@RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Default\\Default\\ProductDisplayList_head.cshtml",Model)
+
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/Default/css/ClientAccount.css" rel="stylesheet">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(document).on("nbxgetcompleted", ItemList_GetList_nbxgetCompleted);
+
+    });
+
+    function ItemList_GetList_nbxgetCompleted(e) {
+
+        $('.processing').hide();
+            
+        $('.wishlistremoveall').unbind("click");
+        $('.wishlistremoveall').click(function () {
+            $('#shoplistname').val($(this).attr('listkey'));
+            $('.processing').show();
+            nbxget('itemlist_deletelist', '#productajaxview');
+        });
+
+        $('.shoppinglistremove').unbind("click");
+        $('.shoppinglistremove').click(function () {
+            e.preventDefault();
+            $('#shopitemid').val($(this).attr('itemid'));
+            $('.productline' + $('#shopitemid').val()).hide();
+            $('.processing').show();
+            nbxget('itemlist_remove', '#productajaxview');
+        });
+
+        $("#accordion").accordion({
+            heightStyle: "content"
+        });
+
+        if (e.cmd == 'itemlist_deletelist') {
+            $('.processing').show();
+            location.reload();
+        }
+    }
+
+</script>

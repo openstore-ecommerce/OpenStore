@@ -1,0 +1,62 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+<!-- fields required to send required ajax cart to server -->
+<span id="productadminsearch">
+    <input id="userid" type="hidden" value="@UserController.Instance.GetCurrentUserInfo().UserID" />
+    <input id="razortemplate" type="hidden" value="" />
+    <input id="themefolder" type="hidden" value="config" />
+    <input id="uilang" type="hidden" value="@Model.Lang" />
+    <input id="pagesize" type="hidden" value="20" />
+    <input id="pagenumber" type="hidden" value="1" />
+    <input id="searchtext" type="hidden" value="" />
+    <input id="selecteditemid" type="hidden" value="" />
+    <input id="emailtype" type="hidden" value="" />
+    <input id="emailsubject" type="hidden" value="" />
+    <input id="emailmessage" type="hidden" value="" />
+    <input id="moveproductid" type="hidden" value="" />
+    <input id="movetoproductid" type="hidden" value="" />
+    <input id="searchcategory" type="hidden" value="" />
+    <input id="cascade" type="hidden" value="True" />
+    <input id="addqty" type="hidden" value="1" />
+    <input id="editlang" type="hidden" value="@Model.Lang" />
+    <input id="nextlang" type="hidden" value="" /> <!-- editlanguage to be used after save.  editlang, must stay the same during save. -->
+    <input id="selectedoptionid" type="hidden" value="" />
+    <input id="selectedgroupref" type="hidden" value="" />
+    <input id="selectedrelatedid" type="hidden" value="" />
+    <input id="selecteduserid" type="hidden" value="" />
+    <input id="imguploadlist" type="hidden" value="" />
+    <input id="docuploadlist" type="hidden" value="" />
+    <input id="selectedcatid" type="hidden" value="" />    
+    <input id="orderby" type="hidden" value="{bycategoryproduct}" />
+</span>
+
+
+<div id="loader" class="processing" style="display:none;">@ResourceKey("General.ProcessingDiv")</div>
+
+<div id="pageactionssource">
+    <!-- Page actions are moved into header bar - also exist at page bottom-->
+    <div class="col-xs-9 col-sm-9">
+        <a href="javascript:void(0)" class="show-sidebar">
+            <i class="fa fa-bars"></i>
+        </a>
+        <div class="actionbuttonwrapper">
+            <a id="productAdmin_cmdAddNew" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdAddButton")</a>
+            <a id="productAdmin_cmdSaveExit" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveExitButton")</a>
+            <a id="productAdmin_cmdSave" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveButton")</a>
+            <a id="productAdmin_cmdSaveAs" style="display: none;" class="btn btn-warning " href="javascript:void(0)">@ResourceKey("General.cmdSaveAsButton")</a>
+            <a id="productAdmin_cmdDelete" style="display: none;" class="btn btn-danger " href="javascript:void(0)">@ResourceKey("General.cmdDeleteButton")</a>
+            <a id="productAdmin_cmdReturn" style="display: none;" class="btn btn-default " href="javascript:void(0)">@ResourceKey("General.cmdReturnButton")</a>
+        </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 top-panel-right">
+        @EditLangaugeButton()
+    </div>
+</div>
+
+<div id="datadisplay"></div>
+

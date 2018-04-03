@@ -1,0 +1,354 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,600);
+
+/* Common */
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+.NBB{}
+
+/* Adjustments to devoops and DNN */
+body{font-size:13px;font-family:'Open Sans', sans-serif;}
+.page-header{font-size:16px}
+.nav{margin-left:0;font-size:16px}
+a, a:visited {color:#428BCA}
+.dnnInputFileWrapper{font-family:'Open Sans', sans-serif;font-size:12px;line-height:23px;padding: 4px 12px;text-shadow:none;margin-right: 12px !important;background:#F5F5F5;box-shadow:none;}
+#sidebar-left{position:fixed}#content{float:right}/* Fix menu in place */
+.no-box-header{display:none}/* Hide panel head section */
+.orderdetailitems th{text-transform:uppercase}
+.orderdetail .billaddress h4,.orderdetail .shipaddress h4{font-size:18px;font-weight:bold;text-transform:uppercase}
+.orderdetail .storeaddress{}
+.centered{text-align:center}
+#logo a{background: none;}/* Hide devoops logo*/
+/* .top-panel-right{display: none;}Hide top right menu section */
+#loader{opacity:0}
+#loader{background: none repeat scroll 0 0 #848D92;color:#ffffff;height: 100%;padding-top: 25%;left: 0;opacity: 0.4;transition:all 0.4s ease-in-out 0s;position: absolute;text-align: center;top: 0;width: 100%;z-index: 9999;}/* Loading graphic */
+#loader .fa{margin-right:2px;margin-top:3px;}
+.text-nowrap{white-space:nowrap;}/* Bootstrap nowrap is missing? */
+.nowrap{white-space:nowrap}/* remove this one */
+/* span.dnnInputFileWrapper{padding: 0 15px;}fix for file upload buttons */
+.bg-primary,.bg-success,.bg-info,.bg-warning,.bg-danger {margin-top: 15px;padding: 15px;font-size: 21px;font-weight: bold;}
+.checkbox input[type=checkbox]{margin-left: 0;}
+.nav.main-menu .fa {font-size:20px;margin-right:12px;vertical-align:-1px;}
+.spacer{margin-bottom: 15px;}/* Gap between Bootstrap rows */
+.ui-accordion-header{font-size:17px !important;letter-spacing: 0.008em;}/* jQuery UI override */
+.ui-accordion-header.ui-state-default{border-color:#E4E4E4}
+select option{padding-bottom:3px}
+.close-link{display:none !important}
+.form-control{border-radius: 0;}
+.select2-container .select2-choice{border-radius: 0;}
+.onedigit{width:40px !important}
+.twodigit{width:48px !important}
+.threedigit{width:60px !important}
+.select2-container .select2-choice{height: 34px;line-height: 34px;}
+.noborders, .noborders th, .noborders td{border:none !important;}
+
+/* Buttons */
+.btn {cursor: pointer;outline: none;display: inline-block;vertical-align: top;position: relative;}
+a.btn-primary, a.btn-success, a.btn-danger, a.btn-warning {color:#FFFFFF !important;}
+a.btn-default {color:#555555}
+#content .btn,#top-panel .btn{margin-right:10px}
+.dropup .btn-default .fa{vertical-align: 0;}
+.dropup .btn-default{color:#555555;vertical-align: 0;cursor: default;}
+.dropup .btn-default:hover{background:#FFFFFF}
+.dropdown-menu {border-radius: 0;}
+.dropup .btn{margin-right:0 !important}
+.dropup .btn:hover{border-color:#cccccc;}
+.dropup .dropdown-toggle{cursor: pointer;}
+.dropup .dropdown-toggle:hover{background:#EBEBEB;}
+#content .dropdown-toggle{margin-right:10px;}
+.dropup .caret{border-bottom: 8px solid;border-left: 6px solid transparent;border-right: 6px solid transparent}
+
+/* Back Office colours */
+body{background:#646262}
+.navbar{}
+.navbar #logo{padding-right:0;padding-left:0;}
+.navbar #top-panel{background:#eee}
+.navbar a.btn-primary{}
+.navbar a.btn-default{}
+.navbar a.btn-danger{}
+.navbar a.btn-success{}
+#sidebar-left{background:#00a3de;padding-top:50px;}
+.nav.main-menu {margin-top:20px;}
+#content{box-shadow:none}
+a.show-sidebar {margin-top:15px;}
+.show-sidebar .fa{color: #646262;font-size: 20px;}
+.ui-accordion-header.ui-state-active {color:#2b2b2b;}
+
+/* Branding */
+.backoffice-logo {height:50px;padding:0 15px;}
+.backoffice-logo img {margin:9px 0;}
+.nbstore .backoffice-logo {background:#00a3de;}
+.amylis .backoffice-logo {background:#bbcf1f;}
+.amylis #sidebar-left{background:#bbcf1f;}
+
+/* Font-Awesome icons */
+.btn i.fa-lg {vertical-align: -1px;}
+.box-content .fa{color:#CCCCCC;}
+.box-content .btn .fa{color:#FFFFFF;}
+.box-content .fa-edit:hover{color:#47BE27;cursor:pointer}
+.box-content .fa-refresh:hover{cursor:pointer}
+.box-content .fa-repeat:hover{color:#1AA8E3;}
+.box-content .fa-minus-square:hover{color:#D33030;cursor:pointer}
+.box-content .fa-search:hover{cursor:pointer}
+.box-content .fa-undo:hover{color:#BEB360;cursor:pointer}
+.box-content .fa-times-circle{color:#D33030;}
+.box-content .fa-arrow-circle-left{color:#47BE27;}
+.box-content .fa-arrow-circle-up:hover{color:#47BE27;cursor:pointer}
+.box-content .fa-arrow-circle-down:hover{color:#47BE27;cursor:pointer}
+.box-content .fa-arrow-circle-left:hover{color:#47BE27;cursor:pointer}
+.box-content .fa-cog:hover{}
+.box-content .fa-sort:hover{color:#1AA8E3;cursor:pointer}
+.box-content .fa-check-circle{color:#555555;}
+.box-content .btn .fa{color:#FFFFFF;}
+.box-content .btn-default .fa{color:#555555;}
+.box-content .fa-external-link:hover{color:#005DDE;cursor:pointer}
+
+
+/* Page action buttons */
+.actionbuttonwrapper{height:50px;padding-top:8px;margin-left:30px;white-space:nowrap;}
+.actionbuttonwrapper.tools label{line-height: 33px;vertical-align: super;}
+.actionbuttonwrapper.tools input{vertical-align: text-bottom;width: 160px;}
+
+/* Language selector */
+.editlanguage{list-style: none outside none;margin: 0;padding: 0;}
+.editlanguage > li{float:right;}
+.editlanguage li img{margin-left:10px;cursor:pointer;}
+
+/* Productlist items as table rows */
+.productadmintable .edititem{top:0;right:0;position:absolute;}
+.productadmintable td{display:table-cell;vertical-align:middle !important}
+.productadmintable td.noimage a{display:block;width:80px;height:60px;text-align:center;background:#ccc;}
+.productadmintable td.noimage .fa{color:white;line-height:60px}
+
+/* Productlist items as thumbnails */
+#accordion{background:#F8F8F8;border:none;box-shadow:none}
+.productadminlist{list-style: none outside none;margin: 0;padding: 0;}
+.productadminlist > li{float:left}
+.productadminlist .productlistitem{list-style: none outside none;margin: 0;padding: 0;background:#FFFFFF;width:120px;height:160px;margin-bottom:6px;position:relative}
+.productadminlist .productlistitem li{text-align:center;}
+.productadminlist .productlistitem li.image{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px}
+.productadminlist .productlistitem li.noimage{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px}
+.productadminlist .productlistitem li.title{line-height:150%;font-weight:bold;padding:3px 0;font-size: 12px;height:40px;overflow:hidden}
+.productadminlist .productlistitem .edititem{top:0;right:0;position:absolute;}
+
+/* Pager */
+.NBrightPagingDiv{}
+.NBrightPagingDiv ul{font-size:18px;margin:24px 0;text-align:left;list-style:none;}
+.NBrightPagingDiv ul li{display:inline-block;}
+.NBrightPagingDiv a{background:#F2F2F2;border:1px solid #DDDDDD;color:#777777;display:inline-block;font-size:14px;margin-right:4px;padding:6px 10px;text-decoration: none;cursor: pointer;}
+.NBrightPagingDiv a:hover{color:#FFFFFF;background:#3B96B6}
+.NBrightNormalPg a{}
+.NBrightSelectPg a{background:#FFFFFF}
+.NBrightNextPg a{}
+.NBrightPrevPg a{}
+.NBrightPagingDiv ul > a.cmdPg{display:none !important}/* hide pager ears when empty */
+
+/* Product Editor */
+a.sortelementUp,a.sortelementDown{cursor:pointer;position:absolute;display:block;z-index:1;}
+.box-content .sortelementUp .fa:hover,.box-content .sortelementDown .fa:hover{color:#555555;}
+.sortelementUp{top:0;right:0}
+.sortelementDown{bottom:0;right:0}
+.editdetails{}
+.editmodels{}
+.editmodels a.removemodel{cursor:pointer;margin-right:0 !important;}
+.editmodels .onedigit{margin-right:10px}
+.editmodels #productmodels{list-style: none outside none;margin: 0;padding: 0;}
+.editmodels .modelitem{background:#FFFFFF;border: 1px dotted #D6D6D6;overflow: hidden;padding: 15px 0;position:relative}
+.editoptions{}
+.editoptions #productoptions,.editoptions #productoptionvalues{list-style: none outside none;margin: 0;padding: 0;}
+.editoptions #productoptions{margin-right:12px}
+.editoptions .optionitem,.editoptions .optionvalueitem{background:#FFFFFF;border: 1px dotted #E3E3E3;overflow: hidden;padding:5px 0 25px;position:relative}
+.editoptions .optionitem{opacity:0.4;transition:all 0.4s ease-in-out 0s;}
+.editoptions .optionitem:hover{opacity:1}
+.editoptions .optionitem.selected{opacity:1}
+.editimages{}
+.editimages #productimages{list-style: none outside none;margin: 0;padding: 0;}
+.editimages .imageitem{background:#FFFFFF;border: 1px dotted #D6D6D6;overflow: hidden;padding: 15px 0;margin:0 15px 15px 0;position:relative;float:left}
+.editimages .imagewrapper{height:200px;line-height:200px;text-align:center;width:230px;margin-bottom:15px;}
+.editimages .imagewrapper img{max-height:100%}
+.editimages .imageitem .sortelementUp{top:4px;left:-6px;right:auto;}
+.editimages .imageitem .sortelementDown{top:4px;right:-6px;bottom:auto;}
+.editdocuments{}
+.editdocuments #productdocs{list-style: none outside none;margin: 0;padding: 0;}
+.editdocuments .docitem{background:#FFFFFF;border: 1px dotted #D6D6D6;overflow: hidden;padding: 15px 0;position:relative}
+.editcategories{}
+.editcategories .selectcategory{height:300px}
+.editcategories .removecategory.btn{margin-bottom:0}
+.editproperties{}
+.editproperties .selectgrouptype{height:110px}
+.editproperties .selectgroupcategory{height:200px;margin-top:15px}
+.editproperties .removecategory.btn{margin-bottom:0}
+.editrelated{}
+.editrelated .productrelated{list-style: none outside none;margin: 0;padding: 0;}
+.editrelated .productrelated > li{float:left}
+.editrelated .relatedlistitem{list-style: none outside none;margin: 0 6px 6px 0;padding: 0;background:#FFFFFF;width:120px;height:160px;position: relative;border:1px dotted #E3E3E3}
+.editrelated .relatedlistitem li{text-align:center;}
+.editrelated .relatedlistitem li.image{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px}
+.editrelated .relatedlistitem li.noimage{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px}
+.editrelated .relatedlistitem li.title{line-height:150%;font-weight:bold;padding:3px 0;font-size: 12px;height:40px;overflow:hidden}
+.editrelated .relatedlistitem .removeitem{top:0;right:0;position:absolute;cursor: pointer;}
+.editrelated .relatedlistitem .removeitem .fa{color: #C44343;}
+.editrelated .relatedlistitem .removeitem .fa:hover{color: #F42D2D;}
+
+.selectrelated{}
+.selectrelated .productlist{list-style: none outside none;margin:15px 0 0;padding: 0;}
+.selectrelated .productlist > li{float:left}
+.selectrelated .selectlistitem{list-style: none outside none;margin: 0 6px 6px 0;padding: 0;background:#FFFFFF;width:120px;height:160px;position: relative;border:1px dotted #E3E3E3}
+.selectrelated .selectlistitem li{text-align:center;}
+.selectrelated .selectlistitem li.image{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px}
+.selectrelated .selectlistitem li.noimage{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px}
+.selectrelated .selectlistitem li.title{line-height:150%;font-weight:bold;padding:3px 0;font-size: 12px;height:40px;overflow:hidden}
+.selectrelated .selectlistitem .selectproduct{top:0;right:0;position:absolute;cursor: pointer;}
+.selectrelated .selectlistitem .selectproduct .fa{color: #DDDDDD;}
+.selectrelated .selectlistitem .selectproduct .fa:hover{color: #51A3C4;}
+#productlist .NBrightPagingDiv{}
+#productmodels li.modelitem label {white-space:nowrap;}
+
+/* Category and Property Lists */
+.categorylist td{vertical-align: middle !important;}
+
+/* Category Editor Productlist items */
+.productlist{list-style: none outside none;margin: 0;padding: 0;}
+.productlist > li{float:left}
+.productlist .productlistitem{list-style: none outside none;margin: 0;padding: 0;background:#fff;border:#ccc solid 1px;width:120px;height:160px;margin:0 10px 10px 0;position: relative;}
+.productlist .productlistitem li{text-align:center;}
+.productlist .productlistitem li.image{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px}
+.productlist .productlistitem li.noimage{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px;}
+.productlist .productlistitem li.image img {max-height:100px;}
+.productlist .productlistitem li.title{line-height:150%;font-weight:bold;padding:3px 0;font-size: 12px;height:40px;overflow:hidden}
+.productlist .productlistitem .removeitem{top:2px;right:2px;position:absolute;}
+.productlist .productlistitem .removeproduct{color:#D33030;cursor:pointer;}
+
+/* Category Editor Productlist adding items This section not working with masonry */
+.productlist{list-style: none outside none;margin: 0;padding: 0;}
+.productlist > li{float:left}
+.productlist .selectlistitem{list-style: none outside none;margin: 0;padding: 0;background:#fff;border:#ccc solid 1px;width:120px;height:160px;margin:0 10px 10px 0;position: relative;}
+.productlist .selectlistitem li{text-align:center;}
+.productlist .selectlistitem li.image{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px}
+.productlist .selectlistitem li.noimage{display:table-cell;text-align:center;vertical-align:middle;width:inherit;width:120px;height:120px}
+.productlist .selectlistitem li.image img {max-height:100px;}
+.productlist .selectlistitem li.title{line-height:150%;font-weight:bold;padding:3px 0;font-size: 12px;height:40px;overflow:hidden}
+.productlist .selectlistitem .additem{top:2px;right:2px;position:absolute;}
+.productlist .selectlistitem .selectproduct{cursor:pointer;}
+
+/* Store settings */
+.countryselection .dnnBoxLabel{font-weight:normal}
+
+/* Orders */
+.orderdetail .groupheader td{padding:3px 8px 2px;font-size:12px;font-weight:bold;background-color:#00a3de;color:#ffffff}
+.orderdetail .groupheader td a{font-weight:bold;color:#ffffff}
+.orderdetail .groupheader:hover{background-color:#00a3de !important;}
+.orderdetail .edit,.orderdetail .view{float:right}
+.orderdetail .subtotal td{border-top:2px solid #dddddd}
+
+/* These 3 lines make the status dropdown show only text on the orders list and hides the select arrow in IE - To be removed when status has a token */
+.orderslist select.aspNetDisabled.form-control{background-color:transparent;border:0 none;box-shadow:none;cursor:default;height:inherit;line-height:inherit;opacity:1;padding:0;}
+.orderslist select.aspNetDisabled.form-control option{padding-bottom:0;}
+.orderslist select.aspNetDisabled.form-control::-ms-expand{display:none;}
+.orderdetail .dropdown-menu > li > a{display:inline-block;width: 100%;}
+/* These 3 lines make the status dropdown show only text on the orders list and hides the select arrow in IE - To be removed when status has a token */
+.orderdetail select.aspNetDisabled.form-control{background-color:transparent;border:0 none;box-shadow:none;cursor:default;height:inherit;line-height:inherit;opacity:1;padding:0;}
+.orderdetail select.aspNetDisabled.form-control option{padding-bottom:0;}
+.orderdetail select.aspNetDisabled.form-control::-ms-expand{display:none;}
+.orderdetail .dropdown-menu > li > a{display:inline-block;width: 100%;}
+
+/* Plugins Manager */
+.plugins td{vertical-align: middle !important;}
+.radiobuttons{display:inline}
+.radiobuttons td {height: 34px;padding: 4px 15px 0 0;vertical-align: middle;}
+.radiobuttons input {margin-right:5px;vertical-align: -1px;}
+
+/* Property Types Manager */
+.propertygroupslist td{vertical-align: middle !important;}
+
+/* Customer Editor */
+.customerdiscount a.removemodel{cursor:pointer;margin-right:0 !important;}
+.customerdiscount .onedigit{margin-right:10px}
+.customerdiscount #clientdiscountcodes{list-style: none outside none;margin: 0;padding: 0;}
+.customerdiscount .discountcode{background:#FFFFFF;border: 1px dotted #D6D6D6;overflow: hidden;padding: 15px 0;position:relative}
+.customerdiscount #clientvouchercodes{list-style: none outside none;margin: 0;padding: 0;}
+
+.customervoucher a.removemodel{cursor:pointer;margin-right:0 !important;}
+.customervoucher .onedigit{margin-right:10px}
+.customervoucher #clientvouchercodes{list-style: none outside none;margin: 0;padding: 0;}
+.customervoucher .vouchercode{background:#FFFFFF;border: 1px dotted #D6D6D6;overflow: hidden;padding: 15px 0;position:relative}
+
+/* Address Book */
+#addresscards hr{margin:6px 0 4px;border-color:#bbbbbb;border-style:dashed;}
+#addresscards .addresstype{top:10px;color:#aaaaaa;position:absolute;right:10px;}
+#addresscards .addressbuttons{display:inline-block;vertical-align:-5px;}
+#addresscards a{color:#dddddd;}
+#addresscards a.editaddress:hover{color:#47BE27;}
+#addresscards a.deleteaddress:hover{color:#D33030;}
+#addresscards .well {height: 250px;padding: 40px 15px 15px;position: relative;}
+
+/* Dashboard */
+.dashboard .statuses .orderstatus{margin:0 1% 5px 0;width:48%;}
+.dashboard .statuses .statusvalue{float:right}
+
+/* Breadcrumbs : ADDED BY DCL from Cygnus for tempoary fix on BO category admin */
+.categorybreadcrumbs{text-align:left;margin-bottom:14px;}
+.categorybreadcrumbs ul{list-style:none;display:inline-table;margin:0;}
+.categorybreadcrumbs ul li{display:inline;}
+.categorybreadcrumbs ul li a{background:none repeat scroll 0 0 #C2C2C2;color:#FFFFFF;display:block;float:left;font-size:12px;font-weight:bold;height:28px;line-height:28px;padding:0 14px 0 28px;position:relative;text-align:center;text-decoration:none;margin-right:2px;}
+.categorybreadcrumbs ul li a:after{border-bottom:14px solid transparent;border-left:14px solid #C2C2C2;border-top:14px solid transparent;content:"";position:absolute;right:-14px;top:0;z-index:1;}
+.categorybreadcrumbs ul li a:before{border-bottom:14px solid transparent;border-left:14px solid #EFEFEF;border-top:14px solid transparent;content:"";left:0;position:absolute;top:0;}
+.categorybreadcrumbs ul li:first-child a{}
+.categorybreadcrumbs ul li:first-child a:before{display:none;}
+.categorybreadcrumbs ul li:last-child a{}
+.categorybreadcrumbs ul li:last-child a:after{}
+.categorybreadcrumbs ul li a:hover{background:#000000;color:#ffffff;}
+.categorybreadcrumbs ul li a:hover:after{border-left-color:#000000;color:#ffffff;}
+
+/* Order Status Colors */
+.orderstatus {border-radius:3px;display:inline-block;color:white;padding:4px 8px;background:#bbbbbb;font-size:12px;} /* Grey */
+.orderstatus010 {} /* Incomplete */
+.orderstatus020 {background:#2d3538;} /* Waiting for Bank - Black */
+.orderstatus030 {} /* Cancelled */
+.orderstatus040 {background:#acc413;} /* Payment OK - Green */
+.orderstatus050 {background:#c93200;} /* Payment Not Verified - Red */
+.orderstatus060 {background:#ea690b;} /* Waiting for Payment - Orange */
+.orderstatus070 {background:#eb2659;} /* Waiting for Stock - Pink */
+.orderstatus080 {background:#eb2659;} /* Waiting - Pink */
+.orderstatus090 {background:#893658;} /* Shipped - Purple */
+.orderstatus100 {background:#00a3de;} /* Completed - Blue */
+.orderstatus110 {} /* Archived */
+.orderstatus120 {background:#eb2659;} /* Being Manufactured - Pink */
+
+/*
+ * jQuery File Upload Plugin CSS 1.3.0
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .fileinput-button input {
+    filter: alpha(opacity=0);
+    font-size: 100%;
+    height: 100%;
+  }
+}

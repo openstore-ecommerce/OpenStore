@@ -1,0 +1,22 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using NBrightCore.common
+
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.datepick.xlang.eur.js"></script>
+
+<script>
+
+    $(function() {
+
+        if (!Modernizr.inputtypes.date) {
+
+            $.datepicker.setDefaults($.datepicker.regional['']);
+            if ('@(Utils.GetCurrentCulture())' == 'en-GB') $.datepicker.setDefaults($.datepicker.regional['en-GB']);
+            if ('@(Utils.GetCurrentCulture())' == 'fr-FR') $.datepicker.setDefaults($.datepicker.regional['fr']);
+            if ('@(Utils.GetCurrentCulture())' == 'nl-NL') $.datepicker.setDefaults($.datepicker.regional['nl']);
+
+            $('input[datatype=date]').datepicker();
+        }
+
+    });
+
+</script>

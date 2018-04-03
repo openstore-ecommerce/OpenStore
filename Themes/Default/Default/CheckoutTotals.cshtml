@@ -1,0 +1,37 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Users
+@using NBrightCore
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    // assign Model, so we can resolve var in VS
+    var cart = (CartData)Model.List.First();
+    var info = cart.PurchaseInfo;
+}
+
+                <li class="large"><div>@ResourceKey("General.Subtotal")</div>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/appliedsubtotal"))</li>
+                <li class="large"><div>@ResourceKey("General.Discount")</div>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/applieddiscount"))</li>
+<li class="large">
+    <div>@ResourceKey("General.Shipping")</div>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/appliedshipping"))</li>
+@if (info.GetXmlPropertyDouble("genxml/taxcost") > 0  && info.GetXmlPropertyInt("genxml/taxtype") == 2)
+{
+    <li class="large"><div>@ResourceKey("General.Tax")</div>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/taxcost"))</li>
+}
+<li class="total larger">    
+    <div>@ResourceKey("General.Total")</div>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/appliedtotal"))
+</li>
+@if (info.GetXmlPropertyDouble("genxml/taxcost") > 0 && info.GetXmlPropertyInt("genxml/taxtype") == 1)
+{
+    <li class="small"><div><small>@ResourceKey("General.Tax")&nbsp;@ResourceKey("General.included")</small></div><small>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/taxcost"))</small></li>
+}

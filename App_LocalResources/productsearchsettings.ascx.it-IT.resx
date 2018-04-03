@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Impostazioni di Ricerca prodotti</value>
+  </data>
+  <data name="emailmessage.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Grazie per il vostro ordine. Siamo qui per aiutarvi! Non esitate a mettervi in ​​contatto con noi per tutte le domande riguardanti il ​​tuo ordine.</value>
+  </data>
+  <data name="lblbasicsettings.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Generale</value>
+  </data>
+  <data name="lblcatreflist.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Un elenco CSV di Categoria/Gruppo Rif da visualizzare nel form di ricerca. ad esempio (Cat1, Cat2, Cat3) Questo si applica solo alle categorie dalla selezione Rif parente, se non viene specificata il Rif Lista saranno visualizzate tutte le categorie.</value>
+  </data>
+  <data name="lblcatreflist.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Rif Lista Categoria:</value>
+  </data>
+  <data name="lblcatreflist1.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Un elenco CSV di Categoria/Gruppo Rif da visualizzare nel form di ricerca. ad esempio (Cat1, Cat2, Cat3) Questo si applica solo alle categorie dalla selezione Rif parente, se non viene specificata il Rif Lista saranno visualizzate tutte le categorie.</value>
+  </data>
+  <data name="lblcatreflist1.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Rif Lista Categoria/Gruppo:</value>
+  </data>
+  <data name="lblcatreflist2.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Un elenco CSV di Categoria/Gruppo Rif da visualizzare nel form di ricerca. ad esempio (Cat1, Cat2, Cat3) Questo si applica solo alle categorie dalla selezione Rif parente, se non viene specificata il Rif Lista saranno visualizzate tutte le categorie.</value>
+  </data>
+  <data name="lblcatreflist2.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Rif Lista Categoria/Gruppo:</value>
+  </data>
+  <data name="lblcatrepeatcolumns.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Numero di colonne da visualizzare.</value>
+  </data>
+  <data name="lblcatrepeatcolumns.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Colonne:</value>
+  </data>
+  <data name="lblcatrepeatcolumns1.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Numero di colonne da visualizzare.</value>
+  </data>
+  <data name="lblcatrepeatcolumns1.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Colonne:</value>
+  </data>
+  <data name="lblcatrepeatcolumns2.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Numero di colonne da visualizzare.</value>
+  </data>
+  <data name="lblcatrepeatcolumns2.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Colonne:</value>
+  </data>
+  <data name="lblcatsearchtype.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Tipo di ricerca da fare su più categorie selezionate</value>
+  </data>
+  <data name="lblcatsearchtype.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Ricerca per Categoria</value>
+  </data>
+  <data name="lblcatselect.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare la ricerca per categoria</value>
+  </data>
+  <data name="lblcatselect.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Cerca per Gruppo di Categoria</value>
+  </data>
+  <data name="lbldescription.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare la ricerca del testo nella descrizione del prodotto</value>
+  </data>
+  <data name="lbldescription.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Ricerca testo nella descrizione</value>
+  </data>
+  <data name="lbldisplaylevels.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Numero di sotto livelli di categorie da visualizzare.</value>
+  </data>
+  <data name="lbldisplaylevels.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Visualizzare i livelli:</value>
+  </data>
+  <data name="lbldisplaylevels1.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Numero di sotto livelli di categorie da visualizzare.</value>
+  </data>
+  <data name="lbldisplaylevels1.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Visualizzare i livelli:</value>
+  </data>
+  <data name="lbldisplaylevels2.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Numero di sotto dei livelli di categorie da visualizzare.</value>
+  </data>
+  <data name="lbldisplaylevels2.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Visualizzare i livelli:</value>
+  </data>
+  <data name="lblfiltermode.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Modalità per il modulo di ricerca. Ricerca = le opzioni di ricerca saranno statiche; Filtro = le opzioni di ricerca saranno dinamiche basata sulla selezione del menu categoria, la selezione della categoria sarà inoltre persistente attraverso le ricerche.</value>
+  </data>
+  <data name="lblfiltermode.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Modo di ricerca:</value>
+  </data>
+  <data name="lblgroupselect1.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attiva una clausola AND su un secondo gruppo di categoria "Gruppo 2".</value>
+  </data>
+  <data name="lblgroupselect1.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare AND Cerca Gruppo 2:</value>
+  </data>
+  <data name="lblgroupselect2.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attiva una clausola AND su un terzo gruppo categoria "Gruppo 3".</value>
+  </data>
+  <data name="lblgroupselect2.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare AND Ricerca Gruppo 3:</value>
+  </data>
+  <data name="lblhidden.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Nascosto</value>
+  </data>
+  <data name="lblinstock.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Checkbox Magazzino:</value>
+  </data>
+  <data name="lblorderselector.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Selettore ordinamento</value>
+  </data>
+  <data name="lblparentcatref.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Saranno restituite tutte le categorie al di sotto di questa categoria padre. Se non specificato saranno restituiti tutte le categorie.</value>
+  </data>
+  <data name="lblparentcatref.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Rif. padre Categoria / Gruppo</value>
+  </data>
+  <data name="lblparentcatref1.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Saranno restituite tutte le categorie al di sotto di questa categoria padre. Se non specificato saranno restituiti tutte le categorie.</value>
+  </data>
+  <data name="lblparentcatref1.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Rif. padre Categoria / Gruppo</value>
+  </data>
+  <data name="lblparentcatref2.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Saranno restituite tutte le categorie al di sotto di questa categoria padre. Se non specificato saranno restituiti tutte le categorie.</value>
+  </data>
+  <data name="lblparentcatref2.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Rif. padre Categoria / Gruppo</value>
+  </data>
+  <data name="lblpricerange.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare selezione fascia di prezzo</value>
+  </data>
+  <data name="lblpricerange.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Fascia di prezzo</value>
+  </data>
+  <data name="lblprimarybuttonclass.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Classe Primaria Button CSS:</value>
+  </data>
+  <data name="lblRedirectTab.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Pagina di visualizzazione dei risultati:</value>
+  </data>
+  <data name="lblsearchtemplate.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Template : </value>
+  </data>
+  <data name="lblsecondarybuttonclass.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Classe Secondaria Button CSS:</value>
+  </data>
+  <data name="lbltargetmodulekey.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Tasto del modulo che visualizzerà i risultati.</value>
+  </data>
+  <data name="lbltargetmodulekey.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Destinatario tasto modulo (CSV):</value>
+  </data>
+  <data name="lbltextsearch.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare il selettore ordinamento</value>
+  </data>
+  <data name="lbltextsearch.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Ricerca testo</value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Nome del tema da utilizzare per questa Lista prodotti.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Tema:</value>
+  </data>
+  <data name="lblthemesettings.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Impostazioni del tema</value>
+  </data>
+  <data name="lbltxtmanufacturer.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare la ricerca di testo del Produttore</value>
+  </data>
+  <data name="lbltxtmanufacturer.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Ricerca testo Produttore</value>
+  </data>
+  <data name="lbltxtseoname.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare la ricerca per nome SEO</value>
+  </data>
+  <data name="lbltxtseoname.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Ricerca testo nome SEO</value>
+  </data>
+  <data name="lbltxtseopagetitle.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare la ricerca sul titolo SEO della pagina</value>
+  </data>
+  <data name="lbltxtseopagetitle.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Ricerca testo su titolo SEO della pagina</value>
+  </data>
+  <data name="lbltxtsummary.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare la ricerca nel sommario</value>
+  </data>
+  <data name="lbltxtsummary.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Ricerca testo nel Sommario</value>
+  </data>
+  <data name="lbltxttagwords.Help" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Attivare la ricerca di testo per tag</value>
+  </data>
+  <data name="lbltxttagwords.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Ricerca testo per tag</value>
+  </data>
+  <data name="rblfiltermode.data" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Cerca;Filtro</value>
+  </data>
+  <data name="themehidden.Text" lastModified="2015-11-12 11:33:25">
+    <value xml:space="preserve">Le vecchi impostazioni del tema sono state disabilitate, aggiorna per attivare un nuovo tema.</value>
+  </data>
+</root>

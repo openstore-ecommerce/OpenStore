@@ -1,0 +1,69 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using DotNetNuke.Entities.Users
+@using NBrightCore.common
+@using NBrightDNN
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+<!-- fields required to send required ajax cart to server -->
+<span id="propertyadminsearch">
+    <input id="uilang" type="hidden" value="@Utils.GetCurrentCulture()" />
+    <input id="catid" type="hidden" value="0" />
+    <input id='editlang' type='hidden' value='@Model.Lang' />
+    <input id="razortemplate" type="hidden" value="" />
+    <input id="themefolder" type="hidden" value="config" />
+    <input id="selectedcatid" type="hidden" value="" />
+    <input id="movetocatid" type="hidden" value="" />
+    <input id="movecatid" type="hidden" value="" />
+    <input id="imguploadlist" type="hidden" value="" />
+    <input id="searchtext" type="hidden" value="" />
+    <input id="searchcategory" type="hidden" value="" />
+    <input id="pagesize" type="hidden" value="20" />
+    <input id="pagenumber" type="hidden" value="1" />
+    <input id="selectproductid" type="hidden" value="" />    
+    <input id="cascade" type="hidden" value="False" />
+    <input id="orderby" type="hidden" value="{bycategoryproduct}" />
+    <input id="newcatid" type="hidden" value="" />
+    <input id="selecttaxrate" type="hidden" value="" />
+    <input id="selectedgroup" type="hidden" value="" />
+    <input id="nextlang" type="hidden" value="" />
+</span>
+
+
+<div id="loader" class="processing" style="display:none;">@ResourceKey("General.ProcessingDiv")</div>
+
+<div id="pageactionssource">
+    <!-- Page actions are moved into header bar - also exist at page bottom-->
+    <div class="col-xs-9 col-sm-9">
+        <a href="javascript:void(0)" class="show-sidebar">
+            <i class="fa fa-bars"></i>
+        </a>
+        <div class="actionbuttonwrapper">
+            <a id="propertyAdmin_cmdAddNew" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdAddButton")</a>
+            <a id="propertyAdmin_cmdSaveList" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveButton")</a>
+            <a id="propertyAdmin_cmdSaveExit" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveExitButton")</a>
+            <a id="propertyAdmin_cmdSave" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveButton")</a>
+            <a id="propertyAdmin_cmdDelete" style="display: none;" class="btn btn-danger " href="javascript:void(0)">@ResourceKey("General.cmdDeleteButton")</a>
+            <a id="propertyAdmin_cmdReturn" style="display: none;" class="btn btn-default " href="javascript:void(0)">@ResourceKey("General.cmdReturnButton")</a>
+        </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 top-panel-right">
+        @EditLangaugeButton()
+    </div>
+</div>
+
+<div class="panel panel-default groupselpanel">
+    <div class="panel-body">
+        <div class="col-sm-3">
+            <label class="control-label">@ResourceKey("General.GroupType")</label>
+            @GroupSelectList(new NBrightInfo(), "genxml/dropdonwlist/groupsel", "class='groupsel populate placeholder form-control' width='300px' ", false, "1")
+        </div>
+        <div class="col-sm-9">
+        </div>
+    </div>
+</div>
+
+
+<div id="datadisplay"></div>
+

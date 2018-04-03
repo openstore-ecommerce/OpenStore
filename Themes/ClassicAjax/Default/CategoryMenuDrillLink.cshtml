@@ -1,0 +1,32 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+
+@{
+    var grpcat = (Nevoweb.DNN.NBrightBuy.Components.GroupCategoryData)Model.List.First();
+}
+
+<!-- Drilldown Menu body -->
+<a class="categoryurl" href="@grpcat.url">
+
+
+
+    <ul class="drilldownitem" style="width:240px;height:280px;margin-bottom:1px">
+
+@if (grpcat.imageurl == "")
+{
+    <li class="noimage" style="width: 240px; height: 240px">
+        <i class="fa fa-picture-o"></i>
+    </li>
+}
+else
+{
+    <li class="image" style="width:240px;height:240px">
+        <img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?src=@(grpcat.imageurl)&w=180&h=0" />
+    </li>
+}
+
+        <li class="title">
+            @grpcat.categoryname
+        </li>
+    </ul>
+</a>

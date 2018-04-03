@@ -1,0 +1,136 @@
+
+[<tag id="includeinheader" type="meta" value="backofficepageheader.html" />]<!-- Injects a template with dynamic data into page head section -->
+
+<div class='[Settings:boclass]'>
+    <!--Start Header-->
+    <div id="screensaver">
+        <canvas id="canvas"></canvas>
+        <i class="fa fa-lock" id="screen_unlock"></i>
+    </div>
+    <div id="modalbox">
+        <div class="devoops-modal">
+            <div class="devoops-modal-header">
+                <div class="modal-header-name">
+                    <span>Basic table</span>
+                </div>
+                <div class="box-icons">
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="devoops-modal-inner">
+            </div>
+            <div class="devoops-modal-bottom">
+            </div>
+        </div>
+    </div>
+    <header class="navbar">
+        <div class="container-fluid expanded-panel">
+            <div class="row">
+                <div id="logo" class="col-xs-12 col-sm-2">
+                    <div class="backoffice-logo"><img src="/DesktopModules/NBright/NBrightBuy/Themes/config/img/openstore-logo.png" alt="Open Store" /></div>
+                </div>
+                <div id="top-panel" class="col-xs-12 col-sm-10">
+                    <div id="pageactionstarget" class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--End Header-->
+    <!--Start Container-->
+    <div id="main" class="container-fluid">
+        <div class="row">
+            <div id="sidebar-left" class="col-xs-2 col-sm-2">
+                [<tag:menu>]
+            </div>
+            <!--Start Content-->
+            <div id="content" class="col-xs-12 col-sm-10">
+                [<tag:container>]
+            </div>
+            <!--End Content-->
+        </div>
+    </div>
+    <!--End Container-->
+</div>
+
+<!-- All functions for this theme + document.ready processing -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/default/js/devoops-nbb.js"></script><!-- need to replace with minimised version -->
+<!-- Required for Masonry Grid http://desandro.github.io/imagesloaded/ -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/imagesloaded.pkgd.min.js"></script>
+<!-- Masonry Grid http://masonry.desandro.com -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/masonry.pkgd.min.js"></script>
+<!-- local storage to keep expanded state -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.storage.js"></script>
+
+
+<!-- Any square brackets must be escaped with double square brackets -->
+<script type="text/javascript">
+	// Move page actions to header bar
+	$('#pageactionssource').prependTo('#pageactionstarget');
+// Run Select2 plugin on elements
+function DemoSelect2(){
+	$('.s2_with_tag').select2({allowClear: true,placeholder: "Please Select"});
+	$('.s2_country').select2();
+}
+
+
+function setupbackoffice() {
+
+    // Run beauty tables plugin on every table with class .beauty-table
+    $('.beauty-table').each(function () {
+        // Run keyboard navigation in table
+        $(this).beautyTables();
+        // Nice CSS-hover row and col for current cell
+        $(this).beautyHover();
+    });
+    // Add tooltip to form-controls
+    $('.form-control').tooltip();
+    LoadSelect2Script(DemoSelect2);
+    // Create jQuery-UI tabs
+    $("#tabs").tabs();
+    // Sortable for elements
+    $(".sort").sortable({
+        items: "div.col-sm-2",
+        appendTo: 'div.box-content'
+    });
+    // Droppable for example of trash
+    $(".drop div.col-sm-2").draggable({ containment: '.dropbox' });
+    $('#trash').droppable({
+        drop: function (event, ui) {
+            $(ui.draggable).remove();
+        }
+    });
+    var icons = {
+        header: "ui-icon-circle-arrow-e",
+        activeHeader: "ui-icon-circle-arrow-s"
+    };
+    // Make accordion feature of jQuery-UI
+    $("#accordion").accordion({ icons: icons, collapsible: true, heightStyle: "content", animate: 250 });
+    // Create UI spinner
+    $("#ui-spinner").spinner();
+    // Add Drag-n-Drop to boxes
+    WinMove();
+
+    //NBS - BO status
+    $('ul.main-menu a[[href*="ctrl/[Url:ctrl]"]]').parent().parent().parent().find('a').trigger("click");
+    $('ul.main-menu a[[href*="ctrl/[Url:ctrl]"]]').trigger("click");
+
+    //NBS - Tooltips
+    $('[[data-toggle="tooltip"]]').tooltip({
+        animation: 'true',
+        placement: 'auto top',
+        viewport: { selector: '#content', padding: 0 },
+        delay: { show: 100, hide: 200 }
+    });
+
+}
+
+$(document).ready(function() {
+    setupbackoffice();
+});
+
+
+</script>
+

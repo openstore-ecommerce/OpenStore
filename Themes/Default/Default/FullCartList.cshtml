@@ -1,0 +1,32 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    // assign Model, so we can resolve var in VS
+    var cart = (CartData)Model.List.First();
+    var info = cart.PurchaseInfo;
+}
+
+@if (info.GetXmlPropertyInt("genxml/totalqty") > 0)
+{
+    @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Default\\Default\\CartList.cshtml", Model)
+}
+else
+{
+    <div id="cartempty">
+        <div class="nbs dnnform">
+            <h3>@ResourceKey("CartView.emptybasket")</h3>
+            <a class="primarybutton" href="@(Globals.NavigateURL(Model.GetSettingInt("productlisttab")))">@ResourceKey("CartView.returntostore")</a>
+        </div>
+    </div>
+}

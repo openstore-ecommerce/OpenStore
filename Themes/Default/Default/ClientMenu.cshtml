@@ -1,0 +1,36 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System
+@using System.Linq
+@using System.Web
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<div class="clientmenuwrapper">
+
+    <ul class="clientmenu">
+  <li><a href="/Activity-Feed">@ResourceKey("Clients.ClientmenuAccount")</a></li>
+  @if (Model.GetSettingBool("enablemyorders"))
+  {
+  var ordermanagertabid = Model.GetSetting("ordermanagertab");
+  <li><a href="/tabid/@(ordermanagertabid)">@ResourceKey("Clients.ClientmenuOrders")</a></li>
+  }
+  @if (Model.GetSettingBool("enablemyaddress"))
+  {
+  var addressestabid = Model.GetSetting("addressestab");
+  <li><a href="/tabid/@(addressestabid)">@ResourceKey("Clients.ClientmenuAddresses")</a></li>
+  }
+  @if (Model.GetSettingBool("enablefavorites"))
+  {
+  var favoritestabid = Model.GetSetting("favoritestab");
+  <li><a href="/tabid/@(favoritestabid)">@ResourceKey("Clients.ClientmenuShoppingLists")</a></li>
+  }
+  @if (Model.GetSettingBool("enablemyprofile"))
+  {
+  var profiletabid = Model.GetSetting("profiletab");
+  <li><a href="/tabid/@(profiletabid)">@ResourceKey("Clients.ClientmenuProfile")</a></li>
+  }
+</ul>
+
+</div>

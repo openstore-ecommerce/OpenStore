@@ -1,0 +1,98 @@
+﻿@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Globalization
+@using System.Linq
+@using System.Web.UI.WebControls
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Providers/PromoProvider/App_LocalResources/")
+
+@{
+    // assign Model, so we can resolve var in VS
+    var info = (NBrightInfo)Model.List.First();
+
+    if (info.Lang == "")
+    {
+        <label>@ResourceKey("Promo.langerror")</label>
+    }
+
+}
+
+
+
+
+<input id="itemid" type="hidden" value="@info.ItemID"/>
+<input id="editlang" type="hidden" value="@info.Lang"/>
+<input id="lang" type="hidden" value="@Utils.GetCurrentCulture()"/> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
+
+
+<div class="col-xs-12 col-sm-12 multibuydisplay">
+    <div class="form-group">
+        <div class="col-sm-12">
+            <div class="col-sm-5">
+                <label>@ResourceKey("Promo.name")</label>
+                @TextBox(info, "genxml/textbox/name", "class='form-control'")
+            </div>
+            <div class="col-sm-12">
+                <label>@ResourceKey("Promo.description")</label><img src='/Images/Flags/@(info.Lang).gif' width='16px'/>
+                @TextBox(info, "genxml/lang/genxml/textbox/description", "class='form-control' maxlength='250' ")
+            </div>
+        </div>
+        <hr/>
+        <div class="col-sm-12">
+            <div class="col-sm-5">
+                <label>@ResourceKey("Promo.buyproperty")</label>
+                @PropertyDropDownList(info, "genxml/dropdownlist/propbuy", "class='form-control'")
+            </div>
+            <div class="col-sm-2">
+                <label>@ResourceKey("Promo.buyqty")</label>
+                @TextBox(info, "genxml/textbox/buyqty", "class='form-control'","2")
+            </div>
+        </div>
+    </div>
+    <hr/>
+    @{
+        var rk1 = ResourceKey("Promo.typevalue").ToString();
+        var rk2 = ResourceKey("Promo.typedata").ToString();
+        var rk3 = ResourceKey("Promo.disabled").ToString();
+    }
+    <div class="form-group">
+        <div class="col-sm-12">
+            <label>@ResourceKey("Promo.nextproduct")</label>
+        </div>
+        <div class="col-sm-12">
+            <div class="col-sm-2">
+                <label>@RadioButtonList(info, "genxml/radiobuttonlist/amounttype", rk1, rk2, "", "1")</label>
+                @TextBox(info, "genxml/textbox/amount", "class='form-control' datatype='double'")
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="col-sm-2">
+                <label>@ResourceKey("Promo.validfrom")</label>
+                @TextBox(info, "genxml/textbox/validfrom", "class='form-control' datatype='date' autocomplete='off'")
+            </div>
+            <div class="col-sm-2">
+                <label>@ResourceKey("Promo.validuntil")</label>
+                @TextBox(info, "genxml/textbox/validuntil", "class='form-control' datatype='date' autocomplete='off'")
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="col-sm-5">
+                @{
+                    var attr = "disabled";
+                    if (info.GetXmlPropertyBool("genxml/checkbox/disabled"))
+                    {
+                        attr = "";
+                    }
+                }
+                @CheckBox(info, "genxml/checkbox/disabled", rk3, attr)
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <hr/>
+            <div><i class="fa fa-question-circle-o" aria-hidden="true"></i> @ResourceKey("Promo.multibuyhelpmsg")</div>
+        </div>
+    </div>
+</div>

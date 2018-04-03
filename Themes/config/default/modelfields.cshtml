@@ -1,0 +1,39 @@
+﻿<!-- DUMMY TO PREVENT TMEPLATE NAME DISPLAYING -->
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Portals
+@using NBrightCore.common
+@using NBrightDNN
+@using NBrightDNN.render
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@{
+    // var info = (NBrightInfo)Model.List.First();
+}
+
+@{ // REMOVE this line
+    @* // REMOVE this line
+        // Example, remove the comments "@*" and the outer "@{ .... }" to make this work.
+
+    @{
+        var info = (NBrightInfo)Model.List.First();
+        var lp = info.GetXmlProperty("genxml/lp"); // we need to use the index of each model for the unique field name.
+    }
+    <div class="col-sm-2">
+        <label class="control-label">TEST</label>
+        @TextBox(info, "genxml/textbox/test_" + lp, "class='form-control input-sm' ")
+    </div>
+
+    <div>
+        @CkEditor(info, "genxml/textbox/modeldescription_" + lp, "class='form-control' height='400' width='100%' datatype='html' ")
+
+    </div>
+    *@ // REMOVE this line
+
+// REMOVE this line
+    }

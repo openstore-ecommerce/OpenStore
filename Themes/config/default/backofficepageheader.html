@@ -1,0 +1,68 @@
+﻿<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/jquery-ui/jquery-ui-nbb.css" rel="stylesheet"><!-- This stylesheet is modified from jQuery default - see readme.html -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/bootstrap/bootstrap.css" rel="stylesheet">
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/xcharts/xcharts.min.css" rel="stylesheet">
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/select2/select2.css" rel="stylesheet">
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/default/css/style-nbb.css" rel="stylesheet"><!-- This stylesheet is modified from devoops default - see readme.html -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/xcharts/xcharts.min.js"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/d3/d3.v3.min.js"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/jquery/jquery-2.1.0.min.js"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/bootstrap/bootstrap.min.js"></script>
+
+<!-- NBS Back Office theme -->
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/css/backoffice.css" rel="stylesheet">
+
+<!-- Load these scripts to use nbrightajax functions -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js"></script>
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.genxmlajax.js"></script>
+
+
+<script type="text/javascript">
+// Responsive Content fix for Windows Phone http://trentwalton.com/2013/01/16/windows-phone-8-viewport-fix
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+    var msViewportStyle = document.createElement("style");
+    msViewportStyle.appendChild(
+        document.createTextNode(
+            "@-ms-viewport{width:auto!important}"
+        )
+    );
+    document.getElementsByTagName("head")[[0]].appendChild(msViewportStyle); // Fixed for the store
+    }
+</script>
+
+<script type="text/javascript">
+// Fix for Android stock browser issue http://stackoverflow.com/questions/14744437/html-select-box-not-showing-drop-down-arrow-on-android-version-4-0-when-set-with
+    $(function() {
+        var nua = navigator.userAgent;
+        var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1);
+        if (isAndroid) {
+            $('select.form-control').removeClass('form-control').css('width', '100%');
+        }
+    });
+
+$(document).ready(function() {
+    $(window).keydown(function (event) {
+        if ((event.which == 13) && ($(event.target)[[0]].type != 'textarea')) {
+        event.preventDefault();
+        return false;
+        }
+   });
+
+    $('.personalBarContainer').hide();
+
+});
+
+</script>
+
+<style>
+    body {
+        margin-left: 0px !important;
+        overflow-y: scroll !important;
+    }
+</style>
+

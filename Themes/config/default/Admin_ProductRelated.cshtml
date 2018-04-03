@@ -1,0 +1,38 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var prdData = new ProductData(info.ItemID, info.PortalId, info.Lang);
+}
+
+@foreach (var nbiRel in prdData.GetRelatedProducts())
+{
+
+    <li>
+        <ul class="relatedlistitem">
+                @if (nbiRel.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
+                {
+                    <li class="image name" data-toggle="tooltip" data-original-title="@nbiRel.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@nbiRel.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")"/></li>
+                }
+                else
+                {
+                    <li class="noimage name" data-toggle="tooltip" data-original-title="@nbiRel.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")"><i class="fa fa-picture-o fa-5x"></i></li>
+                }
+
+
+            <a class="productAdmin_cmdEdit" itemid="@nbiRel.ItemID" href="javascript:void(0)">
+                <li class="title name">
+                    @nbiRel.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")
+                </li>
+            </a>
+            <li class="removeitem"><a title="Remove" class="removerelated" productid="@nbiRel.ItemID" itemid="@info.ItemID"><i class="fa fa-minus-square"></i></a></li>
+</ul>
+    </li>
+
+}

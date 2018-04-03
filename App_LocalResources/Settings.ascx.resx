@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="pagesize.Text" xml:space="preserve">
+    <value>Page Length</value>
+  </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="productlisttab.Help" xml:space="preserve">
+    <value>Used to redirect user/manager to the product page when certain actions are done.</value>
+  </data>
+  <data name="productlisttab.Text" xml:space="preserve">
+    <value>Product List</value>
+  </data>
+  <data name="adminemail.Help" xml:space="preserve">
+    <value>Email Address of administrator, this is the default sending email address.</value>
+  </data>
+  <data name="adminemail.Text" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="carttab.Help" xml:space="preserve">
+    <value>Used to redirect user/manager to the cart page when certain actions are done.</value>
+  </data>
+  <data name="carttab.Text" xml:space="preserve">
+    <value>Full Cart</value>
+  </data>
+  <data name="favoritestab.Text" xml:space="preserve">
+    <value>Favorites</value>
+  </data>
+  <data name="manageremail.Help" xml:space="preserve">
+    <value>Email address(es) of the manager(s) of the store (separed by comas).</value>
+  </data>
+  <data name="manageremail.Text" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="resetpasswordonclientvalidate.Text" xml:space="preserve">
+    <value>Reset Password on Client Validation</value>
+  </data>
+  <data name="cataloguemode.Text" xml:space="preserve">
+    <value>Catalogue mode</value>
+  </data>
+  <data name="folderdocs.Text" xml:space="preserve">
+    <value>Document Folder</value>
+  </data>
+  <data name="folderimages.Text" xml:space="preserve">
+    <value>Image Folder</value>
+  </data>
+  <data name="folderuploads.Text" xml:space="preserve">
+    <value>Upload Folder</value>
+  </data>
+  <data name="minimumstocklevel.Text" xml:space="preserve">
+    <value>Minimum Stock</value>
+  </data>
+  <data name="pageactions.Text" xml:space="preserve">
+    <value>Page Actions</value>
+  </data>
+  <data name="backofficeexittab.Text" xml:space="preserve">
+    <value>Back Office Exit Page</value>
+  </data>
+  <data name="sendclientroleemail.Text" xml:space="preserve">
+    <value>Send Email to Client when added to Client role</value>
+  </data>
+  <data name="defaultthemefolder.Text" xml:space="preserve">
+    <value>Default Theme Folder</value>
+  </data>
+  <data name="devoptions.Text" xml:space="preserve">
+    <value>Developer Options</value>
+  </data>
+  <data name="enabledealer.Text" xml:space="preserve">
+    <value>Enable Dealer</value>
+  </data>
+  <data name="removelogo.confirm" xml:space="preserve">
+    <value>Remove logo?</value>
+  </data>
+  <data name="removelogo.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="orderprefix.Text" xml:space="preserve">
+    <value>Order Prefix</value>
+  </data>
+  <data name="currencysymbol.Text" xml:space="preserve">
+    <value>Currency Symbol</value>
+  </data>
+  <data name="paymenttab.Help" xml:space="preserve">
+    <value>Tab where the client will be redirected to select a method of payment.</value>
+  </data>
+  <data name="paymenttab.Text" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="fontawesome.Text" xml:space="preserve">
+    <value>Include FontAwesome</value>
+  </data>
+  <data name="jqueryuicss.Text" xml:space="preserve">
+    <value>Include jQuery UI CSS</value>
+  </data>
+  <data name="jqueryuijs.Text" xml:space="preserve">
+    <value>Include jQuery UI JS</value>
+  </data>
+  <data name="ordermanagertab.Text" xml:space="preserve">
+    <value>My Orders</value>
+  </data>
+  <data name="addressestab.Text" xml:space="preserve">
+    <value>My Addresses</value>
+  </data>
+  <data name="profiletab.Text" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="Enabled.Text" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="copyorderto.Text" xml:space="preserve">
+    <value>Copy Order to Email</value>
+  </data>
+  <data name="subscribenewsletter.Text" xml:space="preserve">
+    <value>Newsletter Checkbox</value>
+  </data>
+  <data name="checkoutpromocode.Text" xml:space="preserve">
+    <value>Promo Code Field</value>
+  </data>
+  <data name="checkouttaxcode.Text" xml:space="preserve">
+    <value>Tax Code Field</value>
+  </data>
+  <data name="productimageresize.Text" xml:space="preserve">
+    <value>Image Resize</value>
+  </data>
+  <data name="bonoimageicon.Text" xml:space="preserve">
+    <value>Placeholder Icon</value>
+  </data>
+  <data name="productdetailtab.Text" xml:space="preserve">
+    <value>Product Detail</value>
+  </data>
+  <data name="groupresults.Text" xml:space="preserve">
+    <value>Group Models by Product</value>
+  </data>
+  <data name="emailthemefolder.Help" xml:space="preserve">
+    <value>The Theme folder that will be used for emails and prints.</value>
+  </data>
+  <data name="emailthemefolder.Text" xml:space="preserve">
+    <value>Email Theme Folder</value>
+  </data>
+  <data name="debugfileout.Text" xml:space="preserve">
+    <value>Debug File Output</value>
+  </data>
+  <data name="debugfileoutmsg.Text" xml:space="preserve">
+    <value>Outputs debug files, do NOT use on production site</value>
+  </data>
+  <data name="shareproducts.Text" xml:space="preserve">
+    <value>Share products</value>
+  </data>
+  <data name="shareproductsmsg.Text" xml:space="preserve">
+    <value>Share PRODUCTS created in this portal with all portals in the DNN installation</value>
+  </data>
+  <data name="alloweditorder.Text" xml:space="preserve">
+    <value>Allow Order Edit</value>
+  </data>
+  <data name="carttitle.Text" xml:space="preserve">
+    <value>Show Cart Title</value>
+  </data>
+  <data name="cartsteps.Text" xml:space="preserve">
+    <value>Show Cart Steps</value>
+  </data>
+  <data name="friendlyurlids.Help" xml:space="preserve">
+    <value>Instead of the database unique id for products and cateogries the reference will be used in preference.  This option expect usable and unique category and product refs.</value>
+  </data>
+  <data name="friendlyurlids.Text" xml:space="preserve">
+    <value>Use SEO friendly URL ids</value>
+  </data>
+  <data name="allowdnnindex.Text" xml:space="preserve">
+    <value>Allow DNN Search Indexing of products</value>
+  </data>
+  <data name="startupctrl.Text" xml:space="preserve">
+    <value>Default BO control</value>
+  </data>
+  <data name="merchantdetails.Text" xml:space="preserve">
+    <value>Merchant details</value>
+  </data>
+  <data name="emailaddresses.Text" xml:space="preserve">
+    <value>Email addresses</value>
+  </data>
+  <data name="supportemail.Text" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="supportemail.Help" xml:space="preserve">
+    <value>Display with the merchant details inside the notifications emails from the store.</value>
+  </data>
+  <data name="salesemail.Text" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="salesemail.Help" xml:space="preserve">
+    <value>Display with the merchant details inside the notifications emails from the store.</value>
+  </data>
+  <data name="merchantaddress.Text" xml:space="preserve">
+    <value>Merchant address</value>
+  </data>
+  <data name="merchantattention.Text" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="merchantpostbox.Text" xml:space="preserve">
+    <value>Post box</value>
+  </data>
+  <data name="bankingdetails.Text" xml:space="preserve">
+    <value>Banking details</value>
+  </data>
+  <data name="bank.Text" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="accountname.Text" xml:space="preserve">
+    <value>Account name</value>
+  </data>
+  <data name="accountnumber.Text" xml:space="preserve">
+    <value>Account number</value>
+  </data>
+  <data name="bankinginstructions.Text" xml:space="preserve">
+    <value>Banking instructions</value>
+  </data>
+  <data name="emailbranding.Text" xml:space="preserve">
+    <value>Email branding</value>
+  </data>
+  <data name="storename.Text" xml:space="preserve">
+    <value>Store name</value>
+  </data>
+  <data name="logoimage.Text" xml:space="preserve">
+    <value>Logo image</value>
+  </data>
+  <data name="emailmessage.Text" xml:space="preserve">
+    <value>Email message</value>
+  </data>
+  <data name="socialnetworking.Text" xml:space="preserve">
+    <value>Social networking</value>
+  </data>
+  <data name="twitterpage.Text" xml:space="preserve">
+    <value>Twitter page</value>
+  </data>
+  <data name="facebookpage.Text" xml:space="preserve">
+    <value>Facebook page</value>
+  </data>
+  <data name="sharingwidget.Text" xml:space="preserve">
+    <value>Sharing widget</value>
+  </data>
+  <data name="checkout.Text" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="storepickupmessage.Text" xml:space="preserve">
+    <value>Store pickup message</value>
+  </data>
+  <data name="successfulcheckoutmessage.Text" xml:space="preserve">
+    <value>Successful checkout message</value>
+  </data>
+  <data name="failedcheckoutmessage.Text" xml:space="preserve">
+    <value>Failed checkout message</value>
+  </data>
+  <data name="folders.Text" xml:space="preserve">
+    <value>Folders</value>
+  </data>
+  <data name="storeconfiguration.Text" xml:space="preserve">
+    <value>Store configuration</value>
+  </data>
+  <data name="countrydetails.Text" xml:space="preserve">
+    <value>Country details</value>
+  </data>
+  <data name="merchantculture.Text" xml:space="preserve">
+    <value>Merchant Culture</value>
+  </data>
+  <data name="currencycode.Text" xml:space="preserve">
+    <value>Currency Code</value>
+  </data>
+  <data name="commoncountries.Text" xml:space="preserve">
+    <value>Common Countries</value>
+  </data>
+  <data name="selectedcountries.Text" xml:space="preserve">
+    <value>Selected countries (Drag to sort)</value>
+  </data>
+  <data name="othercountries.Text" xml:space="preserve">
+    <value>Other countries</value>
+  </data>
+  <data name="checkall.Text" xml:space="preserve">
+    <value>Check all</value>
+  </data>
+  <data name="Theme.Text" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="defaultcategory.Text" xml:space="preserve">
+    <value>Default Category</value>
+  </data>
+  <data name="defaultproperty.Text" xml:space="preserve">
+    <value>Default Property</value>
+  </data>
+  <data name="productsearchmod.Text" xml:space="preserve">
+    <value>Product Search Results Module Ref</value>
+  </data>
+  <data name="productsearchtab.Text" xml:space="preserve">
+    <value>Product Search Results Page</value>
+  </data>
+  <data name="boclass.Text" xml:space="preserve">
+    <value>Back Office Class</value>
+  </data>
+  <data name="debugmode.Text" xml:space="preserve">
+    <value>Activate this to allow editing of razor templates, without the need to clear cache.  Warning!! Do NOT use in production, this can cause a memory leak and bad performance.</value>
+  </data>
+  <data name="lbltemplate.Help" xml:space="preserve">
+    <value>Name of razor template to use.</value>
+  </data>
+  <data name="lbltemplate.Text" xml:space="preserve">
+    <value>Razor Template</value>
+  </data>
+  <data name="razordetailtemplate.Text" xml:space="preserve">
+    <value>Detail Template</value>
+  </data>
+  <data name="razorlisttemplate.Text" xml:space="preserve">
+    <value>List Template</value>
+  </data>
+  <data name="razortemplate.Text" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="parentcategory.Text" xml:space="preserve">
+    <value>Parent Category</value>
+  </data>
+  <data name="itemlistname.Help" xml:space="preserve">
+    <value>Name of wishlist to be added/remove to, or displayed in when displaying selected list.</value>
+  </data>
+  <data name="itemlistname.Text" xml:space="preserve">
+    <value>Wishlist Name</value>
+  </data>
+  <data name="addthispubid.Text" xml:space="preserve">
+    <value>AddThis PubID</value>
+  </data>
+  <data name="allowupload.Text" xml:space="preserve">
+    <value>Activate Client File Upload Option </value>
+  </data>
+  <data name="folderclientuploads.Text" xml:space="preserve">
+    <value>Client Upload Folder</value>
+  </data>
+  <data name="fileregexpr.Text" xml:space="preserve">
+    <value>Accepted File Upload RegEx</value>
+  </data>
+  <data name="websiteurl.Text" xml:space="preserve">
+    <value>Website URL</value>
+  </data>
+  <data name="dealerrole.Text" xml:space="preserve">
+    <value>Dealer Role ( * = Everyone)</value>
+  </data>
+  <data name="shareorders.Text" xml:space="preserve">
+    <value>Share orders</value>
+  </data>
+  <data name="shareordersmsg.Text" xml:space="preserve">
+    <value>Administer ORDERS made in this portal from any portal in the DNN installation</value>
+  </data>
+  <data name="sharecategories.Text" xml:space="preserve">
+    <value>Share categories</value>
+  </data>
+  <data name="sharecategoriesmsg.Text" xml:space="preserve">
+    <value>Share CATEGORIES created in this portal with all portals in the DNN installation. Sharing categories will also share any producs add to the category across ALL portals.</value>
+  </data>
+  <data name="selectedfilters.Text" xml:space="preserve">
+    <value>Select Filters&lt;br/&gt;&lt;span style="font-weight: normal;"&gt;(drag-drop to sort)&lt;/span&gt;</value>
+  </data>
+  <data name="filtertypeinsidedata.Text" xml:space="preserve">
+    <value>Product must have all selected properties,Product must have one or more of selected properties</value>
+  </data>
+  <data name="filtertypeinsidedatavalue.Text" xml:space="preserve">
+    <value>AND,OR</value>
+  </data>
+  <data name="lblfiltertypeinsideproperty.Help" xml:space="preserve">
+    <value>Select the type of filter to be use when multiple options are checked within the same property.</value>
+  </data>
+  <data name="lblfiltertypeinsideproperty.Text" xml:space="preserve">
+    <value>Filter Type Inside Property</value>
+  </data>
+  <data name="filtertypeoutsidedata.Text" xml:space="preserve">
+    <value>Product must meet conditions of all properties,Product must meet conditions of one or more properties</value>
+  </data>
+  <data name="filtertypeoutsidedatavalue.Text" xml:space="preserve">
+    <value>AND,OR</value>
+  </data>
+  <data name="lblfiltertypeoutsideproperty.Help" xml:space="preserve">
+    <value>Select the type of filter to be use when options are checked within different properties.</value>
+  </data>
+  <data name="lblfiltertypeoutsideproperty.Text" xml:space="preserve">
+    <value>Filter Type Outside Property</value>
+  </data>
+  <data name="selectedfilters.Help" xml:space="preserve">
+    <value>Drag and drop individual items to change the sort order.</value>
+  </data>
+  <data name="enablefilelogging.Text" xml:space="preserve">
+    <value>Enable File Logging</value>
+  </data>
+  <data name="enablefileloggingmsg.Text" xml:space="preserve">
+    <value>To be able to actually see a logfile, you need to add a logger and an appender to the DotNetNuke.Log4Net.config file in the root of your DNN installation.</value>
+  </data>
+  <data name="providercontrolpath.Text" xml:space="preserve">
+    <value>Provider Path</value>
+  </data>
+  <data name="providercontrolpath.Help" xml:space="preserve">
+    <value>If a provider plugin is being used to display data, this setting defines the control path which will be used to find the templates. (Default: NBrightBuy)</value>
+  </data>
+  <data name="activateajax.Text" xml:space="preserve">
+    <value>Activate Ajax</value>
+  </data>
+  <data name="logintab.Text" xml:space="preserve">
+    <value>Login Page</value>
+  </data>
+  <data name="cartmessages.Text" xml:space="preserve">
+    <value>Cart Messages</value>
+  </data>
+</root>

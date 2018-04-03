@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Profiel Formulierinstellingen</value>
+  </data>
+  <data name="emailsubject.Text" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Gebruiker profiel Update</value>
+  </data>
+  <data name="lblclientrole.Help" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Gebruikers zullen worden gegeven een bericht dat ze 'Client' rol beveiligingsniveau wachten moeten voordat de winkel toegankelijk is.  </value>
+  </data>
+  <data name="lblclientrole.Text" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Activeren Client Role Security: </value>
+  </data>
+  <data name="lblemailregisteredclienttemplate.Help" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">E-mail worden verzonden naar de Client wanneer ze zich inschrijven. (Indien leeg wordt geen e-mail verzonden)</value>
+  </data>
+  <data name="lblemailregisteredclienttemplate.Text" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">E-mailtemplate geregistreerde Client: </value>
+  </data>
+  <data name="lblemailregisteredtemplate.Help" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">E-mail worden verzonden naar Manager wanneer een client registreert. (Indien leeg wordt geen e-mail verzonden)</value>
+  </data>
+  <data name="lblemailregisteredtemplate.Text" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Geregistreerde e-mailtemplate: </value>
+  </data>
+  <data name="lblemailtemplate.Help" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">E-mail moet worden verzonden wanneer een profiel wordt bijgewerkt.  (Indien leeg wordt geen e-mail verzonden)</value>
+  </data>
+  <data name="lblemailtemplate.Text" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">E-mailtemplate: </value>
+  </data>
+  <data name="lblinputform.Help" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Sjabloon moet worden gebruikt als de gegevens post foem voor het adres.</value>
+  </data>
+  <data name="lblinputform.Text" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Invoerformulier sjabloon: </value>
+  </data>
+  <data name="lblredirecttab.Help" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Omleidingspagina na update</value>
+  </data>
+  <data name="lblredirecttab.Text" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Omleidingspagina: </value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Naam van het thema te gebruiken voor deze kar lijst.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2014-11-29 13:48:28">
+    <value xml:space="preserve">Themagebied: </value>
+  </data>
+</root>

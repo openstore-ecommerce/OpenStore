@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="addnotes.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Aggiungere una nota alla storia dell'ordine</value>
+  </data>
+  <data name="cmdDeleteInvoice.confirm" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Eliminare Fattura?</value>
+  </data>
+  <data name="cmdDeleteInvoice.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Eliminare Fattura</value>
+  </data>
+  <data name="cmdEditOrder.confirm" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Modifica Ordine?</value>
+  </data>
+  <data name="cmdEditOrder.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">&lt;i  title="Vedi e Edita" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt; Edita</value>
+  </data>
+  <data name="cmdEditOrderButton.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">&lt;i  title="Vedi e Edita" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt; Edita</value>
+  </data>
+  <data name="cmdEditOrderIcon.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">&lt;i  title="Vedi e Edita" class="fa fa-edit fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdEmailAmended.confirm" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Invia e-mail Modificato al cliente?</value>
+  </data>
+  <data name="cmdEmailAmended.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Modificato</value>
+  </data>
+  <data name="cmdEmailReceipt.confirm" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Invia e-mail Ricevuta ai Clienti?</value>
+  </data>
+  <data name="cmdEmailReceipt.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Ricevuta</value>
+  </data>
+  <data name="cmdEmailShipped.confirm" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Invia e-mail Spedito ai Clienti?</value>
+  </data>
+  <data name="cmdEmailShipped.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Spedito</value>
+  </data>
+  <data name="cmdEmailValidated.confirm" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Invia e-mail Confermato ai clienti?</value>
+  </data>
+  <data name="cmdEmailValidated.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Confermato</value>
+  </data>
+  <data name="cmdPrintDeliveryLabel.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Etichetta di Consegna</value>
+  </data>
+  <data name="cmdPrintOrder.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Stampa</value>
+  </data>
+  <data name="cmdPrintReceipt.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Ricevuta</value>
+  </data>
+  <data name="cmdReOrder.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Ripetere</value>
+  </data>
+  <data name="cmdReOrderButton.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">&lt;i  title="Ripetere" class="fa fa-repeat fa-fw fa-lg"&gt;&lt;/i&gt; Repeat</value>
+  </data>
+  <data name="cmdReOrderIcon.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">&lt;i  title="Ripetere" class="fa fa-repeat fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdReturn.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Ritorno</value>
+  </data>
+  <data name="cmdReturnButton.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">&lt;i  title="Ritorno" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; Ritorno</value>
+  </data>
+  <data name="cmdView.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Vedi</value>
+  </data>
+  <data name="cmdViewButton.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">&lt;i  title="Vedi e Edita" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt; Vedi</value>
+  </data>
+  <data name="cmdViewIcon.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">&lt;i  title="Vedi e Edita" class="fa fa-edit fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="emailmsg.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Messaggio di posta elettronica per il Cliente</value>
+  </data>
+  <data name="EmailOrder.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Email Ordine</value>
+  </data>
+  <data name="myorders.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">I miei Ordini</value>
+  </data>
+  <data name="none.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Nessuno</value>
+  </data>
+  <data name="orderdate.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Data dell'Ordine</value>
+  </data>
+  <data name="OrderHistory.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Cronologia Ordini</value>
+  </data>
+  <data name="ordernumber.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Numero d'Ordine</value>
+  </data>
+  <data name="orderreceipt.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Ricevuta dell'Ordine</value>
+  </data>
+  <data name="PaymentMethod.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Metodo di pagamento</value>
+  </data>
+  <data name="PaymentStatus.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Stato del pagamento</value>
+  </data>
+  <data name="PrintOrder.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Stampa Ordine</value>
+  </data>
+  <data name="ProcessOrder.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Elabora Ordine</value>
+  </data>
+  <data name="qty.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Qtà</value>
+  </data>
+  <data name="ToggleDropdown.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Toggle Dropdown</value>
+  </data>
+  <data name="total.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">Totale</value>
+  </data>
+  <data name="VATincluded.Text" lastModified="2015-11-11 17:12:47">
+    <value xml:space="preserve">IVA inclusa</value>
+  </data>
+</root>

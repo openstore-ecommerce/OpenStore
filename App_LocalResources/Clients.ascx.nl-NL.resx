@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Actions.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Acties</value>
+  </data>
+  <data name="cmdCreateOrder.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Order maken</value>
+  </data>
+  <data name="cmdResetPass.confirm" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Gebruikerswachtwoord opnieuw instellen en verzenden van e-mail met nieuw wachtwoord?</value>
+  </data>
+  <data name="cmdResetPass.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Reset wachtwoord</value>
+  </data>
+  <data name="cmdSearch.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Zoeken</value>
+  </data>
+  <data name="cmdUnlockUser.confirm" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Ontgrendelen gebruiker?</value>
+  </data>
+  <data name="cmdUnlockUser.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Ontgrendelen van gebruiker</value>
+  </data>
+  <data name="cmdValidateUser.confirm" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Gebruiker toestaan en client rol toegang verlenen?</value>
+  </data>
+  <data name="cmdValidateUser.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Gebruiker valideren</value>
+  </data>
+  <data name="cmdViewAddressBook.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Adresboek</value>
+  </data>
+  <data name="cmdViewClient.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Weergave Client</value>
+  </data>
+  <data name="cmdViewClientButton.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">&lt;i title="Weergave Client" class="fa fa-user fa-fw fa-lg"&gt;&lt;/i&gt;Weergave Client</value>
+  </data>
+  <data name="cmdViewClientIcon.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">&lt;i title="Weergave Client" class="fa fa-user fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdViewOrders.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Bestellingen bekijken</value>
+  </data>
+  <data name="FindaClient.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Vinden van een Client</value>
+  </data>
+  <data name="lblauthorised.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Toegestaan</value>
+  </data>
+  <data name="lblDisplayName.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Weergavenaam</value>
+  </data>
+  <data name="lblEmail.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">E-mail</value>
+  </data>
+  <data name="lblFirstName.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Voornaam</value>
+  </data>
+  <data name="lblisdeleted.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Is verwijderd</value>
+  </data>
+  <data name="lblLastName.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Achternaam</value>
+  </data>
+  <data name="lblupdatepassword.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Update wachtwoord</value>
+  </data>
+  <data name="lblUserID.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">UserID</value>
+  </data>
+  <data name="lblUserName.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Gebruikersnaam</value>
+  </data>
+  <data name="Notes.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Notities</value>
+  </data>
+  <data name="notsale.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Niet geldig voor de verkoop van producten</value>
+  </data>
+  <data name="Ordering.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Bestellen</value>
+  </data>
+  <data name="usageleft.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Gebruik</value>
+  </data>
+  <data name="UserAccount.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">UserAccount</value>
+  </data>
+  <data name="UserID.Header" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">UserID</value>
+  </data>
+  <data name="validcategory.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Geldige rubriek</value>
+  </data>
+  <data name="validuntil.Text" lastModified="2014-11-29 13:59:11">
+    <value xml:space="preserve">Geldig tot</value>
+  </data>
+</root>

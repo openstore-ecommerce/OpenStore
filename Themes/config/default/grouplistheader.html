@@ -1,0 +1,98 @@
+<script>
+
+$(document).ready(function() {
+
+	$(".selectmove").hide();
+	$(".selectcancel").hide();		
+	$(".savebutton").hide();
+
+    $(".selectrecord").click(function() {
+		$(".selectrecord").hide();
+		$(".selectmove").show();
+		$(".selectmove[[itemid='" + $(this).attr("itemid") + "']]").hide();
+		$(".selectcancel[[itemid='" + $(this).attr("itemid") + "']]").show();
+		$("input[[id*='selecteditemid']]").val($(this).attr("itemid"));
+    });
+
+    $(".selectcancel").click(function() {
+		$(".selectmove").hide();
+		$(".selectcancel").hide();		
+		$(".selectrecord").show();		
+		$("input[[id*='selecteditemid']]").val('');
+    });
+
+    $("input[[id*='groupname']]").keyup(function () {
+        var id = $(this).attr("id").replace('groupname', 'isdirty');
+		$('#' + id).val(true);
+		$(".savebutton").show();
+    });
+
+    $("select[[id*='grouptype']]").change(function () {
+        var id = $(this).attr("id").replace('grouptype', 'isdirty');
+        $('#' + id).val(true);
+        $(".savebutton").show();
+    });
+
+    $("input[[id*='groupref']]").keyup(function () {
+        var id = $(this).attr("id").replace('groupref', 'isdirty');
+        $('#' + id).val(true);
+        $(".savebutton").show();
+    });
+
+});
+
+</script>
+
+[<tag id="selecteditemid" type="postback" value="" />]
+
+<br />
+
+<div id="pageactionssource"><!-- Page actions are moved into header bar - also exist at page bottom-->
+	<div class="col-xs-9 col-sm-9">
+		<a href="javascript:void(0)" class="show-sidebar">
+		  <i class="fa fa-bars"></i>
+		</a>
+		<div class="actionbuttonwrapper">
+    	[<tag id="cmdAdd" type="linkbutton" cssclass="btn btn-primary" resourcekey="General.cmdAddButton" commandname="addnew" />] 
+		[<tag id="cmdSave" type="linkbutton" cssclass="savebutton btn btn-warning" resourcekey="General.cmdSaveButton" commandname="saveall" />] 
+	    </div>
+	</div>
+	<div class="col-xs-3 col-sm-3 top-panel-right">
+  [<tag type="selectlocalebutton" size="32"/>]
+	</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-table"></i>
+					<span>[<tag type="valueof" resourcekey="General.propertytypes" />]</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a class="close-link">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content">
+						<table class="table table-striped table-hover propertygroupslist">
+							<thead>
+								<tr>
+									<th>[<tag type="valueof" resourcekey="General.group" />]</th>
+									<th>[<tag type="valueof" resourcekey="General.Ref" />]</th>
+									<th>[<tag type="valueof" resourcekey="General.propertygroup" />]</th>
+									<th> </th>
+                                    <th> </th>
+								</tr>
+							</thead>
+							<tbody>

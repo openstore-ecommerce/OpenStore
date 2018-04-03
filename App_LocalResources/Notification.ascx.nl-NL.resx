@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountName.Text" xml:space="preserve">
+    <value>Accountnaam</value>
+  </data>
+  <data name="AccountNumber.Text" xml:space="preserve">
+    <value>Rekeningnummer</value>
+  </data>
+  <data name="addressbookupdated_ok.Text" xml:space="preserve">
+    <value>Adres Update succesvol</value>
+  </data>
+  <data name="AddressUpdate.Text" xml:space="preserve">
+    <value>Adres Update</value>
+  </data>
+  <data name="Bank.Text" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="bankinginstructions.Text" xml:space="preserve">
+    <value>Maak uw online bankieren zo spoedig mogelijk aan de bovenstaande account te betalen. Bestelling nummer in te voegen in het referentiegedeelte en omvatten uw naam zo goed als het is anders dan de acccount naam.</value>
+  </data>
+  <data name="BillingAddress.Text" xml:space="preserve">
+    <value>Factuuradres</value>
+  </data>
+  <data name="categoryactionsave_ok.Text" xml:space="preserve">
+    <value>Categorie update succesvol</value>
+  </data>
+  <data name="checkoutfailmessage.Text" xml:space="preserve">
+    <value>De bestelling is geannuleerd, of de betaling is mislukt. Neem contact op met uw bank als u hulp nodig hebt met uw credit card, of neem contact op met ons als u denkt dat er is een probleem met de kassa.</value>
+  </data>
+  <data name="checkoutsuccessmessage.Text" xml:space="preserve">
+    <value>Dank u voor uw bestelling. U ontvangt een per e-mail bevestiging met alle Orderinformatie. Controleer uw ongewenste e-mail mappen als u het niet hebt ontvangen binnen 30 minuten. Neem nota van de nummer hieronder als u wilt contact met ons op over deze bestelling.</value>
+  </data>
+  <data name="Collection.Text" xml:space="preserve">
+    <value>Collectie Details</value>
+  </data>
+  <data name="Contactus.Text" xml:space="preserve">
+    <value>Neem contact op met ons</value>
+  </data>
+  <data name="deletecompleted_ok.Text" xml:space="preserve">
+    <value>Verwijderd voltooid.</value>
+  </data>
+  <data name="emailmessage.Text" xml:space="preserve">
+    <value>Dank u voor uw bestelling. Wij zijn hier om te helpen! Bel ons voorzitterschap uur maandag tot vrijdag, of bezoek ons in de winkel als u vragen over uw bestelling hebt.</value>
+  </data>
+  <data name="general_error.Text" xml:space="preserve">
+    <value>Onbekende fout</value>
+  </data>
+  <data name="general_fail.Text" xml:space="preserve">
+    <value>Bewerking mislukt</value>
+  </data>
+  <data name="general_ok.Text" xml:space="preserve">
+    <value>Operatie succesvol</value>
+  </data>
+  <data name="general_warning.Text" xml:space="preserve">
+    <value>Operatie waarschuwing</value>
+  </data>
+  <data name="groupactionsave_ok.Text" xml:space="preserve">
+    <value>Groep bijwerken geslaagd</value>
+  </data>
+  <data name="InsertReference.Text" xml:space="preserve">
+    <value>Referentie invoegen.</value>
+  </data>
+  <data name="ManualPayment.Text" xml:space="preserve">
+    <value>Chque en Bank betaling</value>
+  </data>
+  <data name="notifytemplate_error.Text" xml:space="preserve">
+    <value>&lt;div class="nbsnotify nbsnotifyerror bg-danger"&gt;{message}&lt;/div&gt;</value>
+  </data>
+  <data name="notifytemplate_fail.Text" xml:space="preserve">
+    <value>&lt;div class="nbsnotify nbsnotifyfail bg-danger"&gt;{message}&lt;/div&gt;</value>
+  </data>
+  <data name="notifytemplate_ok.Text" xml:space="preserve">
+    <value>&lt;div class="nbsnotify bg-success"&gt;{message}&lt;/div&gt;</value>
+  </data>
+  <data name="notifytemplate_warning.Text" xml:space="preserve">
+    <value>&lt;div class="nbsnotify nbsnotifywarning bg-warning"&gt;{message}&lt;/div&gt;</value>
+  </data>
+  <data name="orderactionemailamended_ok.Text" xml:space="preserve">
+    <value>Bestellen van gewijzigd e-mailbericht gestuurd</value>
+  </data>
+  <data name="orderactionemailreceipt_ok.Text" xml:space="preserve">
+    <value>Orde ontvangst E-mail</value>
+  </data>
+  <data name="orderactionemailshipped_ok.Text" xml:space="preserve">
+    <value>Verzonden E-mail bestellen</value>
+  </data>
+  <data name="orderactionemailvalidated_ok.Text" xml:space="preserve">
+    <value>Gevalideerde E-mail bestellen</value>
+  </data>
+  <data name="orderactionprintorder_ok.Text" xml:space="preserve">
+    <value>Volgorde afgedrukt</value>
+  </data>
+  <data name="orderactionprintreceipt_ok.Text" xml:space="preserve">
+    <value>Ontvangst afgedrukt</value>
+  </data>
+  <data name="orderactionsave_ok.Text" xml:space="preserve">
+    <value>Bestelling bijwerken geslaagd</value>
+  </data>
+  <data name="OrderAmended.Text" xml:space="preserve">
+    <value>Volgorde gewijzigd</value>
+  </data>
+  <data name="orderamended_emailsubject.Text" xml:space="preserve">
+    <value>Volgorde gewijzigd</value>
+  </data>
+  <data name="OrderCreated.Text" xml:space="preserve">
+    <value>Order bevestigd</value>
+  </data>
+  <data name="OrderCreatedClient.Text" xml:space="preserve">
+    <value>Order bevestigd</value>
+  </data>
+  <data name="ordercreatedemailsubject.Text" xml:space="preserve">
+    <value>Order bevestigd</value>
+  </data>
+  <data name="OrderReceipt.Text" xml:space="preserve">
+    <value>Kwitantie</value>
+  </data>
+  <data name="orderreceipt_emailsubject.Text" xml:space="preserve">
+    <value>Kwitantie</value>
+  </data>
+  <data name="OrderShipped.Text" xml:space="preserve">
+    <value>Verzendingen</value>
+  </data>
+  <data name="ordershipped_emailsubject.Text" xml:space="preserve">
+    <value>Verzendingen</value>
+  </data>
+  <data name="OrderValidated.Text" xml:space="preserve">
+    <value>Bestelling gevalideerd</value>
+  </data>
+  <data name="ordervalidated_emailsubject.Text" xml:space="preserve">
+    <value>Bestelling gevalideerd</value>
+  </data>
+  <data name="outofstock.Text" xml:space="preserve">
+    <value>Niet op voorraad</value>
+  </data>
+  <data name="pickupmessage.Text" xml:space="preserve">
+    <value>U bent welkom te halen uw bestelling van ons in winkel tijdens de openingsuren. Gelieve ons bellen als u wilt dat om ervoor te zorgen dat het is klaar voor pickup.</value>
+  </data>
+  <data name="ProfileRegistered.Text" xml:space="preserve">
+    <value>Profiel geregistreerd</value>
+  </data>
+  <data name="profileregistered_emailsubject.Text" xml:space="preserve">
+    <value>Nieuw profiel geregistreerd</value>
+  </data>
+  <data name="profileupdated_emailsubject.Text" xml:space="preserve">
+    <value>Profiel Update</value>
+  </data>
+  <data name="profileupdated_fail.Text" xml:space="preserve">
+    <value>Niet in staat om te registreren als gebruiker, gelieve te controleren u profiel informatie.</value>
+  </data>
+  <data name="profileupdated_ok.Text" xml:space="preserve">
+    <value>Uw profiel is bijgewerkt.</value>
+  </data>
+  <data name="profileupdatedcaptcha_fail.Text" xml:space="preserve">
+    <value>Ongeldige Security Code.</value>
+  </data>
+  <data name="profileupdatedclientrole_ok.Text" xml:space="preserve">
+    <value>Uw gegevens zijn opgeslagen, ontvangt u een e-mail wanneer uw account is gevalideerd en je bent in staat om toegang tot de winkel.</value>
+  </data>
+  <data name="profileupdatedexists_fail.Text" xml:space="preserve">
+    <value>Reeds geregistreerde gebruiker.  Om te registreren probeer een andere gebruikersnaam/e-mail.</value>
+  </data>
+  <data name="settingssetup_fail.Text" xml:space="preserve">
+    <value>Winkel configuratie moet worden gedaan.</value>
+  </data>
+  <data name="ShippingAddress.Text" xml:space="preserve">
+    <value>Verzendadres</value>
+  </data>
+  <data name="ShippingDate.Text" xml:space="preserve">
+    <value>Verzenddatum</value>
+  </data>
+  <data name="ShippingMethod.Text" xml:space="preserve">
+    <value>Verzendmethode</value>
+  </data>
+  <data name="ShippingOption.Text" xml:space="preserve">
+    <value>Verzendoptie</value>
+  </data>
+  <data name="stockadjusted.Text" xml:space="preserve">
+    <value>Aantal aangepast aan beschikbare voorraad</value>
+  </data>
+  <data name="terms.Text" xml:space="preserve">
+    <value>De bepalingen en voorwaarden moeten worden aanvaard.</value>
+  </data>
+  <data name="TrackingNumber.Text" xml:space="preserve">
+    <value>Tracking-nummer</value>
+  </data>
+  <data name="validatecompleted_ok.Text" xml:space="preserve">
+    <value>Validatie voltooid.</value>
+  </data>
+</root>

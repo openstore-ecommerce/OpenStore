@@ -1,0 +1,137 @@
+[<tag id="resourcepath" type="meta" value="/DesktopModules/NBright/NBrightBuy/Providers/ShippingProvider/App_LocalResources/" />]
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("input[[id*='shipref']]").keyup(function () {
+            var id = $(this).attr("id").replace('shipref', 'isdirty');
+            $('#' + id).val(true);
+        });
+        $("textarea[[id*='shiprange']]").keyup(function () {
+            var id = $(this).attr("id").replace('shiprange', 'isdirty');
+            $('#' + id).val(true);
+        });
+
+    });
+
+</script>
+
+
+<br/>
+
+<div id="pageactionssource"><!-- Page actions are moved into header bar - also exist at page bottom-->
+	<div class="col-xs-9 col-sm-9">
+		<a href="javascript:void(0)" class="show-sidebar">
+		  <i class="fa fa-bars"></i>
+		</a>
+		<div class="actionbuttonwrapper">
+		[<tag id="cmdAdd" type="linkbutton" resourcekey="General.cmdAdd" cssclass="btn btn-primary" commandname="addnew"/>]
+	    [<tag id="cmdSave" type="linkbutton" resourcekey="General.cmdSave" cssclass="savebutton btn btn-warning" commandname="saveall"/>]
+	    </div>
+	</div>
+	<div class="col-xs-3 col-sm-3 top-panel-right">
+		[<tag type="selectlocalebutton" size="32"/>]
+	</div>
+</div>
+
+
+<div class="row freeshipping">
+    <div class="box">
+        <div class="box-content">
+            <div class="form-horizontal dnnForm">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.displayname" />]</label>
+                    <div class="col-sm-2">
+                        [<tag id="name" cssclass="form-control" type="textbox" maxlength="150" Text="" />]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row freeshipping">
+    <div class="box">
+        <div class="box-content">
+            <div class="form-horizontal dnnForm">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.FreeShipping"/>]</label>
+                    <div class="col-sm-1">
+                        [<tag id="freeshiplimit" cssclass="form-control" type="textbox" maxlength="150" Text="0"/>]
+                    </div>
+                    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.CountryCodesCSV"/>]</label>
+                    <div class="col-sm-3">
+                        [<tag id="freeshipcountrycodes" cssclass="form-control" type="textbox" Text=""/>]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row txaxincrease">
+    <div class="box">
+        <div class="box-content">
+            <div class="form-horizontal dnnForm">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.alterpercentlabel" />]</label>
+                    <div class="col-sm-1">
+                        [<tag id="alterpercent" cssclass="form-control" type="textbox" maxlength="2" Text="0" />]
+                    </div>
+                    <div class="col-sm-3">
+                        [<tag id="cmdAlterPercent" type="linkbutton" resourcekey="Shipping.alterpercent" cssclass="savebutton btn btn-warning" commandname="alterpercent" />]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+<div class="box">
+			<div class="box-content">
+				<div class="form-horizontal dnnForm">
+
+				<div class="form-group">
+        <div class="col-sm-3">
+[<tag id="rblUnit" type="radiobuttonlist" datavalue="1;2" resourcekey="Shipping.unit" repeatcolumns="2" />]
+    </div>
+    </div>
+</div>
+<hr/>
+<div class="row form-group">
+    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.validcountrycodes" />]</label>
+    <div class="col-sm-6">
+        [<tag id="validcountrycodes" cssclass="form-control" type="textbox" Text="" />]
+    </div>
+</div>
+
+<div class="row form-group">
+    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.notvalidcountrycodes" />]</label>
+    <div class="col-sm-6">
+        [<tag id="notvalidcountrycodes" cssclass="form-control" type="textbox" Text="" />]
+    </div>
+</div>
+
+    </div>
+    </div>
+    </div>
+
+<div class="clearfix"></div>
+				<div class="col-xs-12 ">
+					<br/>
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="text-center">[<tag type="valueof" resourcekey="Shipping.Ref" />]</th>
+								<th class="text-center">[<tag type="valueof" resourcekey="Shipping.Range" />]</th>
+                                <th></th>
+							</tr>
+						</thead>
+						<tbody>
+
+

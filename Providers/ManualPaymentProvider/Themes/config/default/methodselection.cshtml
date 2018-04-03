@@ -1,0 +1,63 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Globalization
+@using System.Linq
+@using NBrightCore.common
+@using NBrightDNN
+
+    @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Providers/ManualPaymentProvider/App_LocalResources")
+
+<div id="manualpaymentredirect" style="display: none;"></div>
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+}
+
+<div id="nbs_manualpaymentparam">
+
+    <input id="paymentproviderkey" type="hidden" value="manualpayment" />
+    <input id="uilang" type="hidden" value="@Utils.GetCurrentCulture()" />
+
+    <h3>@info.GetXmlProperty("genxml/lang/genxml/textbox/manualpaymenttitle")</h3>
+
+        <div class="defaultmessage">@info.GetXmlProperty("genxml/lang/genxml/textbox/manualpaymentmessage")</div>
+
+        <div class="clearfix"></div>
+
+    <!-- commandname must be "pay" and the commandargument must be the provider control key -->
+    <div id="cartactions" style="">
+        <div style="clear: both;">
+            <a href="javascript:void(0)" id="cmdManualPay" class="primarybutton">@info.GetXmlProperty("genxml/lang/genxml/textbox/buttontext")</a>
+        </div>
+    </div>
+
+    </div>
+
+    <hr />
+    
+ <script>
+
+        $(document).ready(function() {
+            // start load all ajax data, continued by js in product.js file
+
+            $('#cmdManualPay').unbind("click");
+            $('#cmdManualPay').click(function () {
+                $('.processing').show();
+                nbxget('payment_manualpayment', '#nbs_manualpaymentparam', '#manualpaymentredirect');
+            });
+
+
+            $(document).on("nbxgetcompleted", Admin_Payment_nbxgetCompleted); // assign a completed event for the ajax calls
+
+            // function to do actions after an ajax call has been made.
+            function Admin_Payment_nbxgetCompleted(e) {
+                $('.processing').hide();
+                if (e.cmd == 'payment_manualpayment') {
+                    $('.processing').show();
+                    window.location.href = $('#manualpaymentredirect').text();
+                }
+            };
+
+        });
+
+</script>
+

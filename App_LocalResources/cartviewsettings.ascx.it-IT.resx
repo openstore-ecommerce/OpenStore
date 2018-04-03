@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Visualizza impostazioni del Carrello</value>
+  </data>
+  <data name="ddlcarttype.data" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Minicarrello;CarrelloCompleto;Checkout</value>
+  </data>
+  <data name="ddlcarttype.datavalue" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">1;3;2</value>
+  </data>
+  <data name="lbladvancedsettings.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Avanzato</value>
+  </data>
+  <data name="lblbasicsettings.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Generale</value>
+  </data>
+  <data name="lblcarttype.Help" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Scegliere la modalità di visualizzazione da Minicarrello, CarrelloCompleto e Checkout completo della spesa.</value>
+  </data>
+  <data name="lblcarttype.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Carrello Tipo:</value>
+  </data>
+  <data name="lblcollectionactive.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Attiva Opzioni Collezione:</value>
+  </data>
+  <data name="lblcollectiontimes.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Tempi di incasso:</value>
+  </data>
+  <data name="lblgroupresults.Help" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Gli Articoli del Carrello saranno raggruppati per prodotto&gt; modello</value>
+  </data>
+  <data name="lblgroupresults.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Gruppo Articoli Carrello:</value>
+  </data>
+  <data name="lbllistbody.Help" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Modello per essere utilizzato come body del carrello, questo viene ripetuto per ogni articolo del carrello.</value>
+  </data>
+  <data name="lbllistbody.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Carrello Body:</value>
+  </data>
+  <data name="lbllistfooter.Help" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Modello da utilizzare come piè di pagina del carrello.</value>
+  </data>
+  <data name="lbllistfooter.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Carrello Footer:</value>
+  </data>
+  <data name="lbllistheader.Help" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Modello da utilizzare come intestazione carrello.</value>
+  </data>
+  <data name="lbllistheader.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Carrello Intestazione:</value>
+  </data>
+  <data name="lblPaymentTab.Help" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Pagina alla quale questo modulo si reindirizzerà all'Invio. Solitamente L'opzione Checkout per questo modulo reindirizza alla pagina di pagamento con il modulo Payment. L'opzione CarrelloCompleto per questo modulo dovrebbe reindirizzare alla pagina di Checkout.</value>
+  </data>
+  <data name="lblPaymentTab.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Redirect Pagina:</value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Nome del tema da utilizzare per questa lista dei carrelli.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Tema:</value>
+  </data>
+  <data name="lblthemesettings.Text" lastModified="2015-11-11 11:18:07">
+    <value xml:space="preserve">Impostazioni del tema</value>
+  </data>
+</root>

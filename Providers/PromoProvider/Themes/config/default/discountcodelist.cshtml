@@ -1,0 +1,56 @@
+﻿@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using NBrightDNN
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Providers/PromoProvider/App_LocalResources/")
+
+<div class="row">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-content">
+				<table class="table table-striped table-hover table-responsive">
+					<thead>
+						<tr style="width:100%">
+							<th>@ResourceKey("Promo.code")</th>
+							<th>@ResourceKey("Promo.name")</th>
+							<th>@ResourceKey("Promo.amount")</th>
+							<th>@ResourceKey("Promo.validuntil")</th>
+							<th>@ResourceKey("Promo.usagelimit")</th>
+							<th>@ResourceKey("Promo.usage")</th>
+							<th>@ResourceKey("Promo.disabled")</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					@foreach (NBrightInfo x in Model.List)
+					{
+                        // dummy record inject for empty list
+                        if (x.ItemID > 0 )
+                        {
+                             <tr>
+                                 <td>@x.GetXmlProperty("genxml/textbox/code")</td>
+                                 <td>@x.GetXmlProperty("genxml/textbox/name")</td>
+                                 <td>@x.GetXmlProperty("genxml/textbox/amount")
+                                     @if ((@x.GetXmlProperty("genxml/radiobuttonlist/amounttype") == "2"))
+                                     {
+                                        <span> %</span>
+                                     }
+                                 </td>
+                                 <td>@x.GetXmlProperty("genxml/textbox/validuntil")</td>
+                                 <td>@x.GetXmlProperty("genxml/textbox/usagelimit")</td>
+                                 <td>@x.GetXmlProperty("genxml/textbox/usage")</td>
+                                 <td>@{var i = "fa-circle"; if (x.GetXmlPropertyBool("genxml/checkbox/disabled")) { i = "fa-check-circle";}}
+                                     <i class="fa  @i fa-2x"></i>
+                                 </td>
+                                 <td><span class="edititem" itemid="@x.ItemID">@ResourceKey("General.cmdEditIcon")</span></td>
+                             </tr>
+                         }
+					}
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</div>

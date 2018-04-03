@@ -1,0 +1,22 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using NBrightDNN
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<div id="loader" class="processing" style="display:none;">@ResourceKey("General.ProcessingDiv")</div>
+
+<div id="pageactionssource">
+    <!-- Page actions are moved into header bar - also exist at page bottom-->
+    <div class="col-xs-9 col-sm-9">
+        <a href="javascript:void(0)" class="show-sidebar">
+            <i class="fa fa-bars"></i>
+        </a>
+        <div class="actionbuttonwrapper">
+            <a id="OrderAdmin_cmdSave" style="display: none;" class="btn btn-primary primarybutton OrderAdmin_cmdSave " href="javascript:void(0)">@ResourceKey("General.cmdSaveButton")</a>
+            <a id="OrderAdmin_cmdReturn" style="display: none;" class="btn btn-default primarydefault" href="javascript:void(0)">@ResourceKey("OrderAdmin.cmdReturnButton")</a>
+        </div>
+    </div>
+</div>
+
+<div id="datadisplay"></div>
+

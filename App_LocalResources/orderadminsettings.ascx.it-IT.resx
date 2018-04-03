@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Ordina Impostazioni amministratore</value>
+  </data>
+  <data name="detailtemplates.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Dettaglio Modelli</value>
+  </data>
+  <data name="lbladvancedsettings.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Avanzato</value>
+  </data>
+  <data name="lblbasicsettings.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Generale</value>
+  </data>
+  <data name="lbldetailbody.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Modello da utilizzare come body</value>
+  </data>
+  <data name="lbldetailbody.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Dettagli Body Ordine:</value>
+  </data>
+  <data name="lbldetailfooter.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Modello da utilizzare come piè di pagina.</value>
+  </data>
+  <data name="lbldetailfooter.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Dettagli Footer Ordine:</value>
+  </data>
+  <data name="lbldetailheader.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Template da utilizzare come Header.</value>
+  </data>
+  <data name="lbldetailheader.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Dettagli Intestazione Ordine:</value>
+  </data>
+  <data name="lblitemdetailbody.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Modello da utilizzare come Body dell'articolo nella lista</value>
+  </data>
+  <data name="lblitemdetailbody.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Dettagli Body Articolo nella lista:</value>
+  </data>
+  <data name="lblitemdetailfooter.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Modello da utilizzare come Footer.</value>
+  </data>
+  <data name="lblitemdetailfooter.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Dettagli Footer Articolo nella lista:</value>
+  </data>
+  <data name="lblitemdetailheader.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Template da utilizzare come Header.</value>
+  </data>
+  <data name="lblitemdetailheader.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Dettagli Header Articolo nella lista:</value>
+  </data>
+  <data name="lbllistbody.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Template da utilizzare come Body, questo viene ripetuto per ogni ordine.</value>
+  </data>
+  <data name="lbllistbody.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Body Lista Ordini:</value>
+  </data>
+  <data name="lbllistfooter.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Modello da utilizzare come Footer.</value>
+  </data>
+  <data name="lbllistfooter.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Footer Lista Ordini:</value>
+  </data>
+  <data name="lbllistheader.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Template da utilizzare come Header.</value>
+  </data>
+  <data name="lbllistheader.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Header Lista Ordini:</value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Nome del tema da utilizzare per questo carrello.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Tema:</value>
+  </data>
+  <data name="lblthemesettings.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Impostazioni del tema</value>
+  </data>
+  <data name="listtemplates.Text" lastModified="2015-11-12 08:39:29">
+    <value xml:space="preserve">Elenco Template</value>
+  </data>
+</root>

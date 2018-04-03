@@ -1,0 +1,135 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Text
+@using System.Web
+@using System.Web.Razor.Parser
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Users
+@using NBrightCore
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+@using Nevoweb.DNN.NBrightBuy.Components.Cart
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    // assign Model, so we can resolve var in VS
+    var cart = (CartData)Model.List.First();
+    var info = cart.PurchaseInfo;
+}
+
+<h1>@ResourceKey("CartView.YourBasket")</h1>
+<div class="checkoutsteps">
+    <div class="checkoutstepsheader">@ResourceKey("CartView.CartstepsProcess")</div>
+    <ol>
+        <li class="step1">@ResourceKey("CartView.CartstepsRecap")</li>
+        <li class="step2">@ResourceKey("CartView.CartstepsAddresses")</li>
+        <li class="step3 activestep">@ResourceKey("CartView.CartstepsShipping")</li>
+        <li class="step4">@ResourceKey("CartView.CartstepsPayment")</li>
+        <li class="step5">@ResourceKey("CartView.CartstepsConfirm")</li>
+    </ol>
+</div>
+
+<span id="checkoutsummary">
+    
+    <!-- we must pass back the current language on any ajax call -->
+    <input id="uilang" type="hidden" value="@Model.Lang" />
+
+    <!-- Shipping methods  -->
+    <div id="shippingmethods">
+        <div class="formrow">
+            <h3>@ResourceKey("General.shippingmethods")</h3>
+            <div id="providerselection">
+                @ShippingProviderList(info, "class='shippingmethodselect'")
+            </div>
+            <div id="shipprovidertemplates"></div>
+        </div>
+    </div>
+
+    <!-- Order summary box from here down  -->
+    <div class="checkoutextra">
+
+        <div class="formrow">
+            <h3>@ResourceKey("General.lblordersummary")</h3>
+        </div>
+
+        <!-- Order summary text inputs  -->
+        <div class="summaryleft">
+
+            <div class="formrow">
+                <label>@ResourceKey("General.lblspecialinstructions")</label>
+                @NBrightTextArea(info, "genxml/extrainfo/genxml/textbox/extramessage", "")
+            </div>
+
+            @if (Model.GetSettingBool("checkoutpromocode"))
+            {
+                <div class="formrow">
+                    <label>@ResourceKey("General.PromotionalCode")</label>
+                    @NBrightTextBox(info, "genxml/extrainfo/genxml/textbox/promocode")
+                </div>
+            }
+
+            @if (Model.GetSettingBool("checkouttaxcode"))
+            {
+                <div class="formrow">
+                    <label>@ResourceKey("General.TaxNumber")</label>
+                    @NBrightTextBox(info, "genxml/extrainfo/genxml/textbox/taxnumber")
+                </div>
+            }
+
+            @if (Model.GetSettingBool("copyorderto"))
+            {
+                <div class="formrow">
+                    <label>@ResourceKey("General.copyorderto")</label>
+
+                    @if (info.GetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress") == "")
+                {
+                    info.SetXmlProperty("genxml/extrainfo/genxml/textbox/cartemailaddress", info.GetXmlProperty("genxml/billaddress/genxml/textbox/email"));
+                }
+                    @NBrightTextBox(info, "genxml/extrainfo/genxml/textbox/cartemailaddress", "name='cartemailaddress' type='email' datatype='email'")
+                </div>
+            }
+
+        </div>
+
+        <div class="summaryright">
+
+            <ul class="checkoutdetails checkouttotals">
+                @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Default\\Default\\CheckoutTotals.cshtml", Model)
+            </ul>
+            <ul class="checkoutdetails">
+
+                @if (Model.GetSettingBool("subscribenewsletter"))
+                {
+                    <li class="formrow submissioncheck">@CheckBox(info, "genxml/extrainfo/genxml/checkbox/chknews", "ResourceKey:CartView.chknews", "", true)</li>
+                }
+
+                <li class="formrow submissioncheck"><b>@ResourceKey("CartView.chkterms")</b></li>
+                <li class="submission">
+                    <!-- "updatecart" & "clearcart" class is used by JQuery to trigger events, must be left on -->
+                    <a href="javascript:void(0)" id="cmdRecalcSummary" class="primarybutton">@ResourceKey("CartView.UpdateCart")</a>
+                    <a href="javascript:void(0)" id="cmdRedirectPay" class="primarybutton">@ResourceKey("CartView.Order")</a>
+                    <span id="checkoutpayredirectreturn" style="display: none;">@CartFunctions.GetPaymentUrl()</span>
+                </li>
+
+            </ul>
+
+            @if (cart.EditMode != "")
+            {
+                if (cart.EditMode == "C")
+                {
+                    <div class="debug">@ResourceKey("CartView.editmodeC")</div>
+                }
+                if (cart.EditMode == "E")
+                {
+                    <div class="debug">@ResourceKey("CartView.editmodeE")</div>
+                }
+            }
+        </div>
+
+    </div>
+
+</span>

@@ -1,0 +1,28 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+<div style="display:none;" id="actionreturn"></div>
+
+<!-- Needed for CKEditor -->
+<script src="@StoreSettings.Current.Get("ckeditorcdn")"></script>
+
+<!-- In this template we are using a function defined in nbbajax.js and jquery.genxmlajax.js so include the script here -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js"></script>
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.genxmlajax.js"></script>
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/admin_product.js"></script>
+
+<!-- The basic File Upload plugin -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.fileupload.js"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<!-- Recycle bin for elements removed -->
+<div style="display: none;" id="recyclebin"></div>
+
+<div id="confirmdeletemsg" style="display: none;">@ResourceKeyJS("General.cmdDeleteButton", "", "confirm")</div>

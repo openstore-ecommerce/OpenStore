@@ -1,0 +1,474 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using System.Web.Razor.Parser.SyntaxTree
+@using System.Xml
+@using DotNetNuke.Common
+@using DotNetNuke.Entities.Portals
+@using NBrightCore.common
+@using NBrightDNN
+@using NBrightDNN.render
+@using Nevoweb.DNN.NBrightBuy.Components
+
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Themes/classicrazor/resx")
+
+@{
+    var clientData = (ClientData)Model.List.First();
+    var info = clientData.GetInfo();
+    var param = new string[3];
+
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<div id="clientadmin" class="clientdetail">
+
+<!-- fields for ajax postback -->
+<input id="lang" type="hidden" value="@Model.Lang"/> <!-- default to current language -->
+<input id="itemid" type="hidden" value="@clientData.DataRecord.ItemID"/> 
+
+
+@if (clientData != null)
+{
+    <br />
+
+
+    <span id="clientdatasection">
+
+        <div id="clientselectparams">
+            <input id="portalid" type="hidden" value="@info.PortalId" />
+            <input id="userid" type="hidden" value="@info.UserId" />
+            <input id="addqty" type="hidden" value="" />
+            <input id="lang" type="hidden" value="@Model.Lang" />
+            <input id="razortemplate" type="hidden" value="Admin_clientsDetail.cshtml" />
+            <input id="themefolder" type="hidden" value="config" />
+            <input id="selecteditemid" type="hidden" value="@info.UserId" />
+            <input id='editlang' type='hidden' value='@Model.Lang' /> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
+            <input id="lang" type="hidden" value="@Model.Lang" /> <!-- default to current language -->
+        </div>
+
+        <!-- postback fields to keep ajax populated data for update: datatype='coded' so we don't corrupt the return XML -->
+        <input id="xmlupdatediscountcodedata" type="hidden" datatype='coded' value="" />
+        <input id="xmlupdatevouchercodedata" type="hidden" datatype='coded' value="" />
+        
+        <div class="row customerdetails">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <div class="box-name">
+                            <i class="fa fa-home"></i>
+                            <span>@ResourceKey("Clients.customerinfos")</span>
+                        </div>
+                        <div class="box-icons">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="expand-link">
+                                <i class="fa fa-expand"></i>
+                            </a>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                        <div class="no-move"></div>
+                    </div>
+                    <div class="box-content">
+                        <div class="card">
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblUserID")</label>
+                            <div class="col-sm-4">
+                                <p class="form-control-static">@info.UserId</p>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblUserName")</label>
+                            <div class="col-sm-4">
+                                <p class="form-control-static">@info.GetXmlProperty("genxml/textbox/username")</p>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblFirstName")</label>
+                            <div class="col-sm-4">
+                                <p class="form-control-static">@info.GetXmlProperty("genxml/textbox/firstname")</p>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblLastName")</label>
+                            <div class="col-sm-4">
+                                <p class="form-control-static">@info.GetXmlProperty("genxml/textbox/lastname")</p>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblDisplayName")</label>
+                            <div class="col-sm-4">
+                                <p class="form-control-static">@info.GetXmlProperty("genxml/textbox/displayname")</p>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblauthorised")</label>
+                            <div class="col-sm-4">
+                                <p class="form-control-static">
+                                    @if (info.GetXmlPropertyBool("genxml/membership/approved"))
+                                {
+                                <i class="fa fa-check-circle fa-lg"></i>
+                                }
+                                </p>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.userlockedout" )</label>
+                            <div class="col-sm-4">
+                                <p class="form-control-static">
+                                    @if (info.GetXmlPropertyBool("genxml/membership/lockedout"))
+                                {
+                                <i class="fa fa-check-circle fa-lg"></i>
+                                }
+                                </p>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblupdatepassword" )</label>
+                            <div class="col-sm-4">
+                                <p class="form-control-static">
+                                    @if (info.GetXmlPropertyBool("genxml/membership/updatepassword"))
+                                {
+                                <i class="fa fa-check-circle fa-lg"></i>
+                                }
+                                </p>
+                            </div>
+                            <div class="clearfix"></div>
+
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblisdeleted" )</label>
+                            <div class="col-sm-4">
+                                <p class="form-control-static">
+                                    @if (info.GetXmlPropertyBool("genxml/membership/isdeleted"))
+                                {
+                                <i class="fa fa-check-circle fa-lg"></i>
+                                }
+                                </p>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblEmail" )</label>
+                            <div class="col-sm-5">
+                                @TextBox(info,"genxml/textbox/email", "class='form-control'")
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.cmdAddClientEditorRole" )</label>
+                            <div class="col-sm-5">
+                                @CheckBox(info, "genxml/checkbox/clienteditorrole","","class='checkbox'")
+                            </div>
+                            <div class="clearfix"></div>
+
+                            @RenderRazorInjectTemplate(info, "clientfields.cshtml")
+
+                            <div class="clearfix"></div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row customernotes">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header">
+                        <div class="box-name">
+                            <i class="fa fa-search"></i><span>@ResourceKey("Clients.Notes")</span>
+                        </div>
+                        <div class="box-icons">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-down"></i>
+                            </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                            <a class="close-link"><i class="fa fa-times"></i></a>
+                        </div>
+                        <div class="no-move">
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <div class="form-horizontal dnnForm">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label class="control-label sr-only">@ResourceKey("Clients.Notes")</label>
+                                        @CkEditor(info, "genxml/textbox/message", " class='form-control' height='400' width='100%'")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </span>
+
+
+<div class="row customeractions">
+	<div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-search"></i><span>@ResourceKey("Clients.Actions")</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"><i class="fa fa-chevron-up"></i>
+					</a><a class="expand-link"><i class="fa fa-expand"></i></a>
+					<a class="close-link"><i class="fa fa-times"></i></a></div>
+				<div class="no-move">
+				</div>
+			</div>
+			<div class="box-content">
+				<div class="form-horizontal dnnForm">
+					<div class="col-sm col-sm-6">
+					<p class="page-header">@ResourceKey("Clients.Ordering")</p>
+					<div class="form-group">
+					    <div class="col-sm-4">
+                            @{
+                                param[0] = "";
+                                param[0] = "ctrl=orders";
+                                param[1] = "uid=" + info.UserId;
+                                param[2] = "";
+                                var viewOrderUrl = Globals.NavigateURL(StoreSettings.Current.GetInt("backofficetabid"), "", param);
+                            }					        
+					        <a id="cmdViewOrders" class="btn btn-default btn-block" href="@viewOrderUrl">@ResourceKey("Clients.cmdViewOrders")</a>
+					    </div>
+					    <div class="col-sm-4">
+					        <a id="cmdCreateOrder" class="btn btn-default btn-block" href="javascript:void(0)">@ResourceKey("Clients.cmdCreateOrder")</a>
+					    </div>
+					</div>
+					<div class="form-group">
+					    <div class="col-sm-4">
+					    </div>
+					</div>
+					</div>
+					<div class="col-sm col-sm-6">
+					<p class="page-header">@ResourceKey("Clients.UserAccount")</p>
+					<div class="form-group">
+					    <div class="col-sm-4">
+                            @if (info.GetXmlPropertyBool("genxml/membership/approved"))
+                            {
+                                <a id="cmdUnAuthoriseUser" class="btn btn-danger btn-block" href="javascript:void(0)">@ResourceKey("Clients.cmdUnAuthoriseUser")</a>
+                            }
+                            else
+                            {
+                                <a id="cmdValidateUser" class="btn btn-success btn-block" href="javascript:void(0)">@ResourceKey("Clients.cmdValidateUser")</a>
+                            }
+					    </div>
+						<div class="col-sm-4">
+                            <a id="cmdResetPass" class="btn btn-warning btn-block" href="javascript:void(0)">@ResourceKey("Clients.cmdResetPass")</a>
+						</div>
+					</div>
+					<div class="form-group">
+					    <div class="col-sm-4">
+                            @if (info.GetXmlPropertyBool("genxml/membership/lockedout"))
+                            {
+                                <a id="cmdUnlockUser" class="btn btn-default btn-block" href="javascript:void(0)">@ResourceKey("Clients.cmdUnlockUser")</a>
+                            }
+					    </div>
+					    <div class="col-sm-4">
+                            @if (!info.GetXmlPropertyBool("genxml/textbox/isdeleted"))
+                            {
+                                <a id="cmdDeleteUser" class="btn btn-warning btn-block" href="javascript:void(0)">@ResourceKey("Clients.cmdDeleteUser")</a>
+                            }
+                            else
+                            {
+                                <a id="cmdRemoveUser" class="btn btn-danger btn-block" href="javascript:void(0)">@ResourceKey("Clients.cmdRemoveUser")</a>
+                                <a id="cmdRestoreUser" class="btn btn-success btn-block" href="javascript:void(0)">@ResourceKey("Clients.cmdRestoreUser")</a>
+                            }
+					    </div>
+					</div>
+					</div>
+
+	<div class="clearfix">
+	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row customervoucher">
+	<div class="col-md-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-search"></i><span>@ResourceKey("General.Voucher")</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"><i class="fa fa-chevron-down"></i>
+					</a><a class="expand-link"><i class="fa fa-expand"></i></a>
+					<a class="close-link"><i class="fa fa-times"></i></a></div>
+				<div class="no-move">
+				</div>
+			</div>
+			<div class="box-content">
+			    <div class="form-horizontal dnnForm">
+			        <div class="col-sm-12">
+			            <div class="form-group form-inline">
+			                <a class="btn btn-primary" id="addvouchercode">@ResourceKey("General.cmdAddButton")</a>
+			                @TextBox(info, "genxml/textbox/txtaddvouchercodeqty", " maxlength='2' class='form-control onedigit text-center' ", "1")
+			            </div>
+
+			            <ul id="clientvouchercodes">
+
+			                @{ 
+                                var nodlist2 = info.XMLDoc.SelectNodes("genxml/vouchercodes/genxml");
+                                var lp2 = 0;
+			                }
+			                @foreach (XmlNode nod in nodlist2)
+			                {
+			                    NBrightInfo nbi = new NBrightInfo();
+			                    nbi.XMLData = nod.OuterXml;
+
+			                    <input id="vouchervalue" type="hidden" value=""/>
+			                    <input id="amountused" type="hidden" value=""/>
+
+			                    <li class="vouchercode form-group">
+			                        <!-- class="modelitem" is needed for JS postback update -->
+
+			                        <div class="col-sm-12 form-horizontal">
+			                            <div class="row">
+			                                <div class="col-sm-2">
+			                                    <label class="control-label">@ResourceKey("General.Code")</label>
+			                                    @TextBox(nbi, "genxml/textbox/coderef_" + lp2, "class='form-control'")
+			                                </div>
+			                                <div class="col-sm-2">
+			                                    <label class="control-label">@ResourceKey("General.Description")</label>
+			                                    @TextBox(nbi, "genxml/textbox/description_" + lp2, "class='form-control'")
+			                                </div>
+			                                <div class="col-sm-2">
+			                                    <label class="control-label">@ResourceKey("Clients.validuntil")</label>
+			                                    @TextBox(nbi, "genxml/textbox/validuntil_" + lp2, "class='form-control' datatype='date'")
+			                                </div>
+			                                <div class="col-sm-1">
+			                                    <label class="control-label">@ResourceKey("General.Amount") (@StoreSettings.Current.Get("currencysymbol"))</label>
+			                                    @TextBox(nbi, "genxml/textbox/amount_" + lp2, "class='form-control'")
+			                                </div>
+			                                <div class="col-sm-2">
+			                                    <label class="control-label">@ResourceKey("Clients.AmountUsed") (@StoreSettings.Current.Get("currencysymbol"))</label>
+			                                    <p class="form-control-static">
+			                                        @nbi.GetXmlProperty("genxml/hidden/amountused")
+			                                    </p>
+			                                </div>
+			                                <div class="col-sm-1">
+			                                    <label class="control-label">@ResourceKey("Clients.VoucherAmount") (@StoreSettings.Current.Get("currencysymbol"))</label>
+			                                    <p class="form-control-static">
+			                                        @nbi.GetXmlProperty("genxml/hidden/vouchervalue")
+			                                    </p>
+			                                </div>
+			                                <div class="col-sm-2"><label class="control-label">&nbsp;</label><br><a class="removevouchercode btn btn-danger input-sm">@ResourceKey("General.cmdRemoveButton")</a>
+			                                </div><!-- class required for ajax -->
+
+			                            </div>
+			                        </div>
+			                    </li>
+			                    lp2 += 1;
+			                }
+
+			            </ul>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row customerdiscount">
+	<div class="col-md-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-search"></i><span>@ResourceKey("General.Discount")</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link"><i class="fa fa-chevron-down"></i>
+					</a><a class="expand-link"><i class="fa fa-expand"></i></a>
+					<a class="close-link"><i class="fa fa-times"></i></a></div>
+				<div class="no-move">
+				</div>
+			</div>
+			<div class="box-content">
+			    <div class="form-horizontal dnnForm">
+			        <div class="col-sm-12">
+			            <div class="form-group form-inline">
+			                <a class="btn btn-primary" id="adddiscountcode">@ResourceKey("General.cmdAddButton")</a>
+                            @TextBox(info, "genxml/textbox/txtadddiscountcodeqty", " maxlength='2' class='form-control onedigit text-center' ", "1")
+			            </div>
+			            <ul id="clientdiscountcodes">
+
+                        @{
+                            var nodlist = info.XMLDoc.SelectNodes("genxml/discountcodes/genxml");
+                            var lp = 0;
+                        }
+
+    	                @foreach (XmlNode nod in nodlist)
+                        {
+                            NBrightInfo nbi = new NBrightInfo();
+                            nbi.XMLData = nod.OuterXml;
+
+                            <li class="discountcode form-group">
+                                <!-- class="discountcode" is needed for JS postback update -->
+
+                                <div class="col-sm-12 form-horizontal">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <label class="control-label">@ResourceKey("General.Code")</label>
+                                            @TextBox(nbi, "genxml/textbox/coderef_9" + lp, "class='form-control'")
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label class="control-label">@ResourceKey("General.Description")</label>
+                                            @TextBox(nbi, "genxml/textbox/description_9" + lp, "class='form-control'")
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label class="control-label">@ResourceKey("Clients.validuntil")</label>
+                                            @TextBox(nbi, "genxml/textbox/validuntil_9" + lp, "class='form-control' datatype='date'")
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label class="control-label">@ResourceKey("General.Discount")&nbsp;%</label>
+                                            @TextBox(nbi, "genxml/textbox/percentage_9" + lp, "class='form-control'")
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <label class="control-label">@ResourceKey("Clients.usageleft")</label>
+                                            @TextBox(nbi, "genxml/textbox/usageleft_9" + lp, "class='form-control'")
+                                        </div>
+                                        <div class="col-sm-2"><label class="control-label">&nbsp;</label><br><a class="removediscountcode btn btn-danger">@ResourceKey("General.cmdRemoveButton")</a>
+                                        </div><!-- class required for ajax -->
+                                    </div>
+                                </div>
+                            </li>
+
+                            lp += 1;
+                        }
+
+			            </ul>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+    }
+    else
+    {
+        <div>ERROR READING CLIENT DATA</div>
+    }
+
+
+                </div>
+

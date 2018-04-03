@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Impostazioni visualizzazione prodotto</value>
+  </data>
+  <data name="lbladvancedsettings.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Avanzato</value>
+  </data>
+  <data name="lblallowzeroprice.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Consenti Zero-Prezzo di acquisto:</value>
+  </data>
+  <data name="lblbasicsettings.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Generale</value>
+  </data>
+  <data name="lblcascaderesults.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Se viene selezionata una categoria principale, verranno visualizzati anche tutti i prodotti nelle sotto categorie.</value>
+  </data>
+  <data name="lblcascaderesults.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Risultati a cascata:</value>
+  </data>
+  <data name="lblcataloguemode.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Modalità di catalogo:</value>
+  </data>
+  <data name="lblcategorydetails.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Mostra dettagli categoria:</value>
+  </data>
+  <data name="lblcurrencyconverter.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Abilita Convertitore di valuta:</value>
+  </data>
+  <data name="lbldefaultcatid.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Categoria predefinita da visualizzare nell'elenco, se nessun altra categoria è selezionata. Deselezionare questa se si utilizza il token "sqlfilter" nel modello header.</value>
+  </data>
+  <data name="lbldefaultcatid.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Categoria di default:</value>
+  </data>
+  <data name="lbldefaultproperty.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Impostare l'elenco predefinito di prodotti con questa proprietà in allegato.</value>
+  </data>
+  <data name="lbldefaultproperty.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Proprietà predefinita per la lista:</value>
+  </data>
+  <data name="lbldetailbody.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Modello da utilizzare come body del dettaglio prodotto.</value>
+  </data>
+  <data name="lbldetailbody.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Dettaglio Body:</value>
+  </data>
+  <data name="lbldetailfooter.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Modello da utilizzare come Footer del dettaglio prodotto.</value>
+  </data>
+  <data name="lbldetailfooter.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Dettaglio Footer:</value>
+  </data>
+  <data name="lbldetailheader.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Modello da utilizzare come Header del dettaglio prodotto.</value>
+  </data>
+  <data name="lbldetailheader.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Dettaglio Header:</value>
+  </data>
+  <data name="lbldetailimages.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Dettaglio Immagini:</value>
+  </data>
+  <data name="lbldetailmoduleref.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Tasti del modulo dettagli per visualizzare il prodotto. Se vuoto, tutti i moduli di visualizzazione prodotto nella pagina potranno visualizzare il dettaglio. Questa viene attivata utilizzando le impostazioni token dell'attributo modkey "nbs:entrylink" token nel template di elenco.</value>
+  </data>
+  <data name="lbldetailmoduleref.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Dettaglio modulo Key:</value>
+  </data>
+  <data name="lbldetailtab.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">La pagina in cui l'utente verrà reindirizzato quando si fa clic sul pulsante "Visualizza Prodotto". Se vuoto viene utilizzata la pagina corrente. Questa viene attivata utilizzando le impostazioni token attributo tabid dei "nbs:entrylink" token nel template di elenco.</value>
+  </data>
+  <data name="lbldetailtab.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Pagina del dettaglio del prodotto:</value>
+  </data>
+  <data name="lbldisplayfeatures.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Funzionalità di visualizzazione:</value>
+  </data>
+  <data name="lblfacebookid.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Facebook numero di ID per la pagina di Insights. Può essere un singolo fb: admin ID o un elenco separato da virgole di ID. Fare riferimento https://developers.facebook.com/docs/insights/</value>
+  </data>
+  <data name="lblfacebookid.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Facebook ID Number:</value>
+  </data>
+  <data name="lblgalleryheight.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Galleria Altezza Immagine in px o 0 per auto:</value>
+  </data>
+  <data name="lblgallerywidth.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Galleria di immagini Larghezza in px o 0 per auto:</value>
+  </data>
+  <data name="lblholidaymode.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Modalità Vacanza:</value>
+  </data>
+  <data name="lblimageheight.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Dettagli Altezza immagine in px o 0 per auto:</value>
+  </data>
+  <data name="lblimagewidth.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Dettagli Immagine Larghezza in px o 0 per auto:</value>
+  </data>
+  <data name="lblitembottommargin.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Lista voce Margine inferiore in px:</value>
+  </data>
+  <data name="lblitemgutter.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Item List Gutter in px:</value>
+  </data>
+  <data name="lblitemheight.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Elenco Articolo Altezza (unità incl o auto):</value>
+  </data>
+  <data name="lblitemimagecontainerheight.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Elenco Articolo Container Altezza immagine (unità incl o auto):</value>
+  </data>
+  <data name="lblitemwidth.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Elenco Larghezza Elemento in px:</value>
+  </data>
+  <data name="lbllightboxspeed.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Velocità di animazione per lightbox</value>
+  </data>
+  <data name="lbllightboxspeed.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">LightBox velocità in ms:</value>
+  </data>
+  <data name="lbllistbody.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Template da utilizzare come Body dell'elenco prodotti, questo viene ripetuto per ciascun prodotto.</value>
+  </data>
+  <data name="lbllistbody.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Body Elenco:</value>
+  </data>
+  <data name="lbllistfooter.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Modello Footer da utilizzare come elenco dei prodotti.</value>
+  </data>
+  <data name="lbllistfooter.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Footer Elenco:</value>
+  </data>
+  <data name="lbllistheader.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Modello Header da utilizzare come elenco dei prodotti.</value>
+  </data>
+  <data name="lbllistheader.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Header Elenco:</value>
+  </data>
+  <data name="lbllistimages.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Immagini Elenco:</value>
+  </data>
+  <data name="lbllistonly.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Solo visualizzazione dell'elenco di visualizzazione per questo modulo, nessun dettaglio viene visualizzato su questo modulo.</value>
+  </data>
+  <data name="lbllistonly.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Solo Elenco:</value>
+  </data>
+  <data name="lblmodelstable.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Mostra i modelli da tavolo:</value>
+  </data>
+  <data name="lblmoduleref.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Modulo chiave univoca. Questo viene utilizzato per identificare questo modulo per altri moduli NBS.</value>
+  </data>
+  <data name="lblmoduleref.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Modulo chiave:</value>
+  </data>
+  <data name="lblnoimageicon.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Icona Segnaposto immagine (fontawesome.io):</value>
+  </data>
+  <data name="lblogobjecttype.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Open Graph Obect type - Normalmente 'website'. Fare riferimento https://developers.facebook.com/docs/reference/opengraph/</value>
+  </data>
+  <data name="lblogobjecttype.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Open Graph Obect Type : </value>
+  </data>
+  <data name="lblpagesize.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Numero di prodotti da visualizzare in ogni pagina.</value>
+  </data>
+  <data name="lblpagesize.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Dimensioni della pagina :</value>
+  </data>
+  <data name="lblplaceholderimage.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Abilita Segnaposto immagine:</value>
+  </data>
+  <data name="lblproductcode.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Mostra Codice / Ref:</value>
+  </data>
+  <data name="lblrelatedimageheight.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Altezza Immagine in px o 0 per auto prodotto correlato:</value>
+  </data>
+  <data name="lblrelatedimages.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Immagini prodotto correlato:</value>
+  </data>
+  <data name="lblrelatedimagewidth.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Immagine relativa Larghezza in px o 0 per auto prodotto correlato:</value>
+  </data>
+  <data name="lblrelateditembottommargin.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Margine inferiore in px prodotto correlato:</value>
+  </data>
+  <data name="lblrelateditemgutter.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Elemento Gutter in px prodotto correlato:</value>
+  </data>
+  <data name="lblrelateditemheight.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Altezza (unità incl o auto) prodotto correlato:</value>
+  </data>
+  <data name="lblrelateditemimagecontainerheight.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Altezza Elemento contenitore immagine (unità incl o auto) prodotto correlato:</value>
+  </data>
+  <data name="lblrelateditemwidth.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Larghezza in px o 0 per auto prodotto correlato:</value>
+  </data>
+  <data name="lblreturnlimit.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Numero massimo di prodotti che verranno visualizzati dal modulo. (zero è senza limite impostato)</value>
+  </data>
+  <data name="lblreturnlimit.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Limite Ritorno Prodotto</value>
+  </data>
+  <data name="lblreturntab.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">La pagina alla quale l'utente viene indirizzato quando viene cliccato il pulsante "Ritorna alla Lista" . Se vuoto viene utilizzata la pagina corrente. Questa viene attivato utilizzando le impostazioni token attributo tabid dei "nbs:returnlink" token nel template del dettaglio.</value>
+  </data>
+  <data name="lblreturntab.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Ritorno Pagina da Dettaglio:</value>
+  </data>
+  <data name="lblshowstock.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Visualizza Magazzino:</value>
+  </data>
+  <data name="lblsocialseodata.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Sociale e SEO:</value>
+  </data>
+  <data name="lblstaticlist.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Liste statiche sempre utilizzare le categorie predefinite, indipendentemente da qualsiasi categoria selezionata. Questi sono usati per visualizzare i prodotti in vetrina o prodotti in promozione.</value>
+  </data>
+  <data name="lblstaticlist.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Elenco statico:</value>
+  </data>
+  <data name="lbltabbedcontent.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Abilita Tabs:</value>
+  </data>
+  <data name="lbltheme.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Nome del tema da utilizzare per questa Lista prodotti.</value>
+  </data>
+  <data name="lbltheme.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Tema :</value>
+  </data>
+  <data name="lblthemesettings.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Impostazioni del tema</value>
+  </data>
+  <data name="lblthumbnailheight.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Altezza Elenco Immagini in px o 0 per auto:</value>
+  </data>
+  <data name="lblthumbnailwidth.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Larghezza Elenco immagini in px o 0 per auto:</value>
+  </data>
+  <data name="lbltwittersite.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Il nome utente Twitter del sito web, compreso il simbolo @. Può essere lo stesso dell'utente Twitter. Fare riferimento https://dev.twitter.com/docs/cards/markup-reference</value>
+  </data>
+  <data name="lbltwittersite.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">@username sito Twitter: </value>
+  </data>
+  <data name="lbltwitteruser.Help" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Il nome utente Twitter, compreso il simbolo @ del poster contenuto. Può essere lo stesso del utente del sito Twitter. Fare riferimento https://dev.twitter.com/docs/cards/markup-reference</value>
+  </data>
+  <data name="lbltwitteruser.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Utente Twitter @username:</value>
+  </data>
+  <data name="lblwishlist.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Abilita Lista dei Desideri:</value>
+  </data>
+  <data name="themehidden.Text" lastModified="2015-11-20 16:03:18">
+    <value xml:space="preserve">Le vecchie Impostazioni del tema sono state disabilitate, aggiornare per attivare nuovo tema.</value>
+  </data>
+</root>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddBill.Text">
+    <value xml:space="preserve">Factureringsadres toevoegen</value>
+  </data>
+  <data name="addnewaddress.Text">
+    <value xml:space="preserve">Nieuw adres toevoegen</value>
+  </data>
+  <data name="AddShip.Text">
+    <value xml:space="preserve">Verzendadres toevoegen</value>
+  </data>
+  <data name="Back.Text">
+    <value xml:space="preserve">Terug</value>
+  </data>
+  <data name="BillingAddress.Text">
+    <value xml:space="preserve">Factuuradres</value>
+  </data>
+  <data name="cartempty.Text">
+    <value xml:space="preserve">Geen producten in winkelwagen</value>
+  </data>
+  <data name="chknews.Text">
+    <value xml:space="preserve">Ontvang onze nieuwsbrief</value>
+  </data>
+  <data name="chkterms.Text">
+    <value xml:space="preserve">Ik heb gelezen en ga akkoord met de voorwaarden</value>
+  </data>
+  <data name="cmdAddItem.Text">
+    <value xml:space="preserve">&lt;i class='fa fa-plus-square'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdClearCart.confirm">
+    <value xml:space="preserve">Alle items verwijderen en bestelling annuleren?</value>
+  </data>
+  <data name="cmdClearCart.Text">
+    <value xml:space="preserve">Alles verwijderen</value>
+  </data>
+  <data name="cmdDeleteItem.Text">
+    <value xml:space="preserve">&lt;i class='fa fa-times-circle fa-2x'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdRemoveItem.Text">
+    <value xml:space="preserve">&lt;i class='fa fa-minus-square'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="collectiontimes.Text">
+    <value xml:space="preserve">Collectie keer</value>
+  </data>
+  <data name="confirm.Text">
+    <value xml:space="preserve">Bevestigen</value>
+  </data>
+  <data name="ForCollection.Text">
+    <value xml:space="preserve">Voor collectie</value>
+  </data>
+  <data name="ManageOrders.Text">
+    <value xml:space="preserve">Bestellingen beheren</value>
+  </data>
+  <data name="Next.Text">
+    <value xml:space="preserve">Volgende</value>
+  </data>
+  <data name="Order.Text">
+    <value xml:space="preserve">Bestelling plaatsen</value>
+  </data>
+  <data name="PaymentComplete.Text">
+    <value xml:space="preserve">Betaling voltooid</value>
+  </data>
+  <data name="PaymentFailed.Text">
+    <value xml:space="preserve">Betaling mislukt</value>
+  </data>
+  <data name="Previous.Text" lastModified="2014-11-29 14:00:31">
+    <value xml:space="preserve">Vorige</value>
+  </data>
+  <data name="ProcessingDiv.Text">
+    <value xml:space="preserve">&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="returntostore.Text">
+    <value xml:space="preserve">Terug naar winkel</value>
+  </data>
+  <data name="SaveAddress.Text">
+    <value xml:space="preserve">Adres opslaan</value>
+  </data>
+  <data name="SaveAddress.Title">
+    <value xml:space="preserve">Adres aan adresboek opslaan</value>
+  </data>
+  <data name="selectaddress.Text">
+    <value xml:space="preserve">Adresboek</value>
+  </data>
+  <data name="SelectBill.Text">
+    <value xml:space="preserve">Selecteer factuuradres</value>
+  </data>
+  <data name="SelectShip.Text">
+    <value xml:space="preserve">Selecteer verzendadres</value>
+  </data>
+  <data name="ShippingAddress.Text">
+    <value xml:space="preserve">Verzendadres</value>
+  </data>
+  <data name="shippingoption1.data">
+    <value xml:space="preserve">Verzenden naar het factuuradres;Verzenden naar een ander adres; ik zal verzamelen van winkel</value>
+  </data>
+  <data name="shippingoption1.datavalue">
+    <value xml:space="preserve">1;2;3</value>
+  </data>
+  <data name="shippingoption2.data">
+    <value xml:space="preserve">Factuuradres gebruiken;Geef verzendadres op</value>
+  </data>
+  <data name="shippingoption2.datavalue">
+    <value xml:space="preserve">1;2</value>
+  </data>
+  <data name="Totaltopay.Text">
+    <value xml:space="preserve">Totaal te betalen</value>
+  </data>
+  <data name="txtitemslower.Text">
+    <value xml:space="preserve">artikel(en)</value>
+  </data>
+  <data name="txtItems.Text">
+    <value xml:space="preserve">Artikel(en)</value>
+  </data>
+  <data name="UpdateCart.Text">
+    <value xml:space="preserve">Opnieuw berekenen</value>
+  </data>
+  <data name="UseBillingAddress.Text">
+    <value xml:space="preserve">Factuuradres gebruiken</value>
+  </data>
+  <data name="ViewOrder.Text">
+    <value xml:space="preserve">Bestelling bekijken</value>
+  </data>
+  <data name="addressmessage.Text">
+    <value>Please ensure your address is completed correctly, otherwise your order may be delayed.</value>
+  </data>
+  <data name="CartstepsAddresses.Text">
+    <value>Adressen</value>
+  </data>
+  <data name="CartstepsConfirm.Text">
+    <value>Bevestiging</value>
+  </data>
+  <data name="CartstepsPayment.Text">
+    <value>Betaling</value>
+  </data>
+  <data name="CartstepsProcess.Text">
+    <value>Bestelproces</value>
+  </data>
+  <data name="CartstepsRecap.Text">
+    <value>Winkelwagen</value>
+  </data>
+  <data name="CartstepsShipping.Text">
+    <value>Samenvatting</value>
+  </data>
+  <data name="lblcollectfromstore.Help">
+    <value>Allow a collect from store option</value>
+  </data>
+  <data name="lblcollectfromstore.Text">
+    <value>Ophalen in de winkel</value>
+  </data>
+  <data name="PlaceOrder.Text">
+    <value>Order</value>
+  </data>
+  <data name="shippingoption1data.Text">
+    <value>Verstuur naar factuuradres,Verstuur naar ander adres,Ophalen bij de winkel</value>
+  </data>
+  <data name="shippingoption1datavalue.Text">
+    <value>1,2,3</value>
+  </data>
+  <data name="shippingoption2data.Text">
+    <value>Gebruik factuuradres,Geef verzendadres op</value>
+  </data>
+  <data name="shippingoption2datavalue.Text">
+    <value>1,2</value>
+  </data>
+  <data name="YourBasket.Text">
+    <value>Jouw winkelwagen</value>
+  </data>
+</root>

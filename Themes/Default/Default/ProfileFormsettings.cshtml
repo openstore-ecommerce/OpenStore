@@ -1,0 +1,40 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+    @using System.Linq
+    @using System.Web.UI.HtmlControls
+    @using NBrightDNN
+
+    @AddMetaData("resourcepath","/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+    @{
+    var info = (NBrightInfo)Model.List.First();
+    }
+
+    <div id="dnnPanel-ArchivesTemplateSettings">
+        <h2 class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded">@ResourceKey("ProductViewSettings.lblbasicsettings")</a></h2>
+        <fieldset>
+            <div class="dnnFormItem">
+                @DnnLabel("lblinputform", "ProfileFormSettings.lblinputform")
+                @NBrightTextBox(info, "genxml/textbox/razortemplate", "", "ProfileForm.cshtml")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lblemailtemplate", "ProfileFormSettings.lblemailtemplate")
+                @NBrightTextBox(info, "genxml/textbox/emailtemplate", "", "profileformemail.html")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lblemailregisteredtemplate", "ProfileFormSettings.lblemailregisteredtemplate")
+                @NBrightTextBox(info, "genxml/textbox/emailregisteredtemplate", "", "profileregisteredemail.html")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lblemailregisteredclienttemplate", "ProfileFormSettings.lblemailregisteredclienttemplate")
+                @NBrightTextBox(info, "genxml/textbox/emailregisteredclienttemplate", "", "profileregisteredemail.html")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lblclientrole", "ProfileFormSettings.lblclientrole")
+                @CheckBox(info, "genxml/checkbox/clientrole","")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lblredirecttab", "ProfileFormSettings.lblredirecttab")
+                @TabSelectListOnTabId(info, "genxml/dropdownlist/ddlredirecttabid")@info.GetXmlProperty("genxml/dropdownlist/ddlredirecttabid")
+            </div>
+        </fieldset>
+    </div>

@@ -1,0 +1,36 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq;
+@using DotNetNuke.Common;
+@using DotNetNuke.Entities.Users;
+@using NBrightCore;
+@using NBrightCore.common;
+@using NBrightDNN;
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+// assign Model, so we can resolve var in VS
+var info = (NBrightInfo)Model.List.First();
+}
+
+<!-- Client Menu -->
+@RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Default\\Default\\ClientMenu.cshtml", Model)
+
+<div class="nbs myprofile">
+
+        <!-- Welcome Message -->
+        <h1>@ResourceKey("Clients.ClientmenuTitle")</h1>
+        <p>@ResourceKey("Clients.ClientmenuManage")</p>
+
+        <h3>@ResourceKey("Clients.lblUserName")</h3>
+
+        <div class="dnnForm">
+          <div class="dnnFormItem">
+            @NBrightTextBox(info, "genxml/textbox/email", "name='profileemail' disabled='disabled' type='email' datatype='email'")
+          </div>
+        </div>
+
+</div>
+
+<div class="clearfix"></div>

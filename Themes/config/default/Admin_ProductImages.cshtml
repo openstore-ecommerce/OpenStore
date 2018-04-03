@@ -1,0 +1,50 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+    var prdData = new ProductData(info.ItemID, info.PortalId, info.Lang);
+}
+
+@{
+    var lp3 = 1;
+}
+@foreach (var nbiImg in prdData.Imgs)
+{
+
+    <li class="imageitem form-group">
+        <a class="sortelementUp"><i class="fa fa-caret-left fa-2x fa-fw"></i></a>
+        <a class="sortelementDown"><i class="fa fa-caret-right fa-2x fa-fw"></i></a>
+
+        <input id="imageref" type="hidden" update="save" value="@nbiImg.GetXmlProperty("genxml/hidden/imageref")" />
+        <input id="imageurl" type="hidden" update="save" value="@nbiImg.GetXmlProperty("genxml/hidden/imageurl")" />
+        <input id="imagepath" type="hidden" update="save" value="@nbiImg.GetXmlProperty("genxml/hidden/imagepath")" />
+        <input id="fimageurl" type="hidden" update="lang" value="@nbiImg.GetXmlProperty("genxml/lang/genxml/hidden/fimageurl")" />
+        <input id="fimagepath" type="hidden" update="lang" value="@nbiImg.GetXmlProperty("genxml/lang/genxml/hidden/fimagepath")" />
+        <input id="fimageref" type="hidden" update="lang" value="@nbiImg.GetXmlProperty("genxml/lang/genxml/hidden/fimageref")" />
+        
+        <div class="col-sm-12 form-horizontal">
+            <div class="row">
+                <div class="col-md-12 imagewrapper">
+                    <img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=200&h=0&src=@nbiImg.GetXmlProperty(" genxml/hidden/imageurl")" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @TextBox(nbiImg, "genxml/lang/genxml/textbox/txtimagedesc_" + lp3, "class='form-control input-sm' maxlength='250' ", "")@LangFlag(info.Lang)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6">@CheckBox(nbiImg, "genxml/checkbox/chkhidden", "")<label class="control-label">@ResourceKey("General.Hidden")</label></div>
+                <div class="col-xs-6 text-right"><a class="removeimage">@ResourceKey("General.cmdRemoveIcon")</a></div>
+            </div>
+        </div>
+    </li>
+    lp3 += 1;
+}
+

@@ -1,0 +1,24 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Web
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+
+<div class="NBrightPagingDiv">
+    <ul>
+        @foreach (NBrightInfo info in Model.List)
+        {
+            var cssClass = "NBrightNormalPg";
+            if (info.GetXmlPropertyBool("genxml/currentpage"))
+            {
+                cssClass = "NBrightSelectPg";
+            }
+            <li class="@cssClass">
+                <a class="cmdPg ajaxcatmenu" href="?page=@info.GetXmlProperty("genxml/pagenumber")" pagenumber="@info.GetXmlProperty("genxml/pagenumber")">@info.GetXmlProperty("genxml/text")</a>
+            </li>
+        }
+    </ul>
+</div>
