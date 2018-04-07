@@ -105,7 +105,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public static string currencyculturecode = "currencyculturecode";
         public static string merchantculturecode = "merchantculturecode";
         public static string bonoimageicon = "bonoimageicon";
-        public static string friendlyurlids = "friendlyurlids";
         public static string alloweditorder = "alloweditorder";
         public static string shareproducts = "shareproducts";
         public static string sharecategories = "sharecategories";

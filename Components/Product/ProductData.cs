@@ -2175,19 +2175,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         private void SetGuidKey()
         {
             if (DataRecord.GetXmlProperty("genxml/importref") == "") DataRecord.SetXmlProperty("genxml/importref", Utils.GetUniqueKey(10).ToLower());
-
-            if (_storeSettings.GetBool(StoreSettingKeys.friendlyurlids))
-            {
-                var refcode = DataRecord.GetXmlProperty("genxml/textbox/txtproductref").Trim();
-                if (refcode != "")
-                    DataRecord.GUIDKey = GetUniqueGuidKey(DataRecord.ItemID, Utils.UrlFriendly(refcode)).ToLower();
-                else
-                    DataRecord.GUIDKey = DataRecord.GetXmlProperty("genxml/importref");
-            }
-            else
-            {
-                DataRecord.GUIDKey = DataRecord.GetXmlProperty("genxml/importref");
-            }
+            DataRecord.GUIDKey = DataRecord.GetXmlProperty("genxml/importref");
         }
 
         private string GetUniqueGuidKey(int productId, string newGUIDKey)

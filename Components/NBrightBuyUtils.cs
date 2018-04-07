@@ -196,7 +196,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var cachekey = "entryurl*" + entryid + "*" + catid + "*" + catref + "*" + modulekey + "*" + rdTabid + "*" + Utils.GetCurrentCulture();
             var urldata = "";
             var chacheData = Utils.GetCache(cachekey);
-            if (chacheData != null) return (string)chacheData;
+            if (chacheData != null) return (string) chacheData;
 
 
             if (objTabInfo.TabID != rdTabid)
@@ -217,65 +217,31 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             var strurl = "~/Default.aspx?tabid=" + rdTabid + rdModId;
 
-            if (StoreSettings.Current.GetBool(StoreSettingKeys.friendlyurlids))
+            if (Utils.IsNumeric(catid))
             {
-                if (Utils.IsNumeric(catid))
-                {
-                    var catData = CategoryUtils.GetCategoryData(catid, Utils.GetCurrentCulture());
-                    if (!strurl.EndsWith("?")) strurl += "&";
-                    if (catData.DataLangRecord != null) strurl += "catref=" + catData.DataLangRecord.GUIDKey;
-                }
-                if (catref != "")
-                {
-                    if (!strurl.EndsWith("?")) strurl += "&";
-                    strurl += "catref=" + catref;
-                }
-                if (Utils.IsNumeric(entryid))
+                if (!strurl.EndsWith("?")) strurl += "&";
+                strurl += "catid=" + catid;
+            }
+
+            if (Utils.IsNumeric(entryid))
+            {
+                if (!strurl.Contains("catid="))
                 {
                     var prdData = ProductUtils.GetProductData(Convert.ToInt32(entryid), Utils.GetCurrentCulture());
-                    if (!strurl.Contains("catref="))
+                    var defcat = prdData.GetDefaultCategory();
+                    if (defcat != null && defcat.categoryid > 0 && !strurl.EndsWith("?"))
                     {
-                        var defcat = prdData.GetDefaultCategory();
-                        if (defcat != null && defcat.categoryrefGUIDKey != "" && !strurl.EndsWith("?"))
-                        {
-                            strurl += "&";
-                            strurl += "catref=" + defcat.categoryrefGUIDKey;
-                        }
+                        strurl += "&";
+                        strurl += "catid=" + defcat.categoryid;
                     }
-                    if (!strurl.EndsWith("?")) strurl += "&";
-                    strurl += "ref=" + prdData.DataRecord.GUIDKey;
-                    seoname = prdData.SEOName;
-                    seoname = Utils.UrlFriendly(seoname);
                 }
+                if (!strurl.EndsWith("?")) strurl += "&";
+                strurl += "eid=" + entryid;
             }
-            else
-            {
-                if (Utils.IsNumeric(catid))
-                {
-                    if (!strurl.EndsWith("?")) strurl += "&";
-                    strurl += "catid=" + catid;
-                }
+            seoname = Utils.UrlFriendly(seoname);
 
-                if (Utils.IsNumeric(entryid))
-                {
-                    if (!strurl.Contains("catid="))
-                    {
-                        var prdData = ProductUtils.GetProductData(Convert.ToInt32(entryid), Utils.GetCurrentCulture());
-                        var defcat = prdData.GetDefaultCategory();
-                        if (defcat != null && defcat.categoryid > 0 && !strurl.EndsWith("?"))
-                        {
-                            strurl += "&";
-                            strurl += "catid=" + defcat.categoryid;
-                        }
-                    }
-                    if (!strurl.EndsWith("?")) strurl += "&";
-                    strurl += "eid=" + entryid;
-                }
-                seoname = Utils.UrlFriendly(seoname);
-            }
-            
             urldata = DotNetNuke.Services.Url.FriendlyUrl.FriendlyUrlProvider.Instance().FriendlyUrl(objTabInfo, strurl, seoname);
-            
+
             Utils.SetCache(cachekey, urldata);
 
             return urldata;

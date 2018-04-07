@@ -24,9 +24,6 @@
 }
 
 <div class="treemenu">
-
-<div class="h2-headline">Catalogue</div>
-
     @if (Model.GetSettingBool("activateajax"))
     {
         @CategoryTreeMenu(Model.GetSettingInt("parentcatid"), "CategoryMenuLinkAjax.cshtml", "/DesktopModules/NBright/NBrightBuy", Model.GetSetting("themefolder"), catid, Utils.GetCurrentCulture(), tabid)
@@ -41,7 +38,7 @@
 $(document).ready(function() {
 	// Initialize navgoco with default options
 	$(".nbrightbuy_catmenu").navgoco({
-		caretHtml: '',
+	    caretHtml: '<i class="fa fa-chevron-circle-down"></i>',
 		accordion: true, // Because the script requires lower case
 		openClass: 'open',
 		save: false,

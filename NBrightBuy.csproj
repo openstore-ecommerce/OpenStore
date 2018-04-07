@@ -1042,11 +1042,6 @@
     <Content Include="Themes\config\default\grouplistheader.html" />
     <Content Include="Themes\config\default\menufooter.html" />
     <Content Include="Themes\config\default\menuheader.html" />
-    <Content Include="Themes\config\default\pluginsdetail.html" />
-    <Content Include="Themes\config\default\pluginsdetailfooter.html" />
-    <Content Include="Themes\config\default\pluginsdetailheader.html" />
-    <Content Include="Themes\config\default\pluginsfooter.html" />
-    <Content Include="Themes\config\default\pluginsheader.html" />
     <None Include="Themes\config\default\Admin_Orders_head.cshtml" />
     <None Include="Themes\config\default\OS_ProductDisplayAjaxsettings.cshtml" />
     <None Include="Themes\config\default\OS_ItemListsettings.cshtml" />

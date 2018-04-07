@@ -186,15 +186,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         if (ctrl != "") ctrl = "&ctrl=" + ctrl;
                         var language = categorylangauge;
                         if (language == "") language = Utils.GetCurrentCulture();
-                        if (StoreSettings.Current.GetBool(StoreSettingKeys.friendlyurlids))
-                        {
-                            url = DotNetNuke.Services.Url.FriendlyUrl.FriendlyUrlProvider.Instance().FriendlyUrl(tab, "~/Default.aspx?TabId=" + tab.TabID.ToString("") + "&catref=" + Utils.UrlFriendly(groupCategoryInfo.categoryrefGUIDKey) + ctrl + "&language=" + language);
-                        }
-                        else
-                        {
-                            // check if we are calling from BO with a ctrl param
-                            url = DotNetNuke.Services.Url.FriendlyUrl.FriendlyUrlProvider.Instance().FriendlyUrl(tab, "~/Default.aspx?TabId=" + tab.TabID.ToString("") + "&catid=" + groupCategoryInfo.categoryid.ToString("") + ctrl + "&language=" + language, newBaseName + ".aspx");
-                        }
+                        // check if we are calling from BO with a ctrl param
+                        url = DotNetNuke.Services.Url.FriendlyUrl.FriendlyUrlProvider.Instance().FriendlyUrl(tab, "~/Default.aspx?TabId=" + tab.TabID.ToString("") + "&catid=" + groupCategoryInfo.categoryid.ToString("") + ctrl + "&language=" + language, newBaseName + ".aspx");
 
                         url = url.Replace("[catid]/", ""); // remove the injection token from the url, if still there. (Should be removed redirected to new page)
             
