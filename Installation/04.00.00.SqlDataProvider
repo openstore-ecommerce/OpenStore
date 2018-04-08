@@ -252,7 +252,7 @@ SET @rtndata +=  (select count(itemid) as [status11] FROM {databaseOwner}[{objec
 SET @rtndata +=  (select count(itemid) as [status12] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '120' FOR XML RAW , ELEMENTS)
 	
 
-SET @getdata =  (SELECT [ItemId] as [itemid]
+SET @getdata =  (SELECT top(10) [ItemId] as [itemid]
       ,[PortalId] as [portalid]
       ,[ModuleId] as [moduleid]
       ,[TypeCode] as [typecode]

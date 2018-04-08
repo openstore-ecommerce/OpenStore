@@ -525,12 +525,16 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var productData = new ProductData(productid, lang);
 	        var productImgFolder = StoreSettings.Current.FolderImagesMapPath.TrimEnd('\\') + "\\" + productData.DataRecord.ItemID + "\\" + lang;
             Utils.CreateFolder(productImgFolder);
+
+	        foreach (var i in productData.Imgs)
+	        {
+	            //becuase of updates to sort order and alt text we NEED to delete the existing files.
+	            Utils.DeleteSysFile(i.GetXmlProperty("genxml/lang/genxml/hidden/fimagepath"));
+	        }
+
 	        var lp = 1;
 	        foreach (var i in productData.Imgs)
 	        {
-                //becuase of updates to sort order and alt text we NEED to delete the existing files.
-                Utils.DeleteSysFile(i.GetXmlProperty("genxml/lang/genxml/hidden/fimagepath"));
-
                 // use imageref to link langauges
                 var imageref = i.GetXmlProperty("genxml/hidden/imageref");
 	            if (imageref == "")
@@ -603,7 +607,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     var strXml = "";
                     var pData = new ProductData(productid, l);
                     var lp3 = 1;
-                    foreach (var langimg in productData.Imgs)
+                    foreach (var langimg in pData.Imgs)
                     {
                         var imgref = langimg.GetXmlProperty("genxml/hidden/imageref");
                         var strNode = pData.DataLangRecord.GetXmlNode("genxml/imgs/genxml[./hidden/fimageref='" + imgref + "']");

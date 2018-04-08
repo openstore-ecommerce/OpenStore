@@ -1148,8 +1148,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 foreach (var lang in enabledlanguages)
                 {
                     var prodData = ProductUtils.GetProductData(p.ItemID, lang.Key, true, "PRD");
-                    ProductUtils.CreateFriendlyImages(p.ItemID, lang.Key);
                     errcount += prodData.Validate();
+                }
+                foreach (var lang in enabledlanguages)
+                {
+                    // do 2 loops, so we dont overwrite data.
+                    ProductUtils.CreateFriendlyImages(p.ItemID, lang.Key);
                 }
             }
 
