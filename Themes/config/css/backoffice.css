@@ -77,7 +77,7 @@ a.show-sidebar {margin-top:15px;}
 .ui-accordion-header.ui-state-active {color:#2b2b2b;}
 
 /* Branding */
-.backoffice-logo {height:50px;padding:0 15px;}
+.backoffice-logo {height:50px;padding:0 15px;background:#00a3de;}
 .backoffice-logo img {margin:9px 0;}
 .nbstore .backoffice-logo {background:#00a3de;}
 .amylis .backoffice-logo {background:#bbcf1f;}
