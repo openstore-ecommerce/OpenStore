@@ -597,6 +597,9 @@
     <Content Include="Themes\ClassicAjax\js\jquery.navgoco.js" />
     <Content Include="Themes\ClassicAjax\js\jquery.navgoco.min.js" />
     <Content Include="Themes\Default\js\product.js" />
+    <None Include="BuildScripts\build.bat" />
+    <None Include="BuildScripts\ModulePackage.targets" />
+    <None Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
     <None Include="Installation\04.00.00.SqlDataProvider" />
     <None Include="Installation\Uninstall.SqlDataProvider" />
     <None Include="README.md" />
@@ -1674,7 +1677,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
+    <Error Condition="!Exists('..\NBrightBooking\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\NBrightBooking\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
   </Target>
+  <Import Project="..\NBrightBooking\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\NBrightBooking\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

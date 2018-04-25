@@ -1180,7 +1180,7 @@ BEGIN
 	IF EXISTS(SELECT * FROM DELETED)
 	BEGIN
 		DECLARE deleted_cursor CURSOR LOCAL FOR
-		SELECT ItemId,Lang,TypeCode,ParentItemId FROM DELETED
+		SELECT ItemId,Lang,TypeCode,ParentItemId FROM DELETED where TypeCode = 'PRD'
 
 		OPEN deleted_cursor
 		FETCH NEXT FROM deleted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
@@ -1208,7 +1208,7 @@ BEGIN
 	END
 
 	DECLARE inserted_cursor CURSOR LOCAL FOR
-	SELECT ItemId, Lang, TypeCode, ParentItemId FROM inserted 
+	SELECT ItemId, Lang, TypeCode, ParentItemId FROM inserted where TypeCode = 'PRD'
 
 	OPEN inserted_cursor
 	FETCH NEXT FROM inserted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
