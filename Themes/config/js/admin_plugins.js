@@ -164,6 +164,9 @@
                 $('.actionbuttonwrapper').hide();
                 $('.editlanguage').hide();
                 $('.processing').show();
+                $('#ctrl').val(function () {
+                    return this.value.toLowerCase();
+                })
                 //move data to update postback field
                 $('#xmlupdatemodeldata').val($.fn.genxmlajaxitems('#pluginsmodels', '.modelitem'));
                 nbxget('plugins_admin_save', '#pluginsdatasection', '#actionreturn');

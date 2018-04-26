@@ -65,7 +65,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
         public static AjaxInterface Instance(String ctrlkey)
 		{
             if (_providerList.ContainsKey(ctrlkey)) return _providerList[ctrlkey];
-            if (_providerList.Count > 0) return _providerList.Values.First();
+            CreateProvider(); // plugin not found, so reload and search again.
+            if (_providerList.ContainsKey(ctrlkey)) return _providerList[ctrlkey];
             return null;
 		}
 
