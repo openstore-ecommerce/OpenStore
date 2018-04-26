@@ -73,7 +73,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 // menuplugin.xml exists, which is legacy data for this portal.
                 info.XMLData = menuplugin;
                 pluginList = CalcPortalPluginList(info);
-                CreateDBrecords(pluginList, PortalSettings.Current.PortalId);
+                if (pluginList.Any())
+                {
+                    CreateDBrecords(pluginList, PortalSettings.Current.PortalId);
+                }
+                else
+                {
+                    // we may not have a menuplugin.xml, this only exists on upgrade.
+                    CopySystemPluginsToPortal();
+                }
             }
             else
             {

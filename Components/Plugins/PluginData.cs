@@ -117,7 +117,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 {
                     _pluginList = (List<NBrightInfo>)pList;
                 }
-                else
+                // if we have zero plugins, try and reload 
+                if (pList == null || !_pluginList.Any())
                 {
                     _pluginList = PluginUtils.GetPluginList();
                     NBrightBuyUtils.SetCache(_cachekey, _pluginList);
@@ -127,6 +128,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 _pluginList = PluginUtils.GetPluginList();
             }
+
         }
 
         #region "base methods"
