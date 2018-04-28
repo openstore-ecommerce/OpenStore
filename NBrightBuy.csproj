@@ -602,6 +602,7 @@
     <None Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
     <None Include="Installation\04.00.00.SqlDataProvider" />
     <None Include="Installation\Uninstall.SqlDataProvider" />
+    <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="Themes\ClassicAjax\css\images\Thumbs.db" />
     <None Include="Themes\ClassicAjax\Default\FrontOfficePageBody.cshtml" />
@@ -686,7 +687,6 @@
     <None Include="Themes\config\default\OS_CategoryMenuSettings.cshtml" />
     <None Include="Themes\config\default\OS_Checkoutsettings.cshtml" />
     <None Include="app.config" />
-    <None Include="packages.config" />
     <None Include="Plugins\menu.config" />
     <Content Include="Themes\config\css\backoffice.css" />
     <Content Include="Themes\config\css\global.css" />
@@ -1540,7 +1540,9 @@
     <EmbeddedResource Include="App_LocalResources\Plugins.ascx.fr-FR.resx" />
     <EmbeddedResource Include="App_LocalResources\plugins.ascx.it-IT.resx" />
     <EmbeddedResource Include="App_LocalResources\plugins.ascx.nl-NL.resx" />
-    <EmbeddedResource Include="App_LocalResources\Plugins.ascx.resx" />
+    <EmbeddedResource Include="App_LocalResources\Plugins.ascx.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\ProductSearch.ascx.fr-FR.resx" />
     <EmbeddedResource Include="App_LocalResources\productsearch.ascx.it-IT.resx" />
     <EmbeddedResource Include="App_LocalResources\ProductSearch.ascx.nl-NL.resx" />
@@ -1671,15 +1673,13 @@
   <Import Project="BuildScripts\ModulePackage.Targets" />
   <Target Name="AfterBuild" DependsOnTargets="PackageAndDeploy">
   </Target>
-  <Import Project="packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
-    <Error Condition="!Exists('..\NBrightBooking\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\NBrightBooking\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
   </Target>
-  <Import Project="..\NBrightBooking\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('..\NBrightBooking\packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
+  <Import Project="packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

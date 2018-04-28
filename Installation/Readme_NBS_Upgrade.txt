@@ -5,7 +5,7 @@ ONLY UPGRADE IF YOU NEED TOO.
 
 To those that don't know, Open-Store is a upgrade to an e-commerce called NBStore.
 
-If you run NBS and want to upgrade to OpenStore, this is posisble but not as simple as installing the new module.
+If you run NBS and want to upgrade to OpenStore, this is possible but not as simple as installing the new module.
 Backward compatibly is broken in some areas.  These areas need special attention on upgrade.
 
 MAKE A BACKUP OF THE LIVE SYSTEM AND RESTORE AS A TEST SYSTEM.  
@@ -26,12 +26,12 @@ Export from NBS and import into Open Store, the import and export of data is com
 Method 2
 --------
 
-If method 1 is impossible, install the latest verison of Open Source.  
+If method 1 is impossible, install the latest version of Open Source.  
 
-Becuase the module names and templates have changed, you will get some issues with modules.
+Because the module names and templates have changed, you will get some issues with modules.
 You should add the new module "OS*" with settings and delete the old modules from the page (NBS*).
 
-(Optional) After replacing all old NBS moodules you can remove the old NBS* module deinfinitions from DNN, do NOT remove the files.
+(Optional) After replacing all old NBS modules you can remove the old NBS* module definitions from DNN, do NOT remove the files.
 IMPORTANT: Remove the "Uninstall.SqlDataProvider" from the "\DesktopModules\NBright\NBrightBuy" folder. Before you remove the definition.
 IF YOU DO NOT REOMOVE "Uninstall.SqlDataProvider" THEN IT WILL DELETE THE OPEN STORE DATABASE TABLES.
 
