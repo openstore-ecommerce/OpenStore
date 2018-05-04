@@ -70,22 +70,22 @@
 
         $("input[id*='searchtext']").keyup(function (event) {
             if (event.which == 13) {
-                //var length = this.value.length;
-                //if (length >= 2 && length <= 99) {
+                var length = this.value.length;
+                if (length >= 2 && length <= 99) {
                     $('.processing').show();
                     nbxget('dosearch', '.nbssearchinput', '.searchreturn');
-                //}
+                }
             }
             return false;
         });
 
         $('.searchpostbacklink').click(function (event) {
             var text = $("input[id*='searchtext']").val();
-            //var length = text.length;
-            //if (length >= 2 && length <= 99) {
+            var length = text.length;
+            if (length >= 2 && length <= 99) {
                 $('.processing').show();
                 nbxget('dosearch', '.nbssearchinput', '.searchreturn');
-            //}
+            }
         });
 
         $('.searchreturn').change(function (event) {

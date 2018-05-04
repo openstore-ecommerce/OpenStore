@@ -58,6 +58,10 @@
 
         *@
 
+        $("form").submit(function (e) {
+            e.preventDefault();
+        });
+
         $("input[id*='searchtext']").keyup(function (event) {
             if (event.which == 13) {
                 var length = this.value.length;

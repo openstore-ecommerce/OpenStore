@@ -14,7 +14,7 @@ function nbxget(cmd, selformdiv, target, selformitemdiv, appendreturn)
     var request = $.ajax({ type: "POST",
 		url: cmdupdate,
 		cache: false,
-        timeout: 50000,
+        timeout: 90000,
 		data: { inputxml: encodeURI(values) }		
 	});
 
@@ -78,7 +78,7 @@ function nbxget(cmd, selformdiv, target, selformitemdiv, appendreturn)
 	        type: "POST",
 	        url: cmdupdate,
 	        cache: false,
-	        timeout: 50000
+	        timeout: 90000
 	    });
 
 	    request.done(function (data) {
@@ -113,7 +113,7 @@ function nbxget(cmd, selformdiv, target, selformitemdiv, appendreturn)
 	        type: "POST",
 	        url: cmdupdate,
 	        cache: false,
-	        timeout: 50000,
+	        timeout: 90000,
 	        data: { inputxml: encodeURI(values) }
 	    });
 

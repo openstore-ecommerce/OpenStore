@@ -7,8 +7,7 @@
 
 @{
     // assign Model, so we can resolve var in VS
-    var order = (OrderData)Model.List.First();
-    var info = order.PurchaseInfo;
+    var info = (NBrightInfo)Model.List.First();
 }
 
 @if (Model.GetSettingBool("carttitle"))

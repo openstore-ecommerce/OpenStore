@@ -31,12 +31,11 @@ If method 1 is impossible, install the latest version of Open Source.
 Because the module names and templates have changed, you will get some issues with modules.
 You should add the new module "OS*" with settings and delete the old modules from the page (NBS*).
 
+In BO>Admin>Settings change the default template folder to "Default", for both display and emails.
+
 (Optional) After replacing all old NBS modules you can remove the old NBS* module definitions from DNN, do NOT remove the files.
 IMPORTANT: Remove the "Uninstall.SqlDataProvider" from the "\DesktopModules\NBright\NBrightBuy" folder. Before you remove the definition.
 IF YOU DO NOT REOMOVE "Uninstall.SqlDataProvider" THEN IT WILL DELETE THE OPEN STORE DATABASE TABLES.
 
 Check the BO>Admin>Plugins have the correct data, the plugin method has altered, it's been designed to upgrade, but you should check.
-
-
-
 

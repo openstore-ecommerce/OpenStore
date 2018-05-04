@@ -119,7 +119,7 @@ namespace Nevoweb.DNN.NBrightBuy
                         orderData.Save();
                         if (strOut == "")
                         {
-                            strOut = NBrightBuyUtils.RazorTemplRender("payment_fail.cshtml", 0, "", orderData, ControlPath, ThemeFolder, Utils.GetCurrentCulture(), StoreSettings.Current.Settings());
+                            strOut = NBrightBuyUtils.RazorTemplRender("payment_fail.cshtml", 0, "", orderData.PurchaseInfo, ControlPath, "config", Utils.GetCurrentCulture(), StoreSettings.Current.Settings());
                         }
                     }
                     else
@@ -128,7 +128,7 @@ namespace Nevoweb.DNN.NBrightBuy
                         orderData.PaymentOk("050");
                         if (strOut == "")
                         {
-                            strOut = NBrightBuyUtils.RazorTemplRender("payment_ok.cshtml", 0, "", orderData, ControlPath, ThemeFolder, Utils.GetCurrentCulture(), StoreSettings.Current.Settings());
+                            strOut = NBrightBuyUtils.RazorTemplRender("payment_ok.cshtml", 0, "", orderData.PurchaseInfo, ControlPath, "config", Utils.GetCurrentCulture(), StoreSettings.Current.Settings());
                         }
                     }
                 }
