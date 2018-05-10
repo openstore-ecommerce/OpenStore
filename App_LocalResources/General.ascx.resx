@@ -418,7 +418,7 @@
     <value>Save</value>
   </data>
   <data name="cmdSaveIcon.Text" xml:space="preserve">
-    <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-2x"&gt;&lt;/i&gt; Save</value>
+    <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
   <data name="cmdSaveButton.Text" xml:space="preserve">
     <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Save</value>

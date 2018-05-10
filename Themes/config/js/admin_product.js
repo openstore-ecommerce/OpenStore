@@ -185,6 +185,7 @@
                 $('#pagenumber').val('1');
                 $('#searchtext').val('');
                 $("#searchcategory").val('');
+                $("#ddllistsearchcategory").get(0).selectedIndex = 0;;
 
                 nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
             });
