@@ -67,15 +67,16 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             DataLangRecord.TypeCode = _typeLangCode;
             DataLangRecord.Lang = lang;
 
+            if (_lang == "")
+            {
+                _lang = Utils.GetCurrentCulture();
+                DataLangRecord.Lang = _lang;
+            }
+
             #endregion
 
             LoadData(productId, hydrateLists);
 
-            if (_lang == "")
-            {
-                _lang = _storeSettings.EditLanguage;
-                DataLangRecord.Lang = _lang;
-            }
             
         }
 
