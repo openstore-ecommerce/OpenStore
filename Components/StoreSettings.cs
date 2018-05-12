@@ -123,14 +123,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public Dictionary<string, string> Settings()
         {
-            // redo the edit langauge for backoffice.
-            if (_settingDic != null)
-            {
-                if (_settingDic.ContainsKey("editlanguage"))
-                    _settingDic["editlanguage"] = EditLanguage;
-                else
-                    _settingDic.Add("editlanguage", EditLanguage);
-            }
             return _settingDic;
         }
 
@@ -138,7 +130,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// Uses session var to keep track of editlang.
         /// This can be empty, so avoid using.
         /// </summary>
-        [Obsolete("EditLanguage is deprecated, can be empty. Avoid using if possible.")]
+        [Obsolete("EditLanguage is deprecated, can be empty. Only use for langauge change.")]
         public String EditLanguage
         {
             get

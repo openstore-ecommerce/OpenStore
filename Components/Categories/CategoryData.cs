@@ -53,7 +53,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             _objCtrl = new NBrightBuyController();
             _lang = lang;
-            if (_lang == "") _lang = StoreSettings.Current.EditLanguage;
+            if (_lang == "") _lang = Utils.GetCurrentCulture();
             LoadData(categoryId);
         }
 
@@ -393,20 +393,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             DataRecord.ValidateXmlFormat();
 
-            if (DataLangRecord == null)
-            {
-                // we have no datalang record for this language, so get an existing one and save it.
-                var l = _objCtrl.GetList(_portalId, -1, "CATEGORYLANG", " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
-                if (l.Count > 0)
-                {
-                    DataLangRecord = (NBrightInfo)l[0].Clone();
-                    DataLangRecord.ItemID = -1;
-                    DataLangRecord.Lang = _lang;
-                    DataLangRecord.ValidateXmlFormat();
-                    _objCtrl.Update(DataLangRecord);
-                }
-            }
-            
+           
             // fix image
             var imgpath = DataRecord.GetXmlProperty("genxml/hidden/imagepath");
             var imgurl = DataRecord.GetXmlProperty("genxml/hidden/imageurl");
