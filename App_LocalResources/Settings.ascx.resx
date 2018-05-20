@@ -139,7 +139,7 @@
     <value>Used to redirect user/manager to the cart page when certain actions are done.</value>
   </data>
   <data name="carttab.Text" xml:space="preserve">
-    <value>Full Cart</value>
+    <value>Checkout</value>
   </data>
   <data name="favoritestab.Text" xml:space="preserve">
     <value>Favorites</value>
