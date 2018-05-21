@@ -136,10 +136,10 @@
     <value>Administrator</value>
   </data>
   <data name="carttab.Help" xml:space="preserve">
-    <value>Used to redirect user/manager to the cart page when certain actions are done.</value>
+    <value>Used to redirect user/manager when certain actions are done.  Typically set to a page containing the OS_FullCart or OS_Checkout module.</value>
   </data>
   <data name="carttab.Text" xml:space="preserve">
-    <value>Checkout</value>
+    <value>Redirect To</value>
   </data>
   <data name="favoritestab.Text" xml:space="preserve">
     <value>Favorites</value>
