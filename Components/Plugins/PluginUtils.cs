@@ -11,6 +11,7 @@ using NBrightCore.render;
 using NBrightDNN;
 using NBrightCore.common;
 using NBrightCore.providers;
+using DotNetNuke.Entities.Users;
 
 namespace Nevoweb.DNN.NBrightBuy.Components
 {
@@ -316,6 +317,29 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 lp += 1;
             }
 
+        }
+
+        public static bool CheckSecurity(NBrightInfo pluginXml)
+        {
+            var currentuser = UserController.Instance.GetCurrentUserInfo();
+            if (currentuser.IsInRole("Administrators"))
+            {
+                return true;
+            }
+            if (pluginXml.GetXmlPropertyBool("genxml/checkbox/hidden")) return false;
+            if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.ManagerRole  + "']/@value") && currentuser.IsInRole(StoreSettings.ManagerRole))
+            {
+                return true;
+            }
+            if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.EditorRole + "']/@value") && currentuser.IsInRole(StoreSettings.EditorRole))
+            {
+                return true;
+            }
+            if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.ClientEditorRole + "']/@value") && currentuser.IsInRole(StoreSettings.ClientEditorRole))
+            {
+                return true;
+            }
+            return false;
         }
 
     }

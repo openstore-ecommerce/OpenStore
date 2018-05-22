@@ -1777,7 +1777,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (!page.Items["nbrightinject"].ToString().Contains(razorTemplateName + ","))
             {
                 var razorTempl = "";
-                if (productdata == null)
+                if (productdata == null || !productdata.Exists)
                 {
                     var nbi = new NBrightInfo();
                     nbi.Lang = Utils.GetCurrentCulture();

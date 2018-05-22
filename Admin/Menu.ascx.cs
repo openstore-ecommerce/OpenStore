@@ -92,16 +92,19 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                 var pluginList = PluginUtils.GetPluginList();
                 foreach (var p in pluginList)
                 {
-                    var grpname = p.GetXmlProperty("genxml/textbox/group");
-                    if (p.GetXmlPropertyBool("genxml/checkbox/hidden") == false)
+                    if (PluginUtils.CheckSecurity(p))
                     {
-                        var rootname = grpname;
-                        if (rootname == "") rootname = p.GetXmlProperty("genxml/textbox/ctrl");
-                        if (!rootList.ContainsKey(rootname))
+                        var grpname = p.GetXmlProperty("genxml/textbox/group");
+                        if (p.GetXmlPropertyBool("genxml/checkbox/hidden") == false)
                         {
-                            var resxname = DnnUtils.GetLocalizedString(rootname.ToLower(), _resxpath, Utils.GetCurrentCulture());
-                            if (resxname == "") resxname = rootname;
-                            rootList.Add(rootname, resxname);
+                            var rootname = grpname;
+                            if (rootname == "") rootname = p.GetXmlProperty("genxml/textbox/ctrl");
+                            if (!rootList.ContainsKey(rootname))
+                            {
+                                var resxname = DnnUtils.GetLocalizedString(rootname.ToLower(), _resxpath, Utils.GetCurrentCulture());
+                                if (resxname == "") resxname = rootname;
+                                rootList.Add(rootname, resxname);
+                            }
                         }
                     }
                 }
@@ -119,7 +122,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                         // check security
                         foreach (var p in rtnlist)
                         {
-                            if (CheckSecurity(p)) sublist.Add(p);
+                            if (PluginUtils.CheckSecurity(p)) sublist.Add(p);
                         }
 
 
@@ -148,7 +151,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                                 name = rootp.GetXmlProperty("genxml/textbox/name");
                                 icon = rootp.GetXmlProperty("genxml/textbox/icon");
 
-                                securityrootcheck = CheckSecurity(rootp);
+                                securityrootcheck = PluginUtils.CheckSecurity(rootp);
                                 if (securityrootcheck)
                                 {
                                     strOut += "<li>";
@@ -206,22 +209,6 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
             return strOut;
         }
 
-
-        private Boolean CheckSecurity(NBrightInfo pluginData)
-        {
-            if (pluginData.GetXmlPropertyBool("genxml/checkbox/hidden")) return false;
-
-            var roles = pluginData.GetXmlProperty("genxml/textbox/roles");
-            if (roles.Trim() == "") roles=  StoreSettings.ManagerRole + "," + StoreSettings.EditorRole;
-            if (UserInfo.IsSuperUser) return true;
-            if (UserInfo.IsInRole("Administrators")) return true;
-            var rlist = roles.Split(',');
-            foreach (var r in rlist)
-            {
-                if (UserInfo.IsInRole(r)) return true;
-            }
-            return false;
-        }
 
         private String GetRootLinkNode(String name,String ctrl,String icon,String href,String hrefclass)
         {

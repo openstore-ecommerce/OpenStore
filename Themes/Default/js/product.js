@@ -57,6 +57,8 @@ $(document).ready(function () {
 
     addotbasketclick();
 
+    $('.processingwait').hide();
+
 });
 
 
