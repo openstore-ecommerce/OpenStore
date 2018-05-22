@@ -348,4 +348,7 @@
   <data name="productdetail.Text" xml:space="preserve">
     <value>Fiche produit</value>
   </data>
+  <data name="productnotfound.Text" xml:space="preserve">
+    <value>404 - Désolé, cette page n'existe pas ou plus.</value>
+  </data>
 </root>
