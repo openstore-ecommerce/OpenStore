@@ -62,20 +62,9 @@ namespace Nevoweb.DNN.NBrightBuy
         private String _print = "";
         private String _printtemplate = "";
         private String _guidkey = "";
-        private Boolean _404code = false;
         private string _controlPath = "";
 
         #region Event Handlers
-
-        protected override void Render(HtmlTextWriter writer)
-        {
-            base.Render(writer);
-            if (_404code)
-            {
-               // Commented out becuase this can give a page not found error page on IIS, depending on settings.
-               // Response.StatusCode = 404;
-            }
-        }
 
         override protected void OnInit(EventArgs e)
         {
@@ -185,7 +174,7 @@ namespace Nevoweb.DNN.NBrightBuy
             {
                 // remove any cookie which might store SQL in error.
                 _navigationdata.Delete();
-                DisplayProductError(exc.ToString());
+                DisplayProductError(null, exc.ToString());
             }
 
         }
@@ -687,32 +676,25 @@ namespace Nevoweb.DNN.NBrightBuy
             }
             else
             {
-                _404code = true;
-
-                // insert page header text
-                NBrightBuyUtils.RazorIncludePageHeader(ModuleId, Page, "ProductNotFound_head.cshtml", _controlPath, ModSettings.ThemeFolder, ModSettings.Settings(), productData);
-
-                var strOut = NBrightBuyUtils.RazorTemplRender("ProductNotFound.cshtml", ModuleId, "", productData, _controlPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
-                var lit = new Literal();
-                lit.Text = strOut;
-                phData.Controls.Add(lit);
-
+                DisplayProductError(productData, "");
             }
 
         }
 
-        private void DisplayProductError(String msg)
+        private void DisplayProductError(ProductData productData, String msg)
         {
-            //display the error if superuser (don;t want to log it.)
-            var errmsg = ModCtrl.GetTemplateData(ModSettings, "productunavailable.html", Utils.GetCurrentCulture(), DebugMode);
-            if (UserInfo.IsSuperUser) errmsg += msg;
-            var obj = new NBrightInfo(true);
-            var razorTemplateKey = "NBrightBuyRazorKey*productunavailable" + PortalId.ToString() + "*" + Utils.GetCurrentCulture();
-            errmsg = RazorUtils.RazorRender(obj, errmsg, razorTemplateKey, StoreSettings.Current.DebugMode);
-            var l = new Literal();
-            l.Text = errmsg;
-            phData.Controls.Add(l);
-            //Response.StatusCode = 404; //causes 404 page on live site???
+            var strOut = msg;
+            if (productData != null)
+            {
+                strOut = NBrightBuyUtils.RazorTemplRender("ProductNotFound.cshtml", ModuleId, "", productData, _controlPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+            }
+            var lit = new Literal();
+            lit.Text = strOut;
+            phData.Controls.Add(lit);
+            if (StoreSettings.Current.SettingsInfo.GetXmlPropertyBool("genxml/checkbox/activate404"))
+            {
+                Response.StatusCode = 404;
+            }
         }
 
         #endregion
