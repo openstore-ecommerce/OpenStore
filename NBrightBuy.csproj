@@ -602,6 +602,7 @@
     <None Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
     <None Include="Installation\04.00.01.SqlDataProvider" />
     <None Include="Installation\04.00.00.SqlDataProvider" />
+    <None Include="Installation\04.01.00.SqlDataProvider" />
     <None Include="Installation\Uninstall.SqlDataProvider" />
     <None Include="packages.config" />
     <None Include="README.md" />

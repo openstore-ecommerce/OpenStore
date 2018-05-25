@@ -3,3 +3,13 @@
 <!-- Full Cart -->
 <script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/Default/js/cart.js"></script>
 
+<script>
+    $(document).ready(function () {
+        // show cart list
+        $('.processing').show();
+        $('#themefolder').val('@Model.GetSetting("themefolder")');
+        $('#carttemplate').val('FullCartList.cshtml');
+        nbxget('cart_rendercartlist', '#productajaxview', '#checkoutitemlist');
+    });
+</script>
+

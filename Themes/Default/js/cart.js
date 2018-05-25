@@ -1,7 +1,6 @@
 ﻿
 $(document).ready(function () {
 
-    
     $('#cmdDeleteCart').click(function () {
         var msg = $('#cmdClearCart').val();
         if (confirm(msg)) {
@@ -81,6 +80,7 @@ $(document).ready(function () {
 
         if (e.cmd == 'cart_recalculatecart' || e.cmd == 'cart_removefromcart' || e.cmd == 'cart_clearcart') {
             $('#carttemplate').val('FullCartList.cshtml');
+            $('.processing').show();
             nbxget('cart_rendercartlist', '#productajaxview', '#checkoutitemlist');
         }
         

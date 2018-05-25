@@ -35,13 +35,3 @@
 
     </div>
 
-<script>
-    $(document).ready(function () {
-        // show cart list
-        $('.processing').show();
-        $('#themefolder').val('@Model.GetSetting("themefolder")');
-        $('#carttemplate').val('FullCartList.cshtml');
-        nbxget('cart_rendercartlist', '#productajaxview', '#checkoutitemlist');
-    });
-</script>
-

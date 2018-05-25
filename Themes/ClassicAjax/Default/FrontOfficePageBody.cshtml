@@ -6,6 +6,12 @@
 @using NBrightDNN
 @using Nevoweb.DNN.NBrightBuy.Components
 
+
+<div id="loader" class="processing">
+    <div class="spinner"></div>
+</div>
+
+
 <div id="productajaxview" style="display: none;">
     <!-- passparam section-->
     <input id="userid" type="hidden" value="@UserController.Instance.GetCurrentUserInfo().UserID" />
@@ -37,16 +43,13 @@
 
     <!-- checkout cart -->
     <input id="itemcode" value="" type="hidden" />
-    <input id="carttemplate" type="hidden" value="">
-    <input id="carttheme" type="hidden" value="ClassicAjax">
+    <input id="carttemplate" type="hidden" value="" />
+    <input id="carttheme" type="hidden" value="ClassicAjax" />
     <input id="defaultaddr" value="" type="hidden" />
     <input id="cartstep" value="@(Model.GetUrlParam("cartstep", "1"))" type="hidden" />
 
 </div>
 
-<div id="loader" class="processing" style="display: none;">
-    <div class="spinner"></div>
-</div>
 
 <input id="logintab" type="hidden" value="@(StoreSettings.Current.Get("logintab"))" />
 

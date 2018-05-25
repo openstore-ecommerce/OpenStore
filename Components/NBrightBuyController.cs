@@ -742,6 +742,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 //get uploaded params
                 var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
                 var lang = NBrightBuyUtils.SetContextLangauge(ajaxInfo); // Ajax breaks context with DNN, so reset the context language to match the client.
+                var editlang = NBrightBuyUtils.GetEditLang(ajaxInfo);
 
                 var itemid = ajaxInfo.GetXmlProperty("genxml/hidden/itemid");
                 if (Utils.IsNumeric(itemid))
@@ -756,7 +757,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         objCtrl.Update(nbi);
 
                         // do langauge record
-                        var nbi2 = objCtrl.GetDataLang(Convert.ToInt32(itemid), lang);
+                        var nbi2 = objCtrl.GetDataLang(Convert.ToInt32(itemid), editlang);
                         nbi2.UpdateAjax(strIn);
                         objCtrl.Update(nbi2);
                     }
