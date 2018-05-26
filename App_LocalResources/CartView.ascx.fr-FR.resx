@@ -285,4 +285,7 @@
   <data name="editmodeE.Text" xml:space="preserve">
     <value>Commande en cours de modification</value>
   </data>
+  <data name="gdprterms.Text" xml:space="preserve">
+    <value>En soumettant ce formulaire, j'accepte que les informations saisies soient utilisées pour permettre de me recontacter dans le cadre de la relation commerciale qui découle de ma demande.</value>
+  </data>
 </root>
