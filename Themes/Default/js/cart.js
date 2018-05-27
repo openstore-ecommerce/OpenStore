@@ -4,39 +4,45 @@ $(document).ready(function () {
     $('#cmdDeleteCart').click(function () {
         var msg = $('#cmdClearCart').val();
         if (confirm(msg)) {
-            $('.processing').show();
+            $('.processingcart').show();
             nbxget('cart_clearcart', '#productajaxview');
         }
     });
 
     $('#cmdRecalcCart').click(function () {
-        $('.processing').show();
+        $('.processingcart').show();
         $('#cmdGoCheckout').show();
         nbxget('cart_recalculatecart', '.cartdatarow', '', '.quantitycolumn');
     });
 
     $('#cmdGoCheckout').click(function () {
-        $('.processing').show();
+        $('.processingcart').show();
         nbxget('cart_redirecttocheckout', '.cartdatarow', '', '.quantitycolumn');
     });
+
+
+    // show cart list
+    $('.processingcart').show();
+    $('#themefolder').val('@Model.GetSetting("themefolder")');
+    $('#carttemplate').val('FullCartList.cshtml');
+    nbxget('cart_rendercartlist', '#productajaxview', '#checkoutitemlist');
+
 
     $(document).on("nbxgetcompleted", Cart_nbxgetCompleted); // assign a completed event for the ajax calls
 
     // function to do actions after an ajax call has been made.
     function Cart_nbxgetCompleted(e) {
 
-        $('.processing').hide();
-
         if (e.cmd == 'cart_rendercartlist') {
 
             $('.removeitem').unbind();
             $('.removeitem').click(function() {
-                $('.processing').show();
+                $('.processingcart').show();
                 $('#itemcode').val($(this).attr('itemcode'));
                 nbxget('cart_removefromcart', '#productajaxview');
             });
 
-            $('.processing').hide();
+            $('.processingcart').hide();
 
             // if we have a cartempty element hide the action buttons
             if ($('#cartempty').text() != '') {
@@ -80,12 +86,12 @@ $(document).ready(function () {
 
         if (e.cmd == 'cart_recalculatecart' || e.cmd == 'cart_removefromcart' || e.cmd == 'cart_clearcart') {
             $('#carttemplate').val('FullCartList.cshtml');
-            $('.processing').show();
+            $('.processingcart').show();
             nbxget('cart_rendercartlist', '#productajaxview', '#checkoutitemlist');
         }
         
         if (e.cmd == 'cart_redirecttocheckout') {
-            $('.processing').show();
+            $('.processingcart').show();
             var redirecturl = $('#checkouturl').val();
             window.location.href = redirecturl + '?cartstep=2';
         }

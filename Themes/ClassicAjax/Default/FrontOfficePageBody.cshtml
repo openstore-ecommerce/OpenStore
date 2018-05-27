@@ -7,10 +7,35 @@
 @using Nevoweb.DNN.NBrightBuy.Components
 
 
-<div id="loader" class="processing">
+<!-- We need a spinner for most modules, and each must be independant to the others.  So they are hidden correctly after the module operation-->
+
+<div id="loader" class="processing processingminicart" style="display: none;">
     <div class="spinner"></div>
 </div>
 
+<div id="loader" class="processing processingfilter" style="display: none;">
+    <div class="spinner"></div>
+</div>
+
+<div id="loader" class="processing processingproduct">
+    <div class="spinner"></div>
+</div>
+
+<div id="loader" class="processing processingproductajax" style="display: none;">
+    <div class="spinner"></div>
+</div>
+
+<div id="loader" class="processing processinglist" style="display: none;">
+    <div class="spinner"></div>
+</div>
+
+<div id="loader" class="processing processingcheckout" style="display: none;">
+    <div class="spinner"></div>
+</div>
+
+<div id="loader" class="processing processingcart" style="display: none;">
+    <div class="spinner"></div>
+</div>
 
 <div id="productajaxview" style="display: none;">
     <!-- passparam section-->

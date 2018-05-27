@@ -57,7 +57,7 @@ $(document).ready(function () {
 
     addotbasketclick();
 
-    $('.processingwait').hide();
+    $('.processingproduct').hide();
 
 });
 
@@ -102,15 +102,16 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         loadProductList();
     });
 
-    
+   
     if (e.cmd == 'cart_addtobasket') {        
+        $('.processingminicart').show();
         $('#carttemplate').val('MiniCart.cshtml');
         nbxproductget('cart_renderminicart', '#productajaxview', '.container_classicajax_minicart'); // Reload Cart
         $('.addedtobasket').delay(1000).fadeOut('fast');
     }
 
-    if (e.cmd == 'cart_renderminicart' || e.cmd == 'itemlist_getpopup') {
-        $('.processing').hide();
+    if (e.cmd == 'cart_renderminicart') {
+        $('.processingminicart').hide();
     }
 
     if (e.cmd == 'product_ajaxview_getlist') {
@@ -120,7 +121,7 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
             loadProductList();
         });        
         loadFilters();
-        $('.processing').hide();
+        $('.processingproductajax').hide();
     }
 
     if (e.cmd == 'product_ajaxview_getfilters') {
@@ -141,27 +142,32 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         $("html, body").animate({ scrollTop: 0 }, 200);
 
         addotbasketclick();
-        $('.processing').hide();
+        $('.processingfilter').hide();
     }
 
     if (e.cmd == 'product_ajaxview_getlistfilter') {
         addotbasketclick();
-        $('.processing').hide();
+        $('.processingfilter').hide();
     }    
 
     if (e.cmd == 'itemlist_add') {
         $('#shoppinglistadd-' + $('#shopitemid').val()).hide();
         $('#shoppinglistremove-' + $('#shopitemid').val()).show();
         $('#shopitemid').val('');
-        $('.processing').hide();
+        $('.processinglist').hide();
     }
 
     if (e.cmd == 'itemlist_remove') {
         $('#shoppinglistadd-' + $('#shopitemid').val()).show();
         $('#shoppinglistremove-' + $('#shopitemid').val()).hide();
         $('#shopitemid').val('');
-        $('.processing').hide();
+        $('.processinglist').hide();
     }
+
+    if (e.cmd == 'itemlist_getpopup') {
+        $('.processinglist').hide();
+    }
+
 
     // Shopping List Popup
     $('.shoppinglistadd').unbind("click");
@@ -288,22 +294,22 @@ function propertyFilterClicked() {
 }
 function loadProductList() {
     if ($('#ajaxlist').val() == 'True') {
-        $('.processing').show();
+        $('.processingproductajax').show();
         nbxproductget('product_ajaxview_getlist', '#productajaxview', '#ajaxproducts');
     } else {
         addotbasketclick();
     }
 }
 function loadProductListFilter() {
-    $('.processing').show();
+    $('.processingfilter').show();
     nbxproductget('product_ajaxview_getlistfilter', '#productajaxview', '#ajaxproducts');
 }
 function loadItemListPopup() {
-    $('.processing').show();
+    $('.processinglist').show();
     nbxproductget('itemlist_getpopup', '#productajaxview', '#shoppinglistpopup');
 }
 function loadFilters() {
-    $('.processing').show();
+    $('.processingfilter').show();
     $("#propertyfiltertypeinside").val($("#filter_propertyfiltertypeinside").val());
     $("#propertyfiltertypeoutside").val($("#filter_propertyfiltertypeoutside").val());
     $("#moduleid").val($("#filter_moduleid").val());
@@ -333,7 +339,7 @@ function addotbasketclick() {
     $('.addtobasket').unbind("click");
     $('.addtobasket').click(function () {
         if (form.valid()) {
-            $('.processing').show();
+            $('.processingminicart').show();
             if (parseInt($('.quantity').val()) < 1) $('.quantity').val('1');
             nbxproductget('cart_addtobasket', '.entryid' + $(this).attr('itemid'), '#minicartdatareturn'); // Reload Cart
             $('.addedtobasket').delay(10).fadeIn('fast');

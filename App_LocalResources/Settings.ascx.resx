@@ -528,4 +528,7 @@
   <data name="activategdpr.Text" xml:space="preserve">
     <value>Activate GDPR</value>
   </data>
+  <data name="gdprmsg.Text" xml:space="preserve">
+    <value>GDPR Message</value>
+  </data>
 </root>

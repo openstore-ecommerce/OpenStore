@@ -42,12 +42,12 @@
 
 
             @if (info.UserId >= 1)
-        {
-            <div class="formrow">
-                <label>@ResourceKey("General.ChooseAddress")</label>
-                @AddressSelectList(info, "genxml/dropdownlist/selectaddress", ".checkoutbillform", "firstname,lastname,company,unit,street,postalcode,city,country,telephone,email,region", "class='chooseaddress'")
-            </div>
-    }
+    {
+        <div class="formrow">
+            <label>@ResourceKey("General.ChooseAddress")</label>
+            @AddressSelectList(info, "genxml/dropdownlist/selectaddress", ".checkoutbillform", "firstname,lastname,company,unit,street,postalcode,city,country,telephone,email,region", "class='chooseaddress'")
+        </div>
+}
 
             <div class="formrow">
                 <div class="leftside">
@@ -117,17 +117,18 @@
 
             <input id="gdprdate" type="hidden" update="save" value="@DateTime.Now.ToString("O")" />
 
-        </div>
-
-        @if (Model.GetSettingBool("gdpr"))
+            @if (Model.GetSettingBool("gdpr"))
     {
         <div>
             <ul class="checkoutdetails">
-                <li class="formrow submissioncheck"><b>@ResourceKey("CartView.gdprterms")</b></li>
+                <li class="formrow submissioncheck">@CheckBox(info, "genxml/billaddress/genxml/checkbox/gdprcheckbox", "ResourceKey:CartView.gdprterms", " name='gdprcheckbox' required ")</li>
             </ul>
 
         </div>
-    }
+}
+
+        </div>
+
     </div>
 
 <!-- Shipping options radio buttons -->
