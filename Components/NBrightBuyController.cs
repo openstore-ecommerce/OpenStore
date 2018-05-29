@@ -430,6 +430,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <param name="pageSize"></param>
         /// <param name="recordCount"></param>
         /// <returns></returns>
+        [Obsolete("Repeater is no longer used")]
         public List<NBrightInfo> GetDataList(Repeater rp1, int portalId, int moduleId, string entityTypeCode, string entityTypeCodeLang, string cultureCode, bool debugMode = false, string selUserId = "", int returnLimit = 0, int pageNumber = 0, int pageSize = 0, int recordCount = 0)
         {
             var strFilters = GenXmlFunctions.GetSqlSearchFilters(rp1);

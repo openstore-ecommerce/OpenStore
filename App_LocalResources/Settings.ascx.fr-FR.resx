@@ -160,7 +160,7 @@
     <value>Utilisé pour rediriger l'utilisateur/le manager vers la page du panier lorsque certaines actions sont effectuées.</value>
   </data>
   <data name="carttab.Text" xml:space="preserve">
-    <value>Panier</value>
+    <value>Redirige vers</value>
   </data>
   <data name="carttitle.Text" xml:space="preserve">
     <value>Afficher le titre du panier</value>
