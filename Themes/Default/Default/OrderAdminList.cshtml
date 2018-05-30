@@ -56,7 +56,7 @@
         @foreach (NBrightInfo nbi in Model.List)
         {
                 <tr>
-                    <td><strong>Commande n°@(nbi.GetXmlProperty("genxml/ordernumber"))</strong></td>
+                    <td><strong>@ResourceKey("OrderAdmin.ordernumber")<text> </text>@(nbi.GetXmlProperty("genxml/ordernumber"))</strong></td>
                     <td>@(nbi.GetXmlProperty("genxml/createddate"))</td>
                     <td>@CurrencyOf(nbi.GetXmlPropertyDouble("genxml/appliedtotal"))</td>
                     <td><strong>@ResourceKey("General.orderstatus" + nbi.GetXmlProperty("genxml/dropdownlist/orderstatus"))</strong></td>
