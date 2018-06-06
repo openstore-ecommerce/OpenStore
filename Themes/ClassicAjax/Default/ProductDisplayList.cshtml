@@ -38,11 +38,11 @@
 
             @if (Model.List.Count() == 1)
             {
-                <h3>@Category("categoryname", Model) @(Model.List.Count())  @(ResourceKey("ProductView.article"))</h3>
+                <h1>@Category("categoryname", Model) @(Model.List.Count())  @(ResourceKey("ProductView.article"))</h1>
             }
             else
             {
-                <h3>@Category("categoryname", Model) @(Model.List.Count())  @(ResourceKey("ProductView.articles"))</h3> 
+                <h1>@Category("categoryname", Model) @(Model.List.Count())  @(ResourceKey("ProductView.articles"))</h1> 
             }
             <i>@(Category("message", Model))</i>
         </div>
