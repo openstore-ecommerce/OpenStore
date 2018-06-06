@@ -184,7 +184,7 @@
               }
               @if (product.Models.Count > 1)
               {
-                  <li><a href="#tab-3">@ResourceKey("ProductView.references")</a></li>
+                  <li><a href="#tab-3">@ResourceKey("ProductView.models")</a></li>
               }
             </ul>
 
@@ -222,7 +222,7 @@
                                 {
                                     <tr>
                                         <td class="models-option">@m.GetXmlProperty("genxml/lang/genxml/textbox/txtmodelname")</td><!-- Model Name -->
-                                          <td>Réf. @m.GetXmlProperty("genxml/textbox/txtmodelref")</td>
+                                          <td>@ResourceKey("ProductView.model")<text> </text>@m.GetXmlProperty("genxml/textbox/txtmodelref")</td>
                                           <td>
                                           @if (m.GetXmlPropertyDouble("genxml/textbox/txtsaleprice") > 0)
                                           {
