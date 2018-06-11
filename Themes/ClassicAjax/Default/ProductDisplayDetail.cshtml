@@ -132,7 +132,7 @@
                     @TextBox(info, "genxml/textbox/selectedaddqty", "class='quantity selectedaddqty'", "1")
                     <a class="qtyplus" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
                 </div>
-                @if (!info.GetXmlPropertyBool("genxml/checkbox/chkdisable"))
+                if (!info.GetXmlPropertyBool("genxml/checkbox/chkdisable"))
                 {
                     <a class="actionbutton addtobasket " itemid="@(info.ItemID)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>@ResourceKey("ProductView.addtobasket")</a>
                 }
