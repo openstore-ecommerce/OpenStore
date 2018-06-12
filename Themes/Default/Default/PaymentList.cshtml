@@ -17,12 +17,7 @@
     var info = cart.PurchaseInfo;
 }
 
-    @if (Model.GetSettingBool("carttitle"))
-    {
         <h1>@ResourceKey("CartView.YourBasket")</h1>
-    }
-    @if (Model.GetSettingBool("cartsteps"))
-    {
         <div class="checkoutsteps">
             <div class="checkoutstepsheader">@ResourceKey("CartView.CartstepsProcess")</div>
             <ol>
@@ -33,8 +28,6 @@
                 <li class="step5">@ResourceKey("CartView.CartstepsConfirm")</li>
             </ol>
         </div>
-    }
-
 
 
     <div id="payment">
