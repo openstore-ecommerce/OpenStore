@@ -163,32 +163,7 @@ namespace Nevoweb.DNN.NBrightBuy
                             }
                             break;
                         case "docdownload":
-
-                            var fname = Utils.RequestQueryStringParam(context, "filename");
-                            var filekey = Utils.RequestQueryStringParam(context, "key");
-                            if (filekey != "")
-                            {
-                                var uData = new UserData();
-                                if (uData.HasPurchasedDocByKey(filekey)) fname = uData.GetPurchasedFileName(filekey);
-                                fname = StoreSettings.Current.FolderDocuments + "/" + fname;
-                            }
-                            if (fname != "")
-                            {
-                                strOut = fname; // return this is error.
-                                var downloadname = Utils.RequestQueryStringParam(context, "downloadname");
-                                var fpath = HttpContext.Current.Server.MapPath(fname);
-                                if (downloadname == "") downloadname = Path.GetFileName(fname);
-                                try
-                                {
-                                    Utils.ForceDocDownload(fpath, downloadname, context.Response);
-                                }
-                                catch (Exception ex)
-                                {
-                                    // ignore, robots can cause error on thread abort.
-                                    //Exceptions.LogException(ex);
-                                    Logging.Debug($"XmlConnector.ProcessRequest exception for {paramCmd} which is ignored because bots tend to cause these on thread abort: {ex.Message}.");
-                                }
-                            }
+                            strOut = DownloadSystemFile(paramCmd, context);
                             break;
                         case "printproduct":
                             break;
@@ -268,6 +243,48 @@ namespace Nevoweb.DNN.NBrightBuy
                 return false;
             }
         }
+
+        private string DownloadSystemFile(string paramCmd, HttpContext context)
+        {
+            var strOut = "";
+            var fname = Utils.RequestQueryStringParam(context, "filename");
+            var filekey = Utils.RequestQueryStringParam(context, "key");
+            if (filekey != "")
+            {
+                var uData = new UserData();
+                if (uData.HasPurchasedDocByKey(filekey)) fname = uData.GetPurchasedFileName(filekey);
+                fname = StoreSettings.Current.FolderDocuments + "/" + fname;
+            }
+            if (fname != "")
+            {
+                strOut = fname; // return this is error.
+                var downloadname = Utils.RequestQueryStringParam(context, "downloadname");
+                var fpath = HttpContext.Current.Server.MapPath(fname);
+                if (downloadname == "") downloadname = Path.GetFileName(fname);
+                try
+                {
+                    if (fpath.ToLower().Contains("\\secure"))
+                    {
+                        if (NBrightBuyUtils.CheckManagerRights())
+                        {
+                            Utils.ForceDocDownload(fpath, downloadname, context.Response);
+                        }
+                    }
+                    else
+                    {
+                        Utils.ForceDocDownload(fpath, downloadname, context.Response);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // ignore, robots can cause error on thread abort.
+                    //Exceptions.LogException(ex);
+                    Logging.Debug($"XmlConnector.ProcessRequest exception for {paramCmd} which is ignored because bots tend to cause these on thread abort: {ex.Message}.");
+                }
+            }
+            return strOut;
+        }
+
 
         #region "fileupload"
 

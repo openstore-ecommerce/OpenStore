@@ -42,6 +42,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
                 case "orderadmin_sendemail":
                     strOut = OrderAdminEmail(context);
                     break;
+                case "orderadmin_getexport":
+                    strOut = OrderAdminExport(context);
+                    break;
             }
 
             return strOut;
@@ -57,6 +60,24 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
                 {
                     var settings = NBrightBuyUtils.GetAjaxDictionary(context);
                     return GetOrderListData(settings);
+                }
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
+            }
+
+        }
+
+        private static String OrderAdminExport(HttpContext context)
+        {
+            try
+            {
+                if (UserController.Instance.GetCurrentUserInfo().UserID > 0)
+                {
+                    var settings = NBrightBuyUtils.GetAjaxDictionary(context);
+                    return GetOrderListData(settings,false,true);
                 }
                 return "";
             }
@@ -194,7 +215,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
 
                                 if (File.Exists(StoreSettings.Current.FolderTempMapPath.TrimEnd('\\') + "\\" + fname))
                                 {
-                                    var newfname = Utils.GetUniqueKey();
+                                    var newfname = "secure" + Utils.GetUniqueKey();
                                     // save relitive path also
                                     if (File.Exists(ordData.PurchaseInfo.GetXmlProperty("genxml/hidden/invoicefilepath")))
                                     {
@@ -327,7 +348,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
             return strOut;
         }
 
-        private static String GetOrderListData(Dictionary<String, String> settings, bool paging = true)
+        private static String GetOrderListData(Dictionary<String, String> settings, bool paging = true, bool csv = false)
         {
             if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return "";
 
@@ -446,7 +467,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
                     passSettings.Add(s.Key, s.Value);
             }
 
-            strOut = NBrightBuyUtils.RazorTemplRenderList(razortemplate, 0, "", list, "/DesktopModules/NBright/NBrightBuy", themeFolder, Utils.GetCurrentCulture(), passSettings);
+            if (csv)
+            {
+                var securekey = Utils.GetUniqueKey(24);
+                strOut = NBrightBuyUtils.RazorTemplRenderList("ordercsv.cshtml", 0, "", list, "/DesktopModules/NBright/NBrightBuy", "config", Utils.GetCurrentCulture(), passSettings);
+                Utils.SaveFile(StoreSettings.Current.FolderTempMapPath + "/secure" + securekey, strOut);
+                strOut = StoreSettings.Current.FolderTemp + "/secure" + securekey;
+            }
+            else
+            {
+                strOut = NBrightBuyUtils.RazorTemplRenderList(razortemplate, 0, "", list, "/DesktopModules/NBright/NBrightBuy", themeFolder, Utils.GetCurrentCulture(), passSettings);
+            }
 
             // add paging if needed
             if (paging && (recordCount > pageSize))

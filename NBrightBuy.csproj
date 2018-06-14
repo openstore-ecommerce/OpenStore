@@ -576,6 +576,7 @@
     <Content Include="Themes\config\img\asterisk.png" />
     <Content Include="Themes\config\img\invalid.png" />
     <Content Include="Themes\config\img\openstore-logo.png" />
+    <Content Include="Themes\config\js\admin_order.js" />
     <Content Include="Themes\Default\css\ClientAccount.css" />
     <Content Include="Themes\Default\css\Checkout.css" />
     <Content Include="Themes\Default\img\email-facebook.gif" />
@@ -636,6 +637,7 @@
     <None Include="Themes\ClassicAjax\Default\ProductDisplayList.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayListBody.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplaySettings.cshtml" />
+    <None Include="Themes\config\default\ordercsv.cshtml" />
     <None Include="Themes\config\default\Admin_CategoryFilterGroups.cshtml" />
     <None Include="Themes\config\default\Admin_Plugins.cshtml" />
     <None Include="Themes\config\default\Admin_PluginsList.cshtml" />
@@ -733,7 +735,6 @@
     <Content Include="Themes\config\default\js\devoops-nbb.js" />
     <Content Include="Themes\config\default\js\devoops.js" />
     <Content Include="Themes\config\default\js\devoops.min.js" />
-    <Content Include="Themes\config\default\ordersexport.html" />
     <Content Include="Themes\config\default\plugins\bootstrapvalidator\bootstrapValidator.css" />
     <Content Include="Themes\config\default\plugins\bootstrapvalidator\bootstrapValidator.js" />
     <Content Include="Themes\config\default\plugins\bootstrapvalidator\bootstrapValidator.min.css" />
