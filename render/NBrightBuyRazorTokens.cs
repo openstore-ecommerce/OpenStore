@@ -52,8 +52,12 @@ namespace NBrightBuy.render
             return new RawString(info.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname"));
         }
 
-
         public IEncodedString EditLangaugeButton(int size = 32)
+        {
+            return EditLanguageButton(size);
+        }
+
+        public IEncodedString EditLanguageButton(int size = 32)
         {
             try
             {

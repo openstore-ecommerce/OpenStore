@@ -193,6 +193,7 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
     $('.shoppinglistremove').unbind("click");
     $('.shoppinglistremove').click(function () {
         $('#shopitemid').val($(this).attr('itemid'));
+        $('.productline' + $(this).attr('itemid')).hide();
         nbxproductget('itemlist_remove', '#productajaxview'); //apply serverside
     });
 
