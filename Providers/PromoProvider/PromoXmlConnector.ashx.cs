@@ -158,7 +158,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                 if (Utils.IsNumeric(selecteditemid))
                 {
                     // do edit field data if a itemid has been selected
-                    var obj = objCtrl.Get(Convert.ToInt32(selecteditemid), "",editlang);
+                    var obj = objCtrl.Get(Convert.ToInt32(selecteditemid), "DISCOUNTCODELANG", editlang);
                     strOut = NBrightBuyUtils.RazorTemplRender(typeCode.ToLower() + "fields.cshtml", Convert.ToInt32(moduleid), _lang + itemid + editlang + selecteditemid, obj, templateControl, "config", _lang, StoreSettings.Current.Settings());
                 }
                 else
