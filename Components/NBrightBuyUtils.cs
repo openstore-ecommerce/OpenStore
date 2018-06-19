@@ -2618,7 +2618,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public static NBrightInfo GetAjaxFields(HttpContext context)
         {
             var strIn = HttpUtility.UrlDecode(Utils.RequestParam(context, "inputxml"));
-            var xmlData = GenXmlFunctions.GetGenXmlByAjax(strIn, "");
+            var xmlData = "";
+            if (CheckManagerRights())
+            {
+                xmlData = GenXmlFunctions.GetGenXmlByAjax(strIn, "", "genxml", true);
+            }
+            else
+            {
+                xmlData = GenXmlFunctions.GetGenXmlByAjax(strIn, "");
+            }
             var objInfo = new NBrightInfo();
 
             objInfo.ItemID = -1;

@@ -8,6 +8,7 @@ using System.Web;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Users;
 using NBrightCore.common;
+using NBrightDNN;
 
 namespace Nevoweb.DNN.NBrightBuy.Components.Orders
 {
@@ -470,8 +471,46 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
             if (csv)
             {
                 var securekey = Utils.GetUniqueKey(24);
-                strOut = NBrightBuyUtils.RazorTemplRenderList("ordercsv.cshtml", 0, "", list, "/DesktopModules/NBright/NBrightBuy", "config", Utils.GetCurrentCulture(), passSettings);
-                Utils.SaveFile(StoreSettings.Current.FolderTempMapPath + "/secure" + securekey, strOut);
+
+                var strOutCSV= "";
+                foreach (NBrightInfo nbi in list)
+                {
+                    string str1 = "";
+                    str1 += nbi.GetXmlProperty("genxml/ordernumber").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/firstname").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/lastname").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/email").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/street").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/city").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/region").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/billaddress/genxml/textbox/postalcode").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/billaddress/genxml/dropdownlist/country/@selectedtext").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/createddate").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlPropertyDouble("genxml/appliedtotal");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/item/genxml/unitcost").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlPropertyDouble("genxml/item/genxml/dealercost");
+                    str1 += ";";
+                    str1 += nbi.GetXmlPropertyDouble("genxml/item/genxml/saleprice");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/item/genxml/modelref").Replace(";", ":");
+                    str1 += ";";
+                    str1 += nbi.GetXmlProperty("genxml/item/genxml/modeldesc").Replace(";", ":");
+                    strOutCSV += str1 + Environment.NewLine;
+                }
+
+                Utils.SaveFile(StoreSettings.Current.FolderTempMapPath + "/secure" + securekey, strOutCSV);
                 strOut = StoreSettings.Current.FolderTemp + "/secure" + securekey;
             }
             else

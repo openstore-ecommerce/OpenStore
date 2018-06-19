@@ -637,7 +637,6 @@
     <None Include="Themes\ClassicAjax\Default\ProductDisplayList.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayListBody.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplaySettings.cshtml" />
-    <None Include="Themes\config\default\ordercsv.cshtml" />
     <None Include="Themes\config\default\Admin_CategoryFilterGroups.cshtml" />
     <None Include="Themes\config\default\Admin_Plugins.cshtml" />
     <None Include="Themes\config\default\Admin_PluginsList.cshtml" />
