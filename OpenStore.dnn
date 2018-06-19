@@ -1,12 +1,12 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
 
-    <package name="OS_ProductView" type="Module" version="4.0.3">
+    <package name="OS_ProductView" type="Module" version="4.0.4">
       <friendlyName>OS_ProductView</friendlyName>
       <description>
         NBrightStore open source e-commerce for DNN.
       </description>
-      <iconFile />
+      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
       <owner>
         <name>David Lee</name>
         <organization>Nevoweb</organization>
@@ -38,6 +38,12 @@
         - Upgrade to use v8.4.0 template system.
         - Upgrade SQL to stop localization error.
 
+        v04.00.03.00
+        - Add Order CSV export
+
+        v04.00.04.00
+        - Add localized hidden product.
+
         NOTE: NBrightTemplate system will need to be upgrade/installed to v8.4.0 or above.
 
       </releaseNotes>
@@ -56,6 +62,14 @@
             <script type="Install">
               <name>04.00.01.SqlDataProvider</name>
               <version>04.00.01</version>
+            </script>
+            <script type="Install">
+              <name>04.00.01.SqlDataProvider</name>
+              <version>04.00.02</version>
+            </script>
+            <script type="Install">
+              <name>04.00.04.SqlDataProvider</name>
+              <version>04.00.04</version>
             </script>
             <script type="UnInstall">
               <name>Uninstall.SqlDataProvider</name>
@@ -110,15 +124,55 @@
           </skinFiles>
         </component>
 
+        <component type="Module">
+          <desktopModule>
+            <moduleName>OS_ProductView</moduleName>
+            <foldername>NBright/NBrightBuy</foldername>
+            <businessControllerClass>Nevoweb.DNN.NBrightBuy.Components.NBrightBuyController,NBrightBuy</businessControllerClass>
+            <supportedFeatures>
+              <supportedFeature type="Portable" />
+              <supportedFeature type="Searchable" />
+            </supportedFeatures>
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>OS_Product View</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/NBright/NBrightBuy/ProductRazorView.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile>icon-openstore.png</iconFile>
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>DesktopModules/NBright/NBrightBuy/ProductRazorViewSettings.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Settings</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile>icon-openstore.png</iconFile>
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+
 
       </components>
     </package>
 
-    <package name="OS_ProductDisplay" type="Module" version="4.0.3">
+    <package name="OS_ProductDisplay" type="Module" version="4.0.4">
 			<friendlyName>OS_ProductDisplay</friendlyName>
 			<description>NBrightStore open source e-commerce for DNN.
 			</description>
-			<iconFile />
+			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
 				<name>David Lee</name>
 				<organization>Nevoweb</organization>
@@ -155,7 +209,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         </supportedFeatures>
         <moduleDefinitions>
           <moduleDefinition>
-            <friendlyName>OS_ProductDisplay</friendlyName>
+            <friendlyName>OS_Product Display</friendlyName>
             <defaultCacheTime>0</defaultCacheTime>
             <moduleControls>
               <moduleControl>
@@ -164,7 +218,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                 <supportsPartialRendering>False</supportsPartialRendering>
                 <controlTitle />
                 <controlType>View</controlType>
-                <iconFile />
+                      <iconFile>icon-openstore.png</iconFile>
                 <helpUrl />
                 <viewOrder>0</viewOrder>
               </moduleControl>
@@ -174,7 +228,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                 <supportsPartialRendering>False</supportsPartialRendering>
                 <controlTitle>Settings</controlTitle>
                 <controlType>Edit</controlType>
-                <iconFile />
+                      <iconFile>icon-openstore.png</iconFile>
                 <helpUrl />
                 <viewOrder>0</viewOrder>
               </moduleControl>
@@ -186,13 +240,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-    <package name="OS_DisplaySearch" type="Module" version="4.0.3">
+    <package name="OS_DisplaySearch" type="Module" version="4.0.4">
       <friendlyName>OS_DisplaySearch</friendlyName>
       <description>
         NBrightStore open source e-commerce for DNN.
         Search options for front office.
       </description>
-      <iconFile />
+            <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
       <owner>
         <name>David Lee</name>
         <organization>Nevoweb</organization>
@@ -238,7 +292,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
@@ -248,7 +302,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Settings</controlTitle>
                     <controlType>Edit</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
@@ -267,12 +321,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       </components>
     </package>
 
-    <package name="OS_AddressAdmin" type="Module" version="4.0.3">
+    <package name="OS_AddressAdmin" type="Module" version="4.0.4">
 			<friendlyName>OS_AddressAdmin</friendlyName>
 			<description>NBrightStore open source e-commerce for DNN.
   Admin for clients addresses from the front office.
 			</description>
-			<iconFile />
+			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
 				<name>David Lee</name>
 				<organization>Nevoweb</organization>
@@ -318,7 +372,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle />
 										<controlType>View</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -328,7 +382,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -342,12 +396,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-		<package name="OS_Payment" type="Module" version="4.0.3">
+		<package name="OS_Payment" type="Module" version="4.0.4">
 			<friendlyName>OS_Payment</friendlyName>
 			<description>NBrightStore open source e-commerce for DNN.
   Process payment of orders.
 			</description>
-			<iconFile />
+			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
 				<name>David Lee</name>
 				<organization>Nevoweb</organization>
@@ -393,7 +447,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle />
 										<controlType>View</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -403,7 +457,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -416,13 +470,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-		<package name="OS_OrderAdmin" type="Module" version="4.0.3">
+		<package name="OS_OrderAdmin" type="Module" version="4.0.4">
 
 			<friendlyName>OS_OrderAdmin</friendlyName>
 			<description>NBrightStore open source e-commerce for DNN.
   This module provides access to client orders from the front office, for clients.
 			</description>
-			<iconFile />
+			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
 				<name>David Lee</name>
 				<organization>Nevoweb</organization>
@@ -468,7 +522,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle />
 										<controlType>View</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -478,7 +532,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -492,12 +546,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-		<package name="OS_ProfileForm" type="Module" version="4.0.3">
+		<package name="OS_ProfileForm" type="Module" version="4.0.4">
 			<friendlyName>OS_ProfileForm</friendlyName>
 			<description>NBrightStore open source e-commerce for DNN.
   This module creates a profile form that links to the DNN profile and NBS address.
 			</description>
-			<iconFile />
+			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
 				<name>David Lee</name>
 				<organization>Nevoweb</organization>
@@ -543,7 +597,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle />
 										<controlType>View</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -553,7 +607,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -568,11 +622,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		</package>
 
 		
-				<package name="OS_Checkout" type="Module" version="4.0.3">
+				<package name="OS_Checkout" type="Module" version="4.0.4">
 			<friendlyName>OS_Checkout</friendlyName>
 			<description>NBrightStore open source e-commerce for DNN. Checkout process.
 			</description>
-			<iconFile />
+			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
 				<name>David Lee</name>
 				<organization>Nevoweb</organization>
@@ -618,7 +672,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle />
 										<controlType>View</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -628,7 +682,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -642,11 +696,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-				<package name="OS_MiniCart" type="Module" version="4.0.3">
+				<package name="OS_MiniCart" type="Module" version="4.0.4">
 			<friendlyName>OS_MiniCart</friendlyName>
 			<description>NBrightStore open source e-commerce for DNN. Mini cart view.
 			</description>
-			<iconFile />
+			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
 				<name>David Lee</name>
 				<organization>Nevoweb</organization>
@@ -692,7 +746,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle />
 										<controlType>View</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -702,7 +756,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -716,11 +770,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-				<package name="OS_FullCart" type="Module" version="4.0.3">
+				<package name="OS_FullCart" type="Module" version="4.0.4">
 			<friendlyName>OS_FullCart</friendlyName>
 			<description>NBrightStore open source e-commerce for DNN. full cart view.
 			</description>
-			<iconFile />
+			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
 				<name>David Lee</name>
 				<organization>Nevoweb</organization>
@@ -766,7 +820,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle />
 										<controlType>View</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -776,7 +830,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 										<supportsPartialRendering>False</supportsPartialRendering>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
-										<iconFile />
+										      <iconFile>icon-openstore.png</iconFile>
 										<helpUrl />
 										<viewOrder>0</viewOrder>
 									</moduleControl>
@@ -790,12 +844,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-    <package name="OS_CategoryMenu" type="Module" version="4.0.3">
+    <package name="OS_CategoryMenu" type="Module" version="4.0.4">
       <friendlyName>OS_CategoryMenu</friendlyName>
       <description>
         CategoryMenu Display 
       </description>
-      <iconFile />
+            <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
       <owner>
         <name>David Lee</name>
         <organization>Nevoweb</organization>
@@ -840,7 +894,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
@@ -850,7 +904,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Settings</controlTitle>
                     <controlType>Edit</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
@@ -862,10 +916,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       </components>
     </package>
 
-    <package name="OS_ProductDisplayAjax" type="Module" version="4.0.3">
+    <package name="OS_ProductDisplayAjax" type="Module" version="4.0.4">
       <friendlyName>OS_ProductDisplayAjax</friendlyName>
       <description>NBrightStore open source e-commerce for DNN. Front office product list and detail with ajax support. (supports DNN7.2+)</description>
-      <iconFile />
+            <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
       <owner>
         <name>Stefan Kamphuis</name>
         <organization>40Fingers</organization>
@@ -910,7 +964,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
@@ -920,7 +974,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Settings</controlTitle>
                     <controlType>Edit</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
@@ -931,12 +985,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         </component>
       </components>
     </package>
-    <package name="OS_ProductListAjaxFilter" type="Module" version="4.0.3">
+    <package name="OS_ProductListAjaxFilter" type="Module" version="4.0.4">
       <friendlyName>OS_ProductListAjaxFilter</friendlyName>
       <description>
         Filter module for Ajax Product Display
       </description>
-      <iconFile />
+            <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
       <owner>
         <name>Stefan Kamphuis</name>
         <organization>40Fingers</organization>
@@ -982,7 +1036,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
@@ -992,7 +1046,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Settings</controlTitle>
                     <controlType>Edit</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
@@ -1005,12 +1059,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     </package>    
 
 
-    <package name="OS_ItemList" type="Module" version="4.0.3">
+    <package name="OS_ItemList" type="Module" version="4.0.4">
       <friendlyName>OS_ItemList</friendlyName>
       <description>
         Itemlist admin for shopping/favorites list
       </description>
-      <iconFile />
+            <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
       <owner>
         <name>David Lee</name>
         <organization>Nevoweb</organization>
@@ -1055,7 +1109,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>
@@ -1065,7 +1119,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Settings</controlTitle>
                     <controlType>Edit</controlType>
-                    <iconFile />
+                          <iconFile>icon-openstore.png</iconFile>
                     <helpUrl />
                     <viewOrder>0</viewOrder>
                   </moduleControl>

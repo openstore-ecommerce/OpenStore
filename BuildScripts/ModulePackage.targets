@@ -32,7 +32,9 @@
       <InstallInclude Include="**\Themes\Default\**\*.*" Exclude="**\menuplugin.xml;**\Thumbs.db;" />
       <InstallInclude Include="**\Themes\config\**\*.*" Exclude="**\menuplugin.xml;**\Thumbs.db;" />
       <InstallInclude Include="**\Themes\ClassicAjax\**\*.*" Exclude="**\menuplugin.xml;**\Thumbs.db;" />
-      
+
+      <InstallInclude Include="**\icon-openstore.png" />
+
     </ItemGroup>
     
     <CreateItem Include="$(DNNFileName).dnn">

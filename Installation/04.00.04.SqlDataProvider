@@ -1,0 +1,217 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER TRIGGER {databaseOwner}[{objectQualifier}Trigger_NBrightBuyIdx]
+  ON {databaseOwner}[{objectQualifier}NBrightBuy]
+ AFTER INSERT, UPDATE, DELETE
+ AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+	DECLARE @ParentItemId int
+	DECLARE @ItemId int	
+	DECLARE @Lang nvarchar(10)
+	DECLARE @insertItemId int
+	DECLARE @ProductRef nvarchar(max)
+	DECLARE @ProductName nvarchar(max)
+	DECLARE @Manufacturer nvarchar(max)
+	DECLARE @Summary nvarchar(max)
+	DECLARE @SEOName nvarchar(max)
+	DECLARE @TagWords nvarchar(max)
+	DECLARE @SEOPageTitle nvarchar(max)
+	DECLARE @FromPrice nvarchar(max)
+	DECLARE @Qty nvarchar(max)
+	DECLARE @TypeCode nvarchar(max)
+	DECLARE @Visible bit
+	DECLARE @chkarchived nvarchar(max)
+	DECLARE @chkisdeleted nvarchar(max)
+	DECLARE @chkishidden nvarchar(max)
+	DECLARE @chkishiddenlang nvarchar(max)
+	
+	-- delete all idx records for item
+	IF EXISTS(SELECT * FROM DELETED)
+	BEGIN
+		DECLARE deleted_cursor CURSOR LOCAL FOR
+		SELECT ItemId,Lang,TypeCode,ParentItemId FROM DELETED
+
+		OPEN deleted_cursor
+		FETCH NEXT FROM deleted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
+		WHILE @@FETCH_STATUS = 0
+		BEGIN
+
+			delete from dbo.[NBrightBuyIdx] where ItemId = @itemId
+			and itemid not in (select ItemId FROM inserted where TypeCode = 'PRD')
+
+			if (ISNULL(@Lang,'') = '')
+			BEGIN
+				delete from dbo.[NBrightBuyLang] where ParentItemId = @ItemId
+			END
+			ELSE
+			BEGIN
+				delete from dbo.[NBrightBuyLang] where ParentItemId = @ParentItemId and Lang = @Lang
+			END
+
+		FETCH NEXT FROM deleted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
+		END
+
+		CLOSE deleted_cursor;
+		DEALLOCATE deleted_cursor;
+
+	END
+
+	DECLARE inserted_cursor CURSOR LOCAL FOR
+	SELECT ItemId, Lang, TypeCode, ParentItemId FROM inserted 
+
+	OPEN inserted_cursor
+	FETCH NEXT FROM inserted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+
+		-----------------------------------------------------------------------
+		---- UPDATE NBrightBuyLang table ----
+
+		DECLARE @XMLData1 as xml
+		DECLARE @XMLData2 as xml
+		DECLARE @LangLang nvarchar(10)
+
+		IF ISNULL(@Lang,'') = ''
+		BEGIN
+			-- Update All language records.
+
+			select @XMLData1 = XMLData from dbo.[NBrightBuy] where ItemId = @ItemId
+
+			DECLARE idxData2 CURSOR LOCAL FOR
+			select Lang, XMLData from dbo.[NBrightBuy] where ParentItemId = @ItemId and ISNULL(Lang,'') != ''
+
+			OPEN idxData2
+			FETCH NEXT FROM idxData2 INTO @LangLang, @XMLData2
+			WHILE @@FETCH_STATUS = 0
+			BEGIN
+				if Exists(Select ParentItemId from dbo.[NBrightBuyLang] where ParentItemId = @ItemId and Lang = @LangLang)
+				BEGIN
+					update dbo.[NBrightBuyLang] Set XMLData = dbo.[NBrightBuyLangMerge](@XMLData2,@XMLData1)
+					where ParentItemId = @ItemId and Lang = @LangLang 
+				END 
+				ELSE
+				BEGIN
+					insert into dbo.[NBrightBuyLang] (ParentItemId, Lang, XMLData) values (@ItemId, @LangLang, dbo.[NBrightBuyLangMerge](@XMLData2,@XMLData1))
+				END
+			FETCH NEXT FROM idxData2 INTO @LangLang, @XMLData2
+			END
+
+			CLOSE idxData2;
+			DEALLOCATE idxData2;
+
+		END
+		ELSE
+		BEGIN
+			select @XMLData1 = XMLData from dbo.[NBrightBuy] where ItemId = @ParentItemId
+			select @XMLData2 = XMLData from dbo.[NBrightBuy] where ParentItemId = @ParentItemId and Lang = @Lang 
+
+			-- Update single Language record
+			if Exists(Select ParentItemId from dbo.[NBrightBuyLang] where ParentItemId = @ParentItemId and Lang = @Lang)
+			BEGIN
+				update dbo.[NBrightBuyLang] Set XMLData = dbo.[NBrightBuyLangMerge](@XMLData2,@XMLData1)
+				where ParentItemId = @ParentItemId and Lang = @Lang 
+			END 
+			ELSE
+			BEGIN
+				insert into dbo.[NBrightBuyLang] (ParentItemId, Lang, XMLData) values (@ParentItemId, @Lang, dbo.[NBrightBuyLangMerge](@XMLData2,@XMLData1))
+			END
+		END
+
+
+		-----------------------------------------------------------------------
+
+		if (@TypeCode = 'PRDLANG') SET @ItemId = @ParentItemId  -- If we're just updating a langauge record we still need to process all the records to get the full index.
+
+		-- rebuild index records for item.
+
+		DECLARE idxData CURSOR LOCAL FOR
+		select NB1.[ItemId]  
+		,NB1.[XMLData].value('(genxml/textbox/txtproductref)[1]', 'nvarchar(150)') as ProductRef
+		,NB2.[XMLData].value('(genxml/textbox/txtproductname)[1]', 'nvarchar(150)') as ProductName
+		,NB2.[XMLData].value('(genxml/textbox/txtmanufacturer)[1]', 'nvarchar(150)') as Manufacturer
+		,NB2.[XMLData].value('(genxml/textbox/txtsummary)[1]', 'nvarchar(255)') as Summary
+		,NB2.[XMLData].value('(genxml/textbox/txtseoname)[1]', 'nvarchar(255)') as SEOName
+		,NB2.[XMLData].value('(genxml/textbox/txttagwords)[1]', 'nvarchar(255)') as TagWords
+		,NB2.[XMLData].value('(genxml/textbox/txtseopagetitle)[1]', 'nvarchar(255)') as SEOPageTitle
+		,NB1.[XMLData].value('(genxml/models/genxml/textbox/txtunitcost[not(number((.)[1]) > number((../../../genxml/textbox/txtunitcost)[1]))][1])[1]', 'decimal(10,2)') as FromPrice
+		,NB1.[XMLData].value('(genxml/models/genxml/textbox/txtqtyremaining[not(number((.)[1]) > number((../../../genxml/textbox/txtqtyremaining)[1]))][1])[1]', 'int') as Qty
+		,NB1.TypeCode
+		,NB2.Lang 
+		,NB1.[XMLData].value('(genxml/checkbox/chkarchived)[1]', 'nvarchar(5)') as chkarchived
+		,NB1.[XMLData].value('(genxml/checkbox/chkisdeleted)[1]', 'nvarchar(5)') as chkisdeleted
+		,NB1.[XMLData].value('(genxml/checkbox/chkishidden)[1]', 'nvarchar(5)') as chkishidden	
+		,NB2.[XMLData].value('(genxml/checkbox/chkishiddenlang)[1]', 'nvarchar(5)') as chkishiddenlang	
+		FROM dbo.[NBrightBuy] as NB1 
+		left join dbo.[NBrightBuy] as NB2 on NB2.ParentItemId = NB1.ItemId and NB2.TypeCode = 'PRDLANG'
+		where NB1.typecode = 'PRD' and NB1.ItemID = @ItemID
+
+
+		OPEN idxData
+		FETCH NEXT FROM idxData INTO @insertItemId,@ProductRef,@ProductName,@Manufacturer,@Summary,@SEOName,@TagWords,@SEOPageTitle,@FromPrice,@Qty,@TypeCode,@Lang,@chkarchived,@chkisdeleted,@chkishidden,@chkishiddenlang
+		WHILE @@FETCH_STATUS = 0
+		BEGIN
+	
+			SET @Visible = 1
+			if (not LOWER(@chkarchived) = 'false' or not LOWER(@chkisdeleted) = 'false' or not LOWER(@chkishidden) = 'false' or not LOWER(@chkishiddenlang) = 'false') 
+			BEGIN
+				SET @Visible = 0
+			END
+
+			IF EXISTS (select ItemId from dbo.[NBrightBuyIdx] where ItemId = @ItemID and Lang = @Lang)
+			BEGIN
+		
+				UPDATE dbo.[NBrightBuyIdx]	
+				SET ProductRef = @ProductRef
+				,ProductName = @ProductName
+				,Manufacturer = @Manufacturer
+				,Summary = @Summary
+				,SEOName = @SEOName
+				,TagWords = @TagWords
+				,SEOPageTitle = @SEOPageTitle
+				,FromPrice = @FromPrice
+				,Qty = @Qty
+				,TypeCode = @TypeCode
+				,Visible = @Visible
+				where ItemId = @ItemID and Lang = @Lang
+
+			END
+			ELSE
+			BEGIN
+				IF NOT @Lang IS NULL  -- we don't want to insert record unless whe have the full key.
+				BEGIN
+
+					INSERT dbo.[NBrightBuyIdx]	
+					(ItemId,ProductRef,ProductName,Manufacturer,Summary,SEOName,TagWords,SEOPageTitle,FromPrice,Qty,TypeCode,Lang,Visible)
+					VALUES
+					(@ItemId,@ProductRef,@ProductName,@Manufacturer,@Summary,@SEOName,@TagWords,@SEOPageTitle,@FromPrice,@Qty,@TypeCode,@Lang,@Visible)
+		
+				END
+			END
+
+		FETCH NEXT FROM idxData INTO @insertItemId,@ProductRef,@ProductName,@Manufacturer,@Summary,@SEOName,@TagWords,@SEOPageTitle,@FromPrice,@Qty,@TypeCode,@Lang,@chkarchived,@chkisdeleted,@chkishidden,@chkishiddenlang
+		END
+
+		CLOSE idxData;
+		DEALLOCATE idxData;
+	
+	FETCH NEXT FROM inserted_cursor INTO @ItemId,@Lang,@TypeCode,@ParentItemId
+	END
+
+	CLOSE inserted_cursor;
+	DEALLOCATE inserted_cursor;
+	
+END
+
+
+	
+GO
+
+
+

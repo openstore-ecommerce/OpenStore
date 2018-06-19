@@ -81,7 +81,8 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             @CheckBox(info, "genxml/checkbox/chkishidden", "")
-                            @CheckBox(info, "genxml/lang/genxml/checkbox/chkishidden2", "ResourceKey:General.Hidden", "")
+                            <label class="control-label">@ResourceKey("General.Hidden")</label>
+                            &nbsp;@CheckBox(info, "genxml/lang/genxml/checkbox/chkishiddenlang", "", "")@LangFlag(info.Lang)
                             <label class="control-label">@ResourceKey("General.Hidden")</label>
                             &nbsp;@CheckBox(info, "genxml/checkbox/chkdisable", "")
                             <label class="control-label">@ResourceKey("General.Disable")</label>
