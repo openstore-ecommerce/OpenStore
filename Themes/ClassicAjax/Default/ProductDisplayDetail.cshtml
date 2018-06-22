@@ -62,7 +62,7 @@
                           if (product.Imgs.Count > 1)
                           {
                             <li class="image@(lp.ToString())">
-                              <a href="javascript:void(0)" title="@(img.GetXmlProperty("genxml/textbox/txtimagedesc"))"><img src="@ProductImageUrl(info, 90, 0, lp)" alt="@(img.GetXmlProperty("genxml/textbox/txtimagedesc"))" onclick="showImage('@ProductImageUrl(info, 0, 0, lp)','@(img.GetXmlProperty("genxml/textbox/txtimagedesc"))');"></a>
+                              <a href="javascript:void(0)" title="@(img.GetXmlProperty("genxml/textbox/txtimagedesc"))"><img src="@ProductImageUrl(info, 90, 0, lp)" alt="@(img.GetXmlProperty("genxml/textbox/txtimagedesc"))" onclick="showImage('@ProductImageUrl(info, 0, 0, lp,"&imgtype=png")','@(img.GetXmlProperty("genxml/textbox/txtimagedesc"))');"></a>
                             </li>
                           }
                           lp += 1;
@@ -132,7 +132,8 @@
                     @TextBox(info, "genxml/textbox/selectedaddqty", "class='quantity selectedaddqty'", "1")
                     <a class="qtyplus" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
                 </div>
-                if (!info.GetXmlPropertyBool("genxml/checkbox/chkdisable"))
+
+                if (!product.Disabled)
                 {
                     <a class="actionbutton addtobasket " itemid="@(info.ItemID)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>@ResourceKey("ProductView.addtobasket")</a>
                 }
