@@ -77,11 +77,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     ClientLang = UserController.Instance.GetCurrentUserInfo().Profile.PreferredLocale;
                 }
             }
-            else
-            {
-                PurchaseInfo.UserId = -1;
-                PurchaseInfo.GUIDKey = "-1";
-            }
 
             // save the product refs of the order to an XML node, so we can search for product ref in the BO Order Admin.
             var productrefs = "";
