@@ -15,8 +15,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public List<MenuNode> ManipulateNodes(List<MenuNode> nodes, DotNetNuke.Entities.Portals.PortalSettings portalSettings)
         {
+            var parentcatref = "";
             // jump out if we don't have [CAT] token in nodes
-            if (nodes.Count(x => x.Text.ToUpper() == "[CAT]") == 0) return nodes;
+            if (nodes.Count(x => x.Text.ToUpper() == "[CAT]") == 0 && nodes.Count(x => x.Text.ToUpper().StartsWith("[CAT:")) == 0)
+            {
+                return nodes;
+            }
 
             // use cache ()
             var nodeTabList = "*";
@@ -27,20 +31,42 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var cachekey = "NBrightPL*" + portalSettings.PortalId + "*" + Utils.GetCurrentCulture() + "*" + nodeTabList; // use nodeTablist incase the DDRMenu has a selector.
             var rtnnodes = (List<MenuNode>)Utils.GetCache(cachekey);
             if (rtnnodes != null) return rtnnodes;
-           
+
+            var parentItemId = 0;
+            if (nodes.Count(x => x.Text.ToUpper().StartsWith("[CAT:")) > 0)
+            {
+                // find the selected node.
+                var nods = nodes.Where(x => x.Text.ToUpper().StartsWith("[CAT:")).ToList();
+                foreach (var n in nods)
+                {
+                    var s = n.Text.Split(':');
+                    if (s.Count() >= 2)
+                    {
+                        parentcatref = s[1].TrimEnd(']');
+                        var objCtrl = new NBrightBuyController();
+                        var parentcat = objCtrl.GetByGuidKey(PortalSettings.Current.PortalId, -1, "CATEGORY", parentcatref);
+                        if (parentcat != null)
+                        {
+                            parentItemId = parentcat.ItemID;
+                        }
+                    }
+                }
+            }
+
+
             _tabid = PortalSettings.Current.ActiveTab.TabID.ToString("");
 
             var defaultListPage = "";
             defaultListPage = StoreSettings.Current.Get("productlisttab");
 
-            var catNodeList = GetCatNodeXml(_tabid, 0, true, 0, null, defaultListPage);
+            var catNodeList = GetCatNodeXml(_tabid, parentItemId, true, 0, null, defaultListPage);
 
             // see if we need to merge into the current pages, by searching for marker page [cat]
             int idx = 0;
             var catNods = new Dictionary<int,MenuNode>();
             foreach (var n in nodes)
             {
-                if (n.Text.ToLower() == "[cat]")
+                if (n.Text.ToLower() == "[cat]" || n.Text.ToLower().StartsWith("[cat:"))
                 {
                     catNods.Add(idx,n);
 					break;

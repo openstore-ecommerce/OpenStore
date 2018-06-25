@@ -122,7 +122,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             get
             {
-                return Info.GetXmlPropertyBool("genxml/checkbox/chkdisable");
+                return DataRecord.GetXmlPropertyBool("genxml/checkbox/chkdisable");
             }
         }
 
@@ -130,29 +130,33 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             get
             {
-                var seoname = Info.GetXmlProperty("genxml/lang/genxml/textbox/txtseoname");
-                if (seoname == "") seoname = Info.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname");
+                var seoname = DataLangRecord.GetXmlProperty("genxml/textbox/txtseoname");
+                if (seoname == "") seoname = DataLangRecord.GetXmlProperty("genxml/textbox/txtproductname");
                 return seoname;
             }
         }
 
         public String ProductRef
         {
-            get { return Info.GetXmlProperty("genxml/textbox/txtproductref"); }
+            get {
+                return DataRecord.GetXmlProperty("genxml/textbox/txtproductref");
+            }
         }
 
         public String ProductName
         {
-            get { return Info.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname"); }
+            get {
+                return DataLangRecord.GetXmlProperty("genxml/textbox/txtproductname");
+            }
         }
 
         public String SEOTitle
         {
             get
             {
-                var strOut = Info.GetXmlProperty("genxml/lang/genxml/textbox/txtseopagetitle");
-                if (strOut == "") strOut = Info.GetXmlProperty("genxml/lang/genxml/textbox/txtseoname");
-                if (strOut == "") strOut = Info.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname");
+                var strOut = DataLangRecord.GetXmlProperty("genxml/textbox/txtseopagetitle");
+                if (strOut == "") strOut = DataLangRecord.GetXmlProperty("genxml/textbox/txtseoname");
+                if (strOut == "") strOut = DataLangRecord.GetXmlProperty("genxml/textbox/txtproductname");
                 return strOut;
             }
         }
@@ -162,9 +166,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             get
             {
-                var strOut = Info.GetXmlProperty("genxml/lang/genxml/textbox/seodescription");
-                if (strOut == "") strOut = Info.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary");
-                if (strOut == "") strOut = Info.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname");
+                var strOut = DataLangRecord.GetXmlProperty("genxml/textbox/seodescription");
+                if (strOut == "") strOut = DataLangRecord.GetXmlProperty("genxml/textbox/txtsummary");
+                if (strOut == "") strOut = DataLangRecord.GetXmlProperty("genxml/textbox/txtproductname");
                 return strOut;
             }
         }
