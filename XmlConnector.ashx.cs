@@ -107,18 +107,18 @@ namespace Nevoweb.DNN.NBrightBuy
                 }
                 else if (paramCmd.StartsWith("product_"))
                 {
-                    ProductFunctions.EntityTypeCode = "PRD";
-                    strOut = ProductFunctions.ProcessCommand(paramCmd, context, _editlang);
+                    var productFunctions = new ProductFunctions();
+                    strOut = productFunctions.ProcessCommand(paramCmd, context, _editlang);
                 }
                 else if (paramCmd.StartsWith("category_"))
                 {
-                    CategoryFunctions.EntityTypeCode = "CATEGORY";
-                    strOut = CategoryFunctions.ProcessCommand(paramCmd, context, _editlang);
+                    var categoryFunctions = new CategoryFunctions();
+                    strOut = categoryFunctions.ProcessCommand(paramCmd, context, _editlang);
                 }
                 else if (paramCmd.StartsWith("property_"))
                 {
-                    PropertyFunctions.EntityTypeCode = "CATEGORY";
-                    strOut = PropertyFunctions.ProcessCommand(paramCmd, context, _editlang);
+                    var propertyFunctions = new PropertyFunctions();
+                    strOut = propertyFunctions.ProcessCommand(paramCmd, context, _editlang);
                 }                
                 else if (paramCmd.StartsWith("itemlist_"))
                 {
