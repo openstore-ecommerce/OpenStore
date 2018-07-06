@@ -281,6 +281,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Plugins
                     // remove save GetData cache
                     DataCache.ClearCache();
 
+                    //load entity typecode to DB idx settings.
+                    NBrightBuyUtils.RegisterEnityTypeToDataBase();
+
                 }
             }
         }

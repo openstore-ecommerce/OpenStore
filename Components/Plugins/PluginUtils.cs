@@ -281,6 +281,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             if (updated)
                             {
                                 File.Delete(f);
+                                //load entity typecode to DB idx settings.
+                                NBrightBuyUtils.RegisterEnityTypeToDataBase();
                             }
                         }
                         catch (Exception)

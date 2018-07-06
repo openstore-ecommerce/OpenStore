@@ -34,6 +34,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         public string EntityTypeCode = "";
         public string UiLang = "";
         public string TemplateRelPath = "/DesktopModules/NBright/NBrightBuy";
+        public string RazorTemplate = "";
         private bool DebugMode => StoreSettings.Current.DebugMode;
 
         public void ResetTemplateRelPath()
@@ -211,7 +212,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                         var themeFolder = settings["themefolder"];
 
-                        var razortemplate = settings["razortemplate"];
+                        var RazorTemplate = settings["razortemplate"];
                         var portalId = Convert.ToInt32(settings["portalid"]);
 
                         var passSettings = settings;
@@ -234,7 +235,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         var objCtrl = new NBrightBuyController();
                         var info = objCtrl.GetData(Convert.ToInt32(selecteditemid),EntityTypeCode + "LANG", EditLangCurrent);
 
-                        strOut = NBrightBuyUtils.RazorTemplRender(razortemplate, 0, "", info, TemplateRelPath, themeFolder, EditLangCurrent, passSettings);
+                        strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, themeFolder, EditLangCurrent, passSettings);
                     }
                     return strOut;
                 }
@@ -559,7 +560,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (themeFolder == "") themeFolder = "config";
                     var pageNumber = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagenumber");
                     var pageSize = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagesize");
-                    var razortemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                    if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
 
                     bool paging = pageSize > 0;
 
@@ -576,7 +577,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                             passSettings.Add(s.Key, s.Value);
                     }
 
-                    strOut = NBrightBuyUtils.RazorTemplRenderList(razortemplate, 0, "", list, TemplateRelPath, themeFolder, EditLangCurrent, passSettings);
+                    strOut = NBrightBuyUtils.RazorTemplRenderList(RazorTemplate, 0, "", list, TemplateRelPath, themeFolder, EditLangCurrent, passSettings);
 
                     // add paging if needed
                     if (paging && (recordCount > pageSize))
@@ -636,7 +637,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (Utils.IsNumeric(selecteditemid))
                     {
                         var themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/themefolder");
-                        var razortemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                        if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
                         var portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
                         var addqty = ajaxInfo.GetXmlPropertyInt("genxml/hidden/addqty");
 
@@ -675,7 +676,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         var objCtrl = new NBrightBuyController();
                         var info = objCtrl.Get(Convert.ToInt32(selecteditemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                        strOut = NBrightBuyUtils.RazorTemplRender(razortemplate, 0, "", info, TemplateRelPath, themeFolder, EditLangCurrent, passSettings);
+                        strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, themeFolder, EditLangCurrent, passSettings);
                     }
                     return strOut;
                 }
@@ -699,7 +700,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (selecteditemid > 0)
                     {
                         var themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/themefolder");
-                        var razortemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                        if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
                         var portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
                         var addqty = ajaxInfo.GetXmlPropertyInt("genxml/hidden/addqty");
 
@@ -732,7 +733,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         var objCtrl = new NBrightBuyController();
                         var info = objCtrl.GetData(selecteditemid, EntityTypeCode + "LANG", EditLangCurrent);
 
-                        strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductOptions.cshtml", 0, "", info, TemplateRelPath, "config", EditLangCurrent, passSettings);
+                        if (RazorTemplate == "") RazorTemplate = "Admin_ProductOptions.cshtml";
+                        strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, passSettings);
 
                         NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     }
@@ -798,7 +800,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                             var objCtrl = new NBrightBuyController();
                             var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                            strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductOptionValues.cshtml", 0, "", info, TemplateRelPath, "config", EditLangCurrent, passSettings);
+                            var RazorTemplate = settings["razortemplate"];
+                            if (RazorTemplate == "") RazorTemplate = "Admin_ProductOptionValues.cshtml";
+                            strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, passSettings);
 
                             NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                         }
@@ -879,7 +883,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var objCtrl = new NBrightBuyController();
                     var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                    strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductImages.cshtml", 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
+                    if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                    if (RazorTemplate == "") RazorTemplate = "Admin_ProductImages.cshtml";
+                    strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
                 }
             }
@@ -1096,7 +1102,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductDocs.cshtml", 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = "Admin_ProductDocs.cshtml";
+                strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
             }
             return strOut;
@@ -1209,7 +1217,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductCategories.cshtml", 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = "Admin_ProductCategories.cshtml";
+                strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
                 return strOut;
 
@@ -1232,7 +1242,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         {
             var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
             ajaxInfo.Lang = Utils.GetCurrentCulture();
-            var strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductPropertySelect.cshtml", 0, "", ajaxInfo, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
+            if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+            if (RazorTemplate == "") RazorTemplate = "Admin_ProductPropertySelect.cshtml";
+            var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", ajaxInfo, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
             return strOut;
         }
@@ -1292,7 +1304,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductProperties.cshtml", 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = "Admin_ProductProperties.cshtml";
+                strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
                 return strOut;
 
@@ -1370,7 +1384,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductRelated.cshtml", 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = "Admin_ProductRelated.cshtml";
+                strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
                 return strOut;
 
@@ -1452,7 +1468,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var strOut = "";
                 if (userlist.Count > 0)
                 {
-                    strOut = NBrightBuyUtils.RazorTemplRenderList("Admin_ProductClientSelect.cshtml", 0, "", userlist, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
+                    if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                    if (RazorTemplate == "") RazorTemplate = "Admin_ProductClientSelect.cshtml";
+                    strOut = NBrightBuyUtils.RazorTemplRenderList(RazorTemplate, 0, "", userlist, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
                 }
                 return  strOut;
             }
@@ -1473,7 +1491,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductClients.cshtml", 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = "Admin_ProductClients.cshtml";
+                strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
                 return strOut;
 

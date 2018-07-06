@@ -1189,7 +1189,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     var ajaxprov = AjaxInterface.Instance(d.Key);
                     if (ajaxprov != null)
                     {
-                        ajaxprov.Validate();
+                        try
+                        {
+                            ajaxprov.Validate();
+                        }
+                        catch
+                        {
+                            // old plugins may not implement a validation method. Ignore it.
+                        }
                     }
             }
 
@@ -2692,6 +2699,38 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         }
 
         #endregion
+
+        /// <summary>
+        /// If the Entity Plugin needs to be indexed in NBrightIdx, call this fundtion to register it.
+        /// </summary>
+        public static void RegisterEnityTypeToDataBase()
+        {
+            var ModCtrl = new NBrightBuyController();
+            var pluginData = new PluginData(PortalSettings.Current.PortalId);
+            var provList = pluginData.GetEntityTypeProviders();
+            foreach (var prov in provList)
+            {
+                var entityprov = EntityTypeInterface.Instance(prov.Key);
+                if (entityprov != null)
+                {
+                    var typeCode = entityprov.GetEntityTypeCode();
+
+                    var nbi = ModCtrl.GetByGuidKey(PortalSettings.Current.PortalId,-1,"SETTINGIDX", typeCode);
+                    if (nbi == null)
+                    {
+                        nbi = new NBrightInfo();
+                        nbi.PortalId = PortalSettings.Current.PortalId;
+                        nbi.ModuleId = -1;
+                        nbi.TypeCode = "SETTINGIDX";
+                        nbi.GUIDKey = typeCode;
+                        ModCtrl.Update(nbi);
+                    }
+                }
+            }
+
+
+        }
+
     }
 }
 
