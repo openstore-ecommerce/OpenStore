@@ -42,7 +42,6 @@
 @foreach (var selGroup in Model.Settings.Where(kv => kv.Key.StartsWith("selectedfilterssort-")).OrderBy(kv => kv.Value == "" ? -1 : int.Parse(kv.Value)))
 {
     var groupRef = selGroup.Key.Substring(selGroup.Key.IndexOf("-") + 1);
-
     // is it selected?
     var isSelected = Model.Settings.Any(kv => kv.Key == "selectedfilters-" + groupRef && kv.Value.ToLower() == "true");
 
@@ -52,15 +51,18 @@
     }
     var nbc = new NBrightBuyController();
     var groupnbi = nbc.GetByGuidKey(portalId, -1, "GROUP", groupRef);
-    var grouplang = nbc.GetDataLang(groupnbi.ItemID, Model.Lang);
-    var propList = NBrightBuyUtils.BuildCatList(1, false, false, groupnbi.ItemID, "", "", false, true, groupRef, "", "");
-    strOut += "<div class='h3-headline'>" + grouplang.GetXmlProperty("genxml/textbox/groupname") + "</div>";
-    strOut += "<ul>";
-    foreach (var item in propList)
+    if (groupnbi != null)
     {
-         strOut += "<li><input type='checkbox' value='" + groupRef + "-" + item.Key + "' />" + item.Value + "</li>";
+        var grouplang = nbc.GetDataLang(groupnbi.ItemID, Model.Lang);
+        var propList = NBrightBuyUtils.BuildCatList(1, false, false, groupnbi.ItemID, "", "", false, true, groupRef, "", "");
+        strOut += "<div class='h3-headline'>" + grouplang.GetXmlProperty("genxml/textbox/groupname") + "</div>";
+        strOut += "<ul>";
+        foreach (var item in propList)
+        {
+            strOut += "<li><input type='checkbox' value='" + groupRef + "-" + item.Key + "' />" + item.Value + "</li>";
+        }
+        strOut += "</ul>";
     }
-    strOut += "</ul>";
 }
 
 
