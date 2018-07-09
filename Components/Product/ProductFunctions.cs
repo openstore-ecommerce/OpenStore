@@ -35,6 +35,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         public string UiLang = "";
         public string TemplateRelPath = "/DesktopModules/NBright/NBrightBuy";
         public string RazorTemplate = "";
+        public string FieldPrefix = "";
         private bool DebugMode => StoreSettings.Current.DebugMode;
 
         public void ResetTemplateRelPath()
@@ -47,8 +48,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
             var strOut = "PRODUCT - ERROR!! - No Security rights or function command.";
             var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-            var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/userid");
-            EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
+            var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "userid");
+            EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "entitytypecode");
             if (EntityTypeCode == "") EntityTypeCode = "PRD"; // default to product
             UiLang = NBrightBuyUtils.GetUILang(ajaxInfo);
             EditLangCurrent = editlang;
@@ -320,14 +321,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var itemid = -1;
                 if (!newrecord)
                 {
-                    itemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/itemid");
+                    itemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "itemid");
                 }
                 if (itemid != 0)
                 {
                     var prdData = new ProductData(itemid, EditLangCurrent, true, EntityTypeCode);
-                    var modelXml = Utils.UnCode(ajaxInfo.GetXmlProperty("genxml/hidden/xmlupdatemodeldata"));
-                    var optionXml = Utils.UnCode(ajaxInfo.GetXmlProperty("genxml/hidden/xmlupdateoptiondata"));
-                    var optionvalueXml = Utils.UnCode(ajaxInfo.GetXmlProperty("genxml/hidden/xmlupdateoptionvaluesdata"));
+                    var modelXml = Utils.UnCode(ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "xmlupdatemodeldata"));
+                    var optionXml = Utils.UnCode(ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "xmlupdateoptiondata"));
+                    var optionvalueXml = Utils.UnCode(ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "xmlupdateoptionvaluesdata"));
 
                     prdData.UpdateModels(modelXml, UiLang);
                     prdData.UpdateOptions(optionXml, UiLang);
@@ -335,11 +336,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     prdData.UpdateImages(ajaxInfo);
                     prdData.UpdateDocs(ajaxInfo);
 
-                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdateproductimages");
-                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdateoptionvaluesdata");
-                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdateoptiondata");
-                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdatemodeldata");
-                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdateoptionvaluesdata");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/" + FieldPrefix + "xmlupdateproductimages");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/" + FieldPrefix + "xmlupdateoptionvaluesdata");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/" + FieldPrefix + "xmlupdateoptiondata");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/" + FieldPrefix + "xmlupdatemodeldata");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/" + FieldPrefix + "xmlupdateoptionvaluesdata");
                     var productXml = ajaxInfo.XMLData;
 
                     prdData.Update(productXml);
@@ -366,7 +367,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
                 if (parentitemid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
@@ -399,7 +400,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
                 if (parentitemid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
@@ -444,8 +445,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var strOut = "";
 
                     // select a specific entity data type for the product (used by plugins)
-                    var entitytypecodelang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecodelang");
-                    var entitytypecode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
+                    var entitytypecodelang = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "entitytypecodelang");
+                    var entitytypecode = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "entitytypecode");
                     if (entitytypecode == "") entitytypecode = EntityTypeCode;
                     if (entitytypecode == "") entitytypecode = "PRD";
                     if (entitytypecodelang == "") entitytypecodelang = EntityTypeCode + "LANG";
@@ -453,20 +454,20 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (datatypecode == "") datatypecode = entitytypecode;
                     var datatypecodelang = datatypecode + "LANG";
 
-                    var filter = ajaxInfo.GetXmlProperty("genxml/hidden/filter");
-                    var orderby = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
-                    var returnLimit = ajaxInfo.GetXmlPropertyInt("genxml/hidden/returnlimit");
-                    var pageNumber = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagenumber");
-                    var pageSize = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagesize");
-                    var cascade = ajaxInfo.GetXmlPropertyBool("genxml/hidden/cascade");
+                    var filter = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "filter");
+                    var orderby = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "orderby");
+                    var returnLimit = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "returnlimit");
+                    var pageNumber = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "pagenumber");
+                    var pageSize = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "pagesize");
+                    var cascade = ajaxInfo.GetXmlPropertyBool("genxml/hidden/" + FieldPrefix + "cascade");
                     var portalId = PortalSettings.Current.PortalId;
-                    if (ajaxInfo.GetXmlProperty("genxml/hidden/portalid") != "")
+                    if (ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "portalid") != "")
                     {
-                        portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
+                        portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "portalid");
                     }
 
-                    var searchText = ajaxInfo.GetXmlProperty("genxml/hidden/searchtext");
-                    var searchCategory = ajaxInfo.GetXmlProperty("genxml/hidden/searchcategory");
+                    var searchText = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "searchtext");
+                    var searchCategory = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "searchcategory");
 
                     if (searchText != "") filter += " and (NB3.[ProductName] like '%" + searchText + "%' or NB3.[ProductRef] like '%" + searchText + "%' or NB3.[Summary] like '%" + searchText + "%' ) ";
 
@@ -556,11 +557,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var strOut = "";
 
                     // select a specific entity data type for the product (used by plugins)
-                    var themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/themefolder");
+                    var themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "themefolder");
                     if (themeFolder == "") themeFolder = "config";
-                    var pageNumber = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagenumber");
-                    var pageSize = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagesize");
-                    if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                    var pageNumber = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "pagenumber");
+                    var pageSize = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "pagesize");
+                    if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
 
                     bool paging = pageSize > 0;
 
@@ -606,9 +607,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     //get uploaded params
                     var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-                    var moveproductid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/moveproductid");
-                    var movetoproductid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/movetoproductid");
-                    var searchcategory = ajaxInfo.GetXmlPropertyInt("genxml/hidden/searchcategory");
+                    var moveproductid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "moveproductid");
+                    var movetoproductid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "movetoproductid");
+                    var searchcategory = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "searchcategory");
                     if (searchcategory > 0 && movetoproductid > 0 && moveproductid > 0)
                     {
                         var objCtrl = new NBrightBuyController();
@@ -633,13 +634,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
                     var strOut = "";
-                    var selecteditemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                    var selecteditemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
                     if (Utils.IsNumeric(selecteditemid))
                     {
-                        var themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/themefolder");
-                        if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
-                        var portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
-                        var addqty = ajaxInfo.GetXmlPropertyInt("genxml/hidden/addqty");
+                        var themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "themefolder");
+                        if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
+                        var portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "portalid");
+                        var addqty = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "addqty");
 
                         var passSettings = ajaxInfo.ToDictionary();
                         foreach (var s in StoreSettings.Current.Settings()) // copy store setting, otherwise we get a byRef assignement
@@ -670,7 +671,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         if (themeFolder == "")
                         {
                             themeFolder = StoreSettings.Current.ThemeFolder;
-                            if (ajaxInfo.GetXmlProperty("genxml/hidden/themefolder") != "") themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/themefolder");
+                            if (ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "themefolder") != "") themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "themefolder");
                         }
 
                         var objCtrl = new NBrightBuyController();
@@ -696,13 +697,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
                     var strOut = "";
-                    var selecteditemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                    var selecteditemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
                     if (selecteditemid > 0)
                     {
-                        var themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/themefolder");
-                        if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
-                        var portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
-                        var addqty = ajaxInfo.GetXmlPropertyInt("genxml/hidden/addqty");
+                        var themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "themefolder");
+                        if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
+                        var portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "portalid");
+                        var addqty = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "addqty");
 
                         var passSettings = ajaxInfo.ToDictionary();
                         foreach (var s in StoreSettings.Current.Settings()) // copy store setting, otherwise we get a byRef assignement
@@ -823,7 +824,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 if (NBrightBuyUtils.CheckRights())
                 {
                     var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-                    var itemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                    var itemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
                     if (itemid > 0)
                     {
                         var prdData = new ProductData(itemid, EditLangCurrent, true, EntityTypeCode);
@@ -852,8 +853,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                 //get uploaded params
                 var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var imguploadlist = ajaxInfo.GetXmlProperty("genxml/hidden/imguploadlist");
+                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var imguploadlist = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "imguploadlist");
 
                 if (Utils.IsNumeric(productitemid))
                 {
@@ -883,7 +884,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var objCtrl = new NBrightBuyController();
                     var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                    if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                    if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
                     if (RazorTemplate == "") RazorTemplate = "Admin_ProductImages.cshtml";
                     strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
@@ -1072,8 +1073,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             var strOut = "";
 
             if (!settings.ContainsKey("itemid")) settings.Add("itemid", "");
-            var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-            var docuploadlist = ajaxInfo.GetXmlProperty("genxml/hidden/docuploadlist");
+            var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+            var docuploadlist = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "docuploadlist");
 
             if (Utils.IsNumeric(productitemid))
             {
@@ -1102,7 +1103,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
                 if (RazorTemplate == "") RazorTemplate = "Admin_ProductDocs.cshtml";
                 strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
@@ -1142,8 +1143,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var xrefitemid = ajaxInfo.GetXmlProperty("genxml/hidden/selectedcatid");
+                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var xrefitemid = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "selectedcatid");
                 if (Utils.IsNumeric(xrefitemid) && Utils.IsNumeric(parentitemid))
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
@@ -1164,8 +1165,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
+                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selectedcatid");
                 if (xrefitemid > 0 && parentitemid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
@@ -1187,8 +1188,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
+                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selectedcatid");
                 if (xrefitemid > 0 && parentitemid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
@@ -1212,12 +1213,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             {
                 //get uploaded params
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
                 var strOut = "";
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
                 if (RazorTemplate == "") RazorTemplate = "Admin_ProductCategories.cshtml";
                 strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
@@ -1242,7 +1243,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         {
             var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
             ajaxInfo.Lang = Utils.GetCurrentCulture();
-            if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+            if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
             if (RazorTemplate == "") RazorTemplate = "Admin_ProductPropertySelect.cshtml";
             var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", ajaxInfo, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
@@ -1254,8 +1255,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
+                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selectedcatid");
                 if (xrefitemid > 0 && parentitemid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(parentitemid, EditLangCurrent, false, EntityTypeCode);
@@ -1276,8 +1277,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
+                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selectedcatid");
                 if (xrefitemid > 0 && parentitemid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(parentitemid, EditLangCurrent, false);
@@ -1299,12 +1300,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             {
                 //get uploaded params
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
                 var strOut = "";
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
                 if (RazorTemplate == "") RazorTemplate = "Admin_ProductProperties.cshtml";
                 strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
@@ -1328,8 +1329,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var productid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var selectedrelatedid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedrelatedid");
+                var productid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var selectedrelatedid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selectedrelatedid");
                 if (productid > 0 && selectedrelatedid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(productid), EditLangCurrent, false, EntityTypeCode);
@@ -1350,8 +1351,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var productid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var selectedrelatedid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedrelatedid");
+                var productid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var selectedrelatedid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selectedrelatedid");
                 if (selectedrelatedid > 0 && productid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(productid), EditLangCurrent, false, EntityTypeCode);
@@ -1379,12 +1380,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                 //get uploaded params
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
                 var strOut = "";
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
                 if (RazorTemplate == "") RazorTemplate = "Admin_ProductRelated.cshtml";
                 strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
@@ -1408,8 +1409,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var productid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var selecteduserid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteduserid");
+                var productid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var selecteduserid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteduserid");
                 if (selecteduserid > 0 && productid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(productid), EditLangCurrent, false, EntityTypeCode);
@@ -1434,8 +1435,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var productid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var selecteduserid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteduserid");
+                var productid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var selecteduserid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteduserid");
                 if (selecteduserid > 0 && productid > 0)
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(productid), EditLangCurrent, false, EntityTypeCode);
@@ -1458,8 +1459,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             {
                 //get uploaded params
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                var searchtext = ajaxInfo.GetXmlProperty("genxml/hidden/searchtext");
+                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
+                var searchtext = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "searchtext");
 
                 //get data
                 var prodData = ProductUtils.GetProductData(productitemid, EditLangCurrent);
@@ -1468,7 +1469,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var strOut = "";
                 if (userlist.Count > 0)
                 {
-                    if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                    if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
                     if (RazorTemplate == "") RazorTemplate = "Admin_ProductClientSelect.cshtml";
                     strOut = NBrightBuyUtils.RazorTemplRenderList(RazorTemplate, 0, "", userlist, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
                 }
@@ -1486,12 +1487,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "selecteditemid");
                 var strOut = "";
                 var objCtrl = new NBrightBuyController();
                 var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
 
-                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
+                if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "razortemplate");
                 if (RazorTemplate == "") RazorTemplate = "Admin_ProductClients.cshtml";
                 strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, "config", EditLangCurrent, ajaxInfo.ToDictionary());
 
@@ -1520,8 +1521,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
 
             // get the moduleid, tabid
-            var moduleid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/moduleid");
-            var tabid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/tabid");
+            var moduleid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "moduleid");
+            var tabid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "tabid");
 
             var ps = PortalSettings.Current;
 
@@ -1551,8 +1552,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             var _orderbyindex = "";
             var _propertyfilter = "";
             NavigationData _navigationdata;
-            var EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
-            var EntityTypeCodeLang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode") + "LANG";
+            if (EntityTypeCode == "") EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "entitytypecode");
+            if (EntityTypeCode == "") EntityTypeCode = "PRD"; // default to product
+            var EntityTypeCodeLang = EntityTypeCode + "LANG";
+            if (EntityTypeCode == "-1")
+            {
+                EntityTypeCode = ""; // allow selection of all types
+                EntityTypeCodeLang = "";
+            }
             var _itemListName = "";
             var _guidkey = "";
             var _404code = false;
@@ -1560,20 +1567,20 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             var _filterTypeInsideProp = "AND";
             var _filterTypeOutsideProp = "AND";
 
-            _catid = ajaxInfo.GetXmlProperty("genxml/hidden/catid");
-            _catname = ajaxInfo.GetXmlProperty("genxml/hidden/catref");
-            _modkey = ajaxInfo.GetXmlProperty("genxml/hidden/modkey");
-            _pagemid = ajaxInfo.GetXmlProperty("genxml/hidden/pagemid");
-            _pagenum = ajaxInfo.GetXmlProperty("genxml/hidden/page");
-            _pagesize = ajaxInfo.GetXmlProperty("genxml/hidden/pagesize");
-            _orderbyindex = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
-            _propertyfilter = ajaxInfo.GetXmlProperty("genxml/hidden/propertyfilter");
+            _catid = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "catid");
+            _catname = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "catref");
+            _modkey = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "modkey");
+            _pagemid = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "pagemid");
+            _pagenum = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "page");
+            _pagesize = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "pagesize");
+            _orderbyindex = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "orderby");
+            _propertyfilter = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "propertyfilter");
 
             _templD = ModSettings.Get("razorlisttemplate");
 
             // we're making sure here, that this thing can only be AND or OR to prevent SQL Injection in any case
-            if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeinside").ToUpper() == "OR") _filterTypeInsideProp = "OR";
-            if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeoutside").ToUpper() == "OR") _filterTypeOutsideProp = "OR";
+            if (ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "propertyfiltertypeinside").ToUpper() == "OR") _filterTypeInsideProp = "OR";
+            if (ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "propertyfiltertypeoutside").ToUpper() == "OR") _filterTypeOutsideProp = "OR";
 
             //Get returnlimt from module settings
             var strreturnlimit = ModSettings.Get("returnlimit");
@@ -1586,7 +1593,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             // voor nu even handig om die parameters erbij te kunnen halen en ze later om te zetten naar client side rommel
 
             _navigationdata = new NavigationData(ps.PortalId, ModuleKey);
-            var metaTokens = NBrightBuyUtils.RazorPreProcessTempl(_templD, "/DesktopModules/NBright/NBrightBuy", ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings(), moduleid.ToString());
+            var metaTokens = NBrightBuyUtils.RazorPreProcessTempl(_templD, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings(), moduleid.ToString());
 
             #endregion
 
@@ -1963,7 +1970,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, _navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
                     if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
                     ModSettings.Settings()["recordcount"] = recordCount.ToString();
-                    retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, "/DesktopModules/NBright/NBrightBuy", ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+                    retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
                 }
 
                 //SK phData.Controls.Add(lit);
@@ -1973,7 +1980,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     if (pageSize == 0) pageSize = 12;
                     var pgdata = NBrightBuyUtils.GetPagingData(recordCount, pageSize, pageNumber);
-                    var strPg = NBrightBuyUtils.RazorTemplRenderList(Path.GetFileNameWithoutExtension(_templD) + "_paging" + Path.GetExtension(_templD), moduleid, razorcachekey + "PG", pgdata, "/DesktopModules/NBright/NBrightBuy", ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+                    var strPg = NBrightBuyUtils.RazorTemplRenderList(Path.GetFileNameWithoutExtension(_templD) + "_paging" + Path.GetExtension(_templD), moduleid, razorcachekey + "PG", pgdata, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
                     retval += strPg;
                 }
 
@@ -1991,7 +1998,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
 
             // get the moduleid, tabid
-            var moduleid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/moduleid");
+            var moduleid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "moduleid");
             if (!Utils.IsNumeric(moduleid))
             {
                 return "No moduleid passed to server";
@@ -2004,10 +2011,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             var RazorTemplate = ModSettings.Get("razortemplate");
             var providercontrolpath = "/DesktopModules/NBright/" + ModSettings.Get("providercontrolpath") + "/";
             var ThemeFolder = ModSettings.Get("themefolder");
-            var catname = ajaxInfo.GetXmlProperty("genxml/hidden/catref");
-            if (catname != "" && ajaxInfo.GetXmlPropertyInt("genxml/hidden/catid") == 0)
+            var catname = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "catref");
+            if (catname != "" && ajaxInfo.GetXmlPropertyInt("genxml/hidden/" + FieldPrefix + "catid") == 0)
             {
-                ajaxInfo.SetXmlProperty("genxml/hidden/catid", CategoryUtils.GetCatIdFromName(catname));
+                ajaxInfo.SetXmlProperty("genxml/hidden/" + FieldPrefix + "catid", CategoryUtils.GetCatIdFromName(catname));
             }
 
             var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, -1, "", ajaxInfo, providercontrolpath, ThemeFolder, UiLang, ModSettings.Settings());

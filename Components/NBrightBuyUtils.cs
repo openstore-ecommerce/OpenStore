@@ -1780,8 +1780,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static void RazorIncludePageHeader(int moduleid, Page page, string razorTemplateName, string controlPath, string theme, Dictionary<string, string> settings, ProductData productdata = null)
         {
+            var fulltemplatename = controlPath.TrimEnd('/') + theme + "/" + razorTemplateName;
+
             if (!page.Items.Contains("nbrightinject")) page.Items.Add("nbrightinject", "");
-            if (!page.Items["nbrightinject"].ToString().Contains(razorTemplateName + ","))
+            if (!page.Items["nbrightinject"].ToString().Contains(fulltemplatename + ","))
             {
                 var razorTempl = "";
                 if (productdata == null || !productdata.Exists)
@@ -1797,15 +1799,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (razorTempl != "" && !razorTempl.StartsWith("ERROR"))
                 {
                     PageIncludes.IncludeTextInHeader(page, razorTempl);
-                    page.Items["nbrightinject"] = page.Items["nbrightinject"] + razorTemplateName + ",";
+                    page.Items["nbrightinject"] = page.Items["nbrightinject"] + fulltemplatename + ",";
                 }
             }
         }
 
         public static void RazorIncludePageBody(int moduleid, Page page, string razorTemplateName, string controlPath, string theme, Dictionary<string, string> settings)
         {
+            var fulltemplatename = controlPath.TrimEnd('/') + theme + "/" + razorTemplateName;
+
             if (!page.Items.Contains("nbrightinject")) page.Items.Add("nbrightinject", "");
-            if (!page.Items["nbrightinject"].ToString().Contains(razorTemplateName + ","))
+            if (!page.Items["nbrightinject"].ToString().Contains(fulltemplatename + ","))
             {
                 var razorTempl = "";
                 var nbi = new NBrightInfo();
@@ -1814,7 +1818,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (razorTempl != "" && !razorTempl.StartsWith("ERROR"))
                 {
                     page.Form.Controls.Add(new LiteralControl(razorTempl));
-                    page.Items["nbrightinject"] = page.Items["nbrightinject"] + razorTemplateName + ",";
+                    page.Items["nbrightinject"] = page.Items["nbrightinject"] + fulltemplatename + ",";
                 }
             }
         }
@@ -1822,9 +1826,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static void RazorIncludePageHeaderNoCache(int moduleid, Page page, string razorTemplateName, string controlPath, string theme, Dictionary<string, string> settings, ProductData productdata = null)
         {
+            var fulltemplatename = controlPath.TrimEnd('/') + theme + "/" + razorTemplateName;
 
             if (!page.Items.Contains("nbrightinject")) page.Items.Add("nbrightinject", "");
-            if (!page.Items["nbrightinject"].ToString().Contains(razorTemplateName + ","))
+            if (!page.Items["nbrightinject"].ToString().Contains(fulltemplatename + ","))
             {
                 var razorTempl = "";
                 if (productdata == null)
@@ -1840,7 +1845,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (razorTempl != "" && !razorTempl.StartsWith("ERROR"))
                 {
                     PageIncludes.IncludeTextInHeader(page, razorTempl);
-                    page.Items["nbrightinject"] = page.Items["nbrightinject"] + razorTemplateName + ",";
+                    page.Items["nbrightinject"] = page.Items["nbrightinject"] + fulltemplatename + ",";
                 }
             }
         }
@@ -2395,19 +2400,19 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// </summary>
         /// <param name="context"></param>
         /// <returns>editlang</returns>
-        public static string SetContextLangauge(HttpContext context)
+        public static string SetContextLangauge(HttpContext context, string fieldprefix = "")
         {
             var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-            return SetContextLangauge(ajaxInfo); // Ajax breaks context with DNN, so reset the context language to match the client.
+            return SetContextLangauge(ajaxInfo, fieldprefix); // Ajax breaks context with DNN, so reset the context language to match the client.
         }
 
-        public static string SetContextLangauge(NBrightInfo ajaxInfo = null)
+        public static string SetContextLangauge(NBrightInfo ajaxInfo = null, string fieldprefix = "")
         {
             // NOTE: "genxml/hidden/editlang" and "genxml/hidden/uilang" should be set in the template for langauge to work OK.
             // set langauge if we have it passed.
             if (ajaxInfo == null) ajaxInfo = new NBrightInfo(true);
             // set the context  culturecode, so any DNN functions use the correct culture 
-            var uilang = GetUILang(ajaxInfo); //UI Langauge
+            var uilang = GetUILang(ajaxInfo,"", fieldprefix); //UI Langauge
             if (uilang != System.Threading.Thread.CurrentThread.CurrentCulture.ToString())
             {
                 System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo(uilang);
@@ -2642,37 +2647,41 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return objInfo;
         }
 
-        public static String GetUILang(NBrightInfo ajaxInfo, string defaultlang = "")
+        public static String GetUILang(NBrightInfo ajaxInfo, string defaultlang = "", string fieldprefix = "")
         {
-            var UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/uilang");
+            var UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "uilang");
             if (UserLang != "") return UserLang;
-            UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/uilang1");
+            UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "uilang1");
             if (UserLang != "") return UserLang;
-            UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/uilang2");
+            UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "uilang2");
             if (UserLang != "") return UserLang;
-            UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/uilang3");
+            UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "uilang3");
             if (UserLang != "") return UserLang;
-            UserLang = GetEditLang(ajaxInfo,defaultlang);
+            UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/uilang");
+            if (UserLang != "") return UserLang;
+            UserLang = GetEditLang(ajaxInfo, defaultlang, fieldprefix);
             return defaultlang;
         }
 
-        public static String GetEditLang(NBrightInfo ajaxInfo, string defaultlang = "")
+        public static String GetEditLang(NBrightInfo ajaxInfo, string defaultlang = "",string fieldprefix = "")
         {
-            var editLang = ajaxInfo.GetXmlProperty("genxml/hidden/editlang");
+            var editLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "editlang");
             if (editLang != "") return editLang;
-            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/editlang1");
+            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "editlang1");
             if (editLang != "") return editLang;
-            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/editlang2");
+            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "editlang2");
             if (editLang != "") return editLang;
-            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/editlang3");
+            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "editlang3");
             if (editLang != "") return editLang;
-            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/editlanguage");
+            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "editlanguage");
             if (editLang != "") return editLang;
-            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/lang");
+            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "lang");
             if (editLang != "") return editLang;
-            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/uilang");
+            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "uilang");
             if (editLang != "") return editLang;
-            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/language");
+            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/" + fieldprefix + "language");
+            if (editLang != "") return editLang;
+            editLang = ajaxInfo.GetXmlProperty("genxml/hidden/editlang");
             if (editLang != "") return editLang;
             if (defaultlang == "")
             {

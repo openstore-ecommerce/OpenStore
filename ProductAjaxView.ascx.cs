@@ -73,10 +73,10 @@ namespace Nevoweb.DNN.NBrightBuy
                     EntityTypeCodeLang = modentitytypecode + "LANG";
                 }
                 // check if we're using a provider _controlPath for the templates.
-                var provider_controlPath = ModSettings.Get("provider_controlPath");
-                if (provider_controlPath != "")
+                var providercontrolpath = ModSettings.Get("providercontrolpath");
+                if (providercontrolpath != "")
                 {
-                    _controlPath = "/DesktopModules/NBright/" + provider_controlPath + "/";
+                    _controlPath = "/DesktopModules/NBright/" + providercontrolpath + "/";
                 }
             }
 

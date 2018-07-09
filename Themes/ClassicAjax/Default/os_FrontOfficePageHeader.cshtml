@@ -1,0 +1,60 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using DotNetNuke.Entities.Portals
+@using NBrightDNN
+
+<!-- Include Ajax -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.genxmlajax.js?4010" type="text/javascript"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js?4010" type="text/javascript"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbitemlist.js?4010" type="text/javascript"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbsfavoritescookie.js?4010" type="text/javascript"></script>
+
+<!-- Include jquery cookie plugin -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/js.cookie.js?4010"></script>
+
+<!-- Global CSS -->
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/css/global.css" rel="stylesheet">
+
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/ClassicAjax/css/classicajax.css" rel="stylesheet">
+
+<!-- Vector Font Icons http://fontawesome.io - These font-icons are used in the productview.resx resource file -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/latest/css/font-awesome.css" rel="stylesheet">
+
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.validate.min.js"></script>
+
+<!-- RAZORTEMPLATE AjaxProductDisplayList_head -->
+<!-- This template is injected into the details page head section -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js?4010"></script>
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/Default/js/product.js?4010"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/ClassicAjax/js/jquery.cookie.min.js?4010"></script>
+
+<!-- Colorbox -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/ClassicAjax/js/jquery.colorbox-min.js?4010"></script>
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/ClassicAjax/css/colorbox.css" rel="stylesheet">
+
+<!-- Treeview menu https://github.com/tefra/navgoco -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/ClassicAjax/js/jquery.navgoco.js?4010"></script>
+
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/Default/css/Checkout.css" rel="stylesheet">
+
+<!-- Get messages for JQuery validation -->
+@{
+    var langcode = Model.Lang;
+    if (langcode == "")
+    {
+        langcode = Model.GetUrlParam("language");
+    }
+    if (langcode != "")
+    {
+        langcode = langcode.Substring(0, 2);
+    }
+}
+@if (langcode != "" && langcode != "en")
+{
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/localization/messages_@(langcode).js?4010"></script>
+}
+
+<script>
+    $(document).ready(function() {
+        loadItemListPopup();
+    });
+</script>

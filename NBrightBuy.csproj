@@ -610,6 +610,8 @@
     <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="Themes\ClassicAjax\css\images\Thumbs.db" />
+    <None Include="Themes\ClassicAjax\Default\os_FrontOfficePageHeader.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\os_FrontOfficePageBody.cshtml" />
     <None Include="Themes\ClassicAjax\Default\FrontOfficePageBody.cshtml" />
     <None Include="Themes\ClassicAjax\Default\FrontOfficePageHeader.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayAjax.cshtml" />
