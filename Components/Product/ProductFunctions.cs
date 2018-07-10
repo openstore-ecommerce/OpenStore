@@ -1552,6 +1552,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             var _orderbyindex = "";
             var _propertyfilter = "";
             NavigationData _navigationdata;
+            if (EntityTypeCode == "") EntityTypeCode = ModSettings.Get("entitytypecode");
             if (EntityTypeCode == "") EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/" + FieldPrefix + "entitytypecode");
             if (EntityTypeCode == "") EntityTypeCode = "PRD"; // default to product
             var EntityTypeCodeLang = EntityTypeCode + "LANG";
