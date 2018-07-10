@@ -341,6 +341,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     ajaxInfo.RemoveXmlNode("genxml/hidden/" + FieldPrefix + "xmlupdateoptiondata");
                     ajaxInfo.RemoveXmlNode("genxml/hidden/" + FieldPrefix + "xmlupdatemodeldata");
                     ajaxInfo.RemoveXmlNode("genxml/hidden/" + FieldPrefix + "xmlupdateoptionvaluesdata");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdateproductimages");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdateoptionvaluesdata");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdateoptiondata");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdatemodeldata");
+                    ajaxInfo.RemoveXmlNode("genxml/hidden/xmlupdateoptionvaluesdata");
                     var productXml = ajaxInfo.XMLData;
 
                     prdData.Update(productXml);
