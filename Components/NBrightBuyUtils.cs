@@ -760,7 +760,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     {
                         var resxpath = StoreSettings.NBrightBuyPath() + "/App_LocalResources/Notification.ascx.resx";
                         emailsubject = DnnUtils.GetLocalizedString(emailsubjectresxkey, resxpath, lang);
-                        if (emailsubject == null) emailsubject = emailsubjectresxkey;
+                        if (string.IsNullOrWhiteSpace(emailsubject)) emailsubject = emailsubjectresxkey;
                     }
 
                     // we can't use StoreSettings.Current.Settings(), becuase of external calls from providers to this function, so load in the settings directly  
