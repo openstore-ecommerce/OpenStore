@@ -200,6 +200,20 @@
     <Compile Include="Base\NBrightBuySettingBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="CartRazorView.ascx.cs">
+      <DependentUpon>CartRazorView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartRazorView.ascx.designer.cs">
+      <DependentUpon>CartRazorView.ascx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CartRazorViewSettings.ascx.cs">
+      <DependentUpon>CartRazorViewSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartRazorViewSettings.ascx.designer.cs">
+      <DependentUpon>CartRazorViewSettings.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductListAjaxFilter.ascx.cs">
       <DependentUpon>ProductListAjaxFilter.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -388,20 +402,6 @@
     </Compile>
     <Compile Include="PrintView.aspx.designer.cs">
       <DependentUpon>PrintView.aspx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CartRazorViewSettings.ascx.cs">
-      <DependentUpon>CartRazorViewSettings.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CartRazorViewSettings.ascx.designer.cs">
-      <DependentUpon>CartRazorViewSettings.ascx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CartRazorView.ascx.cs">
-      <DependentUpon>CartRazorView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CartRazorView.ascx.designer.cs">
-      <DependentUpon>CartRazorView.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductRazorViewSettings.ascx.cs">
       <DependentUpon>ProductRazorViewSettings.ascx</DependentUpon>

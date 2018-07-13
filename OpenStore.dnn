@@ -985,6 +985,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         </component>
       </components>
     </package>
+
     <package name="OS_ProductListAjaxFilter" type="Module" version="4.0.4">
       <friendlyName>OS_ProductListAjaxFilter</friendlyName>
       <description>
@@ -1057,7 +1058,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         </component>
       </components>
     </package>    
-
 
     <package name="OS_ItemList" type="Module" version="4.0.4">
       <friendlyName>OS_ItemList</friendlyName>

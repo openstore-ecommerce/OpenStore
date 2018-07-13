@@ -44,19 +44,26 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
 
 		    foreach (var p in l)
 		    {
-		        var prov = p.Value;
-		        ObjectHandle handle = null;
-		        handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"), prov.GetXmlProperty("genxml/textbox/namespaceclass"));
-		        var objProvider = (AjaxInterface) handle.Unwrap();
-		        var ctrlkey = prov.GetXmlProperty("genxml/textbox/ctrl");
-		        var lp = 1;
-		        while (_providerList.ContainsKey(ctrlkey))
-		        {
-		            ctrlkey = ctrlkey + lp.ToString("");
-		            lp += 1;
-		        }
-		        objProvider.Ajaxkey = ctrlkey;
-		        _providerList.Add(ctrlkey, objProvider);
+                try
+                {
+                    var prov = p.Value;
+                    ObjectHandle handle = null;
+                    handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"), prov.GetXmlProperty("genxml/textbox/namespaceclass"));
+                    var objProvider = (AjaxInterface)handle.Unwrap();
+                    var ctrlkey = prov.GetXmlProperty("genxml/textbox/ctrl");
+                    var lp = 1;
+                    while (_providerList.ContainsKey(ctrlkey))
+                    {
+                        ctrlkey = ctrlkey + lp.ToString("");
+                        lp += 1;
+                    }
+                    objProvider.Ajaxkey = ctrlkey;
+                    _providerList.Add(ctrlkey, objProvider);
+                }
+                catch (Exception ex)
+                {
+                    // ignore, we may possibly have plugin data without assembly.
+                }
 		    }
 		}
 

@@ -75,31 +75,11 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
     $('.ajaxcatmenu').click(function(event) {
         event.preventDefault();
 
-        $("#propertyfilter").val('');  // remove filter on cateogry change.
-
         $(".active").removeClass("active");
         $(this).parent().addClass("active");
 
-        var pagenumber = $(this).attr("pagenumber");
-        if (typeof pagenumber == 'undefined') {
-            pagenumber = "1";
-        }
-        $("#page").val(pagenumber);
+        selectmenucategory($(this).attr("catid"), $(this).attr("pagenumber"), $(this).attr("href"));
 
-        var catid = $(this).attr("catid");
-        if (typeof catid != 'undefined') {
-            $('#catid').val(catid);
-            $('#filter_catid').val(catid);
-        }
-        $('#catref').val('');
-        $('#filter_catref').val('');
-        $('#searchtext').val('');
-
-        // add to browser bar and history
-        var stateObj = { catid: $(this).attr("catid") };
-        history.pushState(stateObj, "Title", $(this).attr("href"));
-
-        loadProductList();
     });
 
    
@@ -293,6 +273,33 @@ function propertyFilterClicked() {
     $("#propertyfilter").val(list);
     loadProductListFilter();
 }
+
+
+function selectmenucategory(catid, pagenumber, href) {
+    $("#propertyfilter").val('');  // remove filter on cateogry change.
+
+    if (typeof pagenumber == 'undefined') {
+        pagenumber = "1";
+    }
+    $("#page").val(pagenumber);
+
+    if (typeof catid != 'undefined') {
+        $('#catid').val(catid);
+        $('#filter_catid').val(catid);
+    }
+    $('#catref').val('');
+    $('#filter_catref').val('');
+    $('#searchtext').val('');
+
+    // add to browser bar and history
+    var stateObj = { catid: catid };
+    history.pushState(stateObj, "Title", href);
+
+    loadProductList();
+
+}
+
+
 function loadProductList() {
     if ($('#ajaxlist').val() == 'True') {
         $('.processingproductajax').show();

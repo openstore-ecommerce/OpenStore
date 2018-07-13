@@ -197,18 +197,34 @@ namespace Nevoweb.DNN.NBrightBuy
 
                 if (strOut == "** No Action **")
                 {
+                    var ajaxprovider = ajaxInfo.GetXmlProperty("genxml/hidden/ajaxprovider");
+
                     var pluginData = new PluginData(PortalSettings.Current.PortalId);
                     var provList = pluginData.GetAjaxProviders();
-                    foreach (var d in provList)
+                    if (ajaxprovider != "")
                     {
-                        if (paramCmd.ToLower().StartsWith(d.Key.ToLower() + "_") || paramCmd.ToLower().StartsWith("cmd" + d.Key.ToLower() + "_"))
+                        strOut = "Ajax Provider not found: " + ajaxprovider;
+                        if (provList.ContainsKey(ajaxprovider))
                         {
-                            var ajaxprov = AjaxInterface.Instance(d.Key);
+                            var ajaxprov = AjaxInterface.Instance(ajaxprovider);
                             if (ajaxprov != null)
                             {
                                 strOut = ajaxprov.ProcessCommand(paramCmd, context, _editlang);
                             }
-
+                        }
+                    }
+                    else
+                    {
+                        foreach (var d in provList)
+                        {
+                            if (paramCmd.ToLower().StartsWith(d.Key.ToLower() + "_") || paramCmd.ToLower().StartsWith("cmd" + d.Key.ToLower() + "_") )
+                            {
+                                var ajaxprov = AjaxInterface.Instance(d.Key);
+                                if (ajaxprov != null)
+                                {
+                                    strOut = ajaxprov.ProcessCommand(paramCmd, context, _editlang);
+                                }
+                            }
                         }
                     }
                 }

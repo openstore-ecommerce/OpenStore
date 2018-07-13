@@ -2400,6 +2400,16 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// </summary>
         /// <param name="context"></param>
         /// <returns>editlang</returns>
+        public static string SetContextLangauge(HttpContext context)
+        {
+            return SetContextLangauge(context, ""); // Ajax breaks context with DNN, so reset the context language to match the client.
+        }
+
+        public static string SetContextLangauge(NBrightInfo ajaxInfo = null)
+        {
+            return SetContextLangauge(ajaxInfo,"");
+        }
+
         public static string SetContextLangauge(HttpContext context, string fieldprefix = "")
         {
             var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
@@ -2739,6 +2749,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
 
         }
+
 
     }
 }
