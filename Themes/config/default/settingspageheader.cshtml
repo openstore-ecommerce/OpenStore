@@ -1,5 +1,3 @@
-
-
 <!-- loading display to cover buttons, to stop multiple clicks -->
 <div id="loader" class="processing" style="display:none;"><i class="glyphicon glyphicon-cog"></i></div>
 
@@ -10,9 +8,12 @@
 <!-- Global CSS -->
 <link href="/DesktopModules/NBright/NBrightBuy/Themes/config/css/global.css" rel="stylesheet">
 
+<script type"text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/bootstrap-dropdown-checkbox/js/bootstrap-dropdown-checkbox.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/DesktopModules/NBright/NBrightBuy/Themes/config/default/plugins/bootstrap-dropdown-checkbox/css/bootstrap-dropdown-checkbox.css" />
+
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         if ($('#themefolder').val() != "config" && $('#themefolder').val() != "") {
             nbxget('getsettings', '#themedata', '#settingsdata');
@@ -22,6 +23,33 @@
         var hrefction = $('a[id*="_cmdUpdate"]').attr('href');
         $('a[id*="_cmdUpdate"]').attr('href', '#');
         $('a[id*="_cmdUpdate"]').click(function () {
+
+            if ($('.defaultcatlistdiv').length) {
+
+                var catlist = $(".defaultcatlistdiv").dropdownCheckbox("checked");
+                var defaultcatid = '';
+                jQuery.each(catlist, function (index, item) {
+                    defaultcatid += item.id + ',';
+                });
+
+                $('#defaultcatlist').val(defaultcatid)
+
+                $('.defaultcatlistdiv').remove(); // remove checkboxlist, so we don't try to save to DB.
+            }
+
+            if ($('.defaultpropertylistdiv').length) {
+
+                var catlist = $(".defaultpropertylistdiv").dropdownCheckbox("checked");
+                var defaultcatid = '';
+                jQuery.each(catlist, function (index, item) {
+                    defaultcatid += item.id + ',';
+                });
+
+                $('#defaultpropertylist').val(defaultcatid)
+
+                $('.defaultpropertylistdiv').remove(); // remove checkboxlist, so we don't try to save to DB.
+            }
+
             nbxget('savesettings', '#nbrightbuysettings');
         });
 
@@ -39,7 +67,7 @@
         // ajx update complated listener
         $(document).on('nbxgetcompleted', function (event) {
             if (event.cmd == 'savesettings') {
-                $('a[id*="_cmdUpdate"]').unbind('click'); // disable event 
+                $('a[id*="_cmdUpdate"]').unbind('click'); // disable event
                 eval(hrefction);
             }
 

@@ -3,7 +3,8 @@
 @using System.Web.UI.HtmlControls
 @using NBrightDNN
 
-@AddMetaData("resourcepath","/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
 
 @{
     var info = (NBrightInfo)Model.List.First();
@@ -11,7 +12,7 @@
 
 <script type="text/javascript">
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         //use to chnage the them folder dropdown on entry and on change.
         nbxget('renderthemefolders', '#themedata', '#themefolders');
@@ -41,6 +42,9 @@
             <input id="index" type="hidden" value="" />
             <input id="themefolder" type="hidden" value="@info.GetXmlProperty("genxml/dropdownlist/themefolder")" />
             <input id="razortemplate" type="hidden" value="ProductDisplayAjaxSettings.cshtml" />
+            <input id="defaultcatlist" update="save" type="hidden" value="" />
+            <input id="defaultpropertylist" update="save" type="hidden" value="" />
+            
             <div class="dnnFormItem">
                 <div>
                     @DnnLabel("lblcontrolpayth", "Settings.providercontrolpath")
@@ -94,16 +98,24 @@
                 @DnnLabel("lbldisplaytype", "ProductViewSettings.displaytype")@RadioButtonList(info, "genxml/radiobuttonlist/displaytype", "0,1,2", "Normal,Search,Selected list", "0")
             </div>
             <div class="dnnFormItem">
-                    @DnnLabel("lbltemplate", "Settings.itemlistname")
-                    @NBrightTextBox(info, "genxml/textbox/itemlistname", "", "nbsfavorites0")
+                @DnnLabel("lbltemplate", "Settings.itemlistname")
+                @NBrightTextBox(info, "genxml/textbox/itemlistname", "", "nbsfavorites0")
             </div>
             <div class="dnnFormItem">
                 @DnnLabel("lbldefaultcatid", "ProductViewSettings.lbldefaultcatid")
                 @CategoryDropDownList(info, "genxml/dropdownlist/defaultcatid", "width='300'", true, 20, true, false, 0, "", ".")
             </div>
             <div class="dnnFormItem">
+                @DnnLabel("lbldefaultcatid2", "ProductViewSettings.categoryselection")
+                @CategoryCheckBoxList(info, "genxml/hidden/defaultcatlist", "width='300'", true, 20, true, false, 0, "", ".")
+            </div>
+            <div class="dnnFormItem">
                 @DnnLabel("lbldefaultproperty", "ProductViewSettings.lbldefaultproperty")
                 @PropertyDropDownList(info, "genxml/dropdownlist/defaultpropertyid", "width='300'", true, true, false, 0, "", ".")
+            </div>
+            <div class="dnnFormItem">
+                @DnnLabel("lbldefaultproperty2", "ProductViewSettings.propertyselection")
+                @PropertyMultiCheckBoxList(info, "genxml/hidden/defaultpropertylist")
             </div>
             <div class="dnnFormItem staticlist">
                 @DnnLabel("lblstaticlist", "ProductViewSettings.lblstaticlist")@CheckBox(info, "genxml/checkbox/staticlist", "", " class='dnnCheckbox' ") @CheckBox(info, "genxml/checkbox/caturlfilter", "ResourceKey:ProductViewSettings.caturlfilter", " class='dnnCheckbox' ")
@@ -127,15 +139,15 @@
                 @DnnLabel("lblreturnlimit", "ProductViewSettings.lblreturnlimit")@TextBox(info, "genxml/textbox/returnlimit", "width='75'", "0")
             </div>
 
-            <hr/>
+            <hr />
 
 
         </div>
 
-                <div id="settingsdata"></div>
+        <div id="settingsdata"></div>
 
-</fieldset>
-    
+    </fieldset>
+
 </div>
 
 

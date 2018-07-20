@@ -609,6 +609,49 @@ namespace NBrightBuy.render
             return new RawString(strOut);
         }
 
+        public IEncodedString CategoryCheckBoxList(NBrightInfo info, String xpath, String attributes = "", Boolean allowEmpty = true, int displaylevels = 20, Boolean showHidden = false, Boolean showArchived = false, int parentid = 0, String catreflist = "", String prefix = "", bool displayCount = false, bool showEmpty = true, string groupref = "", string breadcrumbseparator = ">", string lang = "")
+        {
+            var rtnList = NBrightBuyUtils.BuildCatList(displaylevels, showHidden, showArchived, parentid, catreflist, prefix, displayCount, showEmpty, groupref, breadcrumbseparator, lang);
+
+            if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
+
+            var strOut = "";
+
+            var upd = getUpdateAttr(xpath, attributes);
+            var id = getIdFromXpath(xpath);
+            //strOut = "<select id='" + id + "' " + upd + " " + attributes + ">";
+
+            strOut += "<ul class='nav navbar-nav'><li class='" + id + "div dropdown-checkbox dropdown'></li></ul>";
+            strOut += "<script>";
+            strOut += "$(document).ready(function () { ";
+            strOut += "var " + id + "Data = [";
+            var s = "";
+            foreach (var tItem in rtnList)
+            {
+                var ischecked = "false";
+                if (info.GetXmlProperty(xpath).Contains(tItem.Key.ToString() + ",")) ischecked = "true";
+
+                // strOut += "    <option value='" + tItem.Key.ToString() + "' " + s + ">" + tItem.Value + "</option>";
+                strOut += "{id: " + tItem.Key.ToString() + ", label: \"" + tItem.Value + "\", isChecked: " + ischecked + " },";
+                //strOut += "{id: " + tItem.Key.ToString() + ", label: \"" + tItem.Value + "\" },";
+
+            }
+            strOut = strOut.TrimEnd(',') + "];";
+
+            strOut += "$(\"." + id + "div\").dropdownCheckbox({";
+            strOut += "data: " + id + "Data,";
+            strOut += "autosearch: true,";
+            strOut += "showNbSelected: true,";
+            strOut += "hideHeader: false,";
+            strOut += "title: \"" + ResourceKey("General.Categories") + "\"";
+            strOut += "});";
+
+           
+            strOut += "});";
+            strOut += "</script>";
+
+            return new RawString(strOut);
+        }
 
         public IEncodedString GroupSelectList(NBrightInfo info, String xpath, String attributes = "", Boolean allowEmpty = true,String groupType = "1")
         {
@@ -684,7 +727,6 @@ namespace NBrightBuy.render
             return new RawString(strOut);
         }
 
-
         #endregion
 
         #region "properties"
@@ -723,6 +765,51 @@ namespace NBrightBuy.render
                 lp += 1;
             }
             strOut += "</ul>";
+
+            return new RawString(strOut);
+        }
+
+
+        public IEncodedString PropertyMultiCheckBoxList(NBrightInfo info, String xpath, String attributes = "", Boolean allowEmpty = true, Boolean showHidden = false, Boolean showArchived = false, int parentid = 0, String catreflist = "", String prefix = "", bool displayCount = false, bool showEmpty = true, string groupref = "", string breadcrumbseparator = ">", string lang = "")
+        {
+            var rtnList = NBrightBuyUtils.BuildPropertyList(10, showHidden, showArchived, parentid, catreflist, prefix, displayCount, showEmpty, groupref, breadcrumbseparator, lang);
+
+            if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
+
+            var strOut = "";
+
+            var upd = getUpdateAttr(xpath, attributes);
+            var id = getIdFromXpath(xpath);
+            //strOut = "<select id='" + id + "' " + upd + " " + attributes + ">";
+
+            strOut += "<ul class='nav navbar-nav'><li class='" + id + "div dropdown-checkbox dropdown'></li></ul>";
+            strOut += "<script>";
+            strOut += "$(document).ready(function () { ";
+            strOut += "var " + id + "Data = [";
+            var s = "";
+            foreach (var tItem in rtnList)
+            {
+                var ischecked = "false";
+                if (info.GetXmlProperty(xpath).Contains(tItem.Key.ToString() + ",")) ischecked = "true";
+
+                // strOut += "    <option value='" + tItem.Key.ToString() + "' " + s + ">" + tItem.Value + "</option>";
+                strOut += "{id: " + tItem.Key.ToString() + ", label: \"" + tItem.Value + "\", isChecked: " + ischecked + " },";
+                //strOut += "{id: " + tItem.Key.ToString() + ", label: \"" + tItem.Value + "\" },";
+
+            }
+            strOut = strOut.TrimEnd(',') + "];";
+
+            strOut += "$(\"." + id + "div\").dropdownCheckbox({";
+            strOut += "data: " + id + "Data,";
+            strOut += "autosearch: true,";
+            strOut += "showNbSelected: true,";
+            strOut += "hideHeader: false,";
+            strOut += "title: \"" + ResourceKey("General.Properties") + "\"";
+            strOut += "});";
+
+
+            strOut += "});";
+            strOut += "</script>";
 
             return new RawString(strOut);
         }

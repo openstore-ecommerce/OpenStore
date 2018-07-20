@@ -635,6 +635,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             string file = filename;
             file = string.Concat(file.Split(System.IO.Path.GetInvalidFileNameChars(), StringSplitOptions.RemoveEmptyEntries));
 
+            file = file.Replace("&", "-");
+            file = file.Replace("?", "-");
+            file = file.Replace("+", "-");
+
             if (file.Length > 250)
             {
                 file = file.Substring(0, 250);

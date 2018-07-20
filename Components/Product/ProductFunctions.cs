@@ -1732,6 +1732,38 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             var catseo = _catid;
             var defcatid = ModSettings.Get("defaultcatid");
             if (defcatid == "") defcatid = "0";
+            if (_catname != "")
+            {
+                _catid = CategoryUtils.GetCatIdFromName(_catname);
+                catseo = _catid;
+            }
+
+            var filterCatList = "(";
+            if (Utils.IsNumeric(_catid) && Convert.ToInt32(_catid) > 0 && ModSettings.Get("staticlist") != "True")
+            {
+                // url param passed
+                filterCatList += " XrefItemId = " + _catid + " ";
+            }
+            else
+            {
+                // get multiple default  categories.
+                var defcatlist = defcatid + "," + ModSettings.Get("defaultcatlist");
+                var defcatlistsplit = defcatlist.Split(',');
+                var clp = 1;
+                foreach (var c in defcatlistsplit)
+                {
+                    if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
+                    {
+                        filterCatList += " XrefItemId = " + c + " ";
+                        filterCatList += "|"; // use | so we can trim replace easy.
+                    }
+                    clp += 1;
+                }
+                filterCatList = filterCatList.TrimEnd('|');
+                filterCatList = filterCatList.Replace("|", " or ");
+            }
+            filterCatList += ")";
+
             if (Utils.IsNumeric(defcatid) && Convert.ToInt32(defcatid) > 0)
             {
                 // if we have no filter use the default category
@@ -1745,6 +1777,34 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     // if we have no filter use the default category
                     if (_catid == "" && strFilter.Trim() == "") _catid = defcatid;
+
+                    // use multiple properties if there
+                    filterCatList = "(";
+                    if (Utils.IsNumeric(_catid) && Convert.ToInt32(_catid) > 0 && ModSettings.Get("staticlist") != "True")
+                    {
+                        // url param passed
+                        filterCatList += " XrefItemId = " + _catid + " ";
+                    }
+                    else
+                    {
+                        // get multiple default  categories.
+                        var defcatlist = defcatid + "," + ModSettings.Get("defaultpropertylist");
+                        var defcatlistsplit = defcatlist.Split(',');
+                        var clp = 1;
+                        foreach (var c in defcatlistsplit)
+                        {
+                            if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
+                            {
+                                filterCatList += " XrefItemId = " + c + " ";
+                                filterCatList += "|"; // use | so we can trim replace easy.
+                            }
+                            clp += 1;
+                        }
+                        filterCatList = filterCatList.TrimEnd('|');
+                        filterCatList = filterCatList.Replace("|", " or ");
+                    }
+                    filterCatList += ")";
+
                 }
             }
 
@@ -1754,9 +1814,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 if (catseo == "") catseo = _catid;
                 _catid = defcatid;
                 if (ModSettings.Get("chkcascaderesults").ToLower() == "true")
-                    strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and XrefItemId = " + _catid + ") ";
+                    strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
                 else
-                    strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and XrefItemId = " + _catid + ") ";
+                    strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
 
                 if (ModSettings.Get("caturlfilter") == "True" && catseo != "" && catseo != _catid)
                 {
@@ -1774,19 +1834,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 #region "use url to get category to display"
                 //check if we are display categories 
                 // get category list data
-                if (_catname != "")
-                {
-                    _catid = CategoryUtils.GetCatIdFromName(_catname);
-                    catseo = _catid;
-                }
 
                 if (Utils.IsNumeric(_catid))
                 {
 
                     if (ModSettings.Get("chkcascaderesults").ToLower() == "true")
-                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and XrefItemId = " + _catid + ") ";
+                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
                     else
-                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and XrefItemId = " + _catid + ") ";
+                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
 
                     if (Utils.IsNumeric(catseo))
                     {

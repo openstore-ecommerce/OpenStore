@@ -403,20 +403,6 @@
     <Compile Include="PrintView.aspx.designer.cs">
       <DependentUpon>PrintView.aspx.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductRazorViewSettings.ascx.cs">
-      <DependentUpon>ProductRazorViewSettings.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProductRazorViewSettings.ascx.designer.cs">
-      <DependentUpon>ProductRazorViewSettings.ascx.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProductRazorView.ascx.cs">
-      <DependentUpon>ProductRazorView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProductRazorView.ascx.designer.cs">
-      <DependentUpon>ProductRazorView.ascx.cs</DependentUpon>
-    </Compile>
     <Compile Include="NBrightThumb.ashx.cs">
       <DependentUpon>NBrightThumb.ashx</DependentUpon>
     </Compile>
@@ -548,12 +534,6 @@
     <Content Include="CartRazorView.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="ProductRazorViewSettings.ascx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="ProductRazorView.ascx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
     <Content Include="Skins\OpenStoreBO\OpenStoreBO.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
@@ -574,6 +554,17 @@
     <Content Include="Themes\ClassicAjax\css\images\ui-icons_454545_256x240.png" />
     <Content Include="Themes\ClassicAjax\css\images\ui-icons_888888_256x240.png" />
     <Content Include="Themes\ClassicAjax\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\css\bootstrap-dropdown-checkbox.css" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\css\bootstrap.css" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\js\jquery.min.js" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\js\less.min.js" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\example\css\main.css" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\example\index.html" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\Gruntfile.js" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\js\bootstrap-dropdown-checkbox.js" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\js\bootstrap-dropdown-checkbox.min.js" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\tests\index.html" />
+    <Content Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\tests\tests.js" />
     <Content Include="Themes\config\img\asterisk.png" />
     <Content Include="Themes\config\img\invalid.png" />
     <Content Include="Themes\config\img\openstore-logo.png" />
@@ -638,9 +629,7 @@
     <None Include="Themes\ClassicAjax\Default\MiniCartSettings.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayDetail.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayDetail_seohead.cshtml" />
-    <None Include="Themes\ClassicAjax\Default\ProductDisplayList.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayListBody.cshtml" />
-    <None Include="Themes\ClassicAjax\Default\ProductDisplaySettings.cshtml" />
     <None Include="Themes\config\default\Admin_CategoryFilterGroups.cshtml" />
     <None Include="Themes\config\default\Admin_Plugins.cshtml" />
     <None Include="Themes\config\default\Admin_PluginsList.cshtml" />
@@ -1054,6 +1043,83 @@
     <None Include="Themes\config\default\Admin_Orders_head.cshtml" />
     <None Include="Themes\config\default\OS_ProductDisplayAjaxsettings.cshtml" />
     <None Include="Themes\config\default\OS_ItemListsettings.cshtml" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\.gitignore" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\.jshintrc" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\bower.json" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\alerts.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\badges.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\bootstrap.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\breadcrumbs.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\button-groups.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\buttons.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\carousel.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\close.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\code.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\component-animations.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\dropdowns.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\forms.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\glyphicons.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\grid.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\input-groups.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\jumbotron.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\labels.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\list-group.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\media.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\alerts.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\background-variant.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\border-radius.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\buttons.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\center-block.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\clearfix.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\forms.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\gradients.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\grid-framework.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\grid.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\hide-text.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\image.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\labels.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\list-group.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\nav-divider.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\nav-vertical-align.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\opacity.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\pagination.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\panels.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\progress-bar.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\reset-filter.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\resize.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\responsive-visibility.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\size.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\tab-focus.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\table-row.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\text-emphasis.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\text-overflow.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\mixins\vendor-prefixes.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\modals.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\navbar.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\navs.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\normalize.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\pager.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\pagination.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\panels.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\popovers.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\print.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\progress-bars.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\responsive-embed.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\responsive-utilities.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\scaffolding.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\tables.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\theme.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\thumbnails.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\tooltip.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\type.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\utilities.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\variables.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\dependencies\less\twitter\wells.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\less\bootstrap-dropdown-checkbox.less" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\LICENSE" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\package.json" />
+    <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\README.md" />
     <None Include="Themes\config\default\ThemeFolderSelect.cshtml" />
     <None Include="Themes\config\default\OS_ProductDisplaysettings.cshtml" />
     <None Include="Themes\config\default\OS_ProfileFormsettings.cshtml" />
