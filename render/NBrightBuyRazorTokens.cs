@@ -196,12 +196,12 @@ namespace NBrightBuy.render
         public IEncodedString ProductImageUrl(NBrightInfo info, int width = 0, int height = 0, int idx = 1, string attributes = "")
         {
             var url = info.GetXmlProperty("genxml/lang/genxml/imgs/genxml[" + idx + "]/hidden/fimageurl");
+            if (url == "")
+            {
+                url = info.GetXmlProperty("genxml/imgs/genxml[" + idx + "]/hidden/imageurl");
+            }
             if (url == "" || width > 0 || height > 0)
             {
-                if (url == "")
-                {
-                    url = info.GetXmlProperty("genxml/imgs/genxml[" + idx + "]/hidden/imageurl");
-                }
                 url = StoreSettings.NBrightBuyPath() + "/NBrightThumb.ashx?src=" + url + "&w=" + width + "&h=" + height + attributes;
             }
             return new RawString(url);
