@@ -253,7 +253,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                             if (l.Count > 0) nbi.ItemID = l[0].ItemID;
                         }
                     }
-                    if (typeCode == "PRDLANG" && updaterecordsbyref)
+                    if (typeCode == "PRDLANG")
                     {
                         if (_recordXref.ContainsKey(nbi.ParentItemId))
                         {
@@ -283,7 +283,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                                     if (l.Count > 0) nbi.ItemID = l[0].ItemID;
                                 }
                             }
-                            if (typeCode == entityprov.GetEntityTypeCodeLang() && updaterecordsbyref)
+                            if (typeCode == entityprov.GetEntityTypeCodeLang())
                             {
                                 if (_recordXref.ContainsKey(nbi.ParentItemId))
                                 {
@@ -297,7 +297,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                     }
 
 
-                    if ((typeCode == "PRDXREF" || typeCode == "CATXREF" || typeCode == "CATCASCADE") && updaterecordsbyref)
+                    if ((typeCode == "PRDXREF" || typeCode == "CATXREF" || typeCode == "CATCASCADE"))
                     {
                         if (_recordXref.ContainsKey(nbi.XrefItemId)) nbi.XrefItemId = _recordXref[nbi.XrefItemId];
                         if (_recordXref.ContainsKey(nbi.ParentItemId)) nbi.ParentItemId = _recordXref[nbi.ParentItemId];
@@ -306,7 +306,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                         if (l.Count > 0) return;
                     }
 
-                    if (typeCode == "USERPRDXREF" && updaterecordsbyref)
+                    if (typeCode == "USERPRDXREF")
                     {
                         var u = UserController.GetUserByName(nbi.PortalId, nbi.TextData);
                         if (u != null)
@@ -329,7 +329,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                             if (l.Count > 0) nbi.ItemID = l[0].ItemID;
                         }
                     }
-                    if (typeCode == "CATEGORYLANG" && updaterecordsbyref)
+                    if (typeCode == "CATEGORYLANG")
                     {
                         if (_recordXref.ContainsKey(nbi.ParentItemId))
                         {
@@ -347,7 +347,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                             if (l.Count > 0) nbi.ItemID = l[0].ItemID;
                         }
                     }
-                    if (typeCode == "GROUPLANG" && updaterecordsbyref)
+                    if (typeCode == "GROUPLANG")
                     {
                         if (_recordXref.ContainsKey(nbi.ParentItemId))
                         {
