@@ -1471,8 +1471,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
         }
 
-
         public static string RazorTemplRenderList(string razorTemplName, int moduleid, string cacheKey, List<NBrightInfo> objList, string templateControlPath, string theme, string lang, Dictionary<string, string> settings)
+        {
+            return RazorTemplRenderList(razorTemplName, moduleid, cacheKey, objList, templateControlPath, theme, lang, settings, null);
+        }
+
+        public static string RazorTemplRenderList(string razorTemplName, int moduleid, string cacheKey, List<NBrightInfo> objList, string templateControlPath, string theme, string lang, Dictionary<string, string> settings, NBrightInfo headerData)
         {
             // do razor template
             if (lang == "")
@@ -1492,6 +1496,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     nbRazor.TemplateName = razorTemplName;
                     nbRazor.ThemeFolder = theme;
                     nbRazor.Lang = lang;
+
+                    nbRazor.HeaderData = headerData;
 
                     var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString();
                     razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, StoreSettings.Current.DebugMode);
@@ -2733,6 +2739,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (entityprov != null)
                 {
                     var typeCode = entityprov.GetEntityTypeCode();
+                    if (typeCode == "") typeCode = prov.Key;
 
                     var nbi = ModCtrl.GetByGuidKey(PortalSettings.Current.PortalId,-1,"SETTINGIDX", typeCode);
                     if (nbi == null)

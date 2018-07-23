@@ -199,24 +199,29 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             {
                 if (NBrightBuyUtils.CheckRights())
                 {
-                    var settings = NBrightBuyUtils.GetAjaxDictionary(context);
+                    var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
                     var strOut = "";
-                    var selecteditemid = settings["selecteditemid"];
+                    var selecteditemid = ajaxInfo.GetXmlProperty("genxml/hidden/selecteditemid");
                     if (productid > 0) selecteditemid = productid.ToString();
                     if (Utils.IsNumeric(selecteditemid))
                     {
 
-                        if (!settings.ContainsKey("themefolder")) settings.Add("themefolder", "");
-                        if (!settings.ContainsKey("razortemplate")) settings.Add("razortemplate", "");
-                        if (!settings.ContainsKey("portalid")) settings.Add("portalid", PortalSettings.Current.PortalId.ToString("")); // aways make sure we have portalid in settings
-                        if (!settings.ContainsKey("selecteditemid")) settings.Add("selecteditemid", "");
+                        // select a specific entity data type for the product (used by plugins)
+                        var entitytypecodelang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecodelang");
+                        var entitytypecode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
+                        if (entitytypecode == "") entitytypecode = EntityTypeCode;
+                        if (entitytypecode == "") entitytypecode = "PRD";
+                        if (entitytypecodelang == "") entitytypecodelang = EntityTypeCode + "LANG";
 
-                        var themeFolder = settings["themefolder"];
+                        if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
 
-                        var RazorTemplate = settings["razortemplate"];
-                        var portalId = Convert.ToInt32(settings["portalid"]);
+                        var portalId = PortalSettings.Current.PortalId;
+                        if (ajaxInfo.GetXmlProperty("genxml/hidden/portalid") != "")
+                        {
+                            portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
+                        }
 
-                        var passSettings = settings;
+                        var passSettings = ajaxInfo.ToDictionary();
                         foreach (var s in StoreSettings.Current.Settings()) // copy store setting, otherwise we get a byRef assignement
                         {
                             if (passSettings.ContainsKey(s.Key))
@@ -225,16 +230,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                                 passSettings.Add(s.Key, s.Value);
                         }
 
-                        if (!Utils.IsNumeric(selecteditemid)) return "";
-
-                        if (themeFolder == "")
-                        {
-                            themeFolder = StoreSettings.Current.ThemeFolder;
-                            if (settings.ContainsKey("themefolder")) themeFolder = settings["themefolder"];
-                        }
+                        var themeFolder = ThemeFolder;
+                        if (themeFolder == "") themeFolder = ajaxInfo.GetXmlProperty("genxml/hidden/themefolder");
+                        if (themeFolder == "") themeFolder = ThemeFolder;
 
                         var objCtrl = new NBrightBuyController();
-                        var info = objCtrl.GetData(Convert.ToInt32(selecteditemid),EntityTypeCode + "LANG", EditLangCurrent);
+                        var info = objCtrl.GetData(Convert.ToInt32(selecteditemid), entitytypecodelang, EditLangCurrent);
 
                         strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, themeFolder, EditLangCurrent, passSettings);
                     }
@@ -472,19 +473,48 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     }
 
                     var searchText = ajaxInfo.GetXmlProperty("genxml/hidden/searchtext");
+
+                    // ---------- search category/property list ----------------------------
+                    var filterCatList = "(";
                     var searchCategory = ajaxInfo.GetXmlProperty("genxml/hidden/searchcategory");
+                    var searchProperty = ajaxInfo.GetXmlProperty("genxml/hidden/searchproperty");
+                    var defcatlistsplit = (searchCategory + searchProperty).Split(',');
+                    var clp = 1;
+                    foreach (var c in defcatlistsplit)
+                    {
+                        if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
+                        {
+                            filterCatList += " XrefItemId = " + c + " ";
+                            filterCatList += "|"; // use | so we can trim replace easy.
+                        }
+                        clp += 1;
+                    }
+                    filterCatList = filterCatList.TrimEnd('|');
+                    filterCatList = filterCatList.Replace("|", " or ");
+                    filterCatList += ")";
+                    // ---------------------------------------------------------------------
+
 
                     if (searchText != "") filter += " and (NB3.[ProductName] like '%" + searchText + "%' or NB3.[ProductRef] like '%" + searchText + "%' or NB3.[Summary] like '%" + searchText + "%' ) ";
 
-                    if (Utils.IsNumeric(searchCategory))
+                    if (searchCategory != "" || searchProperty != "")
                     {
-                        if (orderby == "{bycategoryproduct}") orderby += searchCategory;
+                        if (clp == 1)
+                        {
+                            if (orderby == "{bycategoryproduct}") orderby += searchCategory.Trim(',');
+                        }
+                        else
+                        {
+                            if (orderby == "{bycategoryproduct}") orderby = " order by NB3.productname ";
+                        }
+
                         var objQual = DotNetNuke.Data.DataProvider.Instance().ObjectQualifier;
                         var dbOwner = DotNetNuke.Data.DataProvider.Instance().DatabaseOwner;
                         if (!cascade)
-                            filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and XrefItemId = " + searchCategory + ") ";
+                            filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
                         else
-                            filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATXREF' and XrefItemId = " + searchCategory + ") or (typecode = 'CATCASCADE' and XrefItemId = " + searchCategory + ")) ";
+                            filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
+
                     }
                     else
                     {
@@ -584,7 +614,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                             passSettings.Add(s.Key, s.Value);
                     }
 
-                    strOut = NBrightBuyUtils.RazorTemplRenderList(RazorTemplate, 0, "", list, TemplateRelPath, themeFolder, EditLangCurrent, passSettings);
+                    strOut = NBrightBuyUtils.RazorTemplRenderList(RazorTemplate, 0, "", list, TemplateRelPath, themeFolder, EditLangCurrent, passSettings,ajaxInfo);
 
                     // add paging if needed
                     if (paging && (recordCount > pageSize))

@@ -19,7 +19,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
 	public abstract class EntityTypeInterface
 	{
 
-		#region "Shared/Static Methods"
+        public static string providerKey = "";
+
+        #region "Shared/Static Methods"
 
         // constructor
         static EntityTypeInterface()
@@ -58,6 +60,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
         // return the provider
         public static EntityTypeInterface Instance(String ctrlkey)
         {
+            providerKey = ctrlkey;
             if (_providerList.ContainsKey(ctrlkey)) return _providerList[ctrlkey];
             if (_providerList.Count > 0) return _providerList.Values.First();
             return null;

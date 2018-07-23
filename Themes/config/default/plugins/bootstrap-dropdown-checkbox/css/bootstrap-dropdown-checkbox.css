@@ -25,27 +25,27 @@ SOFTWARE.
 .dropdown-checkbox.dropdown.open .caret {
   border-top-color: black !important;
 }
-.dropdown-checkbox .dropdown-checkbox-content {
-  display: none;
-  position: absolute;
-  background: white;
-  z-index: 1000;
-  top: 100%;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -webkit-transform: rotate(360deg);
-  -ms-transform: rotate(360deg);
-  -o-transform: rotate(360deg);
-  transform: rotate(360deg);
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  border-top: 1px solid #777777;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+    .dropdown-checkbox .dropdown-checkbox-content {
+        display: none;
+        position: absolute;
+        background: white;
+        z-index: 9999 !important;
+        top: 100%;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        border-top: 1px solid #777777;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 .dropdown-checkbox .dropdown-checkbox-content li .layout {
   padding: 0px 10px;
 }

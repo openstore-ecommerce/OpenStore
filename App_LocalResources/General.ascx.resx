@@ -1212,4 +1212,7 @@
   <data name="AddressName.Text" xml:space="preserve">
     <value>Address Name</value>
   </data>
+  <data name="cascade.Text" xml:space="preserve">
+    <value>Cascade</value>
+  </data>
 </root>
