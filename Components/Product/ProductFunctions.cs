@@ -154,7 +154,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     break;
                 case "product_getproductselectlist":
                     if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductAdminList(context, true, EditLangCurrent);
+                    strOut = ProductAdminSelectList(context, true, EditLangCurrent);
                     break;
                 case "product_getclientselectlist":
                     if (!NBrightBuyUtils.CheckRights()) break;
@@ -434,15 +434,28 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             }
         }
 
-        public string ProductAdminList(HttpContext context, bool paging = true, string editlang = "",string datatypecode = "",bool loadAjaxEntities = false)
+        public string ProductAdminSelectList(HttpContext context, bool paging = true, string editlang = "", string datatypecode = "", bool loadAjaxEntities = false)
         {
+            var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
+            NBrightInfo headerinfo = (NBrightInfo) ajaxInfo.Clone();
+            ajaxInfo.SetXmlProperty("genxml/hidden/searchtext", ajaxInfo.GetXmlProperty("genxml/hidden/searchtextrelated"));
+            ajaxInfo.SetXmlProperty("genxml/hidden/searchcategory", "");
+            ajaxInfo.SetXmlProperty("genxml/hidden/searchproperty", "");
+            return ProductAdminList(ajaxInfo, paging, editlang, datatypecode, loadAjaxEntities, headerinfo);
+        }
 
+        public string ProductAdminList(HttpContext context, bool paging = true, string editlang = "", string datatypecode = "", bool loadAjaxEntities = false)
+        {
+            var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
+            return ProductAdminList(ajaxInfo, paging,editlang, datatypecode, loadAjaxEntities,null);
+        }
+
+        public string ProductAdminList(NBrightInfo ajaxInfo, bool paging = true, string editlang = "",string datatypecode = "",bool loadAjaxEntities = false, NBrightInfo ajaxHeaderInfo = null)
+        {
             try
             {
                 if (NBrightBuyUtils.CheckRights())
-                {
-                    var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-
+                {                  
                     if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return null;
 
                     if (EditLangCurrent == "") EditLangCurrent = editlang;
@@ -474,20 +487,26 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     var searchText = ajaxInfo.GetXmlProperty("genxml/hidden/searchtext");
 
+                    var searchhidden = ajaxInfo.GetXmlProperty("genxml/hidden/searchhidden");
+                    var searchvisible = ajaxInfo.GetXmlProperty("genxml/hidden/searchvisible");
+
+                    var searchenabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchenabled");
+                    var searchdisabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchdisabled");
+
                     // ---------- search category/property list ----------------------------
                     var filterCatList = "(";
                     var searchCategory = ajaxInfo.GetXmlProperty("genxml/hidden/searchcategory");
                     var searchProperty = ajaxInfo.GetXmlProperty("genxml/hidden/searchproperty");
                     var defcatlistsplit = (searchCategory + searchProperty).Split(',');
-                    var clp = 1;
+                    var clp = 0;
                     foreach (var c in defcatlistsplit)
                     {
                         if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
                         {
                             filterCatList += " XrefItemId = " + c + " ";
                             filterCatList += "|"; // use | so we can trim replace easy.
+                            clp += 1;
                         }
-                        clp += 1;
                     }
                     filterCatList = filterCatList.TrimEnd('|');
                     filterCatList = filterCatList.Replace("|", " or ");
@@ -501,7 +520,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     {
                         if (clp == 1)
                         {
-                            if (orderby == "{bycategoryproduct}") orderby += searchCategory.Trim(',');
+                            if (orderby == "{bycategoryproduct}") orderby += searchCategory.Trim(',') + searchProperty.Trim(',');
                         }
                         else
                         {
@@ -549,6 +568,37 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     filter = plugindatasql + ") " + filter;
 
+                    // --- Hidden or Visible 
+                    // Both hidden and visible selected, don't do any SQL filter so we pick up all.
+                    if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
+                    {
+                        filter += " and (NB3.Visible = 0) and (NB3.Visible = 1)  "; // don't display anything!!!
+                    }
+                    if ((searchhidden != "" && searchhidden.ToLower() == "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
+                    {
+                        filter += " and (NB3.Visible = 0) "; // display hidden
+                    }
+                    if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() == "true"))
+                    {
+                        filter += " and (NB3.Visible = 1)  "; // display visible
+                    }
+
+                    // --- Enabled or Disabled
+                    // Both Enabled and Disabled selected, don't do any SQL filter so we pick up all.
+                    if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
+                    {
+                        filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // don't display anything!!!
+                    }
+                    if ((searchenabled != "" && searchenabled.ToLower() == "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
+                    {
+                        filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') "; // display enabled
+                    }
+                    if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() == "true"))
+                    {
+                        filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // display disabled
+                    }
+
+
                     var recordCount = 0;
                     var objCtrl = new NBrightBuyController();
 
@@ -565,7 +615,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     // get selected entitytypecode.
                     var list = objCtrl.GetDataList(PortalSettings.Current.PortalId, -1, "", "", EditLangCurrent, filter, orderby, StoreSettings.Current.DebugMode, "", returnLimit, pageNumber, pageSize, recordCount);
 
-                    return RenderProductAdminList(list,ajaxInfo,recordCount);
+                    return RenderProductAdminList(list,ajaxInfo,recordCount, ajaxHeaderInfo);
 
                 }
             }
@@ -577,13 +627,24 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             return "";
         }
 
-        public String RenderProductAdminList(List<NBrightInfo> list,NBrightInfo ajaxInfo,int recordCount)
+        public String RenderProductAdminList(List<NBrightInfo> list, NBrightInfo ajaxInfo, int recordCount)
+        {
+            return RenderProductAdminList(list, ajaxInfo, recordCount, null);
+        }
+
+        public String RenderProductAdminList(List<NBrightInfo> list,NBrightInfo ajaxInfo,int recordCount, NBrightInfo headerDataInfo)
         {
 
             try
             {
                 if (NBrightBuyUtils.CheckRights())
                 {
+                    if (headerDataInfo == null)
+                    {
+                        headerDataInfo = ajaxInfo;
+                    }
+
+
                     if (list == null) return "";
                     if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return "";
 
@@ -614,7 +675,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                             passSettings.Add(s.Key, s.Value);
                     }
 
-                    strOut = NBrightBuyUtils.RazorTemplRenderList(RazorTemplate, 0, "", list, TemplateRelPath, themeFolder, EditLangCurrent, passSettings,ajaxInfo);
+                    strOut = NBrightBuyUtils.RazorTemplRenderList(RazorTemplate, 0, "", list, TemplateRelPath, themeFolder, EditLangCurrent, passSettings, headerDataInfo);
 
                     // add paging if needed
                     if (paging && (recordCount > pageSize))
@@ -645,8 +706,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
                     var moveproductid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/moveproductid");
                     var movetoproductid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/movetoproductid");
-                    var searchcategory = ajaxInfo.GetXmlPropertyInt("genxml/hidden/searchcategory");
-                    if (searchcategory > 0 && movetoproductid > 0 && moveproductid > 0)
+                    var searchcategory = ajaxInfo.GetXmlProperty("genxml/hidden/searchcategory").TrimEnd(',');
+                    if (searchcategory == "")
+                    {
+                        searchcategory = ajaxInfo.GetXmlProperty("genxml/hidden/searchproperty").TrimEnd(',');
+                    }
+                    if (Utils.IsNumeric(searchcategory) && movetoproductid > 0 && moveproductid > 0 && Convert.ToInt32(searchcategory) > 0)
                     {
                         var objCtrl = new NBrightBuyController();
                         objCtrl.GetListCustom(PortalSettings.Current.PortalId, -1, "NBrightBuy_MoveProductinCateogry", 0, "", searchcategory + ";" + moveproductid + ";" + movetoproductid);
@@ -654,7 +719,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     DataCache.ClearCache();
                 }
-                return ProductAdminList(context, true, EditLangCurrent);
+                return "";
             }
             catch (Exception ex)
             {

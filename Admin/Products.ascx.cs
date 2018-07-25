@@ -71,10 +71,6 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                 lit.Text = strOut;
                 phData.Controls.Add(lit);
 
-                strOut = NBrightBuyUtils.RazorTemplRender("Admin_ProductSearch.cshtml", 0, "", obj, "/DesktopModules/NBright/NBrightBuy", "config", Utils.GetCurrentCulture(), StoreSettings.Current.Settings());
-                lit = new Literal();
-                lit.Text = strOut;
-                phSearch.Controls.Add(lit);
 
             }
 

@@ -14,12 +14,71 @@
 
 @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
 
+<br/>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-name">
+                    <i class="fa fa-search"></i><span></span>
+                </div>
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a><a class="expand-link"><i class="fa fa-expand"></i></a>
+                    <a class="close-link"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="no-move">
+                </div>
+            </div>
+            <div class="box-content">
+                <div class="form-horizontal dnnForm">
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">@ResourceKey("General.Search")</label>
+                        <div class="col-sm-2">
+                            @TextBox(Model.HeaderData, "genxml/hidden/searchtext", "", "")
+                        </div>
+                        <div class="col-sm-1">
+                            @CheckBox(Model.HeaderData, "genxml/hidden/cascade", "ResourceKey:General.cascade", "", true)
+                        </div>
+                        <div class="col-sm-3">
+                            @CategoryCheckBoxList(Model.HeaderData, "genxml/hidden/searchcategory", "width='300'", true, 20, true, false, 0, "", ".")
+                            @PropertyMultiCheckBoxList(Model.HeaderData, "genxml/hidden/searchproperty")
+                        </div>
+                        <div class="col-sm-1">
+                            <div>
+                                @CheckBox(Model.HeaderData, "genxml/hidden/searchhidden", "ResourceKey:General.Hidden", "", true)
+                            </div>
+                            <div>
+                                @CheckBox(Model.HeaderData, "genxml/hidden/searchvisible", "ResourceKey:General.visible", "", true)
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div>
+                                @CheckBox(Model.HeaderData, "genxml/hidden/searchdisabled", "ResourceKey:General.Disable", "", true)
+                            </div>
+                            <div>
+                                @CheckBox(Model.HeaderData, "genxml/hidden/searchenabled", "ResourceKey:General.enabled", "", true)
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <a id="productAdmin_cmdSearch" class="btn btn-primary primarybutton" href="javascript:void(0)"><i title="Search" class="fa fa-search fa-fw fa-lg"></i></a>
+                            <a id="productAdmin_cmdReset" class="btn btn-default secondarybutton" href="javascript:void(0)"><i title="Reset" class="fa fa-refresh fa-fw fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <br />
 
 <div class="row">
     <div class="col-xs-12 col-sm-12">
-        <div class="box">
+        <div class="">
             <div class="box-header no-box-header">
                 <div class="box-name">
                     <i class="fa fa-table"></i>
@@ -55,64 +114,64 @@
 
 
 
-@foreach (NBrightInfo nbi in Model.List)
-{
-    <tr>
-        @if (nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
-        {
-            <td class="image centered"><a class="productAdmin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?src=@nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")&amp;w=80&amp;h=60"></a></td>
-        }
-        else
-        {
-            <td class="noimage centered"><a class="productAdmin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)"><i class="fa fa-picture-o fa-3x"></i></a></td>
-        }
-        <td>
-            <div>@nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")</div>
-            @if (nbi.GetXmlProperty("genxml/textbox/txtproductref") != "")
-            {
-                var refout = ResourceKey("General.Code") + ": " + nbi.GetXmlProperty("genxml/textbox/txtproductref");
-                @(refout)
-            }
-        </td>
-        <td class="centered">
-            @{
-                var checkdisplay = "";
-            }
-            @if (nbi.GetXmlPropertyBool("genxml/checkbox/chkishidden"))
-            {
-                checkdisplay = "-check";
-            }
-            <a href="javascript:void(0)">
-                <i class="fa fa@(checkdisplay)-circle fa-2x selectchangehidden" itemid="@nbi.ItemID"></i>                               
-            </a>
-        </td>
-        <td class="centered">
-            @{
-                var checkdisplay2 = "";
-            }
-            @if (nbi.GetXmlPropertyBool("genxml/checkbox/chkdisable"))
-            {
-                checkdisplay2 = "-check";
-            }
-            <a href="javascript:void(0)">
-                <i class="fa fa@(checkdisplay2)-circle fa-2x selectchangedisable " itemid="@nbi.ItemID"></i>                
-            </a>
-        </td>
-        <td>
-            <a class="productAdmin_cmdDelete" itemid="@(nbi.ItemID)" href="javascript:void(0)">@ResourceKey("General.cmdDeleteIcon")</a>
-        </td>
-        <td>
-            <a class="productAdmin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)">@ResourceKey("General.cmdEditIcon")</a>
-        </td><!-- editlink class added to show processing -->
-        <td>
-            <a title="@ResourceKey("General.cmdMove")" href="javascript:void(0)" class="selectrecord" itemid="@nbi.ItemID"><i class="fa fa-sort fa-fw fa-2x"></i></a>
-            <a title="@ResourceKey("General.cmdCancel")" href="javascript:void(0)" class="selectcancel" itemid="@nbi.ItemID" style="display: none;"><i class="fa fa-times-circle fa-fw fa-2x"></i></a>
-            <span class="selectmove" itemid="@nbi.ItemID" style="display: none;" parentlist="@nbi.GetXmlProperty("genxml/parentlist")">
-                <a id="cmdMove">@ResourceKey("General.cmdMoveIcon")</a>
-            </span>
-        </td>
-    </tr>
-}
+                        @foreach (NBrightInfo nbi in Model.List)
+                        {
+                            <tr>
+                                @if (nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
+                                {
+                                    <td class="image centered"><a class="productAdmin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?src=@nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")&amp;w=80&amp;h=60"></a></td>
+                                }
+                                else
+                                {
+                                    <td class="noimage centered"><a class="productAdmin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)"><i class="fa fa-picture-o fa-3x"></i></a></td>
+                                }
+                                <td>
+                                    <div>@nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")</div>
+                                    @if (nbi.GetXmlProperty("genxml/textbox/txtproductref") != "")
+                                    {
+                                        var refout = ResourceKey("General.Code") + ": " + nbi.GetXmlProperty("genxml/textbox/txtproductref");
+                                        @(refout)
+                                    }
+                                </td>
+                                <td class="centered">
+                                    @{
+                                        var checkdisplay = "";
+                                    }
+                                    @if (nbi.GetXmlPropertyBool("genxml/checkbox/chkishidden"))
+                                    {
+                                        checkdisplay = "-check";
+                                    }
+                                    <a href="javascript:void(0)">
+                                        <i class="fa fa@(checkdisplay)-circle fa-2x selectchangehidden" itemid="@nbi.ItemID"></i>
+                                    </a>
+                                </td>
+                                <td class="centered">
+                                    @{
+                                        var checkdisplay2 = "";
+                                    }
+                                    @if (nbi.GetXmlPropertyBool("genxml/checkbox/chkdisable"))
+                                    {
+                                        checkdisplay2 = "-check";
+                                    }
+                                    <a href="javascript:void(0)">
+                                        <i class="fa fa@(checkdisplay2)-circle fa-2x selectchangedisable " itemid="@nbi.ItemID"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="productAdmin_cmdDelete" itemid="@(nbi.ItemID)" href="javascript:void(0)">@ResourceKey("General.cmdDeleteIcon")</a>
+                                </td>
+                                <td>
+                                    <a class="productAdmin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)">@ResourceKey("General.cmdEditIcon")</a>
+                                </td><!-- editlink class added to show processing -->
+                                <td>
+                                    <a title="@ResourceKey("General.cmdMove")" href="javascript:void(0)" class="selectrecord" itemid="@nbi.ItemID" style="display: none;"><i class="fa fa-sort fa-fw fa-2x"></i></a>
+                                    <a title="@ResourceKey("General.cmdCancel")" href="javascript:void(0)" class="selectcancel" itemid="@nbi.ItemID" style="display: none;"><i class="fa fa-times-circle fa-fw fa-2x"></i></a>
+                                    <span class="selectmove" itemid="@nbi.ItemID" style="display: none;" parentlist="@nbi.GetXmlProperty("genxml/parentlist")">
+                                        <a id="cmdMove">@ResourceKey("General.cmdMoveIcon")</a>
+                                    </span>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

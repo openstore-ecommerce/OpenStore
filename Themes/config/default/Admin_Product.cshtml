@@ -7,32 +7,36 @@
 
 <!-- fields required to send required ajax cart to server -->
 <span id="productadminsearch">
-    <input id="userid" type="hidden" value="@UserController.Instance.GetCurrentUserInfo().UserID" />
-    <input id="razortemplate" type="hidden" value="" />
-    <input id="themefolder" type="hidden" value="config" />
-    <input id="uilang" type="hidden" value="@Model.Lang" />
-    <input id="pagesize" type="hidden" value="20" />
-    <input id="pagenumber" type="hidden" value="1" />
-    <input id="searchtext" type="hidden" value="" />
-    <input id="selecteditemid" type="hidden" value="" />
-    <input id="emailtype" type="hidden" value="" />
-    <input id="emailsubject" type="hidden" value="" />
-    <input id="emailmessage" type="hidden" value="" />
-    <input id="moveproductid" type="hidden" value="" />
-    <input id="movetoproductid" type="hidden" value="" />
-    <input id="searchcategory" type="hidden" value="" />
-    <input id="cascade" type="hidden" value="True" />
-    <input id="addqty" type="hidden" value="1" />
-    <input id="editlang" type="hidden" value="@Model.Lang" />
-    <input id="nextlang" type="hidden" value="" /> <!-- editlanguage to be used after save.  editlang, must stay the same during save. -->
-    <input id="selectedoptionid" type="hidden" value="" />
-    <input id="selectedgroupref" type="hidden" value="" />
-    <input id="selectedrelatedid" type="hidden" value="" />
-    <input id="selecteduserid" type="hidden" value="" />
-    <input id="imguploadlist" type="hidden" value="" />
-    <input id="docuploadlist" type="hidden" value="" />
-    <input id="selectedcatid" type="hidden" value="" />    
-    <input id="orderby" type="hidden" value="{bycategoryproduct}" />
+    <input id="p1_userid" type="hidden" value="@UserController.Instance.GetCurrentUserInfo().UserID" />
+    <input id="p1_razortemplate" type="hidden" value="" />
+    <input id="p1_themefolder" type="hidden" value="config" />
+    <input id="p1_uilang" type="hidden" value="@Model.Lang" />
+    <input id="p1_pagesize" type="hidden" value="20" />
+    <input id="p1_pagenumber" type="hidden" value="1" />
+    <input id="p1_searchtext" type="hidden" value="" />
+    <input id="p1_selecteditemid" type="hidden" value="" />
+    <input id="p1_moveproductid" type="hidden" value="" />
+    <input id="p1_movetoproductid" type="hidden" value="" />
+    <input id="p1_searchcategory" type="hidden" value="" />
+    <input id="p1_searchproperty" type="hidden" value="" />
+    <input id="p1_cascade" type="hidden" value="True" />
+    <input id="p1_addqty" type="hidden" value="1" />
+    <input id="p1_editlang" type="hidden" value="@Model.Lang" />
+    <input id="p1_nextlang" type="hidden" value="" /> <!-- editlanguage to be used after save.  editlang, must stay the same during save. -->
+    <input id="p1_selectedoptionid" type="hidden" value="" />
+    <input id="p1_selectedgroupref" type="hidden" value="" />
+    <input id="p1_selectedrelatedid" type="hidden" value="" />
+    <input id="p1_searchtextrelated" type="hidden" value="" />
+    <input id="p1_selecteduserid" type="hidden" value="" />
+    <input id="p1_imguploadlist" type="hidden" value="" />
+    <input id="p1_docuploadlist" type="hidden" value="" />
+    <input id="p1_selectedcatid" type="hidden" value="" />
+    <input id="p1_orderby" type="hidden" value="{bycategoryproduct}" />
+    <input id="p1_searchdisabled" type="hidden" value="" />
+    <input id="p1_searchenabled" type="hidden" value="" />
+    <input id="p1_searchhidden" type="hidden" value="" />
+    <input id="p1_searchvisible" type="hidden" value="" />
+
 </span>
 
 

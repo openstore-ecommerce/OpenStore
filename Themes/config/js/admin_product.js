@@ -1,12 +1,12 @@
-﻿$(document).ready(function() {
+﻿$(document).ready(function () {
 
     $('.selectlang').unbind("click");
-    $(".selectlang").click(function() {
+    $(".selectlang").click(function () {
         $('.actionbuttonwrapper').hide();
         $('.editlanguage').hide();
         $('.processing').show();
-        $("#nextlang").val($(this).attr("editlang"));
-        if ($("#razortemplate").val() == 'Admin_ProductDetail.cshtml') {
+        $("#p1_nextlang").val($(this).attr("editlang"));
+        if ($("#p1_razortemplate").val() == 'Admin_ProductDetail.cshtml') {
             //move data to update postback field
             $('#xmlupdatemodeldata').val($.fn.genxmlajaxitems('#productmodels', '.modelitem'));
             $('#xmlupdateoptiondata').val($.fn.genxmlajaxitems('#productoptions', '.optionitem'));
@@ -15,7 +15,7 @@
             $('#xmlupdateproductdocs').val($.fn.genxmlajaxitems('#productdocs', '.docitem'));
             nbxget('product_admin_save', '#productdatasection', '#actionreturn');
         } else {
-            nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
+            product_search();
         }
     });
 
@@ -24,7 +24,7 @@
     // start load all ajax data, continued by js in product.js file
     $('.processing').show();
 
-    $('#razortemplate').val('Admin_ProductList.cshtml');
+    $('#p1_razortemplate').val('Admin_ProductList.cshtml');
     nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
 
     // function to do actions after an ajax call has been made.
@@ -47,7 +47,7 @@
         $('#productAdmin_cmdAddNew').unbind("click");
         $('#productAdmin_cmdAddNew').click(function () {
             $('.processing').show();
-            $('#razortemplate').val('Admin_ProductDetail.cshtml');
+            $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
             nbxget('product_adminaddnew', '#productadminsearch', '#datadisplay');
         });
 
@@ -58,8 +58,6 @@
         if (e.cmd == 'product_admin_getlist') {
 
             $('.processing').hide();
-
-            $('.productsearchpanel').show();
 
             $("#productAdmin_cmdSaveExit").hide();
             $("#productAdmin_cmdSave").hide();
@@ -74,26 +72,24 @@
             $(".selectrecord").hide();
             $(".savebutton").hide();
 
-            if ($('#searchcategory').val() != '') {
-                $(".selectrecord").show();
+            var catlistcount = 0;
+            if ($('#p1_searchcategory').val() != '') {
+                catlistcount = ($('#p1_searchcategory').val().split(',').length - 1)
             }
-
-        $("#ddllistsearchcategory").unbind("change");
-            $("#ddllistsearchcategory").change(function() {
-                $('#searchcategory').val($("#ddllistsearchcategory").val());
-                nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
-            });
-
-            $("#chkcascaderesults").unbind("change");
-            $("#chkcascaderesults").change(function() {
-                if ($("#chkcascaderesults").is(':checked')) {
-                    $('#cascade').val("True");
-                } else {
-                    $('#cascade').val("False");
+            if ($('#p1_searchproperty').val() != '') {
+                catlistcount = catlistcount + ($('#p1_searchproperty').val().split(',').length - 1)
+            }
+            if (catlistcount == 1) {
+                if ($('#p1_moveproductid').val() != '') {
+                    $('.selectmove').show();
                 }
-                nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
-            });
-
+                else {
+                    $('.selectrecord').show();
+                }
+            }
+            else {
+                $('.selectrecord').hide();
+            }
 
             $('.selectrecord').unbind("click");
             $(".selectrecord").click(function() {
@@ -101,12 +97,15 @@
                 $(".selectmove").show();
                 $(".selectmove[itemid='" + $(this).attr("itemid") + "']").hide();
                 $(".selectcancel[itemid='" + $(this).attr("itemid") + "']").show();
-                $("#moveproductid").val($(this).attr("itemid"));
+                $("#p1_moveproductid").val($(this).attr("itemid"));
 
                 var selectid = $(this).attr("itemid");
                 $(".selectmove").each(function(index) {
                     if ($(this).attr("parentlist").indexOf(selectid + ";") > -1) $(this).hide();
                 });
+
+                $('.searchcategorydiv').hide();
+                $('.searchpropertydiv').hide();
 
             });
 
@@ -115,6 +114,9 @@
                 $(".selectmove").hide();
                 $(".selectcancel").hide();
                 $(".selectrecord").show();
+                $('.searchcategorydiv').show();
+                $('.searchpropertydiv').show();
+                $('#p1_moveproductid').val('');
             });
 
             $('.selectmove').unbind("click");
@@ -122,18 +124,32 @@
                 $(".selectmove").hide();
                 $(".selectcancel").hide();
                 $(".selectrecord").show();
-                $("#movetoproductid").val($(this).attr("itemid"));
-                nbxget('product_moveproductadmin', '#productadminsearch', '#datadisplay');
+                $("#p1_movetoproductid").val($(this).attr("itemid"));
+                $('.searchcategorydiv').show();
+                $('.searchpropertydiv').show();
+
+                var propertylist = $(".searchpropertydiv").dropdownCheckbox("checked");
+                var selectproperty = '';
+                jQuery.each(propertylist, function (index, item) {
+                    $('#p1_searchproperty').val(item.id + ',');
+                });
+
+                var catlist = $(".searchcategorydiv").dropdownCheckbox("checked");
+                var selectcatid = '';
+                jQuery.each(catlist, function (index, item) {
+                    $('#p1_searchcategory').val(item.id + ',');
+                });
+
+                nbxget('product_moveproductadmin', '#productadminsearch');
             });
 
-            $('#productAdmin_searchtext').val($('#searchtext').val());
 
             // editbutton created by list, so needs to be assigned on each render of list.
             $('.productAdmin_cmdEdit').unbind("click");
             $('.productAdmin_cmdEdit').click(function() {
                 $('.processing').show();
-                $('#razortemplate').val('Admin_ProductDetail.cshtml');
-                $('#selecteditemid').val($(this).attr('itemid'));
+                $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
+                $('#p1_selecteditemid').val($(this).attr('itemid'));
                 nbxget('product_admin_getdetail', '#productadminsearch', '#datadisplay');
             });
 
@@ -141,7 +157,7 @@
             $('.selectchangedisable').unbind("click");
             $('.selectchangedisable').click(function () {
                 $('.processing').show();
-                $('#selecteditemid').val($(this).attr('itemid'));
+                $('#p1_selecteditemid').val($(this).attr('itemid'));
                 if ($(this).hasClass("fa-check-circle")) {
                     $(this).addClass('fa-circle').removeClass('fa-check-circle');
                 } else {
@@ -153,7 +169,7 @@
             $('.selectchangehidden').unbind("click");
             $('.selectchangehidden').click(function () {
                 $('.processing').show();
-                $('#selecteditemid').val($(this).attr('itemid'));
+                $('#p1_selecteditemid').val($(this).attr('itemid'));
                 if ($(this).hasClass("fa-check-circle")) {
                     $(this).addClass('fa-circle').removeClass('fa-check-circle');
                 } else {
@@ -166,26 +182,27 @@
             $('.cmdPg').unbind("click");
             $('.cmdPg').click(function() {
                 $('.processing').show();
-                $('#pagenumber').val($(this).attr('pagenumber'));
+                $('#p1_pagenumber').val($(this).attr('pagenumber'));
                 nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
             });
 
             $('#productAdmin_cmdSearch').unbind("click");
-            $('#productAdmin_cmdSearch').click(function() {
-                $('.processing').show();
-                $('#pagenumber').val('1');
-                $('#searchtext').val($('#productAdmin_searchtext').val());
-
-                nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
+            $('#productAdmin_cmdSearch').click(function () {
+                product_search();
             });
 
             $('#productAdmin_cmdReset').unbind("click");
             $('#productAdmin_cmdReset').click(function() {
                 $('.processing').show();
-                $('#pagenumber').val('1');
-                $('#searchtext').val('');
-                $("#searchcategory").val('');
-                $("#ddllistsearchcategory").get(0).selectedIndex = 0;;
+                $('#p1_pagenumber').val('1');
+                $('#p1_searchtext').val('');
+                $('#p1_searchcategory').val('');
+                $('#p1_searchproperty').val('');
+                $('#p1_searchhidden').val('');
+                $('#p1_searchvisible').val('');
+                $('#p1_searchenabled').val('');
+                $('#p1_searchdisabled').val('');
+                $('#p1_selecteditemid').val('');
 
                 nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
             });
@@ -196,7 +213,7 @@
                     $('.actionbuttonwrapper').hide();
                     $('.editlanguage').hide();
                     $('.processing').show();
-                    $('#selecteditemid').val($(this).attr('itemid'));
+                    $('#p1_selecteditemid').val($(this).attr('itemid'));
                     nbxget('product_admin_delete', '#productadminsearch', '#actionreturn');
                 }
             });
@@ -204,29 +221,26 @@
         }
 
         if (e.cmd == 'product_admin_delete') {
-            $('.processing').show();
-            $('#razortemplate').val('Admin_ProductList.cshtml');
-            $('#selecteditemid').val('');
+            $('#p1_razortemplate').val('Admin_ProductList.cshtml');
+            $('#p1_selecteditemid').val('');
             nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
         }
 
         if (e.cmd == 'product_admin_save') {
-            $("#editlang").val($("#nextlang").val());
-            $("#editlanguage").val($("#nextlang").val());
+            $("#p1_editlang").val($("#p1_nextlang").val());
             nbxget('product_admin_getdetail', '#productadminsearch', '#datadisplay');
         };
 
         if (e.cmd == 'product_admin_saveexit' || e.cmd == 'product_admin_saveas') {
-            $("#editlang").val($("#nextlang").val());
-            $("#editlanguage").val($("#nextlang").val());
-            $('#razortemplate').val('Admin_ProductList.cshtml');
-            $('#selecteditemid').val('');
+            $("#p1_editlang").val($("#p1_nextlang").val());
+            $('#p1_razortemplate').val('Admin_ProductList.cshtml');
+            $('#p1_selecteditemid').val('');
             nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
         };
 
         if (e.cmd == 'product_moveproductadmin') {
-            $('#selecteditemid').val('');
-            $('#razortemplate').val('Admin_ProductList.cshtml');
+            $('#p1_moveproductid').val('');
+            $('#p1_movetoproductid').val('');
             nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
         };
         
@@ -251,14 +265,12 @@
             || e.cmd == 'product_updateproductimages') {
 
             // Copy the productid into the selecteditemid (for Add New Product)
-            $('#selecteditemid').val($('#itemid').val());
+            $('#p1_selecteditemid').val($('#itemid').val());
 
             $('.actionbuttonwrapper').show();
 
             $('.processing').hide();
-
-            $('.productsearchpanel').hide();
-            
+           
             $("#productAdmin_cmdSaveExit").show();
             $("#productAdmin_cmdSave").show();
             $("#productAdmin_cmdSaveAs").show();
@@ -305,7 +317,7 @@
                     })
                     .bind('fileuploadstop', function (e) {
                         if (filesdone == filecount) {
-                            $('#razortemplate').val('Admin_ProductImages.cshtml');
+                            $('#p1_razortemplate').val('Admin_ProductImages.cshtml');
                             nbxget('product_updateproductimages', '#productadminsearch', '#productimages'); // load images
                             filesdone = 0;
                             $('input[id*="imguploadlist"]').val('');
@@ -346,7 +358,7 @@
                     })
                     .bind('fileuploadstop', function (e) {
                         if (filesdone2 == filecount2) {
-                            $('#razortemplate').val('Admin_ProductDocs.cshtml');
+                            $('#p1_razortemplate').val('Admin_ProductDocs.cshtml');
                             nbxget('product_updateproductdocs', '#productadminsearch', '#productdocs'); // load images
                             filesdone2 = 0;
                             $('input[id*="docuploadlist"]').val('');
@@ -362,9 +374,8 @@
             // ---------------------------------------------------------------------------
             $('#productAdmin_cmdReturn').unbind("click");
             $('#productAdmin_cmdReturn').click(function () {
-                $('.processing').show();
-                $('#razortemplate').val('Admin_ProductList.cshtml');
-                $('#selecteditemid').val('');
+                $('#p1_selecteditemid').val('');
+                $('#p1_razortemplate').val('Admin_ProductList.cshtml');
                 nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
             });
             
@@ -379,8 +390,8 @@
                 $('#xmlupdateoptionvaluesdata').val($.fn.genxmlajaxitems('#productoptionvalues', '.optionvalueitem'));
                 $('#xmlupdateproductimages').val($.fn.genxmlajaxitems('#productimages', '.imageitem'));
                 $('#xmlupdateproductdocs').val($.fn.genxmlajaxitems('#productdocs', '.docitem'));
-                $('#razortemplate').val('Admin_ProductDetail.cshtml');
-                nbxget('product_admin_save', '#productdatasection', '#actionreturn');
+                $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
+                nbxget('product_admin_save', '#productdatasection');
             });
 
             $('#productAdmin_cmdSaveExit').unbind("click");
@@ -394,7 +405,7 @@
                 $('#xmlupdateoptionvaluesdata').val($.fn.genxmlajaxitems('#productoptionvalues', '.optionvalueitem'));
                 $('#xmlupdateproductimages').val($.fn.genxmlajaxitems('#productimages', '.imageitem'));
                 $('#xmlupdateproductdocs').val($.fn.genxmlajaxitems('#productdocs', '.docitem'));
-                nbxget('product_admin_saveexit', '#productdatasection', '#actionreturn');
+                nbxget('product_admin_saveexit', '#productdatasection');
             });
 
             $('#productAdmin_cmdSaveAs').unbind("click");
@@ -454,7 +465,7 @@
             $('#addmodels').click(function () {
                 $('.processing').show();
                 $('#addqty').val($('#txtaddmodelqty').val());
-                $('#razortemplate').val('Admin_ProductDetail.cshtml');
+                $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
                 nbxget('product_addproductmodels', '#productadminsearch', '#datadisplay'); // load models
             });
 
@@ -501,7 +512,7 @@
             $('#addopt').click(function () {
                 $('.processing').show();
                 $('#addqty').val($('#txtaddoptqty').val());
-                $('#razortemplate').val("Admin_ProductOptions.cshtml");                
+                $('#p1_razortemplate').val("Admin_ProductOptions.cshtml");                
                 nbxget('product_addproductoptions', '#productadminsearch', '#productoptions');
             });
 
@@ -521,7 +532,7 @@
 
             $('.selectoption').unbind("click");
             $('.selectoption').click(function () {
-                $('#selectedoptionid').val($(this).attr('itemid'));
+                $('#p1_selectedoptionid').val($(this).attr('itemid'));
                 $(this).parent().parent().parent().parent().parent().children().removeClass('selected');
                 $(this).parent().parent().parent().parent().addClass('selected');
                 showoptionvalues();
@@ -532,7 +543,7 @@
             $('#addoptvalues').click(function () {
                 $('.processing').show();
                 $('#addqty').val($('#txtaddoptvalueqty').val());   
-                $('#razortemplate').val("Admin_ProductOptionValues.cshtml");
+                $('#p1_razortemplate').val("Admin_ProductOptionValues.cshtml");
                 nbxget('product_addproductoptionvalues', '#productadminsearch', '#productoptionvalues');
             });
 
@@ -547,10 +558,10 @@
             });
 
             //trigger select option, to display correct option values
-            if ($('#selectedoptionid').val() == '') {
+            if ($('#p1_selectedoptionid').val() == '') {
                 $('.selectoption').last().trigger('click');
             } else {
-                var findstr = ".selectoption input[itemid='" + $('#selectedoptionid').val() + "']";
+                var findstr = ".selectoption input[itemid='" + $('#p1_selectedoptionid').val() + "']";
                 if ($('.selectoption').find(findstr).length > 0) {
                     $('.selectoption').find(findstr).trigger('click');
                 } else {
@@ -594,25 +605,25 @@
             $('.selectcategory').unbind();
             $('.selectcategory').click(function () {
                 $('.processing').show();
-                $('#selectedcatid').val($(this).val());
-                $('#razortemplate').val("Admin_ProductCategories.cshtml");
+                $('#p1_selectedcatid').val($(this).val());
+                $('#p1_razortemplate').val("Admin_ProductCategories.cshtml");
                 if ($(this).val() != null) nbxget('product_addproductcategory', '#productadminsearch', '#productcategories'); // load 
             });
             $('.removecategory').unbind();
             $('.removecategory').click(function () {
                 $('.processing').show();
-                $('#selecteditemid').val($(this).attr('itemid'));
-                $('#selectedcatid').val($(this).attr('categoryid'));
-                $('#razortemplate').val("Admin_ProductCategories.cshtml");
+                $('#p1_selecteditemid').val($(this).attr('itemid'));
+                $('#p1_selectedcatid').val($(this).attr('categoryid'));
+                $('#p1_razortemplate').val("Admin_ProductCategories.cshtml");
                 nbxget('product_removeproductcategory', '#productadminsearch', '#productcategories'); // load             
             });
             // set default category
             $('.defaultcategory').unbind('click');
             $('.defaultcategory').click(function () {
                 $('.processing').show();
-                $('#selecteditemid').val($(this).attr('itemid'));
-                $('#selectedcatid').val($(this).attr('categoryid'));
-                $('#razortemplate').val("Admin_ProductCategories.cshtml");
+                $('#p1_selecteditemid').val($(this).attr('itemid'));
+                $('#p1_selectedcatid').val($(this).attr('categoryid'));
+                $('#p1_razortemplate').val("Admin_ProductCategories.cshtml");
                 nbxget('product_setdefaultcategory', '#productadminsearch', '#productcategories'); // load             
             });
 
@@ -624,62 +635,61 @@
             $('.selectgrouptype').unbind('click');
             $('.selectgrouptype').click(function () {
                 $('.processing').show();
-                $('#selectedgroupref').val($(this).val());
-                $('#razortemplate').val("Admin_ProductPropertySelect.cshtml");
+                $('#p1_selectedgroupref').val($(this).val());
+                $('#p1_razortemplate').val("Admin_ProductPropertySelect.cshtml");
                 if ($(this).val() != null) nbxget('product_populatecategorylist', '#productadminsearch', '#groupcategorylist'); // load 
             });
 
             $('.removegroupcategory').unbind('click');
             $('.removegroupcategory').click(function () {
                 $('.processing').show();
-                $('#selectedcatid').val($(this).attr('categoryid'));
-                $('#razortemplate').val("Admin_ProductProperties.cshtml");
+                $('#p1_selectedcatid').val($(this).attr('categoryid'));
+                $('#p1_razortemplate').val("Admin_ProductProperties.cshtml");
                 nbxget('product_removeproperty', '#productadminsearch', '#productgroupcategories'); // load             
             });
 
             $('.selectproperty').unbind('click');
             $('.selectproperty').click(function () {
-                $('#selectedcatid').val($(this).val());
+                $('#p1_selectedcatid').val($(this).val());
                 $('.processing').show();
-                $('#razortemplate').val("Admin_ProductProperties.cshtml");
+                $('#p1_razortemplate').val("Admin_ProductProperties.cshtml");
                 nbxget('product_addproperty', '#productadminsearch', '#productgroupcategories'); // load 
             });
+
+            $('.productAdmin_cmdEdit').unbind("click");
+            $('.productAdmin_cmdEdit').click(function () {
+                $('.processing').show();
+                $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
+                $('#p1_selecteditemid').val($(this).attr('itemid'));
+                nbxget('product_admin_getdetail', '#productadminsearch', '#datadisplay');
+            });
+
 
             // ---------------------------------------------------------------------------
             // RELATED
             // ---------------------------------------------------------------------------
 
-            $('.productAdmin_cmdEdit').unbind("click");
-            $('.productAdmin_cmdEdit').click(function () {
-                $('.processing').show();
-                $('#razortemplate').val('Admin_ProductDetail.cshtml');
-                $('#selecteditemid').val($(this).attr('itemid'));
-                nbxget('product_admin_getdetail', '#productadminsearch', '#datadisplay');
-            });
-
-
             $('.removerelated').unbind('click');
             $('.removerelated').click(function () {
-                $('#selectedrelatedid').val($(this).attr('productid'));
-                $('#razortemplate').val('Admin_ProductRelated.cshtml');
+                $('#p1_selectedrelatedid').val($(this).attr('productid'));
+                $('#p1_razortemplate').val('Admin_ProductRelated.cshtml');
                 nbxget('product_removerelated', '#productadminsearch', '#productrelated'); // load releated
             });
 
             $('#productselect').click(function () {
-                $('#pagesize').val('60');
-                $('#razortemplate').val('Admin_ProductSelectList.cshtml');
+                $('#p1_pagesize').val('60');
+                $('#p1_razortemplate').val('Admin_ProductSelectList.cshtml');
                 nbxget('product_getproductselectlist', '#productadminsearch', '#productselectlist');
                 $('#productdatasection').hide();
                 $('#productselectsection').show();
             });
 
             $('#returnfromselect').click(function () {
-                $('#pagesize').val('20');
+                $('#p1_pagesize').val('20');
                 $('#productdatasection').show();
                 $('#productselectsection').hide();
-                $("#searchtext").val('');
-                $("#searchcategory").val('');
-                $('#razortemplate').val('Admin_ProductDetail.cshtml');
+                $("#p1_searchtextrelated").val('');
+                $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
                 nbxget('product_admin_getdetail', '#productadminsearch', '#datadisplay');
                 $('#datadisplay').show();
             });
@@ -695,35 +705,28 @@
                 $('.selectproduct').unbind();
                 $('.selectproduct').click(function() {
                     $('.selectproductid' + $(this).attr('itemid')).hide();
-                    $('#selectedrelatedid').val($(this).attr('itemid'));
+                    $('#p1_selectedrelatedid').val($(this).attr('itemid'));
                     nbxget('product_addrelatedproduct', '#productadminsearch', '#productrelated'); // load releated
                 });
 
             });
 
-            $("#ddlsearchcategory").unbind("change");
-            $("#ddlsearchcategory").change(function () {
-                $('#searchcategory').val($(this).val());
-                nbxget('product_getproductselectlist', '#productadminsearch', '#productselectlist');
-            });
-
-            $('#txtproductselectsearch').val($('#searchtext').val());
+            $('#txtproductselectsearch').val($('#p1_searchtextrelated').val());
 
             $('#selectsearch').unbind("click");
             $('#selectsearch').click(function () {
                 $('.processing').show();
-                $('#pagenumber').val('1');
-                $('#searchtext').val($('#txtproductselectsearch').val());
+                $('#p1_pagenumber').val('1');
+                $('#p1_searchtextrelated').val($('#txtproductselectsearch').val());
                 nbxget('product_getproductselectlist', '#productadminsearch', '#productselectlist');
             });
 
             $('#selectreset').unbind("click");
             $('#selectreset').click(function () {
                 $('.processing').show();
-                $('#pagenumber').val('1');
+                $('#p1_pagenumber').val('1');
                 $('#txtproductselectsearch').val('');
-                $('#searchtext').val('');
-                $("#ddlsearchcategory").val('');
+                $('#p1_searchtextrelated').val('');
                 nbxget('product_getproductselectlist', '#productadminsearch', '#productselectlist');
             });
 
@@ -738,7 +741,7 @@
                 $('.selectclient').click(function () {
                     $('.selectuserid' + $(this).attr('itemid')).hide();
                     $('input[id*="selecteduserid"]').val($(this).attr('itemid'));
-                    $('#razortemplate').val('Admin_ProductClientSelect.cshtml');
+                    $('#p1_razortemplate').val('Admin_ProductClientSelect.cshtml');
                     nbxget('product_addproductclient', '#productadminsearch', '#productclients'); // load releated
                 });
             });
@@ -746,7 +749,7 @@
             $('#clientlistsearch').unbind("click");
             $('#clientlistsearch').click(function () {
                 $('#searchtext').val($('#txtclientsearch').val());
-                $('#razortemplate').val('Admin_ProductClientSelect.cshtml');
+                $('#p1_razortemplate').val('Admin_ProductClientSelect.cshtml');
                 nbxget('product_getclientselectlist', '#productadminsearch', '#clientselectlist');
             });
 
@@ -761,7 +764,7 @@
             $('#returnfromclientselect').click(function () {
                 $('#clientselect').show();
                 $("input[id*='searchtext']").val('');
-                $('#razortemplate').val('Admin_ProductClients.cshtml');
+                $('#p1_razortemplate').val('Admin_ProductClients.cshtml');
                 nbxget('product_productclients', '#productadminsearch', '#productclients');
                 $('#clientselectsection').hide();
                 $('#productdatasection').show();
@@ -771,7 +774,7 @@
             $('#productclients').change(function () {
                 $('.removeclient').click(function () {
                     $('input[id*="selecteduserid"]').val($(this).attr('itemid'));
-                    $('#razortemplate').val('Admin_ProductClients.cshtml');
+                    $('#p1_razortemplate').val('Admin_ProductClients.cshtml');
                     nbxget('product_removeproductclient', '#productadminsearch', '#productclients');
                 });
             });
@@ -846,7 +849,57 @@
         $('#optionvaluecontrol').show();
     }
 
+    function product_search() {
+        $('.processing').show();
+        $('#p1_pagenumber').val('1');
+        $('#p1_razortemplate').val('Admin_ProductList.cshtml');
+        $('#p1_selecteditemid').val('');
+        $('#p1_searchtext').val($('#searchtext').val());
 
+        $('#p1_moveproductid').val('');
+        $('#p1_movetoproductid').val('');
+
+        if ($(".searchcategorydiv").length) {
+            var catlist = $(".searchcategorydiv").dropdownCheckbox("checked");
+            var selectcatid = '';
+            jQuery.each(catlist, function (index, item) {
+                selectcatid += item.id + ',';
+            });
+            $('#p1_searchcategory').val(selectcatid);
+        }
+
+        if ($(".searchpropertydiv").length) {
+            var propertylist = $(".searchpropertydiv").dropdownCheckbox("checked");
+            var selectproperty = '';
+            jQuery.each(propertylist, function (index, item) {
+                selectproperty += item.id + ',';
+            });
+            $('#p1_searchproperty').val(selectproperty);
+        }
+        $('#p1_cascade').val('False');
+        if ($('#cascade').prop('checked')) {
+            $('#p1_cascade').val('True');
+        }
+        $('#p1_searchhidden').val('False');
+        if ($('#searchhidden').prop('checked')) {
+            $('#p1_searchhidden').val('True');
+        }
+        $('#p1_searchvisible').val('False');
+        if ($('#searchvisible').prop('checked')) {
+            $('#p1_searchvisible').val('True');
+        }
+        $('#p1_searchenabled').val('False');
+        if ($('#searchenabled').prop('checked')) {
+            $('#p1_searchenabled').val('True');
+        }
+        $('#p1_searchdisabled').val('False');
+        if ($('#searchdisabled').prop('checked')) {
+            $('#p1_searchdisabled').val('True');
+        }
+
+        nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
+
+    }
     // ---------------------------------------------------------------------------
 
 });

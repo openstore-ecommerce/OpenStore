@@ -1215,4 +1215,10 @@
   <data name="cascade.Text" xml:space="preserve">
     <value>Cascade</value>
   </data>
+  <data name="enabled.Text" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="visible.Text" xml:space="preserve">
+    <value>Visible</value>
+  </data>
 </root>
