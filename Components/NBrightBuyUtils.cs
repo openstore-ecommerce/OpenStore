@@ -238,6 +238,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (!strurl.EndsWith("?")) strurl += "&";
                 strurl += "eid=" + entryid;
             }
+            if (!strurl.EndsWith("?")) strurl += "&";
+            strurl += "language=" + Utils.GetCurrentCulture();
             seoname = Utils.UrlFriendly(seoname);
 
             urldata = DotNetNuke.Services.Url.FriendlyUrl.FriendlyUrlProvider.Instance().FriendlyUrl(objTabInfo, strurl, seoname);
