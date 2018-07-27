@@ -72,7 +72,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = ProductAdminDetail(context);
                     break;
-                case "product_adminaddnew":
+                case "product_admin_addnew":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = ProductAdminAddNew(context);
                     break;
@@ -92,19 +92,19 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = ProductAdminList(context);
                     break;
-                case "product_moveproductadmin":
+                case "product_admin_moveproductadmin":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = MoveProductAdmin(context);
                     break;
-                case "product_addproductmodels":
+                case "product_admin_addproductmodels":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = AddModel(context);
                     break;
-                case "product_addproductoptions":
+                case "product_admin_addproductoptions":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = AddOption(context);
                     break;
-                case "product_addproductoptionvalues":
+                case "product_admin_addproductoptionvalues":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = AddOptionValues(context);
                     break;
@@ -112,71 +112,71 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = DeleteProduct(context);
                     break;
-                case "product_updateproductimages":
+                case "product_admin_updateproductimages":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = UpdateProductImages(context);
                     break;
-                case "product_updateproductdocs":
+                case "product_admin_updateproductdocs":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = UpdateProductDocs(context);
                     break;
-                case "product_addproductcategory":
+                case "product_admin_addproductcategory":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = AddProductCategory(context);
                     break;
-                case "product_removeproductcategory":
+                case "product_admin_removeproductcategory":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = RemoveProductCategory(context);
                     break;
-                case "product_setdefaultcategory":
+                case "product_admin_setdefaultcategory":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = SetDefaultCategory(context);
                     break;
-                case "product_populatecategorylist":
+                case "product_admin_populatecategorylist":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = GetPropertyListBox(context);
                     break;
-                case "product_addproperty":
+                case "product_admin_addproperty":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = AddProperty(context);
                     break;
-                case "product_removeproperty":
+                case "product_admin_removeproperty":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = RemoveProperty(context);
                     break;
-                case "product_removerelated":
+                case "product_admin_removerelated":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = RemoveRelatedProduct(context);
                     break;
-                case "product_addrelatedproduct":
+                case "product_admin_addrelatedproduct":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = AddRelatedProduct(context);
                     break;
-                case "product_getproductselectlist":
+                case "product_admin_getproductselectlist":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = ProductAdminSelectList(context, true, EditLangCurrent);
                     break;
-                case "product_getclientselectlist":
+                case "product_admin_getclientselectlist":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = GetClientSelectList(context);
                     break;
-                case "product_addproductclient":
+                case "product_admin_addproductclient":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = AddProductClient(context);
                     break;
-                case "product_productclients":
+                case "product_admin_productclients":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = GetProductClients(context);
                     break;
-                case "product_removeproductclient":
+                case "product_admin_removeproductclient":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = RemoveProductClient(context);
                     break;
-                case "product_selectchangedisable":
+                case "product_admin_selectchangedisable":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = ProductDisable(context);
                     break;
-                case "product_selectchangehidden":
+                case "product_admin_selectchangehidden":
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = ProductHidden(context);
                     break;

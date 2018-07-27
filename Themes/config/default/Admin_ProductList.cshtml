@@ -63,8 +63,8 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            <a id="productAdmin_cmdSearch" class="btn btn-primary primarybutton" href="javascript:void(0)"><i title="Search" class="fa fa-search fa-fw fa-lg"></i></a>
-                            <a id="productAdmin_cmdReset" class="btn btn-default secondarybutton" href="javascript:void(0)"><i title="Reset" class="fa fa-refresh fa-fw fa-lg"></i></a>
+                            <a id="product_admin_cmdSearch" class="btn btn-primary primarybutton" href="javascript:void(0)"><i title="Search" class="fa fa-search fa-fw fa-lg"></i></a>
+                            <a id="product_admin_cmdReset" class="btn btn-default secondarybutton" href="javascript:void(0)"><i title="Reset" class="fa fa-refresh fa-fw fa-lg"></i></a>
                         </div>
                     </div>
                 </div>
@@ -119,11 +119,11 @@
                             <tr>
                                 @if (nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
                                 {
-                                    <td class="image centered"><a class="productAdmin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?src=@nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")&amp;w=80&amp;h=60"></a></td>
+                                    <td class="image centered"><a class="product_admin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?src=@nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")&amp;w=80&amp;h=60"></a></td>
                                 }
                                 else
                                 {
-                                    <td class="noimage centered"><a class="productAdmin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)"><i class="fa fa-picture-o fa-3x"></i></a></td>
+                                    <td class="noimage centered"><a class="product_admin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)"><i class="fa fa-picture-o fa-3x"></i></a></td>
                                 }
                                 <td>
                                     <div>@nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")</div>
@@ -158,10 +158,10 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="productAdmin_cmdDelete" itemid="@(nbi.ItemID)" href="javascript:void(0)">@ResourceKey("General.cmdDeleteIcon")</a>
+                                    <a class="product_admin_cmdDelete" itemid="@(nbi.ItemID)" href="javascript:void(0)">@ResourceKey("General.cmdDeleteIcon")</a>
                                 </td>
                                 <td>
-                                    <a class="productAdmin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)">@ResourceKey("General.cmdEditIcon")</a>
+                                    <a class="product_admin_cmdEdit" itemid="@nbi.ItemID" href="javascript:void(0)">@ResourceKey("General.cmdEditIcon")</a>
                                 </td><!-- editlink class added to show processing -->
                                 <td>
                                     <a title="@ResourceKey("General.cmdMove")" href="javascript:void(0)" class="selectrecord" itemid="@nbi.ItemID" style="display: none;"><i class="fa fa-sort fa-fw fa-2x"></i></a>

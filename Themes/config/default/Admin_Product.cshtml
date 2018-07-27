@@ -6,7 +6,7 @@
 
 
 <!-- fields required to send required ajax cart to server -->
-<span id="productadminsearch">
+<span id="selectparams_Product_Admin">
     <input id="p1_userid" type="hidden" value="@UserController.Instance.GetCurrentUserInfo().UserID" />
     <input id="p1_razortemplate" type="hidden" value="" />
     <input id="p1_themefolder" type="hidden" value="config" />
@@ -36,6 +36,7 @@
     <input id="p1_searchenabled" type="hidden" value="" />
     <input id="p1_searchhidden" type="hidden" value="" />
     <input id="p1_searchvisible" type="hidden" value="" />
+    <input id="p1_accordianactive" type="hidden" value="0" />
 
 </span>
 
@@ -49,12 +50,12 @@
             <i class="fa fa-bars"></i>
         </a>
         <div class="actionbuttonwrapper">
-            <a id="productAdmin_cmdAddNew" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdAddButton")</a>
-            <a id="productAdmin_cmdSaveExit" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveExitButton")</a>
-            <a id="productAdmin_cmdSave" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveButton")</a>
-            <a id="productAdmin_cmdSaveAs" style="display: none;" class="btn btn-warning " href="javascript:void(0)">@ResourceKey("General.cmdSaveAsButton")</a>
-            <a id="productAdmin_cmdDelete" style="display: none;" class="btn btn-danger " href="javascript:void(0)">@ResourceKey("General.cmdDeleteButton")</a>
-            <a id="productAdmin_cmdReturn" style="display: none;" class="btn btn-default " href="javascript:void(0)">@ResourceKey("General.cmdReturnButton")</a>
+            <a id="product_admin_cmdAddNew" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdAddButton")</a>
+            <a id="product_admin_cmdSaveExit" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveExitButton")</a>
+            <a id="product_admin_cmdSave" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveButton")</a>
+            <a id="product_admin_cmdSaveAs" style="display: none;" class="btn btn-warning " href="javascript:void(0)">@ResourceKey("General.cmdSaveAsButton")</a>
+            <a id="product_admin_cmdDelete" style="display: none;" class="btn btn-danger " href="javascript:void(0)">@ResourceKey("General.cmdDeleteButton")</a>
+            <a id="product_admin_cmdReturn" style="display: none;" class="btn btn-default " href="javascript:void(0)">@ResourceKey("General.cmdReturnButton")</a>
         </div>
     </div>
     <div class="col-xs-3 col-sm-3 top-panel-right">

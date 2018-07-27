@@ -25,10 +25,317 @@
     $('.processing').show();
 
     $('#p1_razortemplate').val('Admin_ProductList.cshtml');
-    nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
+    nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
+
+    $('#product_admin_cmdSave').unbind("click");
+    $('#product_admin_cmdSave').click(function () {
+        $('.editlanguage').hide();
+        $('.processing').show();
+        //move data to update postback field
+        $('#xmlupdateproductimages').val($.fn.genxmlajaxitems('#productimages', '.imageitem'));
+        $('#xmlupdateproductdocs').val($.fn.genxmlajaxitems('#productdocs', '.docitem'));
+        $('.taginputfield').attr('id', 'txttagwords');  // rename taglist back to correct id for save.
+        // move index fields into hidden index fields for NBrightBuyIdx
+        $('.indexfield').each(function (i, obj) {
+            $(this).val($('#' + $(this).attr('indexname')).val());
+        });
+
+        nbxget('product_admin_savedata', '#productdatasection');
+    });
+
+    $('#product_admin_cmdSaveExit').unbind("click");
+    $('#product_admin_cmdSaveExit').click(function () {
+
+    });
+
+    $('#product_admin_cmdSaveAs').unbind("click");
+    $('#product_admin_cmdSaveAs').click(function () {
+
+    });
+
+    $('#product_admin_cmdReturn').unbind('click');
+    $('#product_admin_cmdReturn').click(function () {
+        $('#p1_selecteditemid').val(''); // clear sleecteditemid.        
+        nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
+    });
+
+    $('#product_admin_cmdDelete').unbind('click');
+    $('#product_admin_cmdDelete').click(function () {
+        if (confirm($('#deletemsg').val())) {
+            nbxget('product_admin_delete', '#datadisplay');
+        }
+    });
+
+    $('#product_admin_cmdAddNew').unbind('click');
+    $('#product_admin_cmdAddNew').click(function () {
+        $('.processing').show();
+        $('#p1_selecteditemid').val('');
+        $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
+        nbxget('product_admin_addnew', '#selectparams_Product_Admin', '#datadisplay');
+    });
+
+
+});
+
+
+function Admin_product_nbxgetCompleted(e) {
+
+    if (e.cmd == 'product_admin_addnew') {
+        $('#p1_selecteditemid').val($('#p1_itemid').val()); // move the itemid into the selecteditemid, so page knows what itemid is being edited
+        nbxget('product_admin_savedata', '#productdatasection');
+    }
+
+    if (e.cmd == 'product_admin_delete' || e.cmd == 'product_admin_moveproductadmin') {
+        $('#p1_selecteditemid').val('');
+        $('.actionbuttonwrapper').show();
+        $('.editlanguage').show();
+        product_admin_search();
+    }
+
+    if (e.cmd == 'product_admin_savedata') {
+        $('.processing').show();
+        nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay');// relist after save
+    }
+
+    if (e.cmd == 'product_admin_selectlang') {
+        $('#p1_editlang').val($('#p1_nextlang').val()); // alter lang after, so we get correct data record
+        nbxget('product_admin_getdata', '#selectparams_Product_Admin', '#datadisplay'); // do ajax call to get edit form
+    }
+
+
+    if (e.cmd == 'product_admin_getlist') {
+
+        $('.processing').hide();
+
+        $('#product_admin_cmdSearch').unbind("click");
+        $('#product_admin_cmdSearch').click(function () {
+            product_admin_search();
+        });
+
+        $('#product_admin_cmdReset').unbind("click");
+        $('#product_admin_cmdReset').click(function () {
+            $('.processing').show();
+            $('#p1_pagenumber').val('1');
+            $('#p1_searchtext').val('');
+            $('#p1_searchcategory').val('');
+            $('#p1_searchproperty').val('');
+            $('#p1_searchhidden').val('');
+            $('#p1_searchvisible').val('');
+            $('#p1_searchenabled').val('');
+            $('#p1_searchdisabled').val('');
+            $('#p1_selecteditemid').val('');
+            nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
+        });
+
+        $('.product_admin_cmdDelete').unbind("click");
+        $('.product_admin_cmdDelete').click(function () {
+            if (confirm($('#confirmdeletemsg').text())) {
+                $('.actionbuttonwrapper').hide();
+                $('.editlanguage').hide();
+                $('.processing').show();
+                $('#p1_selecteditemid').val($(this).attr('itemid'));
+                nbxget('product_admin_delete', '#selectparams_Product_Admin');
+            }
+        });
+
+        $('.cmdPg').unbind("click");
+        $('.cmdPg').click(function () {
+            $('.processing').show();
+            $('#p1_pagenumber').val($(this).attr('pagenumber'));
+            product_admin_search();
+        });
+
+        // Move products
+        $(".selectmove").hide();
+        $(".selectcancel").hide();
+        $(".selectrecord").hide();
+        $(".savebutton").hide();
+
+        var catlistcount = 0;
+        if ($('#p1_searchcategory').val() != '') {
+            catlistcount = ($('#p1_searchcategory').val().split(',').length - 1)
+        }
+        if ($('#p1_searchproperty').val() != '') {
+            catlistcount = catlistcount + ($('#p1_searchproperty').val().split(',').length - 1)
+        }
+        if (catlistcount == 1) {
+            if ($('#p1_moveproductid').val() != '') {
+                $('.selectmove').show();
+            }
+            else {
+                $('.selectrecord').show();
+            }
+        }
+        else {
+            $('.selectrecord').hide();
+        }
+
+        $('.selectrecord').unbind("click");
+        $(".selectrecord").click(function () {
+            $(".selectrecord").hide();
+            $(".selectmove").show();
+            $(".selectmove[itemid='" + $(this).attr("itemid") + "']").hide();
+            $(".selectcancel[itemid='" + $(this).attr("itemid") + "']").show();
+            $("#p1_moveproductid").val($(this).attr("itemid"));
+
+            var selectid = $(this).attr("itemid");
+            $(".selectmove").each(function (index) {
+                if ($(this).attr("parentlist").indexOf(selectid + ";") > -1) $(this).hide();
+            });
+
+            $('.searchcategorydiv').hide();
+            $('.searchpropertydiv').hide();
+
+        });
+
+        $('.selectcancel').unbind("click");
+        $(".selectcancel").click(function () {
+            $(".selectmove").hide();
+            $(".selectcancel").hide();
+            $(".selectrecord").show();
+            $('.searchcategorydiv').show();
+            $('.searchpropertydiv').show();
+            $('#p1_moveproductid').val('');
+        });
+
+        $('.selectmove').unbind("click");
+        $(".selectmove").click(function () {
+            $(".selectmove").hide();
+            $(".selectcancel").hide();
+            $(".selectrecord").show();
+            $("#p1_movetoproductid").val($(this).attr("itemid"));
+            $('.searchcategorydiv').show();
+            $('.searchpropertydiv').show();
+
+            var propertylist = $(".searchpropertydiv").dropdownCheckbox("checked");
+            var selectproperty = '';
+            jQuery.each(propertylist, function (index, item) {
+                $('#p1_searchproperty').val(item.id + ',');
+            });
+
+            var catlist = $(".searchcategorydiv").dropdownCheckbox("checked");
+            var selectcatid = '';
+            jQuery.each(catlist, function (index, item) {
+                $('#p1_searchcategory').val(item.id + ',');
+            });
+
+            nbxget('product_admin_moveproductadmin', '#selectparams_Product_Admin');
+        });
+
+        $('#datadisplay').children().find('.sortelementUp').click(function () { moveUp($(this).parent()); });
+        $('#datadisplay').children().find('.sortelementDown').click(function () { moveDown($(this).parent()); });
+
+
+        $('.updateboolean').unbind("click");
+        $('.updateboolean').click(function () {
+            $('.processing').show();
+            $('#p1_selecteditemid').val($(this).attr('itemid'));
+            $('#p1_xpath').val($(this).attr('xpath'));
+            if ($(this).hasClass("fa-check-circle")) {
+                $(this).addClass('fa-circle').removeClass('fa-check-circle');
+            } else {
+                $(this).addClass('fa-check-circle').removeClass('fa-circle');
+            }
+            nbxget('product_admin_updateboolean', '#selectparams_Product_Admin');
+        });
+
+
+
+    }
+
+    if (e.cmd == 'product_admin_getdetail') {
+
+        $('.processing').hide();
+        setupbackoffice();
+        $("#accordion").accordion("option", "active", parseInt($('#p1_accordianactive').val()));
+
+        $('input[datatype=date]').datepicker();
+
+        $('#lang_txttagwords').tagsInput({
+            'autocomplete_url': '/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=product_admin_autocomplete' + "&language=" + $('#editlanguage').val(),
+            'height': '100px',
+            'width': '100%',
+            'interactive': true,
+            'defaultText': '...',
+            'onAddTag': onAddTag,
+            'onRemoveTag': onRemoveTag,
+            'removeWithBackspace': false,
+            'minChars': 0,
+            'maxChars': 100, // if not provided there is no limit
+            'placeholderColor': '#cccccc'
+        });
+
+        initDocFileUpload();
+        initImgFileUpload();
+        initImgDisplay();
+        initDocDisplay();
+        initCategoryDisplay();
+        initPropertyDisplay();
+        initRelatedDisplay();
+        initClientDisplay();
+
+
+    }
+
+    if (e.cmd == 'product_admin_updateproductdocs') {
+        initDocDisplay();
+    }
+
+    if (e.cmd == 'product_admin_updateproductimages') {
+        initImgDisplay();
+    }
+
+    if (e.cmd == 'product_admin_populatecategorylist' || e.cmd == 'product_admin_addproperty' || e.cmd == 'product_admin_removeproperty') {
+        initPropertyDisplay();
+    }
+    if (e.cmd == 'product_admin_addproductcategory' || e.cmd == 'product_admin_removeproductcategory' || e.cmd == 'product_admin_setdefaultcategory') {
+        initCategoryDisplay();
+    }
+    if (e.cmd == 'product_admin_removerelated') {
+        initRelatedDisplay();
+    }
+    if (e.cmd == 'product_admin_removeproductclient') {
+        initRelatedDisplay();
+    }
+
+
+    // ---------------------------------------------------------------------------
+    // check if we are displaying a list or the detail and do processing.
+    // ---------------------------------------------------------------------------
+
+    if (($('#p1_selecteditemid').val() != '') || (e.cmd == 'product_admin_addnew')) {
+
+        if (e.cmd == 'product_admin_getproductselectlist'
+            || e.cmd == 'product_admin_addrelatedproduct'
+            || e.cmd == 'product_admin_addproductclient'
+            || e.cmd == 'product_admin_getclientselectlist') {
+            product_admin_NoButtons();
+        }
+        else {
+            product_admin_DetailButtons();
+        }
+
+        $('.processing').hide();
+
+    } else {
+        //PROCESS LIST
+        product_admin_ListButtons();
+        $('.product_admin_cmdEdit').unbind('click');
+        $('.product_admin_cmdEdit').click(function () {
+            $('.processing').show();
+            $('#p1_selecteditemid').val($(this).attr("itemid")); // assign the sleected itemid, so the server knows what item is being edited
+            nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay'); // do ajax call to get edit form
+        });
+        $('.processing').hide();
+    }
+
+
+}
+
+
 
     // function to do actions after an ajax call has been made.
-    function Admin_product_nbxgetCompleted(e) {
+    function XXAdmin_product_nbxgetCompleted(e) {
 
         $('.actionbuttonwrapper').show();
         $('.editlanguage').show();
@@ -44,8 +351,8 @@
             delay: { show: 100, hide: 200 }
         });
 
-        $('#productAdmin_cmdAddNew').unbind("click");
-        $('#productAdmin_cmdAddNew').click(function () {
+        $('#product_admin_cmdAddNew').unbind("click");
+        $('#product_admin_cmdAddNew').click(function () {
             $('.processing').show();
             $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
             nbxget('product_adminaddnew', '#productadminsearch', '#datadisplay');
@@ -59,12 +366,12 @@
 
             $('.processing').hide();
 
-            $("#productAdmin_cmdSaveExit").hide();
-            $("#productAdmin_cmdSave").hide();
-            $("#productAdmin_cmdSaveAs").hide();
-            $("#productAdmin_cmdDelete").hide();
-            $("#productAdmin_cmdReturn").hide();
-            $("#productAdmin_cmdAddNew").show();
+            $("#product_admin_cmdSaveExit").hide();
+            $("#product_admin_cmdSave").hide();
+            $("#product_admin_cmdSaveAs").hide();
+            $("#product_admin_cmdDelete").hide();
+            $("#product_admin_cmdReturn").hide();
+            $("#product_admin_cmdAddNew").show();
 
             // Move products
             $(".selectmove").hide();
@@ -145,8 +452,8 @@
 
 
             // editbutton created by list, so needs to be assigned on each render of list.
-            $('.productAdmin_cmdEdit').unbind("click");
-            $('.productAdmin_cmdEdit').click(function() {
+            $('.product_admin_cmdEdit').unbind("click");
+            $('.product_admin_cmdEdit').click(function() {
                 $('.processing').show();
                 $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
                 $('#p1_selecteditemid').val($(this).attr('itemid'));
@@ -186,13 +493,13 @@
                 nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
             });
 
-            $('#productAdmin_cmdSearch').unbind("click");
-            $('#productAdmin_cmdSearch').click(function () {
+            $('#product_admin_cmdSearch').unbind("click");
+            $('#product_admin_cmdSearch').click(function () {
                 product_search();
             });
 
-            $('#productAdmin_cmdReset').unbind("click");
-            $('#productAdmin_cmdReset').click(function() {
+            $('#product_admin_cmdReset').unbind("click");
+            $('#product_admin_cmdReset').click(function() {
                 $('.processing').show();
                 $('#p1_pagenumber').val('1');
                 $('#p1_searchtext').val('');
@@ -207,8 +514,8 @@
                 nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
             });
 
-            $('.productAdmin_cmdDelete').unbind("click");
-            $('.productAdmin_cmdDelete').click(function () {
+            $('.product_admin_cmdDelete').unbind("click");
+            $('.product_admin_cmdDelete').click(function () {
                 if (confirm($('#confirmdeletemsg').text())) {
                     $('.actionbuttonwrapper').hide();
                     $('.editlanguage').hide();
@@ -271,12 +578,12 @@
 
             $('.processing').hide();
            
-            $("#productAdmin_cmdSaveExit").show();
-            $("#productAdmin_cmdSave").show();
-            $("#productAdmin_cmdSaveAs").show();
-            $("#productAdmin_cmdDelete").show();
-            $("#productAdmin_cmdReturn").show();
-            $("#productAdmin_cmdAddNew").hide();
+            $("#product_admin_cmdSaveExit").show();
+            $("#product_admin_cmdSave").show();
+            $("#product_admin_cmdSaveAs").show();
+            $("#product_admin_cmdDelete").show();
+            $("#product_admin_cmdReturn").show();
+            $("#product_admin_cmdAddNew").hide();
 
             $('#datadisplay').children().find('.sortelementUp').click(function () { moveUp($(this).parent()); });
             $('#datadisplay').children().find('.sortelementDown').click(function () { moveDown($(this).parent()); });
@@ -372,15 +679,15 @@
             // ---------------------------------------------------------------------------
             // ACTION BUTTONS
             // ---------------------------------------------------------------------------
-            $('#productAdmin_cmdReturn').unbind("click");
-            $('#productAdmin_cmdReturn').click(function () {
+            $('#product_admin_cmdReturn').unbind("click");
+            $('#product_admin_cmdReturn').click(function () {
                 $('#p1_selecteditemid').val('');
                 $('#p1_razortemplate').val('Admin_ProductList.cshtml');
                 nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
             });
             
-            $('#productAdmin_cmdSave').unbind("click");
-            $('#productAdmin_cmdSave').click(function () {
+            $('#product_admin_cmdSave').unbind("click");
+            $('#product_admin_cmdSave').click(function () {
                 $('.actionbuttonwrapper').hide();
                 $('.editlanguage').hide();
                 $('.processing').show();
@@ -394,8 +701,8 @@
                 nbxget('product_admin_save', '#productdatasection');
             });
 
-            $('#productAdmin_cmdSaveExit').unbind("click");
-            $('#productAdmin_cmdSaveExit').click(function () {
+            $('#product_admin_cmdSaveExit').unbind("click");
+            $('#product_admin_cmdSaveExit').click(function () {
                 $('.actionbuttonwrapper').hide();
                 $('.editlanguage').hide();
                 $('.processing').show();
@@ -408,8 +715,8 @@
                 nbxget('product_admin_saveexit', '#productdatasection');
             });
 
-            $('#productAdmin_cmdSaveAs').unbind("click");
-            $('#productAdmin_cmdSaveAs').click(function () {
+            $('#product_admin_cmdSaveAs').unbind("click");
+            $('#product_admin_cmdSaveAs').click(function () {
                 $('.actionbuttonwrapper').hide();
                 $('.editlanguage').hide();
                 $('.processing').show();
@@ -423,8 +730,8 @@
             });
 
 
-            $('#productAdmin_cmdDelete').unbind("click");
-            $('#productAdmin_cmdDelete').click(function () {
+            $('#product_admin_cmdDelete').unbind("click");
+            $('#product_admin_cmdDelete').click(function () {
                 if (confirm($('#confirmdeletemsg').text())) {
                     $('.actionbuttonwrapper').hide();
                     $('.editlanguage').hide();
@@ -656,8 +963,8 @@
                 nbxget('product_addproperty', '#productadminsearch', '#productgroupcategories'); // load 
             });
 
-            $('.productAdmin_cmdEdit').unbind("click");
-            $('.productAdmin_cmdEdit').click(function () {
+            $('.product_admin_cmdEdit').unbind("click");
+            $('.product_admin_cmdEdit').click(function () {
                 $('.processing').show();
                 $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
                 $('#p1_selecteditemid').val($(this).attr('itemid'));
@@ -788,6 +1095,33 @@
     // ---------------------------------------------------------------------------
     // FUNCTIONS
     // ---------------------------------------------------------------------------
+
+function product_admin_DetailButtons() {
+        $('.editlanguage').show();
+        $('#cmdsave').show();
+        $('#cmddelete').show();
+        $('#cmdreturn').show();
+        $('#addnew').hide();
+        $('input[datatype="date"]').datepicker(); // assign datepicker to any ajax loaded fields
+    }
+
+function product_admin_ListButtons() {
+        $('.editlanguage').show();
+        $('#cmdsave').hide();
+        $('#cmddelete').hide();
+        $('#cmdreturn').hide();
+        $('#addnew').show();
+    }
+
+function product_admin_NoButtons() {
+        $('.editlanguage').hide();
+        $('#cmdsave').hide();
+        $('#cmddelete').hide();
+        $('#cmdreturn').hide();
+        $('#addnew').hide();
+    }
+
+
     function moveUp(item) {
         var prev = item.prev();
         if (prev.length == 0)
@@ -849,9 +1183,308 @@
         $('#optionvaluecontrol').show();
     }
 
-    function product_search() {
+    function initImgFileUpload() {
+        // ---------------------------------------------------------------------------
+        // IMG FILE UPLOAD
+        // ---------------------------------------------------------------------------
+        var filecount = 0;
+        var filesdone = 0;
+        $(function () {
+            'use strict';
+            var url = '/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=fileupload';
+            $('#fileupload').unbind('fileupload');
+            $('#fileupload').fileupload({
+                url: url,
+                maxFileSize: 5000000,
+                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+                dataType: 'json'
+            }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled')
+                .bind('fileuploadprogressall', function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .progress-bar').css('width', progress + '%');
+                })
+                .bind('fileuploadadd', function (e, data) {
+                    $.each(data.files, function (index, file) {
+                        $('input[id*="a1_imguploadlist"]').val($('input[id*="a1_imguploadlist"]').val() + file.name + ',');
+                        filesdone = filesdone + 1;
+                    });
+                })
+                .bind('fileuploadchange', function (e, data) {
+                    filecount = data.files.length;
+                    $('.processing').show();
+                })
+                .bind('fileuploaddrop', function (e, data) {
+                    filecount = data.files.length;
+                    $('.processing').show();
+                })
+                .bind('fileuploadstop', function (e) {
+                    if (filesdone == filecount) {
+                        nbxget('product_admin_updateproductimages', '#selectparams_Product_Admin', '#productimages'); // load images
+                        filesdone = 0;
+                        $('input[id*="a1_imguploadlist"]').val('');
+                        $('.processing').hide();
+                        $('#progress .progress-bar').css('width', '0');
+                    }
+                });
+        });
+
+    }
+
+    function initDocFileUpload() {
+        // ---------------------------------------------------------------------------
+        // DOC FILE UPLOAD
+        // ---------------------------------------------------------------------------
+        var filecount2 = 0;
+        var filesdone2 = 0;
+        $(function () {
+            'use strict';
+            var url = '/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=fileupload';
+            $('#cmdSaveDoc').unbind();
+            $('#cmdSaveDoc').fileupload({
+                url: url,
+                maxFileSize: 5000000,
+                acceptFileTypes: /(\.|\/)(pdf)$/i,
+                dataType: 'json'
+            }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled')
+                .bind('fileuploadprogressall', function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .progress-bar').css('width', progress + '%');
+                })
+                .bind('fileuploadadd', function (e, data) {
+                    $.each(data.files, function (index, file) {
+                        $('input[id*="a1_docuploadlist"]').val($('input[id*="a1_docuploadlist"]').val() + file.name + ',');
+                        filesdone2 = filesdone2 + 1;
+                    });
+                })
+                .bind('fileuploadchange', function (e, data) {
+                    filecount2 = data.files.length;
+                    $('.processing').show();
+                })
+                .bind('fileuploaddrop', function (e, data) {
+                    filecount2 = data.files.length;
+                    $('.processing').show();
+                })
+                .bind('fileuploadstop', function (e) {
+                    if (filesdone2 == filecount2) {
+                        nbxget('product_admin_updateproductdocs', '#selectparams_Product_Admin', '#productdocs'); // load images
+                        filesdone2 = 0;
+                        $('input[id*="a1_docuploadlist"]').val('');
+                        $('.processing').hide();
+                        $('#progress .progress-bar').css('width', '0');
+                    }
+                });
+        });
+
+    }
+
+    function initImgDisplay() {
+        $('.removeimage').unbind("click");
+        $('.removeimage').click(function () {
+            removeelement($(this).parent().parent().parent().parent());
+        });
+
+        $('#undoimage').unbind("click");
+        $('#undoimage').click(function () {
+            undoremove('.imageitem', '#productimages');
+        });
+    }
+
+    function initDocDisplay() {
+        $('.removedoc').unbind();
+        $('.removedoc').click(function () {
+            removeelement($(this).parent().parent().parent().parent());
+        });
+
+        $('#undodoc').unbind();
+        $('#undodoc').click(function () {
+            undoremove('.docitem', '#productdocs');
+        });
+    }
+
+    function initPropertyDisplay() {
+
+        $('.selectgrouptype').unbind('click');
+        $('.selectgrouptype').click(function () {
+            $('.processing').show();
+            $('#p1_selectedgroupref').val($(this).val());
+            if ($(this).val() != null) nbxget('product_admin_populatecategorylist', '#selectparams_Product_Admin', '#groupcategorylist'); // load 
+        });
+
+        $('.removegroupcategory').unbind('click');
+        $('.removegroupcategory').click(function () {
+            $('.processing').show();
+            $('#p1_selectedcatid').val($(this).attr('categoryid'));
+            nbxget('product_admin_removeproperty', '#selectparams_Product_Admin', '#productgroupcategories'); // load             
+        });
+
+        $('.selectproperty').unbind('click');
+        $('.selectproperty').click(function () {
+            $('#p1_selectedcatid').val($(this).val());
+            $('.processing').show();
+            nbxget('product_admin_addproperty', '#selectparams_Product_Admin', '#productgroupcategories'); // load 
+        });
+    }
+
+    function initCategoryDisplay() {
+        $('.selectcategory').unbind();
+        $('.selectcategory').click(function () {
+            $('.processing').show();
+            $('#p1_selectedcatid').val($(this).val());
+            $('#p1_razortemplate').val("AmylisCategories.cshtml");
+            if ($(this).val() != null) nbxget('product_admin_addproductcategory', '#selectparams_Product_Admin', '#productcategories'); // load 
+        });
+        $('.removecategory').unbind();
+        $('.removecategory').click(function () {
+            $('.processing').show();
+            $('#p1_selecteditemid').val($(this).attr('itemid'));
+            $('#p1_selectedcatid').val($(this).attr('categoryid'));
+            $('#p1_razortemplate').val("AmylisCategories.cshtml");
+            nbxget('product_admin_removeproductcategory', '#selectparams_Product_Admin', '#productcategories'); // load             
+        });
+        // set default category
+        $('.defaultcategory').unbind('click');
+        $('.defaultcategory').click(function () {
+            $('.processing').show();
+            $('#p1_selecteditemid').val($(this).attr('itemid'));
+            $('#p1_selectedcatid').val($(this).attr('categoryid'));
+            $('#p1_razortemplate').val("AmylisCategories.cshtml");
+            nbxget('product_admin_setdefaultcategory', '#selectparams_Product_Admin', '#productcategories'); // load             
+        });
+    }
+
+    function initRelatedDisplay() {
+        $('.removerelated').unbind('click');
+        $('.removerelated').click(function () {
+            $('#p1_selectedrelatedid').val($(this).attr('productid'));
+            $("#p1_razortemplate").val('AmylisRelated.cshtml');
+            nbxget('product_admin_removerelated', '#selectparams_Product_Admin', '#productrelated'); // load releated
+        });
+
+        $('#productselect').unbind('click');
+        $('#productselect').click(function () {
+            $('.processing').show();
+            $('#p1_accordianactive').val($("#accordion").accordion("option", "active"));
+            $('#p1_pagesize').val('60');
+            $("#p1_razortemplate").val('AmylisSelectList.cshtml');
+            nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
+            $('#productdatasection').hide();
+            $('#productselectsection').show();
+        });
+
+        $('#returnfromselect').unbind('click');
+        $('#returnfromselect').click(function () {
+            $('#p1_pagesize').val('20');
+            $('#productdatasection').show();
+            $('#productselectsection').hide();
+            $("#p1_searchtext").val('');
+            $("#p1_searchcategory").val('');
+            nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay');
+            $('#datadisplay').show();
+        });
+
+        $("#productselectlist").unbind("change");
+        $('#productselectlist').change(function () {
+            //Do paging
+            $('.cmdPg').unbind();
+            $('.cmdPg').click(function () {
+                $('input[id*="a1_pagenumber"]').val($(this).attr("pagenumber"));
+                nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
+            });
+            // select product
+            $('.selectproduct').unbind();
+            $('.selectproduct').click(function () {
+                $('.selectproductid' + $(this).attr('itemid')).hide();
+                $('#p1_selectedrelatedid').val($(this).attr('itemid'));
+                nbxget('product_admin_addrelatedproduct', '#selectparams_Product_Admin', '#productrelated'); // load releated
+            });
+
+        });
+
+        $("#ddlsearchcategory").unbind("change");
+        $("#ddlsearchcategory").change(function () {
+            $('#p1_searchcategory').val($(this).val());
+            $("#p1_razortemplate").val('AmylisSelectList.cshtml');
+            nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
+        });
+
+        $('#txtproductselectsearch').val($('#searchtext').val());
+
+        $('#selectsearch').unbind("click");
+        $('#selectsearch').click(function () {
+            $('.processing').show();
+            $('#p1_pagenumber').val('1');
+            $('#p1_searchtext').val($('#txtproductselectsearch').val());
+            $("#p1_razortemplate").val('AmylisSelectList.cshtml');
+            nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
+        });
+
+        $('#selectreset').unbind("click");
+        $('#selectreset').click(function () {
+            $('.processing').show();
+            $('#p1_pagenumber').val('1');
+            $('#p1_searchtext').val('');
+            $("#p1_searchcategory").val('');
+            $("#ddlsearchcategory").val('');
+            $('#txtproductselectsearch').val('');
+            $("#p1_razortemplate").val('AmylisSelectList.cshtml');
+            nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
+        });
+
+
+    }
+
+    function initClientDisplay() {
+
+        $('#clientselectlist').unbind("change");
+        $('#clientselectlist').change(function () {
+            // select product
+            $('.selectclient').unbind();
+            $('.selectclient').click(function () {
+                $('.selectuserid' + $(this).attr('itemid')).hide();
+                $('input[id*="selecteduserid"]').val($(this).attr('itemid'));
+                nbxget('product_admin_addproductclient', '#selectparams_Product_Admin', '#productclients'); // load releated
+            });
+        });
+
+        $('#clientlistsearch').unbind("click");
+        $('#clientlistsearch').click(function () {
+            $('#p1_searchtext').val($('#txtclientsearch').val());
+            nbxget('product_admin_getclientselectlist', '#selectparams_Product_Admin', '#clientselectlist');
+        });
+
+        $('#clientselect').unbind("click");
+        $('#clientselect').click(function () {
+            $('#p1_accordianactive').val($("#accordion").accordion("option", "active"));
+            $(this).hide();
+            $('#productdatasection').hide();
+            $('#clientselectsection').show();
+            product_admin_NoButtons();
+        });
+
+        $('#returnfromclientselect').unbind("click");
+        $('#returnfromclientselect').click(function () {
+            $('#clientselect').show();
+            $("input[id*='searchtext']").val('');
+            nbxget('product_admin_productclients', '#selectparams_Product_Admin', '#productclients');
+            $('#clientselectsection').hide();
+            $('#productdatasection').show();
+        });
+
+        $('#productclients').unbind("click");
+        $('#productclients').change(function () {
+            $('.removeclient').click(function () {
+                $('input[id*="selecteduserid"]').val($(this).attr('itemid'));
+                nbxget('product_admin_removeproductclient', '#selectparams_Product_Admin', '#productclients');
+            });
+        });
+
+
+    }
+
+
+function product_admin_search() {
         $('.processing').show();
-        $('#p1_pagenumber').val('1');
+
         $('#p1_razortemplate').val('Admin_ProductList.cshtml');
         $('#p1_selecteditemid').val('');
         $('#p1_searchtext').val($('#searchtext').val());
@@ -897,10 +1530,9 @@
             $('#p1_searchdisabled').val('True');
         }
 
-        nbxget('product_admin_getlist', '#productadminsearch', '#datadisplay');
+    nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
 
     }
     // ---------------------------------------------------------------------------
 
-});
 
