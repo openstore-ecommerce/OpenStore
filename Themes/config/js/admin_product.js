@@ -56,6 +56,7 @@
     $('#product_admin_cmdReturn').unbind('click');
     $('#product_admin_cmdReturn').click(function () {
         $('#p1_selecteditemid').val(''); // clear sleecteditemid.        
+        $('#p1_razortemplate').val('Admin_ProductList.cshtml');
         nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
     });
 
@@ -251,20 +252,6 @@ function Admin_product_nbxgetCompleted(e) {
 
         $('input[datatype=date]').datepicker();
 
-        $('#lang_txttagwords').tagsInput({
-            'autocomplete_url': '/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=product_admin_autocomplete' + "&language=" + $('#editlanguage').val(),
-            'height': '100px',
-            'width': '100%',
-            'interactive': true,
-            'defaultText': '...',
-            'onAddTag': onAddTag,
-            'onRemoveTag': onRemoveTag,
-            'removeWithBackspace': false,
-            'minChars': 0,
-            'maxChars': 100, // if not provided there is no limit
-            'placeholderColor': '#cccccc'
-        });
-
         initDocFileUpload();
         initImgFileUpload();
         initImgDisplay();
@@ -323,6 +310,7 @@ function Admin_product_nbxgetCompleted(e) {
         $('.product_admin_cmdEdit').unbind('click');
         $('.product_admin_cmdEdit').click(function () {
             $('.processing').show();
+            $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
             $('#p1_selecteditemid').val($(this).attr("itemid")); // assign the sleected itemid, so the server knows what item is being edited
             nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay'); // do ajax call to get edit form
         });
@@ -1097,28 +1085,34 @@ function Admin_product_nbxgetCompleted(e) {
     // ---------------------------------------------------------------------------
 
 function product_admin_DetailButtons() {
-        $('.editlanguage').show();
-        $('#cmdsave').show();
-        $('#cmddelete').show();
-        $('#cmdreturn').show();
-        $('#addnew').hide();
-        $('input[datatype="date"]').datepicker(); // assign datepicker to any ajax loaded fields
-    }
+    $('.editlanguage').show();
+    $('#product_admin_cmdSave').show();
+    $('#product_admin_cmdSaveExit').show();
+    $('#product_admin_cmdSaveAs').show();
+    $('#product_admin_cmdDelete').show();
+    $('#product_admin_cmdReturn').show();
+    $('#product_admin_cmdAddNew').hide();
+    $('input[datatype="date"]').datepicker(); // assign datepicker to any ajax loaded fields
+}
 
 function product_admin_ListButtons() {
         $('.editlanguage').show();
-        $('#cmdsave').hide();
-        $('#cmddelete').hide();
-        $('#cmdreturn').hide();
-        $('#addnew').show();
-    }
+    $('#product_admin_cmdSave').hide();
+    $('#product_admin_cmdSaveExit').hide();
+    $('#product_admin_cmdSaveAs').hide();
+    $('#product_admin_cmdDelete').hide();
+    $('#product_admin_cmdReturn').hide();
+    $('#product_admin_cmdAddNew').show();
+}
 
 function product_admin_NoButtons() {
         $('.editlanguage').hide();
-        $('#cmdsave').hide();
-        $('#cmddelete').hide();
-        $('#cmdreturn').hide();
-        $('#addnew').hide();
+    $('#product_admin_cmdSave').hide();
+    $('#product_admin_cmdSaveExit').hide();
+    $('#product_admin_cmdSaveAs').hide();
+    $('#product_admin_cmdDelete').hide();
+    $('#product_admin_cmdReturn').hide();
+    $('#product_admin_cmdAddNew').hide();
     }
 
 
@@ -1205,7 +1199,7 @@ function product_admin_NoButtons() {
                 })
                 .bind('fileuploadadd', function (e, data) {
                     $.each(data.files, function (index, file) {
-                        $('input[id*="a1_imguploadlist"]').val($('input[id*="a1_imguploadlist"]').val() + file.name + ',');
+                        $('input[id*="p1_imguploadlist"]').val($('input[id*="p1_imguploadlist"]').val() + file.name + ',');
                         filesdone = filesdone + 1;
                     });
                 })
@@ -1219,9 +1213,10 @@ function product_admin_NoButtons() {
                 })
                 .bind('fileuploadstop', function (e) {
                     if (filesdone == filecount) {
+                        $('#p1_razortemplate').val('Admin_ProductImages.cshtml');
                         nbxget('product_admin_updateproductimages', '#selectparams_Product_Admin', '#productimages'); // load images
                         filesdone = 0;
-                        $('input[id*="a1_imguploadlist"]').val('');
+                        $('input[id*="p1_imguploadlist"]').val('');
                         $('.processing').hide();
                         $('#progress .progress-bar').css('width', '0');
                     }
@@ -1252,7 +1247,7 @@ function product_admin_NoButtons() {
                 })
                 .bind('fileuploadadd', function (e, data) {
                     $.each(data.files, function (index, file) {
-                        $('input[id*="a1_docuploadlist"]').val($('input[id*="a1_docuploadlist"]').val() + file.name + ',');
+                        $('input[id*="p1_docuploadlist"]').val($('input[id*="p1_docuploadlist"]').val() + file.name + ',');
                         filesdone2 = filesdone2 + 1;
                     });
                 })
@@ -1266,9 +1261,10 @@ function product_admin_NoButtons() {
                 })
                 .bind('fileuploadstop', function (e) {
                     if (filesdone2 == filecount2) {
+                        $('#p1_razortemplate').val('Admin_ProductDocs.cshtml');
                         nbxget('product_admin_updateproductdocs', '#selectparams_Product_Admin', '#productdocs'); // load images
                         filesdone2 = 0;
-                        $('input[id*="a1_docuploadlist"]').val('');
+                        $('input[id*="p1_docuploadlist"]').val('');
                         $('.processing').hide();
                         $('#progress .progress-bar').css('width', '0');
                     }
@@ -1307,6 +1303,7 @@ function product_admin_NoButtons() {
         $('.selectgrouptype').click(function () {
             $('.processing').show();
             $('#p1_selectedgroupref').val($(this).val());
+            $('#p1_razortemplate').val("Admin_ProductPropertySelect.cshtml");
             if ($(this).val() != null) nbxget('product_admin_populatecategorylist', '#selectparams_Product_Admin', '#groupcategorylist'); // load 
         });
 
@@ -1314,6 +1311,7 @@ function product_admin_NoButtons() {
         $('.removegroupcategory').click(function () {
             $('.processing').show();
             $('#p1_selectedcatid').val($(this).attr('categoryid'));
+            $('#p1_razortemplate').val("Admin_ProductProperties.cshtml");
             nbxget('product_admin_removeproperty', '#selectparams_Product_Admin', '#productgroupcategories'); // load             
         });
 
@@ -1321,6 +1319,7 @@ function product_admin_NoButtons() {
         $('.selectproperty').click(function () {
             $('#p1_selectedcatid').val($(this).val());
             $('.processing').show();
+            $('#p1_razortemplate').val("Admin_ProductProperties.cshtml");
             nbxget('product_admin_addproperty', '#selectparams_Product_Admin', '#productgroupcategories'); // load 
         });
     }
@@ -1330,7 +1329,7 @@ function product_admin_NoButtons() {
         $('.selectcategory').click(function () {
             $('.processing').show();
             $('#p1_selectedcatid').val($(this).val());
-            $('#p1_razortemplate').val("AmylisCategories.cshtml");
+            $('#p1_razortemplate').val("Admin_ProductCategories.cshtml");
             if ($(this).val() != null) nbxget('product_admin_addproductcategory', '#selectparams_Product_Admin', '#productcategories'); // load 
         });
         $('.removecategory').unbind();
@@ -1338,7 +1337,7 @@ function product_admin_NoButtons() {
             $('.processing').show();
             $('#p1_selecteditemid').val($(this).attr('itemid'));
             $('#p1_selectedcatid').val($(this).attr('categoryid'));
-            $('#p1_razortemplate').val("AmylisCategories.cshtml");
+            $('#p1_razortemplate').val("Admin_ProductCategories.cshtml");
             nbxget('product_admin_removeproductcategory', '#selectparams_Product_Admin', '#productcategories'); // load             
         });
         // set default category
@@ -1347,7 +1346,7 @@ function product_admin_NoButtons() {
             $('.processing').show();
             $('#p1_selecteditemid').val($(this).attr('itemid'));
             $('#p1_selectedcatid').val($(this).attr('categoryid'));
-            $('#p1_razortemplate').val("AmylisCategories.cshtml");
+            $('#p1_razortemplate').val("Admin_ProductCategories.cshtml");
             nbxget('product_admin_setdefaultcategory', '#selectparams_Product_Admin', '#productcategories'); // load             
         });
     }
@@ -1356,7 +1355,7 @@ function product_admin_NoButtons() {
         $('.removerelated').unbind('click');
         $('.removerelated').click(function () {
             $('#p1_selectedrelatedid').val($(this).attr('productid'));
-            $("#p1_razortemplate").val('AmylisRelated.cshtml');
+            $("#p1_razortemplate").val('Admin_ProductRelated.cshtml');
             nbxget('product_admin_removerelated', '#selectparams_Product_Admin', '#productrelated'); // load releated
         });
 
@@ -1365,7 +1364,7 @@ function product_admin_NoButtons() {
             $('.processing').show();
             $('#p1_accordianactive').val($("#accordion").accordion("option", "active"));
             $('#p1_pagesize').val('60');
-            $("#p1_razortemplate").val('AmylisSelectList.cshtml');
+            $("#p1_razortemplate").val('Admin_ProductSelectList.cshtml');
             nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
             $('#productdatasection').hide();
             $('#productselectsection').show();
@@ -1378,6 +1377,7 @@ function product_admin_NoButtons() {
             $('#productselectsection').hide();
             $("#p1_searchtext").val('');
             $("#p1_searchcategory").val('');
+            $('#p1_razortemplate').val("Admin_ProductDetail.cshtml");
             nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay');
             $('#datadisplay').show();
         });
@@ -1387,7 +1387,7 @@ function product_admin_NoButtons() {
             //Do paging
             $('.cmdPg').unbind();
             $('.cmdPg').click(function () {
-                $('input[id*="a1_pagenumber"]').val($(this).attr("pagenumber"));
+                $('#p1_pagenumber').val($(this).attr("pagenumber"));
                 nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
             });
             // select product
@@ -1403,7 +1403,7 @@ function product_admin_NoButtons() {
         $("#ddlsearchcategory").unbind("change");
         $("#ddlsearchcategory").change(function () {
             $('#p1_searchcategory').val($(this).val());
-            $("#p1_razortemplate").val('AmylisSelectList.cshtml');
+            $("#p1_razortemplate").val('Admin_ProductSelectList.cshtml');
             nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
         });
 
@@ -1414,7 +1414,7 @@ function product_admin_NoButtons() {
             $('.processing').show();
             $('#p1_pagenumber').val('1');
             $('#p1_searchtext').val($('#txtproductselectsearch').val());
-            $("#p1_razortemplate").val('AmylisSelectList.cshtml');
+            $("#p1_razortemplate").val('Admin_ProductSelectList.cshtml');
             nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
         });
 
@@ -1426,7 +1426,7 @@ function product_admin_NoButtons() {
             $("#p1_searchcategory").val('');
             $("#ddlsearchcategory").val('');
             $('#txtproductselectsearch').val('');
-            $("#p1_razortemplate").val('AmylisSelectList.cshtml');
+            $("#p1_razortemplate").val('Admin_ProductSelectList.cshtml');
             nbxget('product_admin_getproductselectlist', '#selectparams_Product_Admin', '#productselectlist');
         });
 
@@ -1464,7 +1464,8 @@ function product_admin_NoButtons() {
         $('#returnfromclientselect').unbind("click");
         $('#returnfromclientselect').click(function () {
             $('#clientselect').show();
-            $("input[id*='searchtext']").val('');
+            $('#p1_searchtext').val('');
+            $("#p1_razortemplate").val('Admin_ProductClients.cshtml');
             nbxget('product_admin_productclients', '#selectparams_Product_Admin', '#productclients');
             $('#clientselectsection').hide();
             $('#productdatasection').show();
@@ -1473,7 +1474,7 @@ function product_admin_NoButtons() {
         $('#productclients').unbind("click");
         $('#productclients').change(function () {
             $('.removeclient').click(function () {
-                $('input[id*="selecteduserid"]').val($(this).attr('itemid'));
+                $('#p1_searchtext').val($(this).attr('itemid'));
                 nbxget('product_admin_removeproductclient', '#selectparams_Product_Admin', '#productclients');
             });
         });
