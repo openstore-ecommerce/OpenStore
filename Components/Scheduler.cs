@@ -8,6 +8,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 {
     public class NBrightBuyScheduler : DotNetNuke.Services.Scheduling.SchedulerClient
     {
+        private string providername;
+        private string portalname;
+
         public NBrightBuyScheduler(DotNetNuke.Services.Scheduling.ScheduleHistoryItem objScheduleHistoryItem) : base()
         {
             this.ScheduleHistoryItem = objScheduleHistoryItem;
@@ -19,11 +22,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             try
             {
+                providername = "";
+                portalname = "";
 
                 var portallist = DnnUtils.GetAllPortals();
 
                 foreach (var portal in portallist)
                 {
+                    portalname = portal.PortalName;
 
                     var storeSettings = new StoreSettings(portal.PortalID);
                     if (Directory.Exists(storeSettings.FolderTempMapPath))
@@ -56,6 +62,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         foreach (var p in l)
                         {
                             var prov = p.Value;
+                            providername = prov.GetXmlProperty("genxml/textbox/assembly") + " " + prov.GetXmlProperty("genxml/textbox/namespaceclass");
                             ObjectHandle handle = null;
                             handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"), prov.GetXmlProperty("genxml/textbox/namespaceclass"));
                             if (handle != null)
@@ -79,7 +86,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 //--intimate the schedule mechanism to write log note in schedule history
                 this.ScheduleHistoryItem.Succeeded = false;
-                this.ScheduleHistoryItem.AddLogNote("NBS Service Start. Failed. " + Ex.ToString());
+                this.ScheduleHistoryItem.AddLogNote(" Service Start. Failed. providername: " + providername + " Portal:" + portalname + " Error:" + Ex.ToString());
                 this.Errored(ref Ex);
             }
         }
