@@ -784,7 +784,7 @@
     <value>in attesa del Magazzino</value>
   </data>
   <data name="orderstatus080.Text" xml:space="preserve">
-    <value>In attesa</value>
+    <value>in Produzione</value>
   </data>
   <data name="orderstatus090.Text" xml:space="preserve">
     <value>Spedito</value>
@@ -796,7 +796,7 @@
     <value>Archiviato</value>
   </data>
   <data name="orderstatus120.Text" xml:space="preserve">
-    <value>in Produzione</value>
+    <value>In attesa</value>
   </data>
   <data name="Parent.Text" xml:space="preserve">
     <value>Genitore</value>

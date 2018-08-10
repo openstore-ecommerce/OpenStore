@@ -979,7 +979,7 @@
     <value>Waiting for Stock</value>
   </data>
   <data name="orderstatus080.Text" xml:space="preserve">
-    <value>Waiting</value>
+    <value>Being Manufactured</value>
   </data>
   <data name="orderstatus090.Text" xml:space="preserve">
     <value>Shipped</value>
@@ -991,7 +991,7 @@
     <value>Archived</value>
   </data>
   <data name="orderstatus120.Text" xml:space="preserve">
-    <value>Being Manufactured</value>
+    <value>Waiting</value>
   </data>
   <data name="cmdSaveExitButton.Text" xml:space="preserve">
     <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Save &amp; Exit</value>
