@@ -29,12 +29,14 @@
             <input id="uilang" type="hidden" value="@Utils.GetCurrentCulture()">
             <input id="modulekey" type="hidden" update="save" value="@Model.GetSetting("targetmodulekey")">
             <input id="navigationmode" update="save" type="hidden" value="f">
+
             <input id="search1" type="hidden" update="save" value="<tag id='search' action='open' sqloperator='and' />">
-            <input id="search2" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' static='%' sqlfield='genxml/lang/genxml/textbox/txtproductname' />">
-            <input id="search3" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlfield='genxml/lang/genxml/textbox/description' sqloperator='or' />">
-            <input id="search4" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlfield='genxml/lang/genxml/textbox/txttagwords' sqloperator='or' />">
-            <input id="search5" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB1.GUIDKey' sqloperator='or' />">
-            <input id="search6" type="hidden" update="save" value="<tag id='search' action='close' />">
+            <input id="search2" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.ProductName' />">
+            <input id="search3" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.ProductRef' sqloperator='or' />">
+            <input id="search4" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.Summary' sqloperator='or' />">
+            <input id="search5" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.TagWords' sqloperator='or' />">
+            <input id="search6" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB1.GUIDKey' sqloperator='or' />">
+            <input id="search7" type="hidden" update="save" value="<tag id='search' action='close' />">
         </div>
         <div class='searchreturn' style="display: none;"></div>
         <a id="cmdSimpleSearch" href="javascript:void(0);" class="postbacklink searchpostbacklink nbssearchgo"><i class="fa fa-search"></i></a>
