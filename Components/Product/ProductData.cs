@@ -1462,7 +1462,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 var strGuid = categoryid.ToString("") + "x" + Info.ItemID.ToString("");
                 var objCtrl = new NBrightBuyController();
-                var nbi = objCtrl.GetByGuidKey(_portalId, -1, "CATXREF", strGuid);
+                var nbi = objCtrl.GetByGuidKey(_portalId, -1, "CATXREF", strGuid, "", true);
                 if (nbi == null)
                 {
                     nbi = new NBrightInfo();

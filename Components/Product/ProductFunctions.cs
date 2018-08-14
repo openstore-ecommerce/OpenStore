@@ -1384,6 +1384,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var prodData = ProductUtils.GetProductData(parentitemid, EditLangCurrent, false);
                     prodData.RemoveCategory(Convert.ToInt32(xrefitemid));
+                    ProductUtils.RemoveProductDataCache(PortalSettings.Current.PortalId, parentitemid);
                     NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProperties(context);
                 }
@@ -1404,7 +1405,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var productitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
                 var strOut = "";
                 var objCtrl = new NBrightBuyController();
-                var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent);
+                var info = objCtrl.GetData(Convert.ToInt32(productitemid), EntityTypeCode + "LANG", EditLangCurrent, true);
 
                 if (RazorTemplate == "") RazorTemplate = ajaxInfo.GetXmlProperty("genxml/hidden/razortemplate");
                 if (RazorTemplate == "") RazorTemplate = "Admin_ProductProperties.cshtml";

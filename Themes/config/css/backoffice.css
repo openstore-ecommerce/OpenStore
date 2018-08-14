@@ -147,6 +147,12 @@ a.show-sidebar {margin-top:15px;}
 
 /* Product Editor */
 a.sortelementUp,a.sortelementDown{cursor:pointer;position:absolute;display:block;z-index:1;}
+a.sortelementLeft, a.sortelementRight {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    z-index: 1;
+}
 .box-content .sortelementUp .fa:hover,.box-content .sortelementDown .fa:hover{color:#555555;}
 .sortelementUp{top:0;right:0}
 .sortelementDown{bottom:0;right:0}
@@ -170,6 +176,17 @@ a.sortelementUp,a.sortelementDown{cursor:pointer;position:absolute;display:block
 .editimages .imagewrapper img{max-height:100%}
 .editimages .imageitem .sortelementUp{top:4px;left:-6px;right:auto;}
 .editimages .imageitem .sortelementDown{top:4px;right:-6px;bottom:auto;}
+    .editimages .imageitem .sortelementLeft {
+        top: 4px;
+        left: -6px;
+        right: auto;
+    }
+
+    .editimages .imageitem .sortelementRight {
+        top: 4px;
+        right: -6px;
+        bottom: auto;
+    }
 .editdocuments{}
 .editdocuments #productdocs{list-style: none outside none;margin: 0;padding: 0;}
 .editdocuments .docitem{background:#FFFFFF;border: 1px dotted #D6D6D6;overflow: hidden;padding: 15px 0;position:relative}
