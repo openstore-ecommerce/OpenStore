@@ -676,7 +676,7 @@
     <None Include="Themes\config\default\Admin_Product_head.cshtml" />
     <None Include="Themes\config\default\modelfields.cshtml" />
     <None Include="Themes\config\default\OS_Paymentsettings.cshtml" />
-    <None Include="Themes\config\default\OS_ProductListAjaxFilterSettings.cshtml" />
+    <None Include="Themes\config\default\OS_ProductFilterSettings.cshtml" />
     <None Include="Themes\config\default\OS_AddressAdminsettings.cshtml" />
     <None Include="Themes\config\default\OS_OrderAdminsettings.cshtml" />
     <None Include="Themes\config\default\OS_DisplaySearchSettings.cshtml" />
@@ -1041,7 +1041,7 @@
     <Content Include="Themes\config\default\menufooter.html" />
     <Content Include="Themes\config\default\menuheader.html" />
     <None Include="Themes\config\default\Admin_Orders_head.cshtml" />
-    <None Include="Themes\config\default\OS_ProductDisplayAjaxsettings.cshtml" />
+    <None Include="Themes\config\default\OS_ProductViewsettings.cshtml" />
     <None Include="Themes\config\default\OS_ItemListsettings.cshtml" />
     <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\.gitignore" />
     <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\.jshintrc" />
@@ -1121,7 +1121,6 @@
     <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\package.json" />
     <None Include="Themes\config\default\plugins\bootstrap-dropdown-checkbox\README.md" />
     <None Include="Themes\config\default\ThemeFolderSelect.cshtml" />
-    <None Include="Themes\config\default\OS_ProductDisplaysettings.cshtml" />
     <None Include="Themes\config\default\OS_ProfileFormsettings.cshtml" />
     <Content Include="Themes\config\default\settingsbody.html" />
     <Content Include="Themes\config\img\flags\16\af-ZA.png" />

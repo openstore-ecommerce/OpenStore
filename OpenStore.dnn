@@ -43,8 +43,12 @@
 
         v04.00.04.00
         - Add localized hidden product.
-
-        NOTE: NBrightTemplate system will need to be upgrade/installed to v8.4.0 or above.
+        - Allow DDRMENU token to select parentitemid. Token can now be [CAT] or [CAT:{xxxxx}]. {xxxxx} = categoryref.
+        - Improve Product Admin JS
+        - Add Multi-checkbox select for Categories and Properties, in the Product Admin.
+        - Replace OS_ProductDisplay and OS_ProductDisplayAjax with OS_ProductView, to remove duplicate code.
+        - WARNING: OS_ProductDisplay will fail and will need to be replaced on the page with OS_ProductView.
+        - Improved Scheduler error.
 
       </releaseNotes>
       <dependencies>
@@ -140,7 +144,7 @@
                 <moduleControls>
                   <moduleControl>
                     <controlKey />
-                    <controlSrc>DesktopModules/NBright/NBrightBuy/ProductRazorView.ascx</controlSrc>
+                    <controlSrc>DesktopModules/NBright/NBrightBuy/ProductAjaxView.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle />
                     <controlType>View</controlType>
@@ -150,7 +154,7 @@
                   </moduleControl>
                   <moduleControl>
                     <controlKey>Settings</controlKey>
-                    <controlSrc>DesktopModules/NBright/NBrightBuy/ProductRazorViewSettings.ascx</controlSrc>
+                    <controlSrc>DesktopModules/NBright/NBrightBuy/ProductAjaxViewSettings.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Settings</controlTitle>
                     <controlType>Edit</controlType>
@@ -829,76 +833,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                   <moduleControl>
                     <controlKey>Settings</controlKey>
                     <controlSrc>DesktopModules/NBright/NBrightBuy/CategoryRazorMenuSettings.ascx</controlSrc>
-                    <supportsPartialRendering>False</supportsPartialRendering>
-                    <controlTitle>Settings</controlTitle>
-                    <controlType>Edit</controlType>
-                          <iconFile>icon-openstore.png</iconFile>
-                    <helpUrl />
-                    <viewOrder>0</viewOrder>
-                  </moduleControl>
-                </moduleControls>
-              </moduleDefinition>
-            </moduleDefinitions>
-          </desktopModule>
-        </component>
-      </components>
-    </package>
-
-    <package name="OS_Product" type="Module" version="4.0.4">
-      <friendlyName>OS_Product</friendlyName>
-      <description>NBrightStore open source e-commerce for DNN. Front office product list and detail with ajax support.</description>
-            <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
-      <owner>
-        <name>Stefan Kamphuis / David Lee</name>
-        <organization>40Fingers / Nevoweb</organization>
-        <url>www.40fingers.net</url>
-        <email>info@40fingers.net</email>
-      </owner>
-      <license>
-        New BSD License (BSD)
-
-        Copyright (c) 2015, David Lee
-        All rights reserved.
-
-        Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-        * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-        * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-        * Neither the name of Nevoweb nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-      </license>
-      <releaseNotes></releaseNotes>
-      <components>
-        <component type="Module">
-          <desktopModule>
-            <moduleName>OS_Product</moduleName>
-            <foldername>NBright/NBrightBuy</foldername>
-            <businessControllerClass>Nevoweb.DNN.NBrightBuy.Components.NBrightBuyController,NBrightBuy</businessControllerClass>
-            <supportedFeatures>
-              <supportedFeature type="Portable" />
-              <supportedFeature type="Searchable" />
-            </supportedFeatures>
-            <moduleDefinitions>
-              <moduleDefinition>
-                <friendlyName>OS_Product</friendlyName>
-                <defaultCacheTime>0</defaultCacheTime>
-                <moduleControls>
-                  <moduleControl>
-                    <controlKey />
-                    <controlSrc>DesktopModules/NBright/NBrightBuy/ProductAjaxView.ascx</controlSrc>
-                    <supportsPartialRendering>False</supportsPartialRendering>
-                    <controlTitle />
-                    <controlType>View</controlType>
-                          <iconFile>icon-openstore.png</iconFile>
-                    <helpUrl />
-                    <viewOrder>0</viewOrder>
-                  </moduleControl>
-                  <moduleControl>
-                    <controlKey>Settings</controlKey>
-                    <controlSrc>DesktopModules/NBright/NBrightBuy/ProductAjaxViewSettings.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Settings</controlTitle>
                     <controlType>Edit</controlType>

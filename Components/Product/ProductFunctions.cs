@@ -1868,7 +1868,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             {
                 defcatid = ModSettings.Get("defaultpropertyid");
                 if (defcatid == "") defcatid = "0";
-                if (Utils.IsNumeric(defcatid))
+                if (Utils.IsNumeric(defcatid) && Convert.ToInt32(defcatid) > 0)
                 {
                     // if we have no filter use the default category
                     if (_catid == "" && strFilter.Trim() == "") _catid = defcatid;
@@ -2124,10 +2124,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 retval = (String)NBrightBuyUtils.GetModCache(cachekey);
                 if (retval == null || DebugMode)
                 {
-                    var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, _navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
-                    if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
-                    ModSettings.Settings()["recordcount"] = recordCount.ToString();
-                    retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+                    retval = "";
+                    if (defcatid != "0")  // no category will cause error.
+                    {
+                        var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, _navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+                        if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
+                        ModSettings.Settings()["recordcount"] = recordCount.ToString();
+                        retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+                    }
                 }
 
                 //SK phData.Controls.Add(lit);
