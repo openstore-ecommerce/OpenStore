@@ -52,12 +52,12 @@ namespace NBrightBuy.render
             return new RawString(info.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname"));
         }
 
-        public IEncodedString EditLangaugeButton(int size = 32)
+        public IEncodedString EditLangaugeButton(int size = 16)
         {
             return EditLanguageButton(size);
         }
 
-        public IEncodedString EditLanguageButton(int size = 32)
+        public IEncodedString EditLanguageButton(int size = 16)
         {
             try
             {
@@ -643,6 +643,7 @@ namespace NBrightBuy.render
             strOut += "autosearch: true,";
             strOut += "showNbSelected: true,";
             strOut += "hideHeader: false,";
+            strOut += "btnClass: \"btn btn-basic\",";            
             strOut += "title: \"" + ResourceKey("General.Categories") + "\"";
             strOut += "});";
 
@@ -804,6 +805,7 @@ namespace NBrightBuy.render
             strOut += "autosearch: true,";
             strOut += "showNbSelected: true,";
             strOut += "hideHeader: false,";
+            strOut += "btnClass: \"btn btn-basic\",";
             strOut += "title: \"" + ResourceKey("General.Properties") + "\"";
             strOut += "});";
 

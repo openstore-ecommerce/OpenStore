@@ -78,8 +78,8 @@ function Admin_product_nbxgetCompleted(e) {
 
 
     if (e.cmd == 'product_admin_addnew') {
-        $('#p1_selecteditemid').val($('#p1_itemid').val()); // move the itemid into the selecteditemid, so page knows what itemid is being edited
-        nbxget('product_admin_save', '#productdatasection');
+        $('#p1_selecteditemid').val($('#itemid').val()); // move the itemid into the selecteditemid, so page knows what itemid is being edited
+        $('.processing').hide();
     }
 
     if (e.cmd == 'product_admin_delete' || e.cmd == 'product_admin_moveproductadmin') {
@@ -113,6 +113,9 @@ function Admin_product_nbxgetCompleted(e) {
     if (e.cmd == 'product_admin_getlist') {
 
         $('.processing').hide();
+
+        // empty recycle bin, so we don;t keep any elements in there from a detail deleted that was not saved.
+        $('#recyclebin').empty();
 
         $('#product_admin_cmdSearch').unbind("click");
         $('#product_admin_cmdSearch').click(function () {
@@ -245,7 +248,7 @@ function Admin_product_nbxgetCompleted(e) {
 
     }
 
-    if (e.cmd == 'product_admin_getdetail') {
+    if (e.cmd == 'product_admin_getdetail' || e.cmd == 'product_admin_addproductmodels') {
         setupbackoffice();
         $("#accordion").accordion("option", "active", parseInt($('#p1_accordianactive').val()));
 
@@ -254,9 +257,10 @@ function Admin_product_nbxgetCompleted(e) {
             if ($("#accordion").accordion("option", "active") != false) {
                 $('#p1_accordianactive').val($("#accordion").accordion("option", "active"));
             }
+            else {
+                $('#p1_accordianactive').val('0');
+            }
         });
-
-
 
         $('input[datatype=date]').datepicker();
 

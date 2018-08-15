@@ -45,23 +45,24 @@
 
 <div id="pageactionssource">
     <!-- Page actions are moved into header bar - also exist at page bottom-->
-    <div class="col-xs-9 col-sm-9">
+    <div class="col-xs-10 col-sm-10">
         <a href="javascript:void(0)" class="show-sidebar">
             <i class="fa fa-bars"></i>
         </a>
         <div class="actionbuttonwrapper">
-            <a id="product_admin_cmdAddNew" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdAddButton")</a>
-            <a id="product_admin_cmdSaveExit" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveExitButton")</a>
-            <a id="product_admin_cmdSave" style="display: none;" class="btn btn-primary " href="javascript:void(0)">@ResourceKey("General.cmdSaveButton")</a>
-            <a id="product_admin_cmdSaveAs" style="display: none;" class="btn btn-warning " href="javascript:void(0)">@ResourceKey("General.cmdSaveAsButton")</a>
-            <a id="product_admin_cmdDelete" style="display: none;" class="btn btn-danger " href="javascript:void(0)">@ResourceKey("General.cmdDeleteButton")</a>
-            <a id="product_admin_cmdReturn" style="display: none;" class="btn btn-default " href="javascript:void(0)">@ResourceKey("General.cmdReturnButton")</a>
+            <a id="product_admin_cmdAddNew" class="btn btn-primary" href="javascript:void(0)" title="@ResourceKey("General.cmdAdd")">@ResourceKey("General.cmdAddButton")</a>
+            <a id="product_admin_cmdSave" style="display: none;" class="btn btn-primary" href="javascript:void(0)">@ResourceKey("General.cmdSaveButton")</a>
+            <a id="product_admin_cmdSaveExit" style="display: none;" class="btn btn-primary" href="javascript:void(0)">@ResourceKey("General.cmdSaveExitButton")</a>
+            <a id="product_admin_cmdSaveAs" style="display: none;" class="btn btn-warning" href="javascript:void(0)">@ResourceKey("General.cmdSaveAsButton")</a>
+            <a id="product_admin_cmdDelete" style="display: none;" class="btn btn-danger" href="javascript:void(0)">@ResourceKey("General.cmdDeleteButton")</a>
+            <a id="product_admin_cmdReturn" style="display: none;" class="btn btn-default" href="javascript:void(0)">@ResourceKey("General.cmdReturnButton")</a>
         </div>
     </div>
-    <div class="col-xs-3 col-sm-3 top-panel-right">
+    <div class="col-xs-2 col-sm-2 top-panel-right">
         @EditLanguageButton()
     </div>
 </div>
+
 
 <div id="datadisplay"></div>
 

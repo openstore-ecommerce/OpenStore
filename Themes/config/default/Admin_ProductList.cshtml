@@ -36,35 +36,31 @@
                 <div class="form-horizontal dnnForm">
                     <div class="form-group">
                         <label class="col-sm-1 control-label">@ResourceKey("General.Search")</label>
-                        <div class="col-sm-2">
-                            @TextBox(Model.HeaderData, "genxml/hidden/searchtext", "", "")
+                        <div class="col-sm-3">
+                            @TextBox(Model.HeaderData, "genxml/hidden/searchtext", "class='form-control' maxlength='250'", "")
                         </div>
                         <div class="col-sm-1">
                             @CheckBox(Model.HeaderData, "genxml/hidden/cascade", "ResourceKey:General.cascade", "", true)
                         </div>
-                        <div class="col-sm-3">
-                            @CategoryCheckBoxList(Model.HeaderData, "genxml/hidden/searchcategory", "width='300'", true, 20, true, false, 0, "", ".")
+                        <div class="col-sm-2">
+                            @CategoryCheckBoxList(Model.HeaderData, "genxml/hidden/searchcategory", "width='300' class='btn-default' ", true, 20, true, false, 0, "", ".")
+                        </div>
+                        <div class="col-sm-2">
                             @PropertyMultiCheckBoxList(Model.HeaderData, "genxml/hidden/searchproperty")
                         </div>
-                        <div class="col-sm-1">
-                            <div>
-                                @CheckBox(Model.HeaderData, "genxml/hidden/searchhidden", "ResourceKey:General.Hidden", "", true)
-                            </div>
-                            <div>
-                                @CheckBox(Model.HeaderData, "genxml/hidden/searchvisible", "ResourceKey:General.visible", "", true)
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div>
-                                @CheckBox(Model.HeaderData, "genxml/hidden/searchdisabled", "ResourceKey:General.Disable", "", true)
-                            </div>
-                            <div>
-                                @CheckBox(Model.HeaderData, "genxml/hidden/searchenabled", "ResourceKey:General.enabled", "", true)
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <a id="product_admin_cmdSearch" class="btn btn-primary primarybutton" href="javascript:void(0)"><i title="Search" class="fa fa-search fa-fw fa-lg"></i></a>
                             <a id="product_admin_cmdReset" class="btn btn-default secondarybutton" href="javascript:void(0)"><i title="Reset" class="fa fa-refresh fa-fw fa-lg"></i></a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-1">
+                        </div>
+                        <div class="col-sm-11">
+                            @CheckBox(Model.HeaderData, "genxml/hidden/searchhidden", "ResourceKey:General.Hidden", "", true)
+                            @CheckBox(Model.HeaderData, "genxml/hidden/searchvisible", "ResourceKey:General.visible", "", true)
+                            @CheckBox(Model.HeaderData, "genxml/hidden/searchdisabled", "ResourceKey:General.Disable", "", true)
+                            @CheckBox(Model.HeaderData, "genxml/hidden/searchenabled", "ResourceKey:General.enabled", "", true)
                         </div>
                     </div>
                 </div>
