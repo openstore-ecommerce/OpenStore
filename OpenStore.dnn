@@ -47,8 +47,10 @@
         - Improve Product Admin JS
         - Add Multi-checkbox select for Categories and Properties, in the Product Admin.
         - Replace OS_ProductDisplay and OS_ProductDisplayAjax with OS_ProductView, to remove duplicate code.
-        - WARNING: OS_ProductDisplay will fail and will need to be replaced on the page with OS_ProductView.
         - Improved Scheduler error.
+        - Rename OS_ProductAjaxFilter to OS_ProductFilter.
+        - WARNING: OS_ProductDisplay will fail and will need to be replaced on the page with OS_ProductView.
+        - WARNING: OS_ProductAjaxFilter should be replaced with OS_ProductFilter.
 
       </releaseNotes>
       <dependencies>

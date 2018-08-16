@@ -13,13 +13,7 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-
-        //use to chnage the them folder dropdown on entry and on change.
         nbxget('renderthemefolders', '#themedata', '#themefolders');
-        $('#providercontrolpath').change(function () {
-            nbxget('renderthemefolders', '#themedata', '#themefolders');
-        });
-
     });
 
 </script>
@@ -44,13 +38,7 @@
             <input id="razortemplate" type="hidden" value="ProductDisplayAjaxSettings.cshtml" />
             <input id="defaultcatlist" update="save" type="hidden" value="" />
             <input id="defaultpropertylist" update="save" type="hidden" value="" />
-            
-            <div class="dnnFormItem">
-                <div>
-                    @DnnLabel("lblcontrolpayth", "Settings.providercontrolpath")
-                    @FolderSelectList(info, "genxml/dropdownlist/providercontrolpath", "/DesktopModules/NBright", " class='form-control' ")
-                </div>
-            </div>
+            <input id="providercontrolpath" update="save" type="hidden" value="NBrightBuy" />
             <div class="dnnFormItem">
                 <div id="themefolders">
                     @DnnLabel("lblthemefolder", "Settings.Theme")

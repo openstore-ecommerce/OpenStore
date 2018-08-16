@@ -13,9 +13,7 @@
 
     $(document).ready(function() {
 
-        //use to chnage the them folder dropdown on entry and on change.
-        nbxget('renderthemefolders', '#themedata', '#themefolders');
-        $('#providercontrolpath').change(function () {
+        $(document).ready(function () {
             nbxget('renderthemefolders', '#themedata', '#themefolders');
         });
 
@@ -33,19 +31,14 @@
     <fieldset>
         <div id="themedata">
             <input id="lang" type="hidden" value="@Model.GetUrlParam("language")" /> <!-- get the current culture and pass to the ajax server side, so it knows what language is -->
-            <input id="uilang" type="hidden" value="@Model.GetUrlParam("language")" /> 
+            <input id="uilang" type="hidden" value="@Model.GetUrlParam("language")" />
             <input id="editlang" type="hidden" value="" /> <!-- culture code being edited -->
             <input id="moduleid" type="hidden" value="@info.ModuleId" />
             <input id="tabid" type="hidden" value="@Model.GetUrlParam("tabid")" />
             <input id="index" type="hidden" value="" />
             <input id="themefolder" type="hidden" value="@info.GetXmlProperty("genxml/dropdownlist/themefolder")" />
             <input id="razortemplate" type="hidden" value="ItemListsettings.cshtml" />
-            <div class="dnnFormItem">
-                <div>
-                    @DnnLabel("lblcontrolpayth", "Settings.providercontrolpath")
-                    @FolderSelectList(info, "genxml/dropdownlist/providercontrolpath", "/DesktopModules/NBright", " class='form-control' ")
-                </div>
-            </div>
+            <input id="providercontrolpath" update="save" type="hidden" value="NBrightBuy" />
             <div class="dnnFormItem">
                 <div id="themefolders">
                     @DnnLabel("lblthemefolder", "Settings.Theme")
@@ -75,7 +68,7 @@
                 @DnnLabel("lbldetailmoduleref", "ProductViewSettings.lbldetailmoduleref")@TextBox(info, "genxml/textbox/detailmodulekey", "width='300'")
             </div>
 
-            <hr/>
+            <hr />
 
 
         </div>

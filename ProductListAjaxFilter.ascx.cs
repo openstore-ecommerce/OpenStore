@@ -62,8 +62,7 @@ namespace Nevoweb.DNN.NBrightBuy
                 base.OnLoad(e);
                 if (Page.IsPostBack == false)
                 {
-                    // do razor code
-                    RazorPageLoad();
+                    // filter data is loaded onto the page by the product.js, which does an ajax call after product list render.
                 }
             }
             catch (Exception exc) //Module failed to load
@@ -73,12 +72,6 @@ namespace Nevoweb.DNN.NBrightBuy
                 l.Text = exc.ToString();
                 phData.Controls.Add(l);
             }
-        }
-
-        private void RazorPageLoad()
-        {
-            // insert page header text
-            NBrightBuyUtils.RazorIncludePageHeaderNoCache(ModuleId, Page, Path.GetFileNameWithoutExtension(RazorTemplate) + "_head" + Path.GetExtension(RazorTemplate), ControlPath, ModSettings.ThemeFolder, ModSettings.Settings());
         }
 
         #endregion

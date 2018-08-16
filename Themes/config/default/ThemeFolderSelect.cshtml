@@ -7,7 +7,7 @@
 
 @{
     var info = (NBrightInfo)Model.List.First();
-    var providercontrolpath = info.GetXmlProperty("genxml/dropdownlist/providercontrolpath").Trim('/');
+    var providercontrolpath = info.GetXmlProperty("genxml/hidden/providercontrolpath").Trim('/');
     if (providercontrolpath == "")
     {
         providercontrolpath = "NBrightBuy";

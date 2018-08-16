@@ -13,9 +13,7 @@
 
     $(document).ready(function() {
 
-        //use to chnage the them folder dropdown on entry and on change.
-        nbxget('renderthemefolders', '#themedata', '#themefolders');
-        $('#providercontrolpath').change(function () {
+        $(document).ready(function () {
             nbxget('renderthemefolders', '#themedata', '#themefolders');
         });
 
@@ -40,12 +38,7 @@
             <input id="index" type="hidden" value="" />
             <input id="themefolder" type="hidden" value="@info.GetXmlProperty("genxml/dropdownlist/themefolder")" />
             <input id="razortemplate" type="hidden" value="MiniCartsettings.cshtml" />
-            <div class="dnnFormItem">
-                <div>
-                    @DnnLabel("lblcontrolpayth", "Settings.providercontrolpath")
-                    @FolderSelectList(info, "genxml/dropdownlist/providercontrolpath", "/DesktopModules/NBright", " class='form-control' ")
-                </div>
-            </div>
+            <input id="providercontrolpath" update="save" type="hidden" value="NBrightBuy" />
             <div class="dnnFormItem">
                 <div id="themefolders">
                     @DnnLabel("lblthemefolder", "Settings.Theme")
