@@ -137,6 +137,6 @@ function nbxget(cmd, selformdiv, target, selformitemdiv, appendreturn)
 
 	    request.fail(function (jqXHR, textStatus) {
 	        $('#loader').hide('');
-            alert("Request failed: " + textStatus + " : " + cmd);
+           // alert("Request failed: " + textStatus + " : " + cmd);
 	    });
 	}
