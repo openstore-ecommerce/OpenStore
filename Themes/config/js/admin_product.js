@@ -79,7 +79,7 @@ function Admin_product_nbxgetCompleted(e) {
 
     if (e.cmd == 'product_admin_addnew') {
         $('#p1_selecteditemid').val($('#itemid').val()); // move the itemid into the selecteditemid, so page knows what itemid is being edited
-        $('.processing').hide();
+        productdetail();
     }
 
     if (e.cmd == 'product_admin_delete' || e.cmd == 'product_admin_moveproductadmin') {
@@ -109,6 +109,9 @@ function Admin_product_nbxgetCompleted(e) {
         nbxget('product_admin_getdata', '#selectparams_Product_Admin', '#datadisplay'); // do ajax call to get edit form
     }
 
+    if (e.cmd == 'product_admin_updateboolean') {
+        $('.processing').hide();
+    }    
 
     if (e.cmd == 'product_admin_getlist') {
 
@@ -249,34 +252,7 @@ function Admin_product_nbxgetCompleted(e) {
     }
 
     if (e.cmd == 'product_admin_getdetail' || e.cmd == 'product_admin_addproductmodels') {
-        setupbackoffice();
-        $("#accordion").accordion("option", "active", parseInt($('#p1_accordianactive').val()));
-
-        $('#accordion').unbind('click');
-        $('#accordion').click(function () {
-            if ($("#accordion").accordion("option", "active") != false) {
-                $('#p1_accordianactive').val($("#accordion").accordion("option", "active"));
-            }
-            else {
-                $('#p1_accordianactive').val('0');
-            }
-        });
-
-        $('input[datatype=date]').datepicker();
-
-        initDocFileUpload();
-        initImgFileUpload();
-        initImgDisplay();
-        initDocDisplay();
-        initCategoryDisplay();
-        initPropertyDisplay();
-        initRelatedDisplay();
-        initClientDisplay();
-        initOptionDisplay();
-        initModelDisplay();
-
-        $('.processing').hide();
-
+        productdetail();
     }
 
     if (e.cmd == 'product_admin_updateproductdocs') {
@@ -981,7 +957,42 @@ function product_admin_save(ajaxaction) {
 
     nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
 
-    }
+}
+
+function productdetail()
+{
+
+    setupbackoffice();
+    $("#accordion").accordion("option", "active", parseInt($('#p1_accordianactive').val()));
+
+    $('#accordion').unbind('click');
+    $('#accordion').click(function () {
+        if ($("#accordion").accordion("option", "active") != false) {
+            $('#p1_accordianactive').val($("#accordion").accordion("option", "active"));
+        }
+        else {
+            $('#p1_accordianactive').val('0');
+        }
+    });
+
+    $('input[datatype=date]').datepicker();
+
+    initDocFileUpload();
+    initImgFileUpload();
+    initImgDisplay();
+    initDocDisplay();
+    initCategoryDisplay();
+    initPropertyDisplay();
+    initRelatedDisplay();
+    initClientDisplay();
+    initOptionDisplay();
+    initModelDisplay();
+
+    $('.processing').hide();
+
+
+}
+
     // ---------------------------------------------------------------------------
 
 

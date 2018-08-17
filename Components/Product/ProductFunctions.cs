@@ -172,14 +172,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (!NBrightBuyUtils.CheckRights()) break;
                     strOut = RemoveProductClient(context);
                     break;
-                case "product_admin_selectchangedisable":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductDisable(context);
-                    break;
-                case "product_admin_selectchangehidden":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductHidden(context);
-                    break;
                 case "product_ajaxview_getlist":
                     strOut = ProductAjaxViewList(context);
                     break;
@@ -188,6 +180,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     break;
                 case "product_ajaxview_getfilters":
                     strOut = ProductAjaxFilter(context);
+                    break;
+                case "product_admin_updateboolean":
+                    strOut = UpdateBoolean(context);
                     break;
             }
             return strOut;
@@ -368,26 +363,30 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         }
 
 
-        public string ProductDisable(HttpContext context)
+       public string UpdateBoolean(HttpContext context)
         {
             try
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
                 var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                if (parentitemid > 0)
+                var xpath = ajaxInfo.GetXmlProperty("genxml/hidden/xpath");
+                var editlang = ajaxInfo.GetXmlProperty("genxml/hidden/editlang");
+                if (editlang == "") editlang = Utils.GetCurrentCulture();
+
+                if (parentitemid > 0 && xpath != "")
                 {
-                    var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
-                    if (prodData.Disabled)
+                    var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), editlang, false, EntityTypeCode);
+                    if (prodData.DataRecord.GetXmlPropertyBool(xpath))
                     {
-                        prodData.DataRecord.SetXmlProperty("genxml/checkbox/chkdisable", "False");
+                        prodData.DataRecord.SetXmlProperty(xpath, "False");
                     }
                     else
                     {
-                        prodData.DataRecord.SetXmlProperty("genxml/checkbox/chkdisable", "True");
+                        prodData.DataRecord.SetXmlProperty(xpath, "True");
                     }
                     prodData.Save();
                     // remove save GetData cache
-                    var strCacheKey = prodData.Info.ItemID.ToString("") + prodData.DataRecord.TypeCode  + "LANG*" + "*" + EditLangCurrent;
+                    var strCacheKey = prodData.Info.ItemID.ToString("") + prodData.DataRecord.TypeCode + "LANG*" + "*" + editlang;
                     Utils.RemoveCache(strCacheKey);
                     DataCache.ClearCache();
 
@@ -401,38 +400,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             }
         }
 
-        public string ProductHidden(HttpContext context)
-        {
-            try
-            {
-                var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
-                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
-                if (parentitemid > 0)
-                {
-                    var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
-                    if (prodData.DataRecord.GetXmlPropertyBool("genxml/checkbox/chkishidden"))
-                    {
-                        prodData.DataRecord.SetXmlProperty("genxml/checkbox/chkishidden", "False");
-                    }
-                    else
-                    {
-                        prodData.DataRecord.SetXmlProperty("genxml/checkbox/chkishidden", "True");
-                    }
-                    prodData.Save();
-                    // remove save GetData cache
-                    var strCacheKey = prodData.Info.ItemID.ToString("") + prodData.DataRecord.TypeCode  + "LANG*" + "*" + EditLangCurrent;
-                    Utils.RemoveCache(strCacheKey);
-                    DataCache.ClearCache();
-
-                    return "";
-                }
-                return "Invalid parentitemid";
-            }
-            catch (Exception e)
-            {
-                return e.ToString();
-            }
-        }
 
         public string ProductAdminSelectList(HttpContext context, bool paging = true, string editlang = "", string datatypecode = "", bool loadAjaxEntities = false)
         {
