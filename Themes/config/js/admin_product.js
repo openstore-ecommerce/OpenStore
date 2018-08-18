@@ -105,11 +105,6 @@ function Admin_product_nbxgetCompleted(e) {
         nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
     }
 
-    if (e.cmd == 'product_admin_selectlang') {
-        $('#p1_editlang').val($('#p1_nextlang').val()); // alter lang after, so we get correct data record
-        nbxget('product_admin_getdata', '#selectparams_Product_Admin', '#datadisplay'); // do ajax call to get edit form
-    }
-
     if (e.cmd == 'product_admin_updateboolean') {
         $('.processing').hide();
     }    
