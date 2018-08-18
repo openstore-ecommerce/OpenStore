@@ -85,6 +85,7 @@ function Admin_product_nbxgetCompleted(e) {
     if (e.cmd == 'product_admin_delete' || e.cmd == 'product_admin_moveproductadmin') {
         $('#p1_selecteditemid').val('');
         $('#p1_razortemplate').val('Admin_ProductList.cshtml');
+        $('#p1_moveproductid').val('');
         nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
     }
 
@@ -161,7 +162,6 @@ function Admin_product_nbxgetCompleted(e) {
         $(".selectmove").hide();
         $(".selectcancel").hide();
         $(".selectrecord").hide();
-        $(".savebutton").hide();
 
         var catlistcount = 0;
         if ($('#p1_searchcategory').val() != '') {
@@ -231,6 +231,7 @@ function Admin_product_nbxgetCompleted(e) {
                 $('#p1_searchcategory').val(item.id + ',');
             });
 
+            $('.processing').show();
             nbxget('product_admin_moveproductadmin', '#selectparams_Product_Admin');
         });
 
@@ -247,6 +248,33 @@ function Admin_product_nbxgetCompleted(e) {
             nbxget('product_admin_updateboolean', '#selectparams_Product_Admin');
         });
 
+        $('#searchvisible').unbind("click");
+        $('#searchvisible').click(function () {
+            if (!$('#searchvisible').is(":checked")) {
+                $('#searchhidden').prop('checked', true);
+            }
+        });
+
+        $('#searchhidden').unbind("click");
+        $('#searchhidden').click(function () {
+            if (!$('#searchhidden').is(":checked")) {
+                $('#searchvisible').prop('checked', true);
+            }
+        });
+
+        $('#searchdisabled').unbind("click");
+        $('#searchdisabled').click(function () {
+            if (!$('#searchdisabled').is(":checked")) {
+                $('#searchenabled').prop('checked', true);
+            }
+        });
+
+        $('#searchenabled').unbind("click");
+        $('#searchenabled').click(function () {
+            if (!$('#searchenabled').is(":checked")) {
+                $('#searchdisabled').prop('checked', true);
+            }
+        });
 
 
     }
