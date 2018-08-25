@@ -22,6 +22,15 @@
 
 <script>
     $(document).ready(function () {
-        processCartStep('start');
+        // Needs to be here so we start at correct point from settings.
+        @{
+            var checkoutstart = Model.GetUrlParam("cartstep").ToString();
+            if (checkoutstart == "")
+            {
+                checkoutstart = Model.GetSetting("checkoutstart", "2");
+            }
+        }
+        $('#cartstep').val(@checkoutstart);
+        processCartStep(@checkoutstart);
     });
 </script>

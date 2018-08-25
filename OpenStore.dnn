@@ -51,6 +51,9 @@
         - Rename OS_ProductAjaxFilter to OS_ProductFilter.
         - WARNING IF UPGRADING: Read "Readme_Upgrade_to_4.0.4.txt"
 
+        v04.00.05
+        - Skip Payment page if only 1 payment method.
+
       </releaseNotes>
       <dependencies>
         <dependency type="CoreVersion">08.00.04</dependency>

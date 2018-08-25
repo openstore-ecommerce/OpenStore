@@ -52,6 +52,12 @@
                     @NBrightTextBox(info, "genxml/textbox/razortemplate", "", "Checkout.cshtml")
                 </div>
             </div>
+            <div class="dnnFormItem">
+                <div>
+                    @DnnLabel("lbltemplate", "Settings.checkoutstart")
+                    @RadioButtonList(info, "genxml/radiobuttonlist/checkoutstart", "1,2,3", ResourceKey("Settings.checkoutstartlist").ToString(), "", "1")
+                </div>
+            </div>
         </div>
 
         <div id="settingsdata"></div>

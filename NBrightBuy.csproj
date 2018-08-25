@@ -1714,7 +1714,6 @@
     <None Include="Themes\Default\Default\OrderAdminsettings.cshtml" />
     <None Include="Themes\Default\Default\OrderAdmin_head.cshtml" />
     <None Include="Themes\Default\Default\Payment.cshtml" />
-    <None Include="Themes\Default\Default\PaymentList.cshtml" />
     <None Include="Themes\Default\Default\Paymentsettings.cshtml" />
     <None Include="Themes\Default\Default\Payment_head.cshtml" />
     <None Include="Themes\Default\Default\ProductNotFound.cshtml" />

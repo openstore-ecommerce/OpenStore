@@ -111,7 +111,7 @@
                 <li class="submission">
                     <!-- "updatecart" & "clearcart" class is used by JQuery to trigger events, must be left on -->
                     <a href="javascript:void(0)" id="cmdRecalcSummary" class="primarybutton">@ResourceKey("CartView.UpdateCart")</a>
-                    <a href="javascript:void(0)" id="cmdRedirectPay" class="primarybutton">@ResourceKey("CartView.Order")</a>
+                    <a href="javascript:void(0)" id="cmdRedirectPay" class="primarybutton">@CartFunctions.GetPaymentButtonText()</a>
                     <span id="checkoutpayredirectreturn" style="display: none;">@CartFunctions.GetPaymentUrl()</span>
                 </li>
 

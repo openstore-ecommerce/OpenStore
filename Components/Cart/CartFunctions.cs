@@ -39,6 +39,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Cart
             var strOut = "CART - ERROR!! - No Security rights or function command.";
             switch (paramCmd)
             {
+                case "cart_render":
+                    strOut = RenderCart(context);
+                    break;
                 case "cart_rendercartlist":
                     strOut = RenderCart(context);
                     break;
@@ -348,7 +351,48 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Cart
                     rtnurl = Globals.NavigateURL(backofficeTabId, "", param);
                 }
 
+                // get payment providers, if only 1 then return payment url.
+                var pluginData = new PluginData(PortalSettings.Current.PortalId);
+                var provList = pluginData.GetPaymentProviders();
+                if (provList.Count() == 1)
+                {
+                    foreach (var d in provList)
+                    {
+                        var p = d.Value;
+                        var key = p.GetXmlProperty("genxml/textbox/ctrl");
+                        var prov = PaymentsInterface.Instance(key);
+                        if (prov != null)
+                        {
+                            rtnurl += "?provider=" + prov.Paymentskey; 
+                        }
+                    }
+
+                }
+
                 return rtnurl;
+
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException(ex);
+                return "ERROR";
+            }
+        }
+
+        public static string GetPaymentButtonText()
+        {
+            try
+            {
+                var rtn = DnnUtils.GetResourceString("/DesktopModules/NBright/NBrightBuy/App_LocalResources/", "CartView.Order");
+
+                // get payment providers, if only 1 then return payment url.
+                var pluginData = new PluginData(PortalSettings.Current.PortalId);
+                var provList = pluginData.GetPaymentProviders();
+                if (provList.Count() == 1)
+                {
+                    rtn = DnnUtils.GetResourceString("/DesktopModules/NBright/NBrightBuy/App_LocalResources/", "CartView.PaymentButton");
+                }
+                return rtn;
 
             }
             catch (Exception ex)

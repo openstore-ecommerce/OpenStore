@@ -288,4 +288,7 @@
   <data name="gdprterms.Text" xml:space="preserve">
     <value>By submitting this form you accept that the information entered may be used to contact you in the context of the business relationship that arises from your order.</value>
   </data>
+  <data name="PaymentButton.Text" xml:space="preserve">
+    <value>Pay</value>
+  </data>
 </root>

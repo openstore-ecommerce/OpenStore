@@ -300,7 +300,7 @@ function processCartStep(buttontype) {
         nbxget('cart_rendercartlist', '#productajaxview', '#checkoutdisplay');
     }
 
-    if ($('#cartstep').val() == '2' || buttontype == 'start') {
+    if ($('#cartstep').val() == '2') {
         $('#cartstep').val("2");
         $('.processingcheckout').show();
         $('#carttemplate').val('CheckoutAddress.cshtml');
@@ -324,6 +324,18 @@ function processCartStep(buttontype) {
         } else {
             $('#cartstep').val("2");
         }
+    }
+
+    // Return from payment page, do NOT validate and update address.
+    if ($('#cartstep').val() == '4') {
+        $('.processingcheckout').show();
+        $('#carttemplate').val('CheckoutSummary.cshtml');
+        $('#cmdDeleteCart').hide();
+        $('#cmdRecalcCart').hide();
+        $('#cmdPrev').show();
+        $('#cmdNext').hide();
+        $('#cartstep').val("3"); // set back to 3, so we have correct step.
+        nbxget('cart_rendersummary', '#productajaxview', '#checkoutdisplay');
     }
 
 

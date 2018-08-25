@@ -531,4 +531,10 @@
   <data name="gdprmsg.Text" xml:space="preserve">
     <value>GDPR Message</value>
   </data>
+  <data name="checkoutstart.Text" xml:space="preserve">
+    <value>Check Start Point</value>
+  </data>
+  <data name="checkoutstartlist.Text" xml:space="preserve">
+    <value>list,address,summary</value>
+  </data>
 </root>
