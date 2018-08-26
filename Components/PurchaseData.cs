@@ -359,17 +359,35 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                 #region "Get model and product data"
 
+                // get dynamic price field
+                var dynamicUnitPrice = objInfoIn.GetXmlPropertyDouble("genxml/textbox/dynamicprice");
+                if (dynamicUnitPrice > 0)
+                {
+                    objInfo.AddSingleNode("unitcost", dynamicUnitPrice.ToString(), "genxml");
+                    objInfo.AddSingleNode("dealercost", dynamicUnitPrice.ToString(), "genxml");
+                    objInfo.AddSingleNode("saleprice", dynamicUnitPrice.ToString(), "genxml");
+                    objInfo.AddSingleNode("basecost", dynamicUnitPrice.ToString(), "genxml");
+                    // update product price in product data saved on cart.
+                    productData.Info.SetXmlPropertyDouble("genxml/textbox/txtunitcost", dynamicUnitPrice);
+                    productData.Info.SetXmlPropertyDouble("genxml/textbox/dealercost", 0);
+                    productData.Info.SetXmlPropertyDouble("genxml/textbox/saleprice", 0);
+                    productData.Info.SetXmlPropertyDouble("genxml/textbox/basecost", 0);
+                }
+                else
+                {
+                    objInfo.AddSingleNode("unitcost", modelInfo.GetXmlPropertyRaw("genxml/textbox/txtunitcost"), "genxml");
+                    objInfo.AddSingleNode("dealercost", modelInfo.GetXmlPropertyRaw("genxml/textbox/txtdealercost"), "genxml");
+                    objInfo.AddSingleNode("saleprice", modelInfo.GetXmlPropertyRaw("genxml/textbox/txtsaleprice"), "genxml");
+                    objInfo.AddSingleNode("basecost", modelInfo.GetXmlPropertyRaw("genxml/textbox/txtunitcost"), "genxml");
+                }
+
                 objInfo.AddSingleNode("productname", productData.Info.GetXmlPropertyRaw("genxml/lang/genxml/textbox/txtproductname"), "genxml");
                 objInfo.AddSingleNode("summary", productData.Info.GetXmlPropertyRaw("genxml/lang/genxml/textbox/txtsummary"), "genxml");
 
                 objInfo.AddSingleNode("modelref", modelInfo.GetXmlPropertyRaw("genxml/textbox/txtmodelref"), "genxml");
                 objInfo.AddSingleNode("modeldesc", modelInfo.GetXmlPropertyRaw("genxml/lang/genxml/textbox/txtmodelname"), "genxml");
                 objInfo.AddSingleNode("modelextra", modelInfo.GetXmlPropertyRaw("genxml/lang/genxml/textbox/txtextra"), "genxml");
-                objInfo.AddSingleNode("unitcost", modelInfo.GetXmlPropertyRaw("genxml/textbox/txtunitcost"), "genxml");
-                objInfo.AddSingleNode("dealercost", modelInfo.GetXmlPropertyRaw("genxml/textbox/txtdealercost"), "genxml");
                 objInfo.AddSingleNode("taxratecode", modelInfo.GetXmlPropertyRaw("genxml/dropdownlist/taxrate"), "genxml");
-                objInfo.AddSingleNode("saleprice", modelInfo.GetXmlPropertyRaw("genxml/textbox/txtsaleprice"), "genxml");
-                objInfo.AddSingleNode("basecost", modelInfo.GetXmlPropertyRaw("genxml/textbox/txtunitcost"), "genxml");
 
                 // flag if dealer
                 if (NBrightBuyUtils.IsDealer())
