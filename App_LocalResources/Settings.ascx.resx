@@ -537,4 +537,10 @@
   <data name="checkoutstartlist.Text" xml:space="preserve">
     <value>list,address,summary</value>
   </data>
+  <data name="singlepaymentoption.Text" xml:space="preserve">
+    <value>Skip payment page</value>
+  </data>
+  <data name="singlepaymentoptionmsg.Text" xml:space="preserve">
+    <value>Skip payment page if only 1 payment provider</value>
+  </data>
 </root>

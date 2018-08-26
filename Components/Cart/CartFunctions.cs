@@ -352,21 +352,24 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Cart
                 }
 
                 // get payment providers, if only 1 then return payment url.
-                var pluginData = new PluginData(PortalSettings.Current.PortalId);
-                var provList = pluginData.GetPaymentProviders();
-                if (provList.Count() == 1)
+                if (StoreSettings.Current.GetBool("singlepaymentoption"))
                 {
-                    foreach (var d in provList)
+                    var pluginData = new PluginData(PortalSettings.Current.PortalId);
+                    var provList = pluginData.GetPaymentProviders();
+                    if (provList.Count() == 1)
                     {
-                        var p = d.Value;
-                        var key = p.GetXmlProperty("genxml/textbox/ctrl");
-                        var prov = PaymentsInterface.Instance(key);
-                        if (prov != null)
+                        foreach (var d in provList)
                         {
-                            rtnurl += "?provider=" + prov.Paymentskey; 
+                            var p = d.Value;
+                            var key = p.GetXmlProperty("genxml/textbox/ctrl");
+                            var prov = PaymentsInterface.Instance(key);
+                            if (prov != null)
+                            {
+                                rtnurl += "?provider=" + prov.Paymentskey;
+                            }
                         }
-                    }
 
+                    }
                 }
 
                 return rtnurl;
@@ -386,12 +389,16 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Cart
                 var rtn = DnnUtils.GetResourceString("/DesktopModules/NBright/NBrightBuy/App_LocalResources/", "CartView.Order");
 
                 // get payment providers, if only 1 then return payment url.
-                var pluginData = new PluginData(PortalSettings.Current.PortalId);
-                var provList = pluginData.GetPaymentProviders();
-                if (provList.Count() == 1)
+                if (StoreSettings.Current.GetBool("singlepaymentoption"))
                 {
-                    rtn = DnnUtils.GetResourceString("/DesktopModules/NBright/NBrightBuy/App_LocalResources/", "CartView.PaymentButton");
+                    var pluginData = new PluginData(PortalSettings.Current.PortalId);
+                    var provList = pluginData.GetPaymentProviders();
+                    if (provList.Count() == 1)
+                    {
+                        rtn = DnnUtils.GetResourceString("/DesktopModules/NBright/NBrightBuy/App_LocalResources/", "CartView.PaymentButton");
+                    }
                 }
+
                 return rtn;
 
             }

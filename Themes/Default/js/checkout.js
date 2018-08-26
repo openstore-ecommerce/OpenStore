@@ -231,8 +231,11 @@
 
                     $('#cmdRedirectPay').unbind();
                     $('#cmdRedirectPay').click(function () {
-                        $('.processingcheckout').show();
-                        nbxget('cart_recalculatesummary2', '#checkoutsummary');
+                        var validator = $("#Form").validate();
+                        if (validator.form()) {
+                            $('.processingcheckout').show();
+                            nbxget('cart_recalculatesummary2', '#checkoutsummary');
+                        }
                     });
 
                     $('.shippingmethodselect').unbind();
