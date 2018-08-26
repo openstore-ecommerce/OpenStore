@@ -601,12 +601,6 @@
     <None Include="Installation\Uninstall.SqlDataProvider" />
     <None Include="packages.config" />
     <None Include="README.md" />
-    <None Include="Themes\Checkout-NoShipping\Default\Checkout.cshtml" />
-    <None Include="Themes\Checkout-NoShipping\Default\CheckoutAddress.cshtml" />
-    <None Include="Themes\Checkout-NoShipping\Default\CheckoutList.cshtml" />
-    <None Include="Themes\Checkout-NoShipping\Default\CheckoutSummary.cshtml" />
-    <None Include="Themes\Checkout-NoShipping\Default\CheckoutTotals.cshtml" />
-    <None Include="Themes\Checkout-NoShipping\Default\Checkout_head.cshtml" />
     <None Include="Themes\ClassicAjax\css\images\Thumbs.db" />
     <None Include="Themes\ClassicAjax\Default\os_FrontOfficePageHeader.cshtml" />
     <None Include="Themes\ClassicAjax\Default\os_FrontOfficePageBody.cshtml" />
@@ -1740,8 +1734,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Providers\" />
-    <Folder Include="Themes\Checkout-NoShipping\js\" />
-    <Folder Include="Themes\Checkout-NoShipping\resx\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
