@@ -369,6 +369,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var saleprice = prdModel.GetXmlPropertyDouble("genxml/textbox/txtsaleprice");
             var dealersalecost = prdModel.GetXmlPropertyDouble("genxml/textbox/txtdealersale");
 
+            // use dynamic price is flagged in cartitem.
+            if (cartItemInfo.GetXmlPropertyBool("genxml/dynamicpriceflag") && cartItemInfo.GetXmlProperty("genxml/dynamicprice") != "")
+            {
+                unitcost = cartItemInfo.GetXmlPropertyDouble("genxml/dynamicprice");
+                dealercost = cartItemInfo.GetXmlPropertyDouble("genxml/dynamicprice");
+                saleprice = cartItemInfo.GetXmlPropertyDouble("genxml/dynamicprice");
+                dealersalecost = cartItemInfo.GetXmlPropertyDouble("genxml/dynamicprice");
+            }
+
             // always make sale price best price
             if (unitcost > 0 && (unitcost < saleprice || saleprice <= 0)) saleprice = unitcost;
             // if we have a promoprice use it as saleprice (This is passed in via events provider like "Multi-Buy promotions")
