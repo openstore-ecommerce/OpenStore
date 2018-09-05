@@ -303,7 +303,8 @@ function selectmenucategory(catid, pagenumber, href) {
 function loadProductList() {
     if ($('#ajaxlist').val() == 'True') {
         $('.processingproductajax').show();
-        nbxproductget('product_ajaxview_getlist', '#productajaxview', '#ajaxproducts');
+        var modulereturnid = $('#moduleid').val();
+        nbxproductget('product_ajaxview_getlist', '#productajaxview', '#ajaxproducts' + modulereturnid);
     } else {
         addotbasketclick();
     }
