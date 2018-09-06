@@ -139,7 +139,7 @@
     <value>Used to redirect user/manager when certain actions are done.  Typically set to a page containing the OS_FullCart or OS_Checkout module.</value>
   </data>
   <data name="carttab.Text" xml:space="preserve">
-    <value>Redirect To</value>
+    <value>Redirect To (Cart)</value>
   </data>
   <data name="favoritestab.Text" xml:space="preserve">
     <value>Favorites</value>
