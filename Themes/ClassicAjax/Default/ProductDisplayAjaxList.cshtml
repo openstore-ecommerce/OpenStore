@@ -26,12 +26,26 @@
     {
     <div class="categorybreadcrumbs">@CategoryBreadCrumb(true, Model,true,-1,"",-1,400,true)</div>
     }
+    @{
+        var sortClass = "sortorderselect";
+        var sortId = "sortorderselect" + Model.ModuleId;
+        var pageClass = "pagesizedropdown";
+        var sortAtts = "id='" + sortId + "' class='" + sortClass + "'";
+    }
+    <script>
+    $(document).ready(function () {
+        $(".@sortClass").unbind("change");
+        $(".@sortClass").change(sortOrderChanged);
 
+        $(".@pageClass").unbind("change");
+        $(".@pageClass").change(pageSizeChanged);
+    });
+    </script>
     <div class="productlistheader">
       <!-- Product sort -->
       <div class="productsort">
-        <!--<label>@ResourceKey("General.pagesize") :</label>@PageSizeDropDownList("8,16,32,64,128", Model, "", true, false)-->
-          @SortOrderAjaxDropDownList(ResourceKey("ProductView.orderby").ToString(), Model, "class='sortorderselect'")
+        <label>@ResourceKey("General.pagesize") :</label>@PageSizeDropDownList("8,16,32,64,128", Model, "", true, false)
+          @SortOrderAjaxDropDownList(ResourceKey("ProductView.orderby").ToString(), Model, sortAtts)
       </div>
       <!-- Category details -->
       <div class="categorydetails">

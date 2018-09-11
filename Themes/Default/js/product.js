@@ -1,38 +1,32 @@
 ﻿
-var selPageSizeDropDown = "";
-var selOrderByDropDown = "";
-
 $(document).ready(function () {
 
-    selPageSizeDropDown = "#pagesizedropdown" + $('modkey').val();
-    selOrderByDropDown = "#sortorderdropdown" + $('modkey').val();
-
     $(document).on("nbxproductgetcompleted", AjaxView_GetList_nbxproductgetCompleted); // assign a completed event for the ajax calls
-  
-	$('.nav-tabs > li > a').click(function(event){
-		event.preventDefault();//stop browser to take action for clicked anchor
 
-		//get displaying tab content jQuery selector
-		var active_tab_selector = $('.nav-tabs > li.tab-active > a').attr('href');
+    $('.nav-tabs > li > a').click(function (event) {
+        event.preventDefault();//stop browser to take action for clicked anchor
 
-		//find actived navigation and remove 'active' css
-		var actived_nav = $('.nav-tabs > li.tab-active');
-		actived_nav.removeClass('tab-active');
+        //get displaying tab content jQuery selector
+        var active_tab_selector = $('.nav-tabs > li.tab-active > a').attr('href');
 
-		//add 'active' css into clicked navigation
-		$(this).parents('li').addClass('tab-active');
+        //find actived navigation and remove 'active' css
+        var actived_nav = $('.nav-tabs > li.tab-active');
+        actived_nav.removeClass('tab-active');
 
-		//hide displaying tab content
-		$(active_tab_selector).removeClass('tab-active');
-		$(active_tab_selector).addClass('tab-hide');
+        //add 'active' css into clicked navigation
+        $(this).parents('li').addClass('tab-active');
 
-		//show target tab content
-		var target_tab_selector = $(this).attr('href');
-		$(target_tab_selector).removeClass('tab-hide');
-		$(target_tab_selector).addClass('tab-active');
-	});
+        //hide displaying tab content
+        $(active_tab_selector).removeClass('tab-active');
+        $(active_tab_selector).addClass('tab-hide');
 
-   
+        //show target tab content
+        var target_tab_selector = $(this).attr('href');
+        $(target_tab_selector).removeClass('tab-hide');
+        $(target_tab_selector).addClass('tab-active');
+    });
+
+
     // *****************************************************************************
     // *******  Events for product detail (not ajax)
     // *****************************************************************************
@@ -55,7 +49,7 @@ $(document).ready(function () {
         if ($('.quantity').val() == 'NaN') $('.quantity').val('1');
     });
 
-    addotbasketclick();
+    addtobasketclick();
 
     $('.processingproduct').hide();
 
@@ -69,21 +63,50 @@ $(document).ready(function () {
 
 function AjaxView_GetList_nbxproductgetCompleted(e) {
 
-    addHandlers();
-
     $('.ajaxcatmenu').unbind("click");
-    $('.ajaxcatmenu').click(function(event) {
+    $('.ajaxcatmenu').click(function (event) {
         event.preventDefault();
 
         $(".active").removeClass("active");
         $(this).parent().addClass("active");
 
-        selectmenucategory($(this).attr("catid"), $(this).attr("pagenumber"), $(this).attr("href"));
+        var catid = $(this).attr("catid");
+        if (typeof catid != 'undefined') {
+            $('#catid').val(catid);
+            $('#filter_catid').val(catid);
+        }
 
+        clearPagerVals()
+
+        // add to browser bar and history
+        var stateObj = { catid: $(this).attr("catid") };
+        history.pushState(stateObj, "Title", $(this).attr("href"));
+
+        var moduleid = $("#moduleid").val();
+        setPagerVals(moduleid);
+
+        loadProducts(moduleid);
     });
 
-   
-    if (e.cmd == 'cart_addtobasket') {        
+    $('.ajaxpager').unbind("click");
+    $('.ajaxpager').click(function (event) {
+        event.preventDefault();
+
+        var pagenumber = $(this).attr("pagenumber");
+        if (typeof pagenumber == 'undefined') {
+            pagenumber = "1";
+        }
+        $("#page").val(pagenumber);
+
+        clearPagerVals()
+
+        var moduleid = this.id.replace("ajaxpager", "");
+        setPagerVals(moduleid);
+
+        loadProducts(moduleid);
+    });
+
+    if (e.cmd == 'cart_addtobasket') {
         $('.processingminicart').show();
         $('#carttemplate').val('MiniCart.cshtml');
         nbxproductget('cart_renderminicart', '#productajaxview', '.container_classicajax_minicart'); // Reload Cart
@@ -95,12 +118,13 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
     }
 
     if (e.cmd == 'product_ajaxview_getlist') {
+        var moduleid = $("#moduleid").val();
         $('.sortorderselect').unbind("change");
         $('.sortorderselect').change(function () {
             $('#orderby').val($(this).val());
-            loadProductList();
-        });        
-        loadFilters();
+            loadProductList(moduleid);
+        });
+        loadFilters(moduleid);
         $('.processingproductajax').hide();
     }
 
@@ -121,14 +145,14 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         }
         $("html, body").animate({ scrollTop: 0 }, 200);
 
-        addotbasketclick();
+        addtobasketclick();
         $('.processingfilter').hide();
     }
 
     if (e.cmd == 'product_ajaxview_getlistfilter') {
-        addotbasketclick();
+        addtobasketclick();
         $('.processingfilter').hide();
-    }    
+    }
 
     if (e.cmd == 'itemlist_add') {
         $('#shoppinglistadd-' + $('#shopitemid').val()).hide();
@@ -148,13 +172,12 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         $('.processinglist').hide();
     }
 
-
     // Shopping List Popup
     $('.shoppinglistadd').unbind("click");
     $('.shoppinglistadd').click(function () {
         $('#shopitemid').val($(this).attr('itemid'));
         $(".shoppinglistadd").colorbox({
-            inline: true, width: "20%", fixed: true,
+            inline: true, maxWidth: "230px", maxHeight: "250px", fixed: true,
             onClosed: function () {
                 $('#shopitemid').val('');
             }
@@ -162,7 +185,6 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
     });
 
     // Wish List events
-
     $('.wishlistadd').unbind("click");
     $('.wishlistadd').click(function () {
         $('#shoplistname').val($('.shoplistselect').val());
@@ -187,11 +209,11 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         if ($(this).val() == '-1') {
             $('.newlistdiv').show();
             $('.wishlistadd').hide();
-            $('.shoplistselect').hide();                
+            $('.shoplistselect').hide();
         } else {
-            $('#shoplistname').val($(this).val());                
+            $('#shoplistname').val($(this).val());
             $('.newlistdiv').hide();
-            $('.wishlistadd').show();                
+            $('.wishlistadd').show();
             $('.shoplistselect').show();
         }
     });
@@ -199,7 +221,7 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
     $('.cancelnewlist').unbind("click");
     $('.cancelnewlist').click(function () {
         $('.newlistdiv').hide();
-        $('.wishlistadd').show();                
+        $('.wishlistadd').show();
         $('.shoplistselect').show();
         $('.shoplistselect>option:eq(0)').attr('selected', true);
     });
@@ -208,9 +230,9 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
     $('.addnewlist').click(function () {
         var newlisttext = $('.newlisttext').val();
         //$('.shoplistselect').append('<option value="' + newlisttext + '" selected="selected">' + newlisttext + '</option>');
-        $('.shoplistselect').append( new Option(newlisttext,newlisttext,false,true) );
+        $('.shoplistselect').append(new Option(newlisttext, newlisttext, false, true));
         $('.newlistdiv').hide();
-        $('.wishlistadd').show();                
+        $('.wishlistadd').show();
         $('.shoplistselect').show();
     });
 
@@ -235,7 +257,7 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
 
 
 // call ajax based on browser history
-window.onpopstate = function(e) {
+window.onpopstate = function (e) {
     var currentState = history.state;
     if (currentState) {
         $('#catid').val(currentState.catid);
@@ -250,19 +272,18 @@ window.onpopstate = function(e) {
 // *******  Functions
 // *****************************************************************************
 
-
-function addHandlers() {
-    $(selPageSizeDropDown).change(pageSizeChanged);
-    $(selOrderByDropDown).change(sortOrderChanged);
-}
-
 function pageSizeChanged() {
-    $("#pagesize").val($(selPageSizeDropDown).val());
-    loadProductList();
+    var moduleid = this.id.replace("pagesizedropdown", "");
+    $("#page").val($("#ajaxproducts" + moduleid + " .NBrightSelectPg a").attr("pagenumber"));
+    setPagerVals(moduleid);
+    loadProducts(moduleid);
 }
+
 function sortOrderChanged() {
-    $("#orderby").val($(selOrderByDropDown).val());
-    loadProductList();
+    var moduleid = this.id.replace("sortorderselect", "");
+    $("#page").val($("#ajaxproducts" + moduleid + " .NBrightSelectPg a").attr("pagenumber"));
+    setPagerVals(moduleid);
+    loadProducts(moduleid);
 }
 
 function propertyFilterClicked() {
@@ -274,49 +295,38 @@ function propertyFilterClicked() {
     loadProductListFilter();
 }
 
-
-function selectmenucategory(catid, pagenumber, href) {
-    $("#propertyfilter").val('');  // remove filter on cateogry change.
-
-    if (typeof pagenumber == 'undefined') {
-        pagenumber = "1";
+function loadProducts(moduleid) {
+    if (moduleid === undefined) moduleid = $('#moduleid').val();
+    if ($("#propertyfilter").val() != "") {
+        loadProductListFilter(moduleid);
     }
-    $("#page").val(pagenumber);
-
-    if (typeof catid != 'undefined') {
-        $('#catid').val(catid);
-        $('#filter_catid').val(catid);
+    else {
+        loadProductList(moduleid);
     }
-    $('#catref').val('');
-    $('#filter_catref').val('');
-    $('#searchtext').val('');
-
-    // add to browser bar and history
-    var stateObj = { catid: catid };
-    history.pushState(stateObj, "Title", href);
-
-    loadProductList();
-
 }
 
-
-function loadProductList() {
+function loadProductList(moduleid) {
+    if (moduleid === undefined) moduleid = $('#moduleid').val();
     if ($('#ajaxlist').val() == 'True') {
         $('.processingproductajax').show();
-        var modulereturnid = $('#moduleid').val();
-        nbxproductget('product_ajaxview_getlist', '#productajaxview', '#ajaxproducts' + modulereturnid);
+
+        nbxproductget('product_ajaxview_getlist', '#productajaxview', '#ajaxproducts' + moduleid);
     } else {
-        addotbasketclick();
+        addtobasketclick();
     }
 }
-function loadProductListFilter() {
+
+function loadProductListFilter(moduleid) {
+    if (moduleid === undefined) moduleid = $('#moduleid').val();
     $('.processingfilter').show();
-    nbxproductget('product_ajaxview_getlistfilter', '#productajaxview', '#ajaxproducts');
+    nbxproductget('product_ajaxview_getlistfilter', '#productajaxview', '#ajaxproducts' + moduleid);
 }
+
 function loadItemListPopup() {
     $('.processinglist').show();
     nbxproductget('itemlist_getpopup', '#productajaxview', '#shoppinglistpopup');
 }
+
 function loadFilters() {
     $('.processingfilter').show();
     $("#propertyfiltertypeinside").val($("#filter_propertyfiltertypeinside").val());
@@ -336,12 +346,24 @@ function IsInFavorites(productid) {
 }
 
 function showImage(imgPath, imgAlt) {
-  var imgMain = document.getElementById('mainimage');
-  imgMain.src = imgPath;
-  imgMain.alt = imgAlt;
+    var imgMain = document.getElementById('mainimage');
+    imgMain.src = imgPath;
+    imgMain.alt = imgAlt;
 }
 
-function addotbasketclick() {
+function setPagerVals(moduleid) {
+    $("#moduleid").val(moduleid);
+    $("#pagesize").val($("#pagesizedropdown" + moduleid).val());    
+    $("#orderby").val($("#sortorderselect" + moduleid).val());
+}
+
+function clearPagerVals() {
+    $('#catref').val('');
+    $('#filter_catref').val('');
+    $('#searchtext').val('');
+}
+
+function addtobasketclick() {
     //Form validation 
     var form = $("#Form");
     form.validate();

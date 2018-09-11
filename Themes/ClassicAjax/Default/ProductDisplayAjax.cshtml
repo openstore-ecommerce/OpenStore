@@ -13,7 +13,8 @@
         $('#moduleid').val('@Model.ModuleId');
         $('#pagesize').val('@Model.GetSetting("pagesize", "0")');
         $('#themefolder').val('@Model.GetSetting("themefolder")');
-        loadProductList();
+        $("#modkey").val("@Model.ModuleRef");
+        loadProductList("@Model.ModuleId");
     });
 </script>
 
