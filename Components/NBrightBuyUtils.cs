@@ -1788,13 +1788,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static void RazorIncludePageHeader(int moduleid, Page page, string razorTemplateName, string controlPath, string theme, Dictionary<string, string> settings, ProductData productdata = null)
         {
-            var fulltemplatename = controlPath.TrimEnd('/') + theme + "/" + razorTemplateName;
+            var fulltemplatename = controlPath + theme + "/" + razorTemplateName;
 
             if (!page.Items.Contains("nbrightinject")) page.Items.Add("nbrightinject", "");
             if (!page.Items["nbrightinject"].ToString().Contains(fulltemplatename + ","))
             {
                 var razorTempl = "";
-                if (productdata == null || !productdata.Exists)
+                if (productdata == null || !productdata.Exists)s
                 {
                     var nbi = new NBrightInfo();
                     nbi.Lang = Utils.GetCurrentCulture();
@@ -1814,7 +1814,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static void RazorIncludePageBody(int moduleid, Page page, string razorTemplateName, string controlPath, string theme, Dictionary<string, string> settings)
         {
-            var fulltemplatename = controlPath.TrimEnd('/') + theme + "/" + razorTemplateName;
+            var fulltemplatename = controlPath + theme + "/" + razorTemplateName;
 
             if (!page.Items.Contains("nbrightinject")) page.Items.Add("nbrightinject", "");
             if (!page.Items["nbrightinject"].ToString().Contains(fulltemplatename + ","))
@@ -1834,7 +1834,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static void RazorIncludePageHeaderNoCache(int moduleid, Page page, string razorTemplateName, string controlPath, string theme, Dictionary<string, string> settings, ProductData productdata = null)
         {
-            var fulltemplatename = controlPath.TrimEnd('/') + theme + "/" + razorTemplateName;
+            var fulltemplatename = controlPath + theme + "/" + razorTemplateName;
 
             if (!page.Items.Contains("nbrightinject")) page.Items.Add("nbrightinject", "");
             if (!page.Items["nbrightinject"].ToString().Contains(fulltemplatename + ","))
