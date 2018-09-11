@@ -12,12 +12,15 @@
         @foreach (NBrightInfo info in Model.List)
         {
             var cssClass = "NBrightNormalPg";
+            var pagerClass = "ajaxpager";
+            var pagerId = "ajaxpager" + Model.ModuleId;
             if (info.GetXmlPropertyBool("genxml/currentpage"))
             {
                 cssClass = "NBrightSelectPg";
+
             }
             <li class="@cssClass">
-                <a class="cmdPg ajaxcatmenu" href="?page=@info.GetXmlProperty("genxml/pagenumber")" pagenumber="@info.GetXmlProperty("genxml/pagenumber")">@info.GetXmlProperty("genxml/text")</a>
+                <a id="@pagerId" class="@pagerClass" href="?page=@info.GetXmlProperty("genxml/pagenumber")" pagenumber="@info.GetXmlProperty("genxml/pagenumber")">@info.GetXmlProperty("genxml/text")</a>
             </li>
         }
     </ul>

@@ -1250,8 +1250,8 @@ namespace NBrightBuy.render
 
             var strOut = "";
             var datat = datatext.Split(',');
-            var id = addId ? $"id='pagesizedropdown{model.ModuleRef}'" : "";
-            strOut = $"<select {id} class='pagesizedropdown{model.ModuleRef} {cssclass} '>";
+            var id = addId ? $"id='pagesizedropdown{model.ModuleId}'" : "";
+            strOut = $"<select {id} class='pagesizedropdown {cssclass} '>";
             var c = 0;
             var s = "";
             foreach (var t in datat)
