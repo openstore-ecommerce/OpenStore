@@ -1061,10 +1061,10 @@ namespace NBrightBuy.render
             {
                 var navigationdata = new NavigationData(PortalSettings.Current.PortalId, model.GetSetting("modref"));
 
-                var urlname = info.GetXmlProperty("genxml/lang/genxml/textbox/txtseoname");
-                if (urlname == "") urlname = info.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname");
+                var urlname = info.GetXmlProperty("genxml/productxml/lang/genxml/textbox/txtseoname");
+                if (urlname == "") urlname = info.GetXmlProperty("genxml/productxml/lang/genxml/textbox/txtproductname");
 
-                    // see if we've injected a categoryid into the data class, this is done in the case of the categorymenu when displaying products.
+                // see if we've injected a categoryid into the data class, this is done in the case of the categorymenu when displaying products.
                 var categoryid = info.GetXmlProperty("genxml/categoryid");
                 if (categoryid == "") categoryid = navigationdata.CategoryId.ToString();
                 if (categoryid == "0") categoryid = ""; // no category active if zero
