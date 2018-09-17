@@ -159,10 +159,10 @@ function Admin_product_nbxgetCompleted(e) {
         $(".selectrecord").hide();
 
         var catlistcount = 0;
-        if ($('#p1_searchcategory').val() != '') {
+        if ($('#p1_searchcategory').val() !== undefined && $('#p1_searchcategory').val() != '') {
             catlistcount = ($('#p1_searchcategory').val().split(',').length - 1)
         }
-        if ($('#p1_searchproperty').val() != '') {
+        if ($('#p1_searchproperty').val() !== undefined && $('#p1_searchproperty').val() != '') {
             catlistcount = catlistcount + ($('#p1_searchproperty').val().split(',').length - 1)
         }
         if (catlistcount == 1) {
