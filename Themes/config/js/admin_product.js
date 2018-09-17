@@ -309,7 +309,7 @@ function Admin_product_nbxgetCompleted(e) {
     // check if we are displaying a list or the detail and do processing.
     // ---------------------------------------------------------------------------
 
-    if (($('#p1_selecteditemid').val() != '') || (e.cmd == 'product_admin_addnew')) {
+    if (($('#p1_selecteditemid').val() !== undefined && $('#p1_selecteditemid').val() != '') || (e.cmd == 'product_admin_addnew')) {
 
         if (e.cmd == 'product_admin_getproductselectlist'
             || e.cmd == 'product_admin_addrelatedproduct'
@@ -327,13 +327,15 @@ function Admin_product_nbxgetCompleted(e) {
     } else {
         //PROCESS LIST
         product_admin_ListButtons();
+
         $('.product_admin_cmdEdit').unbind('click');
         $('.product_admin_cmdEdit').click(function () {
             $('.processing').show();
-            $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
-            $('#p1_selecteditemid').val($(this).attr("itemid")); // assign the sleected itemid, so the server knows what item is being edited
-            nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay'); // do ajax call to get edit form
+            $('#razortemplate').val('Admin_ProductDetail.cshtml');
+            $('#selecteditemid').val($(this).attr("itemid"));
+            nbxget('product_admin_getdetail', '#productadminsearch', '#datadisplay');
         });
+
         $('.processing').hide();
     }
 
