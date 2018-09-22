@@ -26,6 +26,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         private int _entryId;
         public NBrightInfo PurchaseInfo;
         private List<NBrightInfo> _itemList;
+        private List<NBrightInfo> _clientDocList;
         private int _userId = -1;
 
         public String PurchaseTypeCode;
@@ -86,13 +87,23 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
             PurchaseInfo.SetXmlProperty("genxml/productrefs", productrefs);
 
+            // save client upload docs
+            var strXml2 = "<clientfiles>";
+            foreach (var info in _clientDocList)
+            {
+                strXml2 += info.XMLData;
+            }
+            strXml2 += "</clientfiles>";
+            PurchaseInfo.RemoveXmlNode("genxml/clientfiles");
+            PurchaseInfo.AddXmlNode(strXml2, "clientfiles", "genxml");
+
             if (PurchaseInfo.TypeCode != null) // if we're using this class to build cart in memory for procesisng only, don;t save to DB.
             {
                 AddPurchasedDocs(); // only update the userdata if we're saving data.
                 _entryId = modCtrl.Update(PurchaseInfo);
                 NBrightBuyUtils.ProcessEventProvider(EventActions.AfterSavePurchaseData, PurchaseInfo);
             }
-
+           
             return _entryId;
         }
 
@@ -502,7 +513,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         // client has uploaded files, so save these to client upload folder and create link in cart data.
                         var flist = objInfoIn.GetXmlProperty("genxml/textbox/optionfilelist").TrimEnd(',');
                         var fprefix = objInfoIn.GetXmlProperty("genxml/hidden/optionfileprefix") + "_";
-                        var fileXml = "<clientfiles>";
                         foreach (var f in flist.Split(','))
                         {
                             var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fprefix + f;
@@ -513,16 +523,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                                 File.Copy(fullName, newDocFileName, true);
                                 File.Delete(fullName);
                                 var docurl = StoreSettings.Current.FolderClientUploads.TrimEnd('/') + "/" + Path.GetFileName(newDocFileName);
-                                fileXml += "<file>";
-                                fileXml += "<mappath>" + newDocFileName + "</mappath>";
-                                fileXml += "<url>" + docurl + "</url>";
-                                fileXml += "<name>" + f + "</name>";
-                                fileXml += "<prefix>" + fprefix + "</prefix>";
-                                fileXml += "</file>";
+                                AddClientUploadDoc(f,docurl,newDocFileName,fprefix);
                             }
                         }
-                        fileXml += "</clientfiles>";
-                        objInfo.AddXmlNode(fileXml, "clientfiles", "genxml");
                     }
 
                     #endregion
@@ -1054,6 +1057,37 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return rtnList;
         }
 
+        public List<NBrightInfo> GetClientUploadDocs()
+        {
+            var rtnList = new List<NBrightInfo>();
+            var xmlNodeList = PurchaseInfo.XMLDoc.SelectNodes("genxml/clientfiles/*");
+            if (xmlNodeList != null)
+            {
+                foreach (XmlNode carNod in xmlNodeList)
+                {
+                    var newDocInfo = new NBrightInfo { XMLData = carNod.OuterXml };
+                    rtnList.Add(newDocInfo);
+                }
+            }
+            return rtnList;
+        }
+
+        public void AddClientUploadDoc(string filename, string fileurl, string filemappath, string prefix = "")
+        {
+            var fileXml = "";
+            fileXml += "<file>";
+            fileXml += "<mappath>" + filemappath + "</mappath>";
+            fileXml += "<url>" + fileurl + "</url>";
+            fileXml += "<name>" + filename + "</name>";
+            fileXml += "<prefix>" + prefix + "</prefix>";
+            fileXml += "</file>";
+
+            var nbi = new NBrightInfo();
+            nbi.XMLData = fileXml;
+            _clientDocList.Add(nbi);
+
+        }
+
 
         #endregion
 
@@ -1126,9 +1160,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 PurchaseInfo.SetXmlProperty("genxml/clientdisplayname", "");
             }
 
+            // build client upload list
+            _clientDocList = GetClientUploadDocs();
 
             //build item list
             PopulateItemList();
+
+
 
             return Convert.ToInt32(_entryId);
         }
