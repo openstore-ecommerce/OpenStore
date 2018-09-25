@@ -1657,7 +1657,6 @@
     <None Include="Themes\config\default\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Themes\config\default\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="Themes\config\default\fonts\glyphicons-halflings-regular.woff" />
-    <None Include="Themes\config\default\fileuploadjs.cshtml" />
     <None Include="Themes\config\default\OS_FullCartsettings.cshtml" />
     <None Include="Themes\config\default\plugins\bootstrapvalidator\bootstrapValidator.scss" />
     <None Include="Themes\config\default\plugins\bootstrap\bootstrap-theme.css.map" />

@@ -523,7 +523,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                                 File.Copy(fullName, newDocFileName, true);
                                 File.Delete(fullName);
                                 var docurl = StoreSettings.Current.FolderClientUploads.TrimEnd('/') + "/" + Path.GetFileName(newDocFileName);
-                                AddClientUploadDoc(f,docurl,newDocFileName,fprefix);
+                                AddClientUploadDoc(f,docurl,newDocFileName, Convert.ToInt32(strproductid), fprefix);
                             }
                         }
                     }
@@ -1072,14 +1072,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return rtnList;
         }
 
-        public void AddClientUploadDoc(string filename, string fileurl, string filemappath, string prefix = "")
+        public void AddClientUploadDoc(string filename, string fileurl, string filemappath, int productid, string fileextension = "", string prefix = "")
         {
             var fileXml = "";
             fileXml += "<file>";
             fileXml += "<mappath>" + filemappath + "</mappath>";
             fileXml += "<url>" + fileurl + "</url>";
             fileXml += "<name>" + filename + "</name>";
+            fileXml += "<friendlyname>data-" + (_clientDocList.Count() + 1) + "</friendlyname>";
             fileXml += "<prefix>" + prefix + "</prefix>";
+            fileXml += "<fileextension>" + fileextension.Trim('.') + "</fileextension>";
+            fileXml += "<productid>" + productid + "</productid>";
             fileXml += "</file>";
 
             var nbi = new NBrightInfo();

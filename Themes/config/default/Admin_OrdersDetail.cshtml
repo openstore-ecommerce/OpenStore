@@ -356,7 +356,7 @@
                         @foreach (var cf in ordData.GetClientUploadDocs())
                         {						
                             <div>
-							<a class="btn btn-info primarybutton " href="/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@cf.GetXmlProperty("file/name")&filename=@cf.GetXmlProperty("file/url")"><i title="@ResourceKey("General.Download")" class="fa fa-download fa-fw fa-lg"></i> @cf.GetXmlProperty("file/name")</a>							
+                                <a class="btn btn-info primarybutton " href="/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@cf.GetXmlProperty("file/friendlyname").@cf.GetXmlProperty("file/fileextension")&filename=@cf.GetXmlProperty("file/url")"><i title="@ResourceKey("General.Download")" class="fa fa-download fa-fw fa-lg"></i> @cf.GetXmlProperty("file/friendlyname").@cf.GetXmlProperty("file/fileextension")</a>							
                             </div>
                         }
                     </div>
