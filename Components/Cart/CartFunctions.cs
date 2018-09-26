@@ -101,7 +101,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Cart
 
         #endregion
 
-        private static string RenderCart(HttpContext context, string carttemplate = "")
+        public static string RenderCart(HttpContext context, string carttemplate = "")
         {
             var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
 
