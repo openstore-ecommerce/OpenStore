@@ -350,18 +350,7 @@
                 <div>
                     @RenderRazorInjectTemplate(nbi, "Admin_OrdersCustom.cshtml")
                 </div>
-
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        @foreach (var cf in ordData.GetClientUploadDocs())
-                        {						
-                            <div>
-                                <a class="btn btn-info primarybutton " href="/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@cf.GetXmlProperty("file/friendlyname").@cf.GetXmlProperty("file/fileextension")&filename=@cf.GetXmlProperty("file/url")"><i title="@ResourceKey("General.Download")" class="fa fa-download fa-fw fa-lg"></i> @cf.GetXmlProperty("file/friendlyname").@cf.GetXmlProperty("file/fileextension")</a>							
-                            </div>
-                        }
-                    </div>
-                </div>
-				
+		
 				
                 <div class="clearfix"></div>
 
@@ -586,19 +575,11 @@
                             </div>
 
                             @{
-                                var fileList = new List<NBrightInfo>();
-                                var xmlNodfileList = nbiitem.XMLDoc.SelectNodes("genxml/clientfiles/file");
-                                foreach (XmlNode n in xmlNodfileList)
-                                {
-                                    var nbfile = new NBrightInfo();
-                                    nbfile.XMLData = n.OuterXml;
-                                    fileList.Add(nbfile);
-                                }
-
+                                var fileList = ordData.GetClientUploadDocs(nbiitem.GetXmlProperty("genxml/itemcode"));
                                 foreach (NBrightInfo nbifile in fileList)
                                 {
                                     <div>
-                                        <a class="btn btn-default primarybutton" href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@nbifile.GetXmlProperty("file/name")&filename=@nbifile.GetXmlProperty("file/url")'>@nbifile.GetXmlProperty("file/name")</a>
+                                        <a class="btn btn-default primarybutton" href="/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@(nbiitem.GetXmlProperty("genxml/productname").Replace(" ","_"))-@(nbifile.GetXmlProperty("file/friendlyname")).@nbifile.GetXmlProperty("file/fileextension")&filename=@nbifile.GetXmlProperty("file/url")"><i title="@ResourceKey("General.Download")" class="fa fa-download fa-fw fa-lg"></i> @(nbiitem.GetXmlProperty("genxml/productname").Replace(" ", "_"))-@nbifile.GetXmlProperty("file/friendlyname").@nbifile.GetXmlProperty("file/fileextension")</a>
                                     </div>
                                 }
                             }
@@ -637,6 +618,7 @@
                                 }
 
                             </div>
+
                         </td>
                         <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/modelref")</td>
                         <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/qty")</td>

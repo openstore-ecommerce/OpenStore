@@ -443,7 +443,8 @@ namespace Nevoweb.DNN.NBrightBuy
                 if (itemid != "") itemid += "_";
                 if (context.Request.Files.Count != 1) throw new HttpRequestValidationException("Attempt to upload chunked file containing more than one fragment per request");
                 var inputStream = context.Request.Files[0].InputStream;
-                var fullName = StoreSettings.Current.FolderTempMapPath + "\\" + itemid + fileName;
+                var fn = DnnUtils.Encrypt(fileName, StoreSettings.Current.Get("adminpin"));
+                var fullName = StoreSettings.Current.FolderTempMapPath + "\\" + fn;
 
                 using (var fs = new FileStream(fullName, FileMode.Append, FileAccess.Write))
                 {
@@ -472,9 +473,14 @@ namespace Nevoweb.DNN.NBrightBuy
                 var file = context.Request.Files[i];
                 Regex fexpr = new Regex(StoreSettings.Current.Get("fileregexpr"));
                 if (fexpr.Match(file.FileName.ToLower()).Success)
-                {                    
-                    file.SaveAs(StoreSettings.Current.FolderTempMapPath + "\\" + itemid + file.FileName);
-                    statuses.Add(new FilesStatus(Path.GetFileName(itemid + file.FileName), file.ContentLength));
+                {
+                    var fn = DnnUtils.Encrypt(file.FileName, StoreSettings.Current.Get("adminpin"));
+                    foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+                    {
+                        fn = fn.Replace(c, '_');
+                    }
+                    file.SaveAs(StoreSettings.Current.FolderTempMapPath + "\\" + fn);
+                    statuses.Add(new FilesStatus(Path.GetFileName(fn), file.ContentLength));
                 }
             }
             return "";

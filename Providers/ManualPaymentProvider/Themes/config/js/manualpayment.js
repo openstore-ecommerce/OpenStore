@@ -30,7 +30,7 @@ $(document).ready(function () {
         $('.editlanguage').show();
 
         if (e.cmd == 'manualpayment_selectlang') {
-
+            // check
         }
 
     };

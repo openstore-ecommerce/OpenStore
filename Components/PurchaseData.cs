@@ -26,7 +26,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         private int _entryId;
         public NBrightInfo PurchaseInfo;
         private List<NBrightInfo> _itemList;
-        private List<NBrightInfo> _clientDocList;
         private int _userId = -1;
 
         public String PurchaseTypeCode;
@@ -86,16 +85,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 productrefs += i.GetXmlProperty("genxml/productxml/genxml/textbox/txtproductref") + ",";
             }
             PurchaseInfo.SetXmlProperty("genxml/productrefs", productrefs);
-
-            // save client upload docs
-            var strXml2 = "<clientfiles>";
-            foreach (var info in _clientDocList)
-            {
-                strXml2 += info.XMLData;
-            }
-            strXml2 += "</clientfiles>";
-            PurchaseInfo.RemoveXmlNode("genxml/clientfiles");
-            PurchaseInfo.AddXmlNode(strXml2, "clientfiles", "genxml");
 
             if (PurchaseInfo.TypeCode != null) // if we're using this class to build cart in memory for procesisng only, don;t save to DB.
             {
@@ -494,46 +483,59 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 objInfo.AddSingleNode("itemcode", itemcode.TrimEnd('-'), "genxml");
 
                 // check if we have a client file upload
-                var clientfileuopload = objInfoIn.GetXmlProperty("genxml/textbox/optionfilelist") != "";
+                var clientfileuopload = objInfoIn.GetXmlProperty("genxml/hidden/optionfilelist") != "";
 
                 //replace the item if it's already in the list.
                 var nodItem = PurchaseInfo.XMLDoc.SelectSingleNode("genxml/items/genxml[itemcode='" + itemcode.TrimEnd('-') + "']");
                 if (nodItem == null || clientfileuopload || replaceIndex == -2)
                 {
+                    if (clientfileuopload)
+                    {
+                        replaceIndex = -2; // create new record for upload files.
+                    }
+
                     if (replaceIndex == -2)
                     {
                         // make itemcode unique, so we create new item each time.
                         objInfo.SetXmlProperty("genxml/itemcode", objInfo.GetXmlProperty("genxml/itemcode") + Utils.GetUniqueKey());  // make sure itemcode is unique
                     }
 
-                    #region "Client Files"
+                    if (replaceIndex >= 0 && replaceIndex < _itemList.Count)
+                        _itemList[replaceIndex] = objInfo; //replace
+                    else
+                        _itemList.Add(objInfo); //add as new item
 
+                    #region "Client Files"
+                    // upload clientupload data AFTER cart item has been added to _itemList .
                     if (clientfileuopload)
                     {
                         // client has uploaded files, so save these to client upload folder and create link in cart data.
-                        var flist = objInfoIn.GetXmlProperty("genxml/textbox/optionfilelist").TrimEnd(',');
-                        var fprefix = objInfoIn.GetXmlProperty("genxml/hidden/optionfileprefix") + "_";
+                        var flist = objInfoIn.GetXmlProperty("genxml/hidden/optionfilelist").TrimEnd(',');
                         foreach (var f in flist.Split(','))
                         {
-                            var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fprefix + f;
-                            var extension = Path.GetExtension(fullName);
-                            if (File.Exists(fullName))
+                            if (f != "")
                             {
-                                var newDocFileName = StoreSettings.Current.FolderClientUploadsMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + Guid.NewGuid() + extension;
-                                File.Copy(fullName, newDocFileName, true);
-                                File.Delete(fullName);
-                                var docurl = StoreSettings.Current.FolderClientUploads.TrimEnd('/') + "/" + Path.GetFileName(newDocFileName);
-                                AddClientUploadDoc(f,docurl,newDocFileName, Convert.ToInt32(strproductid), fprefix);
+                                var fn = DnnUtils.Encrypt(f, StoreSettings.Current.Get("adminpin"));
+                                foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+                                {
+                                    fn = fn.Replace(c, '_');
+                                }
+                                var extension = Path.GetExtension(f);
+                                var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fn;
+                                if (File.Exists(fullName))
+                                {
+                                    var newDocFileName = StoreSettings.Current.FolderClientUploadsMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + Guid.NewGuid() + extension;
+                                    File.Copy(fullName, newDocFileName, true);
+                                    File.Delete(fullName);
+                                    var docurl = StoreSettings.Current.FolderClientUploads.TrimEnd('/') + "/" + Path.GetFileName(newDocFileName);
+                                    AddClientUploadDoc(objInfo.GetXmlProperty("genxml/itemcode"), f, docurl, newDocFileName, Convert.ToInt32(strproductid), extension, "");
+                                }
                             }
                         }
                     }
 
                     #endregion
 
-                    if (replaceIndex >= 0 && replaceIndex < _itemList.Count)
-                        _itemList[replaceIndex] = objInfo; //replace
-                    else
-                        _itemList.Add(objInfo); //add as new item
                 }
                 else
                 {
@@ -560,6 +562,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 objInfo.AddSingleNode("checkbox", "", "genxml");
 
                 SavePurchaseData(); // need to save after each add, so it exists in data when we check it already exists for updating.
+
 
                 // return the message status code in textData, non-critical (usually empty)
                 return objInfo.TextData;
@@ -1057,37 +1060,57 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return rtnList;
         }
 
-        public List<NBrightInfo> GetClientUploadDocs()
+        public List<NBrightInfo> GetClientUploadDocs(string itemCode)
         {
             var rtnList = new List<NBrightInfo>();
-            var xmlNodeList = PurchaseInfo.XMLDoc.SelectNodes("genxml/clientfiles/*");
-            if (xmlNodeList != null)
+            var lp = 0;
+            foreach (var i in _itemList)
             {
-                foreach (XmlNode carNod in xmlNodeList)
+                if (i.GetXmlProperty("genxml/itemcode") == itemCode)
                 {
-                    var newDocInfo = new NBrightInfo { XMLData = carNod.OuterXml };
-                    rtnList.Add(newDocInfo);
+                    var xmlNodeList = i.XMLDoc.SelectNodes("genxml/clientfiles/*");
+                    if (xmlNodeList != null)
+                    {
+                        foreach (XmlNode carNod in xmlNodeList)
+                        {
+                            var newDocInfo = new NBrightInfo { XMLData = carNod.OuterXml };
+                            rtnList.Add(newDocInfo);
+                        }
+                    }
                 }
+                lp += 1;
             }
             return rtnList;
         }
 
-        public void AddClientUploadDoc(string filename, string fileurl, string filemappath, int productid, string fileextension = "", string prefix = "")
+        public void AddClientUploadDoc(string itemCode, string filename, string fileurl, string filemappath, int productid, string fileextension = "", string prefix = "")
         {
+            var itemIndex = GetItemIndex(itemCode);
             var fileXml = "";
+            var indexCount = 1;
+            if (GetClientUploadDocs(itemCode).Count() == 0)
+            {
+                _itemList[itemIndex].AddXmlNode("<clientfiles></clientfiles>", "clientfiles", "genxml");
+            }
+
+            var indexList = _itemList[itemIndex].XMLDoc.SelectNodes("genxml/clientfiles");
+            if (indexList != null)
+            {
+                indexCount = indexList.Count + 1;
+            }
+
+
             fileXml += "<file>";
             fileXml += "<mappath>" + filemappath + "</mappath>";
             fileXml += "<url>" + fileurl + "</url>";
             fileXml += "<name>" + filename + "</name>";
-            fileXml += "<friendlyname>data-" + (_clientDocList.Count() + 1) + "</friendlyname>";
+            fileXml += "<friendlyname>data-" + indexCount + "</friendlyname>";
             fileXml += "<prefix>" + prefix + "</prefix>";
             fileXml += "<fileextension>" + fileextension.Trim('.') + "</fileextension>";
             fileXml += "<productid>" + productid + "</productid>";
             fileXml += "</file>";
 
-            var nbi = new NBrightInfo();
-            nbi.XMLData = fileXml;
-            _clientDocList.Add(nbi);
+            _itemList[itemIndex].AddXmlNode(fileXml, "file", "genxml/clientfiles");
 
         }
 
@@ -1163,13 +1186,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 PurchaseInfo.SetXmlProperty("genxml/clientdisplayname", "");
             }
 
-            // build client upload list
-            _clientDocList = GetClientUploadDocs();
-
             //build item list
             PopulateItemList();
-
-
 
             return Convert.ToInt32(_entryId);
         }
@@ -1182,20 +1200,30 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public int GetItemIndex(String itemCode)
         {
-            var xmlNodeList = PurchaseInfo.XMLDoc.SelectNodes("genxml/items/*");
-            if (xmlNodeList != null)
+            var lp = 0;
+            foreach (var i in _itemList)
             {
-                var lp = 0;
-                foreach (XmlNode carNod in xmlNodeList)
+                if (i.GetXmlProperty("genxml/itemcode") == itemCode)
                 {
-                    var newInfo = new NBrightInfo { XMLData = carNod.OuterXml };
-                    if (newInfo.GetXmlProperty("genxml/itemcode") == itemCode)
-                    {
-                        return lp;
-                    }
-                    lp += 1;
+                    return lp;
                 }
+                lp += 1;
             }
+
+            //var xmlNodeList = PurchaseInfo.XMLDoc.SelectNodes("genxml/items/*");
+            //if (xmlNodeList != null)
+            //{
+            //    var lp = 0;
+            //    foreach (XmlNode carNod in xmlNodeList)
+            //    {
+            //        var newInfo = new NBrightInfo { XMLData = carNod.OuterXml };
+            //        if (newInfo.GetXmlProperty("genxml/itemcode") == itemCode)
+            //        {
+            //            return lp;
+            //        }
+            //        lp += 1;
+            //    }
+            //}
             return -1;
         }
 
