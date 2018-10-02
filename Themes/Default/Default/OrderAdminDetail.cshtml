@@ -250,92 +250,83 @@
                 {
                     
             <tr class="active">
-                    <td class="m-ticker">
-                        <div>
-                            <strong><a href="@EntryUrl(nbiitem,Model)">@nbiitem.GetXmlProperty("genxml/productname")&nbsp;@nbiitem.GetXmlProperty("genxml/modeldesc")</a></strong>
-                        </div>
+                <td class="m-ticker">
+                    <div>
+                        <strong><a href="@EntryUrl(nbiitem,Model)">@nbiitem.GetXmlProperty("genxml/productname")&nbsp;@nbiitem.GetXmlProperty("genxml/modeldesc")</a></strong>
+                    </div>
 
-                            @{
-                                var fileList = new List<NBrightInfo>();
-                                var xmlNodfileList = nbiitem.XMLDoc.SelectNodes("genxml/clientfiles/file");
-                                foreach (XmlNode n in xmlNodfileList)
-                                {
-                                    var nbfile = new NBrightInfo();
-                                    nbfile.XMLData = n.OuterXml;
-                                    fileList.Add(nbfile);
-                                }
+                    @{
+                        var fileList = ordData.GetClientUploadDocs(nbiitem.GetXmlProperty("genxml/itemcode"));
+                        foreach (NBrightInfo nbifile in fileList)
+                        {
+                            <div>
+                                <a class="btn btn-default primarybutton" href="/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@(nbiitem.GetXmlProperty("genxml/productname").Replace(" ","_"))-@(nbifile.GetXmlProperty("file/friendlyname")).@nbifile.GetXmlProperty("file/fileextension")&filename=@nbifile.GetXmlProperty("file/url")"><i title="@ResourceKey("General.Download")" class="fa fa-download fa-fw fa-lg"></i> @(nbiitem.GetXmlProperty("genxml/productname").Replace(" ", "_"))-@nbifile.GetXmlProperty("file/friendlyname").@nbifile.GetXmlProperty("file/fileextension")</a>
+                            </div>
+                        }
+                    }
 
-                                foreach (NBrightInfo nbifile in fileList)
-                                {
-                                    <div>
-                                        <a class="btn btn-default primarybutton" href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@nbifile.GetXmlProperty("file/name")&filename=@nbifile.GetXmlProperty("file/url")'>@nbifile.GetXmlProperty("file/name")</a>
-                                    </div>
-                                }
-                            }
+                    <div>
 
-
-                        <div>
-
-                            @{
-                                var optList = new List<NBrightInfo>();
-                                var xmlNodList = nbiitem.XMLDoc.SelectNodes("genxml/options/option");
-                                foreach (XmlNode n in xmlNodList)
-                                {
-                                    var nb = new NBrightInfo();
-                                    nb.XMLData = n.OuterXml;
-                                    optList.Add(nb);
-                                }
-
-                                var lp = 0;
-                                foreach (NBrightInfo nbiopt in optList)
-                                {
-                                    <span>
-                                        @if (lp > 0)
-                                        {
-                                            <span>,</span>
-                                        }
-                                        @nbiopt.GetXmlProperty("option/optname"): @nbiopt.GetXmlProperty("option/optvaltext")
-                                        @if (nbiopt.GetXmlPropertyDouble("option/optvalcost") > 0)
-                                        {
-                                            @CurrencyOf(nbiopt.GetXmlPropertyDouble("option/optvalcost"))
-                                        }
-                                    </span>
-                                    lp += 1;
-                                }
-                            }
-
-                        </div>
                         @{
-                            var docList = new List<NBrightInfo>();
-                            var xmldocNodList = nbiitem.XMLDoc.SelectNodes("genxml/productxml/genxml/docs/*");
-                            foreach (XmlNode n in xmldocNodList)
+                            var optList = new List<NBrightInfo>();
+                            var xmlNodList = nbiitem.XMLDoc.SelectNodes("genxml/options/option");
+                            foreach (XmlNode n in xmlNodList)
                             {
                                 var nb = new NBrightInfo();
                                 nb.XMLData = n.OuterXml;
-                                docList.Add(nb);
+                                optList.Add(nb);
                             }
-                            if (docList.Count >= 1)
+
+                            var lp = 0;
+                            foreach (NBrightInfo nbiopt in optList)
                             {
-                                var lp2 = 1;
-                                foreach (var doc in docList)
-                                {
-                                    var uData = new UserData();
-                                    <ul>
-                                        @if (uData.HasPurchasedDocByFileName(doc.GetXmlProperty("genxml/hidden/filename")))
-                                        {
-                                            var prdData = new ProductData(nbiitem.GetXmlPropertyInt("genxml/productid"), nbi.GetXmlProperty("genxml/lang"));
-                                            <li>
-                                                <i class='fa fa-file-text fa-2x'>@ResourceKey("ProductView.filebullets")</i>&nbsp;
-                                                <a class="documentlink classicbutton" href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@doc.GetXmlProperty("genxml/textbox/txtfilename")&key=@uData.GetPurchasedKey(doc.GetXmlProperty("genxml/hidden/filename"))'>@ResourceKey("ProductView.download")</a>
-                                                <span class="documentname">@prdData.DataLangRecord.GetXmlProperty("genxml/docs/genxml[" + lp2 + "]/textbox/txttitle")</span>
-                                            </li>
-                                        }
-                                    </ul>
-                                    lp2 += 1;
-                                }
+                                <span>
+                                    @if (lp > 0)
+                                    {
+                                        <span>,</span>
+                                    }
+                                    @nbiopt.GetXmlProperty("option/optname"): @nbiopt.GetXmlProperty("option/optvaltext")
+                                    @if (nbiopt.GetXmlPropertyDouble("option/optvalcost") > 0)
+                                    {
+                                        @CurrencyOf(nbiopt.GetXmlPropertyDouble("option/optvalcost"))
+                                    }
+                                </span>
+                                lp += 1;
                             }
                         }
-                    </td>
+
+                    </div>
+                    @{
+                        var docList = new List<NBrightInfo>();
+                        var xmldocNodList = nbiitem.XMLDoc.SelectNodes("genxml/productxml/genxml/docs/*");
+                        foreach (XmlNode n in xmldocNodList)
+                        {
+                            var nb = new NBrightInfo();
+                            nb.XMLData = n.OuterXml;
+                            docList.Add(nb);
+                        }
+                        if (docList.Count >= 1)
+                        {
+                            var lp2 = 1;
+                            foreach (var doc in docList)
+                            {
+                                var uData = new UserData();
+                                <ul>
+                                    @if (uData.HasPurchasedDocByFileName(doc.GetXmlProperty("genxml/hidden/filename")))
+                                    {
+                                        var prdData = new ProductData(nbiitem.GetXmlPropertyInt("genxml/productid"), nbi.GetXmlProperty("genxml/lang"));
+                                        <li>
+                                            <i class='fa fa-file-text fa-2x'>@ResourceKey("ProductView.filebullets")</i>&nbsp;
+                                            <a class="documentlink classicbutton" href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@doc.GetXmlProperty("genxml/textbox/txtfilename")&key=@uData.GetPurchasedKey(doc.GetXmlProperty("genxml/hidden/filename"))'>@ResourceKey("ProductView.download")</a>
+                                            <span class="documentname">@prdData.DataLangRecord.GetXmlProperty("genxml/docs/genxml[" + lp2 + "]/textbox/txttitle")</span>
+                                        </li>
+                                    }
+                                </ul>
+                                lp2 += 1;
+                            }
+                        }
+                    }
+                </td>
                     <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/modelref")</td>
                     <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/qty")</td>
                     <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedcost"))</td>
