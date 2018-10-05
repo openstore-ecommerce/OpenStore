@@ -590,9 +590,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                 {
                     if (ImgUtils.IsImageFile(Path.GetExtension(img)) && img != "")
                     {
-                        string fullName = StoreSettings.Current.FolderTempMapPath + "\\" + img;
+                        var fn = DnnUtils.Encrypt(img, StoreSettings.Current.Get("adminpin"));
+                        foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+                        {
+                            fn = fn.Replace(c, '_');
+                        }
+                        var extension = Path.GetExtension(img);
+                        var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fn;
                         if (File.Exists(fullName))
                         {
+                            File.Move(fullName, fullName + extension);
+                            fullName = fullName + extension;
                             var imgResize = StoreSettings.Current.GetInt(StoreSettingKeys.productimageresize);
                             if (imgResize == 0) imgResize = 800;
                             var productFunctions = new ProductFunctions();
