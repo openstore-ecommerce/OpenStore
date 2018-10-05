@@ -14,21 +14,27 @@
 @foreach (var nbiRel in prdData.GetRelatedProducts())
 {
 
+    var adminname = nbiRel.GetXmlProperty("genxml/lang/genxml/hidden/adminname");
+    if (adminname == "")
+    {
+        adminname = nbiRel.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname");
+    }
+
     <li>
         <ul class="relatedlistitem">
                 @if (nbiRel.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
                 {
-                    <li class="image name" data-toggle="tooltip" data-original-title="@nbiRel.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@nbiRel.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")"/></li>
+                    <li class="image name" data-toggle="tooltip" data-original-title="@adminname"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@nbiRel.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")"/></li>
                 }
                 else
                 {
-                    <li class="noimage name" data-toggle="tooltip" data-original-title="@nbiRel.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")"><i class="fa fa-picture-o fa-5x"></i></li>
+                    <li class="noimage name" data-toggle="tooltip" data-original-title="@adminname"><i class="fa fa-picture-o fa-5x"></i></li>
                 }
 
 
             <a class="productAdmin_cmdEdit" itemid="@nbiRel.ItemID" href="javascript:void(0)">
                 <li class="title name">
-                    @nbiRel.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")
+                    @adminname
                 </li>
             </a>
             <li class="removeitem"><a title="Remove" class="removerelated" productid="@nbiRel.ItemID" itemid="@info.ItemID"><i class="fa fa-minus-square"></i></a></li>

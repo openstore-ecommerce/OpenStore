@@ -284,7 +284,13 @@
 
                                                 @foreach (NBrightInfo nbiXref in catData.GetDirectArticles())
                                                 {
-                                                    var prdData = new ProductData(nbiXref.ParentItemId,info.Lang); 
+                                                    var prdData = new ProductData(nbiXref.ParentItemId, info.Lang);
+                                                    var adminname = prdData.Info.GetXmlProperty("genxml/lang/genxml/hidden/adminname");
+                                                    if (adminname == "")
+                                                    {
+                                                        adminname = prdData.Info.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname");
+                                                    }
+
                                                     <li class="productid@(prdData.DataRecord.ItemID)">
 
                                                         <input id="parentitemid" type="hidden" value="@prdData.DataRecord.ItemID" />
@@ -294,14 +300,14 @@
 
                                                             @if (prdData.DataRecord.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
                                                             {
-                                                                <li class="image name" data-toggle="tooltip" data-original-title="@prdData.ProductName"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@prdData.DataRecord.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")" /></li>
+                                                                <li class="image name" data-toggle="tooltip" data-original-title="@adminname"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@prdData.DataRecord.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")" /></li>
                                                             }
                                                             else
                                                             {
-                                                                <li class="noimage name" data-toggle="tooltip" data-original-title="@prdData.ProductName"><i class="fa fa-picture-o fa-4x"></i></li>
+                                                                <li class="noimage name" data-toggle="tooltip" data-original-title="@adminname"><i class="fa fa-picture-o fa-4x"></i></li>
                                                             }
 
-                                                            <li class="title">@prdData.ProductName</li>
+                                                            <li class="title">@adminname</li>
                                                             <li class="removeitem"><a class="removeproduct" itemid="@prdData.DataRecord.ItemID"><i title="Remove" class="fa fa-minus-square fa-fw fa-lg"></i></a></li>
                                                         </ul>
                                                     </li>

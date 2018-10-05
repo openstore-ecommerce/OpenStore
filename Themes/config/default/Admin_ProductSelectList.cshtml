@@ -20,20 +20,26 @@
 
 @foreach (NBrightInfo nbi in Model.List)
 {
+    var adminname = nbi.GetXmlProperty("genxml/lang/genxml/hidden/adminname");
+    if (adminname == "")
+    {
+        adminname = nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname");
+    }
+
     <li class="selproductid@(nbi.ItemID)">
 	<ul class="selectlistitem">
         @if (nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
                 {
-            <li class="image name" data-toggle="tooltip" data-original-title="@nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")" /></li>
+            <li class="image name" data-toggle="tooltip" data-original-title="@adminname"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@nbi.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")" /></li>
         }
         else
         {
-            <li class="noimage name" data-toggle="tooltip" data-original-title="@nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")"><i class="fa fa-picture-o fa-4x"></i></li>
+            <li class="noimage name" data-toggle="tooltip" data-original-title="@adminname"><i class="fa fa-picture-o fa-4x"></i></li>
         }
 
 
 	    <li class="title name">
-	        @nbi.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")
+	        @adminname
 	    </li>
 	    <li class="additem">
 	        <a title="Add" class="selectproduct selectproductid@(nbi.ItemID)" itemid="@(nbi.ItemID)"><i class="fa fa-plus-square fa-lg"></i></a>
