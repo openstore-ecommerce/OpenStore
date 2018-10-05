@@ -1159,8 +1159,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     if (doc != "")
                     {
-                        string fullName = StoreSettings.Current.FolderTempMapPath + "\\" + doc;
-                        var extension = Path.GetExtension(fullName);
+                        var extension = Path.GetExtension(doc);
+                        var fn = DnnUtils.Encrypt(doc, StoreSettings.Current.Get("adminpin"));
+                        foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+                        {
+                            fn = fn.Replace(c, '_');
+                        }
+
+                        string fullName = StoreSettings.Current.FolderTempMapPath + "\\" + fn;
                         if ((extension.ToLower() == ".pdf" || extension.ToLower() == ".zip"))
                         {
                             if (File.Exists(fullName))
