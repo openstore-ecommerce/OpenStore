@@ -208,9 +208,12 @@
                                                         @CheckBox(nbiModel, "genxml/checkbox/chkdealeronly_" + lp1, "ResourceKey:General.Dealer", "")
                                                     </div>
                                                     <div class="col-sm-2 text-right">
-                                                        <a class="removemodel btn btn-danger">
-                                                            @ResourceKey("General.cmdRemoveButton")
-                                                        </a>
+                                                        @if (lp1 > 1)
+                                                        {
+                                                            <a class="removemodel btn btn-danger">
+                                                                @ResourceKey("General.cmdRemoveButton")
+                                                            </a>
+                                                        }
                                                     </div>
                                                 </div>
                                                 <div style="margin-top: 10px;" class="row stockoptions">
