@@ -13,6 +13,7 @@
         $('#moduleid').val('@Model.ModuleId');
         $('#pagesize').val('@Model.GetSetting("pagesize", "0")');
         $('#themefolder').val('@Model.GetSetting("themefolder")');
+        $('#entitytypecode').val('@Model.GetSetting("entitytypecode")');        
         $("#modkey").val("@Model.ModuleRef");
         loadProductList("@Model.ModuleId");
     });

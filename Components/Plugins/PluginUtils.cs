@@ -12,6 +12,7 @@ using NBrightDNN;
 using NBrightCore.common;
 using NBrightCore.providers;
 using DotNetNuke.Entities.Users;
+using System.Web;
 
 namespace Nevoweb.DNN.NBrightBuy.Components
 {
@@ -209,9 +210,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var existingrecord = objCtrl.GetByGuidKey(PortalSettings.Current.PortalId, -1, "PLUGIN", p.GUIDKey);
                 if (existingrecord == null)
                 {
-                    p.ItemID = -1;
-                    p.PortalId = PortalSettings.Current.PortalId;
-                    objCtrl.Update(p);
+                    var filepath = HttpContext.Current.Server.MapPath(p.GetXmlProperty("genxml/textbox/path"));
+                    if (File.Exists(filepath))
+                    {
+                        p.ItemID = -1;
+                        p.PortalId = PortalSettings.Current.PortalId;
+                        objCtrl.Update(p);
+                    }
+                    else
+                    {
+                        objCtrl.Delete(p.ItemID);
+                    }
                 }
             }
             PluginUtils.ResequenceRecords();
