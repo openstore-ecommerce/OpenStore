@@ -190,6 +190,26 @@ namespace Nevoweb.DNN.NBrightBuy
                 }
                 else
                 {
+                    // load meta data for category
+                    var catData = new CategoryData(_catid, Utils.GetCurrentCulture());
+                    if (catData != null)
+                    {
+                        if (catData.SEOTitle != "")
+                            BasePage.Title = catData.SEOTitle;
+                        else
+                            BasePage.Title = catData.SEOName;
+
+                        if (BasePage.Title == "")
+                        {
+                            BasePage.Title = catData.Name;
+                        }
+
+                        if (catData.SEODescription != "") BasePage.Description = catData.SEODescription;
+                        if (catData.SEOTagwords != "") BasePage.KeyWords = catData.SEOTagwords;
+                    }
+
+
+
                     // load base template which should call ajax and load the list.
                     var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, ModuleId, "productdetailrazor" + ModuleId, new NBrightInfo(true), _controlPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
                     var lit = new Literal();
@@ -244,15 +264,19 @@ namespace Nevoweb.DNN.NBrightBuy
                     PageIncludes.IncludeCanonicalLink(Page, NBrightBuyUtils.GetEntryUrl(PortalId, _eid, "", productData.SEOName, TabId.ToString("")));
 
                 // overwrite SEO data
-                if (productData.SEOName != "")
+                if (productData.SEOTitle != "")
                     BasePage.Title = productData.SEOTitle;
                 else
-                    BasePage.Title = productData.ProductName;
+                    BasePage.Title = productData.SEOName;
+
+                if (BasePage.Title == "") BasePage.Title = productData.ProductName;
 
                 if (productData.SEODescription != "") BasePage.Description = productData.SEODescription;
 
                 // if debug , output the xml used.
                 if (DebugMode) productData.Info.XMLDoc.Save(PortalSettings.HomeDirectoryMapPath + "debug_entry.xml");
+                // insert page header text
+                NBrightBuyUtils.RazorIncludePageHeader(ModuleId, Page, Path.GetFileNameWithoutExtension(RazorTemplate) + "_seohead" + Path.GetExtension(RazorTemplate), _controlPath, ModSettings.ThemeFolder, ModSettings.Settings(), productData);
 
                 #region "do razor template"
 
