@@ -191,24 +191,25 @@ namespace Nevoweb.DNN.NBrightBuy
                 else
                 {
                     // load meta data for category
-                    var catData = new CategoryData(_catid, Utils.GetCurrentCulture());
-                    if (catData != null)
+                    if (Utils.IsNumeric(_catid))
                     {
-                        if (catData.SEOTitle != "")
-                            BasePage.Title = catData.SEOTitle;
-                        else
-                            BasePage.Title = catData.SEOName;
-
-                        if (BasePage.Title == "")
+                        var catData = new CategoryData(_catid, Utils.GetCurrentCulture());
+                        if (catData.Name != null)
                         {
-                            BasePage.Title = catData.Name;
+                            if (catData.SEOTitle != "")
+                                BasePage.Title = catData.SEOTitle;
+                            else
+                                BasePage.Title = catData.SEOName;
+
+                            if (BasePage.Title == "")
+                            {
+                                BasePage.Title = catData.Name;
+                            }
+
+                            if (catData.SEODescription != "") BasePage.Description = catData.SEODescription;
+                            if (catData.SEOTagwords != "") BasePage.KeyWords = catData.SEOTagwords;
                         }
-
-                        if (catData.SEODescription != "") BasePage.Description = catData.SEODescription;
-                        if (catData.SEOTagwords != "") BasePage.KeyWords = catData.SEOTagwords;
                     }
-
-
 
                     // load base template which should call ajax and load the list.
                     var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, ModuleId, "productdetailrazor" + ModuleId, new NBrightInfo(true), _controlPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
