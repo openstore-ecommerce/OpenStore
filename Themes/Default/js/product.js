@@ -31,7 +31,7 @@ $(document).ready(function () {
     // *******  Events for product detail (not ajax)
     // *****************************************************************************
     $(".quantity").keydown(function (e) {
-        if (e.keyCode == 8 || e.keyCode <= 46) return; // Allow: backspace, delete.
+        if (e.keyCode === 8 || e.keyCode <= 46) return; // Allow: backspace, delete.
         if ((e.keyCode >= 35 && e.keyCode <= 39)) return; // Allow: home, end, left, right
         // Ensure that it is a number and stop the keypress
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) e.preventDefault();
@@ -46,7 +46,7 @@ $(document).ready(function () {
 
     $('.qtyplus').click(function () {
         $('.quantity').val(parseInt($('.quantity').val()) + 1);
-        if ($('.quantity').val() == 'NaN') $('.quantity').val('1');
+        if ($('.quantity').val() === 'NaN') $('.quantity').val('1');
     });
 
     addtobasketclick();
@@ -71,12 +71,12 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         $(this).parent().addClass("active");
 
         var catid = $(this).attr("catid");
-        if (typeof catid != 'undefined') {
+        if (typeof catid !== 'undefined') {
             $('#catid').val(catid);
             $('#filter_catid').val(catid);
         }
 
-        clearPagerVals()
+        clearPagerVals();
 
         // add to browser bar and history
         var stateObj = { catid: $(this).attr("catid") };
@@ -93,12 +93,12 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         event.preventDefault();
 
         var pagenumber = $(this).attr("pagenumber");
-        if (typeof pagenumber == 'undefined') {
+        if (typeof pagenumber === 'undefined') {
             pagenumber = "1";
         }
         $("#page").val(pagenumber);
 
-        clearPagerVals()
+        clearPagerVals();
 
         var moduleid = this.id.replace("ajaxpager", "");
         setPagerVals(moduleid);
@@ -106,7 +106,7 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         loadProducts(moduleid);
     });
 
-    if (e.cmd == 'cart_addtobasket') {
+    if (e.cmd === 'cart_addtobasket') {
         $('.processingminicart').show();
         $('input[id*="optionfilelist"]').val(''); // clear any clientupload file names
         $('#carttemplate').val('MiniCart.cshtml');
@@ -114,11 +114,11 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         $('.addedtobasket').delay(1000).fadeOut('fast');
     }
 
-    if (e.cmd == 'cart_renderminicart') {
+    if (e.cmd === 'cart_renderminicart') {
         $('.processingminicart').hide();
     }
 
-    if (e.cmd == 'product_ajaxview_getlist') {
+    if (e.cmd === 'product_ajaxview_getlist') {
         var moduleid = $("#moduleid").val();
         $('.sortorderselect').unbind("change");
         $('.sortorderselect').change(function () {
@@ -129,16 +129,16 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         $('.processingproductajax').hide();
     }
 
-    if (e.cmd == 'product_ajaxview_getfilters') {
+    if (e.cmd === 'product_ajaxview_getfilters') {
         // swith moduleid param back to list after change for filter
         $('#moduleid').val($('#list_moduleid').val());
 
         // propertyFilterClicked method is in AjaxDisplayProductList_head
         $(".nbs-ajaxfilter input[type='checkbox']").change(propertyFilterClicked);
 
-        if (typeof $.cookie('shopredirectflag') != 'undefined') {
+        if (typeof $.cookie('shopredirectflag') !== 'undefined') {
             var shopredirectflag = $.cookie("shopredirectflag");
-            if (shopredirectflag != 0) {
+            if (shopredirectflag !== 0) {
                 $.cookie("shopredirectflag", 0);
                 $('#shopitemid').val(shopredirectflag);
                 $(".shoppinglistadd[itemid='" + $('#shopitemid').val() + "']").click();
@@ -150,26 +150,26 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         $('.processingfilter').hide();
     }
 
-    if (e.cmd == 'product_ajaxview_getlistfilter') {
+    if (e.cmd === 'product_ajaxview_getlistfilter') {
         addtobasketclick();
         $('.processingfilter').hide();
     }
 
-    if (e.cmd == 'itemlist_add') {
+    if (e.cmd === 'itemlist_add') {
         $('#shoppinglistadd-' + $('#shopitemid').val()).hide();
         $('#shoppinglistremove-' + $('#shopitemid').val()).show();
         $('#shopitemid').val('');
         $('.processinglist').hide();
     }
 
-    if (e.cmd == 'itemlist_remove') {
+    if (e.cmd === 'itemlist_remove') {
         $('#shoppinglistadd-' + $('#shopitemid').val()).show();
         $('#shoppinglistremove-' + $('#shopitemid').val()).hide();
         $('#shopitemid').val('');
         $('.processinglist').hide();
     }
 
-    if (e.cmd == 'itemlist_getpopup') {
+    if (e.cmd === 'itemlist_getpopup') {
         $('.processinglist').hide();
     }
 
@@ -207,7 +207,7 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
 
     $('.shoplistselect').unbind("change");
     $('.shoplistselect').change(function () {
-        if ($(this).val() == '-1') {
+        if ($(this).val() === '-1') {
             $('.newlistdiv').show();
             $('.wishlistadd').hide();
             $('.shoplistselect').hide();
@@ -298,7 +298,7 @@ function propertyFilterClicked() {
 
 function loadProducts(moduleid) {
     if (moduleid === undefined) moduleid = $('#moduleid').val();
-    if ($("#propertyfilter").val() != "") {
+    if ($("#propertyfilter").val() !== "") {
         loadProductListFilter(moduleid);
     }
     else {
@@ -308,7 +308,7 @@ function loadProducts(moduleid) {
 
 function loadProductList(moduleid) {
     if (moduleid === undefined) moduleid = $('#moduleid').val();
-    if ($('#ajaxlist').val() == 'True') {
+    if ($('#ajaxlist').val() === 'True') {
         $('.processingproductajax').show();
 
         nbxproductget('product_ajaxview_getlist', '#productajaxview', '#ajaxproducts' + moduleid);
