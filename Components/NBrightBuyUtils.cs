@@ -2678,7 +2678,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             UserLang = ajaxInfo.GetXmlProperty("genxml/hidden/uilang");
             if (UserLang != "") return UserLang;
             UserLang = GetEditLang(ajaxInfo, defaultlang, fieldprefix);
-            return defaultlang;
+            return UserLang;
         }
 
         public static String GetEditLang(NBrightInfo ajaxInfo, string defaultlang = "",string fieldprefix = "")
