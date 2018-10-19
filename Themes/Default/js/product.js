@@ -297,7 +297,7 @@ function propertyFilterClicked() {
 }
 
 function loadProducts(moduleid) {
-    if (moduleid === undefined) moduleid = $('#moduleid').val();
+    if (moduleid == undefined) moduleid = $('#moduleid').val();
     if ($("#propertyfilter").val() !== "") {
         loadProductListFilter(moduleid);
     }
@@ -307,7 +307,7 @@ function loadProducts(moduleid) {
 }
 
 function loadProductList(moduleid) {
-    if (moduleid === undefined) moduleid = $('#moduleid').val();
+    if (moduleid == undefined) moduleid = $('#moduleid').val();
     if ($('#ajaxlist').val() === 'True') {
         $('.processingproductajax').show();
 
@@ -318,7 +318,7 @@ function loadProductList(moduleid) {
 }
 
 function loadProductListFilter(moduleid) {
-    if (moduleid === undefined) moduleid = $('#moduleid').val();
+    if (moduleid == undefined) moduleid = $('#moduleid').val();
     $('.processingfilter').show();
     nbxproductget('product_ajaxview_getlistfilter', '#productajaxview', '#ajaxproducts' + moduleid);
 }
@@ -338,7 +338,7 @@ function loadFilters() {
 
 function IsInFavorites(productid) {
     var productitemlist = $.cookie("NBSShoppingList");
-    if (productitemlist !== null && productitemlist !== undefined) {
+    if (productitemlist != null && productitemlist != undefined) {
         if (productitemlist.indexOf(productid + '*') !== -1) {
             return true;
         }
