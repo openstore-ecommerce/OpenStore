@@ -198,6 +198,10 @@ namespace Nevoweb.DNN.NBrightBuy
                 if (strOut == "** No Action **")
                 {
                     var ajaxprovider = ajaxInfo.GetXmlProperty("genxml/hidden/ajaxprovider");
+                    if (ajaxprovider == "")
+                    {
+                        ajaxprovider = Utils.RequestQueryStringParam(context, "ajaxprovider");
+                    }
 
                     var pluginData = new PluginData(PortalSettings.Current.PortalId);
                     var provList = pluginData.GetAjaxProviders();

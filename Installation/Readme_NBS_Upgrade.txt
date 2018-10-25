@@ -33,6 +33,8 @@ You should add the new module "OS*" with settings and delete the old modules fro
 
 In BO>Admin>Settings change the default template folder to "Default", for both display and emails.
 
+If you want to use the basic display theme, make sure ALL modules use "ClassicAjax" as the theme.
+
 (Optional) After replacing all old NBS modules you can remove the old NBS* module definitions from DNN, do NOT remove the files.
 IMPORTANT: Remove the "Uninstall.SqlDataProvider" from the "\DesktopModules\NBright\NBrightBuy" folder. Before you remove the definition.
 IF YOU DO NOT REOMOVE "Uninstall.SqlDataProvider" THEN IT WILL DELETE THE OPEN STORE DATABASE TABLES.
