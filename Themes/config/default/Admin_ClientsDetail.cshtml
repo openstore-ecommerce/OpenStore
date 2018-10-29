@@ -112,56 +112,62 @@
                             <div class="col-sm-4">
                                 <p class="form-control-static">
                                     @if (info.GetXmlPropertyBool("genxml/membership/approved"))
-                                {
-                                <i class="fa fa-check-circle fa-lg"></i>
-                                }
+                                    {
+                                        <i class="fa fa-check-circle fa-lg"></i>
+                                    }
                                 </p>
                             </div>
                             <div class="clearfix"></div>
 
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.userlockedout" )</label>
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.userlockedout")</label>
                             <div class="col-sm-4">
                                 <p class="form-control-static">
                                     @if (info.GetXmlPropertyBool("genxml/membership/lockedout"))
-                                {
-                                <i class="fa fa-check-circle fa-lg"></i>
-                                }
+                                    {
+                                        <i class="fa fa-check-circle fa-lg"></i>
+                                    }
                                 </p>
                             </div>
                             <div class="clearfix"></div>
 
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblupdatepassword" )</label>
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblupdatepassword")</label>
                             <div class="col-sm-4">
                                 <p class="form-control-static">
                                     @if (info.GetXmlPropertyBool("genxml/membership/updatepassword"))
-                                {
-                                <i class="fa fa-check-circle fa-lg"></i>
-                                }
+                                    {
+                                        <i class="fa fa-check-circle fa-lg"></i>
+                                    }
                                 </p>
                             </div>
                             <div class="clearfix"></div>
 
 
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblisdeleted" )</label>
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblisdeleted")</label>
                             <div class="col-sm-4">
                                 <p class="form-control-static">
                                     @if (info.GetXmlPropertyBool("genxml/membership/isdeleted"))
-                                {
-                                <i class="fa fa-check-circle fa-lg"></i>
-                                }
+                                    {
+                                        <i class="fa fa-check-circle fa-lg"></i>
+                                    }
                                 </p>
                             </div>
                             <div class="clearfix"></div>
 
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblEmail" )</label>
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblEmail")</label>
                             <div class="col-sm-5">
-                                @TextBox(info,"genxml/textbox/email", "class='form-control'")
+                                @TextBox(info, "genxml/textbox/email", "class='form-control'")
                             </div>
                             <div class="clearfix"></div>
 
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.cmdAddClientEditorRole" )</label>
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.cmdAddClientEditorRole")</label>
                             <div class="col-sm-5">
-                                @CheckBox(info, "genxml/checkbox/clienteditorrole","","class='checkbox'")
+                                @CheckBox(info, "genxml/checkbox/clienteditorrole", "", "class='checkbox'")
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <label class="col-sm-3 control-label">@ResourceKey("Clients.preferedlanguage")</label>
+                            <div class="col-sm-5">
+                                @LanguageDropDown(info, "genxml/dropdownlist/preferedlanguage", "class='form-control'")
                             </div>
                             <div class="clearfix"></div>
 

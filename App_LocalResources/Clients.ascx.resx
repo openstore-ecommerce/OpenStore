@@ -276,4 +276,7 @@
   <data name="ClientmenuShoppingLists.Text" xml:space="preserve">
     <value>Shopping lists</value>
   </data>
+  <data name="preferedlanguage.Text" xml:space="preserve">
+    <value>Prefered Language</value>
+  </data>
 </root>
