@@ -21,16 +21,26 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static List<NBrightInfo> GetPluginList()
         {
+            return GetPluginList(PortalSettings.Current.PortalId);
+        }
+
+        public static List<NBrightInfo> GetPluginList(int portalId)
+        {
             var objCtrl = new NBrightBuyController();
-            var rtnList = objCtrl.GetList(PortalSettings.Current.PortalId, -1, "PLUGIN","", "order by nb1.xmldata.value('(genxml/hidden/index)[1]','float')");
+            var rtnList = objCtrl.GetList(portalId, -1, "PLUGIN","", "order by nb1.xmldata.value('(genxml/hidden/index)[1]','float')");
             if (rtnList.Count == 0)
             {
-                rtnList = CreatePortalPlugins();
+                rtnList = CreatePortalPlugins(portalId);
             }
             return rtnList;
         }
 
         public static void CreateSystemPlugins()
+        {
+            CreateSystemPlugins(PortalSettings.Current.PortalId);
+        }
+
+        public static void CreateSystemPlugins(int portalId)
         {
             var cachekey = "pluginlistsystem";
             var pList = NBrightBuyUtils.GetCache(cachekey);
@@ -53,7 +63,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             info.PortalId = 99999;
                             pluginList = CalcSystemPluginList(info);
                             CreateDBrecords(pluginList, 99999);
-                            CreatePortalPlugins();
+                            CreatePortalPlugins(portalId);
                         }
                     }
                 }
@@ -61,14 +71,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
         }
 
-        private static List<NBrightInfo> CreatePortalPlugins()
+        private static List<NBrightInfo> CreatePortalPlugins(int portalId)
         {
             var pluginList = new List<NBrightInfo>();
 
             var info = new NBrightInfo();
-            info.PortalId = PortalSettings.Current.PortalId;
+            info.PortalId = portalId;
             
-            var templCtrl = NBrightBuyUtils.GetTemplateGetter(PortalSettings.Current.PortalId, "config");
+            var templCtrl = NBrightBuyUtils.GetTemplateGetter(portalId, "config");
             var menuplugin = templCtrl.GetTemplateData("menuplugin.xml", Utils.GetCurrentCulture(), true, true, true, StoreSettings.Current.Settings());
             if (menuplugin != "")
             {
@@ -77,7 +87,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 pluginList = CalcPortalPluginList(info);
                 if (pluginList.Any())
                 {
-                    CreateDBrecords(pluginList, PortalSettings.Current.PortalId);
+                    CreateDBrecords(pluginList, portalId);
                 }
                 else
                 {

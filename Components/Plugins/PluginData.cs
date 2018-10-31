@@ -120,13 +120,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 // if we have zero plugins, try and reload 
                 if (pList == null || !_pluginList.Any())
                 {
-                    _pluginList = PluginUtils.GetPluginList();
+                    _pluginList = PluginUtils.GetPluginList(portalId);
                     NBrightBuyUtils.SetCache(_cachekey, _pluginList);
                 }
             }
             else
             {
-                _pluginList = PluginUtils.GetPluginList();
+                _pluginList = PluginUtils.GetPluginList(portalId);
             }
 
         }

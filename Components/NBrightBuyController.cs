@@ -694,9 +694,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public NBrightInfo GetPluginSinglePageData(string GuidKey, string typeCode, string lang)
         {
+            return GetPluginSinglePageData(GuidKey, typeCode, lang, PortalSettings.Current.PortalId);
+        }
+
+        public NBrightInfo GetPluginSinglePageData(string GuidKey, string typeCode, string lang, int portalid)
+        {
             DataCache.ClearCache(); // clear ALL cache.
             var objCtrl = new NBrightBuyController();
-            var info = objCtrl.GetByGuidKey(PortalSettings.Current.PortalId, -1, typeCode, GuidKey);
+            var info = objCtrl.GetByGuidKey(portalid, -1, typeCode, GuidKey);
             if (info == null)
             {
                 // create record if not in DB
@@ -704,14 +709,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 info.GUIDKey = GuidKey;
                 info.TypeCode = typeCode;
                 info.ModuleId = -1;
-                info.PortalId = PortalSettings.Current.PortalId;
+                info.PortalId = portalid;
                 info.ItemID = objCtrl.Update(info);
             }
             var nbilang = objCtrl.GetDataLang(info.ItemID, lang);
             if (nbilang == null)
             {
                 // create lang records if not in DB
-                foreach (var lg in DnnUtils.GetCultureCodeList(PortalSettings.Current.PortalId))
+                foreach (var lg in DnnUtils.GetCultureCodeList(portalid))
                 {
                     nbilang = objCtrl.GetDataLang(info.ItemID, lg);
                     if (nbilang == null)
@@ -722,7 +727,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         nbilang.ParentItemId = info.ItemID;
                         nbilang.Lang = lg;
                         nbilang.ModuleId = -1;
-                        nbilang.PortalId = PortalSettings.Current.PortalId;
+                        nbilang.PortalId = portalid;
                         nbilang.ItemID = objCtrl.Update(nbilang);
                     }
                 }

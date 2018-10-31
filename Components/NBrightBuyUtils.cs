@@ -1748,15 +1748,16 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     HttpContext.Current.Application.Set("NBrightBuyIRazorEngineService", service);
                 }
                 Engine.Razor = service;
-                var israzorCached = Utils.GetCache("nbrightbuyrzcache_" + templateKey); // get a cache flag for razor compile.
-                if (israzorCached == null || (string)israzorCached != razorTempl || debugMode)
+                var hashCacheKey = NBrightBuyUtils.GetMd5Hash(razorTempl);
+                var israzorCached = Utils.GetCache("nbrightbuyrzcache_" + hashCacheKey); // get a cache flag for razor compile.
+                if (israzorCached == null || (string)israzorCached != razorTempl || StoreSettings.Current.DebugMode)
                 {
-                    result = Engine.Razor.RunCompile(razorTempl, GetMd5Hash(razorTempl), null, info);
-                    Utils.SetCache("nbrightbuyrzcache_" + templateKey, razorTempl);
+                    result = Engine.Razor.RunCompile(razorTempl, hashCacheKey, null, info);
+                    Utils.SetCache("nbrightbuyrzcache_" + hashCacheKey, razorTempl);
                 }
                 else
                 {
-                    result = Engine.Razor.Run(GetMd5Hash(razorTempl), null, info);
+                    result = Engine.Razor.Run(hashCacheKey, null, info);
                 }
 
             }
@@ -1773,7 +1774,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        private static string GetMd5Hash(string input)
+        public static string GetMd5Hash(string input)
         {
             var md5 = MD5.Create();
             var inputBytes = System.Text.Encoding.ASCII.GetBytes(input);

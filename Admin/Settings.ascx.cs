@@ -278,6 +278,9 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
 
             settings.SetXmlProperty("genxml/checkbox/sharedproductsflag", sharedflag); //maintain shared flag
 
+            // store root mappath of website, so we can use it in the scheudler.
+            settings.SetXmlProperty("genxml/hidden/rootmappath", HttpContext.Current.Server.MapPath("/"));
+            
             ModCtrl.Update(settings);
 
             if (StoreSettings.Current.DebugModeFileOut) settings.XMLDoc.Save(PortalSettings.HomeDirectoryMapPath + "\\debug_Settings.xml");

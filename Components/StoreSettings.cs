@@ -49,13 +49,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var portalsettings = NBrightDNN.DnnUtils.GetPortalSettings(portalId);
                 if (!_settingDic.ContainsKey("portalname")) _settingDic.Add("portalname", portalsettings.PortalName);
                 if (!_settingDic.ContainsKey("homedirectory")) _settingDic.Add("homedirectory", portalsettings.HomeDirectory);
-                if (!_settingDic.ContainsKey("homedirectorymappath")) _settingDic.Add("homedirectorymappath", portalsettings.HomeDirectoryMapPath);                
+                if (!_settingDic.ContainsKey("homedirectorymappath")) _settingDic.Add("homedirectorymappath", portalsettings.HomeDirectoryMapPath);
+                HomeDirectoryMapPath = portalsettings.HomeDirectoryMapPath;
+                HomeDirectory = portalsettings.HomeDirectory;
             }
             else
             {
                 if (!_settingDic.ContainsKey("portalname")) _settingDic.Add("portalname", PortalSettings.Current.PortalName);
                 if (!_settingDic.ContainsKey("homedirectory")) _settingDic.Add("homedirectory", PortalSettings.Current.HomeDirectory);
-                if (!_settingDic.ContainsKey("homedirectorymappath")) _settingDic.Add("homedirectorymappath", PortalSettings.Current.HomeDirectoryMapPath);                
+                if (!_settingDic.ContainsKey("homedirectorymappath")) _settingDic.Add("homedirectorymappath", PortalSettings.Current.HomeDirectoryMapPath);
+                HomeDirectoryMapPath = PortalSettings.Current.HomeDirectoryMapPath;
+                HomeDirectory = PortalSettings.Current.HomeDirectory;
             }
             if (!_settingDic.ContainsKey("culturecode")) _settingDic.Add("culturecode", Utils.GetCurrentCulture());
 
@@ -76,12 +80,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             FolderTempMapPath = Get("homedirectorymappath").TrimEnd('\\') + "\\NBSTemp";
             FolderNBStoreMapPath = Get("homedirectorymappath").TrimEnd('\\') + "\\NBStore";
 
+            RootMapPath = Get("rootmappath");
+
             FolderDocuments = Get("homedirectory").TrimEnd('/') + "/" + Get("folderdocs").Replace("\\", "/");
             FolderImages =  Get("homedirectory").TrimEnd('/') + "/" + Get("folderimages").Replace("\\", "/");
             FolderUploads = Get("homedirectory").TrimEnd('/') + "/" + Get("folderuploads").Replace("\\", "/");
             FolderClientUploads = Get("homedirectory").TrimEnd('/') + "/" + Get("folderclientuploads").Replace("\\", "/");
             FolderTemp = Get("homedirectory").TrimEnd('/') + "/NBSTemp";
             FolderNBStore = Get("homedirectory").TrimEnd('/') + "/NBStore";
+
 
             if (!_settingDic.ContainsKey("FolderDocumentsMapPath")) _settingDic.Add("FolderDocumentsMapPath",FolderDocumentsMapPath );
             if (!_settingDic.ContainsKey("FolderImagesMapPath")) _settingDic.Add("FolderImagesMapPath",FolderImagesMapPath );
@@ -260,6 +267,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public String FolderTempMapPath { get; private set; }
         public String FolderNBStore { get; private set; }
         public String FolderNBStoreMapPath { get; private set; }
+        public String RootMapPath { get; private set; }
+        public String HomeDirectoryMapPath { get; private set; }
+        public String HomeDirectory { get; private set; }        
 
         #endregion
 
