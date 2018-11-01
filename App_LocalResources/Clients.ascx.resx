@@ -279,4 +279,10 @@
   <data name="preferedlanguage.Text" xml:space="preserve">
     <value>Prefered Language</value>
   </data>
+  <data name="expirydate.Text" xml:space="preserve">
+    <value>Premium Expiry Date</value>
+  </data>
+  <data name="premiumaccount.Text" xml:space="preserve">
+    <value>Premium Account</value>
+  </data>
 </root>

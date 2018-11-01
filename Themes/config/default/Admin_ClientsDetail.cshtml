@@ -76,100 +76,94 @@
                         <div class="no-move"></div>
                     </div>
                     <div class="box-content">
+
+                        <div class="col-sm-8">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.lblUserID")</td>
+                                        <td>@info.UserId</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.lblUserName")</td>
+                                        <td>@info.GetXmlProperty("genxml/textbox/username")</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.lblFirstName")</td>
+                                        <td>@info.GetXmlProperty("genxml/textbox/firstname")</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.lblLastName")</td>
+                                        <td>@info.GetXmlProperty("genxml/textbox/lastname")</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.lblDisplayName")</td>
+                                        <td>@info.GetXmlProperty("genxml/textbox/displayname")</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.lblauthorised")</td>
+                                        <td>
+                                            @if (info.GetXmlPropertyBool("genxml/membership/approved"))
+                                            {
+                                                <i class="fa fa-check-circle fa-lg"></i>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.userlockedout")</td>
+                                        <td>
+                                            @if (info.GetXmlPropertyBool("genxml/membership/lockedout"))
+                                            {
+                                                <i class="fa fa-check-circle fa-lg"></i>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.lblupdatepassword")</td>
+                                        <td>
+                                            @if (info.GetXmlPropertyBool("genxml/membership/updatepassword"))
+                                            {
+                                                <i class="fa fa-check-circle fa-lg"></i>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.lblisdeleted")</td>
+                                        <td>
+                                            @if (info.GetXmlPropertyBool("genxml/membership/isdeleted"))
+                                            {
+                                                <i class="fa fa-check-circle fa-lg"></i>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.lblEmail")</td>
+                                        <td>@TextBox(info, "genxml/textbox/email", "class='form-control'")</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.cmdAddClientEditorRole")</td>
+                                        <td>
+                                            @CheckBox(info, "genxml/checkbox/clienteditorrole", "", "class='checkbox'")
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.preferedlanguage")</td>
+                                        <td>@LanguageDropDown(info, "genxml/dropdownlist/preferedlanguage", "class='form-control'")</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.premiumaccount")</td>
+                                        <td>@CheckBox(info, "genxml/checkbox/premiumaccount", "")</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='col-md-5 text-right'>@ResourceKey("Clients.expirydate")</td>
+                                        <td>@TextBox(info, "genxml/textbox/expirydate", " datatype='date' class='form-control'")</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="clearfix"></div>
+
                         <div class="card">
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblUserID")</label>
-                            <div class="col-sm-4">
-                                <p class="form-control-static">@info.UserId</p>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblUserName")</label>
-                            <div class="col-sm-4">
-                                <p class="form-control-static">@info.GetXmlProperty("genxml/textbox/username")</p>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblFirstName")</label>
-                            <div class="col-sm-4">
-                                <p class="form-control-static">@info.GetXmlProperty("genxml/textbox/firstname")</p>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblLastName")</label>
-                            <div class="col-sm-4">
-                                <p class="form-control-static">@info.GetXmlProperty("genxml/textbox/lastname")</p>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblDisplayName")</label>
-                            <div class="col-sm-4">
-                                <p class="form-control-static">@info.GetXmlProperty("genxml/textbox/displayname")</p>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblauthorised")</label>
-                            <div class="col-sm-4">
-                                <p class="form-control-static">
-                                    @if (info.GetXmlPropertyBool("genxml/membership/approved"))
-                                    {
-                                        <i class="fa fa-check-circle fa-lg"></i>
-                                    }
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.userlockedout")</label>
-                            <div class="col-sm-4">
-                                <p class="form-control-static">
-                                    @if (info.GetXmlPropertyBool("genxml/membership/lockedout"))
-                                    {
-                                        <i class="fa fa-check-circle fa-lg"></i>
-                                    }
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblupdatepassword")</label>
-                            <div class="col-sm-4">
-                                <p class="form-control-static">
-                                    @if (info.GetXmlPropertyBool("genxml/membership/updatepassword"))
-                                    {
-                                        <i class="fa fa-check-circle fa-lg"></i>
-                                    }
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblisdeleted")</label>
-                            <div class="col-sm-4">
-                                <p class="form-control-static">
-                                    @if (info.GetXmlPropertyBool("genxml/membership/isdeleted"))
-                                    {
-                                        <i class="fa fa-check-circle fa-lg"></i>
-                                    }
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.lblEmail")</label>
-                            <div class="col-sm-5">
-                                @TextBox(info, "genxml/textbox/email", "class='form-control'")
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.cmdAddClientEditorRole")</label>
-                            <div class="col-sm-5">
-                                @CheckBox(info, "genxml/checkbox/clienteditorrole", "", "class='checkbox'")
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <label class="col-sm-3 control-label">@ResourceKey("Clients.preferedlanguage")</label>
-                            <div class="col-sm-5">
-                                @LanguageDropDown(info, "genxml/dropdownlist/preferedlanguage", "class='form-control'")
-                            </div>
-                            <div class="clearfix"></div>
 
                             @RenderRazorInjectTemplate(info, "clientfields.cshtml")
 
@@ -178,7 +172,7 @@
                         </div>
 
                     </div>
-                </div>
+                    </div>
             </div>
 
 
