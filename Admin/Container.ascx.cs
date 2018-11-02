@@ -122,7 +122,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
 
             var p = _pluginData.GetPluginByCtrl(ctrl);
             var roles = p.GetXmlProperty("genxml/textbox/roles");
-            if (roles.Trim() == "") roles = StoreSettings.ManagerRole + "," + StoreSettings.EditorRole;
+            if (roles.Trim() == "") roles = StoreSettings.ManagerRole + "," + StoreSettings.EditorRole + "," + StoreSettings.ClientEditorRole;
             var rlist = roles.Split(',');
             foreach (var r in rlist)
             {

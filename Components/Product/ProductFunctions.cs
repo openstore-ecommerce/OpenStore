@@ -55,136 +55,116 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             EditLangCurrent = editlang;
             if (EditLangCurrent == "") EditLangCurrent = NBrightBuyUtils.GetEditLang(ajaxInfo);
 
-
             if (!paramCmd.ToLower().Contains("save"))
             {
                 // pickup nextlang, indicates if we are changing languages. (Don't use if saving data, only for getting next language.)
                 EditLangCurrent = NBrightBuyUtils.GetNextLang(ajaxInfo, EditLangCurrent);
             }
 
-            switch (paramCmd)
+            if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products"))
             {
-                case "product_admin_getlist":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductAdminList(context);
-                    break;
-                case "product_admin_getdetail":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductAdminDetail(context);
-                    break;
-                case "product_admin_addnew":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductAdminAddNew(context);
-                    break;
-                case "product_admin_save":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductAdminSave(context);
-                    break;
-                case "product_admin_saveexit":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductAdminSaveExit(context);
-                    break;
-                case "product_admin_saveas":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductAdminSaveAs(context);
-                    break;
-                case "product_admin_selectlist":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductAdminList(context);
-                    break;
-                case "product_admin_moveproductadmin":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = MoveProductAdmin(context);
-                    break;
-                case "product_admin_addproductmodels":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = AddModel(context);
-                    break;
-                case "product_admin_addproductoptions":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = AddOption(context);
-                    break;
-                case "product_admin_addproductoptionvalues":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = AddOptionValues(context);
-                    break;
-                case "product_admin_delete":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = DeleteProduct(context);
-                    break;
-                case "product_admin_updateproductimages":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = UpdateProductImages(context);
-                    break;
-                case "product_admin_updateproductdocs":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = UpdateProductDocs(context);
-                    break;
-                case "product_admin_addproductcategory":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = AddProductCategory(context);
-                    break;
-                case "product_admin_removeproductcategory":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = RemoveProductCategory(context);
-                    break;
-                case "product_admin_setdefaultcategory":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = SetDefaultCategory(context);
-                    break;
-                case "product_admin_populatecategorylist":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = GetPropertyListBox(context);
-                    break;
-                case "product_admin_addproperty":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = AddProperty(context);
-                    break;
-                case "product_admin_removeproperty":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = RemoveProperty(context);
-                    break;
-                case "product_admin_removerelated":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = RemoveRelatedProduct(context);
-                    break;
-                case "product_admin_addrelatedproduct":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = AddRelatedProduct(context);
-                    break;
-                case "product_admin_getproductselectlist":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = ProductAdminSelectList(context, true, EditLangCurrent);
-                    break;
-                case "product_admin_getclientselectlist":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = GetClientSelectList(context);
-                    break;
-                case "product_admin_addproductclient":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = AddProductClient(context);
-                    break;
-                case "product_admin_productclients":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = GetProductClients(context);
-                    break;
-                case "product_admin_removeproductclient":
-                    if (!NBrightBuyUtils.CheckRights()) break;
-                    strOut = RemoveProductClient(context);
-                    break;
-                case "product_ajaxview_getlist":
-                    strOut = ProductAjaxViewList(context);
-                    break;
-                case "product_ajaxview_getlistfilter":
-                    strOut = ProductAjaxViewList(context);
-                    break;
-                case "product_ajaxview_getfilters":
-                    strOut = ProductAjaxFilter(context);
-                    break;
-                case "product_admin_updateboolean":
-                    strOut = UpdateBoolean(context);
-                    break;
+                switch (paramCmd)
+                {
+                    case "product_admin_getlist":
+                        strOut = ProductAdminList(context);
+                        break;
+                    case "product_admin_getdetail":
+                        strOut = ProductAdminDetail(context);
+                        break;
+                    case "product_admin_addnew":
+                        strOut = ProductAdminAddNew(context);
+                        break;
+                    case "product_admin_save":
+                        strOut = ProductAdminSave(context);
+                        break;
+                    case "product_admin_saveexit":
+                        strOut = ProductAdminSaveExit(context);
+                        break;
+                    case "product_admin_saveas":
+                        strOut = ProductAdminSaveAs(context);
+                        break;
+                    case "product_admin_selectlist":
+                        strOut = ProductAdminList(context);
+                        break;
+                    case "product_admin_moveproductadmin":
+                        strOut = MoveProductAdmin(context);
+                        break;
+                    case "product_admin_addproductmodels":
+                        strOut = AddModel(context);
+                        break;
+                    case "product_admin_addproductoptions":
+                        strOut = AddOption(context);
+                        break;
+                    case "product_admin_addproductoptionvalues":
+                        strOut = AddOptionValues(context);
+                        break;
+                    case "product_admin_delete":
+                        strOut = DeleteProduct(context);
+                        break;
+                    case "product_admin_updateproductimages":
+                        strOut = UpdateProductImages(context);
+                        break;
+                    case "product_admin_updateproductdocs":
+                        strOut = UpdateProductDocs(context);
+                        break;
+                    case "product_admin_addproductcategory":
+                        strOut = AddProductCategory(context);
+                        break;
+                    case "product_admin_removeproductcategory":
+                        strOut = RemoveProductCategory(context);
+                        break;
+                    case "product_admin_setdefaultcategory":
+                        strOut = SetDefaultCategory(context);
+                        break;
+                    case "product_admin_populatecategorylist":
+                        strOut = GetPropertyListBox(context);
+                        break;
+                    case "product_admin_addproperty":
+                        strOut = AddProperty(context);
+                        break;
+                    case "product_admin_removeproperty":
+                        strOut = RemoveProperty(context);
+                        break;
+                    case "product_admin_removerelated":
+                        strOut = RemoveRelatedProduct(context);
+                        break;
+                    case "product_admin_addrelatedproduct":
+                        strOut = AddRelatedProduct(context);
+                        break;
+                    case "product_admin_getproductselectlist":
+                        strOut = ProductAdminSelectList(context, true, EditLangCurrent);
+                        break;
+                    case "product_admin_getclientselectlist":
+                        strOut = GetClientSelectList(context);
+                        break;
+                    case "product_admin_addproductclient":
+                        strOut = AddProductClient(context);
+                        break;
+                    case "product_admin_productclients":
+                        strOut = GetProductClients(context);
+                        break;
+                    case "product_admin_removeproductclient":
+                        strOut = RemoveProductClient(context);
+                        break;
+                }                
             }
+
+            switch (paramCmd)
+                {
+                    case "product_ajaxview_getlist":
+                        strOut = ProductAjaxViewList(context);
+                        break;
+                    case "product_ajaxview_getlistfilter":
+                        strOut = ProductAjaxViewList(context);
+                        break;
+                    case "product_ajaxview_getfilters":
+                        strOut = ProductAjaxFilter(context);
+                        break;
+                    case "product_admin_updateboolean":
+                        strOut = UpdateBoolean(context);
+                        break;
+                }
+
             return strOut;
         }
 

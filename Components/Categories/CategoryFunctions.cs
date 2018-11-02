@@ -58,53 +58,76 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                 EditLangCurrent = NBrightBuyUtils.GetNextLang(ajaxInfo, EditLangCurrent);
             }
 
+            if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "categories"))
+            {
+                switch (paramCmd)
+                {
+                    case "category_admin_getlist":
+                        strOut = CategoryAdminList(context, "", EditLangCurrent);
+                        break;
+                    case "category_admin_getdetail":
+                        strOut = CategoryAdminDetail(context, 0, EditLangCurrent);
+                        break;
+                    case "category_admin_addnew":
+                        strOut = CategoryAdminAddNew(context);
+                        break;
+                    case "category_admin_savelist":
+                        strOut = CategoryAdminSaveList(context);
+                        break;
+                    case "category_admin_save":
+                        strOut = CategorySave(context, EditLangCurrent);
+                        break;
+                    case "category_admin_saveexit":
+                        strOut = CategorySave(context, EditLangCurrent);
+                        break;
+                    case "category_admin_movecategory":
+                        strOut = MoveCategoryAdmin(context);
+                        break;
+                    case "category_admin_delete":
+                        strOut = DeleteCategory(context);
+                        break;
+                    case "category_updateimages":
+                        strOut = UpdateCategoryImages(context, EditLangCurrent);
+                        break;
+                    case "category_getproductselectlist":
+                        var productFunctions = new ProductFunctions();
+                        strOut = productFunctions.ProductAdminList(context, true, EditLangCurrent, "", true);
+                        break;
+                    case "category_selectchangehidden":
+                        strOut = CategoryHidden(context);
+                        break;
+                    case "category_selectcatxref":
+                        strOut = SelectCatXref(context, EditLangCurrent);
+                        break;
+                    case "category_deletecatxref":
+                        strOut = DeleteCatXref(context);
+                        break;
+                    case "category_deleteallcatxref":
+                        strOut = DeleteAllCatXref(context, EditLangCurrent);
+                        break;
+                    case "category_copyallcatxref":
+                        strOut = CopyAllCatXref(context);
+                        break;
+                    case "category_moveallcatxref":
+                        strOut = CopyAllCatXref(context, true);
+                        break;
+                    case "category_cattaxupdate":
+                        strOut = CatTaxUpdate(context, EditLangCurrent);
+                        break;
+                    case "category_addgroupfilter":
+                        strOut = AddGroupFilter(context, EditLangCurrent);
+                        break;
+                    case "category_removegroupfilter":
+                        strOut = RemoveGroupFilter(context, EditLangCurrent);
+                        break;
+                    case "category_categorygroupfilter":
+                        strOut = CategoryGroupFilters(context, EditLangCurrent);
+                        break;
+                }
+            }
+
             switch (paramCmd)
             {
-                case "category_admin_getlist":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = CategoryAdminList(context,"", EditLangCurrent);
-                    break;
-                case "category_admin_getdetail":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = CategoryAdminDetail(context,0, EditLangCurrent);
-                    break;
-                case "category_admin_addnew":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = CategoryAdminAddNew(context);
-                    break;                    
-                case "category_admin_savelist":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = CategoryAdminSaveList(context);
-                    break;
-                case "category_admin_save":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = CategorySave(context, EditLangCurrent);
-                    break;
-                case "category_admin_saveexit":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = CategorySave(context, EditLangCurrent);
-                    break;
-                case "category_admin_movecategory":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = MoveCategoryAdmin(context);
-                    break;
-                case "category_admin_delete":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = DeleteCategory(context);
-                    break;
-                case "category_updateimages":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = UpdateCategoryImages(context, EditLangCurrent);
-                    break;
-                case "category_getproductselectlist":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    var productFunctions = new ProductFunctions();
-                    strOut = productFunctions.ProductAdminList(context, true, EditLangCurrent,"",true);
-                    break;
-                case "category_selectchangehidden":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = CategoryHidden(context);
-                    break;
                 case "category_categoryproductlist":
                     strOut = GetCategoryProductList(context, EditLangCurrent);
                     break;
@@ -114,34 +137,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                 case "category_displayproductselect":
                     strOut = CategoryProductSelect(context, EditLangCurrent);
                     break;
-                case "category_selectcatxref":
-                    if (NBrightBuyUtils.CheckRights()) strOut = SelectCatXref(context, EditLangCurrent);
-                    break;
-                case "category_deletecatxref":
-                    if (NBrightBuyUtils.CheckRights()) strOut = DeleteCatXref(context);
-                    break;
-                case "category_deleteallcatxref":
-                    if (NBrightBuyUtils.CheckRights()) strOut = DeleteAllCatXref(context, EditLangCurrent);
-                    break;
-                case "category_copyallcatxref":
-                    if (NBrightBuyUtils.CheckRights()) strOut = CopyAllCatXref(context);
-                    break;
-                case "category_moveallcatxref":
-                    if (NBrightBuyUtils.CheckRights()) strOut = CopyAllCatXref(context, true);
-                    break;
-                case "category_cattaxupdate":
-                    if (NBrightBuyUtils.CheckRights()) strOut = CatTaxUpdate(context, EditLangCurrent);
-                    break;
-                case "category_addgroupfilter":
-                    if (NBrightBuyUtils.CheckRights()) strOut = AddGroupFilter(context, EditLangCurrent);
-                    break;
-                case "category_removegroupfilter":
-                    if (NBrightBuyUtils.CheckRights()) strOut = RemoveGroupFilter(context, EditLangCurrent);
-                    break;
-                case "category_categorygroupfilter":
-                    if (NBrightBuyUtils.CheckRights()) strOut = CategoryGroupFilters(context, EditLangCurrent);
-                    break;                    
             }
+
             return strOut;
         }
 

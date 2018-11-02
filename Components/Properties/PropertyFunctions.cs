@@ -66,53 +66,58 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
                 EditLangCurrent = NBrightBuyUtils.GetNextLang(ajaxInfo, EditLangCurrent);
             }
 
+            if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "categories"))
+            {
+                switch (paramCmd)
+                {
+                    case "property_admin_getlist":
+                        strOut = categoryFunctions.CategoryAdminList(context, "property", EditLangCurrent);
+                        break;
+                    case "property_admin_getdetail":
+                        strOut = categoryFunctions.CategoryAdminDetail(context, 0, EditLangCurrent);
+                        break;
+                    case "property_admin_addnew":
+                        strOut = categoryFunctions.CategoryAdminAddNew(context, "property");
+                        break;
+                    case "property_admin_savelist":
+                        strOut = categoryFunctions.CategoryAdminSaveList(context);
+                        break;
+                    case "property_admin_save":
+                        strOut = categoryFunctions.CategorySave(context, EditLangCurrent);
+                        break;
+                    case "property_admin_saveexit":
+                        strOut = categoryFunctions.CategorySave(context, EditLangCurrent);
+                        break;
+                    case "property_admin_movecategory":
+                        strOut = categoryFunctions.MoveCategoryAdmin(context, "property");
+                        break;
+                    case "property_admin_delete":
+                        strOut = categoryFunctions.DeleteCategory(context, "property");
+                        break;
+                    case "property_updateimages":
+                        strOut = categoryFunctions.UpdateCategoryImages(context, EditLangCurrent);
+                        break;
+                    case "property_getproductselectlist":
+                        var productFunctions = new ProductFunctions();
+                        strOut = productFunctions.ProductAdminList(context, true, EditLangCurrent, "", true);
+                        break;
+                    case "property_selectchangehidden":
+                        strOut = categoryFunctions.CategoryHidden(context);
+                        break;
+                    case "property_selectcatxref":
+                        strOut = categoryFunctions.SelectCatXref(context, EditLangCurrent);
+                        break;
+                    case "property_deletecatxref":
+                        strOut = categoryFunctions.DeleteCatXref(context);
+                        break;
+                    case "property_deleteallcatxref":
+                        strOut = categoryFunctions.DeleteAllCatXref(context, EditLangCurrent);
+                        break;
+                }
+            }
+
             switch (paramCmd)
             {
-                case "property_admin_getlist":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.CategoryAdminList(context, "property", EditLangCurrent);
-                    break;
-                case "property_admin_getdetail":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.CategoryAdminDetail(context,0, EditLangCurrent);
-                    break;
-                case "property_admin_addnew":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.CategoryAdminAddNew(context,"property");
-                    break;                    
-                case "property_admin_savelist":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.CategoryAdminSaveList(context);
-                    break;
-                case "property_admin_save":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.CategorySave(context, EditLangCurrent);
-                    break;
-                case "property_admin_saveexit":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.CategorySave(context, EditLangCurrent);
-                    break;
-                case "property_admin_movecategory":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.MoveCategoryAdmin(context, "property");
-                    break;
-                case "property_admin_delete":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.DeleteCategory(context, "property");
-                    break;
-                case "property_updateimages":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.UpdateCategoryImages(context, EditLangCurrent);
-                    break;
-                case "property_getproductselectlist":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    var productFunctions = new ProductFunctions();
-                    strOut = productFunctions.ProductAdminList(context, true, EditLangCurrent,"",true);
-                    break;
-                case "property_selectchangehidden":
-                    if (!NBrightBuyUtils.CheckManagerRights()) break;
-                    strOut = categoryFunctions.CategoryHidden(context);
-                    break;
                 case "property_categoryproductlist":
                     strOut = categoryFunctions.GetCategoryProductList(context, EditLangCurrent);
                     break;
@@ -122,16 +127,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
                 case "property_displayproductselect":
                     strOut = categoryFunctions.CategoryProductSelect(context, EditLangCurrent);
                     break;
-                case "property_selectcatxref":
-                    if (NBrightBuyUtils.CheckRights()) strOut = categoryFunctions.SelectCatXref(context, EditLangCurrent);
-                    break;
-                case "property_deletecatxref":
-                    if (NBrightBuyUtils.CheckRights()) strOut = categoryFunctions.DeleteCatXref(context);
-                    break;
-                case "property_deleteallcatxref":
-                    if (NBrightBuyUtils.CheckRights()) strOut = categoryFunctions.DeleteAllCatXref(context, EditLangCurrent);
-                    break;
             }
+
             return strOut;
         }
 

@@ -363,5 +363,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return false;
         }
 
+        public static Boolean CheckPluginSecurity(int portalId, String ctrl)
+        {
+            var currentuser = UserController.Instance.GetCurrentUserInfo();
+            if (currentuser.IsSuperUser) return true;
+            if (currentuser.IsInRole("Administrators")) return true;
+
+            var pluginData = new PluginData(portalId);
+            var p = pluginData.GetPluginByCtrl(ctrl);
+            return CheckSecurity(p);
+        }
+
+
     }
 }
