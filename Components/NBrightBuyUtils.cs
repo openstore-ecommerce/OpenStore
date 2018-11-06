@@ -674,7 +674,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     }
 
 
-                    ordData.AddAuditMessage(emailmsg, "email", UserController.Instance.GetCurrentUserInfo().Username, "False", NBrightBuyUtils.ResourceKey("Notification." + emailsubjectresxkey, StoreSettings.Current.EditLanguage));
+                    ordData.AddAuditMessage(emailmsg, "email", UserController.Instance.GetCurrentUserInfo().Username, "False", NBrightBuyUtils.ResourceKey("Notification." + emailsubjectresxkey, lang));
                     ordData.SavePurchaseData();
                 }
             }

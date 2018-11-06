@@ -66,7 +66,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
                 EditLangCurrent = NBrightBuyUtils.GetNextLang(ajaxInfo, EditLangCurrent);
             }
 
-            if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "categories"))
+            if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "propertiesvalue"))
             {
                 switch (paramCmd)
                 {

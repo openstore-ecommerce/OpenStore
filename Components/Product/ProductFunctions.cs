@@ -256,6 +256,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var productid = ProductSave(context, true);
                 if (productid > 0)
                 {
+                    AddClientForNewEntry(productid);
                     return ProductAdminDetail(context, productid);
                 }
                 else
@@ -401,8 +402,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         {
             try
             {
-                if (NBrightBuyUtils.CheckRights())
-                {                  
+                if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products"))
+                {
                     if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return null;
 
                     if (EditLangCurrent == "") EditLangCurrent = editlang;
@@ -1568,6 +1569,22 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             }
 
         }
+
+        private void AddClientForNewEntry(int productid)
+        {
+            if (NBrightBuyUtils.IsClientOnly())
+            {
+                if (productid > 0)
+                {
+                    var prodData = ProductUtils.GetProductData(productid, EditLangCurrent, false, EntityTypeCode);
+                    if (prodData != null && prodData.Exists)
+                    {
+                        prodData.AddClient(UserController.Instance.GetCurrentUserInfo().UserID);
+                    }
+                }
+            }
+        }
+
 
 
 
