@@ -136,6 +136,10 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                 case "save":
                     Update();
                     ShareProducts();
+                    NBrightBuyUtils.AddRoleToDNN(PortalSettings.Current.PortalId,"Manager", "Manager");
+                    NBrightBuyUtils.AddRoleToDNN(PortalSettings.Current.PortalId, "Editor", "Editor");
+                    NBrightBuyUtils.AddRoleToDNN(PortalSettings.Current.PortalId, "ClientEditor", "ClientEditor");
+
                     param[0] = "ctrl=settings";
                     Response.Redirect(Globals.NavigateURL(TabId, "", param), true);
                     break;

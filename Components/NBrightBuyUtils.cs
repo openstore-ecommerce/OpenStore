@@ -37,6 +37,7 @@ using RazorEngine.Configuration;
 using MailPriority = DotNetNuke.Services.Mail.MailPriority;
 using RazorEngine.Templating;
 using Encoding = System.Text.Encoding;
+using DotNetNuke.Security.Roles;
 
 namespace Nevoweb.DNN.NBrightBuy.Components
 {
@@ -2758,6 +2759,37 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
 
 
+        }
+
+        public static void AddRoleToDNN(int portalid,string rolename, string roledescription)
+        {
+            // add premium role to DNN
+            var objRole = new RoleController();
+            var pRole = objRole.GetRoleByName(portalid, rolename);
+            if (pRole == null)
+            {
+                var role = new RoleInfo
+                {
+                    PortalID = portalid,
+                    RoleID = -1,
+                    RoleGroupID = -1,
+                    RoleName = rolename,
+                    Description = roledescription,
+                    ServiceFee = 0,
+                    BillingPeriod = -1,
+                    BillingFrequency = "N",
+                    TrialFee = 0,
+                    TrialPeriod = -1,
+                    TrialFrequency = "N",
+                    IsPublic = false,
+                    AutoAssignment = false,
+                    SecurityMode = 0,
+                    Status = RoleStatus.Approved,
+                    RSVPCode = "",
+                    IconFile = ""
+                };
+                objRole.AddRole(role);
+            }
         }
 
 
