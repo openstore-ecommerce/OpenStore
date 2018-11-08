@@ -490,6 +490,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return null;
         }
 
+        public void SetOwner(int userid)
+        {
+            var objCtrl = new NBrightBuyController();
+            DataRecord.UserId = userid;
+            objCtrl.Update(DataRecord);
+        }
+
         public void SetDefaultCategory(int categoryid)
         {
             var objCtrl = new NBrightBuyController();

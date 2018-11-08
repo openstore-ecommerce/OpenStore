@@ -146,7 +146,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     case "product_admin_removeproductclient":
                         strOut = RemoveProductClient(context);
                         break;
-                }                
+                    case "product_admin_setowner":
+                        strOut = SetOwner(context);
+                        break;
+                }
             }
 
             switch (paramCmd)
@@ -1245,6 +1248,28 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             }
         }
 
+        public string SetOwner(HttpContext context)
+        {
+            try
+            {
+                var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
+                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteduserid");
+                if (parentitemid > 0)
+                {
+                    var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
+                    prodData.SetOwner(xrefitemid);
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
+                    return GetProductClients(context);
+                }
+                return "Invalid parentitemid or xrefitmeid";
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+        }
+
 
         public string RemoveProductCategory(HttpContext context)
         {
@@ -1477,11 +1502,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var selecteduserid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteduserid");
                 if (selecteduserid > 0 && productid > 0)
                 {
-                    var prodData = ProductUtils.GetProductData(Convert.ToInt32(productid), EditLangCurrent, false, EntityTypeCode);
-                    if (!(NBrightBuyUtils.IsClientOnly() && (Convert.ToInt32(selecteduserid) == UserController.Instance.GetCurrentUserInfo().UserID)))
+                    var prodData = ProductUtils.GetProductData(productid, EditLangCurrent, false, EntityTypeCode);
+                    if (!(NBrightBuyUtils.IsClientOnly() && (selecteduserid == UserController.Instance.GetCurrentUserInfo().UserID)))
                     {
                         // ClientEditor role cannot remove themselves.
-                        prodData.RemoveClient(Convert.ToInt32(selecteduserid));
+                        prodData.RemoveClient(selecteduserid);
                     }
                     NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductClients(context);

@@ -1221,4 +1221,7 @@
   <data name="visible.Text" xml:space="preserve">
     <value>Visible</value>
   </data>
+  <data name="owner.Text" xml:space="preserve">
+    <value>Owner</value>
+  </data>
 </root>
