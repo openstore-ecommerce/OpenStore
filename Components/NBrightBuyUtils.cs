@@ -2793,6 +2793,21 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         }
 
 
+        public static List<NBrightInfo> GetClientEntries(int portalid, int userid, string entityTypeCode)
+        {
+            try
+            {
+                var objCtrl = new NBrightBuyController();
+                return objCtrl.GetList(portalid, -1, entityTypeCode, " and NB1.UserId = " + userid);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+
     }
 }
 
