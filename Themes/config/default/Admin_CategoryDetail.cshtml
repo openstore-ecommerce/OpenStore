@@ -76,9 +76,19 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <label class="control-label">@ResourceKey("General.Code")</label>@LangFlag(info.Lang)
+                                            @TextBox(info, "genxml/lang/genxml/textbox/categorycode", "class='form-control' maxlength='250'", "")
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="control-label">@ResourceKey("General.Code")</label>
+                                            @TextBox(info, "genxml/textbox/categorycode", "class='form-control' maxlength='250'", "")
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <div class="col-sm-12">
                                             <label class="control-label">@ResourceKey("General.Parent")</label>
-                                            @CategoryDropDownList(info, "genxml/dropdownlist/ddlparentcatid", "class='select2-container s2_with_tag populate placeholder'", true,20,true,true,0,"","..",false,true,"cat",">",info.Lang)
+                                            @CategoryDropDownList(info, "genxml/dropdownlist/ddlparentcatid", "class='select2-container s2_with_tag populate placeholder'", true, 20, true, true, 0, "", "..", false, true, "cat", ">", info.Lang)
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -101,7 +111,7 @@
                                                 {
                                                     <div id="categoryimages" class="form-group">
                                                         <div class="col-sm-12">
-                                                            <img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=160&h=0&src=@info.GetXmlProperty("genxml/hidden/imageurl")"/>
+                                                            <img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=160&h=0&src=@info.GetXmlProperty("genxml/hidden/imageurl")" />
                                                         </div>
                                                     </div>
                                                 }
