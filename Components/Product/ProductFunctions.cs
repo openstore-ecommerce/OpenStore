@@ -405,170 +405,166 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         {
             try
             {
-                if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products"))
+                if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return null;
+
+                if (EditLangCurrent == "") EditLangCurrent = editlang;
+                if (EditLangCurrent == "") EditLangCurrent = Utils.GetCurrentCulture();
+
+                var strOut = "";
+
+                // select a specific entity data type for the product (used by plugins)
+                var entitytypecodelang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecodelang");
+                var entitytypecode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
+                if (entitytypecode == "") entitytypecode = EntityTypeCode;
+                if (entitytypecode == "") entitytypecode = "PRD";
+                if (entitytypecodelang == "") entitytypecodelang = EntityTypeCode + "LANG";
+
+                if (datatypecode == "") datatypecode = entitytypecode;
+                var datatypecodelang = datatypecode + "LANG";
+
+                var filter = ajaxInfo.GetXmlProperty("genxml/hidden/filter");
+                var orderby = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
+                var returnLimit = ajaxInfo.GetXmlPropertyInt("genxml/hidden/returnlimit");
+                var pageNumber = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagenumber");
+                var pageSize = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagesize");
+                var cascade = ajaxInfo.GetXmlPropertyBool("genxml/hidden/cascade");
+                var portalId = PortalSettings.Current.PortalId;
+                if (ajaxInfo.GetXmlProperty("genxml/hidden/portalid") != "")
                 {
-                    if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return null;
+                    portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
+                }
 
-                    if (EditLangCurrent == "") EditLangCurrent = editlang;
-                    if (EditLangCurrent == "") EditLangCurrent = Utils.GetCurrentCulture();                    
+                var searchText = ajaxInfo.GetXmlProperty("genxml/hidden/searchtext");
 
-                    var strOut = "";
+                var searchhidden = ajaxInfo.GetXmlProperty("genxml/hidden/searchhidden");
+                var searchvisible = ajaxInfo.GetXmlProperty("genxml/hidden/searchvisible");
 
-                    // select a specific entity data type for the product (used by plugins)
-                    var entitytypecodelang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecodelang");
-                    var entitytypecode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
-                    if (entitytypecode == "") entitytypecode = EntityTypeCode;
-                    if (entitytypecode == "") entitytypecode = "PRD";
-                    if (entitytypecodelang == "") entitytypecodelang = EntityTypeCode + "LANG";
+                var searchenabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchenabled");
+                var searchdisabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchdisabled");
 
-                    if (datatypecode == "") datatypecode = entitytypecode;
-                    var datatypecodelang = datatypecode + "LANG";
-
-                    var filter = ajaxInfo.GetXmlProperty("genxml/hidden/filter");
-                    var orderby = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
-                    var returnLimit = ajaxInfo.GetXmlPropertyInt("genxml/hidden/returnlimit");
-                    var pageNumber = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagenumber");
-                    var pageSize = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagesize");
-                    var cascade = ajaxInfo.GetXmlPropertyBool("genxml/hidden/cascade");
-                    var portalId = PortalSettings.Current.PortalId;
-                    if (ajaxInfo.GetXmlProperty("genxml/hidden/portalid") != "")
+                // ---------- search category/property list ----------------------------
+                var filterCatList = "(";
+                var searchCategory = ajaxInfo.GetXmlProperty("genxml/hidden/searchcategory");
+                var searchProperty = ajaxInfo.GetXmlProperty("genxml/hidden/searchproperty");
+                var defcatlistsplit = (searchCategory + searchProperty).Split(',');
+                var clp = 0;
+                foreach (var c in defcatlistsplit)
+                {
+                    if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
                     {
-                        portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
+                        filterCatList += " XrefItemId = " + c + " ";
+                        filterCatList += "|"; // use | so we can trim replace easy.
+                        clp += 1;
                     }
+                }
+                filterCatList = filterCatList.TrimEnd('|');
+                filterCatList = filterCatList.Replace("|", " or ");
+                filterCatList += ")";
+                // ---------------------------------------------------------------------
 
-                    var searchText = ajaxInfo.GetXmlProperty("genxml/hidden/searchtext");
 
-                    var searchhidden = ajaxInfo.GetXmlProperty("genxml/hidden/searchhidden");
-                    var searchvisible = ajaxInfo.GetXmlProperty("genxml/hidden/searchvisible");
+                if (searchText != "") filter += " and (NB3.[ProductName] like '%" + searchText + "%' or NB3.[ProductRef] like '%" + searchText + "%' or NB3.[Summary] like '%" + searchText + "%' ) ";
 
-                    var searchenabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchenabled");
-                    var searchdisabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchdisabled");
-
-                    // ---------- search category/property list ----------------------------
-                    var filterCatList = "(";
-                    var searchCategory = ajaxInfo.GetXmlProperty("genxml/hidden/searchcategory");
-                    var searchProperty = ajaxInfo.GetXmlProperty("genxml/hidden/searchproperty");
-                    var defcatlistsplit = (searchCategory + searchProperty).Split(',');
-                    var clp = 0;
-                    foreach (var c in defcatlistsplit)
+                if (searchCategory != "" || searchProperty != "")
+                {
+                    if (clp == 1)
                     {
-                        if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
-                        {
-                            filterCatList += " XrefItemId = " + c + " ";
-                            filterCatList += "|"; // use | so we can trim replace easy.
-                            clp += 1;
-                        }
-                    }
-                    filterCatList = filterCatList.TrimEnd('|');
-                    filterCatList = filterCatList.Replace("|", " or ");
-                    filterCatList += ")";
-                    // ---------------------------------------------------------------------
-
-
-                    if (searchText != "") filter += " and (NB3.[ProductName] like '%" + searchText + "%' or NB3.[ProductRef] like '%" + searchText + "%' or NB3.[Summary] like '%" + searchText + "%' ) ";
-
-                    if (searchCategory != "" || searchProperty != "")
-                    {
-                        if (clp == 1)
-                        {
-                            if (orderby == "{bycategoryproduct}") orderby += searchCategory.Trim(',') + searchProperty.Trim(',');
-                        }
-                        else
-                        {
-                            if (orderby == "{bycategoryproduct}") orderby = " order by NB3.productname ";
-                        }
-
-                        var objQual = DotNetNuke.Data.DataProvider.Instance().ObjectQualifier;
-                        var dbOwner = DotNetNuke.Data.DataProvider.Instance().DatabaseOwner;
-                        if (!cascade)
-                            filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
-                        else
-                            filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
-
+                        if (orderby == "{bycategoryproduct}") orderby += searchCategory.Trim(',') + searchProperty.Trim(',');
                     }
                     else
                     {
                         if (orderby == "{bycategoryproduct}") orderby = " order by NB3.productname ";
                     }
 
-                    // logic for client list of products
-                    if (NBrightBuyUtils.IsClientOnly())
-                    {
-                        filter += " and NB1.ItemId in (select ParentItemId from dbo.[NBrightBuy] as NBclient where NBclient.TypeCode = 'USERPRDXREF' and NBclient.UserId = " + UserController.Instance.GetCurrentUserInfo().UserID.ToString("") + ") ";
-                    }
+                    var objQual = DotNetNuke.Data.DataProvider.Instance().ObjectQualifier;
+                    var dbOwner = DotNetNuke.Data.DataProvider.Instance().DatabaseOwner;
+                    if (!cascade)
+                        filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
+                    else
+                        filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
 
-                    // get any plugin data records.
-                    var plugindatasql = " and (NB1.TypeCode = '" + datatypecode + "'";
+                }
+                else
+                {
+                    if (orderby == "{bycategoryproduct}") orderby = " order by NB3.productname ";
+                }
 
-                    if (loadAjaxEntities)
+                // logic for client list of products
+                if (NBrightBuyUtils.IsClientOnly())
+                {
+                    filter += " and NB1.ItemId in (select ParentItemId from dbo.[NBrightBuy] as NBclient where NBclient.TypeCode = 'USERPRDXREF' and NBclient.UserId = " + UserController.Instance.GetCurrentUserInfo().UserID.ToString("") + ") ";
+                }
+
+                // get any plugin data records.
+                var plugindatasql = " and (NB1.TypeCode = '" + datatypecode + "'";
+
+                if (loadAjaxEntities)
+                {
+                    var pluginData = new PluginData(PortalSettings.Current.PortalId);
+                    var provList = pluginData.GetAjaxProviders();
+                    foreach (var d in provList)
                     {
-                        var pluginData = new PluginData(PortalSettings.Current.PortalId);
-                        var provList = pluginData.GetAjaxProviders();
-                        foreach (var d in provList)
+                        var ajaxprov = AjaxInterface.Instance(d.Key);
+                        if (ajaxprov != null)
                         {
-                            var ajaxprov = AjaxInterface.Instance(d.Key);
-                            if (ajaxprov != null)
+                            if (datatypecode != ajaxprov.Ajaxkey)
                             {
-                                if (datatypecode != ajaxprov.Ajaxkey)
-                                {
-                                    plugindatasql += " or NB1.TypeCode = '" + ajaxprov.Ajaxkey + "'";
-                                }
+                                plugindatasql += " or NB1.TypeCode = '" + ajaxprov.Ajaxkey + "'";
                             }
                         }
                     }
+                }
 
-                    filter = plugindatasql + ") " + filter;
+                filter = plugindatasql + ") " + filter;
 
-                    // --- Hidden or Visible 
-                    // Both hidden and visible selected, don't do any SQL filter so we pick up all.
-                    if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
-                    {
-                        filter += " and (NB3.Visible = 0) and (NB3.Visible = 1)  "; // don't display anything!!!
-                    }
-                    if ((searchhidden != "" && searchhidden.ToLower() == "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
-                    {
-                        filter += " and (NB3.Visible = 0) "; // display hidden
-                    }
-                    if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() == "true"))
-                    {
-                        filter += " and (NB3.Visible = 1)  "; // display visible
-                    }
+                // --- Hidden or Visible 
+                // Both hidden and visible selected, don't do any SQL filter so we pick up all.
+                if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
+                {
+                    filter += " and (NB3.Visible = 0) and (NB3.Visible = 1)  "; // don't display anything!!!
+                }
+                if ((searchhidden != "" && searchhidden.ToLower() == "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
+                {
+                    filter += " and (NB3.Visible = 0) "; // display hidden
+                }
+                if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() == "true"))
+                {
+                    filter += " and (NB3.Visible = 1)  "; // display visible
+                }
 
-                    // --- Enabled or Disabled
-                    // Both Enabled and Disabled selected, don't do any SQL filter so we pick up all.
-                    if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
-                    {
-                        filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // don't display anything!!!
-                    }
-                    if ((searchenabled != "" && searchenabled.ToLower() == "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
-                    {
-                        filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') "; // display enabled
-                    }
-                    if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() == "true"))
-                    {
-                        filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // display disabled
-                    }
+                // --- Enabled or Disabled
+                // Both Enabled and Disabled selected, don't do any SQL filter so we pick up all.
+                if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
+                {
+                    filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // don't display anything!!!
+                }
+                if ((searchenabled != "" && searchenabled.ToLower() == "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
+                {
+                    filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') "; // display enabled
+                }
+                if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() == "true"))
+                {
+                    filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // display disabled
+                }
 
 
-                    var recordCount = 0;
-                    var objCtrl = new NBrightBuyController();
+                var recordCount = 0;
+                var objCtrl = new NBrightBuyController();
 
-                    if (paging) // get record count for paging
-                    {
-                        if (pageNumber == 0) pageNumber = 1;
-                        if (pageSize == 0) pageSize = 20;
+                if (paging) // get record count for paging
+                {
+                    if (pageNumber == 0) pageNumber = 1;
+                    if (pageSize == 0) pageSize = 20;
 
-                        // get only entity type required.  Do NOT use typecode, that is set by the filter.
-                        recordCount = objCtrl.GetListCount(PortalSettings.Current.PortalId, -1, "", filter, "", EditLangCurrent);
-
-                    }
-
-                    // get selected entitytypecode.
-                    var list = objCtrl.GetDataList(PortalSettings.Current.PortalId, -1, "", "", EditLangCurrent, filter, orderby, StoreSettings.Current.DebugMode, "", returnLimit, pageNumber, pageSize, recordCount);
-
-                    return RenderProductAdminList(list,ajaxInfo,recordCount, ajaxHeaderInfo);
+                    // get only entity type required.  Do NOT use typecode, that is set by the filter.
+                    recordCount = objCtrl.GetListCount(PortalSettings.Current.PortalId, -1, "", filter, "", EditLangCurrent);
 
                 }
+
+                // get selected entitytypecode.
+                var list = objCtrl.GetDataList(PortalSettings.Current.PortalId, -1, "", "", EditLangCurrent, filter, orderby, StoreSettings.Current.DebugMode, "", returnLimit, pageNumber, pageSize, recordCount);
+
+                return RenderProductAdminList(list, ajaxInfo, recordCount, ajaxHeaderInfo);
             }
             catch (Exception ex)
             {
