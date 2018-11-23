@@ -113,7 +113,7 @@
                                 @ResourceKey("Plugins.lblroles")
                             </label>
                             <div class="col-sm-6">
-                                @CheckBoxList(plugin.Info(), "genxml/checkboxlist/securityroles", ResourceKey("General.roles").ToString(), ResourceKey("General.roles").ToString())
+                                @CheckBoxList(plugin.Info(), "genxml/checkboxlist/securityroles", "Administrators,Manager,Editor,ClientEditor", ResourceKey("General.roles").ToString())
                             </div>
                         </div>
 
