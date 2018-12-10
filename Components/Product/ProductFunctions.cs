@@ -405,166 +405,170 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         {
             try
             {
-                if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return null;
-
-                if (EditLangCurrent == "") EditLangCurrent = editlang;
-                if (EditLangCurrent == "") EditLangCurrent = Utils.GetCurrentCulture();
-
-                var strOut = "";
-
-                // select a specific entity data type for the product (used by plugins)
-                var entitytypecodelang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecodelang");
-                var entitytypecode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
-                if (entitytypecode == "") entitytypecode = EntityTypeCode;
-                if (entitytypecode == "") entitytypecode = "PRD";
-                if (entitytypecodelang == "") entitytypecodelang = EntityTypeCode + "LANG";
-
-                if (datatypecode == "") datatypecode = entitytypecode;
-                var datatypecodelang = datatypecode + "LANG";
-
-                var filter = ajaxInfo.GetXmlProperty("genxml/hidden/filter");
-                var orderby = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
-                var returnLimit = ajaxInfo.GetXmlPropertyInt("genxml/hidden/returnlimit");
-                var pageNumber = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagenumber");
-                var pageSize = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagesize");
-                var cascade = ajaxInfo.GetXmlPropertyBool("genxml/hidden/cascade");
-                var portalId = PortalSettings.Current.PortalId;
-                if (ajaxInfo.GetXmlProperty("genxml/hidden/portalid") != "")
+                if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products"))
                 {
-                    portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
-                }
+                    if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return null;
 
-                var searchText = ajaxInfo.GetXmlProperty("genxml/hidden/searchtext");
+                    if (EditLangCurrent == "") EditLangCurrent = editlang;
+                    if (EditLangCurrent == "") EditLangCurrent = Utils.GetCurrentCulture();                    
 
-                var searchhidden = ajaxInfo.GetXmlProperty("genxml/hidden/searchhidden");
-                var searchvisible = ajaxInfo.GetXmlProperty("genxml/hidden/searchvisible");
+                    var strOut = "";
 
-                var searchenabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchenabled");
-                var searchdisabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchdisabled");
+                    // select a specific entity data type for the product (used by plugins)
+                    var entitytypecodelang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecodelang");
+                    var entitytypecode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
+                    if (entitytypecode == "") entitytypecode = EntityTypeCode;
+                    if (entitytypecode == "") entitytypecode = "PRD";
+                    if (entitytypecodelang == "") entitytypecodelang = EntityTypeCode + "LANG";
 
-                // ---------- search category/property list ----------------------------
-                var filterCatList = "(";
-                var searchCategory = ajaxInfo.GetXmlProperty("genxml/hidden/searchcategory");
-                var searchProperty = ajaxInfo.GetXmlProperty("genxml/hidden/searchproperty");
-                var defcatlistsplit = (searchCategory + searchProperty).Split(',');
-                var clp = 0;
-                foreach (var c in defcatlistsplit)
-                {
-                    if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
+                    if (datatypecode == "") datatypecode = entitytypecode;
+                    var datatypecodelang = datatypecode + "LANG";
+
+                    var filter = ajaxInfo.GetXmlProperty("genxml/hidden/filter");
+                    var orderby = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
+                    var returnLimit = ajaxInfo.GetXmlPropertyInt("genxml/hidden/returnlimit");
+                    var pageNumber = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagenumber");
+                    var pageSize = ajaxInfo.GetXmlPropertyInt("genxml/hidden/pagesize");
+                    var cascade = ajaxInfo.GetXmlPropertyBool("genxml/hidden/cascade");
+                    var portalId = PortalSettings.Current.PortalId;
+                    if (ajaxInfo.GetXmlProperty("genxml/hidden/portalid") != "")
                     {
-                        filterCatList += " XrefItemId = " + c + " ";
-                        filterCatList += "|"; // use | so we can trim replace easy.
-                        clp += 1;
+                        portalId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/portalid");
                     }
-                }
-                filterCatList = filterCatList.TrimEnd('|');
-                filterCatList = filterCatList.Replace("|", " or ");
-                filterCatList += ")";
-                // ---------------------------------------------------------------------
 
+                    var searchText = ajaxInfo.GetXmlProperty("genxml/hidden/searchtext");
 
-                if (searchText != "") filter += " and (NB3.[ProductName] like '%" + searchText + "%' or NB3.[ProductRef] like '%" + searchText + "%' or NB3.[Summary] like '%" + searchText + "%' ) ";
+                    var searchhidden = ajaxInfo.GetXmlProperty("genxml/hidden/searchhidden");
+                    var searchvisible = ajaxInfo.GetXmlProperty("genxml/hidden/searchvisible");
 
-                if (searchCategory != "" || searchProperty != "")
-                {
-                    if (clp == 1)
+                    var searchenabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchenabled");
+                    var searchdisabled = ajaxInfo.GetXmlProperty("genxml/hidden/searchdisabled");
+
+                    // ---------- search category/property list ----------------------------
+                    var filterCatList = "(";
+                    var searchCategory = ajaxInfo.GetXmlProperty("genxml/hidden/searchcategory");
+                    var searchProperty = ajaxInfo.GetXmlProperty("genxml/hidden/searchproperty");
+                    var defcatlistsplit = (searchCategory + searchProperty).Split(',');
+                    var clp = 0;
+                    foreach (var c in defcatlistsplit)
                     {
-                        if (orderby == "{bycategoryproduct}") orderby += searchCategory.Trim(',') + searchProperty.Trim(',');
+                        if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
+                        {
+                            filterCatList += " XrefItemId = " + c + " ";
+                            filterCatList += "|"; // use | so we can trim replace easy.
+                            clp += 1;
+                        }
+                    }
+                    filterCatList = filterCatList.TrimEnd('|');
+                    filterCatList = filterCatList.Replace("|", " or ");
+                    filterCatList += ")";
+                    // ---------------------------------------------------------------------
+
+
+                    if (searchText != "") filter += " and (NB3.[ProductName] like '%" + searchText + "%' or NB3.[ProductRef] like '%" + searchText + "%' or NB3.[Summary] like '%" + searchText + "%' ) ";
+
+                    if (searchCategory != "" || searchProperty != "")
+                    {
+                        if (clp == 1)
+                        {
+                            if (orderby == "{bycategoryproduct}") orderby += searchCategory.Trim(',') + searchProperty.Trim(',');
+                        }
+                        else
+                        {
+                            if (orderby == "{bycategoryproduct}") orderby = " order by NB3.productname ";
+                        }
+
+                        var objQual = DotNetNuke.Data.DataProvider.Instance().ObjectQualifier;
+                        var dbOwner = DotNetNuke.Data.DataProvider.Instance().DatabaseOwner;
+                        if (!cascade)
+                            filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
+                        else
+                            filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
+
                     }
                     else
                     {
                         if (orderby == "{bycategoryproduct}") orderby = " order by NB3.productname ";
                     }
 
-                    var objQual = DotNetNuke.Data.DataProvider.Instance().ObjectQualifier;
-                    var dbOwner = DotNetNuke.Data.DataProvider.Instance().DatabaseOwner;
-                    if (!cascade)
-                        filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
-                    else
-                        filter += " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
-
-                }
-                else
-                {
-                    if (orderby == "{bycategoryproduct}") orderby = " order by NB3.productname ";
-                }
-
-                // logic for client list of products
-                if (NBrightBuyUtils.IsClientOnly())
-                {
-                    filter += " and NB1.ItemId in (select ParentItemId from dbo.[NBrightBuy] as NBclient where NBclient.TypeCode = 'USERPRDXREF' and NBclient.UserId = " + UserController.Instance.GetCurrentUserInfo().UserID.ToString("") + ") ";
-                }
-
-                // get any plugin data records.
-                var plugindatasql = " and (NB1.TypeCode = '" + datatypecode + "'";
-
-                if (loadAjaxEntities)
-                {
-                    var pluginData = new PluginData(PortalSettings.Current.PortalId);
-                    var provList = pluginData.GetAjaxProviders();
-                    foreach (var d in provList)
+                    // logic for client list of products
+                    if (NBrightBuyUtils.IsClientOnly())
                     {
-                        var ajaxprov = AjaxInterface.Instance(d.Key);
-                        if (ajaxprov != null)
+                        filter += " and NB1.ItemId in (select ParentItemId from dbo.[NBrightBuy] as NBclient where NBclient.TypeCode = 'USERPRDXREF' and NBclient.UserId = " + UserController.Instance.GetCurrentUserInfo().UserID.ToString("") + ") ";
+                    }
+
+                    // get any plugin data records.
+                    var plugindatasql = " and (NB1.TypeCode = '" + datatypecode + "'";
+
+                    if (loadAjaxEntities)
+                    {
+                        var pluginData = new PluginData(PortalSettings.Current.PortalId);
+                        var provList = pluginData.GetAjaxProviders();
+                        foreach (var d in provList)
                         {
-                            if (datatypecode != ajaxprov.Ajaxkey)
+                            var ajaxprov = AjaxInterface.Instance(d.Key);
+                            if (ajaxprov != null)
                             {
-                                plugindatasql += " or NB1.TypeCode = '" + ajaxprov.Ajaxkey + "'";
+                                if (datatypecode != ajaxprov.Ajaxkey)
+                                {
+                                    plugindatasql += " or NB1.TypeCode = '" + ajaxprov.Ajaxkey + "'";
+                                }
                             }
                         }
                     }
+
+                    filter = plugindatasql + ") " + filter;
+
+                    // --- Hidden or Visible 
+                    // Both hidden and visible selected, don't do any SQL filter so we pick up all.
+                    if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
+                    {
+                        filter += " and (NB3.Visible = 0) and (NB3.Visible = 1)  "; // don't display anything!!!
+                    }
+                    if ((searchhidden != "" && searchhidden.ToLower() == "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
+                    {
+                        filter += " and (NB3.Visible = 0) "; // display hidden
+                    }
+                    if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() == "true"))
+                    {
+                        filter += " and (NB3.Visible = 1)  "; // display visible
+                    }
+
+                    // --- Enabled or Disabled
+                    // Both Enabled and Disabled selected, don't do any SQL filter so we pick up all.
+                    if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
+                    {
+                        filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // don't display anything!!!
+                    }
+                    if ((searchenabled != "" && searchenabled.ToLower() == "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
+                    {
+                        filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') "; // display enabled
+                    }
+                    if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() == "true"))
+                    {
+                        filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // display disabled
+                    }
+
+
+                    var recordCount = 0;
+                    var objCtrl = new NBrightBuyController();
+
+                    if (paging) // get record count for paging
+                    {
+                        if (pageNumber == 0) pageNumber = 1;
+                        if (pageSize == 0) pageSize = 20;
+
+                        // get only entity type required.  Do NOT use typecode, that is set by the filter.
+                        recordCount = objCtrl.GetListCount(PortalSettings.Current.PortalId, -1, "", filter, "", EditLangCurrent);
+
+                    }
+
+                    // get selected entitytypecode.
+                    var list = objCtrl.GetDataList(PortalSettings.Current.PortalId, -1, "", "", EditLangCurrent, filter, orderby, StoreSettings.Current.DebugMode, "", returnLimit, pageNumber, pageSize, recordCount);
+
+                    return RenderProductAdminList(list,ajaxInfo,recordCount, ajaxHeaderInfo);
+
                 }
-
-                filter = plugindatasql + ") " + filter;
-
-                // --- Hidden or Visible 
-                // Both hidden and visible selected, don't do any SQL filter so we pick up all.
-                if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
-                {
-                    filter += " and (NB3.Visible = 0) and (NB3.Visible = 1)  "; // don't display anything!!!
-                }
-                if ((searchhidden != "" && searchhidden.ToLower() == "true") && (searchvisible != "" && searchvisible.ToLower() != "true"))
-                {
-                    filter += " and (NB3.Visible = 0) "; // display hidden
-                }
-                if ((searchhidden != "" && searchhidden.ToLower() != "true") && (searchvisible != "" && searchvisible.ToLower() == "true"))
-                {
-                    filter += " and (NB3.Visible = 1)  "; // display visible
-                }
-
-                // --- Enabled or Disabled
-                // Both Enabled and Disabled selected, don't do any SQL filter so we pick up all.
-                if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
-                {
-                    filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // don't display anything!!!
-                }
-                if ((searchenabled != "" && searchenabled.ToLower() == "true") && (searchdisabled != "" && searchdisabled.ToLower() != "true"))
-                {
-                    filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'False') "; // display enabled
-                }
-                if ((searchenabled != "" && searchenabled.ToLower() != "true") && (searchdisabled != "" && searchdisabled.ToLower() == "true"))
-                {
-                    filter += " and (NB1.XMLData.value('(genxml/checkbox/chkdisable)[1]','nvarchar(5)') = 'True')  "; // display disabled
-                }
-
-
-                var recordCount = 0;
-                var objCtrl = new NBrightBuyController();
-
-                if (paging) // get record count for paging
-                {
-                    if (pageNumber == 0) pageNumber = 1;
-                    if (pageSize == 0) pageSize = 20;
-
-                    // get only entity type required.  Do NOT use typecode, that is set by the filter.
-                    recordCount = objCtrl.GetListCount(PortalSettings.Current.PortalId, -1, "", filter, "", EditLangCurrent);
-
-                }
-
-                // get selected entitytypecode.
-                var list = objCtrl.GetDataList(PortalSettings.Current.PortalId, -1, "", "", EditLangCurrent, filter, orderby, StoreSettings.Current.DebugMode, "", returnLimit, pageNumber, pageSize, recordCount);
-
-                return RenderProductAdminList(list, ajaxInfo, recordCount, ajaxHeaderInfo);
             }
             catch (Exception ex)
             {
@@ -1619,539 +1623,548 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         public String ProductAjaxViewList(HttpContext context)
         {
             var retval = "";
-            var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
 
-            // get the moduleid, tabid
-            var moduleid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/moduleid");
-            var tabid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/tabid");
+                var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
 
-            var ps = PortalSettings.Current;
+                // get the moduleid, tabid
+                var moduleid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/moduleid");
+                var tabid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/tabid");
+
+                var ps = PortalSettings.Current;
 
 
-            var settings = new Hashtable();
+                var settings = new Hashtable();
 
-            // then add the NBrightBuy settings
-            var ModSettings = new ModSettings(moduleid, settings);
-            //get Model Level Settings
-            var ModuleKey = ModSettings.Get("modref");
-            if (String.IsNullOrEmpty(ModuleKey))
-                ModuleKey = ModSettings.Get("modulekey"); // keep backward compatiblity with ProductView.
+                // then add the NBrightBuy settings
+                var ModSettings = new ModSettings(moduleid, settings);
+                //get Model Level Settings
+                var ModuleKey = ModSettings.Get("modref");
+                if (String.IsNullOrEmpty(ModuleKey))
+                    ModuleKey = ModSettings.Get("modulekey"); // keep backward compatiblity with ProductView.
 
-            #region render template stuff
+                #region render template stuff
 
-            #region variables
-            var _eid = "";
-            var _ename = "";
-            var _catid = "";
-            var _catname = "";
-            var _modkey = "";
-            var _pagemid = "";
-            var _pagenum = "1";
-            var _pagesize = "";
-            var _templD = "";
-            var _displayentrypage = false;
-            var _orderbyindex = "";
-            var _propertyfilter = "";
-            NavigationData _navigationdata;
-            if (EntityTypeCode == "") EntityTypeCode = ModSettings.Get("entitytypecode");
-            if (EntityTypeCode == "") EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
-            if (EntityTypeCode == "") EntityTypeCode = "PRD"; // default to product
-            var EntityTypeCodeLang = EntityTypeCode + "LANG";
-            if (EntityTypeCode == "-1")
-            {
-                EntityTypeCode = ""; // allow selection of all types
-                EntityTypeCodeLang = "";
-            }
-            var _itemListName = "";
-            var _guidkey = "";
-            var _404code = false;
-            var returnlimit = 0;
-            var _filterTypeInsideProp = "AND";
-            var _filterTypeOutsideProp = "AND";
-
-            _catid = ajaxInfo.GetXmlProperty("genxml/hidden/catid");
-            _catname = ajaxInfo.GetXmlProperty("genxml/hidden/catref");
-            _modkey = ajaxInfo.GetXmlProperty("genxml/hidden/modkey");
-            _pagemid = ajaxInfo.GetXmlProperty("genxml/hidden/pagemid");
-            _pagenum = ajaxInfo.GetXmlProperty("genxml/hidden/page");
-            _pagesize = ajaxInfo.GetXmlProperty("genxml/hidden/pagesize");
-            _orderbyindex = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
-            _propertyfilter = ajaxInfo.GetXmlProperty("genxml/hidden/propertyfilter");
-
-            _templD = ModSettings.Get("razorlisttemplate");
-
-            // we're making sure here, that this thing can only be AND or OR to prevent SQL Injection in any case
-            if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeinside").ToUpper() == "OR") _filterTypeInsideProp = "OR";
-            if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeoutside").ToUpper() == "OR") _filterTypeOutsideProp = "OR";
-
-            //Get returnlimt from module settings
-            var strreturnlimit = ModSettings.Get("returnlimit");
-            if (Utils.IsNumeric(strreturnlimit)) returnlimit = Convert.ToInt32(strreturnlimit);
-
-            var ModCtrl = new NBrightBuyController();
-
-            // Get meta data from template
-            // TODO: dat moeten we hier eigenlijk niet nodig hebben
-            // voor nu even handig om die parameters erbij te kunnen halen en ze later om te zetten naar client side rommel
-
-            _navigationdata = new NavigationData(ps.PortalId, ModuleKey);
-            var metaTokens = NBrightBuyUtils.RazorPreProcessTempl(_templD, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings(), moduleid.ToString());
-
-            #endregion
-
-            #region "Order BY"
-
-            ////////////////////////////////////////////
-            // get ORDERBY SORT 
-            ////////////////////////////////////////////
-            if (_orderbyindex != "") // if we have orderby set in url, find the meta tags
-            {
-                if (metaTokens.ContainsKey("orderby" + _orderbyindex))
+                #region variables
+                var _eid = "";
+                var _ename = "";
+                var _catid = "";
+                var _catname = "";
+                var _modkey = "";
+                var _pagemid = "";
+                var _pagenum = "1";
+                var _pagesize = "";
+                var _templD = "";
+                var _displayentrypage = false;
+                var _orderbyindex = "";
+                var _propertyfilter = "";
+                if (EntityTypeCode == "") EntityTypeCode = ModSettings.Get("entitytypecode");
+                if (EntityTypeCode == "") EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
+                if (EntityTypeCode == "") EntityTypeCode = "PRD"; // default to product
+                var EntityTypeCodeLang = EntityTypeCode + "LANG";
+                if (EntityTypeCode == "-1")
                 {
-                    if (metaTokens["orderby" + _orderbyindex].Contains("{") ||
-                        metaTokens["orderby" + _orderbyindex].ToLower().Contains("order by"))
-                    {
-                        _navigationdata.OrderBy = metaTokens["orderby" + _orderbyindex];
-                        _navigationdata.OrderByIdx = _orderbyindex;
-                    }
-                    else
-                    {
-                        _navigationdata.OrderBy = " Order by " + metaTokens["orderby" + _orderbyindex];
-                        _navigationdata.OrderByIdx = _orderbyindex;
-                    }
-                    _navigationdata.Save();
+                    EntityTypeCode = ""; // allow selection of all types
+                    EntityTypeCodeLang = "";
                 }
-            }
-            else
+                var _itemListName = "";
+                var _guidkey = "";
+                var _404code = false;
+                var returnlimit = 0;
+                var _filterTypeInsideProp = "AND";
+                var _filterTypeOutsideProp = "AND";
+
+                _catid = ajaxInfo.GetXmlProperty("genxml/hidden/catid");
+                _catname = ajaxInfo.GetXmlProperty("genxml/hidden/catref");
+                _modkey = ajaxInfo.GetXmlProperty("genxml/hidden/modkey");
+                _pagemid = ajaxInfo.GetXmlProperty("genxml/hidden/pagemid");
+                _pagenum = ajaxInfo.GetXmlProperty("genxml/hidden/page");
+                _pagesize = ajaxInfo.GetXmlProperty("genxml/hidden/pagesize");
+                _orderbyindex = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
+                _propertyfilter = ajaxInfo.GetXmlProperty("genxml/hidden/propertyfilter");
+
+                _templD = ModSettings.Get("razorlisttemplate");
+
+                // we're making sure here, that this thing can only be AND or OR to prevent SQL Injection in any case
+                if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeinside").ToUpper() == "OR") _filterTypeInsideProp = "OR";
+                if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeoutside").ToUpper() == "OR") _filterTypeOutsideProp = "OR";
+
+                //Get returnlimt from module settings
+                var strreturnlimit = ModSettings.Get("returnlimit");
+                if (Utils.IsNumeric(strreturnlimit)) returnlimit = Convert.ToInt32(strreturnlimit);
+
+                var ModCtrl = new NBrightBuyController();
+
+                // Get meta data from template
+                // TODO: dat moeten we hier eigenlijk niet nodig hebben
+                // voor nu even handig om die parameters erbij te kunnen halen en ze later om te zetten naar client side rommel
+                NavigationData _navigationdata;
+                _navigationdata = new NavigationData(ps.PortalId, ModuleKey);
+                var metaTokens = NBrightBuyUtils.RazorPreProcessTempl(_templD, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings(), moduleid.ToString());
+
+            #endregion
+            try
             {
-                if (String.IsNullOrEmpty(_navigationdata.OrderBy) && metaTokens.ContainsKey("orderby"))
+
+                #region "Order BY"
+
+                ////////////////////////////////////////////
+                // get ORDERBY SORT 
+                ////////////////////////////////////////////
+                if (_orderbyindex != "") // if we have orderby set in url, find the meta tags
                 {
-                    if (metaTokens["orderby"].Contains("{") || metaTokens["orderby"].ToLower().Contains("order by"))
+                    if (metaTokens.ContainsKey("orderby" + _orderbyindex))
                     {
-                        _navigationdata.OrderBy = metaTokens["orderby"];
+                        if (metaTokens["orderby" + _orderbyindex].Contains("{") ||
+                            metaTokens["orderby" + _orderbyindex].ToLower().Contains("order by"))
+                        {
+                            _navigationdata.OrderBy = metaTokens["orderby" + _orderbyindex];
+                            _navigationdata.OrderByIdx = _orderbyindex;
+                        }
+                        else
+                        {
+                            _navigationdata.OrderBy = " Order by " + metaTokens["orderby" + _orderbyindex];
+                            _navigationdata.OrderByIdx = _orderbyindex;
+                        }
+                        _navigationdata.Save();
                     }
-                    else
-                    {
-                        _navigationdata.OrderBy = " Order by " + metaTokens["orderby"];
-                    }
-                    _navigationdata.OrderByIdx = "";
-                    _navigationdata.Save();
                 }
-            }
-
-
-            #endregion
-
-            #region "Get Paging setup"
-
-            //See if we have a pagesize, uses the "searchpagesize" tag token.
-            // : This can be overwritten by the cookie value if we need user selection of pagesize.
-
-            #region "Get pagesize, from best place"
-            //TODO SK pagesize is already in _pagesize
-            var pageSize = 0;
-            if (Utils.IsNumeric(_pagesize)) pageSize = Convert.ToInt32(_pagesize);
-            //if (Utils.IsNumeric(ModSettings.Get("pagesize"))) pageSize = Convert.ToInt32(ModSettings.Get("pagesize"));
-            //// overwrite default module pagesize , if we have a pagesize control in the template
-            // TODO SK Don't think I need to know if there's a pagesize selector in the template. it just asks the right pagesize
-            // TODO SK Maybe I should know to make it impossible to request more items than configured
-            //if (metaTokens.ContainsKey("selectpagesize") && Utils.IsNumeric(_navigationdata.PageSize))
-            //{
-            //    pageSize = Convert.ToInt32(_navigationdata.PageSize);
-            //}
-            ////check for url param page size
-            //if (Utils.IsNumeric(_pagesize) &&
-            //    (_pagemid == "" | _pagemid == moduleid.ToString(CultureInfo.InvariantCulture)))
-            //    pageSize = Convert.ToInt32(_pagesize);
-            //if (pageSize == 0)
-            //{
-            //    var strPgSize = "";
-            //    if (metaTokens.ContainsKey("searchpagesize")) strPgSize = metaTokens["searchpagesize"];
-            //    if (metaTokens.ContainsKey("pagesize") && strPgSize == "") strPgSize = metaTokens["pagesize"];
-            //    if (Utils.IsNumeric(strPgSize)) pageSize = Convert.ToInt32(strPgSize);
-            //}
-
-            _navigationdata.PageSize = pageSize.ToString("");
-
-            #endregion
-
-            #endregion
-
-            #region "Get filter setup"
-
-            // check the display header to see if we have a sqlfilter defined.
-            var strFilter = "";
-            var sqlTemplateFilter = "";
-            if (metaTokens.ContainsKey("sqlfilter")) sqlTemplateFilter = GenXmlFunctions.StripSqlCommands(metaTokens["sqlfilter"]);
-
-            if (_navigationdata.HasCriteria)
-            {
-                var paramcatid = _catid;
-                if (Utils.IsNumeric(paramcatid))
+                else
                 {
-                    if (_navigationdata.CategoryId != Convert.ToInt32(paramcatid)) // filter mode DOES NOT persist catid (stop confusion when user selects a category)
+                    if (String.IsNullOrEmpty(_navigationdata.OrderBy) && metaTokens.ContainsKey("orderby"))
                     {
-                        _navigationdata.ResetSearch();
+                        if (metaTokens["orderby"].Contains("{") || metaTokens["orderby"].ToLower().Contains("order by"))
+                        {
+                            _navigationdata.OrderBy = metaTokens["orderby"];
+                        }
+                        else
+                        {
+                            _navigationdata.OrderBy = " Order by " + metaTokens["orderby"];
+                        }
+                        _navigationdata.OrderByIdx = "";
+                        _navigationdata.Save();
                     }
                 }
 
-                // if navdata is not deleted then get filter from navdata, created by productsearch module.
-                strFilter = _navigationdata.Criteria;
-                if (!strFilter.Contains(sqlTemplateFilter)) strFilter += " " + sqlTemplateFilter;
 
-                if (_navigationdata.Mode.ToLower() == "s") _navigationdata.ResetSearch(); // single search so clear after
-            }
-            else
-            {
-                // reset search if category selected 
-                // NOTE: keeping search across categories is VERY confusing for cleint, although it works logically.
-                _navigationdata.ResetSearch();
-                strFilter = sqlTemplateFilter;
-            }
+                #endregion
 
-            var pageNumber = 1;
-            //check for url param paging
-            if (Utils.IsNumeric(_pagenum) && (_pagemid == "" | _pagemid == moduleid.ToString(CultureInfo.InvariantCulture)))
-            {
-                pageNumber = Convert.ToInt32(_pagenum);
-            }
+                #region "Get Paging setup"
 
-            #endregion
+                //See if we have a pagesize, uses the "searchpagesize" tag token.
+                // : This can be overwritten by the cookie value if we need user selection of pagesize.
 
-            #region "Get Category select setup"
+                #region "Get pagesize, from best place"
+                //TODO SK pagesize is already in _pagesize
+                var pageSize = 0;
+                if (Utils.IsNumeric(_pagesize)) pageSize = Convert.ToInt32(_pagesize);
+                //if (Utils.IsNumeric(ModSettings.Get("pagesize"))) pageSize = Convert.ToInt32(ModSettings.Get("pagesize"));
+                //// overwrite default module pagesize , if we have a pagesize control in the template
+                // TODO SK Don't think I need to know if there's a pagesize selector in the template. it just asks the right pagesize
+                // TODO SK Maybe I should know to make it impossible to request more items than configured
+                //if (metaTokens.ContainsKey("selectpagesize") && Utils.IsNumeric(_navigationdata.PageSize))
+                //{
+                //    pageSize = Convert.ToInt32(_navigationdata.PageSize);
+                //}
+                ////check for url param page size
+                //if (Utils.IsNumeric(_pagesize) &&
+                //    (_pagemid == "" | _pagemid == moduleid.ToString(CultureInfo.InvariantCulture)))
+                //    pageSize = Convert.ToInt32(_pagesize);
+                //if (pageSize == 0)
+                //{
+                //    var strPgSize = "";
+                //    if (metaTokens.ContainsKey("searchpagesize")) strPgSize = metaTokens["searchpagesize"];
+                //    if (metaTokens.ContainsKey("pagesize") && strPgSize == "") strPgSize = metaTokens["pagesize"];
+                //    if (Utils.IsNumeric(strPgSize)) pageSize = Convert.ToInt32(strPgSize);
+                //}
 
-            var objQual = DotNetNuke.Data.DataProvider.Instance().ObjectQualifier;
-            var dbOwner = DotNetNuke.Data.DataProvider.Instance().DatabaseOwner;
+                _navigationdata.PageSize = pageSize.ToString("");
 
-            //get default catid.
-            var catseo = _catid;
-            var defcatid = ModSettings.Get("defaultcatid");
-            if (defcatid == "") defcatid = "0";
-            if (_catname != "")
-            {
-                _catid = CategoryUtils.GetCatIdFromName(_catname);
-                catseo = _catid;
-            }
+                #endregion
 
-            var filterCatList = "(";
-            if (Utils.IsNumeric(_catid) && Convert.ToInt32(_catid) > 0 && ModSettings.Get("staticlist") != "True")
-            {
-                // url param passed
-                filterCatList += " XrefItemId = " + _catid + " ";
-            }
-            else
-            {
-                // get multiple default  categories.
-                var defcatlist = defcatid + "," + ModSettings.Get("defaultcatlist");
-                var defcatlistsplit = defcatlist.Split(',');
-                var clp = 1;
-                foreach (var c in defcatlistsplit)
+                #endregion
+
+                #region "Get filter setup"
+
+                // check the display header to see if we have a sqlfilter defined.
+                var strFilter = "";
+                var sqlTemplateFilter = "";
+                if (metaTokens.ContainsKey("sqlfilter")) sqlTemplateFilter = GenXmlFunctions.StripSqlCommands(metaTokens["sqlfilter"]);
+
+                if (_navigationdata.HasCriteria)
                 {
-                    if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
+                    var paramcatid = _catid;
+                    if (Utils.IsNumeric(paramcatid))
                     {
-                        filterCatList += " XrefItemId = " + c + " ";
-                        filterCatList += "|"; // use | so we can trim replace easy.
+                        if (_navigationdata.CategoryId != Convert.ToInt32(paramcatid)) // filter mode DOES NOT persist catid (stop confusion when user selects a category)
+                        {
+                            _navigationdata.ResetSearch();
+                        }
                     }
-                    clp += 1;
-                }
-                filterCatList = filterCatList.TrimEnd('|');
-                filterCatList = filterCatList.Replace("|", " or ");
-            }
-            filterCatList += ")";
 
-            if (Utils.IsNumeric(defcatid) && Convert.ToInt32(defcatid) > 0)
-            {
-                // if we have no filter use the default category
-                if (_catid == "" && strFilter.Trim() == "") _catid = defcatid;
-            }
-            else
-            {
-                defcatid = ModSettings.Get("defaultpropertyid");
+                    // if navdata is not deleted then get filter from navdata, created by productsearch module.
+                    strFilter = _navigationdata.Criteria;
+                    if (!strFilter.Contains(sqlTemplateFilter)) strFilter += " " + sqlTemplateFilter;
+
+                    if (_navigationdata.Mode.ToLower() == "s") _navigationdata.ResetSearch(); // single search so clear after
+                }
+                else
+                {
+                    // reset search if category selected 
+                    // NOTE: keeping search across categories is VERY confusing for cleint, although it works logically.
+                    _navigationdata.ResetSearch();
+                    strFilter = sqlTemplateFilter;
+                }
+
+                var pageNumber = 1;
+                //check for url param paging
+                if (Utils.IsNumeric(_pagenum) && (_pagemid == "" | _pagemid == moduleid.ToString(CultureInfo.InvariantCulture)))
+                {
+                    pageNumber = Convert.ToInt32(_pagenum);
+                }
+
+                #endregion
+
+                #region "Get Category select setup"
+
+                var objQual = DotNetNuke.Data.DataProvider.Instance().ObjectQualifier;
+                var dbOwner = DotNetNuke.Data.DataProvider.Instance().DatabaseOwner;
+
+                //get default catid.
+                var catseo = _catid;
+                var defcatid = ModSettings.Get("defaultcatid");
                 if (defcatid == "") defcatid = "0";
+                if (_catname != "")
+                {
+                    _catid = CategoryUtils.GetCatIdFromName(_catname);
+                    catseo = _catid;
+                }
+
+                var filterCatList = "(";
+                if (Utils.IsNumeric(_catid) && Convert.ToInt32(_catid) > 0 && ModSettings.Get("staticlist") != "True")
+                {
+                    // url param passed
+                    filterCatList += " XrefItemId = " + _catid + " ";
+                }
+                else
+                {
+                    // get multiple default  categories.
+                    var defcatlist = defcatid + "," + ModSettings.Get("defaultcatlist");
+                    var defcatlistsplit = defcatlist.Split(',');
+                    var clp = 1;
+                    foreach (var c in defcatlistsplit)
+                    {
+                        if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
+                        {
+                            filterCatList += " XrefItemId = " + c + " ";
+                            filterCatList += "|"; // use | so we can trim replace easy.
+                        }
+                        clp += 1;
+                    }
+                    filterCatList = filterCatList.TrimEnd('|');
+                    filterCatList = filterCatList.Replace("|", " or ");
+                }
+                filterCatList += ")";
+
                 if (Utils.IsNumeric(defcatid) && Convert.ToInt32(defcatid) > 0)
                 {
                     // if we have no filter use the default category
                     if (_catid == "" && strFilter.Trim() == "") _catid = defcatid;
-
-                    // use multiple properties if there
-                    filterCatList = "(";
-                    if (Utils.IsNumeric(_catid) && Convert.ToInt32(_catid) > 0 && ModSettings.Get("staticlist") != "True")
-                    {
-                        // url param passed
-                        filterCatList += " XrefItemId = " + _catid + " ";
-                    }
-                    else
-                    {
-                        // get multiple default  categories.
-                        var defcatlist = defcatid + "," + ModSettings.Get("defaultpropertylist");
-                        var defcatlistsplit = defcatlist.Split(',');
-                        var clp = 1;
-                        foreach (var c in defcatlistsplit)
-                        {
-                            if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
-                            {
-                                filterCatList += " XrefItemId = " + c + " ";
-                                filterCatList += "|"; // use | so we can trim replace easy.
-                            }
-                            clp += 1;
-                        }
-                        filterCatList = filterCatList.TrimEnd('|');
-                        filterCatList = filterCatList.Replace("|", " or ");
-                    }
-                    filterCatList += ")";
-
                 }
-            }
-
-            // If we have a list,then always display the default category
-            if (ModSettings.Get("staticlist") == "True")
-            {
-                if (catseo == "") catseo = _catid;
-                _catid = defcatid;
-                if (ModSettings.Get("chkcascaderesults").ToLower() == "true")
-                    strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
                 else
-                    strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
-
-                if (ModSettings.Get("caturlfilter") == "True" && catseo != "" && catseo != _catid)
                 {
-                    // add aditional filter for catid filter on url (catseo holds catid from url)
-                    if (ModSettings.Get("chkcascaderesults").ToLower() == "true")
-                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and XrefItemId = " + catseo + ") ";
-                    else
-                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and XrefItemId = " + catseo + ") ";
+                    defcatid = ModSettings.Get("defaultpropertyid");
+                    if (defcatid == "") defcatid = "0";
+                    if (Utils.IsNumeric(defcatid) && Convert.ToInt32(defcatid) > 0)
+                    {
+                        // if we have no filter use the default category
+                        if (_catid == "" && strFilter.Trim() == "") _catid = defcatid;
+
+                        // use multiple properties if there
+                        filterCatList = "(";
+                        if (Utils.IsNumeric(_catid) && Convert.ToInt32(_catid) > 0 && ModSettings.Get("staticlist") != "True")
+                        {
+                            // url param passed
+                            filterCatList += " XrefItemId = " + _catid + " ";
+                        }
+                        else
+                        {
+                            // get multiple default  categories.
+                            var defcatlist = defcatid + "," + ModSettings.Get("defaultpropertylist");
+                            var defcatlistsplit = defcatlist.Split(',');
+                            var clp = 1;
+                            foreach (var c in defcatlistsplit)
+                            {
+                                if (Utils.IsNumeric(c) && Convert.ToInt32(c) > 0)
+                                {
+                                    filterCatList += " XrefItemId = " + c + " ";
+                                    filterCatList += "|"; // use | so we can trim replace easy.
+                                }
+                                clp += 1;
+                            }
+                            filterCatList = filterCatList.TrimEnd('|');
+                            filterCatList = filterCatList.Replace("|", " or ");
+                        }
+                        filterCatList += ")";
+
+                    }
                 }
-                // do special custom sort in each cateogry, this passes the catid to the SQL SPROC, whcih process the '{bycategoryproduct}' and orders by product/category seq. 
-                if (_navigationdata.OrderBy.Contains("{bycategoryproduct}")) _navigationdata.OrderBy = "{bycategoryproduct}" + _catid;
-            }
-            else
-            {
-                #region "use url to get category to display"
-                //check if we are display categories 
-                // get category list data
 
-                if (Utils.IsNumeric(_catid))
+                // If we have a list,then always display the default category
+                if (ModSettings.Get("staticlist") == "True")
                 {
-
+                    if (catseo == "") catseo = _catid;
+                    _catid = defcatid;
                     if (ModSettings.Get("chkcascaderesults").ToLower() == "true")
                         strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
                     else
                         strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
 
-                    if (Utils.IsNumeric(catseo))
+                    if (ModSettings.Get("caturlfilter") == "True" && catseo != "" && catseo != _catid)
                     {
-                        var objSEOCat = ModCtrl.GetData(Convert.ToInt32(catseo), "CATEGORYLANG", Utils.GetCurrentCulture());
-                        if (objSEOCat != null && _eid == "") // we may have a detail page and listonly module, in which can we need the product detail as page title
-                        {
-                            //TODO: Should remain in ascx.cs perhaps?
-                            //Page Title
-                            //var seoname = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtseoname");
-                            //if (seoname == "") seoname = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtcategoryname");
-
-                            //var newBaseTitle = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtseopagetitle");
-                            //if (newBaseTitle == "") newBaseTitle = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtseoname");
-                            //if (newBaseTitle == "") newBaseTitle = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtcategoryname");
-                            //if (newBaseTitle != "") BasePage.Title = newBaseTitle;
-                            ////Page KeyWords
-                            //var newBaseKeyWords = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtmetakeywords");
-                            //if (newBaseKeyWords != "") BasePage.KeyWords = newBaseKeyWords;
-                            ////Page Description
-                            //var newBaseDescription = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtmetadescription");
-                            //if (newBaseDescription == "") newBaseDescription = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtcategorydesc");
-                            //if (newBaseDescription != "") BasePage.Description = newBaseDescription;
-
-
-                            // Remove canonical link for list.  The Open URL Rewriter (OUR) will create a url that is different to the default SEO url in NBS. 
-                            // So to stop clashes it's been disable by default.  The requirment for a canonical link on a category list is more ticking the box than of being any SEO help (might even be causing confusion to Search Engines). 
-                            // ** If your a SEO nutcases (or SEO companies pushing for it) then you can uncomment the code below, and you can implement the Open URL Rewriter and canonical link.
-
-                            //if (PortalSettings.HomeTabId == TabId)
-                            //    PageIncludes.IncludeCanonicalLink(Page, Globals.AddHTTP(PortalSettings.PortalAlias.HTTPAlias)); //home page always default of site.
-                            //else
-                            //{
-                            //    PageIncludes.IncludeCanonicalLink(Page, NBrightBuyUtils.GetListUrl(PortalId, TabId, objSEOCat.ItemID, seoname, Utils.GetCurrentCulture()));
-                            //    // Code required for OUR (if used, test to ensure it works correctly!!)
-                            //    //PageIncludes.IncludeCanonicalLink(Page, NBrightBuyUtils.GetListUrl(PortalId, TabId, objSEOCat.ItemID, "", Utils.GetCurrentCulture()));
-                            //}
-                        }
+                        // add aditional filter for catid filter on url (catseo holds catid from url)
+                        if (ModSettings.Get("chkcascaderesults").ToLower() == "true")
+                            strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and XrefItemId = " + catseo + ") ";
+                        else
+                            strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and XrefItemId = " + catseo + ") ";
                     }
-
                     // do special custom sort in each cateogry, this passes the catid to the SQL SPROC, whcih process the '{bycategoryproduct}' and orders by product/category seq. 
                     if (_navigationdata.OrderBy.Contains("{bycategoryproduct}")) _navigationdata.OrderBy = "{bycategoryproduct}" + _catid;
-
                 }
                 else
                 {
-                    if (!_navigationdata.FilterMode) _navigationdata.CategoryId = 0; // filter mode persist catid
-                    if (_navigationdata.OrderBy.Contains("{bycategoryproduct}")) _navigationdata.OrderBy = " Order by ModifiedDate DESC  ";
+                    #region "use url to get category to display"
+                    //check if we are display categories 
+                    // get category list data
+
+                    if (Utils.IsNumeric(_catid))
+                    {
+
+                        if (ModSettings.Get("chkcascaderesults").ToLower() == "true")
+                            strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
+                        else
+                            strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
+
+                        if (Utils.IsNumeric(catseo))
+                        {
+                            var objSEOCat = ModCtrl.GetData(Convert.ToInt32(catseo), "CATEGORYLANG", Utils.GetCurrentCulture());
+                            if (objSEOCat != null && _eid == "") // we may have a detail page and listonly module, in which can we need the product detail as page title
+                            {
+                                //TODO: Should remain in ascx.cs perhaps?
+                                //Page Title
+                                //var seoname = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtseoname");
+                                //if (seoname == "") seoname = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtcategoryname");
+
+                                //var newBaseTitle = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtseopagetitle");
+                                //if (newBaseTitle == "") newBaseTitle = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtseoname");
+                                //if (newBaseTitle == "") newBaseTitle = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtcategoryname");
+                                //if (newBaseTitle != "") BasePage.Title = newBaseTitle;
+                                ////Page KeyWords
+                                //var newBaseKeyWords = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtmetakeywords");
+                                //if (newBaseKeyWords != "") BasePage.KeyWords = newBaseKeyWords;
+                                ////Page Description
+                                //var newBaseDescription = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtmetadescription");
+                                //if (newBaseDescription == "") newBaseDescription = objSEOCat.GetXmlProperty("genxml/lang/genxml/textbox/txtcategorydesc");
+                                //if (newBaseDescription != "") BasePage.Description = newBaseDescription;
+
+
+                                // Remove canonical link for list.  The Open URL Rewriter (OUR) will create a url that is different to the default SEO url in NBS. 
+                                // So to stop clashes it's been disable by default.  The requirment for a canonical link on a category list is more ticking the box than of being any SEO help (might even be causing confusion to Search Engines). 
+                                // ** If your a SEO nutcases (or SEO companies pushing for it) then you can uncomment the code below, and you can implement the Open URL Rewriter and canonical link.
+
+                                //if (PortalSettings.HomeTabId == TabId)
+                                //    PageIncludes.IncludeCanonicalLink(Page, Globals.AddHTTP(PortalSettings.PortalAlias.HTTPAlias)); //home page always default of site.
+                                //else
+                                //{
+                                //    PageIncludes.IncludeCanonicalLink(Page, NBrightBuyUtils.GetListUrl(PortalId, TabId, objSEOCat.ItemID, seoname, Utils.GetCurrentCulture()));
+                                //    // Code required for OUR (if used, test to ensure it works correctly!!)
+                                //    //PageIncludes.IncludeCanonicalLink(Page, NBrightBuyUtils.GetListUrl(PortalId, TabId, objSEOCat.ItemID, "", Utils.GetCurrentCulture()));
+                                //}
+                            }
+                        }
+
+                        // do special custom sort in each cateogry, this passes the catid to the SQL SPROC, whcih process the '{bycategoryproduct}' and orders by product/category seq. 
+                        if (_navigationdata.OrderBy.Contains("{bycategoryproduct}")) _navigationdata.OrderBy = "{bycategoryproduct}" + _catid;
+
+                    }
+                    else
+                    {
+                        if (!_navigationdata.FilterMode) _navigationdata.CategoryId = 0; // filter mode persist catid
+                        if (_navigationdata.OrderBy.Contains("{bycategoryproduct}")) _navigationdata.OrderBy = " Order by ModifiedDate DESC  ";
+                    }
+
+                    #endregion
+                }
+
+                // This allows the return to the same category after a returning from a entry view. + Gives support for current category in razor tokens
+                if (Utils.IsNumeric(_catid)) _navigationdata.CategoryId = Convert.ToInt32(_catid);
+
+                #endregion
+
+                #region "Apply provider product filter"
+
+                // Special filtering can be done, by using the ProductFilter interface.
+                var productfilterkey = "";
+                if (metaTokens.ContainsKey("providerfilterkey")) productfilterkey = metaTokens["providerfilterkey"];
+                if (productfilterkey != "")
+                {
+                    var provfilter = FilterInterface.Instance(productfilterkey);
+                    if (provfilter != null) strFilter = provfilter.GetFilter(strFilter, _navigationdata, ModSettings, context);
                 }
 
                 #endregion
-            }
 
-            // This allows the return to the same category after a returning from a entry view. + Gives support for current category in razor tokens
-            if (Utils.IsNumeric(_catid)) _navigationdata.CategoryId = Convert.ToInt32(_catid);
+                #region "itemlists (wishlist)"
 
-            #endregion
-
-            #region "Apply provider product filter"
-
-            // Special filtering can be done, by using the ProductFilter interface.
-            var productfilterkey = "";
-            if (metaTokens.ContainsKey("providerfilterkey")) productfilterkey = metaTokens["providerfilterkey"];
-            if (productfilterkey != "")
-            {
-                var provfilter = FilterInterface.Instance(productfilterkey);
-                if (provfilter != null) strFilter = provfilter.GetFilter(strFilter, _navigationdata, ModSettings, context);
-            }
-
-            #endregion
-
-            #region "itemlists (wishlist)"
-
-            // if we have a itemListName field then get the itemlist cookie.
-            if (ModSettings.Get("displaytype") == "2") // displaytype 2 = "selected list"
-            {
-
-                var cw = new ItemListData(PortalSettings.Current.PortalId,UserController.Instance.GetCurrentUserInfo().UserID);
-                if (cw.Exists && cw.ItemCount > 0)
+                // if we have a itemListName field then get the itemlist cookie.
+                if (ModSettings.Get("displaytype") == "2") // displaytype 2 = "selected list"
                 {
-                    strFilter = " and (";
-                    foreach (var i in cw.GetItemList())
+
+                    var cw = new ItemListData(PortalSettings.Current.PortalId, UserController.Instance.GetCurrentUserInfo().UserID);
+                    if (cw.Exists && cw.ItemCount > 0)
                     {
-                        strFilter += " NB1.itemid = '" + i + "' or";
+                        strFilter = " and (";
+                        foreach (var i in cw.GetItemList())
+                        {
+                            strFilter += " NB1.itemid = '" + i + "' or";
+                        }
+                        strFilter = strFilter.Substring(0, (strFilter.Length - 3)) + ") ";
+                        // remove the last "or"                    
                     }
-                    strFilter = strFilter.Substring(0, (strFilter.Length - 3)) + ") ";
-                    // remove the last "or"                    
+                    else
+                    {
+                        //no data in list so select false itemid to stop anything displaying
+                        strFilter += " and (NB1.itemid = '-1') ";
+                    }
+
+                }
+
+                #endregion
+
+                #region apply ajax property filter
+
+                if (!string.IsNullOrEmpty(_propertyfilter))
+                {
+                    var propIds = new List<string>();
+                    var groupPropIds = new Dictionary<string, List<string>>();
+                    foreach (string grpPropId in _propertyfilter.Split(','))
+                    {
+                        if (!String.IsNullOrEmpty(grpPropId) && grpPropId.Contains("-"))
+                        {
+                            var groupId = grpPropId.Split('-')[0];
+                            var propId = grpPropId.Split('-')[1];
+
+                            if (!groupPropIds.ContainsKey(groupId)) groupPropIds.Add(groupId, new List<string>());
+
+                            groupPropIds[groupId].Add(propId);
+                        }
+                    }
+
+                    var sqlGroupFilter = "";
+                    foreach (var groupPropId in groupPropIds.Keys)
+                    {
+                        if (!String.IsNullOrEmpty(sqlGroupFilter))
+                        {
+                            sqlGroupFilter += $" {_filterTypeOutsideProp} ";
+                        }
+
+                        var sqlPropFilter = "";
+                        foreach (var propId in groupPropIds[groupPropId])
+                        {
+                            if (!String.IsNullOrEmpty(sqlPropFilter))
+                            {
+                                sqlPropFilter += $" {_filterTypeInsideProp} ";
+                            }
+                            sqlPropFilter += $"NB1.[ItemId] in (select parentitemid from {dbOwner}[{objQual}NBrightBuy] where typecode = 'CATXREF' and XrefItemId = {propId}) ";
+                        }
+                        sqlGroupFilter += $" ({sqlPropFilter}) ";
+                    }
+
+                    //foreach (var propId in propIds)
+                    //{
+                    //    if (!String.IsNullOrEmpty(sqlPropFilter))
+                    //    {
+                    //        sqlPropFilter += " AND ";
+                    //    }
+                    //    sqlPropFilter += $"NB1.[ItemId] in (select parentitemid from {dbOwner}[{objQual}NBrightBuy] where typecode = 'CATXREF' and XrefItemId = {propId}) ";
+                    //}
+                    if (!String.IsNullOrEmpty(sqlGroupFilter))
+                    {
+                        strFilter += $" AND ({sqlGroupFilter}) ";
+                    }
+                }
+
+                #endregion
+
+                // save navigation data
+                _navigationdata.PageModuleId = Utils.RequestParam(context, "pagemid");
+                _navigationdata.PageNumber = Utils.RequestParam(context, "page");
+                if (Utils.IsNumeric(_catid)) _navigationdata.PageName = NBrightBuyUtils.GetCurrentPageName(Convert.ToInt32(_catid));
+
+                // save the last active modulekey to a cookie, so it can be used by the "NBrightBuyUtils.GetReturnUrl" function
+                NBrightCore.common.Cookie.SetCookieValue(ps.PortalId, "NBrigthBuyLastActive", "ModuleKey", ModuleKey, 1);
+
+                if (strFilter.Trim() == "")
+                {
+                    //TODO: Check, but this should not be possible
+                    // if at this point we have no filter, then assume we're using urlrewriter and a 404 url has been entered.
+                    // rather than display all visible products in a list with no default.
+                    // redirect to the product display function, so we can display a 404 and product not found.
+                    //RazorDisplayDataEntry(_eid);
                 }
                 else
                 {
-                    //no data in list so select false itemid to stop anything displaying
-                    strFilter += " and (NB1.itemid = '-1') ";
-                }
 
-            }
+                    strFilter += " and (NB3.Visible = 1) "; // get only visible products
 
-            #endregion
+                    var recordCount = ModCtrl.GetDataListCount(ps.PortalId, moduleid, EntityTypeCode, strFilter, EntityTypeCodeLang, Utils.GetCurrentCulture(), DebugMode);
 
-            #region apply ajax property filter
+                    _navigationdata.RecordCount = recordCount.ToString("");
+                    _navigationdata.Save();
 
-            if (!string.IsNullOrEmpty(_propertyfilter))
-            {
-                var propIds = new List<string>();
-                var groupPropIds = new Dictionary<string, List<string>>();
-                foreach (string grpPropId in _propertyfilter.Split(','))
-                {
-                    if (!String.IsNullOrEmpty(grpPropId) && grpPropId.Contains("-"))
+                    if (returnlimit > 0 && returnlimit < recordCount) recordCount = returnlimit;
+
+                    // **** check if we already have the template cached, if so no need for DB call or razor call ****
+                    // get same cachekey used for DB return, and use for razor.
+                    var razorcachekey = ModCtrl.GetDataListCacheKey(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, _navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+                    var cachekey = "NBrightBuyRazorOutput" + _templD + "*" + razorcachekey + ps.PortalId.ToString();
+                    retval = (String)NBrightBuyUtils.GetModCache(cachekey);
+                    if (retval == null || DebugMode)
                     {
-                        var groupId = grpPropId.Split('-')[0];
-                        var propId = grpPropId.Split('-')[1];
-
-                        if (!groupPropIds.ContainsKey(groupId)) groupPropIds.Add(groupId, new List<string>());
-
-                        groupPropIds[groupId].Add(propId);
-                    }
-                }
-
-                var sqlGroupFilter = "";
-                foreach (var groupPropId in groupPropIds.Keys)
-                {
-                    if (!String.IsNullOrEmpty(sqlGroupFilter))
-                    {
-                        sqlGroupFilter += $" {_filterTypeOutsideProp} ";
-                    }
-
-                    var sqlPropFilter = "";
-                    foreach (var propId in groupPropIds[groupPropId])
-                    {
-                        if (!String.IsNullOrEmpty(sqlPropFilter))
+                        retval = "";
+                        if (defcatid != "0")  // no category will cause error.
                         {
-                            sqlPropFilter += $" {_filterTypeInsideProp} ";
+                            var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, _navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+                            if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
+                            ModSettings.Settings()["recordcount"] = recordCount.ToString();
+                            retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
                         }
-                        sqlPropFilter += $"NB1.[ItemId] in (select parentitemid from {dbOwner}[{objQual}NBrightBuy] where typecode = 'CATXREF' and XrefItemId = {propId}) ";
                     }
-                    sqlGroupFilter += $" ({sqlPropFilter}) ";
-                }
 
-                //foreach (var propId in propIds)
-                //{
-                //    if (!String.IsNullOrEmpty(sqlPropFilter))
-                //    {
-                //        sqlPropFilter += " AND ";
-                //    }
-                //    sqlPropFilter += $"NB1.[ItemId] in (select parentitemid from {dbOwner}[{objQual}NBrightBuy] where typecode = 'CATXREF' and XrefItemId = {propId}) ";
-                //}
-                if (!String.IsNullOrEmpty(sqlGroupFilter))
-                {
-                    strFilter += $" AND ({sqlGroupFilter}) ";
-                }
-            }
+                    //SK phData.Controls.Add(lit);
 
-            #endregion
-
-            // save navigation data
-            _navigationdata.PageModuleId = Utils.RequestParam(context, "pagemid");
-            _navigationdata.PageNumber = Utils.RequestParam(context, "page");
-            if (Utils.IsNumeric(_catid)) _navigationdata.PageName = NBrightBuyUtils.GetCurrentPageName(Convert.ToInt32(_catid));
-
-            // save the last active modulekey to a cookie, so it can be used by the "NBrightBuyUtils.GetReturnUrl" function
-            NBrightCore.common.Cookie.SetCookieValue(ps.PortalId, "NBrigthBuyLastActive", "ModuleKey", ModuleKey, 1);
-
-            if (strFilter.Trim() == "")
-            {
-                //TODO: Check, but this should not be possible
-                // if at this point we have no filter, then assume we're using urlrewriter and a 404 url has been entered.
-                // rather than display all visible products in a list with no default.
-                // redirect to the product display function, so we can display a 404 and product not found.
-                //RazorDisplayDataEntry(_eid);
-            }
-            else
-            {
-
-                strFilter += " and (NB3.Visible = 1) "; // get only visible products
-
-                var recordCount = ModCtrl.GetDataListCount(ps.PortalId, moduleid, EntityTypeCode, strFilter, EntityTypeCodeLang, Utils.GetCurrentCulture(), DebugMode);
-
-                _navigationdata.RecordCount = recordCount.ToString("");
-                _navigationdata.Save();
-
-                if (returnlimit > 0 && returnlimit < recordCount) recordCount = returnlimit;
-
-                // **** check if we already have the template cached, if so no need for DB call or razor call ****
-                // get same cachekey used for DB return, and use for razor.
-                var razorcachekey = ModCtrl.GetDataListCacheKey(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, _navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
-                var cachekey = "NBrightBuyRazorOutput" + _templD + "*" + razorcachekey + ps.PortalId.ToString();
-                retval = (String)NBrightBuyUtils.GetModCache(cachekey);
-                if (retval == null || DebugMode)
-                {
-                    retval = "";
-                    if (defcatid != "0")  // no category will cause error.
+                    // add paging if needed
+                    if (recordCount > pageSize)
                     {
-                        var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, _navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
-                        if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
-                        ModSettings.Settings()["recordcount"] = recordCount.ToString();
-                        retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+                        if (pageSize == 0) pageSize = 12;
+                        var pgdata = NBrightBuyUtils.GetPagingData(recordCount, pageSize, pageNumber);
+                        var strPg = NBrightBuyUtils.RazorTemplRenderList(Path.GetFileNameWithoutExtension(_templD) + "_paging" + Path.GetExtension(_templD), moduleid, razorcachekey + "PG", pgdata, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+                        retval += strPg;
                     }
+
+                    if (_navigationdata.SingleSearchMode) _navigationdata.ResetSearch();
                 }
 
-                //SK phData.Controls.Add(lit);
+                #endregion
 
-                // add paging if needed
-                if (recordCount > pageSize)
-                {
-                    if (pageSize == 0) pageSize = 12;
-                    var pgdata = NBrightBuyUtils.GetPagingData(recordCount, pageSize, pageNumber);
-                    var strPg = NBrightBuyUtils.RazorTemplRenderList(Path.GetFileNameWithoutExtension(_templD) + "_paging" + Path.GetExtension(_templD), moduleid, razorcachekey + "PG", pgdata, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
-                    retval += strPg;
-                }
-
-                if (_navigationdata.SingleSearchMode) _navigationdata.ResetSearch();
             }
-
-            #endregion
-
-
+            catch (Exception ex)
+            {
+                _navigationdata.Delete(); // May be the navigation data that is wrong
+                retval = ex.ToString();
+                Logging.LogException(ex);
+            }
             return retval;
+
         }
 
         public String ProductAjaxFilter(HttpContext context)
