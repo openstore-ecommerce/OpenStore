@@ -71,7 +71,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 if (UserId != UserController.Instance.GetCurrentUserInfo().UserID && EditMode == "") UserId = UserController.Instance.GetCurrentUserInfo().UserID;
                 PurchaseInfo.UserId = UserId;
-                PurchaseInfo.GUIDKey = UserId.ToString("");
+                if (PurchaseTypeCode=="CART") PurchaseInfo.GUIDKey = UserId.ToString("");
                 if (EditMode == "" && !string.IsNullOrEmpty(UserController.Instance.GetCurrentUserInfo().Profile.PreferredLocale))
                 {
                     ClientLang = UserController.Instance.GetCurrentUserInfo().Profile.PreferredLocale;
