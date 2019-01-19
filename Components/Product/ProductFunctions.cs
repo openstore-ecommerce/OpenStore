@@ -1151,8 +1151,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         }
 
                         string fullName = StoreSettings.Current.FolderTempMapPath + "\\" + fn;
-                        if ((extension.ToLower() == ".pdf" || extension.ToLower() == ".zip"))
-                        {
+                        //if ((extension.ToLower() == ".pdf" || extension.ToLower() == ".zip"))
+                        //{
                             if (File.Exists(fullName))
                             {
                                 var newDocFileName = StoreSettings.Current.FolderDocumentsMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + Guid.NewGuid() + extension;
@@ -1160,7 +1160,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                                 var docurl = StoreSettings.Current.FolderDocuments.TrimEnd('/') + "/" + Path.GetFileName(newDocFileName);
                                 AddNewDoc(Convert.ToInt32(productitemid), newDocFileName, doc);
                             }
-                        }
+                        //}
                     }
                 }
                 // clear any cache for the product.

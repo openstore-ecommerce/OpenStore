@@ -528,7 +528,7 @@ function moveRight(item) {
             $('#cmdSaveDoc').fileupload({
                 url: url,
                 maxFileSize: 5000000,
-                acceptFileTypes: /(\.|\/)(pdf)$/i,
+                acceptFileTypes: /^.*\.(txt | gif | jpe ? g | jpg | pdf | doc | docx | xls | xlsx | zip | csv | xml)$/i,
                 dataType: 'json'
             }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled')
                 .bind('fileuploadprogressall', function (e, data) {

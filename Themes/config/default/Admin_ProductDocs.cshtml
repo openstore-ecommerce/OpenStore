@@ -17,27 +17,35 @@
 @foreach (var nbiDoc in prdData.Docs)
 {
 
-    <li class="docitem form-group">
-        <a class="sortelementUp"><i class="fa fa-caret-up fa-2x fa-fw"></i></a>
-        <a class="sortelementDown"><i class="fa fa-caret-down fa-2x fa-fw"></i></a>
+<li class="docitem form-group">
+    <a class="sortelementUp"><i class="fa fa-caret-up fa-2x fa-fw"></i></a>
+    <a class="sortelementDown"><i class="fa fa-caret-down fa-2x fa-fw"></i></a>
 
-        <input id="fileext" type="hidden" update="save" value="@nbiDoc.GetXmlProperty(" genxml/hidden/fileext")" />
-        <input id="filepath" type="hidden" update="save" value="@nbiDoc.GetXmlProperty(" genxml/hidden/filepath")" />
+    <input id="index" type="hidden" update="save" value="@lp3" />
+    <input id="fileext" type="hidden" update="save" value="@nbiDoc.GetXmlProperty(" genxml/hidden/fileext")" />
+    <input id="filepath" type="hidden" update="save" value="@nbiDoc.GetXmlProperty(" genxml/hidden/filepath")" />
 
-        <div class="col-sm-12 form-horizontal">
-            <div class="row">
-                <div class="col-xs-6"><label class="control-label">@ResourceKey("General.FileName")</label>@TextBox(nbiDoc, "genxml/textbox/txtfilename_" + lp3, "class='form-control input-sm' maxlength='250' ", "")</div>
-                <div class="col-xs-6"><label class="control-label">@ResourceKey("General.Title")</label>@LangFlag(info.Lang)@TextBox(nbiDoc, "genxml/lang/genxml/textbox/txttitle_" + lp3, "class='form-control input-sm' maxlength='250' ", "")</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-10"><label class="control-label">@ResourceKey("General.Description")</label>@LangFlag(info.Lang)@TextBox(nbiDoc, "genxml/lang/genxml/textbox/txtdocdesc_" + lp3, "class='form-control input-sm' maxlength='250' ", "")</div>
-                <div class="col-sm-2"><label class="control-label">&nbsp;</label><br><a class="removedoc btn btn-danger">@ResourceKey("General.cmdRemoveButton")</a></div>
-            </div>
-            <div class="row form-group">
-                <div class="col-sm-2 nowrap">@CheckBox(nbiDoc, "genxml/checkbox/chkishidden", "")<label class="control-label">@ResourceKey("General.Hidden")</label></div>
-                <div class="col-sm-2 nowrap">@CheckBox(nbiDoc, "genxml/checkbox/chkpurchase", "")<label class="control-label">@ResourceKey("General.Purchase")</label></div>
-            </div>
+    <div class="col-sm-12 form-horizontal">
+        <div class="row">
+            <div class="col-xs-6"><label class="control-label">@ResourceKey("General.FileName")</label>@TextBox(nbiDoc, "genxml/textbox/txtfilename_" + lp3, "class='form-control input-sm' maxlength='250' ", "")</div>
+            <div class="col-xs-6"><label class="control-label">@ResourceKey("General.Title")</label>@LangFlag(info.Lang)@TextBox(nbiDoc, "genxml/lang/genxml/textbox/txttitle_" + lp3, "class='form-control input-sm' maxlength='250' ", "")</div>
         </div>
-    </li>
+        <div class="row">
+            <div class="col-xs-12"><label class="control-label">@ResourceKey("General.Description")</label>@LangFlag(info.Lang)@TextBox(nbiDoc, "genxml/lang/genxml/textbox/txtdocdesc_" + lp3, "class='form-control input-sm' maxlength='250' ", "")</div>
+        </div>
+        <div class="row form-group">
+            <div class="col-sm-2 nowrap">@CheckBox(nbiDoc, "genxml/checkbox/chkishidden", "")<label class="control-label">@ResourceKey("General.Hidden")</label></div>
+            <div class="col-sm-2 nowrap">
+                @CheckBox(nbiDoc, "genxml/checkbox/chkpurchase", "")<label class="control-label">@ResourceKey("General.Purchase")</label>
+            </div>
+            <div class="col-sm-3 nowrap">
+                <span class="purchasemodel">
+                    <label class="control-label">@ResourceKey("General.Models")</label>&nbsp;&nbsp;@ModelSelect(info, nbiDoc, "genxml/dropdownlist/modelid", "class=' input-sm'", true)
+                </span>
+            </div>
+            <div class="col-sm-2"><a class="removedoc btn btn-danger">@ResourceKey("General.cmdRemoveButton")</a></div>
+        </div>
+    </div>
+</li>
     lp3 += 1;
 }

@@ -281,6 +281,41 @@ namespace NBrightBuy.render
             return new RawString(strOut);
         }
 
+        public IEncodedString ModelSelect(NBrightInfo info, NBrightInfo docInfo, String xpath, String attributes = "", bool emptyselection = true)
+        {
+            var strOut = "";
+            var objL = NBrightBuyUtils.BuildModelList(info, true);
+
+            var c = 0;
+            var id = "modelid_" + docInfo.GetXmlPropertyInt("genxml/hidden/index").ToString();
+            var s = "";
+            var v = docInfo.GetXmlProperty(xpath);
+            strOut = "<select id='" + id + "' update='save' " + attributes + ">";
+            if (emptyselection)
+            {
+                strOut += "    <option value=''></option>";
+            }
+            foreach (var obj in objL)
+            {
+                var text = NBrightBuyUtils.GetItemDisplay(obj, "{name}", false);
+                var value = obj.GetXmlProperty("genxml/hidden/modelid");
+                if (value == v)
+                    s = "selected";
+                else
+                    s = "";
+
+                if (text != "")  // no stock so don;t display.
+                {
+                    strOut += "    <option value='" + value + "' " + s + ">" + text + "</option>";
+                }
+                c += 1;
+            }
+            strOut += "</select>";
+
+            return new RawString(strOut);
+        }
+
+
         public IEncodedString ModelsDropDown(NBrightInfo info, String attributes = "", String template = "{name} ({bestprice})", Int32 defaultIndex = 0, Boolean displayprice = false)
         {
             var strOut = "";
