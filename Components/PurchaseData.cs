@@ -83,12 +83,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             foreach (var i in GetCartItemList())
             {
                 productrefs += i.GetXmlProperty("genxml/productxml/genxml/textbox/txtproductref") + ",";
+                if (PurchaseInfo.TypeCode != null) // if we're using this class to build cart in memory for procesisng only, don;t save to DB.
+                {
+                   AddPurchasedDocs(i.GetXmlProperty("genxml/modelid")); // only update the userdata if we're saving data.
+                }
             }
             PurchaseInfo.SetXmlProperty("genxml/productrefs", productrefs);
 
             if (PurchaseInfo.TypeCode != null) // if we're using this class to build cart in memory for procesisng only, don;t save to DB.
             {
-                AddPurchasedDocs(); // only update the userdata if we're saving data.
                 _entryId = modCtrl.Update(PurchaseInfo);
                 NBrightBuyUtils.ProcessEventProvider(EventActions.AfterSavePurchaseData, PurchaseInfo);
             }
@@ -1123,7 +1126,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <summary>
         /// Check for any purchased download documents in cartitem and add any to USERDATA record.
         /// </summary>
-        private void AddPurchasedDocs()
+        private void AddPurchasedDocs(string modelid)
         {
             if (PurchaseInfo.GetXmlProperty("genxml/dropdownlist/orderstatus") == "040") // only add docs when payment OK.
             {
@@ -1134,8 +1137,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 {
                     if (!udata.HasPurchasedDocByFileName(docitem.GetXmlProperty("genxml/hidden/filename")))
                     {
-                        udata.AddNewPurchasedDoc(Utils.GetUniqueKey(20), docitem.GetXmlProperty("genxml/hidden/filename"), docitem.GetXmlProperty("genxml/productid"));
-                        upd = true;
+                        if (docitem.GetXmlProperty("genxml/dropdownlist/modelid") == "" || docitem.GetXmlProperty("genxml/dropdownlist/modelid") == modelid)
+                        {
+                            udata.AddNewPurchasedDoc(Utils.GetUniqueKey(20), docitem.GetXmlProperty("genxml/hidden/filename"), docitem.GetXmlProperty("genxml/productid"));
+                            upd = true;
+                        }
                     }
                 }
                 if (upd) udata.Save();

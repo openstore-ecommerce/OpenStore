@@ -2335,6 +2335,22 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return false;
         }
 
+        public Boolean IsPurchased(NBrightInfo dataItem, int UserId)
+        {
+            var stockOn = dataItem.GetXmlPropertyBool("genxml/checkbox/chkstockon");
+            if (stockOn)
+            {
+                var modelstatus = dataItem.GetXmlProperty("genxml/dropdownlist/modelstatus");
+                if (modelstatus == "010") return true;
+            }
+            else
+            {
+                return true;
+            }
+            return false;
+        }
+
+
         public Boolean IsModelInStock(NBrightInfo dataItem)
         {
             var stockOn = dataItem.GetXmlPropertyBool("genxml/checkbox/chkstockon");

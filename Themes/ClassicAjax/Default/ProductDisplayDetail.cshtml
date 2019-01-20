@@ -199,14 +199,16 @@ else
             }
             @if (@product.Docs.Count >= 1)
             {
+                var uData = new UserData();
                 <div id="tab-2" class="tab-content tab-hide">
                     <div class="documents">
                     <table>
                         <tbody>
                             @foreach (var doc in product.Docs)
                             {
-                                if (!doc.GetXmlPropertyBool("genxml/checkbox/chkpurchase"))
+                                if (!doc.GetXmlPropertyBool("genxml/checkbox/chkpurchase") || (uData.HasPurchasedDocByFileName(doc.GetXmlProperty("genxml/hidden/filename"))))
                                 {
+
                                     <tr><td><i class='fa fa-file-pdf-o fa-lg'></i><a href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@doc.GetXmlProperty("genxml/textbox/txtfilename")&filename=@doc.GetXmlProperty("genxml/hidden/filerelpath")' title='@doc.GetXmlProperty("genxml/textbox/txtdocdesc")'>@doc.GetXmlProperty("genxml/textbox/txttitle")</a></td></tr>
                                 }
                             }
