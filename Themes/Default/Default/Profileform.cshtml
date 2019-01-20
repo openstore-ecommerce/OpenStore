@@ -10,8 +10,10 @@
 @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
 
 @{
-// assign Model, so we can resolve var in VS
-var info = (NBrightInfo)Model.List.First();
+    // assign Model, so we can resolve var in VS
+    var info = (NBrightInfo)Model.List.First();
+    var uData = new UserData();
+
 }
 
 <!-- Client Menu -->
@@ -42,6 +44,29 @@ var info = (NBrightInfo)Model.List.First();
 
         </div>
 
+</div>
+<div class="documents">
+    <table>
+        <tbody>
+            @foreach (var purchaseddoc in uData.DocList)
+            {
+                var productid = purchaseddoc.Value.GetXmlPropertyInt("genxml/productid");
+                var productData = new ProductData(productid, Utils.GetCurrentCulture());
+                NBrightInfo doc = null;
+                foreach (var d in productData.Docs)
+                {
+                    if (d.GetXmlProperty("genxml/hidden/filename") == purchaseddoc.Value.GetXmlProperty("genxml/filename"))
+                    {
+                        doc = d;
+                    }
+                }
+                if (doc != null)
+                {
+                    <tr><td><i class='fa fa-file-pdf-o fa-lg'></i><a href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@doc.GetXmlProperty("genxml/textbox/txtfilename")&filename=@doc.GetXmlProperty("genxml/hidden/filerelpath")' title='@doc.GetXmlProperty("genxml/textbox/txtdocdesc")'>@doc.GetXmlProperty("genxml/textbox/txttitle")</a></td></tr>
+                }
+            }
+        </tbody>
+    </table>
 </div>
 
 <div class="clearfix"></div>
