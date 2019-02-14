@@ -304,10 +304,7 @@ namespace NBrightBuy.render
                 else
                     s = "";
 
-                if (text != "")  // no stock so don;t display.
-                {
-                    strOut += "    <option value='" + value + "' " + s + ">" + text + "</option>";
-                }
+                strOut += "    <option value='" + value + "' " + s + ">" + text + "</option>";
                 c += 1;
             }
             strOut += "</select>";
