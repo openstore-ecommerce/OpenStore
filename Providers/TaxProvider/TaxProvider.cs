@@ -62,7 +62,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
                 var enabletaxnumber = info.GetXmlPropertyBool("genxml/checkbox/enabletaxnumber");
                 if (enabletaxnumber)
                 {
-                    var taxnumber = cartInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/taxnumber").Trim();
+                    var taxnumber = cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/taxnumber").Trim();
                     var storetaxnumber = StoreSettings.Current.Get("storetaxnumber").Trim();
                     var storetaxcountrycode = "-1";
                     var taxcountrycode = "-1";
