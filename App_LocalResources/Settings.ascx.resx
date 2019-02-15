@@ -217,7 +217,7 @@
     <value>My Orders</value>
   </data>
   <data name="addressestab.Text" xml:space="preserve">
-    <value>My Addresses</value>
+    <value>My Address</value>
   </data>
   <data name="profiletab.Text" xml:space="preserve">
     <value>My Profile</value>
@@ -292,7 +292,7 @@
     <value>Merchant details</value>
   </data>
   <data name="emailaddresses.Text" xml:space="preserve">
-    <value>Email addresses</value>
+    <value>Email address</value>
   </data>
   <data name="supportemail.Text" xml:space="preserve">
     <value>Support</value>
