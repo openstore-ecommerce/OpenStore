@@ -1,0 +1,8 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using DotNetNuke.Entities.Users
+@using NBrightCore.common
+@using Nevoweb.DNN.NBrightBuy.Components
+
+<!-- identifies Ajax list function that must be called. -->
+<input id="ajaxlist" type="hidden" value="True" />
+<input id="list_moduleid" type="hidden" value="@Model.ModuleId" />
