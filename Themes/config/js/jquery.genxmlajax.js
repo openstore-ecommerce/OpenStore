@@ -197,7 +197,7 @@
 				var typecode = 'cb';
 				if (parentflag) typecode = 'cbl';
 					values += '<f t="' + typecode + '" ' + strUpdate + ' id="' + shortID + '" for="' + $('label[for=' + strID + ']').text() + '" val="' + element.attr("value") + '">' + element.is(':checked') + '</f>';
-            } else if (element.attr("type") == 'text' || element.attr("type") == 'date' || element.attr("type") == 'email' || element.attr("type") == 'url') {
+            } else if (element.attr("type") == 'text' || element.attr("type") == 'date' || element.attr("type") == 'email' || element.attr("type") == 'url' || element.attr("type") == 'number') {
                 if (element.attr("datatype") === undefined) {
                     values += '<f t="txt" ' + strUpdate + ' id="' + shortID + '"><![CDATA[' + element.val() + ']]></f>';
                 } else {
