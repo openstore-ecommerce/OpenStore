@@ -499,7 +499,7 @@
     <value>010,020,030,040,050,060,070,080,120,090,100,110</value>
   </data>
   <data name="orderstatus.Text" xml:space="preserve">
-    <value>Incomplete,Waiting for Bank,Cancelled,Payment OK,Payment Not Verified,Waiting for Payment,Waiting for Stock,Being Manufactured,Waiting,Shipped,Completed,Archived</value>
+    <value>Incomplete,Waiting for Bank,Cancelled,Payment OK,Payment Not Verified,Waiting for Payment,Waiting for Stock,Waiting,Being Manufactured,Shipped,Completed,Archived</value>
   </data>
   <data name="shippingdate.Text" xml:space="preserve">
     <value>Shipping Date</value>
