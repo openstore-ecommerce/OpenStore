@@ -122,7 +122,13 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                     DoImport(nbi);
                     DoImportImages(nbi);
                     DoImportDocs(nbi);
-                    Validate();
+
+                    /*
+                     * Validation removed as it impact the performance of the import.
+                     * A validation can be done by the store manager through the UI Admin Tools after the import.
+                     */
+//                    Validate();
+
                     NBrightBuyUtils.RemoveModCachePortalWide(PortalId);
                     NBrightBuyUtils.SetNotfiyMessage(ModuleId, "completed", NotifyCode.ok);
                     Response.Redirect(NBrightBuyUtils.AdminUrl(TabId, param), true);
