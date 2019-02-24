@@ -1047,4 +1047,7 @@
   <data name="Width.Text" xml:space="preserve">
     <value>Larghezza</value>
   </data>
+  <data name="DealerOnly.Text" xml:space="preserve">
+    <value>Commerciante Solo</value>
+  </data>
 </root>

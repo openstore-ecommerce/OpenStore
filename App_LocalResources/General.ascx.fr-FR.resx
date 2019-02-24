@@ -1206,4 +1206,7 @@
   <data name="AddressName.Text" xml:space="preserve">
     <value>Adresse Nom</value>
   </data>
+  <data name="DealerOnly.Text" xml:space="preserve">
+    <value>Revendeur Seulement</value>
+  </data>
 </root>
