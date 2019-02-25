@@ -208,6 +208,18 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             // after so we can assign values.
             if (total >= freeShipAmt && ("," + freeShipRefs + ",").Contains("," + countryRef + ",")) return 0;
 
+            // no value, maybe incorrect data, find default is created.
+            if (shippingAmt == 0)
+            {
+                foreach (var i in _rangeData)
+                {
+                    if (i.RefCsv.ToLower() == "default")
+                    {
+                        if (rangeValue >= i.RangeLow && rangeValue < i.RangeHigh && shippingAmt < i.Cost) shippingAmt = i.Cost;
+                    }
+                }
+            }
+
             return shippingAmt;
         }
         /// <summary>
