@@ -1224,4 +1224,7 @@
   <data name="owner.Text" xml:space="preserve">
     <value>Owner</value>
   </data>
+  <data name="DealerOnly.Text" xml:space="preserve">
+    <value>Dealer Only</value>
+  </data>
 </root>

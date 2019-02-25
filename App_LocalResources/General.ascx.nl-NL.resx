@@ -1092,4 +1092,7 @@
   <data name="updated.Text" xml:space="preserve">
     <value>Updated</value>
   </data>
+  <data name="DealerOnly.Text" xml:space="preserve">
+    <value>Handelaar Alleen</value>
+  </data>
 </root>
