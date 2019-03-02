@@ -37,7 +37,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Plugins
         {
             var strOut = "PLUGIN - ERROR!! - No Security rights or function command.";
             var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-            var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/userid");
 
             switch (paramCmd)
             {

@@ -28,7 +28,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Address
                 {
                     NBrightBuyUtils.SetContextLangauge(context);
                     var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-                    var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/userid");
                     var selecteditemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
 
                     switch (paramCmd)

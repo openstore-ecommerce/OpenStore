@@ -23,7 +23,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.ItemLists
         public static string ProcessCommand(string paramCmd, HttpContext context)
         {
             var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-            var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/userid");
             _entityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
             _entityTypeCodeLang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecodelang");
             if (_entityTypeCode == "") _entityTypeCode = "PRD";
