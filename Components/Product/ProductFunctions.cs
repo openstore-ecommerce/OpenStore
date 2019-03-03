@@ -148,6 +148,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     case "product_admin_setowner":
                         strOut = SetOwner(context);
                         break;
+                    case "product_admin_updateboolean":
+                        strOut = UpdateBoolean(context);
+                        break;
                 }
             }
 
@@ -161,9 +164,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         break;
                     case "product_ajaxview_getfilters":
                         strOut = ProductAjaxFilter(context);
-                        break;
-                    case "product_admin_updateboolean":
-                        strOut = UpdateBoolean(context);
                         break;
                 }
 
