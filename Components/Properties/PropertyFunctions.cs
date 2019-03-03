@@ -53,7 +53,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
             var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
             UiLang = ajaxInfo.GetXmlProperty("genxml/hidden/uilang");
             if (UiLang == "") UiLang = EditLangCurrent;
-            var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/userid");
             EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
             if (EntityTypeCode == "") EntityTypeCode = "CATEGORY"; // default to category
             UiLang = NBrightBuyUtils.GetUILang(ajaxInfo);

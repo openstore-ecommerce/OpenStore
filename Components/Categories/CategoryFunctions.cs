@@ -47,7 +47,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
         {
             var strOut = "CATEGORY - ERROR!! - No Security rights or function command.";
             var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-            var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/userid");
             EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
             if (EntityTypeCode == "") EntityTypeCode = "CATEGORY"; // default to category
             EditLangCurrent = NBrightBuyUtils.GetEditLang(ajaxInfo,Utils.GetCurrentCulture());

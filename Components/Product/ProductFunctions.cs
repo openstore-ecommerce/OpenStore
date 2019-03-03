@@ -48,7 +48,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
             var strOut = "PRODUCT - ERROR!! - No Security rights or function command.";
             var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-            var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/userid");
             EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
             if (EntityTypeCode == "") EntityTypeCode = "PRD"; // default to product
             UiLang = NBrightBuyUtils.GetUILang(ajaxInfo);
