@@ -74,7 +74,18 @@
 
 @if (Model.GetSettingInt("recordcount") > Model.GetSettingInt("pagesize"))
 {
-    var pgdata = NBrightBuyUtils.GetPagingData(Model.GetSettingInt("recordcount"), Model.GetSettingInt("pagesize"), Model.GetSettingInt("page"));
+    var recordcount = Model.GetSettingInt("recordcount");
+    var pagesize = Model.GetSettingInt("pagesize");
+    var page = Model.GetSettingInt("page");
+    if (page <= 0)
+    {
+        page = 1;
+    }
+    if (pagesize <= 0)
+    {
+        pagesize = 32;
+    }
+    var pgdata = NBrightBuyUtils.GetPagingData(recordcount, pagesize, page);
 
     <div class="NBrightPagingDiv">
         <ul>
