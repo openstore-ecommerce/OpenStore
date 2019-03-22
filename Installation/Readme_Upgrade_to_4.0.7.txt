@@ -13,11 +13,13 @@ IF YOU DO NOT USE AJAX THERE IS NO CHANGE.
 
 - In the example theme "ClassicAjax" some templates have been changed:
 
+"ProductDisplayAjax.cshtml", Calls the list directly.
 "ProductDisplayAjaxList.cshtml", has had the paging display added to the bottom of the template.
 "ProductDisplayAjaxList_paging.cshtml", has been removed and the code placed in the "ProductDisplayAjaxList.cshtml" template.
 
 - The paging has had the ajax call replaced with a standard href, to ensure the search engine follows the link.  This can be replaced by simply adding the "ajaxpager" class to the page link in the "ProductDisplayAjaxList.cshtml" template. 
 
+- The first template called on page reload is "ProductDisplayAjax.cshtml", if you have a portal level template remember to have this file at that level and make sure the template call paths are correct.
 
 NOTE: At the momnet it is unsure if the Category Menu is followed if the ajax is activated.
 We believe it should be followed. We are currently running tests to see the impact of the ajax menu.  However, but to ensure indexing of the products a normal link category should be in place, somewhere on the site, so that search crawlers can follow all links.

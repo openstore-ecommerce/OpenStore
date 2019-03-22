@@ -1691,7 +1691,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             _pagemid = ajaxInfo.GetXmlProperty("genxml/hidden/pagemid");
             _pagenum = ajaxInfo.GetXmlProperty("genxml/hidden/page");
             _pagesize = ajaxInfo.GetXmlProperty("genxml/hidden/pagesize");
-            if (_pagesize == "") _pagesize = navigationdata.PageSize;
+            if (_pagesize == "" && navigationdata.PageSize != "") _pagesize = navigationdata.PageSize;
             _orderbyindex = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
             _propertyfilter = ajaxInfo.GetXmlProperty("genxml/hidden/propertyfilter");
 
@@ -1772,34 +1772,22 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 // : This can be overwritten by the cookie value if we need user selection of pagesize.
 
                 #region "Get pagesize, from best place"
-                //TODO SK pagesize is already in _pagesize
+
                 var pageSize = Convert.ToInt32("0");
-                if (Utils.IsNumeric(_pagesize)) pageSize = Convert.ToInt32(_pagesize);
-                //if (Utils.IsNumeric(ModSettings.Get("pagesize"))) pageSize = Convert.ToInt32(ModSettings.Get("pagesize"));
-                //// overwrite default module pagesize , if we have a pagesize control in the template
-                // TODO SK Don't think I need to know if there's a pagesize selector in the template. it just asks the right pagesize
-                // TODO SK Maybe I should know to make it impossible to request more items than configured
-                //if (metaTokens.ContainsKey("selectpagesize") && Utils.IsNumeric(navigationdata.PageSize))
-                //{
-                //    pageSize = Convert.ToInt32(navigationdata.PageSize);
-                //}
-                ////check for url param page size
-                //if (Utils.IsNumeric(_pagesize) &&
-                //    (_pagemid == "" | _pagemid == moduleid.ToString(CultureInfo.InvariantCulture)))
-                //    pageSize = Convert.ToInt32(_pagesize);
-                //if (pageSize == 0)
-                //{
-                //    var strPgSize = "";
-                //    if (metaTokens.ContainsKey("searchpagesize")) strPgSize = metaTokens["searchpagesize"];
-                //    if (metaTokens.ContainsKey("pagesize") && strPgSize == "") strPgSize = metaTokens["pagesize"];
-                //    if (Utils.IsNumeric(strPgSize)) pageSize = Convert.ToInt32(strPgSize);
-                //}
-
+                if (Utils.IsNumeric(_pagesize))
+                {
+                    pageSize = Convert.ToInt32(_pagesize);
+                }
+                else
+                {
+                    if (Utils.IsNumeric(ModSettings.Settings()["pagesize"]))
+                    {
+                        pageSize = Convert.ToInt32(ModSettings.Settings()["pagesize"]);
+                    }
+                }
+                if (!ModSettings.Settings().ContainsKey("pagesize")) ModSettings.Settings().Add("pagesize", pageSize.ToString(""));
                 navigationdata.PageSize = pageSize.ToString("");
-
-                if (!ModSettings.Settings().ContainsKey("pagesize")) ModSettings.Settings().Add("pagesize", navigationdata.PageSize);
-                ModSettings.Settings()["pagesize"] = navigationdata.PageSize;
-
+                ModSettings.Settings()["pagesize"] = pageSize.ToString("");
                 #endregion
 
                 #endregion

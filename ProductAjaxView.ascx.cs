@@ -106,7 +106,6 @@ namespace Nevoweb.DNN.NBrightBuy
             }
 
             _navigationdata = new NavigationData(PortalId, ModuleKey);
-            if (_navigationdata.PageSize == "" && Utils.IsNumeric(_pagesize)) _navigationdata.PageSize = _pagesize;
 
             // Pass in a template specifying the token to create a friendly url for paging. 
             // (NOTE: we need this in NBS becuase the edit product from list return url will copy the page number and hence paging will not work after editing if we don;t do this)
