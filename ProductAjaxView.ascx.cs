@@ -47,6 +47,7 @@ namespace Nevoweb.DNN.NBrightBuy
         private String _printtemplate = "";
         private String _guidkey = "";
         private string _controlPath = "";
+        private string _pagesize = "";
 
         #region Event Handlers
 
@@ -65,6 +66,7 @@ namespace Nevoweb.DNN.NBrightBuy
             // check if we're using a typcode for the data.
             if (ModSettings != null)
             {
+                _pagesize = ModSettings.Get("pagesize");
                 // check if we're using a typcode for the data.
                 var modentitytypecode = ModSettings.Get("entitytypecode");
                 if (modentitytypecode != "")
@@ -104,6 +106,7 @@ namespace Nevoweb.DNN.NBrightBuy
             }
 
             _navigationdata = new NavigationData(PortalId, ModuleKey);
+            if (_navigationdata.PageSize == "" && Utils.IsNumeric(_pagesize)) _navigationdata.PageSize = _pagesize;
 
             // Pass in a template specifying the token to create a friendly url for paging. 
             // (NOTE: we need this in NBS becuase the edit product from list return url will copy the page number and hence paging will not work after editing if we don;t do this)
@@ -211,8 +214,13 @@ namespace Nevoweb.DNN.NBrightBuy
                         }
                     }
 
+                    var pf = new ProductFunctions();
+                    var strOut = pf.ProductAjaxViewList(Context,ModuleId,TabId, true);
+
+
                     // load base template which should call ajax and load the list.
-                    var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, ModuleId, "productdetailrazor" + ModuleId, new NBrightInfo(true), _controlPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+                    //var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, ModuleId, "productdetailrazor" + ModuleId, new NBrightInfo(true), _controlPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+
                     var lit = new Literal();
                     lit.Text = strOut;
                     phData.Controls.Add(lit);

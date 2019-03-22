@@ -20,9 +20,11 @@
             $('.manual-slideshow').cycle();
         });        
 
-        loadProductList("@Model.ModuleId");
+      //  loadProductList("@Model.ModuleId");
 
     });
 </script>
 
-<div id="ajaxproducts@(Model.ModuleId)"></div>
+<div id="ajaxproducts@(Model.ModuleId)">
+    @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\ClassicAjax\\Default\\FeaturedCarousel.cshtml", Model)
+</div>

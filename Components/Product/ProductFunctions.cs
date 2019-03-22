@@ -1620,86 +1620,104 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
 
         #region Ajax ProductList
-        public String ProductAjaxViewList(HttpContext context)
+
+        public String ProductAjaxViewList(HttpContext context,int ModuleId = 0,int TabId = 0, bool firstRender = false)
+        {
+            var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
+            if (ajaxInfo.XMLData == "") ajaxInfo = new NBrightInfo(true);
+            if (ModuleId > 0) ajaxInfo.SetXmlProperty("genxml/hidden/moduleid", ModuleId.ToString(""));
+            if (TabId > 0) ajaxInfo.SetXmlProperty("genxml/hidden/tabid",TabId.ToString(""));
+
+            ajaxInfo.SetXmlProperty("genxml/hidden/page", Utils.RequestParam(context, "page"));
+            ajaxInfo.SetXmlProperty("genxml/hidden/pagemid", Utils.RequestParam(context, "pagemid"));
+            if (Utils.RequestParam(context, "catid") != "")
+            {
+                ajaxInfo.SetXmlProperty("genxml/hidden/catid", Utils.RequestParam(context, "catid"));
+            }
+
+            return ProductAjaxViewList(ajaxInfo, Utils.RequestParam(context, "pagemid"), Utils.RequestParam(context, "page"), firstRender);
+        }
+
+        public String ProductAjaxViewList(NBrightInfo ajaxInfo, string pagemid, string page, bool firstRender)
         {
             var retval = "";
+            // get the moduleid, tabid
+            var moduleid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/moduleid");
+            var tabid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/tabid");
 
-                var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
+            var ps = PortalSettings.Current;
 
-                // get the moduleid, tabid
-                var moduleid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/moduleid");
-                var tabid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/tabid");
+            var settings = new Hashtable();
+            var ModSettings = new ModSettings(moduleid, settings);
+            var ModuleKey = ModSettings.Get("modref");
+            if (String.IsNullOrEmpty(ModuleKey)) ModuleKey = ModSettings.Get("modulekey"); // keep backward compatiblity with ProductView.
 
-                var ps = PortalSettings.Current;
+            var navigationdata = new NavigationData(ps.PortalId, ModuleKey);
 
+            #region render template stuff
 
-                var settings = new Hashtable();
+            #region variables
+            var _eid = "";
+            var _ename = "";
+            var _catid = "";
+            var _catname = "";
+            var _modkey = "";
+            var _pagemid = "";
+            var _pagenum = "1";
+            var _pagesize = "";
+            var _templD = "";
+            var _displayentrypage = false;
+            var _orderbyindex = "";
+            var _propertyfilter = "";
+            if (EntityTypeCode == "") EntityTypeCode = ModSettings.Get("entitytypecode");
+            if (EntityTypeCode == "") EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
+            if (EntityTypeCode == "") EntityTypeCode = "PRD"; // default to product
+            var EntityTypeCodeLang = EntityTypeCode + "LANG";
+            if (EntityTypeCode == "-1")
+            {
+                EntityTypeCode = ""; // allow selection of all types
+                EntityTypeCodeLang = "";
+            }
+            var _itemListName = "";
+            var _guidkey = "";
+            var _404code = false;
+            var returnlimit = 0;
+            var _filterTypeInsideProp = "AND";
+            var _filterTypeOutsideProp = "AND";
 
-                // then add the NBrightBuy settings
-                var ModSettings = new ModSettings(moduleid, settings);
-                //get Model Level Settings
-                var ModuleKey = ModSettings.Get("modref");
-                if (String.IsNullOrEmpty(ModuleKey))
-                    ModuleKey = ModSettings.Get("modulekey"); // keep backward compatiblity with ProductView.
+            _catid = ajaxInfo.GetXmlProperty("genxml/hidden/catid");
+            _catname = ajaxInfo.GetXmlProperty("genxml/hidden/catref");
+            _modkey = ajaxInfo.GetXmlProperty("genxml/hidden/modkey");
+            _pagemid = ajaxInfo.GetXmlProperty("genxml/hidden/pagemid");
+            _pagenum = ajaxInfo.GetXmlProperty("genxml/hidden/page");
+            _pagesize = ajaxInfo.GetXmlProperty("genxml/hidden/pagesize");
+            if (_pagesize == "") _pagesize = navigationdata.PageSize;
+            _orderbyindex = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
+            _propertyfilter = ajaxInfo.GetXmlProperty("genxml/hidden/propertyfilter");
 
-                #region render template stuff
-
-                #region variables
-                var _eid = "";
-                var _ename = "";
-                var _catid = "";
-                var _catname = "";
-                var _modkey = "";
-                var _pagemid = "";
-                var _pagenum = "1";
-                var _pagesize = "";
-                var _templD = "";
-                var _displayentrypage = false;
-                var _orderbyindex = "";
-                var _propertyfilter = "";
-                if (EntityTypeCode == "") EntityTypeCode = ModSettings.Get("entitytypecode");
-                if (EntityTypeCode == "") EntityTypeCode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
-                if (EntityTypeCode == "") EntityTypeCode = "PRD"; // default to product
-                var EntityTypeCodeLang = EntityTypeCode + "LANG";
-                if (EntityTypeCode == "-1")
-                {
-                    EntityTypeCode = ""; // allow selection of all types
-                    EntityTypeCodeLang = "";
-                }
-                var _itemListName = "";
-                var _guidkey = "";
-                var _404code = false;
-                var returnlimit = 0;
-                var _filterTypeInsideProp = "AND";
-                var _filterTypeOutsideProp = "AND";
-
-                _catid = ajaxInfo.GetXmlProperty("genxml/hidden/catid");
-                _catname = ajaxInfo.GetXmlProperty("genxml/hidden/catref");
-                _modkey = ajaxInfo.GetXmlProperty("genxml/hidden/modkey");
-                _pagemid = ajaxInfo.GetXmlProperty("genxml/hidden/pagemid");
-                _pagenum = ajaxInfo.GetXmlProperty("genxml/hidden/page");
-                _pagesize = ajaxInfo.GetXmlProperty("genxml/hidden/pagesize");
-                _orderbyindex = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
-                _propertyfilter = ajaxInfo.GetXmlProperty("genxml/hidden/propertyfilter");
-
+            if (firstRender)
+            {
+                _templD = ModSettings.Get("razortemplate");
+            }
+            else
+            {
                 _templD = ModSettings.Get("razorlisttemplate");
+            }
 
-                // we're making sure here, that this thing can only be AND or OR to prevent SQL Injection in any case
-                if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeinside").ToUpper() == "OR") _filterTypeInsideProp = "OR";
-                if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeoutside").ToUpper() == "OR") _filterTypeOutsideProp = "OR";
+            // we're making sure here, that this thing can only be AND or OR to prevent SQL Injection in any case
+            if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeinside").ToUpper() == "OR") _filterTypeInsideProp = "OR";
+            if (ajaxInfo.GetXmlProperty("genxml/hidden/propertyfiltertypeoutside").ToUpper() == "OR") _filterTypeOutsideProp = "OR";
 
-                //Get returnlimt from module settings
-                var strreturnlimit = ModSettings.Get("returnlimit");
-                if (Utils.IsNumeric(strreturnlimit)) returnlimit = Convert.ToInt32(strreturnlimit);
+            //Get returnlimt from module settings
+            var strreturnlimit = ModSettings.Get("returnlimit");
+            if (Utils.IsNumeric(strreturnlimit)) returnlimit = Convert.ToInt32(strreturnlimit);
 
-                var ModCtrl = new NBrightBuyController();
+            var ModCtrl = new NBrightBuyController();
 
-                // Get meta data from template
-                // TODO: dat moeten we hier eigenlijk niet nodig hebben
-                // voor nu even handig om die parameters erbij te kunnen halen en ze later om te zetten naar client side rommel
-                NavigationData _navigationdata;
-                _navigationdata = new NavigationData(ps.PortalId, ModuleKey);
-                var metaTokens = NBrightBuyUtils.RazorPreProcessTempl(_templD, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings(), moduleid.ToString());
+            // Get meta data from template
+            // TODO: dat moeten we hier eigenlijk niet nodig hebben
+            // voor nu even handig om die parameters erbij te kunnen halen en ze later om te zetten naar client side rommel
+            var metaTokens = NBrightBuyUtils.RazorPreProcessTempl(_templD, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings(), moduleid.ToString());
 
             #endregion
             try
@@ -1717,31 +1735,31 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         if (metaTokens["orderby" + _orderbyindex].Contains("{") ||
                             metaTokens["orderby" + _orderbyindex].ToLower().Contains("order by"))
                         {
-                            _navigationdata.OrderBy = metaTokens["orderby" + _orderbyindex];
-                            _navigationdata.OrderByIdx = _orderbyindex;
+                            navigationdata.OrderBy = metaTokens["orderby" + _orderbyindex];
+                            navigationdata.OrderByIdx = _orderbyindex;
                         }
                         else
                         {
-                            _navigationdata.OrderBy = " Order by " + metaTokens["orderby" + _orderbyindex];
-                            _navigationdata.OrderByIdx = _orderbyindex;
+                            navigationdata.OrderBy = " Order by " + metaTokens["orderby" + _orderbyindex];
+                            navigationdata.OrderByIdx = _orderbyindex;
                         }
-                        _navigationdata.Save();
+                        navigationdata.Save();
                     }
                 }
                 else
                 {
-                    if (String.IsNullOrEmpty(_navigationdata.OrderBy) && metaTokens.ContainsKey("orderby"))
+                    if (String.IsNullOrEmpty(navigationdata.OrderBy) && metaTokens.ContainsKey("orderby"))
                     {
                         if (metaTokens["orderby"].Contains("{") || metaTokens["orderby"].ToLower().Contains("order by"))
                         {
-                            _navigationdata.OrderBy = metaTokens["orderby"];
+                            navigationdata.OrderBy = metaTokens["orderby"];
                         }
                         else
                         {
-                            _navigationdata.OrderBy = " Order by " + metaTokens["orderby"];
+                            navigationdata.OrderBy = " Order by " + metaTokens["orderby"];
                         }
-                        _navigationdata.OrderByIdx = "";
-                        _navigationdata.Save();
+                        navigationdata.OrderByIdx = "";
+                        navigationdata.Save();
                     }
                 }
 
@@ -1755,15 +1773,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                 #region "Get pagesize, from best place"
                 //TODO SK pagesize is already in _pagesize
-                var pageSize = 0;
+                var pageSize = Convert.ToInt32("0");
                 if (Utils.IsNumeric(_pagesize)) pageSize = Convert.ToInt32(_pagesize);
                 //if (Utils.IsNumeric(ModSettings.Get("pagesize"))) pageSize = Convert.ToInt32(ModSettings.Get("pagesize"));
                 //// overwrite default module pagesize , if we have a pagesize control in the template
                 // TODO SK Don't think I need to know if there's a pagesize selector in the template. it just asks the right pagesize
                 // TODO SK Maybe I should know to make it impossible to request more items than configured
-                //if (metaTokens.ContainsKey("selectpagesize") && Utils.IsNumeric(_navigationdata.PageSize))
+                //if (metaTokens.ContainsKey("selectpagesize") && Utils.IsNumeric(navigationdata.PageSize))
                 //{
-                //    pageSize = Convert.ToInt32(_navigationdata.PageSize);
+                //    pageSize = Convert.ToInt32(navigationdata.PageSize);
                 //}
                 ////check for url param page size
                 //if (Utils.IsNumeric(_pagesize) &&
@@ -1777,7 +1795,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 //    if (Utils.IsNumeric(strPgSize)) pageSize = Convert.ToInt32(strPgSize);
                 //}
 
-                _navigationdata.PageSize = pageSize.ToString("");
+                navigationdata.PageSize = pageSize.ToString("");
+
+                if (!ModSettings.Settings().ContainsKey("pagesize")) ModSettings.Settings().Add("pagesize", navigationdata.PageSize);
+                ModSettings.Settings()["pagesize"] = navigationdata.PageSize;
 
                 #endregion
 
@@ -1790,28 +1811,28 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 var sqlTemplateFilter = "";
                 if (metaTokens.ContainsKey("sqlfilter")) sqlTemplateFilter = GenXmlFunctions.StripSqlCommands(metaTokens["sqlfilter"]);
 
-                if (_navigationdata.HasCriteria)
+                if (navigationdata.HasCriteria)
                 {
                     var paramcatid = _catid;
                     if (Utils.IsNumeric(paramcatid))
                     {
-                        if (_navigationdata.CategoryId != Convert.ToInt32(paramcatid)) // filter mode DOES NOT persist catid (stop confusion when user selects a category)
+                        if (navigationdata.CategoryId != Convert.ToInt32(paramcatid)) // filter mode DOES NOT persist catid (stop confusion when user selects a category)
                         {
-                            _navigationdata.ResetSearch();
+                            navigationdata.ResetSearch();
                         }
                     }
 
                     // if navdata is not deleted then get filter from navdata, created by productsearch module.
-                    strFilter = _navigationdata.Criteria;
+                    strFilter = navigationdata.Criteria;
                     if (!strFilter.Contains(sqlTemplateFilter)) strFilter += " " + sqlTemplateFilter;
 
-                    if (_navigationdata.Mode.ToLower() == "s") _navigationdata.ResetSearch(); // single search so clear after
+                    if (navigationdata.Mode.ToLower() == "s") navigationdata.ResetSearch(); // single search so clear after
                 }
                 else
                 {
                     // reset search if category selected 
                     // NOTE: keeping search across categories is VERY confusing for cleint, although it works logically.
-                    _navigationdata.ResetSearch();
+                    navigationdata.ResetSearch();
                     strFilter = sqlTemplateFilter;
                 }
 
@@ -1928,7 +1949,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                             strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and XrefItemId = " + catseo + ") ";
                     }
                     // do special custom sort in each cateogry, this passes the catid to the SQL SPROC, whcih process the '{bycategoryproduct}' and orders by product/category seq. 
-                    if (_navigationdata.OrderBy.Contains("{bycategoryproduct}")) _navigationdata.OrderBy = "{bycategoryproduct}" + _catid;
+                    if (navigationdata.OrderBy.Contains("{bycategoryproduct}")) navigationdata.OrderBy = "{bycategoryproduct}" + _catid;
                 }
                 else
                 {
@@ -1983,20 +2004,20 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         }
 
                         // do special custom sort in each cateogry, this passes the catid to the SQL SPROC, whcih process the '{bycategoryproduct}' and orders by product/category seq. 
-                        if (_navigationdata.OrderBy.Contains("{bycategoryproduct}")) _navigationdata.OrderBy = "{bycategoryproduct}" + _catid;
+                        if (navigationdata.OrderBy.Contains("{bycategoryproduct}")) navigationdata.OrderBy = "{bycategoryproduct}" + _catid;
 
                     }
                     else
                     {
-                        if (!_navigationdata.FilterMode) _navigationdata.CategoryId = 0; // filter mode persist catid
-                        if (_navigationdata.OrderBy.Contains("{bycategoryproduct}")) _navigationdata.OrderBy = " Order by ModifiedDate DESC  ";
+                        if (!navigationdata.FilterMode) navigationdata.CategoryId = 0; // filter mode persist catid
+                        if (navigationdata.OrderBy.Contains("{bycategoryproduct}")) navigationdata.OrderBy = " Order by ModifiedDate DESC  ";
                     }
 
                     #endregion
                 }
 
                 // This allows the return to the same category after a returning from a entry view. + Gives support for current category in razor tokens
-                if (Utils.IsNumeric(_catid)) _navigationdata.CategoryId = Convert.ToInt32(_catid);
+                if (Utils.IsNumeric(_catid)) navigationdata.CategoryId = Convert.ToInt32(_catid);
 
                 #endregion
 
@@ -2008,7 +2029,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 if (productfilterkey != "")
                 {
                     var provfilter = FilterInterface.Instance(productfilterkey);
-                    if (provfilter != null) strFilter = provfilter.GetFilter(strFilter, _navigationdata, ModSettings, context);
+                    if (provfilter != null) strFilter = provfilter.GetFilter(strFilter, navigationdata, ModSettings, ajaxInfo);
                 }
 
                 #endregion
@@ -2096,9 +2117,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 #endregion
 
                 // save navigation data
-                _navigationdata.PageModuleId = Utils.RequestParam(context, "pagemid");
-                _navigationdata.PageNumber = Utils.RequestParam(context, "page");
-                if (Utils.IsNumeric(_catid)) _navigationdata.PageName = NBrightBuyUtils.GetCurrentPageName(Convert.ToInt32(_catid));
+                navigationdata.PageModuleId = pagemid;
+                navigationdata.PageNumber = _pagenum;
+                if (!Utils.IsNumeric(_pagenum) || Convert.ToInt32(_pagenum) <= 0) navigationdata.PageNumber = "1";
+                if (!ModSettings.Settings().ContainsKey("page")) ModSettings.Settings().Add("page", navigationdata.PageNumber);
+                ModSettings.Settings()["page"] = navigationdata.PageNumber;
+
+                if (Utils.IsNumeric(_catid)) navigationdata.PageName = NBrightBuyUtils.GetCurrentPageName(Convert.ToInt32(_catid));
+
 
                 // save the last active modulekey to a cookie, so it can be used by the "NBrightBuyUtils.GetReturnUrl" function
                 NBrightCore.common.Cookie.SetCookieValue(ps.PortalId, "NBrigthBuyLastActive", "ModuleKey", ModuleKey, 1);
@@ -2118,14 +2144,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     var recordCount = ModCtrl.GetDataListCount(ps.PortalId, moduleid, EntityTypeCode, strFilter, EntityTypeCodeLang, Utils.GetCurrentCulture(), DebugMode);
 
-                    _navigationdata.RecordCount = recordCount.ToString("");
-                    _navigationdata.Save();
+                    navigationdata.RecordCount = recordCount.ToString("");
+                    navigationdata.Save();
 
                     if (returnlimit > 0 && returnlimit < recordCount) recordCount = returnlimit;
 
                     // **** check if we already have the template cached, if so no need for DB call or razor call ****
                     // get same cachekey used for DB return, and use for razor.
-                    var razorcachekey = ModCtrl.GetDataListCacheKey(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, _navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+                    var razorcachekey = ModCtrl.GetDataListCacheKey(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
                     var cachekey = "NBrightBuyRazorOutput" + _templD + "*" + razorcachekey + ps.PortalId.ToString();
                     retval = (String)NBrightBuyUtils.GetModCache(cachekey);
                     if (retval == null || DebugMode)
@@ -2133,25 +2159,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         retval = "";
                         if (defcatid != "0")  // no category will cause error.
                         {
-                            var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, _navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+                            var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
                             if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
                             ModSettings.Settings()["recordcount"] = recordCount.ToString();
                             retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
                         }
                     }
 
-                    //SK phData.Controls.Add(lit);
-
-                    // add paging if needed
-                    if (recordCount > pageSize)
-                    {
-                        if (pageSize == 0) pageSize = 12;
-                        var pgdata = NBrightBuyUtils.GetPagingData(recordCount, pageSize, pageNumber);
-                        var strPg = NBrightBuyUtils.RazorTemplRenderList(Path.GetFileNameWithoutExtension(_templD) + "_paging" + Path.GetExtension(_templD), moduleid, razorcachekey + "PG", pgdata, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
-                        retval += strPg;
-                    }
-
-                    if (_navigationdata.SingleSearchMode) _navigationdata.ResetSearch();
+                    if (navigationdata.SingleSearchMode) navigationdata.ResetSearch();
                 }
 
                 #endregion
@@ -2159,7 +2174,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             }
             catch (Exception ex)
             {
-                _navigationdata.Delete(); // May be the navigation data that is wrong
+                navigationdata.Delete(); // May be the navigation data that is wrong
                 retval = ex.ToString();
                 Logging.LogException(ex);
             }
@@ -2170,6 +2185,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         public String ProductAjaxFilter(HttpContext context)
         {
             var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
+            return ProductAjaxFilter(ajaxInfo);
+        }
+
+        public String ProductAjaxFilter(NBrightInfo ajaxInfo)
+        {
 
             // get the moduleid, tabid
             var moduleid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/moduleid");

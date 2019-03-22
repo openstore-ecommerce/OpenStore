@@ -7,7 +7,10 @@
 
 @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
 
-<div id="ajaxproducts@(Model.ModuleId)"></div>
+
+<div id="ajaxproducts@(Model.ModuleId)">
+    @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\ClassicAjax\\Default\\FeaturedCycle.cshtml", Model)
+</div>
 
 
 <script>
@@ -23,7 +26,7 @@
             $('.cycle-slideshow').cycle();
         });
 
-        loadProductList("@Model.ModuleId");
+        //loadProductList("@Model.ModuleId");
 
     });
 </script>
