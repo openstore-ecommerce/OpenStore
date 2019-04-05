@@ -238,7 +238,7 @@
     <value>My profile</value>
   </data>
   <data name="ClientmenuAddresses.Text" xml:space="preserve">
-    <value>My addresses</value>
+    <value>My address</value>
   </data>
   <data name="ClientmenuOrders.Text" xml:space="preserve">
     <value>My orders</value>

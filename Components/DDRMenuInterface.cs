@@ -32,6 +32,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var rtnnodes = (List<MenuNode>)Utils.GetCache(cachekey);
             if (rtnnodes != null) return rtnnodes;
 
+            var categoryInjectList = new Dictionary<int, int>();
+            var idx1 = 0;
             var listCats = new List<int>();
             if (nodes.Count(x => x.Text.ToUpper().StartsWith("[CAT")) > 0)
             {
@@ -50,15 +52,19 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             if (parentcat != null)
                             {
                                 listCats.Add(parentcat.ItemID);
+                                categoryInjectList.Add(idx1, n.TabId);
+                                idx1 += 1;
                             }
                         }
                     }
                     else
                     {
+                        categoryInjectList.Add(0,n.TabId);
                         listCats.Add(0);
                     }
                 }
             }
+            var lp = 0;
             foreach (var parentItemId in listCats)
             {
 
@@ -67,7 +73,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var defaultListPage = "";
                 defaultListPage = StoreSettings.Current.Get("productlisttab");
 
-                var catNodeList = GetCatNodeXml(_tabid, parentItemId, true, 0, null, defaultListPage);
+                var catNodeList = GetCatNodeXml(_tabid, categoryInjectList[lp] , parentItemId, true, 0, null, defaultListPage);
 
                 // see if we need to merge into the current pages, by searching for marker page [cat]
                 int idx = 0;
@@ -100,6 +106,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         insidx += 1;
                     }
                 }
+                lp += 1;
             }
 
             Utils.SetCacheList(cachekey, nodes, "category_cachelist");
@@ -108,7 +115,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         }
 
 
-        private List<MenuNode> GetCatNodeXml(string currentTabId, int parentItemId = 0, bool recursive = true, int depth = 0, MenuNode pnode = null, string defaultListPage = "")
+        private List<MenuNode> GetCatNodeXml(string currentTabId, int categoryInjectTabId, int parentItemId = 0, bool recursive = true, int depth = 0, MenuNode pnode = null, string defaultListPage = "")
         {
             
             var nodes = new List<MenuNode>();
@@ -132,7 +139,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                     n.Parent = pnode;
 
-                    n.TabId = obj.categoryid;
+                    n.TabId = categoryInjectTabId;
                     n.Text = obj.categoryname;
                     n.Title = obj.categorydesc;
 
@@ -166,7 +173,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     if (recursive && depth < 50) //stop infinate loop, only allow 50 sub levels
                     {
                         depth += 1;
-                        var childrenNodes = GetCatNodeXml(tabid, obj.categoryid, true, depth, n, defaultListPage);
+                        var childrenNodes = GetCatNodeXml(tabid, categoryInjectTabId, obj.categoryid, true, depth, n, defaultListPage);
                         if (childrenNodes.Count > 0)
                         {
                             n.Children = childrenNodes;

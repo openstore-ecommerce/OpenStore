@@ -17,14 +17,13 @@
 @AddPreProcessMetaData("orderby4", "NB3.ProductName", Model.FullTemplateName, Model.ModuleId.ToString())
 
 @*@AddPreProcessMetaData("selectpagesize", "True", Model.FullTemplateName, Model.ModuleId.ToString())*@ <!-- flag to tell product list a custom pagesize may be applied -->
-
 <!-- Product List header -->
 <div class="nbs">
 
     <!-- 0=Normal 1=Search 2=Favorites  -->
     @if (Model.GetSettingInt("displaytype") == 0)
     {
-    <div class="categorybreadcrumbs">@CategoryBreadCrumb(true, Model,true,-1,"",-1,400,true)</div>
+        <div class="categorybreadcrumbs">@CategoryBreadCrumb(true, Model, true, -1, "", -1, 400, true)</div>
     }
     @{
         var sortClass = "sortorderselect";
@@ -42,30 +41,69 @@
     });
     </script>
     <div class="productlistheader">
-      <!-- Product sort -->
-      <div class="productsort">
-        <label>@ResourceKey("General.pagesize") :</label>@PageSizeDropDownList("8,16,32,64,128", Model, "", true, false)
-          @SortOrderAjaxDropDownList(ResourceKey("ProductView.orderby").ToString(), Model, sortAtts)
-      </div>
-      <!-- Category details -->
-      <div class="categorydetails">
-        @{
-            var totalCount = Model.GetSetting("recordcount") == "" ? Category("entrycount", Model).ToString() : Model.GetSetting("recordcount");
-        }
-          @if (Model.GetSettingInt("displaytype") == 0)
-          {
-            <h1>@Category("categoryname", Model)</h1>
-          }
-          @if (Model.GetSettingInt("displaytype") == 1)
-          {
-            <h1>@(ResourceKey("ProductView.searchresults"))</h1>
-          }
+        <!-- Product sort -->
+        <div class="productsort">
+            <label>@ResourceKey("General.pagesize") :</label>
+            @PageSizeDropDownList("8,16,32,64,128", Model, "", true, false)
+            @SortOrderAjaxDropDownList(ResourceKey("ProductView.orderby").ToString(), Model, sortAtts)
+        </div>
+        <!-- Category details -->
+        <div class="categorydetails">
+            @{
+                var totalCount = Model.GetSetting("recordcount") == "" ? Category("entrycount", Model).ToString() : Model.GetSetting("recordcount");
+            }
+            @if (Model.GetSettingInt("displaytype") == 0)
+            {
+                <h1>@Category("categoryname", Model)</h1>
+            }
+            @if (Model.GetSettingInt("displaytype") == 1)
+            {
+                <h1>@(ResourceKey("ProductView.searchresults"))</h1>
+            }
 
-          <div>@totalCount <span>@(ResourceKey("ProductView.articles"))</span></div>
-        <!--<i>@(Category("message", Model))</i>-->
-      </div>
+            <div>@totalCount <span>@(ResourceKey("ProductView.articles"))</span></div>
+            <!--<i>@(Category("message", Model))</i>-->
+        </div>
     </div>
+
+
 
     @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\ClassicAjax\\Default\\ProductDisplayListBody.cshtml", Model)
 
 </div>
+
+
+        @if (Model.GetSettingInt("recordcount") > Model.GetSettingInt("pagesize"))
+        {
+            var recordcount = Model.GetSettingInt("recordcount");
+            var pagesize = Model.GetSettingInt("pagesize");
+            var page = Model.GetSettingInt("page");
+            if (page <= 0)
+            {
+                page = 1;
+            }
+            if (pagesize <= 0)
+            {
+                pagesize = 32;
+            }
+            var pgdata = NBrightBuyUtils.GetPagingData(recordcount, pagesize, page);
+
+            <div class="NBrightPagingDiv">
+                <ul>
+                    @foreach (NBrightInfo info in pgdata)
+                    {
+                        var cssClass = "NBrightNormalPg";
+                        var pagerClass = "ajaxpager";
+                        var pagerId = "ajaxpager" + Model.ModuleId;
+                        if (info.GetXmlPropertyBool("genxml/currentpage"))
+                        {
+                            cssClass = "NBrightSelectPg";
+
+                        }
+                        <li class="@cssClass">
+                            <a id="@pagerId" class="" href="?page=@info.GetXmlProperty("genxml/pagenumber")" pagenumber="@info.GetXmlProperty("genxml/pagenumber")">@info.GetXmlProperty("genxml/text")</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }

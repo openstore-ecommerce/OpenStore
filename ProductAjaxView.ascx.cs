@@ -47,6 +47,7 @@ namespace Nevoweb.DNN.NBrightBuy
         private String _printtemplate = "";
         private String _guidkey = "";
         private string _controlPath = "";
+        private string _pagesize = "";
 
         #region Event Handlers
 
@@ -65,6 +66,7 @@ namespace Nevoweb.DNN.NBrightBuy
             // check if we're using a typcode for the data.
             if (ModSettings != null)
             {
+                _pagesize = ModSettings.Get("pagesize");
                 // check if we're using a typcode for the data.
                 var modentitytypecode = ModSettings.Get("entitytypecode");
                 if (modentitytypecode != "")
@@ -211,8 +213,13 @@ namespace Nevoweb.DNN.NBrightBuy
                         }
                     }
 
+                    var pf = new ProductFunctions();
+                    var strOut = pf.ProductAjaxViewList(Context,ModuleId,TabId, true);
+
+
                     // load base template which should call ajax and load the list.
-                    var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, ModuleId, "productdetailrazor" + ModuleId, new NBrightInfo(true), _controlPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+                    //var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, ModuleId, "productdetailrazor" + ModuleId, new NBrightInfo(true), _controlPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+
                     var lit = new Literal();
                     lit.Text = strOut;
                     phData.Controls.Add(lit);

@@ -68,7 +68,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
 
 		#endregion
 
-        public abstract String GetFilter(String currentFilter, NavigationData navigationData, ModSettings setting, HttpContext context);
+        public abstract String GetFilter(String currentFilter, NavigationData navigationData, ModSettings setting, NBrightInfo ajaxInfo);
 
     }
 

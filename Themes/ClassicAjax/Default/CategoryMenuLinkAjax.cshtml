@@ -6,4 +6,13 @@
     var depth = grpcat.depth;
 }
 
+
+@if (grpcat.url.StartsWith("javascript"))
+{
+    <a class="level@(depth)" href="@grpcat.url" catid="@grpcat.categoryid">@grpcat.categoryname</a>
+}
+else
+{
     <a class="level@(depth) ajaxcatmenu" href="@grpcat.url" catid="@grpcat.categoryid">@grpcat.categoryname</a>
+}
+

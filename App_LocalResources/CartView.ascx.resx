@@ -256,7 +256,7 @@
     <value>Basket</value>
   </data>
   <data name="CartstepsAddresses.Text" xml:space="preserve">
-    <value>Addresses</value>
+    <value>Address</value>
   </data>
   <data name="CartstepsShipping.Text" xml:space="preserve">
     <value>Summary</value>

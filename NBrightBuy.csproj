@@ -467,6 +467,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="icon-openstore.png" />
+    <Content Include="Installation\Readme_Upgrade_to_4.0.7.txt" />
     <Content Include="Installation\Readme_Upgrade_to_4.0.4.txt" />
     <Content Include="ProductListAjaxFilter.ascx">
       <SubType>ASPXCodeBehind</SubType>
@@ -602,16 +603,17 @@
     <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="Themes\ClassicAjax\css\images\Thumbs.db" />
+    <None Include="Themes\ClassicAjax\Default\FeaturedCarouselAjax_pageinject.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\FeaturedCycleAjax.cshtml" />
     <None Include="Themes\ClassicAjax\Default\os_FrontOfficePageHeader.cshtml" />
     <None Include="Themes\ClassicAjax\Default\os_FrontOfficePageBody.cshtml" />
     <None Include="Themes\ClassicAjax\Default\FrontOfficePageBody.cshtml" />
     <None Include="Themes\ClassicAjax\Default\FrontOfficePageHeader.cshtml" />
     <None Include="Themes\ClassicAjax\Default\FeaturedCarouselAjax.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayAjax.cshtml" />
-    <None Include="Themes\ClassicAjax\Default\FeaturedCarouselAjax_pageinject.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\FeaturedCycleAjax_pageinject.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayAjax_pageinject.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayAjaxList.cshtml" />
-    <None Include="Themes\ClassicAjax\Default\ProductDisplayAjaxList_paging.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductDisplayAjaxSettings.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductListAjaxFilter.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ProductListAjaxFilter_pageinject.cshtml" />
@@ -626,7 +628,7 @@
     <None Include="Themes\ClassicAjax\Default\FeaturedCarousel.cshtml" />
     <None Include="Themes\ClassicAjax\Default\FeaturedCarouselAjax_head.cshtml" />
     <None Include="Themes\ClassicAjax\Default\FeaturedCycle.cshtml" />
-    <None Include="Themes\ClassicAjax\Default\FeaturedCycle_head.cshtml" />
+    <None Include="Themes\ClassicAjax\Default\FeaturedCycleAjax_head.cshtml" />
     <None Include="Themes\ClassicAjax\Default\ItemListPopupBody.cshtml" />
     <None Include="Themes\ClassicAjax\Default\MiniCart.cshtml" />
     <None Include="Themes\ClassicAjax\Default\MiniCartSettings.cshtml" />

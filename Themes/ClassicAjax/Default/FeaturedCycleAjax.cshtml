@@ -7,20 +7,27 @@
 
 @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
 
+
+<div id="ajaxproducts@(Model.ModuleId)">
+    @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\ClassicAjax\\Default\\FeaturedCycle.cshtml", Model)
+</div>
+
+
 <script>
     $(document).ready(function () {
         // set the required ajax parmas for this module
         $('#moduleid').val('@Model.ModuleId');
         $('#pagesize').val('@Model.GetSetting("pagesize", "0")');
         $('#themefolder').val('@Model.GetSetting("themefolder")');
-        $('#entitytypecode').val('@Model.GetSetting("entitytypecode")');        
+        $('#entitytypecode').val('@Model.GetSetting("entitytypecode")');
         $("#modkey").val("@Model.ModuleRef");
+
+        $('#ajaxproducts@(Model.ModuleId)').change(function () {
+            $('.cycle-slideshow').cycle();
+        });
+
         //loadProductList("@Model.ModuleId");
+
     });
 </script>
 
-<div id="ajaxproducts@(Model.ModuleId)">
-
-    @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\ClassicAjax\\Default\\ProductDisplayAjaxList.cshtml", Model)
-
-</div>
