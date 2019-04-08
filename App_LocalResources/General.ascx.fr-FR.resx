@@ -841,13 +841,13 @@
     <value>En cours de livraison</value>
   </data>
   <data name="orderstatus100.Text" xml:space="preserve">
-    <value>En cours de fabrication</value>
+    <value>Terminée</value>
   </data>
   <data name="orderstatus110.Text" xml:space="preserve">
     <value>Archivée</value>
   </data>
   <data name="orderstatus120.Text" xml:space="preserve">
-    <value>Terminée</value>
+    <value>En cours de fabrication</value>
   </data>
   <data name="Owners.Text" xml:space="preserve">
     <value>Membres</value>
