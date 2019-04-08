@@ -2145,13 +2145,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (retval == null || DebugMode)
                     {
                         retval = "";
-                        if (defcatid != "0")  // no category will cause error.
-                        {
+                        //if (defcatid != "0")  // no category will cause error.
+                        //{
                             var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
                             if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
                             ModSettings.Settings()["recordcount"] = recordCount.ToString();
                             retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
-                        }
+                        //}
                     }
 
                     if (navigationdata.SingleSearchMode) navigationdata.ResetSearch();
