@@ -61,7 +61,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 EditLangCurrent = NBrightBuyUtils.GetNextLang(ajaxInfo, EditLangCurrent);
             }
 
-            if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products"))
+            if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products") || PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, EntityTypeCode))
             {
                 switch (paramCmd)
                 {
