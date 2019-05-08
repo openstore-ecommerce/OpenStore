@@ -228,3 +228,6 @@ install/NBrightBuy_Resource.zip
 Providers/ManualPaymentProvider/App_LocalResources/ManualPayment.ascx.fr-FR.Portal-0.resx
 Themes/Checkout-NoShipping/
 Installation/OpenStore_4.0.5_Install.zip
+Package/
+NBrightBuy_Resource.zip
+Installation/OpenStore_4.0.7_Install.zip
