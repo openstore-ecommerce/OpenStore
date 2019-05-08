@@ -405,7 +405,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         {
             try
             {
-                if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products"))
+                if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, datatypecode) || PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products"))
                 {
                     if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return null;
 
