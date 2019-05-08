@@ -405,24 +405,23 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         {
             try
             {
-                if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, datatypecode) || PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products"))
+                // select a specific entity data type for the product (used by plugins)
+                var entitytypecode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
+                if (entitytypecode == "") entitytypecode = EntityTypeCode;
+                if (entitytypecode == "") entitytypecode = "PRD";
+
+                var entitytypecodelang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecodelang");
+                if (entitytypecodelang == "") entitytypecodelang = EntityTypeCode + "LANG";
+
+                if (datatypecode == "") datatypecode = entitytypecode;
+                var datatypecodelang = datatypecode + "LANG";
+
+                if (datatypecode != "" && (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, datatypecode) || PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "products")))
                 {
                     if (UserController.Instance.GetCurrentUserInfo().UserID <= 0) return null;
 
                     if (EditLangCurrent == "") EditLangCurrent = editlang;
                     if (EditLangCurrent == "") EditLangCurrent = Utils.GetCurrentCulture();                    
-
-                    var strOut = "";
-
-                    // select a specific entity data type for the product (used by plugins)
-                    var entitytypecodelang = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecodelang");
-                    var entitytypecode = ajaxInfo.GetXmlProperty("genxml/hidden/entitytypecode");
-                    if (entitytypecode == "") entitytypecode = EntityTypeCode;
-                    if (entitytypecode == "") entitytypecode = "PRD";
-                    if (entitytypecodelang == "") entitytypecodelang = EntityTypeCode + "LANG";
-
-                    if (datatypecode == "") datatypecode = entitytypecode;
-                    var datatypecodelang = datatypecode + "LANG";
 
                     var filter = ajaxInfo.GetXmlProperty("genxml/hidden/filter");
                     var orderby = ajaxInfo.GetXmlProperty("genxml/hidden/orderby");
