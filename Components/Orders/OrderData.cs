@@ -291,7 +291,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             NBrightBuyUtils.ProcessEventProvider(EventActions.AfterPaymentOK, PurchaseInfo);
         }
 
-        public void PaymentFail(String orderStatus = "010")
+        public void PaymentFail(String orderStatus = "030")
         {
             NBrightBuyUtils.ProcessEventProvider(EventActions.BeforePaymentFail, PurchaseInfo);
 
@@ -300,10 +300,27 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 // only move back to cart, if we've not processed payment already.
                 if (IsNotPaid())
                 {
+
+                    // If the client returns to the website before payment is accepted, 
+                    // then we may get a CART but no ORDER. So once it has moved to ORDER we cannot return to CART.
+                    // In theory this should never happen, but in reality, this has happened.
+                    //PurchaseTypeCode = "CART";                  
+
+                    // make a new cart and copy the order data to it.
+                    CopyToCart();
+
+                    PurchaseTypeCode = "ORDER"; // Make sure this order is moved to an order.
+                    CreatedDate = DateTime.Now.ToString("O");
                     ReleaseModelTransQty();
-                    OrderStatus = orderStatus;
-                    PurchaseTypeCode = "CART";
+                    if (orderStatus != "030")
+                    {
+                        OrderStatus = orderStatus;
+                        AddAuditStatusChange(orderStatus, UserController.Instance.GetCurrentUserInfo().Username);
+                    }
+                    AddAuditStatusChange("030", UserController.Instance.GetCurrentUserInfo().Username);
+                    OrderStatus = "030";
                     SavePurchaseData();
+
                 }
             }
 
