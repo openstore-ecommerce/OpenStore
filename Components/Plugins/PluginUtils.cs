@@ -343,22 +343,25 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public static bool CheckSecurity(NBrightInfo pluginXml)
         {
             var currentuser = UserController.Instance.GetCurrentUserInfo();
-            if (currentuser.IsInRole("Administrators"))
+            if (currentuser != null && pluginXml != null)
             {
-                return true;
-            }
-            if (pluginXml.GetXmlPropertyBool("genxml/checkbox/hidden")) return false;
-            if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.ManagerRole  + "']/@value") && currentuser.IsInRole(StoreSettings.ManagerRole))
-            {
-                return true;
-            }
-            if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.EditorRole + "']/@value") && currentuser.IsInRole(StoreSettings.EditorRole))
-            {
-                return true;
-            }
-            if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.ClientEditorRole + "']/@value") && currentuser.IsInRole(StoreSettings.ClientEditorRole))
-            {
-                return true;
+                if (currentuser.IsInRole("Administrators"))
+                {
+                    return true;
+                }
+                if (pluginXml.GetXmlPropertyBool("genxml/checkbox/hidden")) return false;
+                if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.ManagerRole + "']/@value") && currentuser.IsInRole(StoreSettings.ManagerRole))
+                {
+                    return true;
+                }
+                if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.EditorRole + "']/@value") && currentuser.IsInRole(StoreSettings.EditorRole))
+                {
+                    return true;
+                }
+                if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.ClientEditorRole + "']/@value") && currentuser.IsInRole(StoreSettings.ClientEditorRole))
+                {
+                    return true;
+                }
             }
             return false;
         }
