@@ -12,6 +12,7 @@ using NBrightCore.common;
 using NBrightCore.images;
 using NBrightCore.providers;
 using Nevoweb.DNN.NBrightBuy.Components.Products;
+using System.Text.RegularExpressions;
 
 namespace Nevoweb.DNN.NBrightBuy.Components
 {
@@ -558,7 +559,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 	            {
                     var fullName = i.GetXmlProperty("genxml/hidden/imagepath");
                     var extension = Path.GetExtension(fullName);
-	                imgname = CleanFileName(imgname.Replace(" ","-"));
+	                imgname  = AlphaNumeric(CleanFileName(imgname.Replace(" ","-")));
 	                var imgnameext = imgname + extension;
 	                var newImageFileName = productImgFolder + "\\" + imgnameext;
 	                var lp2 = 1;
@@ -645,6 +646,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
             return file;
         }
+        public static string AlphaNumeric(string strIn)
+        {
+            Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+            var str = rgx.Replace(strIn, "");
+            return str.Replace(" ", "");
+        }
+
 
         public static void DeleteFriendlyImages(int productid)
         {
