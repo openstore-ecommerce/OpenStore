@@ -301,11 +301,11 @@ $(document).ready(function () {
                 @foreach (NBrightInfo nbiitem in ordData.GetCartItemList())
                 {
 
-            <tr class="active">
-                    <td class="m-ticker">
-                        <div>
-                            <strong>@nbiitem.GetXmlProperty("genxml/productname")&nbsp;@nbiitem.GetXmlProperty("genxml/modeldesc")</strong>
-                        </div>
+                    <tr class="active">
+                        <td class="m-ticker">
+                            <div>
+                                <strong>@nbiitem.GetXmlProperty("genxml/productname")&nbsp;@nbiitem.GetXmlProperty("genxml/modeldesc")</strong>
+                            </div>
 
                             @{
                                 var fileList = new List<NBrightInfo>();
@@ -327,79 +327,79 @@ $(document).ready(function () {
 
 
 
-                        <div>
+                            <div>
+
+                                @{
+
+                                    var optList = new List<NBrightInfo>();
+                                    var xmlNodList = nbiitem.XMLDoc.SelectNodes("genxml/options/option");
+                                    foreach (XmlNode n in xmlNodList)
+                                    {
+                                        var nb = new NBrightInfo();
+                                        nb.XMLData = n.OuterXml;
+                                        optList.Add(nb);
+                                    }
+
+                                    var lp = 0;
+                                    foreach (NBrightInfo nbiopt in optList)
+                                    {
+                                        if (nbiopt.GetXmlProperty("option/optname") != "" && ((nbiopt.GetXmlProperty("option/optvaltext") != "" && nbiopt.GetXmlProperty("option/optvalueid") != "False") || nbiopt.GetXmlProperty("option/optvalueid") == "True"))
+                                        {
+                                            <span>
+                                                @if (lp > 0)
+                                                {
+                                                    <span>,</span>
+                                                }
+                                                @nbiopt.GetXmlProperty("option/optname"): @nbiopt.GetXmlProperty("option/optvaltext")
+                                                @if (nbiopt.GetXmlPropertyDouble("option/optvalcost") > 0)
+                                                {
+                                                    @CurrencyOf(nbiopt.GetXmlPropertyDouble("option/optvalcost"))
+                                                }
+                                            </span>
+                                            lp += 1;
+                                        }
+                                    }
+
+                                }
+
+                            </div>
+
 
                             @{
-
-                                var optList = new List<NBrightInfo>();
-                                var xmlNodList = nbiitem.XMLDoc.SelectNodes("genxml/options/option");
-                                foreach (XmlNode n in xmlNodList)
+                                var docList = new List<NBrightInfo>();
+                                var xmldocNodList = nbiitem.XMLDoc.SelectNodes("genxml/productxml/genxml/docs/*");
+                                foreach (XmlNode n in xmldocNodList)
                                 {
                                     var nb = new NBrightInfo();
                                     nb.XMLData = n.OuterXml;
-                                    optList.Add(nb);
+                                    docList.Add(nb);
                                 }
-
-                                var lp = 0;
-                                foreach (NBrightInfo nbiopt in optList)
+                                if (docList.Count >= 1)
                                 {
-                                    if (nbiopt.GetXmlProperty("option/optname") != "" && ((nbiopt.GetXmlProperty("option/optvaltext") != "" && nbiopt.GetXmlProperty("option/optvalueid") != "False") || nbiopt.GetXmlProperty("option/optvalueid") == "True"))
+                                    foreach (var doc in docList)
                                     {
-                                        <span>
-                                            @if (lp > 0)
+                                        var uData = new UserData();
+                                        <ul>
+                                            @if (uData.HasPurchasedDocByFileName(doc.GetXmlProperty("genxml/hidden/filename")))
                                             {
-                                                <span>,</span>
+                                                <li>
+                                                    <i class='fa fa-file-text fa-2x'>@ResourceKey("ProductView.filebullets")</i><span class="documentname">@doc.GetXmlProperty("genxml/textbox/txttitle")</span><span class="documentdescription">@doc.GetXmlProperty("genxml/textbox/txtdocdesc")</span>
+                                                </li>
                                             }
-                                            @nbiopt.GetXmlProperty("option/optname"): @nbiopt.GetXmlProperty("option/optvaltext")
-                                            @if (nbiopt.GetXmlPropertyDouble("option/optvalcost") > 0)
-                                            {
-                                                @CurrencyOf(nbiopt.GetXmlPropertyDouble("option/optvalcost"))
-                                            }
-                                        </span>
-                                        lp += 1;
+                                        </ul>
                                     }
                                 }
 
+
                             }
+                        </td>
+                        <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/modelref")</td>
+                        <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/qty")</td>
+                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedcost"))</td>
+                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedtotalcost"))</td>
+                    </tr>
 
-                        </div>
-
-
-                        @{
-                            var docList = new List<NBrightInfo>();
-                            var xmldocNodList = nbiitem.XMLDoc.SelectNodes("genxml/productxml/genxml/docs/*");
-                            foreach (XmlNode n in xmldocNodList)
-                            {
-                                var nb = new NBrightInfo();
-                                nb.XMLData = n.OuterXml;
-                                docList.Add(nb);
-                            }
-                            if (docList.Count >= 1)
-                            {
-                                foreach (var doc in docList)
-                                {
-                                    var uData = new UserData();
-                                     <ul>
-                                         @if (uData.HasPurchasedDocByFileName(doc.GetXmlProperty("genxml/hidden/filename")))
-                                         {
-                                         <li>
-                                             <i class='fa fa-file-text fa-2x'>@ResourceKey("ProductView.filebullets")</i><span class="documentname">@doc.GetXmlProperty("genxml/textbox/txttitle")</span><span class="documentdescription">@doc.GetXmlProperty("genxml/textbox/txtdocdesc")</span>
-                                         </li>
-                                         }
-                                     </ul>
-                                 }
-                            }
-
-
-                        }
-                    </td>
-                    <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/modelref")</td>
-                    <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/qty")</td>
-                    <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedcost"))</td>
-                    <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedtotalcost"))</td>
-                </tr>
-
-                                }
+                }
 
                 <tr>
                     <td></td>
@@ -419,18 +419,28 @@ $(document).ready(function () {
                     <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Shipping")</td>
                     <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/appliedshipping"))</td>
                 </tr>
-                <tr>
-                    <td><small>@ResourceKey("OrderAdmin.VATincluded")</small></td>
+
+                @if (nbi.GetXmlPropertyInt("genxml/taxtype") != 3)
+                {
+                    <tr>
+                        <td>
+                            @if (nbi.GetXmlPropertyInt("genxml/taxtype") == 1)
+                            {
+                                <small>@ResourceKey("OrderAdmin.VATincluded")</small>
+                            }
+                        </td>
+                        <td></td>
+                        <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Tax")</td>
+                        <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/taxcost"))</td>
+                    </tr>
+                }
+
+                <tr class="active">
                     <td></td>
-                    <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Tax")</td>
-                    <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/taxcost"))</td>
+                    <td></td>
+                    <td colspan="2" class="text-right removecolumn"><b>@ResourceKey("General.Total")</b></td>
+                    <td class="text-right"><b>@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/appliedtotal"))</b></td>
                 </tr>
-            <tr class="active">
-                <td></td>
-                <td></td>
-                <td colspan="2" class="text-right removecolumn"><b>@ResourceKey("General.Total")</b></td>
-                <td class="text-right"><b>@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/appliedtotal"))</b></td>
-            </tr>
                 @if (nbi.GetXmlProperty("genxml/extrainfo/genxml/textbox/extramessage") != "")
                 {
                     <tr class="noborders">

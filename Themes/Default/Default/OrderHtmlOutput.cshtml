@@ -392,7 +392,7 @@
                                                                 <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedcost"))</td>
                                                                 <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedtotalcost"))</td>
                                                             </tr>
-                                                                            }
+                                                        }
 
 
                                                         <tr>
@@ -413,12 +413,20 @@
                                                             <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Shipping", emaillang)</td>
                                                             <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/appliedshipping"))</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><small>@ResourceKey("OrderAdmin.VATincluded")</small></td>
-                                                            <td></td>
-                                                            <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Tax", emaillang)</td>
-                                                            <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/taxcost"))</td>
-                                                        </tr>
+                                                        @if (nbi.GetXmlPropertyInt("genxml/taxtype") != 3)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @if (nbi.GetXmlPropertyInt("genxml/taxtype") == 1)
+                                                                    {
+                                                                        <small>@ResourceKey("OrderAdmin.VATincluded")</small>
+                                                                    }
+                                                                </td>
+                                                                <td></td>
+                                                                <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Tax")</td>
+                                                                <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/taxcost"))</td>
+                                                            </tr>
+                                                        }
                                                         <tr class="active">
                                                             <td></td>
                                                             <td></td>

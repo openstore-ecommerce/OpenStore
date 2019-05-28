@@ -3,7 +3,7 @@
     $('.processing').show();
 
     // if we pass uid as url param, select only that user orders.
-    if ($('#useridparam').val() != '') {
+    if ($('#useridparam').val() !== '') {
         $('#selecteduserid').val($('#useridparam').val());
     }
 
@@ -26,7 +26,7 @@
         });
 
 
-        if (e.cmd == 'orderadmin_getlist') {
+        if (e.cmd === 'orderadmin_getlist') {
 
             $("#OrderAdmin_cmdExport").show();
             $("#OrderAdmin_cmdSave").hide();
@@ -104,13 +104,13 @@
 
         }
 
-        if (e.cmd == 'orderadmin_getexport') {
+        if (e.cmd === 'orderadmin_getexport') {
             $('#OrderAdmin_cmdExportDownload').attr('href', '/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=orderlist.csv&filename=' + $('#csvfile').text());
             $('#OrderAdmin_cmdExportDownload').show();
             $('#OrderAdmin_cmdExport').hide();
         }
 
-        if (e.cmd == 'orderadmin_getdetail') {
+        if (e.cmd === 'orderadmin_getdetail') {
 
             $("#OrderAdmin_cmdExport").hide();
             $("#OrderAdmin_cmdSave").show();
@@ -151,46 +151,60 @@
 
             $('#OrderAdmin_cmdEmailAmended').unbind("click");
             $('#OrderAdmin_cmdEmailAmended').click(function () {
-                $('.processing').show();
-                $('#emailtype').val("OrderAmended");
-                $('#emailsubject').val("orderamended_emailsubject");
-                $('#emailmessage').val($('#emailmsg').val());
-                nbxget('orderadmin_save', '#orderadmin', '#actionreturn');
+                if (confirm($('#cmdEmailAmended').val())) {
+                    $('.processing').show();
+                    $('#emailtype').val("OrderAmended");
+                    $('#emailsubject').val("orderamended_emailsubject");
+                    $('#emailmessage').val($('#emailmsg').val());
+                    nbxget('orderadmin_save', '#orderadmin', '#actionreturn');
+                }
             });
             $('#OrderAdmin_cmdEmailValidated').unbind("click");
             $('#OrderAdmin_cmdEmailValidated').click(function () {
-                $('.processing').show();
-                $('#emailtype').val("OrderValidated");
-                $('#emailsubject').val("ordervalidated_emailsubject");
-                $('#emailmessage').val($('#emailmsg').val());
-                nbxget('orderadmin_save', '#orderadmin', '#actionreturn');
+                if (confirm($('#cmdEmailValidated').val())) {
+                    $('.processing').show();
+                    $('#emailtype').val("OrderValidated");
+                    $('#emailsubject').val("ordervalidated_emailsubject");
+                    $('#emailmessage').val($('#emailmsg').val());
+                    nbxget('orderadmin_save', '#orderadmin', '#actionreturn');
+                }
             });
             $('#OrderAdmin_cmdEmailShipped').unbind("click");
             $('#OrderAdmin_cmdEmailShipped').click(function () {
-                $('.processing').show();
-                $('#emailtype').val("OrderShipped");
-                $('#emailsubject').val("ordershipped_emailsubject");
-                $('#emailmessage').val($('#emailmsg').val());
-                nbxget('orderadmin_save', '#orderadmin', '#actionreturn');
+                if (confirm($('#cmdEmailShipped').val())) {
+                    $('.processing').show();
+                    $('#emailtype').val("OrderShipped");
+                    $('#emailsubject').val("ordershipped_emailsubject");
+                    $('#emailmessage').val($('#emailmsg').val());
+                    nbxget('orderadmin_save', '#orderadmin', '#actionreturn');
+                }
             });
             $('#OrderAdmin_cmdEmailReceipt').unbind("click");
             $('#OrderAdmin_cmdEmailReceipt').click(function () {
+                if (confirm($('#cmdEmailReceipt').val())) {
+                    $('.processing').show();
+                    $('#emailtype').val("OrderReceipt");
+                    $('#emailsubject').val("orderreceipt_emailsubject");
+                    $('#emailmessage').val($('#emailmsg').val());
+                    nbxget('orderadmin_save', '#orderadmin', '#actionreturn');
+                }
+            });
+
+            $('#actionreturn').unbind("change");
+            $('#actionreturn').change(function () {
                 $('.processing').show();
-                $('#emailtype').val("OrderReceipt");
-                $('#emailsubject').val("orderreceipt_emailsubject");
-                $('#emailmessage').val($('#emailmsg').val());
-                nbxget('orderadmin_save', '#orderadmin', '#actionreturn');
+                nbxget('orderadmin_getdetail', '#orderadminsearch', '#datadisplay');
             });
 
 
         }
 
-        if (e.cmd == 'orderadmin_removeinvoice') {
+        if (e.cmd === 'orderadmin_removeinvoice') {
             $('.processing').show();
             nbxget('orderadmin_getdetail', '#orderadminsearch', '#datadisplay');
         }
 
-        if (e.cmd == 'orderadmin_save') {
+        if (e.cmd === 'orderadmin_save') {
             $('.processing').show();
             if ($('#emailtype').val() !== '') {
                 nbxget('orderadmin_sendemail', '#orderadminsearch', '#actionreturn');
@@ -200,12 +214,12 @@
 
         }
 
-        if (e.cmd == 'orderadmin_sendemail') {
+        if (e.cmd === 'orderadmin_sendemail') {
             $('.processing').hide();
             $('#emailtype').val(''); // clear flag
         }
 
-        if (e.cmd == 'orderadmin_reorder' || e.cmd == 'orderadmin_edit') {
+        if (e.cmd === 'orderadmin_reorder' || e.cmd == 'orderadmin_edit') {
             $('.processing').show();
             window.location = $('#redirecturl').val();
         }

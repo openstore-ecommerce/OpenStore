@@ -165,6 +165,21 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 _userInfo.Membership.Approved = true;
                 UserController.UpdateUser(PortalSettings.Current.PortalId, _userInfo);
+
+                if (_userInfo.IsInRole("Unverified Users"))
+                {
+                    var rc = new DotNetNuke.Security.Roles.RoleController();
+                    var ri = rc.GetRoleByName(PortalId, "Unverified Users");
+                    var portalSettings = PortalController.Instance.GetCurrentPortalSettings();
+                    if (ri != null) RoleController.DeleteUserRole(_userInfo, ri, portalSettings, false);
+
+                    ri = rc.GetRoleByName(PortalId, "Registered Users");                    
+                    if (ri != null) RoleController.AddUserRole(_userInfo, ri, portalSettings, RoleStatus.Approved, DateTime.Now, DateTime.Now.AddYears(99),false,false);
+
+                    ri = rc.GetRoleByName(PortalId, "Subscribers");
+                    if (ri != null) RoleController.AddUserRole(_userInfo, ri, portalSettings, RoleStatus.Approved, DateTime.Now, DateTime.Now.AddYears(99), false, false);
+
+                }
             }
         }
 

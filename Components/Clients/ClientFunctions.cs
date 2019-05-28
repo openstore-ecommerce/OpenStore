@@ -139,6 +139,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
                         strOut = DnnUtils.GetResourceString("/DesktopModules/NBright/NBrightBuy/App_LocalResources/", "General.Processing");
                         break;
                 }
+                DnnUtils.ClearPortalCache(PortalSettings.Current.PortalId);
             }
             return strOut;
         }
