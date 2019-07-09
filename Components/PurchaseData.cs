@@ -598,7 +598,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             //remove DB record
             var modCtrl = new NBrightBuyController();
-            modCtrl.Delete(_entryId);
+            var nbi = modCtrl.Get(_entryId);
+            if (nbi.TypeCode == "CART")
+            {
+                modCtrl.Delete(_entryId);
+            }
         }
 
         /// <summary>
