@@ -42,8 +42,8 @@ GO
       prdlang.[Lang] as [Language] 
   FROM {databaseOwner}[{objectQualifier}NBrightBuy] as prd 
   inner join {databaseOwner}[{objectQualifier}NBrightBuyLang] as prdlang on prd.ItemId = prdlang.ParentItemId
-  cross APPLY prd.XMLData.nodes('/genxml/models/genxml') AS Tbl (nbs)
-  outer APPLY prd.XMLData.nodes('/genxml/lang/genxml/models/genxml') AS TblLang (nbslang) 
+  OUTER APPLY prdlang.XMLData.nodes('/genxml/models/genxml') AS Tbl (nbs)
+  OUTER APPLY prdlang.XMLData.nodes('/genxml/lang/genxml/models/genxml') AS TblLang (nbslang) 
   where prd.TypeCode = 'PRD'
 
 GO
