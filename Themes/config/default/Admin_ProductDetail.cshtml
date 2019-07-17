@@ -202,6 +202,10 @@
                                                         @CheckBox(nbiModel, "genxml/checkbox/chkishidden_" + lp1, "ResourceKey:General.Hidden", "")
                                                     </div>
                                                     <div class="col-sm-2">
+                                                        @CheckBox(nbiModel, "genxml/lang/genxml/checkbox/chkishiddenlang_" + lp1, "", "")@LangFlag(info.Lang)
+                                                        <label class="control-label">@ResourceKey("General.Hidden")</label>
+                                                    </div>
+                                                    <div class="col-sm-2">
                                                         @CheckBox(nbiModel, "genxml/checkbox/chkdeleted_" + lp1, "ResourceKey:General.Deleted", "")
                                                     </div>
                                                     <div class="col-sm-2">
