@@ -213,7 +213,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             {
                 foreach (var i in _rangeData)
                 {
-                    if (i.RefCsv.ToLower() == "default")
+                    if (i.RefCsv.ToLower().Contains(",default,"))
                     {
                         if (rangeValue >= i.RangeLow && rangeValue < i.RangeHigh && shippingAmt < i.Cost) shippingAmt = i.Cost;
                     }
