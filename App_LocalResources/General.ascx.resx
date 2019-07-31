@@ -393,6 +393,9 @@
   <data name="Processing.Text" xml:space="preserve">
     <value>Processing</value>
   </data>
+  <data name="ProcessingDiv.Text" xml:space="preserve">
+    <value>&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</value>
+  </data>
   <data name="Reset.Text" xml:space="preserve">
     <value>Reset</value>
   </data>
