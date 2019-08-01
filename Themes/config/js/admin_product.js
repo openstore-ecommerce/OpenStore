@@ -17,8 +17,21 @@
     // start load all ajax data, continued by js in product.js file
     $('.processing').show();
 
-    $('#p1_razortemplate').val('Admin_ProductList.cshtml');
-    nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
+    // Check for eid in path & get details, otherwise get list (EditUrl token support)
+    var path = window.location.pathname;
+    if (path.indexOf("/eid/") > 0) {
+        var re = /(\/eid\/)\d+/g;
+        var eid = path.match(re) != null ? path.match(re).toString().replace("/eid/", "") : null;
+        if (eid != null && !isNaN(eid)) {
+            $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
+            $('#p1_selecteditemid').val(eid);
+            nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay');
+        }
+    }
+    else {
+        $('#p1_razortemplate').val('Admin_ProductList.cshtml');
+        nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
+    }
 
     $('#product_admin_cmdSave').unbind("click");
     $('#product_admin_cmdSave').click(function () {
