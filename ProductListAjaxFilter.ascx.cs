@@ -63,6 +63,9 @@ namespace Nevoweb.DNN.NBrightBuy
                 if (Page.IsPostBack == false)
                 {
                     // filter data is loaded onto the page by the product.js, which does an ajax call after product list render.
+                    var l = new Literal();
+                    l.Text = "<script>$(document).ready(function () { loadFilters(); });</script>";
+                    phData.Controls.Add(l);
                 }
             }
             catch (Exception exc) //Module failed to load

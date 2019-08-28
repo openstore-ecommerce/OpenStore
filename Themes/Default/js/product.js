@@ -310,7 +310,6 @@ function loadProductList(moduleid) {
     if (typeof moduleid !== 'undefined') moduleid = $('#moduleid').val();
     if ($('#ajaxlist').val() === 'True') {
         $('.processingproductajax').show();
-
         nbxproductget('product_ajaxview_getlist', '#productajaxview', '#ajaxproducts' + moduleid);
     } else {
         addtobasketclick();
@@ -318,7 +317,7 @@ function loadProductList(moduleid) {
 }
 
 function loadProductListFilter(moduleid) {
-    if (typeof moduleid !== 'undefined') moduleid = $('#moduleid').val();
+    if (typeof moduleid === 'undefined') moduleid = $('#moduleid').val();
     $('.processingfilter').show();
     nbxproductget('product_ajaxview_getlistfilter', '#productajaxview', '#ajaxproducts' + moduleid);
 }
@@ -338,7 +337,7 @@ function loadFilters() {
 
 function IsInFavorites(productid) {
     var productitemlist = $.cookie("NBSShoppingList");
-    if (productitemlist != null && productitemlist != undefined) {
+    if (typeof productitemlist !== 'undefined') {
         if (productitemlist.indexOf(productid + '*') !== -1) {
             return true;
         }
