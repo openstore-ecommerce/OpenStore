@@ -1537,14 +1537,18 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static Dictionary<string, string> RazorPreProcessTempl(string razorTemplName, string templateControlPath, string theme, string lang, Dictionary<string, string> settings, string moduleid = "")
         {
-            var cachekey = "preprocessmetadata" + theme + "." + razorTemplName + moduleid;
+            // match the "AddPreProcessMetaData()" cachekey.
+            var cachekey = "preprocessmetadata*" + theme + "." + razorTemplName + "*" + moduleid + "*" + PortalSettings.Current.PortalId;
 
-            // get cached data if there
-            var cachedlist = (Dictionary<string, string>)Utils.GetCache(cachekey);
-            if (cachedlist != null) return cachedlist;
-            
+            var cachedlist = new Dictionary<string, string>();
+            if (!StoreSettings.Current.DebugMode)
+            {
+                // get cached data if there
+                cachedlist = (Dictionary<string, string>)Utils.GetCache(cachekey);
+                if (cachedlist != null) return cachedlist;
+            }
+
             // build cache data from template.
-            cachedlist = new Dictionary<string, string>();
             var razorTemplate = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
             if (razorTemplate != "" && razorTemplate.Contains("AddPreProcessMetaData"))
             {
