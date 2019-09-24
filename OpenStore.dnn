@@ -141,6 +141,9 @@
             <skinFile>
               <name>OpenStoreBO.ascx</name>
             </skinFile>
+            <skinFile>
+              <name>OpenStoreBO.doctype.xml</name>
+            </skinFile>
           </skinFiles>
         </component>
 
