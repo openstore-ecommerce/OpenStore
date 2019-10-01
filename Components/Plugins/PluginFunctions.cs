@@ -198,6 +198,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Plugins
 
                     var info = new NBrightInfo(true);
                     info.ItemID = -1;
+                    info.PortalId = PortalSettings.Current.PortalId;
                     info.Lang = Utils.GetCurrentCulture();
                     info.SetXmlProperty("genxml/hidden/index","99");
                     info.TypeCode = "PLUGIN";
