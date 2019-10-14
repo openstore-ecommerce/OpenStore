@@ -569,7 +569,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 	                    newImageFileName = productImgFolder + "\\" + imgnameext;
 	                    lp2++;
 	                }
-	                var imgSize = 960;
+                    var imgSize = StoreSettings.Current.GetInt(StoreSettingKeys.productimageresize);
+                    if (imgSize == 0) imgSize = 960;
 	                if (extension != null && extension.ToLower() == ".png")
 	                {
 	                    newImageFileName = ImgUtils.ResizeImageToPng(fullName, newImageFileName, imgSize);
