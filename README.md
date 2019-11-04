@@ -5,9 +5,9 @@ Developer please read this to get started:
 
 https://doc.openstore-ecommerce.com/
 
-https://www.openstore-ecommerce.com/fr-fr/Open-Store/%C3%80-propos
+https://www.openstore-ecommerce.com/Open-Store/%C3%80-propos
 
-https://www.openstore-ecommerce.com/fr-fr/Fonctionnalites
+https://www.openstore-ecommerce.com/Fonctionnalites
 
 
 To load MSBuild NuGet use Package Manager:
