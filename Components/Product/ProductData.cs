@@ -1860,6 +1860,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     DataLangRecord.SetXmlProperty("genxml/models/genxml[" + modellp + "]/textbox/txtmodelname", ProductName);
                     upd = true;
                 }
+                if (DataLangRecord != null && DataLangRecord.GetXmlProperty("genxml/models/genxml[" + modellp + "]/hidden/modelid") == "")
+                {
+                    DataLangRecord.SetXmlProperty("genxml/models/genxml[" + modellp + "]/hidden/modelid", m.GetXmlProperty("genxml/hidden/modelid"));
+                    upd = true;
+                }
                 if (DataRecord.GetXmlProperty("genxml/models/genxml[" + modellp + "]/textbox/txtmodelref") == "")
                 {
                     DataRecord.SetXmlProperty("genxml/models/genxml[" + modellp + "]/textbox/txtmodelref", ProductRef);

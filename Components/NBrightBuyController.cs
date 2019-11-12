@@ -258,11 +258,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public NBrightInfo GetByType(int portalId, int moduleId, string entityTypeCode, string selUserId = "", string entityTypeCodeLang = "", string lang = "", bool debug = false)
         {
             var strCacheKey = "GetByType*" + moduleId.ToString("") + "*" + portalId.ToString("") + "*" + entityTypeCode + "*" + selUserId + "*" + lang;
-            if (!debug)
-            {
-                var obj = (NBrightInfo) Utils.GetCache(strCacheKey);
-                if (obj != null && StoreSettings.Current.DebugMode == false) return obj;
-            }
+
+            // Can NOT call "StoreSettings.Current" from scheduler, it will cause an error.
+            // SO caching for this DB call.
+            //if (!debug)
+            //{
+            //    var obj = (NBrightInfo) Utils.GetCache(strCacheKey);
+            //    if (obj != null && StoreSettings.Current.DebugMode == false) return obj;
+            //    if (obj != null) return obj;
+            //}
 
             var strFilter = "";
             if (selUserId != "")
