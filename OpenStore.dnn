@@ -61,6 +61,15 @@
         v04.00.07
         - Fix AJAX SEO product list.
 
+        v04.01.00
+        - Fix to Product Filter
+        - Fix Sort cache
+        - Upgrade .Net Framework to v7.4.2
+        - Fix installation of OpenStoreBO.doctype.xml for CKeditor on Edge.
+        - Add modelid to language model XML
+        - Image resize in ProductUtils to use store settings value.
+        - Remove cache from GetByType, so it can be called by Scheduler.
+        - Simplify the EU tax check, to not use the Alpha chars are the tax country.
 
       </releaseNotes>
       <dependencies>

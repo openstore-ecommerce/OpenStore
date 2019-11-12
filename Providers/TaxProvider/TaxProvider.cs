@@ -63,14 +63,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
                 if (enabletaxnumber)
                 {
                     var taxnumber = cartInfo.GetXmlProperty("genxml/billaddress/genxml/textbox/taxnumber").Trim();
-                    var storetaxnumber = StoreSettings.Current.Get("storetaxnumber").Trim();
-                    var storetaxcountrycode = "-1";
-                    var taxcountrycode = "-1";
-                    if (storetaxnumber.Length >= 2) storetaxcountrycode = storetaxnumber.Substring(0, 2).ToUpper();
-                    if (Utils.IsNumeric(storetaxcountrycode)) storetaxcountrycode = storecountry; // Invalid tax country code for store, use the store country setting
-                    if (taxnumber.Length >= 2) taxcountrycode = taxnumber.Substring(0, 2).ToUpper();
-                    if (Utils.IsNumeric(taxnumber)) taxcountrycode = taxcountry; // Invalid tax country code for cart tax number, use cart billing country
-                    if (taxcountrycode != storetaxcountrycode && taxnumber != "")
+                    if (storecountry != taxcountry  && taxnumber != "")
                     {
                         // not matching merchant country, so remove tax 
                         if (taxtype == "1")
