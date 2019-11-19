@@ -163,7 +163,7 @@ BEGIN
 				select NB1.[ItemId]  
 				,NB1.[XMLData].value('(genxml/textbox/txtproductref)[1]', 'nvarchar(150)') as ProductRef
 				,NB2.[XMLData].value('(genxml/textbox/txtproductname)[1]', 'nvarchar(150)') as ProductName
-				,NB2.[XMLData].value('(genxml/textbox/txtmanufacturer)[1]', 'nvarchar(150)') as Manufacturer
+				,NB2.[XMLData].value('(genxml/textbox/manufacturer)[1]', 'nvarchar(150)') as Manufacturer
 				,NB2.[XMLData].value('(genxml/textbox/txtsummary)[1]', 'nvarchar(255)') as Summary
 				,NB2.[XMLData].value('(genxml/textbox/txtseoname)[1]', 'nvarchar(255)') as SEOName
 				,NB2.[XMLData].value('(genxml/textbox/txttagwords)[1]', 'nvarchar(255)') as TagWords

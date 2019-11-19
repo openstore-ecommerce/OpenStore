@@ -30,9 +30,9 @@
                     }
 
                     <li class="title">
-                        @if (@nbiPrd.GetXmlProperty("genxml/lang/genxml/textbox/txtmanufacturer") == "")
+                        @if (@nbiPrd.GetXmlProperty("genxml/lang/genxml/textbox/manufacturer") == "")
                         {
-                            @nbiPrd.GetXmlProperty("genxml/lang/genxml/textbox/txtmanufacturer")<span>: </span>
+                            @nbiPrd.GetXmlProperty("genxml/lang/genxml/textbox/manufacturer")<span>: </span>
                         }
                         @nbiPrd.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname")
                     </li>

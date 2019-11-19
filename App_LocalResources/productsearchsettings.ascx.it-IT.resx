@@ -177,10 +177,10 @@
   <data name="lblthemesettings.Text" lastModified="2015-11-12 11:33:25">
     <value xml:space="preserve">Impostazioni del tema</value>
   </data>
-  <data name="lbltxtmanufacturer.Help" lastModified="2015-11-12 11:33:25">
+  <data name="lblmanufacturer.Help" lastModified="2015-11-12 11:33:25">
     <value xml:space="preserve">Attivare la ricerca di testo del Produttore</value>
   </data>
-  <data name="lbltxtmanufacturer.Text" lastModified="2015-11-12 11:33:25">
+  <data name="lblmanufacturer.Text" lastModified="2015-11-12 11:33:25">
     <value xml:space="preserve">Ricerca testo Produttore</value>
   </data>
   <data name="lbltxtseoname.Help" lastModified="2015-11-12 11:33:25">

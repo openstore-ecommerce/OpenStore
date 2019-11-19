@@ -723,7 +723,7 @@ namespace Nevoweb.DNN.NBrightBuy.render
         {
             var l = new Literal();
             l.DataBinding += ShortcutDataBinding;
-            l.Text = "genxml/lang/genxml/textbox/txtmanufacturer";
+            l.Text = "genxml/lang/genxml/textbox/manufacturer";
             container.Controls.Add(l);
         }
         private void CreateSummary(Control container, XmlNode xmlNod)

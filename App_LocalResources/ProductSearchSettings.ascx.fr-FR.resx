@@ -183,10 +183,10 @@
   <data name="lbltextsearch.Text" xml:space="preserve">
     <value>Recherche de texte</value>
   </data>
-  <data name="lbltxtmanufacturer.Help" xml:space="preserve">
+  <data name="lblmanufacturer.Help" xml:space="preserve">
     <value>Activer la recherche de texte fabricant</value>
   </data>
-  <data name="lbltxtmanufacturer.Text" xml:space="preserve">
+  <data name="lblmanufacturer.Text" xml:space="preserve">
     <value>Recherche de texte fabricant</value>
   </data>
   <data name="lbltxtseoname.Help" xml:space="preserve">

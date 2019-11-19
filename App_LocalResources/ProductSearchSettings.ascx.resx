@@ -150,10 +150,10 @@
   <data name="lbltextsearch.Text" xml:space="preserve">
     <value>Text Search</value>
   </data>
-  <data name="lbltxtmanufacturer.Help" xml:space="preserve">
+  <data name="lblmanufacturer.Help" xml:space="preserve">
     <value>Turn on the Manufacturer text search</value>
   </data>
-  <data name="lbltxtmanufacturer.Text" xml:space="preserve">
+  <data name="lblmanufacturer.Text" xml:space="preserve">
     <value>Manufacturer Text Search</value>
   </data>
   <data name="lbltxtseoname.Help" xml:space="preserve">
