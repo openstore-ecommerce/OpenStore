@@ -2003,7 +2003,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 }
 
                 // This allows the return to the same category after a returning from a entry view. + Gives support for current category in razor tokens
-                if (Utils.IsNumeric(_catid)) navigationdata.CategoryId = Convert.ToInt32(_catid);
+                if (Utils.IsNumeric(_catid))
+                {
+                    if (Convert.ToInt32(_catid) != navigationdata.CategoryId)
+                    {
+                        // we need to clear the propertyByProduct filters on category change, the properties need refreshing. and Ajax will keep the display.
+                        navigationdata.ClearPropertyFilters();
+                    }
+                    navigationdata.CategoryId = Convert.ToInt32(_catid);
+                }
 
                 #endregion
 
@@ -2049,6 +2057,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                 #region apply ajax property filter
 
+                var filterPropertyList = "";
                 if (!string.IsNullOrEmpty(_propertyfilter))
                 {
                     var propIds = new List<string>();
@@ -2082,10 +2091,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                                 sqlPropFilter += $" {_filterTypeInsideProp} ";
                             }
                             sqlPropFilter += $"NB1.[ItemId] in (select parentitemid from {dbOwner}[{objQual}NBrightBuy] where typecode = 'CATXREF' and XrefItemId = {propId}) ";
+                            filterPropertyList += propId + ",";
                         }
                         sqlGroupFilter += $" ({sqlPropFilter}) ";
                     }
-
+                    filterPropertyList = filterPropertyList.TrimEnd(',');
                     //foreach (var propId in propIds)
                     //{
                     //    if (!String.IsNullOrEmpty(sqlPropFilter))
@@ -2103,6 +2113,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 #endregion
 
                 // save navigation data
+                navigationdata.FilterPropertyList = filterPropertyList;
                 navigationdata.PageModuleId = pagemid;
                 navigationdata.PageNumber = _pagenum;
                 if (!Utils.IsNumeric(_pagenum) || Convert.ToInt32(_pagenum) <= 0) navigationdata.PageNumber = "1";
@@ -2130,9 +2141,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     var recordCount = ModCtrl.GetDataListCount(ps.PortalId, moduleid, EntityTypeCode, strFilter, EntityTypeCodeLang, Utils.GetCurrentCulture(), DebugMode);
 
-                    navigationdata.RecordCount = recordCount.ToString("");
-                    navigationdata.Save();
-
                     if (returnlimit > 0 && returnlimit < recordCount) recordCount = returnlimit;
 
                     // **** check if we already have the template cached, if so no need for DB call or razor call ****
@@ -2145,8 +2153,18 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         retval = "";
                         //if (defcatid != "0")  // no category will cause error.
                         //{
-                            var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
-                            if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
+                        var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+
+                        var propertyList = ModCtrl.GetPropertyListByProduct(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+                        navigationdata.ClearPropertyFilters();
+                        foreach (var p in propertyList)
+                        {
+                            navigationdata.AddPropertyFilter(p.PropId);
+                        }
+                        navigationdata.RecordCount = recordCount.ToString("");
+                        navigationdata.Save();
+
+                        if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
                             ModSettings.Settings()["recordcount"] = recordCount.ToString();
                             retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
                         //}
@@ -2195,6 +2213,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             if (catname != "" && ajaxInfo.GetXmlPropertyInt("genxml/hidden/catid") == 0)
             {
                 ajaxInfo.SetXmlProperty("genxml/hidden/catid", CategoryUtils.GetCatIdFromName(catname));
+            }
+
+            var linkedproductlistmodule = ModSettings.Get("linkmodulekey");
+            if (linkedproductlistmodule != "")
+            {
+                ajaxInfo.SetXmlProperty("genxml/hidden/linkmodulekey", linkedproductlistmodule);
             }
 
             var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, -1, "", ajaxInfo, providercontrolpath, ThemeFolder, UiLang, ModSettings.Settings());

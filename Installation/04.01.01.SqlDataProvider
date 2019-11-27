@@ -1,0 +1,125 @@
+
+
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductList]    Script Date: 27/11/2019 10:08:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE    PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductList]
+@PortalId int, 
+@ModuleId int,
+@TypeCode nvarchar(50),
+@Filter nvarchar(max),
+@OrderBy nvarchar(500),
+@ReturnLimit int = 0,
+@TypeCodeLang nvarchar(50) = '',
+@Lang nvarchar(10) = ''
+
+AS
+begin
+-- This SPROC return the Get List with LANGAUGE and NO PAGING
+
+	SET NOCOUNT ON
+	  DECLARE
+		 @STMT nvarchar(max)         -- SQL to execute
+		,@rtnFields nvarchar(max)
+		,@NB4cascade nvarchar(max)
+
+	IF (@PortalId >= 0) BEGIN
+
+		IF (@ModuleId >= 0) BEGIN
+			SET @Filter = ' and (NB1.PortalId = '''  + Convert(nvarchar(10),@PortalId) + ''' or NB1.PortalId = ''-1'') and (NB1.ModuleId = ''' + Convert(nvarchar(10),@ModuleId) + ''' or NB1.ModuleId = ''-1'') ' + @Filter
+		END ELSE BEGIN
+			SET @Filter = ' and (NB1.PortalId = '''  + Convert(nvarchar(10),@PortalId) + '''  or NB1.PortalId = ''-1'') ' + @Filter
+		END 
+
+	END 
+
+	SET @Filter = REPLACE(@Filter,'[XMLData]','ISNULL(NB2.[XMLData],NB1.[XMLData])')
+	SET @OrderBy = REPLACE(@OrderBy,'[XMLData]','ISNULL(NB2.[XMLData],NB1.[XMLData])')
+
+	set @rtnFields = ' NB1.[ItemId] '
+	set @rtnFields = @rtnFields + ',NB1.[XrefItemId] '
+	set @rtnFields = @rtnFields + ',NB1.[ParentItemId] '
+
+
+	-- Return records without paging.
+	set @STMT = ' SELECT ' 
+				
+	if @ReturnLimit > 0 
+	begin
+		set @STMT = @STMT + ' top ' + convert(nvarchar(10),@ReturnLimit)
+	end
+
+	set @STMT = @STMT + @rtnFields + ' FROM {databaseOwner}[{objectQualifier}NBrightBuy] as NB1 '
+
+	set @STMT = @STMT + ' left join  {databaseOwner}[{objectQualifier}NBrightBuyIdx] as NB3 on NB3.ItemId = NB1.ItemId and NB3.[Lang] = ''' + @Lang + ''''
+
+	set @STMT = @STMT + '  left join {databaseOwner}[{objectQualifier}NBrightBuyLang] as NB2 on NB2.ParentItemId = NB1.ItemId and NB2.[Lang] = ''' + @Lang + ''''
+	
+	IF (@OrderBY like '%{bycategoryproduct}%')
+	BEGIN
+		DECLARE @categoryid nvarchar(max)
+		SET @categoryid = LTRIM(RTRIM(replace(@OrderBY ,'{bycategoryproduct}','')))
+		if (@categoryid != '')
+		BEGIN
+				SET @NB4cascade = ''				
+				IF CHARINDEX('CATCASCADE',@filter) > 0  SET @NB4cascade = 'or NB4.TypeCode = ''CATCASCADE'''
+
+				SET @OrderBY = ' order by NB4.[XMLdata].value(''(genxml/sort)[1]'',''int''), NB3.productname  '
+				set @STMT = @STMT + '  left join {databaseOwner}[{objectQualifier}NBrightBuy] as NB4 on (NB4.TypeCode = ''CATXREF'' ' + @NB4cascade + ' ) and NB4.ParentItemId = NB1.ItemId and NB4.XrefItemId = ' + @categoryid + ' '
+		END ELSE
+		BEGIN
+				SET @OrderBY = ' order by NB3.productname '
+		END
+	END
+
+	IF (RIGHT(@TypeCode,1) = '%')
+	BEGIN
+		set @STMT = @STMT + ' WHERE NB1.TypeCode Like ''' + @TypeCode + ''' ' + @Filter + ' ' + @OrderBy
+	END ELSE
+	BEGIN
+		IF (@TypeCode = '')
+		BEGIN
+			set @STMT = @STMT + ' WHERE NB1.TypeCode != '''' ' + @Filter + @OrderBy
+		END ELSE
+		BEGIN
+			set @STMT = @STMT + ' WHERE NB1.TypeCode = ''' + @TypeCode + ''' ' + @Filter  + ' ' + @OrderBy
+		END
+	END
+    
+
+CREATE TABLE #TempProducts  
+(            
+	[ItemId] [int],
+	[XrefItemId] [int],
+	[ParentItemId] [int],
+)     
+
+INSERT INTO #TempProducts(
+	[ItemId],
+	[XrefItemId],
+	[ParentItemId]
+)
+EXEC sp_executeSQL @STMT
+
+
+SELECT distinct [PropId]
+FROM [build.biocausse.fr].{databaseOwner}[{objectQualifier}vw_OS_Properties] as OSP
+inner join [build.biocausse.fr].{databaseOwner}[{objectQualifier}NBrightBuy] as NB1
+on osp.PropId = NB1.XrefItemId
+WHERE NB1.TypeCode = 'CATXREF' 
+and (NB1.PortalId = '0'  or NB1.PortalId = '-1') 
+and NB1.ParentItemId in (select ItemId from #TempProducts)
+
+drop table #TempProducts 
+
+end
+GO
+
+

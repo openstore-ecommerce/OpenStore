@@ -14,8 +14,25 @@
     var ajaxInfo = (NBrightInfo)Model.List.First();
     var portalId = PortalSettings.Current.PortalId;
     var catid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/catid");
-}
 
+    // see if we want to list only filters included in the product list.
+    var propertyProductList = new List<PropertyByProductInfo>();
+    var propertySelectedList = new List<int>();
+    var propertyDisplayList = new List<int>();
+    var moduleKey = ajaxInfo.GetXmlProperty("genxml/hidden/linkmodulekey");
+    if (moduleKey != "")  // modulekey of linked product list, if empty all properties are displayed.
+    {
+        var navigationdata = new NavigationData(portalId, moduleKey);
+        propertyDisplayList = navigationdata.FilterPropertyListByProduct;
+        foreach (var p in navigationdata.FilterPropertyList.Split(','))
+        {
+            if (Utils.IsNumeric(p))
+            {
+                propertySelectedList.Add(Convert.ToInt32(p));
+            }
+        }
+    }
+}
 
 
 @{
@@ -29,13 +46,26 @@
     foreach (GroupData selGroup in catData.GetFilterGroups(Model.Lang))
     {
         var propList = NBrightBuyUtils.BuildCatList(1, false, false, selGroup.Info.ItemID, "", "", false, true, selGroup.Ref, "", "");
-        strOut += "<div class='h3-headline'>" + selGroup.Name + "</div>";
-        strOut += "<ul>";
+        var cbString = "";
         foreach (var item in propList)
         {
-            strOut += "<li><input type='checkbox' value='" + selGroup.Ref + "-" + item.Key + "' />" + item.Value + "</li>";
+            var selected = "";
+            if (propertySelectedList.Contains(item.Key))
+            {
+                selected = "checked";
+            }
+            if (propertyDisplayList.Contains(item.Key))
+            {
+                cbString += "<li><input type='checkbox' " + selected + " value='" + selGroup.Ref + "-" + item.Key + "' />" + item.Value + "</li>";
+            }
         }
-        strOut += "</ul>";
+        if (cbString != "")
+        {
+            strOut += "<div class='h3-headline'>" + selGroup.Name + "</div>";
+            strOut += "<ul>";
+            strOut += cbString;
+            strOut += "</ul>";
+        }
     }
 }
 
@@ -55,13 +85,26 @@
     {
         var grouplang = nbc.GetDataLang(groupnbi.ItemID, Model.Lang);
         var propList = NBrightBuyUtils.BuildCatList(1, false, false, groupnbi.ItemID, "", "", false, true, groupRef, "", "");
-        strOut += "<div class='h3-headline'>" + grouplang.GetXmlProperty("genxml/textbox/groupname") + "</div>";
-        strOut += "<ul>";
+        var cbString = "";
         foreach (var item in propList)
         {
-            strOut += "<li><input type='checkbox' value='" + groupRef + "-" + item.Key + "' />" + item.Value + "</li>";
+            var selected = "";
+            if (propertySelectedList.Contains(item.Key))
+            {
+                selected = "checked";
+            }
+            if (propertyDisplayList.Contains(item.Key))
+            {
+                cbString += "<li><input type='checkbox' " + selected + " value='" + groupRef + "-" + item.Key + "' />" + item.Value + "</li>";
+            }
         }
-        strOut += "</ul>";
+        if (cbString != "")
+        {
+            strOut += "<div class='h3-headline'>" + grouplang.GetXmlProperty("genxml/textbox/groupname") + "</div>";
+            strOut += "<ul>";
+            strOut += cbString;
+            strOut += "</ul>";
+        }
     }
 }
 

@@ -86,6 +86,7 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         setPagerVals(moduleid);
 
         loadProducts(moduleid);
+        loadFilters(moduleid);
     });
 
     $('.ajaxpager').unbind("click");

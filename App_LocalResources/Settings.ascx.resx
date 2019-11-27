@@ -543,4 +543,10 @@
   <data name="singlepaymentoptionmsg.Text" xml:space="preserve">
     <value>Skip payment page if only 1 payment provider</value>
   </data>
+  <data name="linkmodulekey.Text" xml:space="preserve">
+    <value>Linked Product Module Ref.</value>
+  </data>
+  <data name="linkmodulekey.Help" xml:space="preserve">
+    <value>Module Ref. of the product list module that you want to link the filters to.  If linked to a product list module only filters that exist in the product list will be displayed.  You can find the module ref. on the product list module settings. </value>
+  </data>
 </root>

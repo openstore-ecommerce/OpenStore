@@ -128,6 +128,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components.SqlDataProvider
         {
             return SqlHelper.ExecuteReader(ConnectionString, DatabaseOwner + ObjectQualifier + "NBrightBuy_GetList", portalId, moduleId, typeCode, sqlSearchFilter, sqlOrderBy, returnLimit, pageNumber, pageSize, recordCount, typeCodeLang, lang);
         }
+        public override IDataReader GetPropertyListByProduct(int portalId, int moduleId, string typeCode, string sqlSearchFilter = "", string sqlOrderBy = "", int returnLimit = 0, int pageNumber = 0, int pageSize = 0, int recordCount = 0, string typeCodeLang = "", string lang = "")
+        {
+            return SqlHelper.ExecuteReader(ConnectionString, DatabaseOwner + ObjectQualifier + "NBrightBuy_GetPropertyByProductList", portalId, moduleId, typeCode, sqlSearchFilter, sqlOrderBy, returnLimit, typeCodeLang, lang);
+        }
 
         public override int GetListCount(int portalId, int moduleId, string typeCode, string sqlSearchFilter = "", string typeCodeLang = "", string lang = "")
         {

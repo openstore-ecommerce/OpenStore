@@ -216,7 +216,6 @@ namespace Nevoweb.DNN.NBrightBuy
                     var pf = new ProductFunctions();
                     var strOut = pf.ProductAjaxViewList(Context,ModuleId,TabId, true);
 
-
                     // load base template which should call ajax and load the list.
                     //var strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, ModuleId, "productdetailrazor" + ModuleId, new NBrightInfo(true), _controlPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
 

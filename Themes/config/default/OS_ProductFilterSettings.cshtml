@@ -66,6 +66,12 @@
             </div>
             <div class="dnnFormItem">
                 <div>
+                    @DnnLabel("lbllinkmodulekey", "Settings.linkmodulekey")
+                    @NBrightTextBox(info, "genxml/textbox/linkmodulekey", "", "")
+                </div>
+            </div>
+            <div class="dnnFormItem">
+                <div>
                     @DnnLabel("lblfiltertypeoutsideproperty", "Settings.lblfiltertypeoutsideproperty")
                     @RadioButtonList(info, "genxml/radiobuttonlist/filtertypeoutsideproperty", "ResourceKey:Settings.filtertypeoutsidedatavalue", "ResourceKey:Settings.filtertypeoutsidedata", "class=\"nbs-vertical-radiogroup\"", "AND", "class='radio-inline'")
                 </div>

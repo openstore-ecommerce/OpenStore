@@ -20,13 +20,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public abstract int GetDnnUsersCount(int portalId, string sqlSearchFilter = "");
         public abstract NBrightInfo GetData(int itemId);
         public abstract NBrightInfo GetDataLang(int parentItemId, string lang);
+        public abstract List<PropertyByProductInfo> GetPropertyListByProduct(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string SQLOrderBy, int ReturnLimit, int PageNumber, int PageSize, int RecordCount, string TypeCodeLang, string lang);
     }
-	/// -----------------------------------------------------------------------------
-	/// <summary>
-	/// An abstract class for the data access layer
-	/// </summary>
-	/// -----------------------------------------------------------------------------
-	public abstract class DataProvider
+    /// -----------------------------------------------------------------------------
+    /// <summary>
+    /// An abstract class for the data access layer
+    /// </summary>
+    /// -----------------------------------------------------------------------------
+    public abstract class DataProvider
 	{
 
 		#region Shared/Static Methods
@@ -77,7 +78,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 		#region "NBrightBuy Abstract Methods"
 
         public abstract IDataReader GetListCustom(int portalId, int moduleId, string SPROCname, int pageNumber = 0, string lang = "", string extraParam = "");
+
         public abstract IDataReader GetList(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string SQLOrderBy, int ReturnLimit, int PageNumber, int PageSize, int RecordCount, string TypeCodeLang, string lang);
+        public abstract IDataReader GetPropertyListByProduct(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string SQLOrderBy, int ReturnLimit, int PageNumber, int PageSize, int RecordCount, string TypeCodeLang, string lang);
         public abstract int GetListCount(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string TypeCodeLang, string lang);
         public abstract IDataReader Get(int ItemID, string TypeCodeLang, string lang);
         public abstract int Update(int ItemId, int PortalId, int ModuleId, String TypeCode, String XMLData, String GUIDKey, DateTime ModifiedDate, String TextData, int XrefItemId, int ParentItemId, int UserId, string lang);

@@ -23,4 +23,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
         }
     }
+
+    public class PropertyByProductInfo
+    {
+        public int PropId { set; get; }
+    }
+
 }

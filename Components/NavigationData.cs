@@ -21,6 +21,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         private string _cookieName;
         private DataStorageType _storageType;
         private string _criteria;
+        private List<int> _filterPropertiesByProduct;
 
         /// <summary>
         /// Populate class with cookie data
@@ -31,10 +32,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <param name="nameAppendix">specifiy Unique key for search data</param>
         public NavigationData(int portalId, String moduleKey, string nameAppendix = "")
         {
+
             Exists = false;
             _portalId = portalId;
             _cookieName = "NBrightBuyNav" + "_" + moduleKey.Trim() + nameAppendix.Trim();
             _storageType = DataStorageType.Cookie; // force cookie, some issues with session memory.
+            _filterPropertiesByProduct = new List<int>();
+            
             Get();
         }
 
@@ -77,7 +81,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (searchTags.Count > 0)
             {
-                _criteria += ""; 
+                _criteria += "";
                 var lp = 0;
                 foreach (var mt in searchTags)
                 {
@@ -122,7 +126,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             var searchToDate = Convert.ToDateTime(searchValTo);
                             searchToDate = searchToDate.AddDays(1);
                             var strippedToDate = searchToDate.Date;
-                            searchValTo = strippedToDate.ToString("yyyy-MM-dd HH:mm:ss");                            
+                            searchValTo = strippedToDate.ToString("yyyy-MM-dd HH:mm:ss");
                         }
                         else
                             searchValTo = "";
@@ -152,7 +156,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             break;
                         case "not":
                             _criteria += " " + sqloperator + " " +
-                                         GenXmlFunctions.GetSqlFilterText(sqlfield, sqltype, searchVal, sqlcol,"!=");
+                                         GenXmlFunctions.GetSqlFilterText(sqlfield, sqltype, searchVal, sqlcol, "!=");
                             break;
                         case "like":
                             if (searchVal == "") searchVal = "NORESULTSnbright";
@@ -212,7 +216,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var sd = new NavigationSearchData(nod.InnerText);
                 if (!String.IsNullOrEmpty(sd.Id) && sd.Id.ToLower().StartsWith("search"))
                 {
-                   searchData.Add(sd); 
+                    searchData.Add(sd);
                 }
             }
 
@@ -359,7 +363,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (_storageType == DataStorageType.SessionMemory)
             {
-                if (HttpContext.Current.Session[_cookieName + "tempname"] != null) tempfilename = (String) HttpContext.Current.Session[_cookieName + "tempname"];
+                if (HttpContext.Current.Session[_cookieName + "tempname"] != null) tempfilename = (String)HttpContext.Current.Session[_cookieName + "tempname"];
             }
             else
             {
@@ -392,19 +396,26 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             nbi.SetXmlProperty("genxml/RecordCount", RecordCount);
             nbi.SetXmlProperty("genxml/Mode", Mode);
             nbi.SetXmlProperty("genxml/OrderByIdx", OrderByIdx);
+            nbi.SetXmlProperty("genxml/FilterPropertyList", FilterPropertyList);
+
+            var filterCSV = "";
+            foreach (var f in _filterPropertiesByProduct)
+            {
+                filterCSV += f.ToString() + ",";
+            }
+            nbi.SetXmlProperty("genxml/filterpropertycsv", filterCSV.TrimEnd(','));
 
             if (!String.IsNullOrEmpty(SearchFormData))
             {
                 nbi.RemoveXmlNode("genxml/SearchFormData");
-                nbi.SetXmlProperty("genxml/SearchFormData", "",TypeCode.String,false);
-                nbi.AddXmlNode(SearchFormData,"genxml", "genxml/SearchFormData");
+                nbi.SetXmlProperty("genxml/SearchFormData", "", TypeCode.String, false);
+                nbi.AddXmlNode(SearchFormData, "genxml", "genxml/SearchFormData");
             }
 
             var filePath = StoreSettings.Current.FolderTempMapPath + "\\" + tempfilename;
             try
             {
                 Utils.SaveFile(filePath, nbi.XMLData);
-
             }
             catch (Exception e)
             {
@@ -455,7 +466,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 Mode = nbi.GetXmlProperty("genxml/Mode");
                 OrderByIdx = nbi.GetXmlProperty("genxml/OrderByIdx");
                 SearchFormData = nbi.GetXmlNode("genxml/SearchFormData").ToString();
+                FilterPropertyList = nbi.GetXmlProperty("genxml/FilterPropertyList");
 
+                _filterPropertiesByProduct = new List<int>();
+                var filterCSV = nbi.GetXmlProperty("genxml/filterpropertycsv");
+                foreach (var f in filterCSV.Split(','))
+                {
+                    if (Utils.IsNumeric(f))
+                    {
+                        AddPropertyFilter(Convert.ToInt32(f));
+                    }
+                }
             }
 
             if (_criteria == "" && XmlData == "") // "Exist" property not used for paging data
@@ -492,7 +513,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (_storageType == DataStorageType.SessionMemory)
             {
-                if (HttpContext.Current.Session[_cookieName + "tempname"] != null) tempfilename = (String) HttpContext.Current.Session[_cookieName + "tempname"];
+                if (HttpContext.Current.Session[_cookieName + "tempname"] != null) tempfilename = (String)HttpContext.Current.Session[_cookieName + "tempname"];
                 if (HttpContext.Current.Session[_cookieName + "tempname"] != null) HttpContext.Current.Session.Remove(_cookieName + "Criteria");
             }
             else
@@ -547,7 +568,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var criteria = _criteria.Replace("{criteriacatid}", BuildCriteriaCatId());
                 if (criteria.Trim() == "") return "";
                 if (!criteria.Trim().ToLower().StartsWith("and")) criteria = " and ( " + criteria + " )"; //wrap criteria into a AND, if not already.
-                return criteria; 
+                return criteria;
             }
         }
 
@@ -569,6 +590,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// selected pagemid
         /// </summary>
         public string PageModuleId { get; set; }
+        public string FilterPropertyList { get; set; }
 
         /// <summary>
         /// Page Name, used to return to page with correct page name 
@@ -632,6 +654,21 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// Store search form data so wee can redisplay correct settings on filter form.
         /// </summary>
         public string SearchFormData { get; set; }
+
+        public List<int> FilterPropertyListByProduct { get { return _filterPropertiesByProduct; } }
+        public void ClearPropertyFilters()
+        {
+            _filterPropertiesByProduct = new List<int>();
+        }
+        public void AddPropertyFilter(int filterId)
+        {
+            RemovePropertyFilter(filterId);
+            _filterPropertiesByProduct.Add(filterId);
+        }
+        public void RemovePropertyFilter(int filterId)
+        {
+            if (_filterPropertiesByProduct.Contains(filterId)) _filterPropertiesByProduct.Remove(filterId);
+        }
 
     }
 

@@ -44,6 +44,32 @@ namespace Nevoweb.DNN.NBrightBuy.Components
     public static class NBrightBuyUtils
     {
 
+        public static string DeCode(string codedval)
+        {
+            var strOut = "";
+            var s = codedval.Split('.');
+            foreach (var c in s)
+            {
+                if (c != "")
+                {
+                    strOut += (char)Convert.ToInt32(c);
+                }
+            }
+            return strOut;
+        }
+
+        public static string EnCode(string value)
+        {
+            var strOut = "";
+            var l = value.ToCharArray();
+            foreach (var c in l)
+            {
+                strOut += ((int)c).ToString() + '.';
+            }
+            return strOut.TrimEnd('.');
+        }
+
+
         /// <summary>
         /// Used to get the template system getter control.
         /// </summary>

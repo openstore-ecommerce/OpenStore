@@ -151,18 +151,30 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 throw;
             }
         }
+        public override List<PropertyByProductInfo> GetPropertyListByProduct(int portalId, int moduleId, string typeCode, string sqlSearchFilter = "", string sqlOrderBy = "", int returnLimit = 0, int pageNumber = 0, int pageSize = 0, int recordCount = 0, string typeCodeLang = "", string lang = "")
+        {
+            try
+            {
+                return CBO.FillCollection<PropertyByProductInfo>(DataProvider.Instance().GetPropertyListByProduct(portalId, moduleId, typeCode, sqlSearchFilter, sqlOrderBy, returnLimit, pageNumber, pageSize, recordCount, typeCodeLang, lang));
+            }
+            catch (Exception e)
+            {
+                Logging.LogException(e);
+                throw;
+            }
+        }
 
-	    /// <summary>
-	    /// override for Database Function
-	    /// </summary>
-	    /// <param name="portalId"></param>
-	    /// <param name="moduleId"></param>
-	    /// <param name="typeCode"></param>
-	    /// <param name="sqlSearchFilter"></param>
-	    /// <param name="typeCodeLang"></param>
-	    /// <param name="lang"></param>
-	    /// <returns></returns>
-	    public override int GetListCount(int portalId, int moduleId, string typeCode, string sqlSearchFilter = "", string typeCodeLang = "", string lang = "")
+        /// <summary>
+        /// override for Database Function
+        /// </summary>
+        /// <param name="portalId"></param>
+        /// <param name="moduleId"></param>
+        /// <param name="typeCode"></param>
+        /// <param name="sqlSearchFilter"></param>
+        /// <param name="typeCodeLang"></param>
+        /// <param name="lang"></param>
+        /// <returns></returns>
+        public override int GetListCount(int portalId, int moduleId, string typeCode, string sqlSearchFilter = "", string typeCodeLang = "", string lang = "")
         {
             try
             {
@@ -483,6 +495,32 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (l == null)
             {
                 l = GetList(portalId, moduleId, entityTypeCode, strFilters, strOrderBy, returnLimit, pageNumber, pageSize, recordCount, entityTypeCodeLang, cultureCode);
+                if (debugMode == false) NBrightBuyUtils.SetModCache(moduleId, strCacheKey, l);
+            }
+            return l;
+        }
+
+        public List<PropertyByProductInfo> GetPropertyListByProduct(int portalId, int moduleId, string entityTypeCode, string entityTypeCodeLang, string cultureCode, string strFilters, string strOrderBy, bool debugMode = false, string selUserId = "", int returnLimit = 0, int pageNumber = 0, int pageSize = 0, int recordCount = 0)
+        {
+            if (selUserId != "")
+            {
+                strFilters += " and UserId = " + selUserId + " ";
+            }
+
+            // NOTE: orderby random code removed, becuase paging will not work with that caching.
+
+            List<PropertyByProductInfo> l = null;
+
+            // get cache template 
+            var strCacheKey = portalId.ToString("") + "*" + moduleId.ToString("") + "*" + entityTypeCode + "*" + "*filter:" + strFilters.Replace(" ", "") + "*orderby:" + strOrderBy.Replace(" ", "") + "*" + returnLimit.ToString("") + "*" + pageNumber.ToString("") + "*" + pageSize.ToString("") + "*" + recordCount.ToString("") + "*" + entityTypeCodeLang + "*" + cultureCode;
+            if (debugMode == false)
+            {
+                l = (List<PropertyByProductInfo>)Utils.GetCache(strCacheKey);
+            }
+
+            if (l == null)
+            {
+                l = GetPropertyListByProduct(portalId, moduleId, entityTypeCode, strFilters, strOrderBy, returnLimit, pageNumber, pageSize, recordCount, entityTypeCodeLang, cultureCode);
                 if (debugMode == false) NBrightBuyUtils.SetModCache(moduleId, strCacheKey, l);
             }
             return l;
