@@ -10,10 +10,7 @@
                 jQuery.removeData(this, name.replace('data-', ''));
             }
         });
-    }
-});
-
-jQuery.fn.extend({
+    },
     scrollCheckoutToTop: function () {
         $([document.documentElement, document.body]).animate({
             scrollTop: 0
