@@ -172,7 +172,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
             var selgroup = ajaxInfo.GetXmlProperty("genxml/hidden/selectedgroup");
             if (selgroup == "") selgroup = "cat";
             categoryData.GroupType = selgroup;
-            categoryData.DataRecord.SetXmlProperty("genxml/checkbox/chkishidden", "true");
+            categoryData.DataRecord.SetXmlProperty("genxml/checkbox/chkishidden", "True");
             categoryData.DataRecord.ParentItemId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
             categoryData.DataRecord.SetXmlProperty("genxml/dropdownlist/ddlparentcatid", categoryData.DataRecord.ParentItemId.ToString());
             categoryData.Save();

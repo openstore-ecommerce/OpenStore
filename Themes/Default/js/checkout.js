@@ -257,6 +257,9 @@
                 }
 
                 if (e.cmd == 'cart_shippingprovidertemplate') {
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: 0
+                    }, 1000);
                 }
 
                 if (e.cmd == 'cart_recalculatesummary2') {
