@@ -54,7 +54,7 @@
             {
                 selected = "checked";
             }
-            if (propertyDisplayList.Contains(item.Key))
+            if (propertyDisplayList.Contains(item.Key) || moduleKey == "")
             {
                 cbString += "<li><input type='checkbox' " + selected + " value='" + selGroup.Ref + "-" + item.Key + "' />" + item.Value + "</li>";
             }
@@ -93,7 +93,7 @@
             {
                 selected = "checked";
             }
-            if (propertyDisplayList.Contains(item.Key))
+            if (propertyDisplayList.Contains(item.Key) || moduleKey == "")
             {
                 cbString += "<li><input type='checkbox' " + selected + " value='" + groupRef + "-" + item.Key + "' />" + item.Value + "</li>";
             }

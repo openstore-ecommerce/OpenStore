@@ -1,6 +1,5 @@
 
 
-
 /****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductList]    Script Date: 27/11/2019 10:08:08 ******/
 SET ANSI_NULLS ON
 GO
@@ -8,6 +7,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductList]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductList]
+GO
 
 
 CREATE    PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductList]
@@ -109,15 +112,27 @@ INSERT INTO #TempProducts(
 EXEC sp_executeSQL @STMT
 
 
+
+SELECT nbs1.[ItemId] as [PropId]
+INTO [#OS_Properties]
+  FROM [dbo].[NBrightBuy] as nbs1
+  inner join [dbo].[NBrightBuy] as nbs2 on nbs1.ItemId = nbs2.ParentItemId and nbs2.TypeCode = 'CATEGORYLANG'
+  where nbs1.TypeCode = 'CATEGORY' 
+  and not nbs1.[XmlData].value('(genxml/dropdownlist/ddlgrouptype)[1]','nvarchar(max)') = 'CAT'
+  and nbs1.PortalId = @PortalId
+
+
 SELECT distinct [PropId]
-FROM [build.biocausse.fr].{databaseOwner}[{objectQualifier}vw_OS_Properties] as OSP
-inner join [build.biocausse.fr].{databaseOwner}[{objectQualifier}NBrightBuy] as NB1
+FROM [#OS_Properties] as OSP
+inner join {databaseOwner}[{objectQualifier}NBrightBuy] as NB1
 on osp.PropId = NB1.XrefItemId
 WHERE NB1.TypeCode = 'CATXREF' 
-and (NB1.PortalId = '0'  or NB1.PortalId = '-1') 
+and (NB1.PortalId = @PortalId  or NB1.PortalId = -1 or @PortalId = -1) 
 and NB1.ParentItemId in (select ItemId from #TempProducts)
 
+
 drop table #TempProducts 
+drop table #OS_Properties 
 
 end
 GO

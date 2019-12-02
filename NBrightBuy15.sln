@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBrightBuy", "NBrightBuy.csproj", "{8F850303-BEC5-4247-9126-1E58F1402205}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManualPaymentProvider", "Providers\ManualPaymentProvider\ManualPaymentProvider.csproj", "{88B7B5F9-09F2-4EF5-96C1-A4665A3B6832}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountCodesProvider", "Providers\DiscountCodesProvider\DiscountCodesProvider.csproj", "{A634CB2D-946E-4C73-B7DC-0677CE5AA7D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F7C3DDA-C643-40C8-B411-99C6C8AF5ED6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
