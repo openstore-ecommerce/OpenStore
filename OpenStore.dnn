@@ -4,7 +4,7 @@
     <package name="OS_ProductView" type="Module" version="4.1.1">
       <friendlyName>OS_ProductView</friendlyName>
       <description>
-        NBrightStore open source e-commerce for DNN.
+        OpenStore open source e-commerce for DNN.
       </description>
       <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
       <owner>
@@ -70,6 +70,10 @@
         - Image resize in ProductUtils to use store settings value.
         - Remove cache from GetByType, so it can be called by Scheduler.
         - Simplify the EU tax check, to not use the Alpha chars are the tax country.
+        
+        v04.01.01
+        - Add Filter ByProduct list.
+        - Change DNN manifesto to use full skin installation.
 
       </releaseNotes>
       <dependencies>
@@ -142,20 +146,7 @@
             </assembly>
           </assemblies>
         </component>
-
-        <component type="Skin">
-          <skinFiles>
-            <skinName>OpenStoreBO</skinName>
-            <basePath>Portals\_default\Skins\OpenStoreBO</basePath>
-            <skinFile>
-              <name>OpenStoreBO.ascx</name>
-            </skinFile>
-            <skinFile>
-              <name>OpenStoreBO.doctype.xml</name>
-            </skinFile>
-          </skinFiles>
-        </component>
-
+       
         <component type="Module">
           <desktopModule>
             <moduleName>OS_ProductView</moduleName>
@@ -200,10 +191,57 @@
       </components>
     </package>
 
+
+    <package name="OpenStoreBO" type="Skin" version="4.1.1">
+      <friendlyName>OpenStoreBO</friendlyName>
+      <description>
+        OpenStore Admin Panel
+      </description>
+      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
+      <owner>
+        <name>David Lee</name>
+        <organization>Nevoweb</organization>
+        <url>www.nevoweb.com</url>
+        <email>info@nevoweb.com</email>
+      </owner>
+      <license>
+        New BSD License (BSD)
+
+        Copyright (c) 2015, David Lee
+        All rights reserved.
+
+        Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+        * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+        * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+        * Neither the name of Nevoweb nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+      </license>
+      <components>
+        <component type="Skin">
+          <skinFiles>
+            <skinName>OpenStoreBO</skinName>
+            <basePath>Portals\_default\Skins\OpenStoreBO</basePath>
+            <skinFile>
+              <name>OpenStoreBO.ascx</name>
+            </skinFile>
+            <skinFile>
+              <name>OpenStoreBO.doctype.xml</name>
+            </skinFile>
+          </skinFiles>
+        </component>
+      </components>
+    </package>
+
+
+
     <package name="OS_DisplaySearch" type="Module" version="4.1.1">
       <friendlyName>OS_DisplaySearch</friendlyName>
       <description>
-        NBrightStore open source e-commerce for DNN.
+        OpenStore open source e-commerce for DNN.
         Search options for front office.
       </description>
             <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
@@ -283,7 +321,7 @@
 
     <package name="OS_AddressAdmin" type="Module" version="4.1.1">
 			<friendlyName>OS_AddressAdmin</friendlyName>
-			<description>NBrightStore open source e-commerce for DNN.
+			<description>OpenStore open source e-commerce for DNN.
   Admin for clients addresses from the front office.
 			</description>
 			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
@@ -358,7 +396,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 		<package name="OS_Payment" type="Module" version="4.1.1">
 			<friendlyName>OS_Payment</friendlyName>
-			<description>NBrightStore open source e-commerce for DNN.
+			<description>OpenStore open source e-commerce for DNN.
   Process payment of orders.
 			</description>
 			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
@@ -433,7 +471,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		<package name="OS_OrderAdmin" type="Module" version="4.1.1">
 
 			<friendlyName>OS_OrderAdmin</friendlyName>
-			<description>NBrightStore open source e-commerce for DNN.
+			<description>OpenStore open source e-commerce for DNN.
   This module provides access to client orders from the front office, for clients.
 			</description>
 			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
@@ -508,7 +546,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 		<package name="OS_ProfileForm" type="Module" version="4.1.1">
 			<friendlyName>OS_ProfileForm</friendlyName>
-			<description>NBrightStore open source e-commerce for DNN.
+			<description>OpenStore open source e-commerce for DNN.
   This module creates a profile form that links to the DNN profile and NBS address.
 			</description>
 			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
@@ -584,7 +622,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		
 				<package name="OS_Checkout" type="Module" version="4.1.1">
 			<friendlyName>OS_Checkout</friendlyName>
-			<description>NBrightStore open source e-commerce for DNN. Checkout process.
+			<description>OpenStore open source e-commerce for DNN. Checkout process.
 			</description>
 			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
@@ -658,7 +696,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 				<package name="OS_MiniCart" type="Module" version="4.1.1">
 			<friendlyName>OS_MiniCart</friendlyName>
-			<description>NBrightStore open source e-commerce for DNN. Mini cart view.
+			<description>OpenStore open source e-commerce for DNN. Mini cart view.
 			</description>
 			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
@@ -732,7 +770,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 				<package name="OS_FullCart" type="Module" version="4.1.1">
 			<friendlyName>OS_FullCart</friendlyName>
-			<description>NBrightStore open source e-commerce for DNN. full cart view.
+			<description>OpenStore open source e-commerce for DNN. full cart view.
 			</description>
 			      <iconFile>~/DesktopModules/NBright/NBrightBuy/icon-openstore.png</iconFile>
 			<owner>
