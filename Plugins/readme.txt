@@ -26,7 +26,7 @@ Remove system level
 To remove system level pugins you can add an xml to the plugins folder with a delete flag and ctrl ref.
 
 <genxml>
-	<deleted>True</deleted>
+	<delete>True</delete>
 	<textbox>
 		<ctrl>nameofctrl</ctrl>
 	</textbox>
