@@ -283,6 +283,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                                         if (nbi2.GetXmlPropertyBool("genxml/delete"))
                                         {
                                             objCtrl.Delete(existingrecord.ItemID);
+                                            File.Delete(f);
+                                            ClearPluginCache(PortalSettings.Current.PortalId);
                                         }
                                         else
                                         {
