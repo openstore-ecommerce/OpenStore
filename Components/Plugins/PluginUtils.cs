@@ -241,13 +241,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// </summary>
         public static void UpdateSystemPlugins()
         {
-                // Add new plugins
-                var updated = false;
-                var pluginfoldermappath = System.Web.Hosting.HostingEnvironment.MapPath(StoreSettings.NBrightBuyPath() + "/Plugins");
+            // Add new plugins
+            var updated = false;
+            var deleted = false;
+            var pluginfoldermappath = System.Web.Hosting.HostingEnvironment.MapPath(StoreSettings.NBrightBuyPath() + "/Plugins");
             if (pluginfoldermappath != null && Directory.Exists(pluginfoldermappath))
             {
                 var objCtrl = new NBrightBuyController();
-                var flist = Directory.GetFiles(pluginfoldermappath,"*.xml");
+                var flist = Directory.GetFiles(pluginfoldermappath, "*.xml");
                 foreach (var f in flist)
                 {
                     if (f.EndsWith(".xml"))
@@ -282,7 +283,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                                         nbi2.ItemID = existingrecord.ItemID;
                                         if (nbi2.GetXmlPropertyBool("genxml/delete"))
                                         {
+                                            var sysrecord = objCtrl.GetByGuidKey(99999, -1, "PLUGIN", nbi2.GUIDKey);
                                             objCtrl.Delete(existingrecord.ItemID);
+                                            objCtrl.Delete(sysrecord.ItemID);
+                                            File.Delete(f);
+                                            deleted = true;
                                         }
                                         else
                                         {
@@ -312,9 +317,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 }
             }
 
-            if (updated)
+            if (updated || deleted)
             {
-                CopySystemPluginsToPortal();
+                if (updated) { CopySystemPluginsToPortal(); }
+                if (deleted) { DotNetNuke.Common.Utilities.DataCache.ClearCache(); }
                 ClearPluginCache(PortalSettings.Current.PortalId);
             }
 
