@@ -25,15 +25,6 @@
         <!-- Shopping List buttons -->
         <a id="shoppinglistadd-@(info.ItemID)" href="#shoppinglistpopup" class="shoppinglistadd actionbutton absec" itemid="@(info.ItemID)"><i class="fa fa-star-o"></i></a>
         <a id="shoppinglistremove-@(info.ItemID)" href="javascript:void(0)" class="shoppinglistremove actionbutton absec" itemid="@(info.ItemID)" style="display:none;"><i class="fa fa-star"></i></a>
-        <script>
-            if (IsInFavorites(@(info.ItemID))) {
-                $('#shoppinglistadd-@(info.ItemID)').hide();
-                $('#shoppinglistremove-@(info.ItemID)').show();
-            } else {
-                $('#shoppinglistadd-@(info.ItemID)').show();
-                $('#shoppinglistremove-@(info.ItemID)').hide();
-            }
-        </script>
 
         <div class="product-overlay">
             @if (!Model.GetSettingBool("cataloguemode"))

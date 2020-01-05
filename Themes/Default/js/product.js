@@ -127,6 +127,21 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
             loadProductList(moduleid);
         });
         loadFilters(moduleid);
+
+        //set visibility for shopping list add & remove links 
+        var clientElem = $("#ajaxproducts" + moduleid);
+        clientElem.find("[id^=shoppinglistadd-]").each(function (index, element) {
+            var itemid = $(element).attr("itemid");
+            if (IsInFavorites(itemid)) {
+                $(element).hide();
+                clientElem.find('#shoppinglistremove-' + itemid).show();
+            }
+            else {
+                $(element).show();
+                clientElem.find('#shoppinglistremove-' + itemid).hide();
+            }
+        });
+
         $('.processingproductajax').hide();
     }
 
