@@ -3,102 +3,112 @@
 @using System.Web
 @using NBrightDNN
 @using Nevoweb.DNN.NBrightBuy.Components;
+@using DotNetNuke.Entities.Portals;
 
 @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
 
 <!-- Product List Body -->
 <div id="listwrapper" class="productlist">
 
-@{
-    var lang = "";
-}
+    @{
+        var lang = "";
+        var navigationdata = new NavigationData(PortalSettings.Current.PortalId, Model.GetSetting("modref"));
+        var addtobasket = ResourceKey("ProductView.addtobasket");
+        var from = ResourceKey("ProductView.from");
+        var productdetail = ResourceKey("ProductView.productdetail");
+        var promoflag = ResourceKey("ProductView.promoflag");
+        var outofstockflag = ResourceKey("ProductView.outofstockflag");
+        var cataloguemode = Model.GetSettingBool("cataloguemode");
+    }
 
-<div class="addedtobasket" style="display:none;">@ResourceKey("ProductView.addedtobasket")</div>
+    <div class="addedtobasket" style="display:none;">@ResourceKey("ProductView.addedtobasket")</div>
 
-@foreach (NBrightInfo info in Model.List)
+    @foreach (NBrightInfo info in Model.List)
     {
         var product = new ProductData(info.ItemID, info.Lang);
+        var itemId = info.ItemID;
+        var entryUrl = EntryUrl(navigationdata, info, Model);
         lang = info.Lang;
 
-    <div class="product">
+        <div class="product">
 
-        <!-- Shopping List buttons -->
-        <a id="shoppinglistadd-@(info.ItemID)" href="#shoppinglistpopup" class="shoppinglistadd actionbutton absec" itemid="@(info.ItemID)"><i class="fa fa-star-o"></i></a>
-        <a id="shoppinglistremove-@(info.ItemID)" href="javascript:void(0)" class="shoppinglistremove actionbutton absec" itemid="@(info.ItemID)" style="display:none;"><i class="fa fa-star"></i></a>
+            <!-- Shopping List buttons -->
+            <a id="shoppinglistadd-@itemId" href="#shoppinglistpopup" class="shoppinglistadd actionbutton absec" itemid="@itemId"><i class="fa fa-star-o"></i></a>
+            <a id="shoppinglistremove-@itemId" href="javascript:void(0)" class="shoppinglistremove actionbutton absec" itemid="@itemId" style="display:none;"><i class="fa fa-star"></i></a>
 
-        <div class="product-overlay">
-            @if (!Model.GetSettingBool("cataloguemode"))
-            {
-                if (product.Models.Count > 1)
+            <div class="product-overlay">
+                @if (!cataloguemode)
                 {
-                <a href="@EntryUrl(info,Model)" class="actionbutton"><i class="fa fa-search"></i>@ResourceKey("ProductView.productdetail")</a>
-                }
-                else
-                {
-                    if (!product.Disabled)
+                    if (product.Models.Count > 1)
                     {
-                        <a href="javascript:void(0);" class="actionbutton addtobasket" itemid="@(info.ItemID)"><i class="fa fa-shopping-cart"></i>@ResourceKey("ProductView.addtobasket")</a>
+                        <a href="@entryUrl" class="actionbutton"><i class="fa fa-search"></i>@productdetail</a>
+                    }
+                    else
+                    {
+                        if (!product.Disabled)
+                        {
+                            <a href="javascript:void(0);" class="actionbutton addtobasket" itemid="@itemId"><i class="fa fa-shopping-cart"></i>@addtobasket</a>
+                        }
                     }
                 }
-            }
-        </div>
+            </div>
 
-        <div class="productimg">
-          @if (product.Imgs.Count > 0)
-          {
-              <div class="image">
-                  <img title="@(info.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary"))" src="@ProductImageUrl(info, 160, 0)">
-              </div>
-          }
-          else
-          {
-              <div class="noimage">
-                  <i class="fa fa-picture-o"></i>
-              </div>
-          }
-        </div>
-
-        <div class="description">
-            <h2><a href="@EntryUrl(info,Model)"><span>@info.GetXmlProperty("genxml/textbox/manufacturer")</span>@ProductName(info)</a></h2>
-
-            <div class="price">
-                @if (product.Models.Count > 1)
+            <div class="productimg">
+                @if (product.Imgs.Count > 0)
                 {
-                    <span class="from">@ResourceKey("ProductView.from")</span>
-                }
-
-                @if (product.IsOnSale)
-                {
-                    <span class="old">@(NBrightBuyUtils.FormatToStoreCurrency(product.FromPrice()))</span>
-                    <span class="sale">@(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))</span>
+                    <div class="image">
+                        <img title="@(info.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary"))" src="@ProductImageUrl(info, 160, 0)">
+                    </div>
                 }
                 else
                 {
-                    @(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))
+                    <div class="noimage">
+                        <i class="fa fa-picture-o"></i>
+                    </div>
                 }
             </div>
 
-            <div class="flags">
-            @if (product.IsOnSale)
-            {
-                <span class="onsaleflag">@ResourceKey("ProductView.promoflag")</span>
-            }
-            @if (!product.IsInStock)
-            {
-                <span class="outofstockflag">@ResourceKey("ProductView.outofstockflag")</span>
-            }
+            <div class="description">
+                <h2><a href="@entryUrl"><span>@info.GetXmlProperty("genxml/textbox/manufacturer")</span>@ProductName(info)</a></h2>
+
+                <div class="price">
+                    @if (product.Models.Count > 1)
+                    {
+                        <span class="from">@from</span>
+                    }
+
+                    @if (product.IsOnSale)
+                    {
+                        <span class="old">@(NBrightBuyUtils.FormatToStoreCurrency(product.FromPrice()))</span>
+                        <span class="sale">@(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))</span>
+                    }
+                    else
+                    {
+                        @(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))
+                    }
+                </div>
+
+                <div class="flags">
+                    @if (product.IsOnSale)
+                    {
+                        <span class="onsaleflag">@promoflag</span>
+                    }
+                    @if (!product.IsInStock)
+                    {
+                        <span class="outofstockflag">@outofstockflag</span>
+                    }
+                </div>
+
             </div>
 
+            <!-- fields required to send required ajax data to server -->
+            <span class="entryid@(itemId)">
+                <input id="@(itemId)_productid" type="hidden" value="@itemId">
+                <input id="@(itemId)_shopitemid" type="hidden" value="@itemId">
+                <input id="@(itemId)_uilang" type="hidden" value="@lang">
+            </span>
+
         </div>
-
-        <!-- fields required to send required ajax data to server -->
-        <span class="entryid@(info.ItemID)">
-            <input id="@(info.ItemID)_productid" type="hidden" value="@(info.ItemID)">
-            <input id="@(info.ItemID)_shopitemid" type="hidden" value="@(info.ItemID)">
-            <input id="@(info.ItemID)_uilang" type="hidden" value="@(info.Lang)">
-        </span>
-
-    </div>
-}
+    }
 
 </div>
