@@ -441,11 +441,15 @@ namespace NBrightBuy.render
 
         public IEncodedString Category(String fieldname, NBrightRazor model)
         {
+            var navigationdata = new NavigationData(PortalSettings.Current.PortalId, model.GetSetting("modref"));
+            return Category(navigationdata, fieldname, model);
+        }
+
+        public IEncodedString Category(NavigationData navigationdata, String fieldname, NBrightRazor model)
+        {
             var strOut = "";
             try
             {
-                var navigationdata = new NavigationData(PortalSettings.Current.PortalId, model.GetSetting("modref"));
-
                 // if we have no catid in url, we're going to need a default category from module.
                 var grpCatCtrl = new GrpCatController(Utils.GetCurrentCulture());
                 var objCInfo = grpCatCtrl.GetGrpCategory(navigationdata.CategoryId);
@@ -552,7 +556,18 @@ namespace NBrightBuy.render
             return new RawString(strOut);
         }
 
-        public IEncodedString CategoryBreadCrumb(Boolean includelinks, NBrightRazor model, Boolean aslist = true, int tabRedirect = -1, String separator = "", int wordlength = -1, int maxlength = 400,bool ajax = false)
+        public IEncodedString CategoryBreadCrumb(Boolean includelinks, NBrightRazor model, Boolean aslist = true, int tabRedirect = -1, String separator = "", int wordlength = -1, int maxlength = 400, bool ajax = false)
+        {
+            NavigationData navigationdata = null;
+            if (model.GetUrlParam("eid") == "")
+            {
+                navigationdata = new NavigationData(PortalSettings.Current.PortalId, model.GetSetting("modref"));
+            }
+
+            return CategoryBreadCrumb(navigationdata, includelinks, model, aslist, tabRedirect, separator, wordlength, maxlength, ajax);
+        }
+
+        public IEncodedString CategoryBreadCrumb(NavigationData navigationdata, Boolean includelinks, NBrightRazor model, Boolean aslist = true, int tabRedirect = -1, String separator = "", int wordlength = -1, int maxlength = 400, bool ajax = false)
         {
             var strOut = "";
 
@@ -571,7 +586,6 @@ namespace NBrightBuy.render
                 }
                 else
                 {
-                    var navigationdata = new NavigationData(PortalSettings.Current.PortalId, model.GetSetting("modref"));
                     catid = navigationdata.CategoryId;
                 }
 
@@ -588,7 +602,7 @@ namespace NBrightBuy.render
                     {
                         if (tabRedirect == 0) tabRedirect = PortalSettings.Current.ActiveTab.TabID;
                         if (tabRedirect == -1) tabRedirect = StoreSettings.Current.ProductListTabId;
-                        strOut = grpCatCtrl.GetBreadCrumbWithLinks(catid, tabRedirect, wordlength, separator, aslist,false, ajax);
+                        strOut = grpCatCtrl.GetBreadCrumbWithLinks(catid, tabRedirect, wordlength, separator, aslist, false, ajax);
                     }
                     else
                     {
@@ -1093,7 +1107,6 @@ namespace NBrightBuy.render
             {
                 var navigationdata = new NavigationData(PortalSettings.Current.PortalId, model.GetSetting("modref"));
                 return EntryUrl(navigationdata, info, model, relative, categoryref);
-
             }
             catch (Exception ex)
             {
@@ -1253,7 +1266,11 @@ namespace NBrightBuy.render
         public IEncodedString SortOrderAjaxDropDownList(String datatext, NBrightRazor model, string attributes = "")
         {
             var navigationdata = new NavigationData(PortalSettings.Current.PortalId, model.ModuleRef);
+            return SortOrderAjaxDropDownList(navigationdata, datatext, model, attributes);
+        }
 
+        public IEncodedString SortOrderAjaxDropDownList(NavigationData navigationdata, String datatext, NBrightRazor model, string attributes = "")
+        {
             if (Utils.IsNumeric(model.GetUrlParam("catid").Trim()))
             {
                 navigationdata.CategoryId = Convert.ToInt32(model.GetUrlParam("catid").Trim());
@@ -1290,9 +1307,13 @@ namespace NBrightBuy.render
         /// <returns></returns>
         public IEncodedString PageSizeDropDownList(String datatext, NBrightRazor model, String cssclass = "", bool addId = false, bool addScriptPostbackOnChange = true)
         {
-            if (datatext.StartsWith("ResourceKey:")) datatext = ResourceKey(datatext.Replace("ResourceKey:", "")).ToString();
-
             var navigationdata = new NavigationData(PortalSettings.Current.PortalId, model.ModuleRef);
+            return PageSizeDropDownList(navigationdata, datatext, model, cssclass, addId, addScriptPostbackOnChange);
+        }
+
+        public IEncodedString PageSizeDropDownList(NavigationData navigationdata, String datatext, NBrightRazor model, String cssclass = "", bool addId = false, bool addScriptPostbackOnChange = true)
+        {
+            if (datatext.StartsWith("ResourceKey:")) datatext = ResourceKey(datatext.Replace("ResourceKey:", "")).ToString();
 
             if (navigationdata.PageSize == "") navigationdata.PageSize = model.GetSetting("pagesize");
 
