@@ -1092,16 +1092,32 @@ namespace NBrightBuy.render
             try
             {
                 var navigationdata = new NavigationData(PortalSettings.Current.PortalId, model.GetSetting("modref"));
+                return EntryUrl(navigationdata, info, model, relative, categoryref);
 
+            }
+            catch (Exception ex)
+            {
+                url = ex.ToString();
+            }
+
+            return new RawString(url);
+        }
+
+        public IEncodedString EntryUrl(NavigationData navigationdata, NBrightInfo info, NBrightRazor model, Boolean relative = true, String categoryref = "")
+        {
+            categoryref = ""; // legacy
+            var url = "";
+            try
+            {
                 var urlname = info.GetXmlProperty("genxml/lang/genxml/textbox/txtseoname");
                 if (urlname == "") urlname = info.GetXmlProperty("genxml/lang/genxml/textbox/txtproductname");
 
-                    // see if we've injected a categoryid into the data class, this is done in the case of the categorymenu when displaying products.
+                // see if we've injected a categoryid into the data class, this is done in the case of the categorymenu when displaying products.
                 var categoryid = info.GetXmlProperty("genxml/categoryid");
                 if (categoryid == "") categoryid = navigationdata.CategoryId.ToString();
                 if (categoryid == "0") categoryid = ""; // no category active if zero
 
-                var eid = info.ItemID.ToString()!="0" ? info.ItemID.ToString() : info.GetXmlProperty("genxml/productid");
+                var eid = info.ItemID.ToString() != "0" ? info.ItemID.ToString() : info.GetXmlProperty("genxml/productid");
 
                 url = NBrightBuyUtils.GetEntryUrl(PortalSettings.Current.PortalId, eid, model.GetSetting("detailmodulekey"), urlname, model.GetSetting("ddldetailtabid"), categoryid, categoryref);
                 if (relative) url = Utils.GetRelativeUrl(url);
