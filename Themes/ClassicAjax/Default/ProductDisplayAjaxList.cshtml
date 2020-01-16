@@ -4,6 +4,7 @@
 @using DotNetNuke.Entities.Users
 @using NBrightDNN
 @using Nevoweb.DNN.NBrightBuy.Components;
+@using DotNetNuke.Entities.Portals;
 
 @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
 
@@ -17,13 +18,16 @@
 @AddPreProcessMetaData("orderby4", "NB3.ProductName", Model.FullTemplateName, Model.ModuleId.ToString())
 
 @*@AddPreProcessMetaData("selectpagesize", "True", Model.FullTemplateName, Model.ModuleId.ToString())*@ <!-- flag to tell product list a custom pagesize may be applied -->
+@{
+    var navigationdata = new NavigationData(PortalSettings.Current.PortalId, Model.GetSetting("modref"));
+}
 <!-- Product List header -->
 <div class="nbs">
 
     <!-- 0=Normal 1=Search 2=Favorites  -->
     @if (Model.GetSettingInt("displaytype") == 0)
     {
-        <div class="categorybreadcrumbs">@CategoryBreadCrumb(true, Model, true, -1, "", -1, 400, true)</div>
+        <div class="categorybreadcrumbs">@CategoryBreadCrumb(navigationdata, true, Model, true, -1, "", -1, 400, true)</div>
     }
     @{
         var sortClass = "sortorderselect";
@@ -44,17 +48,17 @@
         <!-- Product sort -->
         <div class="productsort">
             <label>@ResourceKey("General.pagesize") :</label>
-            @PageSizeDropDownList("8,16,32,64,128", Model, "", true, false)
-            @SortOrderAjaxDropDownList(ResourceKey("ProductView.orderby").ToString(), Model, sortAtts)
+            @PageSizeDropDownList(navigationdata, "8,16,32,64,128", Model, "", true, false)
+            @SortOrderAjaxDropDownList(navigationdata, ResourceKey("ProductView.orderby").ToString(), Model, sortAtts)
         </div>
         <!-- Category details -->
         <div class="categorydetails">
             @{
-                var totalCount = Model.GetSetting("recordcount") == "" ? Category("entrycount", Model).ToString() : Model.GetSetting("recordcount");
+                var totalCount = Model.GetSetting("recordcount") == "" ? Category(navigationdata, "entrycount", Model).ToString() : Model.GetSetting("recordcount");
             }
             @if (Model.GetSettingInt("displaytype") == 0)
             {
-                <h1>@Category("categoryname", Model)</h1>
+                <h1>@Category(navigationdata, "categoryname", Model)</h1>
             }
             @if (Model.GetSettingInt("displaytype") == 1)
             {
@@ -62,7 +66,7 @@
             }
 
             <div>@totalCount <span>@(ResourceKey("ProductView.articles"))</span></div>
-            <!--<i>@(Category("message", Model))</i>-->
+            <!--<i>@(Category(navigationdata, "message", Model))</i>-->
         </div>
     </div>
 
