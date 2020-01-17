@@ -1,0 +1,30 @@
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductIds]    Script Date: 27/11/2019 10:08:08 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductIds]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductIds]
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductIds]
+@ItemIds nvarchar(max)
+
+AS
+begin
+
+DECLARE @STMT nvarchar(max) -- SQL to execute
+
+Set @STMT = 'select distinct XRefItemId '
+Set @STMT = @STMT + ' from {databaseOwner}[{objectQualifier}NBrightBuy] as NB1 '
+Set @STMT = @STMT + ' where Typecode=''CATXREF'' ' 
+Set @STMT = @STMT + ' and ParentItemId in (' + @ItemIds + ')'
+
+EXEC sp_executeSQL @STMT
+
+end
+GO
+
+

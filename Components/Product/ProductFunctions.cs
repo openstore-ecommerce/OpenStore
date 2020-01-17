@@ -2151,11 +2151,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     if (retval == null || DebugMode)
                     {
                         retval = "";
-                        //if (defcatid != "0")  // no category will cause error.
-                        //{
+
                         var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
 
-                        var propertyList = ModCtrl.GetPropertyListByProduct(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+                        var itemIds = (from i in l
+                                       select i.ItemID).ToList();
+
+                        var propertyList = itemIds.Count > 0 ? ModCtrl.GetPropertyListByProductIds(string.Join(",", itemIds.Select(n => n.ToString()).ToArray())) : new List<PropertyByProductInfo>();
+
                         navigationdata.ClearPropertyFilters();
                         foreach (var p in propertyList)
                         {
@@ -2165,9 +2168,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         navigationdata.Save();
 
                         if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
-                            ModSettings.Settings()["recordcount"] = recordCount.ToString();
-                            retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
-                        //}
+                        ModSettings.Settings()["recordcount"] = recordCount.ToString();
+                        retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+
                     }
 
                     if (navigationdata.SingleSearchMode) navigationdata.ResetSearch();

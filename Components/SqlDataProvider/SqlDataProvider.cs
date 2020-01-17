@@ -132,6 +132,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components.SqlDataProvider
         {
             return SqlHelper.ExecuteReader(ConnectionString, DatabaseOwner + ObjectQualifier + "NBrightBuy_GetPropertyByProductList", portalId, moduleId, typeCode, sqlSearchFilter, sqlOrderBy, returnLimit, typeCodeLang, lang);
         }
+        public override IDataReader GetPropertyListByProductIds(string itemIds)
+        {
+            return SqlHelper.ExecuteReader(ConnectionString, DatabaseOwner + ObjectQualifier + "NBrightBuy_GetPropertyByProductIds", itemIds);
+        }
 
         public override int GetListCount(int portalId, int moduleId, string typeCode, string sqlSearchFilter = "", string typeCodeLang = "", string lang = "")
         {

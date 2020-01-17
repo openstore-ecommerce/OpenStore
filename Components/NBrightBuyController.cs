@@ -164,6 +164,19 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
         }
 
+        public override List<PropertyByProductInfo> GetPropertyListByProductIds(string itemIds)
+        {
+            try
+            {
+                return CBO.FillCollection<PropertyByProductInfo>(DataProvider.Instance().GetPropertyListByProductIds(itemIds));
+            }
+            catch (Exception e)
+            {
+                Logging.LogException(e);
+                throw;
+            }
+        }
+
         /// <summary>
         /// override for Database Function
         /// </summary>
@@ -986,11 +999,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
 		}
 
+
         #endregion
 
 
-		#endregion
+        #endregion
 
-	}
+    }
 
 }

@@ -21,7 +21,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public abstract NBrightInfo GetData(int itemId);
         public abstract NBrightInfo GetDataLang(int parentItemId, string lang);
         public abstract List<PropertyByProductInfo> GetPropertyListByProduct(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string SQLOrderBy, int ReturnLimit, int PageNumber, int PageSize, int RecordCount, string TypeCodeLang, string lang);
-    }
+		public abstract List<PropertyByProductInfo> GetPropertyListByProductIds(string itemIds);
+	}
     /// -----------------------------------------------------------------------------
     /// <summary>
     /// An abstract class for the data access layer
@@ -81,7 +82,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public abstract IDataReader GetList(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string SQLOrderBy, int ReturnLimit, int PageNumber, int PageSize, int RecordCount, string TypeCodeLang, string lang);
         public abstract IDataReader GetPropertyListByProduct(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string SQLOrderBy, int ReturnLimit, int PageNumber, int PageSize, int RecordCount, string TypeCodeLang, string lang);
-        public abstract int GetListCount(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string TypeCodeLang, string lang);
+		public abstract IDataReader GetPropertyListByProductIds(string itemIds);
+		public abstract int GetListCount(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string TypeCodeLang, string lang);
         public abstract IDataReader Get(int ItemID, string TypeCodeLang, string lang);
         public abstract int Update(int ItemId, int PortalId, int ModuleId, String TypeCode, String XMLData, String GUIDKey, DateTime ModifiedDate, String TextData, int XrefItemId, int ParentItemId, int UserId, string lang);
 		public abstract void Delete(int ItemID);
