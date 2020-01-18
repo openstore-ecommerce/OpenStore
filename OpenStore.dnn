@@ -108,6 +108,10 @@
               <name>04.01.01.SqlDataProvider</name>
               <version>04.01.01</version>
             </script>
+            <script type="Install">
+              <name>04.01.02.SqlDataProvider</name>
+              <version>04.01.02</version>
+            </script>
             <script type="UnInstall">
               <name>Uninstall.SqlDataProvider</name>
               <version>04.00.00</version>
