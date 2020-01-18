@@ -214,6 +214,7 @@
     <Compile Include="CartRazorViewSettings.ascx.designer.cs">
       <DependentUpon>CartRazorViewSettings.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\ItemLists\ListCount.cs" />
     <Compile Include="ProductListAjaxFilter.ascx.cs">
       <DependentUpon>ProductListAjaxFilter.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

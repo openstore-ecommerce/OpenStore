@@ -16,7 +16,7 @@ using DotNetNuke.Services.Search.Entities;
 using NBrightCore.common;
 using NBrightCore.render;
 using NBrightDNN;
-
+using Nevoweb.DNN.NBrightBuy.Components.ItemLists;
 
 namespace Nevoweb.DNN.NBrightBuy.Components
 {
@@ -192,6 +192,20 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             try
             {
                 return DataProvider.Instance().GetListCount(portalId, moduleId, typeCode, sqlSearchFilter, typeCodeLang, lang);
+            }
+            catch (Exception e)
+            {
+                Logging.Debug($"NBrightBuyController.GetListCount called with: portalId='{portalId}', moduleId='{moduleId}', typeCode='{typeCode}', sqlSearchFilter='{sqlSearchFilter}', typeCodeLang='{typeCodeLang}', lang='{lang}'");
+                Logging.LogException(e);
+                throw;
+            }
+        }
+
+        public ListCount GetListCountWithProperties(int portalId, int moduleId, string typeCode, string sqlSearchFilter = "", string typeCodeLang = "", string lang = "")
+        {
+            try
+            {
+                return DataProvider.Instance().GetListCountWithProperties(portalId, moduleId, typeCode, sqlSearchFilter, typeCodeLang, lang) as ListCount;
             }
             catch (Exception e)
             {
@@ -442,6 +456,28 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
             return rtncount;
         }
+
+        public ListCount GetDataListCountWithProperties(int portalId, int moduleId, string typeCode, string sqlSearchFilter = "", string typeCodeLang = "", string lang = "", Boolean debugMode = false, Boolean visibleOnly = true)
+        {
+            // get cache data
+            var strCacheKey = portalId.ToString("") + "*ListCount*" + moduleId.ToString("") + "*" + typeCode + "*" + "*filter:" + sqlSearchFilter.Replace(" ", "") + "*" + lang + "*" + visibleOnly.ToString(CultureInfo.InvariantCulture);
+            ListCount listCount = null;
+            if (debugMode == false)
+            {
+                var obj = Utils.GetCache(strCacheKey);
+                if (obj != null) listCount = (ListCount)obj;
+            }
+
+            if (listCount == null)
+            {
+                if (visibleOnly) sqlSearchFilter += " and (NB3.Visible = 1) ";
+                listCount = CBO.FillObject<ListCount>(DataProvider.Instance().GetListCountWithProperties(portalId, moduleId, typeCode, sqlSearchFilter, typeCodeLang, lang));
+
+                if (debugMode == false) NBrightBuyUtils.SetModCache(moduleId, strCacheKey, listCount);
+            }
+            return listCount;
+        }
+
 
         /// <summary>
         /// Data Get, used to call the Database provider and applies caching. Plus the option of taking filter and order information from the meta fields of the repeater template 

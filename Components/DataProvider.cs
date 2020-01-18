@@ -84,7 +84,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public abstract IDataReader GetPropertyListByProduct(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string SQLOrderBy, int ReturnLimit, int PageNumber, int PageSize, int RecordCount, string TypeCodeLang, string lang);
 		public abstract IDataReader GetPropertyListByProductIds(string itemIds);
 		public abstract int GetListCount(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string TypeCodeLang, string lang);
-        public abstract IDataReader Get(int ItemID, string TypeCodeLang, string lang);
+		public abstract IDataReader GetListCountWithProperties(int PortalId, int ModuleId, string TypeCode, string SQLSearchFilter, string TypeCodeLang, string lang);
+		public abstract IDataReader Get(int ItemID, string TypeCodeLang, string lang);
         public abstract int Update(int ItemId, int PortalId, int ModuleId, String TypeCode, String XMLData, String GUIDKey, DateTime ModifiedDate, String TextData, int XrefItemId, int ParentItemId, int UserId, string lang);
 		public abstract void Delete(int ItemID);
 		public abstract void CleanData();

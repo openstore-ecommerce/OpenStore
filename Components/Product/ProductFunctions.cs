@@ -2139,7 +2139,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     strFilter += " and (NB3.Visible = 1) "; // get only visible products
 
-                    var recordCount = ModCtrl.GetDataListCount(ps.PortalId, moduleid, EntityTypeCode, strFilter, EntityTypeCodeLang, Utils.GetCurrentCulture(), DebugMode);
+                    var lc = ModCtrl.GetDataListCountWithProperties(ps.PortalId, moduleid, EntityTypeCode, strFilter, EntityTypeCodeLang, Utils.GetCurrentCulture(), DebugMode);
+                    var recordCount = lc.Count;
 
                     if (returnlimit > 0 && returnlimit < recordCount) recordCount = returnlimit;
 
@@ -2153,24 +2154,23 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         retval = "";
 
                         var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
-
-                        var itemIds = (from i in l
-                                       select i.ItemID).ToList();
-
-                        var propertyList = itemIds.Count > 0 ? ModCtrl.GetPropertyListByProductIds(string.Join(",", itemIds.Select(n => n.ToString()).ToArray())) : new List<PropertyByProductInfo>();
-
+                        
                         navigationdata.ClearPropertyFilters();
-                        foreach (var p in propertyList)
+
+                        var itemIds = lc.Properties.Split(','); 
+                        foreach (var i in itemIds)
                         {
-                            navigationdata.AddPropertyFilter(p.PropId);
+                            if (int.TryParse(i, out int itemId)) {
+                                navigationdata.AddPropertyFilter(itemId);
+                            }
                         }
+
                         navigationdata.RecordCount = recordCount.ToString("");
                         navigationdata.Save();
 
                         if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
                         ModSettings.Settings()["recordcount"] = recordCount.ToString();
                         retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
-
                     }
 
                     if (navigationdata.SingleSearchMode) navigationdata.ResetSearch();
