@@ -512,7 +512,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             List<PropertyByProductInfo> l = null;
 
             // get cache template 
-            var strCacheKey = portalId.ToString("") + "*" + moduleId.ToString("") + "*" + entityTypeCode + "*" + "*filter:" + strFilters.Replace(" ", "") + "*orderby:" + strOrderBy.Replace(" ", "") + "*" + returnLimit.ToString("") + "*" + pageNumber.ToString("") + "*" + pageSize.ToString("") + "*" + recordCount.ToString("") + "*" + entityTypeCodeLang + "*" + cultureCode;
+            var strCacheKey = "PropertyByProductInfo" + portalId.ToString("") + "*" + moduleId.ToString("") + "*" + entityTypeCode + "*" + "*filter:" + strFilters.Replace(" ", "") + "*orderby:" + strOrderBy.Replace(" ", "") + "*" + returnLimit.ToString("") + "*" + pageNumber.ToString("") + "*" + pageSize.ToString("") + "*" + recordCount.ToString("") + "*" + entityTypeCodeLang + "*" + cultureCode;
             if (debugMode == false)
             {
                 l = (List<PropertyByProductInfo>)Utils.GetCache(strCacheKey);
