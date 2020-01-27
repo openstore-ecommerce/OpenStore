@@ -1759,6 +1759,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         navigationdata.OrderByIdx = "";
                         navigationdata.Save();
                     }
+                    else
+                    {
+                        navigationdata.OrderBy = "{bycategoryproduct}";
+                    }
                 }
 
 
