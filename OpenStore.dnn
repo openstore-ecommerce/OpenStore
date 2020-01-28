@@ -70,10 +70,14 @@
         - Image resize in ProductUtils to use store settings value.
         - Remove cache from GetByType, so it can be called by Scheduler.
         - Simplify the EU tax check, to not use the Alpha chars are the tax country.
-        
+
         v04.01.01
         - Add Filter ByProduct list.
         - Change DNN manifesto to use full skin installation.
+
+        v04.01.02
+        - Fix for product list cache issue.
+        - Update EventInterface to deal with multiple event providers.
 
       </releaseNotes>
       <dependencies>

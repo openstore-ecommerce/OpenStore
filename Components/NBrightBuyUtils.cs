@@ -1264,67 +1264,67 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         {
                             if (eventaction == EventActions.ValidateCartBefore)
                             {
-                                rtnInfo = eventprov.ValidateCartBefore(nbrightInfo);
+                                rtnInfo = eventprov.ValidateCartBefore(rtnInfo);
                             }
                             else if (eventaction == EventActions.ValidateCartAfter)
                             {
-                                rtnInfo = eventprov.ValidateCartAfter(nbrightInfo);
+                                rtnInfo = eventprov.ValidateCartAfter(rtnInfo);
                             }
                             else if (eventaction == EventActions.ValidateCartItemBefore)
                             {
-                                rtnInfo = eventprov.ValidateCartItemBefore(nbrightInfo);
+                                rtnInfo = eventprov.ValidateCartItemBefore(rtnInfo);
                             }
                             else if (eventaction == EventActions.ValidateCartItemAfter)
                             {
-                                rtnInfo = eventprov.ValidateCartItemAfter(nbrightInfo);
+                                rtnInfo = eventprov.ValidateCartItemAfter(rtnInfo);
                             }
                             else if (eventaction == EventActions.AfterCartSave)
                             {
-                                rtnInfo = eventprov.AfterCartSave(nbrightInfo);
+                                rtnInfo = eventprov.AfterCartSave(rtnInfo);
                             }
                             else if (eventaction == EventActions.AfterCategorySave)
                             {
-                                rtnInfo = eventprov.AfterCategorySave(nbrightInfo);
+                                rtnInfo = eventprov.AfterCategorySave(rtnInfo);
                             }
                             else if (eventaction == EventActions.AfterProductSave)
                             {
-                                rtnInfo = eventprov.AfterProductSave(nbrightInfo);
+                                rtnInfo = eventprov.AfterProductSave(rtnInfo);
                             }
                             else if (eventaction == EventActions.AfterSavePurchaseData)
                             {
-                                rtnInfo = eventprov.AfterSavePurchaseData(nbrightInfo);
+                                rtnInfo = eventprov.AfterSavePurchaseData(rtnInfo);
                             }
                             else if (eventaction == EventActions.BeforeOrderStatusChange)
                             {
-                                rtnInfo = eventprov.BeforeOrderStatusChange(nbrightInfo);
+                                rtnInfo = eventprov.BeforeOrderStatusChange(rtnInfo);
                             }
                             else if (eventaction == EventActions.AfterOrderStatusChange)
                             {
-                                rtnInfo = eventprov.AfterOrderStatusChange(nbrightInfo);
+                                rtnInfo = eventprov.AfterOrderStatusChange(rtnInfo);
                             }
                             else if (eventaction == EventActions.BeforePaymentOK)
                             {
-                                rtnInfo = eventprov.BeforePaymentOK(nbrightInfo);
+                                rtnInfo = eventprov.BeforePaymentOK(rtnInfo);
                             }
                             else if (eventaction == EventActions.AfterPaymentOK)
                             {
-                                rtnInfo = eventprov.AfterPaymentOK(nbrightInfo);
+                                rtnInfo = eventprov.AfterPaymentOK(rtnInfo);
                             }
                             else if (eventaction == EventActions.BeforePaymentFail)
                             {
-                                rtnInfo = eventprov.BeforePaymentFail(nbrightInfo);
+                                rtnInfo = eventprov.BeforePaymentFail(rtnInfo);
                             }
                             else if (eventaction == EventActions.AfterPaymentFail)
                             {
-                                rtnInfo = eventprov.AfterPaymentFail(nbrightInfo);
+                                rtnInfo = eventprov.AfterPaymentFail(rtnInfo);
                             }
                             else if (eventaction == EventActions.BeforeSendEmail)
                             {
-                                rtnInfo = eventprov.BeforeSendEmail(nbrightInfo, eventinfo);
+                                rtnInfo = eventprov.BeforeSendEmail(rtnInfo, eventinfo);
                             }
                             else if (eventaction == EventActions.AfterSendEmail)
                             {
-                                rtnInfo = eventprov.AfterSendEmail(nbrightInfo, eventinfo);
+                                rtnInfo = eventprov.AfterSendEmail(rtnInfo, eventinfo);
                             }
 
                         }
