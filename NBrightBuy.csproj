@@ -214,6 +214,7 @@
     <Compile Include="CartRazorViewSettings.ascx.designer.cs">
       <DependentUpon>CartRazorViewSettings.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\ItemLists\ListCount.cs" />
     <Compile Include="ProductListAjaxFilter.ascx.cs">
       <DependentUpon>ProductListAjaxFilter.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -601,6 +602,7 @@
     <None Include="Installation\04.00.11.SqlDataProvider" />
     <None Include="Installation\04.00.04.SqlDataProvider" />
     <None Include="Installation\04.00.02.SqlDataProvider" />
+    <None Include="Installation\04.01.02.SqlDataProvider" />
     <None Include="Installation\Uninstall.SqlDataProvider" />
     <None Include="packages.config" />
     <None Include="README.md" />
