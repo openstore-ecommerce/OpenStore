@@ -165,7 +165,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             else
             {
                 _cartId = Convert.ToInt32(cartId);
-                SaveCartId(); //created from order, so save cartid for client.
             }
 
 
@@ -175,8 +174,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             // this class has only rights to edit CART items, so reset cartid to new cart Item.           
             PurchaseTypeCode = "CART";
-            return PopulatePurchaseData(-1);
-
+            var rtnId = PopulatePurchaseData(-1);
+            SaveCartId(); //created from order, so save cartid for client.
+            return rtnId;
         }
 
         private void SaveCartId()
