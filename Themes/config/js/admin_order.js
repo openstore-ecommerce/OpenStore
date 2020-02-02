@@ -7,8 +7,21 @@
         $('#selecteduserid').val($('#useridparam').val());
     }
 
-    $('#razortemplate').val('Admin_OrdersList.cshtml');
-    nbxget('orderadmin_getlist', '#orderadminsearch', '#datadisplay');
+    // Check for eid in path & get details, otherwise get list
+    var path = window.location.pathname;
+    if (path.indexOf("/eid/") > 0) {
+        var re = /(\/eid\/)\d+/g;
+        var eid = path.match(re) != null ? path.match(re).toString().replace("/eid/", "") : null;
+        if (eid != null && !isNaN(eid)) {
+            $('#razortemplate').val('Admin_OrdersDetail.cshtml');
+            $('#selecteditemid').val(eid);
+            nbxget('orderadmin_getdetail', '#orderadminsearch', '#datadisplay');
+        }
+    }
+    else {
+        $('#razortemplate').val('Admin_OrdersList.cshtml');
+        nbxget('orderadmin_getlist', '#orderadminsearch', '#datadisplay');
+    }
 
     $(document).on("nbxgetcompleted", Admin_Order_nbxgetCompleted); // assign a completed event for the ajax calls
 
