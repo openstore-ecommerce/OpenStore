@@ -1,0 +1,102 @@
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyListByProductIds]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyListByProductIds]
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyListByProductIds]
+@ItemIds nvarchar(max)
+
+AS
+begin
+
+DECLARE @STMT nvarchar(max) -- SQL to execute
+
+Set @STMT = 'select distinct XRefItemId '
+Set @STMT = @STMT + ' from {databaseOwner}[{objectQualifier}NBrightBuy] as NB1 '
+Set @STMT = @STMT + ' where Typecode=''CATXREF'' ' 
+Set @STMT = @STMT + ' and ParentItemId in (' + @ItemIds + ')'
+
+EXEC sp_executeSQL @STMT
+
+end
+GO
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetListCountWithProperties]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetListCountWithProperties]
+GO
+
+CREATE  PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetListCountWithProperties]
+@PortalId int, 
+@ModuleId int,
+@TypeCode nvarchar(50),
+@Filter nvarchar(max),
+@TypeCodeLang nvarchar(50) = '',
+@Lang nvarchar(10) = ''
+
+AS
+begin
+
+-- This SPROC return the Get List COUNT with LANGAUGE and NO PAGING
+
+	SET NOCOUNT ON
+	  DECLARE
+		@STMT nvarchar(max),         -- SQL to execute
+		@recct int                  -- total # of records (for paging interface)
+		,@parentIds nvarchar(max)	-- csv string of property ids
+		,@properties nvarchar(max)	-- csv string of property ids
+
+	IF (@PortalId >= 0) BEGIN
+
+		IF (@ModuleId >= 0) BEGIN
+			SET @Filter = ' and (PortalId = '''  + Convert(nvarchar(10),@PortalId) + ''' or PortalId = ''-1'') and (ModuleId = ''' + Convert(nvarchar(10),@ModuleId) + ''' or ModuleId = ''-1'') ' + @Filter
+		END ELSE BEGIN
+			SET @Filter = ' and (PortalId = '''  + Convert(nvarchar(10),@PortalId) + '''  or PortalId = ''-1'') ' + @Filter
+		END 
+
+	END 
+
+	SET @Filter = REPLACE(@Filter,'[XMLData]','ISNULL(NB2.[XMLData],NB1.[XMLData])')
+
+	-- Return records without paging.
+	set @STMT = 'SELECT  NB1.[ItemId] FROM {databaseOwner}[{objectQualifier}NBrightBuy] as NB1 ' 	
+	set @STMT = @STMT + ' left join  {databaseOwner}[{objectQualifier}NBrightBuyIdx] as NB3 on NB3.ItemId = NB1.ItemId and NB3.[Lang] = ''' + @Lang + ''''	
+	set @STMT = @STMT + '  left join {databaseOwner}[{objectQualifier}NBrightBuyLang] as NB2 on NB2.ParentItemId = NB1.ItemId and NB2.lang = ''' + @Lang + '''' 
+	
+	IF (RIGHT(@TypeCode,1) = '%')
+	BEGIN
+		set @STMT = @STMT + ' WHERE NB1.TypeCode Like ''' + @TypeCode + ''' ' + @Filter 
+	END ELSE
+	BEGIN
+		IF (@TypeCode = '')
+		BEGIN
+			set @STMT = @STMT + ' WHERE NB1.TypeCode != '''' ' + @Filter 
+		END ELSE
+		BEGIN
+			set @STMT = @STMT + ' WHERE NB1.TypeCode = ''' + @TypeCode + ''' ' + @Filter  
+		END
+	END
+               
+	CREATE TABLE #TempProducts  
+	(            
+		[ItemId] [int]
+	)
+	INSERT INTO #TempProducts(
+		[ItemId]
+	)
+	EXEC sp_executeSQL @STMT
+
+	Set @recct = (SELECT Count(ItemId) from #TempProducts)
+
+	Set @properties = (select substring((select distinct ',' + Cast(XRefItemId as varchar(10))  
+		from dbo.[NBrightBuy] as NB1 
+		where ParentItemId in (select distinct ItemId FROM #TempProducts) 
+		AND Typecode='CATXREF' FOR XML PATH('')),2,2000000) AS CSV
+	)
+
+	DROP TABLE #TempProducts
+
+	SELECT @recct as Count, @properties as Properties
+
+end
+
+GO

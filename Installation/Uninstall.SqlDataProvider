@@ -110,8 +110,10 @@ if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{
 DROP PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUserProductClient]
 GO
 
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyListByProductIds]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyListByProductIds]
+GO
 
-
-
-
-
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetListCountWithProperties]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetListCountWithProperties]
+GO

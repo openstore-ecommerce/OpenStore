@@ -1810,7 +1810,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 foreach (var cat in catlist2)
                 {
 
-                    var objGrpCtrl = new GrpCatController("fr-FR", true);
+                    var objGrpCtrl = new GrpCatController(_lang, true);
                     var parentcats = objGrpCtrl.GetCategory(cat.categoryid);
                     if (parentcats != null)
                     {
