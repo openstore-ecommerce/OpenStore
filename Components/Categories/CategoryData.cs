@@ -554,6 +554,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             nbi.SetXmlPropertyDouble("genxml/hidden/recordsortorder", 99999);
             var itemId = _objCtrl.Update(nbi);
 
+            // update again, so we get a valid sort order based on itemid
+            nbi.ItemID = itemId;
+            nbi.SetXmlPropertyDouble("genxml/hidden/recordsortorder", itemId);
+            _objCtrl.Update(nbi);
+
             foreach (var lang in DnnUtils.GetCultureCodeList(_portalId))
             {
                 nbi = new NBrightInfo(true)
