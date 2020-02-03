@@ -211,6 +211,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                     }
                 }
             }
+            DataCache.ClearCache();
             NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
             return "";
         }
@@ -299,6 +300,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                         }
                     }
                 }
+                DataCache.ClearCache();
                 NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
             }
             return "";
@@ -327,6 +329,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                 MoveRecord(movetocatid, movecatid);
             }
 
+            DataCache.ClearCache();
             NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
             return CategoryAdminList(context, editType, EditLangCurrent);
         }
