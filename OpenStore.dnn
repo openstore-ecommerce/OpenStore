@@ -78,6 +78,7 @@
         v04.01.02
         - Fix for product list cache issue.
         - Update EventInterface to deal with multiple event providers.
+        - Upgrade GetPropertyLisyByProductIds DB interface.
 
       </releaseNotes>
       <dependencies>
