@@ -338,7 +338,7 @@ namespace Nevoweb.DNN.NBrightBuy
                 ProductUtils.RemoveProductDataCache(PortalSettings.Current.PortalId, Convert.ToInt32(productitemid));
 
                 var cachekey = "AjaxProductImgs*" + productitemid;
-                Utils.RemoveCache(cachekey);
+                CacheUtils.RemoveCache(cachekey);
 
             }
         }
@@ -725,7 +725,7 @@ namespace Nevoweb.DNN.NBrightBuy
                     if (nbi.GetXmlProperty("genxml/hidden/modref") == "") nbi.SetXmlProperty("genxml/hidden/modref", Utils.GetUniqueKey(10));
                     if (nbi.TextData == "") nbi.TextData = "NBrightBuy";
                     objCtrl.Update(nbi);
-                    NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId); // make sure all new settings are used.
+                    CacheUtils.ClearAllCache(); // make sure all new settings are used.
                 }
                 return "";
 

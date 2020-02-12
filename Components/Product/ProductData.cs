@@ -378,7 +378,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public void UpdateModelTransQty(String modelid,int orderid, Double addqty)
         {
             var key = "modeltrans*" + modelid + "*" + _portalId.ToString("");
-            var l = (List<ModelTransData>)Utils.GetCache(key);
+            var l = (List<ModelTransData>)CacheUtils.GetCache(key);
             if (l == null) l = new List<ModelTransData>();
 
             l.RemoveAll(s => s.setdate < DateTime.Now.AddMinutes(-20)); // remove timed out records
@@ -388,13 +388,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             t.modelid = modelid;
             t.setdate = DateTime.Now;
             l.Add(t);
-            Utils.SetCache(key,l);
+            CacheUtils.SetCache(key,l);
         }
 
         public Double GetModelTransQty(String modelid, int orderid)
         {
             var key = "modeltrans*" + modelid + "*" + Info.PortalId.ToString("");
-            var l = (List<ModelTransData>)Utils.GetCache(key);
+            var l = (List<ModelTransData>)CacheUtils.GetCache(key);
             if (l == null) return 0;
             Double tot = 0;
             foreach (var i in l)
@@ -410,12 +410,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public void ReleaseModelTransQty(String modelid, int orderid, Double addqty)
         {
             var key = "modeltrans*" + modelid + "*" + Info.PortalId.ToString("");
-            var l = (List<ModelTransData>)Utils.GetCache(key);
+            var l = (List<ModelTransData>)CacheUtils.GetCache(key);
             if (l != null)
             {
                 l.RemoveAll(s => s.setdate < DateTime.Now.AddMinutes(-20)); // remove timed out records
                 l.RemoveAll(s => s.orderid == orderid); // remove orderid
-                Utils.SetCache(key, l);                
+                CacheUtils.SetCache(key, l);                
             }
         }
 

@@ -25,8 +25,8 @@ namespace Nevoweb.DNN.NBrightBuy.Base
 		protected override void OnInit(EventArgs e)
 		{
 
-			//Remove any cache for the module, we don't want any cache in/after the BO editing.
-			NBrightBuyUtils.RemoveModCache(ModuleId);
+            //Remove any cache for the module, we don't want any cache in/after the BO editing.
+            CacheUtils.ClearAllCache();
 
 			// add required controls.
 			RpData = new Repeater();
@@ -180,11 +180,10 @@ namespace Nevoweb.DNN.NBrightBuy.Base
 
                 // clear any store level cache, might be overkill to clear ALL Store cache, 
                 // but editing of settings should only happen when changes are being made.
-                NBrightBuyUtils.RemoveModCache(-1);
-                NBrightBuyUtils.RemoveModCache(ModuleId);
+                CacheUtils.ClearAllCache();
 
             }
-		}
+        }
 
 		#endregion
 

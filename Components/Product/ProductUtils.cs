@@ -274,7 +274,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 {
                     //Remove any cache for the module -1, we don't want any cache in BO
                     //All xref records are portal wide, hence -1 in cahce key.
-                    NBrightBuyUtils.RemoveModCache(-1);
+                    CacheUtils.ClearAllCache();
                 }
 
                 var objCtrl = new NBrightBuyController();
@@ -469,11 +469,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             ProductData prdData;
             var cacheKey = "NBSProductData*" + productId.ToString("") + "*" + lang;
-            prdData = (ProductData)Utils.GetCache(cacheKey);
+            prdData = (ProductData)CacheUtils.GetCache(cacheKey);
             if ((prdData == null) || (productId == -1))
             {
                 prdData = new ProductData(productId, lang, hydrateLists, typeCode);
-                Utils.SetCache(cacheKey, prdData);
+                CacheUtils.SetCache(cacheKey, prdData);
             }
             return prdData;
         }
@@ -497,7 +497,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public static void RemoveProductDataCache(int productId, String lang)
         {
             var cacheKey = "NBSProductData*" + productId.ToString("") + "*" + lang;
-            Utils.RemoveCache(cacheKey);
+            CacheUtils.RemoveCache(cacheKey);
         }
 
         /// <summary>
@@ -510,7 +510,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             foreach (var lang in DnnUtils.GetCultureCodeList(portalid))
             {
                 var cacheKey = "NBSProductData*" + productId.ToString("") + "*" + lang;
-                Utils.RemoveCache(cacheKey);
+                CacheUtils.RemoveCache(cacheKey);
             }
         }
 

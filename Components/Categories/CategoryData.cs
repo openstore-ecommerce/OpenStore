@@ -183,7 +183,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             DataRecord = _objCtrl.Get(DataRecord.ItemID);
             DataLangRecord = _objCtrl.Get(DataLangRecord.ItemID);
 
-            Utils.RemoveCacheList("category_cachelist");
+            CacheUtils.ClearAllCache("category_cachelist");
         }
 
         public void Update(NBrightInfo info)

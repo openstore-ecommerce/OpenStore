@@ -53,13 +53,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             foreach (var lang in DnnUtils.GetCultureCodeList(_portalId))
             {
                 var strCacheKey = "GrpList_" + lang + "_" + _portalId;
-                NBrightBuyUtils.RemoveCache(strCacheKey);
+                CacheUtils.RemoveCache(strCacheKey);
                 strCacheKey = "GroupsDictionary_" + lang + "_" + _portalId;
-                NBrightBuyUtils.RemoveCache(strCacheKey);
+                CacheUtils.RemoveCache(strCacheKey);
                 strCacheKey = "GrpCategoryList_" + lang + "_" + _portalId;
-                NBrightBuyUtils.RemoveCache(strCacheKey);
+                CacheUtils.RemoveCache(strCacheKey);
                 strCacheKey = "CategoryList_" + lang + "_" + _portalId;
-                NBrightBuyUtils.RemoveCache(strCacheKey);                
+                CacheUtils.RemoveCache(strCacheKey);                
             }
         }
 
@@ -470,16 +470,16 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             _lang = lang;
 
             var strCacheKey = "GrpList_" + lang + "_" + _portalId;
-            GroupList = (List<NBrightInfo>)NBrightBuyUtils.GetModCache(strCacheKey);
+            GroupList = (List<NBrightInfo>)CacheUtils.GetCache(strCacheKey);
             if (GroupList == null || debugMode)
             {
                 // get groups
                 GroupList = NBrightBuyUtils.GetCategoryGroups(_portalId, _lang, true);
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, GroupList);
+                CacheUtils.SetCache(strCacheKey, GroupList);
             }
 
             strCacheKey = "GroupsDictionary_" + lang + "_" + _portalId;
-            GroupsDictionary = (Dictionary<string,string>)NBrightBuyUtils.GetModCache(strCacheKey);
+            GroupsDictionary = (Dictionary<string,string>)CacheUtils.GetCache(strCacheKey);
             if (GroupsDictionary == null || debugMode)
             {
                 GroupsDictionary = new Dictionary<String, String>();
@@ -487,26 +487,26 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 {
                     if (!GroupsDictionary.ContainsKey(g.GetXmlProperty("genxml/textbox/groupref"))) GroupsDictionary.Add(g.GetXmlProperty("genxml/textbox/groupref"), g.GetXmlProperty("genxml/lang/genxml/textbox/groupname"));
                 }
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, GroupsDictionary);
+                CacheUtils.SetCache(strCacheKey, GroupsDictionary);
             }
 
             // build group category list
             strCacheKey = "GrpCategoryList_" + lang + "_" + _portalId;
-            GrpCategoryList = (List<GroupCategoryData>)NBrightBuyUtils.GetModCache(strCacheKey);
+            GrpCategoryList = (List<GroupCategoryData>)CacheUtils.GetCache(strCacheKey);
             if (GrpCategoryList == null || debugMode)
             {
                 GrpCategoryList = GetGrpCatListFromDatabase(lang);
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, GrpCategoryList);
+                CacheUtils.SetCache(strCacheKey, GrpCategoryList);
             }
 
             // build cateogry list for navigation from group category list
             strCacheKey = "CategoryList_" + lang + "_" + _portalId;
-            CategoryList = (List<GroupCategoryData>)NBrightBuyUtils.GetModCache(strCacheKey);
+            CategoryList = (List<GroupCategoryData>)CacheUtils.GetCache(strCacheKey);
             if (CategoryList == null || debugMode)
             {
                 var lenum = from i in GrpCategoryList where i.grouptyperef == "cat" select i;
                 CategoryList = lenum.ToList();
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, CategoryList);
+                CacheUtils.SetCache(strCacheKey, CategoryList);
             }
 
             // add breadcrumb (needs both GrpCategoryList and CategoryList )

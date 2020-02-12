@@ -26,7 +26,7 @@ namespace TaxProvider
 
         public static NBrightInfo GetProviderSettings(String ctrlkey)
         {
-            var info = (NBrightInfo)Utils.GetCache("TaxProvider" + PortalSettings.Current.PortalId.ToString(""));
+            var info = (NBrightInfo)CacheUtils.GetCache("TaxProvider" + PortalSettings.Current.PortalId.ToString(""));
             if (info == null)
             {
                 var modCtrl = new NBrightBuyController();
@@ -42,7 +42,7 @@ namespace TaxProvider
                     info.PortalId = PortalSettings.Current.PortalId;
                 }
 
-                Utils.SetCache("TaxProvider" + PortalSettings.Current.PortalId.ToString(""), info);                
+                CacheUtils.SetCache("TaxProvider" + PortalSettings.Current.PortalId.ToString(""), info);                
             }
 
             return info;

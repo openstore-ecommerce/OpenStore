@@ -65,7 +65,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             _settingsDic = new Dictionary<string, string>();
             // this function will build the Settings that is passed to the templating system.
             var strCacheKey = PortalSettings.Current.PortalId.ToString("") + "*" + Moduleid.ToString("") + "*SettingsDic";
-            var obj = NBrightBuyUtils.GetModCache(strCacheKey);
+            var obj = CacheUtils.GetCache(strCacheKey);
             if (obj != null) _settingsDic = (Dictionary<string, string>)obj;
             if (_settingsDic.Count == 0 || StoreSettings.Current.DebugMode)
             {
@@ -103,7 +103,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 else
                     _settingsDic.Add("moduleid", Moduleid.ToString(""));
 
-                NBrightBuyUtils.SetModCache(Moduleid, strCacheKey, _settingsDic);
+                CacheUtils.SetCache(strCacheKey, _settingsDic);
             }
             else
             {

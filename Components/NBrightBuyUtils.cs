@@ -103,7 +103,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static NBrightInfo GetSettings(int portalId, int moduleId, string ctrlTypeCode = "", bool useCache = true)
         {
-            var obj = (NBrightInfo) GetModCache("NBright_NBsettings" + portalId.ToString("") + "_" + moduleId.ToString(""));
+            var obj = (NBrightInfo)CacheUtils.GetCache("NBright_NBsettings" + portalId.ToString("") + "_" + moduleId.ToString(""));
             if (obj == null | !useCache)
             {
                 // single record for EntityTypeCode settings, so get record directly.
@@ -119,7 +119,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     obj.UserId = -1;
                     obj.GUIDKey = ctrlTypeCode;
                 }
-                SetModCache(moduleId, "NBright_NBsettings" + portalId.ToString("") + "_" + moduleId.ToString(""), obj);
+                CacheUtils.SetCache("NBright_NBsettings" + portalId.ToString("") + "_" + moduleId.ToString(""), obj);
             }
             return obj;
         }
@@ -222,7 +222,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             var cachekey = "entryurl*" + entryid + "*" + catid + "*" + catref + "*" + modulekey + "*" + rdTabid + "*" + Utils.GetCurrentCulture();
             var urldata = "";
-            var chacheData = Utils.GetCache(cachekey);
+            var chacheData = CacheUtils.GetCache(cachekey);
             if (chacheData != null) return (string) chacheData;
 
 
@@ -271,7 +271,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             urldata = DotNetNuke.Services.Url.FriendlyUrl.FriendlyUrlProvider.Instance().FriendlyUrl(objTabInfo, strurl, seoname);
 
-            Utils.SetCache(cachekey, urldata);
+            CacheUtils.SetCache(cachekey, urldata);
 
             return urldata;
         }
@@ -383,80 +383,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (newBaseName == "") newBaseName = PortalSettings.Current.ActiveTab.TabName;
             }
             return newBaseName;
-        }
-
-        #endregion
-
-        #region "Cacheing"
-
-        /// <summary>
-        /// Get Module level cache, is same as normal GetCache.  Created to stop confusion.
-        /// </summary>
-        /// <param name="CacheKey"></param>
-        public static object GetModCache(string CacheKey)
-        {
-            return NBrightCore.common.Utils.GetCache(CacheKey);
-        }
-        public static object GetCache(string CacheKey)
-        {
-            return NBrightCore.common.Utils.GetCache(CacheKey);
-        }
-
-        /// <summary>
-        /// Save into normal cache, but keep a list on the moduleid, so we can remove it at module level
-        ///  </summary>
-        /// <param name="moduleid">Moduleid use to store in the cache list, (not added to the cachekey)</param>
-        /// <param name="CacheKey"></param>
-        /// <param name="objObject"></param>
-        public static void SetModCache(int moduleid, string CacheKey, object objObject, DateTime AbsoluteExpiration)
-        {
-            var cList = (List<string>) NBrightCore.common.Utils.GetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture));
-            if (cList == null) cList = new List<string>();
-            if (!cList.Contains(CacheKey))
-            {
-                cList.Add(CacheKey);
-                NBrightCore.common.Utils.SetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture), cList);
-                NBrightCore.common.Utils.SetCache(CacheKey, objObject, AbsoluteExpiration);
-            }
-        }
-
-        public static void SetModCache(int moduleid, string CacheKey, object objObject)
-        {
-            SetModCache(moduleid, CacheKey, objObject, DateTime.Now + new TimeSpan(2, 0, 0, 0));
-        }
-
-        public static void SetCache(string cacheKey, object objObject)
-        {
-            NBrightCore.common.Utils.SetCache(cacheKey, objObject, DateTime.Now + new TimeSpan(1, 0, 0, 0));
-        }
-
-        public static void RemoveCache(string cacheKey)
-        {
-            NBrightCore.common.Utils.RemoveCache(cacheKey);
-        }
-
-        public static void RemoveModCache(int moduleid)
-        {
-            var cList = (List<string>) NBrightCore.common.Utils.GetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture));
-            if (cList != null)
-            {
-                foreach (var s in cList)
-                {
-                    NBrightCore.common.Utils.RemoveCache(s);
-                }
-            }
-            NBrightCore.common.Utils.RemoveCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture));
-        }
-
-        public static void RemoveModCachePortalWide(int portalid)
-        {
-            var mCtrl = new NBrightBuyController();
-            var l = mCtrl.GetList(portalid, -1, "SETTINGS");
-            foreach (var obj in l)
-            {
-                RemoveModCache(obj.ModuleId);
-            }
-            RemoveModCache(-1);
         }
 
         #endregion
@@ -1255,7 +1181,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var prov = d.Value;
                 ObjectHandle handle = null;
                 var cachekey = prov.PortalId + "*" + prov.GetXmlProperty("genxml/textbox/assembly") + "*" + prov.GetXmlProperty("genxml/textbox/namespaceclass");
-                handle = (ObjectHandle)Utils.GetCache(cachekey);
+                handle = (ObjectHandle)CacheUtils.GetCache(cachekey);
                 if (handle == null) handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"), prov.GetXmlProperty("genxml/textbox/namespaceclass"));
                     if (handle != null)
                     {
@@ -1513,7 +1439,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 lang = Utils.GetCurrentCulture();
             }
             var ckey = "NBrightBuyRazorOutput" + theme + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString() + lang;
-            var razorTempl = (string)GetModCache(ckey);
+            var razorTempl = (string)CacheUtils.GetCache(ckey);
             if (razorTempl == null || StoreSettings.Current.DebugMode)
             {
                 razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
@@ -1530,7 +1456,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                     var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString();
                     razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, StoreSettings.Current.DebugMode);
-                    if (cacheKey != "") SetModCache(moduleid, ckey, razorTempl); // only save to cache if we pass in a cache key.
+                    if (cacheKey != "") CacheUtils.SetCache(ckey, razorTempl); // only save to cache if we pass in a cache key.
                 }
             }
             return razorTempl;
@@ -1540,7 +1466,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             // do razor template
             var cachekey = "NBrightBuyRazorOutputGrp" + theme + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString();
-            var razorTempl = (string)GetModCache(cachekey);
+            var razorTempl = (string)CacheUtils.GetCache(cachekey);
             if (razorTempl == null || StoreSettings.Current.DebugMode)
             {
                 razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
@@ -1555,7 +1481,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                     var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString();
                     razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, StoreSettings.Current.DebugMode);
-                    if (cacheKey != "") SetModCache(moduleid, cachekey, razorTempl); // only save to cache if we pass in a cache key.
+                    if (cacheKey != "") CacheUtils.SetCache(cachekey, razorTempl); // only save to cache if we pass in a cache key.
                 }
             }
             return razorTempl;
@@ -1570,7 +1496,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (!StoreSettings.Current.DebugMode)
             {
                 // get cached data if there
-                cachedlist = (Dictionary<string, string>)Utils.GetCache(cachekey);
+                cachedlist = (Dictionary<string, string>)CacheUtils.GetCache(cachekey);
                 if (cachedlist != null) return cachedlist;
             }
 
@@ -1597,14 +1523,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 {
                     // Only log exception, could be a error because of missing data.  The preprocessing doesn't care.
                 }
-                cachedlist = (Dictionary<string, string>) Utils.GetCache(cachekey);
+                cachedlist = (Dictionary<string, string>) CacheUtils.GetCache(cachekey);
                 if (cachedlist == null) cachedlist = new Dictionary<string, string>();
-                Utils.SetCache(cachekey, cachedlist);
+                CacheUtils.SetCache(cachekey, cachedlist);
             }
             else
             {
                 cachedlist = new Dictionary<string, string>();
-                Utils.SetCache(cachekey, cachedlist);
+                CacheUtils.SetCache(cachekey, cachedlist);
             }
             return cachedlist;
         }
@@ -1626,7 +1552,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             // do razor template
             var ckey = "NBrightBuyRazorOutput" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString() + "*" + lang;
-            var razorTempl = (string)GetModCache(ckey);
+            var razorTempl = (string)CacheUtils.GetCache(ckey);
             if (razorTempl == null || cacheKey == "")
             {
                 razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
@@ -1635,7 +1561,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     // check for non-razor templates
                     razorTemplName = razorTemplName.ToLower().Replace(".cshtml", ".html");
                     ckey = "NBrightBuyRazorOutput" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString() + "*" + lang; // reset cachekey
-                    razorTempl = (string)GetModCache(ckey);
+                    razorTempl = (string)CacheUtils.GetCache(ckey);
                     if (razorTempl != null)
                     {
                         return razorTempl;
@@ -1662,7 +1588,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         debugMode = true;
                     }
                     razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, debugMode);
-                    if (!debugMode) SetModCache(moduleid, ckey, razorTempl); // only save to cache if we pass in a cache key.
+                    if (!debugMode) CacheUtils.SetCache(ckey, razorTempl); // only save to cache if we pass in a cache key.
                 }
                 else
                 {
@@ -1714,7 +1640,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             // do razor template
             var cachekey = "NBrightBuyRazorKey" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString();
-            var razorTempl = (string)GetModCache(cachekey);
+            var razorTempl = (string)CacheUtils.GetCache(cachekey);
             if (razorTempl == null || StoreSettings.Current.DebugMode)
             {
                 razorTempl = GetTemplateData(razorTemplName, templateControlPath, theme, settings, lang);
@@ -1724,7 +1650,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     razorTempl = GenXmlFunctions.RenderRepeater(objList[0], razorTempl, "", "XMLData", "", settings, null);
                     var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString();
                     razorTempl = RazorRender(objList, razorTempl, razorTemplateKey, StoreSettings.Current.DebugMode);
-                    SetModCache(moduleid, cachekey, razorTempl);
+                    CacheUtils.SetCache(cachekey, razorTempl);
                 }
             }
             return razorTempl;
@@ -1746,7 +1672,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             // do razor template
             var cachekey = "NBrightBuyRazorKey" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString();
-            var razorTempl = (string)GetModCache(cachekey);
+            var razorTempl = (string)CacheUtils.GetCache(cachekey);
             if (razorTempl == null)
             {
                 razorTempl = GetTemplateData(razorTemplName, templateControlPath, theme, settings, lang);
@@ -1756,7 +1682,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     razorTempl = GenXmlFunctions.RenderRepeater(obj, razorTempl, "", "XMLData", "", settings, null);
                     var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString();
                     razorTempl = RazorRender(obj, razorTempl, razorTemplateKey, StoreSettings.Current.DebugMode);
-                    SetModCache(moduleid, cachekey, razorTempl);
+                    CacheUtils.SetCache(cachekey, razorTempl);
                 }
             }
             return razorTempl;
@@ -1780,11 +1706,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 }
                 Engine.Razor = service;
                 var hashCacheKey = NBrightBuyUtils.GetMd5Hash(razorTempl);
-                var israzorCached = Utils.GetCache("nbrightbuyrzcache_" + hashCacheKey); // get a cache flag for razor compile.
+                var israzorCached = CacheUtils.GetCache("nbrightbuyrzcache_" + hashCacheKey); // get a cache flag for razor compile.
                 if (israzorCached == null || (string)israzorCached != razorTempl || StoreSettings.Current.DebugMode)
                 {
                     result = Engine.Razor.RunCompile(razorTempl, hashCacheKey, null, info);
-                    Utils.SetCache("nbrightbuyrzcache_" + hashCacheKey, razorTempl);
+                    CacheUtils.SetCache("nbrightbuyrzcache_" + hashCacheKey, razorTempl);
                 }
                 else
                 {
@@ -2209,7 +2135,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             var strCacheKey = "NBrightBuy_BuildCatList" + PortalSettings.Current.PortalId + "*" + displaylevels + "*" + showHidden.ToString(CultureInfo.InvariantCulture) + "*" + showArchived.ToString(CultureInfo.InvariantCulture) + "*" + parentid + "*" + catreflist + "*" + prefix + "*" + Utils.GetCurrentCulture() + "*" + showEmpty + "*" + displayCount + "*" + groupref + "*" + lang;
 
-            var objCache = NBrightBuyUtils.GetModCache(strCacheKey);
+            var objCache = CacheUtils.GetCache(strCacheKey);
 
             if (objCache == null | StoreSettings.Current.DebugMode)
             {
@@ -2243,7 +2169,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         }
                     }
                 }
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
+                CacheUtils.SetCache(strCacheKey, rtnDic);
 
             }
             else
@@ -2261,7 +2187,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             var strCacheKey = "NBrightBuy_BuildPropertyList" + PortalSettings.Current.PortalId + "*" + displaylevels + "*" + showHidden.ToString(CultureInfo.InvariantCulture) + "*" + showArchived.ToString(CultureInfo.InvariantCulture) + "*" + parentid + "*" + catreflist + "*" + prefix + "*" + Utils.GetCurrentCulture() + "*" + showEmpty + "*" + displayCount + "*" + groupref + "*" + lang;
 
-            var objCache = NBrightBuyUtils.GetModCache(strCacheKey);
+            var objCache = CacheUtils.GetCache(strCacheKey);
 
             if (objCache == null | StoreSettings.Current.DebugMode)
             {
@@ -2298,7 +2224,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         }
                     }
                 }
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
+                CacheUtils.SetCache(strCacheKey, rtnDic);
 
             }
             else

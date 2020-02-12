@@ -47,11 +47,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             CategoryData catData;
             var cacheKey = "NBSCategoryData*" + categoryId.ToString("") + "*" + lang;
-            catData = (CategoryData)NBrightBuyUtils.GetModCache(cacheKey);
+            catData = (CategoryData)CacheUtils.GetCache(cacheKey);
             if (catData == null)
             {
                 catData = new CategoryData(categoryId, lang);
-                NBrightBuyUtils.SetModCache(-1,cacheKey, catData); // use module cache, so recussive changes are release from cache on update.
+                CacheUtils.SetCache(cacheKey, catData); // use module cache, so recussive changes are release from cache on update.
             }
             return catData;
         }
