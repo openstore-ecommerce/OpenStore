@@ -368,6 +368,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 {
                     return true;
                 }
+                if (pluginXml.GetXmlPropertyBool("genxml/checkboxlist/securityroles/chk[@data='" + StoreSettings.SalesRole + "']/@value") && currentuser.IsInRole(StoreSettings.SalesRole))
+                {
+                    return true;
+                }
             }
             return false;
         }

@@ -325,7 +325,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (PurchaseInfo.GetXmlProperty("genxml/clientmode") == "True")
             {
                 // user not editor, so stop edit mode.
-                if (!UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators") && !UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) && !UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.EditorRole)) PurchaseInfo.SetXmlProperty("genxml/clientmode", "False");
+                if (!UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators") && !UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) && !UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.EditorRole) && !UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.SalesRole)) PurchaseInfo.SetXmlProperty("genxml/clientmode", "False");
             }
 
             PurchaseInfo = NBrightBuyUtils.ProcessEventProvider(EventActions.ValidateCartAfter, PurchaseInfo);
