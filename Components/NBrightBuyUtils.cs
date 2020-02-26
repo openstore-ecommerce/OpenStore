@@ -2259,7 +2259,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static Boolean CheckManagerRights()
         {
-            if (UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) || UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators"))
+            if (UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) || UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators") || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.SalesRole))
             {
                 return true;
             }
