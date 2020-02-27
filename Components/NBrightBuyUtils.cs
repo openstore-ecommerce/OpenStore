@@ -387,6 +387,80 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         #endregion
 
+        #region "Cacheing"
+
+        /// <summary>
+        /// Get Module level cache, is same as normal GetCache.  Created to stop confusion.
+        /// </summary>
+        /// <param name="CacheKey"></param>
+        public static object GetModCache(string CacheKey)
+        {
+            return CacheUtils.GetCache(CacheKey);
+        }
+        public static object GetCache(string CacheKey)
+        {
+            return CacheUtils.GetCache(CacheKey);
+        }
+
+        /// <summary>
+        /// Save into normal cache, but keep a list on the moduleid, so we can remove it at module level
+        ///  </summary>
+        /// <param name="moduleid">Moduleid use to store in the cache list, (not added to the cachekey)</param>
+        /// <param name="CacheKey"></param>
+        /// <param name="objObject"></param>
+        public static void SetModCache(int moduleid, string CacheKey, object objObject, DateTime AbsoluteExpiration)
+        {
+            var cList = (List<string>)CacheUtils.GetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture));
+            if (cList == null) cList = new List<string>();
+            if (!cList.Contains(CacheKey))
+            {
+                cList.Add(CacheKey);
+                CacheUtils.SetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture), cList);
+                CacheUtils.SetCache(CacheKey, objObject);
+            }
+        }
+
+        public static void SetModCache(int moduleid, string CacheKey, object objObject)
+        {
+            SetModCache(moduleid, CacheKey, objObject, DateTime.Now + new TimeSpan(2, 0, 0, 0));
+        }
+
+        public static void SetCache(string cacheKey, object objObject)
+        {
+            CacheUtils.SetCache(cacheKey, objObject);
+        }
+
+        public static void RemoveCache(string cacheKey)
+        {
+            CacheUtils.RemoveCache(cacheKey);
+        }
+
+        public static void RemoveModCache(int moduleid)
+        {
+            var cList = (List<string>)CacheUtils.GetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture));
+            if (cList != null)
+            {
+                foreach (var s in cList)
+                {
+                    CacheUtils.RemoveCache(s);
+                }
+            }
+            CacheUtils.RemoveCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture));
+        }
+
+        public static void RemoveModCachePortalWide(int portalid)
+        {
+            var mCtrl = new NBrightBuyController();
+            var l = mCtrl.GetList(portalid, -1, "SETTINGS");
+            foreach (var obj in l)
+            {
+                RemoveModCache(obj.ModuleId);
+            }
+            RemoveModCache(-1);
+        }
+
+        #endregion
+
         /// <summary>
         /// Include and template data into header, if specified in meta tag token (includeinheader).  
         /// </summary>
