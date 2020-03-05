@@ -790,7 +790,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public NBrightInfo GetPluginSinglePageData(string GuidKey, string typeCode, string lang, int portalid)
         {
-            DataCache.ClearCache(); // clear ALL cache.
             var objCtrl = new NBrightBuyController();
             var info = objCtrl.GetByGuidKey(portalid, -1, typeCode, GuidKey);
             if (info == null)
