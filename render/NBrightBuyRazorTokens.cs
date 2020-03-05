@@ -556,6 +556,22 @@ namespace NBrightBuy.render
             return new RawString(strOut);
         }
 
+        public IEncodedString CategoryBreadCrumb(int categoryid, string lang)
+        {
+            var strOut = "";
+            if (categoryid > 0)
+            {
+                var categoryData = new CategoryData(categoryid, lang);
+                if (categoryData.CategoryId > 0)
+                {
+                    strOut += CategoryBreadCrumb(categoryData.ParentItemId, lang);
+                }
+                strOut += ">" + categoryData.Name;
+            }
+            return new RawString(strOut);
+
+        }
+
         public IEncodedString CategoryBreadCrumb(Boolean includelinks, NBrightRazor model, Boolean aslist = true, int tabRedirect = -1, String separator = "", int wordlength = -1, int maxlength = 400, bool ajax = false)
         {
             NavigationData navigationdata = null;
