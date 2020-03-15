@@ -68,13 +68,11 @@ namespace Nevoweb.DNN.NBrightBuy
                     var providerkey = Utils.RequestParam(Context, "provider");
                     if (providerkey != "")
                     {
-                        var strOut = "";
                         var cartInfo = new CartData(PortalSettings.Current.PortalId);
                         if (cartInfo != null)
                         {
                             cartInfo.SaveModelTransQty(); // move qty into trans
-                            cartInfo.ConvertToOrder(StoreSettings.Current.DebugMode);
-                            var orderData = new OrderData(cartInfo.PurchaseInfo.ItemID);
+                            var orderData = cartInfo.ConvertToOrder(StoreSettings.Current.DebugMode);
                             orderData.PaymentProviderKey = providerkey.ToLower(); // provider keys should always be lowecase
                             orderData.SavePurchaseData();
                             PaymentsInterface.Instance(orderData.PaymentProviderKey).RedirectForPayment(orderData);
