@@ -29,8 +29,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Payments
                     if (cartInfo != null)
                     {
                         cartInfo.SaveModelTransQty(); // move qty into trans
-                        cartInfo.ConvertToOrder(StoreSettings.Current.DebugMode);
-                        var orderData = new OrderData(cartInfo.PurchaseInfo.ItemID);
+                        var orderData = cartInfo.ConvertToOrder(StoreSettings.Current.DebugMode);
                         orderData.PaymentProviderKey = ajaxInfo.GetXmlProperty("genxml/hidden/paymentproviderkey").ToLower(); // provider keys should always be lowecase
                         orderData.SavePurchaseData();
                         strOut = PaymentsInterface.Instance(orderData.PaymentProviderKey).RedirectForPayment(orderData);
