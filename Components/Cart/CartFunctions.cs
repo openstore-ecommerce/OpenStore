@@ -126,13 +126,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Cart
             {
                 if (lang == "") lang = Utils.GetCurrentCulture();
                 var currentcart = new CartData(PortalSettings.Current.PortalId);
-                if (currentcart.UserId != UserController.Instance.GetCurrentUserInfo().UserID && currentcart.EditMode == "")
+                var userId = UserController.Instance.GetCurrentUserInfo().UserID;
+                if (currentcart.UserId != userId && currentcart.EditMode == "")
                 {
                     //do save to update userid, so addrees checkout can get addresses. (Even if no user "-1")
                     currentcart.Save();
                 }
 
-                razorTempl = NBrightBuyUtils.RazorTemplRender(carttemplate, 0, "", currentcart, controlpath, theme, lang, StoreSettings.Current.Settings());
+                razorTempl = NBrightBuyUtils.RazorTemplRender(carttemplate, 0, userId.ToString(), currentcart, controlpath, theme, lang, StoreSettings.Current.Settings());
             }
             return razorTempl;
         }
