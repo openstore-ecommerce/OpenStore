@@ -1781,7 +1781,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 Engine.Razor = service;
                 var hashCacheKey = NBrightBuyUtils.GetMd5Hash(razorTempl);
                 var israzorCached = Utils.GetCache("nbrightbuyrzcache_" + hashCacheKey); // get a cache flag for razor compile.
-                if (israzorCached == null || (string)israzorCached != razorTempl || StoreSettings.Current.DebugMode)
+                if (israzorCached == null || (string)israzorCached != razorTempl || debugMode)
                 {
                     result = Engine.Razor.RunCompile(razorTempl, hashCacheKey, null, info);
                     Utils.SetCache("nbrightbuyrzcache_" + hashCacheKey, razorTempl);
