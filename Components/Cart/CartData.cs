@@ -69,7 +69,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         }
 
-        public Boolean ConvertToOrder(Boolean debugMode = false)
+        public OrderData ConvertToOrder(Boolean debugMode = false)
         {
             var itemList = GetCartItemList();
             if (IsValidated() && itemList.Count > 0)
@@ -117,9 +117,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                 if (StoreSettings.Current.DebugModeFileOut) OutputDebugFile("debug_convertedcart.xml");
                 Exists = false;
-                return true;
+                return ordData;
             }
-            return false;
+            return null;
         }
 
 
