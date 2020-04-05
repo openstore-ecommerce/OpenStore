@@ -429,7 +429,7 @@ namespace NBrightBuy.render
             var c = objL.Count;
             for (int i = 0; i < c; i++)
             {
-                strOut += ProductOption(productdata, i);
+                strOut += ProductOption(productdata, i, attributes);
             }
 
             return new RawString(strOut);
