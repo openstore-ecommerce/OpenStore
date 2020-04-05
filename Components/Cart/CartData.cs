@@ -154,6 +154,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     if (_cookie == null)
                     {
                         _cookie = new HttpCookie(_cookieName);
+                        _cookie.SameSite = SameSiteMode.Lax;
                     }
                     else
                     {
@@ -184,6 +185,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             //save cartid for client
             _cookie = HttpContext.Current.Request.Cookies[_cookieName];
             if (_cookie == null) _cookie = new HttpCookie(_cookieName);
+            _cookie.SameSite = SameSiteMode.Lax;
             _cookie["cartId"] = _cartId.ToString("");
             _cookie.Expires = DateTime.Now.AddYears(1);
             HttpContext.Current.Response.Cookies.Add(_cookie);

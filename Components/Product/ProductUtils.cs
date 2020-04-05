@@ -536,56 +536,66 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 	        var lp = 1;
 	        foreach (var i in productData.Imgs)
 	        {
-                // use imageref to link langauges
-                var imageref = i.GetXmlProperty("genxml/hidden/imageref");
-	            if (imageref == "")
-	            {
-	                imageref = Utils.GetUniqueKey();
-                    productData.DataRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/imageref", imageref);
+                if (StoreSettings.Current.SEOimages)
+                {
+
+                    // use imageref to link langauges
+                    var imageref = i.GetXmlProperty("genxml/hidden/imageref");
+                    if (imageref == "")
+                    {
+                        imageref = Utils.GetUniqueKey();
+                        productData.DataRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/imageref", imageref);
+                    }
+
+                    var imgname = i.GetXmlProperty("genxml/lang/genxml/textbox/txtimagedesc");
+                    if (imgname == "")
+                    {
+                        imgname = productData.ProductName;
+                    }
+                    if (imgname == "")
+                    {
+                        imgname = productData.ProductRef;
+                    }
+                    if (imgname != "")
+                    {
+                        var fullName = i.GetXmlProperty("genxml/hidden/imagepath");
+                        var extension = Path.GetExtension(fullName);
+                        imgname = AlphaNumeric(CleanFileName(imgname.Replace(" ", "-")));
+                        var imgnameext = imgname + extension;
+                        var newImageFileName = productImgFolder + "\\" + imgnameext;
+                        var lp2 = 1;
+                        while (File.Exists(newImageFileName))
+                        {
+                            imgnameext = imgname + "-" + lp2 + extension;
+                            newImageFileName = productImgFolder + "\\" + imgnameext;
+                            lp2++;
+                        }
+                        var imgSize = StoreSettings.Current.GetInt(StoreSettingKeys.productimageresize);
+                        if (imgSize == 0) imgSize = 960;
+                        if (extension != null && extension.ToLower() == ".png")
+                        {
+                            newImageFileName = ImgUtils.ResizeImageToPng(fullName, newImageFileName, imgSize);
+                        }
+                        else
+                        {
+                            newImageFileName = ImgUtils.ResizeImageToJpg(fullName, newImageFileName, imgSize);
+                        }
+                        var newimageurl = StoreSettings.Current.FolderImages.TrimEnd('/') + "/" + productData.DataRecord.ItemID + "/" + lang + "/" + imgnameext;
+                        productData.DataLangRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/fimageurl", newimageurl);
+                        productData.DataLangRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/fimagepath", newImageFileName);
+                        productData.DataLangRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/fimageref", imageref);
+                        imgList.Add(newImageFileName);
+                    }
+
+                }
+                else
+                {
+                    productData.DataLangRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/fimageurl", "");
+                    productData.DataLangRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/fimagepath", "");
+                    productData.DataLangRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/fimageref", "");
                 }
 
-                var imgname = i.GetXmlProperty("genxml/lang/genxml/textbox/txtimagedesc");
-	            if (imgname == "")
-	            {
-	                imgname = productData.ProductName;
-	            }
-	            if (imgname == "")
-	            {
-
-
-	                imgname = productData.ProductRef;
-	            }
-	            if (imgname != "")
-	            {
-                    var fullName = i.GetXmlProperty("genxml/hidden/imagepath");
-                    var extension = Path.GetExtension(fullName);
-	                imgname  = AlphaNumeric(CleanFileName(imgname.Replace(" ","-")));
-	                var imgnameext = imgname + extension;
-	                var newImageFileName = productImgFolder + "\\" + imgnameext;
-	                var lp2 = 1;
-	                while (File.Exists(newImageFileName))
-	                {
-	                    imgnameext = imgname + "-" + lp2 + extension;
-	                    newImageFileName = productImgFolder + "\\" + imgnameext;
-	                    lp2++;
-	                }
-                    var imgSize = StoreSettings.Current.GetInt(StoreSettingKeys.productimageresize);
-                    if (imgSize == 0) imgSize = 960;
-	                if (extension != null && extension.ToLower() == ".png")
-	                {
-	                    newImageFileName = ImgUtils.ResizeImageToPng(fullName, newImageFileName, imgSize);
-	                }
-	                else
-	                {
-	                    newImageFileName = ImgUtils.ResizeImageToJpg(fullName, newImageFileName, imgSize);
-	                }
-	                var newimageurl = StoreSettings.Current.FolderImages.TrimEnd('/') + "/" + productData.DataRecord.ItemID + "/" + lang + "/" + imgnameext;
-	                productData.DataLangRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/fimageurl", newimageurl);
-	                productData.DataLangRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/fimagepath", newImageFileName);
-                    productData.DataLangRecord.SetXmlProperty("genxml/imgs/genxml[" + lp + "]/hidden/fimageref", imageref);                    
-                    imgList.Add(newImageFileName);
-                }
-	            lp += 1;
+                lp += 1;
 	        }
 
             objCtrl.Update(productData.DataLangRecord);

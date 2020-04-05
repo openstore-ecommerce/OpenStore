@@ -71,7 +71,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (_settingDic.ContainsKey("debugfileout") && _settingDic["debugfileout"] == "True") DebugModeFileOut = true;  // set debug mmode
             if (_settingDic.ContainsKey("enablefilelogging") && _settingDic["enablefilelogging"] == "True") EnableFileLogging = true;  // set File Logging
             StorageTypeClient = DataStorageType.Cookie;
-            
+
+            SEOimages = false;
+            if (_settingDic.ContainsKey("seoimages") && _settingDic["seoimages"] == "True") SEOimages = true;  // set debug mmode
+
             AdminEmail = Get("adminemail");
             ManagerEmail = Get("manageremail");
             FolderDocumentsMapPath = Get("homedirectorymappath").TrimEnd('\\') + "\\" + Get("folderdocs");
@@ -244,6 +247,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         // this section contain a set of properties that are assign commanly used setting.
 
+        public bool SEOimages { get; private set; }
         public bool DebugMode { get; private set; }
         public bool DebugModeFileOut { get; private set; }
         public bool EnableFileLogging { get; private set; }

@@ -549,4 +549,10 @@
   <data name="linkmodulekey.Help" xml:space="preserve">
     <value>Module Ref. of the product list module that you want to link the filters to.  If linked to a product list module only filters that exist in the product list will be displayed.  You can find the module ref. on the product list module settings. </value>
   </data>
+  <data name="seoimages.Text" xml:space="preserve">
+    <value>SEO Images</value>
+  </data>
+  <data name="seoimagesmsg.Text" xml:space="preserve">
+    <value>Images can be renmaed to the alt of the image in the product detail, it will default to the product name.  A friendly SEO name will be created for each language and will also create mulitple sizes of images.  This is optional and does NOT give any great advantage to product SEO, but can help the images be reference if you require it.  You should run a store validation to rebuild all the images after this is turned on (It will take a LONG time, if you have a lot of images).</value>
+  </data>
 </root>

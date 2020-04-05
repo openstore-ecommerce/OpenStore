@@ -562,7 +562,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     }
 
                     // get selected entitytypecode.
-                    var list = objCtrl.GetDataList(PortalSettings.Current.PortalId, -1, "", "", EditLangCurrent, filter, orderby, StoreSettings.Current.DebugMode, "", returnLimit, pageNumber, pageSize, recordCount);
+                    var list = objCtrl.GetDataList(PortalSettings.Current.PortalId, -1, "", "", EditLangCurrent, filter, orderby, true, "", returnLimit, pageNumber, pageSize, recordCount);
 
                     return RenderProductAdminList(list,ajaxInfo,recordCount, ajaxHeaderInfo);
 
