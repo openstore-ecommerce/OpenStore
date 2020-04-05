@@ -235,9 +235,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
                                 }
                             }
 
-
-
                             ordData.Save();
+
+                            //Remove cached dashboard template
+                            var cachekey = "nbrightbuydashboard*" + PortalSettings.Current.PortalId.ToString();
+                            Utils.RemoveCache(cachekey);
                         }
                     }
 
