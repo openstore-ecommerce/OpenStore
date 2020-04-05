@@ -193,6 +193,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return GetProviders("12", activeOnly);
         }
 
+        public Dictionary<String, NBrightInfo> GetImageProviders(Boolean activeOnly = true)
+        {
+            return GetProviders("14", activeOnly);
+        }
+
 
         public Dictionary<String, NBrightInfo> GetOtherProviders(Boolean activeOnly = true)
         {

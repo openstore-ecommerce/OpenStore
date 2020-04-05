@@ -1340,6 +1340,53 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return rtnInfo;
         }
 
+        public static NBrightInfo ProcessImageProvider(string providertype, NBrightInfo nbrightInfo)
+        {
+            var rtnInfo = nbrightInfo;
+            var portalId = nbrightInfo.PortalId; // can be -1 for categories and products (Shared on all portals)
+            if (portalId < 0 && PortalSettings.Current != null) portalId = PortalSettings.Current.PortalId;
+            if (portalId < 0) return rtnInfo;
+
+            var pluginData = new PluginData(portalId);
+            var provList = pluginData.GetImageProviders();
+
+            foreach (var d in provList)
+            {
+                try
+                {
+
+                    var prov = d.Value;
+                    ObjectHandle handle = null;
+                    var cachekey = prov.PortalId + "*" + prov.GetXmlProperty("genxml/textbox/assembly") + "*" + prov.GetXmlProperty("genxml/textbox/namespaceclass");
+                    handle = (ObjectHandle)Utils.GetCache(cachekey);
+                    if (handle == null) handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"), prov.GetXmlProperty("genxml/textbox/namespaceclass"));
+                    if (handle != null)
+                    {
+                        var eventprov = (ImageUploadInterface)handle.Unwrap();
+                        if (eventprov != null)
+                        {
+                            if (providertype == "product")
+                            {
+                                rtnInfo = eventprov.ProductImage(rtnInfo);
+                            }
+                            else if (providertype == "category")
+                            {
+                                rtnInfo = eventprov.CategoryImage(rtnInfo);
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    // ignore and log provider erros
+                    Logging.Debug(ex.Message);
+                }
+            }
+            return rtnInfo;
+        }
+
+
         /// <summary>
         /// Helper function to help plugins get a theme template from their local theme folder.
         /// This function will get the template, replace settings tokens, replace url tokens

@@ -922,6 +922,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                             var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fn;
                             if (File.Exists(fullName))
                             {
+                                // process image provider
+                                var imageInfo = new NBrightInfo(true);
+                                imageInfo.SetXmlProperty("genxml/uploadedimagemappath", fullName);
+                                imageInfo = NBrightBuyUtils.ProcessImageProvider("product", imageInfo);
+                                var newfullName = imageInfo.GetXmlProperty("genxml/uploadedimagemappath");
+                                if (newfullName != "") fullName = newfullName;
+                                
+                                // deal with image
                                 File.Move(fullName, fullName + extension);
                                 fullName = fullName + extension;
                                 var imgResize = StoreSettings.Current.GetInt(StoreSettingKeys.productimageresize);
