@@ -79,6 +79,14 @@
         - Fix for product list cache issue.
         - Update EventInterface to deal with multiple event providers.
         - Upgrade GetPropertyLisyByProductIds DB interface.
+        
+        v04.01.03
+        - INnclude the "NBrightDNN.dll" and "NBrightCore.dll" (Template System) 
+        - Lax on cookie to help with Chrome cokie issue
+        - Cache improvments
+        - UploadImage Interface
+        - Add SalesRole
+        
 
       </releaseNotes>
       <dependencies>
@@ -156,6 +164,14 @@
             <assembly>
               <name>NBrightBuy.PromoProvider.dll</name>
               <sourceFileName>NBrightBuy.PromoProvider.dll</sourceFileName>
+            </assembly>
+            <assembly>
+              <name>NBrightDNN.dll</name>
+              <sourceFileName>NBrightDNN.dll</sourceFileName>
+            </assembly>
+            <assembly>
+              <name>NBrightCore.dll</name>
+              <sourceFileName>NBrightCore.dll</sourceFileName>
             </assembly>
           </assemblies>
         </component>

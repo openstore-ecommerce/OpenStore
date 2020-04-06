@@ -59,6 +59,8 @@
 					             $(MSBuildDnnBinPath)\NBrightBuy.EventProvider.dll;
 					             $(MSBuildDnnBinPath)\NBrightBuy.DiscountCodesProvider.dll;
 					             $(MSBuildDnnBinPath)\NBrightBuy.TaxProvider.dll;
+					             $(OutputPath)\NBrightDNN.dll;
+					             $(OutputPath)\NBrightCore.dll;
 					             $(MSBuildDnnBinPath)\NBrightBuy.PromoProvider.dll;" 
           DestinationFolder="$(MSBuildProjectDirectory)\Package"/>
     <Copy SourceFiles="@(SqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />

@@ -133,7 +133,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Cart
                     currentcart.Save();
                 }
 
-                razorTempl = NBrightBuyUtils.RazorTemplRender(carttemplate, 0, userId.ToString(), currentcart, controlpath, theme, lang, StoreSettings.Current.Settings());
+                razorTempl = NBrightBuyUtils.RazorTemplRender(carttemplate, 0, "", currentcart, controlpath, theme, lang, StoreSettings.Current.Settings());
             }
             return razorTempl;
         }

@@ -37,6 +37,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         public string RazorTemplate = "";
         public string ThemeFolder = "config";
         private bool DebugMode => StoreSettings.Current.DebugMode;
+        private bool DoNotUseCache = false;
 
         public void ResetTemplateRelPath()
         {
@@ -340,7 +341,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     return prdData.Info.ItemID;
 
                 }
-
+                DoNotUseCache = true;
             }
             return -1;
         }
@@ -2151,21 +2152,19 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     strFilter += " and (NB3.Visible = 1) "; // get only visible products
 
-                    var lc = ModCtrl.GetDataListCountWithProperties(ps.PortalId, moduleid, EntityTypeCode, strFilter, EntityTypeCodeLang, Utils.GetCurrentCulture(), DebugMode);
-                    var recordCount = lc.Count;
-
-                    if (returnlimit > 0 && returnlimit < recordCount) recordCount = returnlimit;
-
                     // **** check if we already have the template cached, if so no need for DB call or razor call ****
                     // get same cachekey used for DB return, and use for razor.
-                    var razorcachekey = ModCtrl.GetDataListCacheKey(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+                    var razorcachekey = ModCtrl.GetDataListCacheKey(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, UserController.Instance.GetCurrentUserInfo().UserID.ToString(), returnlimit, pageNumber, pageSize, -1);
                     var cachekey = "NBrightBuyRazorOutput" + _templD + "*" + razorcachekey + ps.PortalId.ToString();
                     retval = (String)CacheUtils.GetCache(cachekey);
-                    if (retval == null || DebugMode)
+                    if (retval == null || DebugMode || DoNotUseCache)
                     {
                         retval = "";
+                        var lc = ModCtrl.GetDataListCountWithProperties(ps.PortalId, moduleid, EntityTypeCode, strFilter, EntityTypeCodeLang, Utils.GetCurrentCulture(), true);
+                        var recordCount = lc.Count;
+                        if (returnlimit > 0 && returnlimit < recordCount) recordCount = returnlimit;
 
-                        var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, "", returnlimit, pageNumber, pageSize, recordCount);
+                        var l = ModCtrl.GetDataList(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, true, "", returnlimit, pageNumber, pageSize, recordCount);
                         
                         navigationdata.ClearPropertyFilters();
 
@@ -2183,6 +2182,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
                         ModSettings.Settings()["recordcount"] = recordCount.ToString();
                         retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
+                        CacheUtils.SetCache(cachekey, retval);
                     }
 
                     if (navigationdata.SingleSearchMode) navigationdata.ResetSearch();
