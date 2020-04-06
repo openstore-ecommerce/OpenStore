@@ -112,7 +112,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             _cachekey = "pluginlist" + portalId;
             if (usecache)
             {
-                var pList = NBrightBuyUtils.GetCache(_cachekey);
+                var pList = CacheUtils.GetCache(_cachekey);
                 if (pList != null)
                 {
                     _pluginList = (List<NBrightInfo>)pList;
@@ -121,7 +121,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (pList == null || !_pluginList.Any())
                 {
                     _pluginList = PluginUtils.GetPluginList(portalId);
-                    NBrightBuyUtils.SetCache(_cachekey, _pluginList);
+                    CacheUtils.SetCache(_cachekey, _pluginList);
                 }
             }
             else
@@ -191,6 +191,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public Dictionary<String, NBrightInfo> GetAjaxProviders(Boolean activeOnly = true)
         {
             return GetProviders("12", activeOnly);
+        }
+
+        public Dictionary<String, NBrightInfo> GetImageProviders(Boolean activeOnly = true)
+        {
+            return GetProviders("14", activeOnly);
         }
 
 

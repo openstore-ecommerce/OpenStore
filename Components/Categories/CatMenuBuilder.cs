@@ -36,13 +36,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (tabid == 0) tabid = PortalSettings.Current.ActiveTab.TabID;
             var rtnList = "";
             var strCacheKey = "NBrightBuy_GetTreeCatList" + PortalSettings.Current.PortalId + "*" + displaylevels + "*" + parentid + "*" + Utils.GetCurrentCulture() + "*" + _currentCatId.ToString("");
-            var objCache = NBrightBuyUtils.GetModCache(strCacheKey);
+            var objCache = CacheUtils.GetCache(strCacheKey);
             if (objCache == null | StoreSettings.Current.DebugMode)
             {
                 rtnList = BuildTreeCatList(rtnList, 0, parentid, "cat", tabid, displaylevels,identClass,styleClass,activeClass);
                 //remove emprty <ul> elements
                 rtnList = rtnList.Replace("<ul></ul>", "");
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnList);
+                CacheUtils.SetCache(strCacheKey, rtnList);
             }
             else
             {
@@ -109,13 +109,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (tabid == 0) tabid = PortalSettings.Current.ActiveTab.TabID;
             var rtnList = "";
             var strCacheKey = "NBrightBuy_GetTreePropertyList" + PortalSettings.Current.PortalId + "*" + displaylevels + "*" + parentid + "*" + Utils.GetCurrentCulture() + "*" + _currentCatId.ToString("");
-            var objCache = NBrightBuyUtils.GetModCache(strCacheKey);
+            var objCache = CacheUtils.GetCache(strCacheKey);
             if (objCache == null | StoreSettings.Current.DebugMode)
             {
                 rtnList = BuildTreePropertyList(rtnList, 0, parentid, "", tabid, displaylevels, identClass, styleClass, activeClass);
                 //remove emprty <ul> elements
                 rtnList = rtnList.Replace("<ul></ul>", "");
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnList);
+                CacheUtils.SetCache(strCacheKey, rtnList);
             }
             else
             {

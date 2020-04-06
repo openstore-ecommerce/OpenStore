@@ -149,8 +149,8 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
 
                 if (!Utils.IsNumeric(moduleid)) moduleid = "-2"; // use moduleid -2 for razor
 
-                if (clearCache) NBrightBuyUtils.RemoveModCache(Convert.ToInt32(moduleid));
-
+                if (clearCache) CacheUtils.ClearAllCache();
+            
                 if (newitem == "new") selecteditemid = AddNew(moduleid, typeCode);
 
                 var templateControl = "/DesktopModules/NBright/NBrightBuy/Providers/PromoProvider";
@@ -203,7 +203,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                 nbi2.ItemID = objCtrl.Update(nbi2);
             }
 
-            NBrightBuyUtils.RemoveModCache(nbi.ModuleId);
+            CacheUtils.ClearAllCache();
 
             return nbi.ItemID.ToString("");
         }
@@ -286,9 +286,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                     objCtrl.Delete(nbi.ItemID);
 
                 }
-
-                NBrightBuyUtils.RemoveModCache(-2);
-
+                CacheUtils.ClearAllCache();
             }
             return "";
         }
@@ -298,7 +296,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
 
         private Boolean CheckRights()
         {
-            if (UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.EditorRole) || UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators"))
+            if (UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.EditorRole) || UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators") || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.SalesRole))
             {
                 return true;
             }

@@ -10,6 +10,7 @@
 @using NBrightDNN
 @using Nevoweb.DNN.NBrightBuy.Components;
 @using NBrightCore.common;
+@using DotNetNuke.Entities.Users;
 
 @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
 
@@ -17,14 +18,21 @@
 
 <div class="row">
 
-    <div class="categorybreadcrumbs">@CategoryBreadCrumb(true,Model)</div>
+    @{
+        var parentCatId = 0;
+        if (Model.List.Count > 0)
+        {
+            var info = (NBrightInfo)Model.List.First();
+            parentCatId = info.ParentItemId;
+        }
+    }
 
     <div class="col-xs-12 col-sm-12">
         <div class="box">
             <div class="box-header">
                 <div class="box-name">
                     <i class="fa fa-table"></i>
-                    <span>@ResourceKey("General.Categories")</span>
+                    <span>@ResourceKey("General.Categories")&nbsp;&nbsp;<b>@CategoryBreadCrumb(parentCatId, Utils.GetCurrentCulture())</b></span>
                 </div>
                 <div class="box-icons">
                     <a class="collapse-link">
@@ -84,7 +92,7 @@
                                     <input id="isdirty_@(lp)" type="hidden" value="false" />
                                     <a title="Move" href="javascript:void(0)" class="selectrecord" itemid="@nbi.ItemID"><i class="fa fa-sort fa-fw fa-2x"></i></a>
                                     <a title="Cancel Move" href="javascript:void(0)" class="selectcancel" itemid="@nbi.ItemID" style="display: none;"><i class="fa fa-times-circle fa-fw fa-2x"></i></a>
-                                    <span style="display: none;" class="selectmove" itemid="@nbi.ItemID" parentlist="@nbi.GetXmlProperty("genxml/parentlist")" >
+                                    <span style="display: none;" class="selectmove" itemid="@nbi.ItemID" parentlist="@nbi.GetXmlProperty("genxml/parentlist")">
                                         <a class="cmdmove" itemid="@(nbi.ItemID)" href="javascript:void(0)">@ResourceKey("General.cmdMoveIcon")</a>
                                     </span>
                                 </td>
@@ -109,7 +117,7 @@
                             </tr>
 
 
-                            }
+                        }
                     </tbody>
                 </table>
             </div>

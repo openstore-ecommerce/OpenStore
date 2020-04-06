@@ -36,7 +36,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public void ClearCache()
         {
             strCacheKey = "CarProdXrefList_" + PortalSettings.Current.PortalId;
-            NBrightBuyUtils.RemoveCache(strCacheKey);
+            CacheUtils.RemoveCache(strCacheKey);
         }
 
         public Boolean IsProductInCategory(int productid, String categoryRef)
@@ -52,7 +52,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         private void Load()
         {
             strCacheKey = "CarProdXrefList_" + PortalSettings.Current.PortalId;
-            CatRefProdList = (List<String>)Utils.GetCache(strCacheKey);
+            CatRefProdList = (List<String>)CacheUtils.GetCache(strCacheKey);
             if (CatRefProdList == null)
             {
                 CatRefProdList = new List<string>();
@@ -77,7 +77,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         }
                     }
                 }
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, CatRefProdList);
+                CacheUtils.SetCache(strCacheKey, CatRefProdList);
             }
 
         }

@@ -1204,7 +1204,7 @@
     <value>Access given to Client</value>
   </data>
   <data name="roles.Text" xml:space="preserve">
-    <value>Administrators,Manager,Editor,ClientEditor</value>
+    <value>Administrators,Manager,Editor,ClientEditor,Sales</value>
   </data>
   <data name="cmdResetButton.confirm" xml:space="preserve">
     <value>Reset record ?</value>

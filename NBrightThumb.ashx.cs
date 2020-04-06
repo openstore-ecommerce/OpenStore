@@ -8,6 +8,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Web;
 using NBrightCore.common;
 using NBrightCore.images;
+using Nevoweb.DNN.NBrightBuy.Components;
 
 namespace Nevoweb.DNN.NBrightBuy
 {
@@ -33,12 +34,12 @@ namespace Nevoweb.DNN.NBrightBuy
                 src = HttpContext.Current.Server.MapPath(src);
 
                 var strCacheKey = context.Request.Url.Host.ToLower() + "*" + src + "*" + Utils.GetCurrentCulture() + "*img:" + w + "*" + h + "*";
-                var newImage = (Bitmap) Utils.GetCache(strCacheKey);
+                var newImage = (Bitmap) CacheUtils.GetCache(strCacheKey);
 
                 if (newImage == null)
                 {
                     newImage = ImgUtils.CreateThumbnail(src, Convert.ToInt32(w), Convert.ToInt32(h));
-                    Utils.SetCache(strCacheKey, newImage);
+                    CacheUtils.SetCache(strCacheKey, newImage);
                 }
 
                 if ((newImage != null))

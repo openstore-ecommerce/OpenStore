@@ -176,7 +176,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
             categoryData.DataRecord.ParentItemId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
             categoryData.DataRecord.SetXmlProperty("genxml/dropdownlist/ddlparentcatid", categoryData.DataRecord.ParentItemId.ToString());
             categoryData.Save();
-            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
+            CacheUtils.ClearAllCache();
             return CategoryAdminList(context, editType, EditLangCurrent);
         }
 
@@ -186,7 +186,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
             var selectedcatid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
             var categoryData = CategoryUtils.GetCategoryData(selectedcatid, EditLangCurrent);
             categoryData.Delete();
-            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
+            CacheUtils.ClearAllCache();
             return CategoryAdminList(context, editType, EditLangCurrent);
         }
 
@@ -212,7 +212,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                 }
             }
             DataCache.ClearCache();
-            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
+            CacheUtils.ClearAllCache();
             return "";
         }
 
@@ -286,7 +286,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                             }
                             catData.Save();
                             CategoryUtils.ValidateLangaugeRef(PortalSettings.Current.PortalId, catid); // do validate so we update all refs and children refs
-                            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
+                            CacheUtils.ClearAllCache();
 
                             if (parentitemid != oldparentitemId)
                             {
@@ -301,7 +301,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                     }
                 }
                 DataCache.ClearCache();
-                NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
+                CacheUtils.ClearAllCache();
             }
             return "";
         }
@@ -330,7 +330,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
             }
 
             DataCache.ClearCache();
-            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
+            CacheUtils.ClearAllCache();
             return CategoryAdminList(context, editType, EditLangCurrent);
         }
 
@@ -371,7 +371,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                             objGrpCtrl.ReIndexCascade(fromParentItemid); // reindex from parent and parents.
                             objGrpCtrl.ReIndexCascade(selData.Info.ItemID); // reindex select and parents
                         }
-                        NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
+                        CacheUtils.ClearAllCache();
                     }
                 }
             }
@@ -441,7 +441,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                     }
                     catData.Save();
                     // remove save GetData cache
-                    NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
+                    CacheUtils.ClearAllCache();
                     return "";
                 }
                 return "Invalid parentitemid";
@@ -598,6 +598,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                         var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fn;
                         if (File.Exists(fullName))
                         {
+                            // process image provider
+                            var imageInfo = new NBrightInfo(true);
+                            imageInfo.SetXmlProperty("genxml/uploadedimagemappath", fullName);
+                            imageInfo = NBrightBuyUtils.ProcessImageProvider("product", imageInfo);
+                            fullName = imageInfo.GetXmlProperty("genxml/uploadedimagemappath");
+
+                            // deal with image
                             File.Move(fullName, fullName + extension);
                             fullName = fullName + extension;
                             var imgResize = StoreSettings.Current.GetInt(StoreSettingKeys.productimageresize);

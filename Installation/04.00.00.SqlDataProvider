@@ -281,7 +281,7 @@ appliedtotal decimal(10,2)
 );
 
 INSERT INTO @temptable
-select month(isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'')) as createdmonth
+select top(50) month(isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'')) as createdmonth
 	  ,year(isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'')) as createdyear
 	  ,isnull([XMLData].value('(genxml/appliedtotal)[1]','decimal(10,2)'),0) as appliedtotal
   FROM {databaseOwner}[{objectQualifier}NBrightBuy]

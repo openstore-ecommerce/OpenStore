@@ -124,7 +124,7 @@ namespace Nevoweb.DNN.NBrightBuy
                 if (orderData.PurchaseInfo.TypeCode == "ORDER")
                 {
                     strOut = "***ERROR***  Invalid Security";
-                    if (_scode == orderData.PurchaseInfo.GetXmlProperty("genxml/securitycode") || userInfo.UserID == orderData.UserId || userInfo.IsInRole(StoreSettings.ManagerRole) || userInfo.IsInRole(StoreSettings.EditorRole))
+                    if (_scode == orderData.PurchaseInfo.GetXmlProperty("genxml/securitycode") || userInfo.UserID == orderData.UserId || userInfo.IsInRole(StoreSettings.ManagerRole) || userInfo.IsInRole(StoreSettings.EditorRole) || userInfo.IsInRole(StoreSettings.SalesRole))
                     {
                         var doProv = false;
                         //check the payment provider for a print url

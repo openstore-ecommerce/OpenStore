@@ -18,6 +18,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public const String ManagerRole = "Manager";
         public const String EditorRole = "Editor";
         public const String ClientEditorRole = "ClientEditor";
+        public const String SalesRole = "Sales";
         public String DealerRole { get; private set; }
 
         #region Constructors
@@ -70,7 +71,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (_settingDic.ContainsKey("debugfileout") && _settingDic["debugfileout"] == "True") DebugModeFileOut = true;  // set debug mmode
             if (_settingDic.ContainsKey("enablefilelogging") && _settingDic["enablefilelogging"] == "True") EnableFileLogging = true;  // set File Logging
             StorageTypeClient = DataStorageType.Cookie;
-            
+
+            SEOimages = false;
+            if (_settingDic.ContainsKey("seoimages") && _settingDic["seoimages"] == "True") SEOimages = true;  // set debug mmode
+
             AdminEmail = Get("adminemail");
             ManagerEmail = Get("manageremail");
             FolderDocumentsMapPath = Get("homedirectorymappath").TrimEnd('\\') + "\\" + Get("folderdocs");
@@ -123,7 +127,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public static void Refresh()
         {
             HttpContext.Current.Items.Remove("NBBStoreSettings" + PortalSettings.Current.PortalId.ToString(""));
-            Utils.RemoveCache("NBBStoreSettings" + PortalSettings.Current.PortalId.ToString(""));
+            CacheUtils.RemoveCache("NBBStoreSettings" + PortalSettings.Current.PortalId.ToString(""));
             DnnUtils.ClearPortalCache(PortalSettings.Current.PortalId);
         }
 
@@ -243,6 +247,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         // this section contain a set of properties that are assign commanly used setting.
 
+        public bool SEOimages { get; private set; }
         public bool DebugMode { get; private set; }
         public bool DebugModeFileOut { get; private set; }
         public bool EnableFileLogging { get; private set; }

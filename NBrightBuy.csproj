@@ -66,6 +66,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -214,6 +215,8 @@
     <Compile Include="CartRazorViewSettings.ascx.designer.cs">
       <DependentUpon>CartRazorViewSettings.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\CacheUtils.cs" />
+    <Compile Include="Components\Interfaces\ImageUploadInterface.cs" />
     <Compile Include="Components\ItemLists\ListCount.cs" />
     <Compile Include="ProductListAjaxFilter.ascx.cs">
       <DependentUpon>ProductListAjaxFilter.ascx</DependentUpon>
@@ -470,9 +473,7 @@
     <Content Include="icon-openstore.png" />
     <Content Include="Installation\Readme_Upgrade_to_4.0.7.txt" />
     <Content Include="Installation\Readme_Upgrade_to_4.0.4.txt" />
-    <Content Include="ProductListAjaxFilter.ascx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
+    <Content Include="ProductListAjaxFilter.ascx" />
     <Content Include="ProductListAjaxFilterSettings.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
