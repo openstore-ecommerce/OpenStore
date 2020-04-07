@@ -91,7 +91,6 @@
       </releaseNotes>
       <dependencies>
         <dependency type="CoreVersion">08.00.04</dependency>
-        <dependency type="managedPackage" version="8.5.1">NBrightTemplateSys</dependency>
       </dependencies>
       <components>
         <component type="Script">
