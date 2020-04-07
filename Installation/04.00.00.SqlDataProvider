@@ -285,7 +285,7 @@ select top(50) month(isnull([XMLData].value('(genxml/createddate)[1]','datetime'
 	  ,year(isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'')) as createdyear
 	  ,isnull([XMLData].value('(genxml/appliedtotal)[1]','decimal(10,2)'),0) as appliedtotal
   FROM {databaseOwner}[{objectQualifier}NBrightBuy]
-  where typecode = 'ORDER' and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030'
+  where typecode = 'ORDER' and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' and GUIDKey != '110'
   and PortalId = @PortalId
   and isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'') > dateadd(M,-25,GETDATE())
   

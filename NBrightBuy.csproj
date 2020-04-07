@@ -603,6 +603,7 @@
     <None Include="Installation\04.00.11.SqlDataProvider" />
     <None Include="Installation\04.00.04.SqlDataProvider" />
     <None Include="Installation\04.00.02.SqlDataProvider" />
+    <None Include="Installation\04.01.03.SqlDataProvider" />
     <None Include="Installation\04.01.02.SqlDataProvider" />
     <None Include="Installation\Uninstall.SqlDataProvider" />
     <None Include="packages.config" />

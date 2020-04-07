@@ -283,10 +283,10 @@
     <value>Namespace et classe</value>
   </data>
   <data name="providertype.data" xml:space="preserve">
-    <value>Interface utilisateur uniquement,Expéditions,Taxes,Promotions,Planificateur,Évènements,Paiements,Discount,Filter,TemplateExt,EntityType,Ajax,Autre</value>
+    <value>Interface utilisateur uniquement,Expéditions,Taxes,Promotions,Planificateur,Évènements,Paiements,Discount,Filter,TemplateExt,EntityType,Ajax,ImageUpload,Autre</value>
   </data>
   <data name="providertype.datavalue" xml:space="preserve">
-    <value>01,02,03,04,05,06,07,08,09,10,11,12,99</value>
+    <value>01,02,03,04,05,06,07,08,09,10,11,12,14,99</value>
   </data>
   <data name="templatepath.Text" xml:space="preserve">
     <value>Chemin d'accès relatif du fichier de gabarits</value>
