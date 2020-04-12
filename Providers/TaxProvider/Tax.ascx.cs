@@ -132,7 +132,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             modCtrl.Update(_info);
 
             //remove current setting from cache for reload
-            CacheUtils.RemoveCache("TaxProvider" + PortalSettings.Current.PortalId.ToString(""));
+            Utils.RemoveCache("TaxProvider" + PortalSettings.Current.PortalId.ToString(""));
 
         }
 

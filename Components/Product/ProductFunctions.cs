@@ -335,7 +335,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     // remove save GetData cache
                     var strCacheKey = prdData.Info.ItemID.ToString("") + "*" + prdData.DataRecord.TypeCode  + "LANG*" + "*" + EditLangCurrent;
-                    CacheUtils.RemoveCache(strCacheKey);
+                    Utils.RemoveCache(strCacheKey);
                     DataCache.ClearCache();
 
                     return prdData.Info.ItemID;
@@ -371,7 +371,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     prodData.Save();
                     // remove save GetData cache
                     var strCacheKey = prodData.Info.ItemID.ToString("") + prodData.DataRecord.TypeCode + "LANG*" + "*" + editlang;
-                    CacheUtils.RemoveCache(strCacheKey);
+                    Utils.RemoveCache(strCacheKey);
                     DataCache.ClearCache();
 
                     return "";
@@ -717,7 +717,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         }
                         prodData.Save();
                         ProductUtils.RemoveProductDataCache(PortalSettings.Current.PortalId, itemId);
-                        CacheUtils.ClearAllCache();
+                        NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
 
                         if (themeFolder == "")
                         {
@@ -780,7 +780,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         }
                         prodData.Save();
                         ProductUtils.RemoveProductDataCache(PortalSettings.Current.PortalId, itemId);
-                        CacheUtils.ClearAllCache();
+                        NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
 
                         var objCtrl = new NBrightBuyController();
                         var info = objCtrl.GetData(selecteditemid, EntityTypeCode + "LANG", EditLangCurrent);
@@ -788,7 +788,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         if (RazorTemplate == "") RazorTemplate = "Admin_ProductOptions.cshtml";
                         strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, ThemeFolder, EditLangCurrent, passSettings);
 
-                        CacheUtils.ClearAllCache();
+                        NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     }
                     return strOut;
                 }
@@ -856,7 +856,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                             if (RazorTemplate == "") RazorTemplate = "Admin_ProductOptionValues.cshtml";
                             strOut = NBrightBuyUtils.RazorTemplRender(RazorTemplate, 0, "", info, TemplateRelPath, ThemeFolder, EditLangCurrent, passSettings);
 
-                            CacheUtils.ClearAllCache();
+                            NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                         }
                     }
                 }
@@ -881,7 +881,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         var prdData = new ProductData(itemid, EditLangCurrent, true, EntityTypeCode);
                         prdData.Delete();
                         ProductUtils.RemoveProductDataCache(PortalSettings.Current.PortalId, itemid);
-                        CacheUtils.ClearAllCache();
+                        NBrightBuyUtils.RemoveModCachePortalWide(ajaxInfo.PortalId);
                         return "OK";
                    }
                 }
@@ -945,7 +945,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     ProductUtils.RemoveProductDataCache(PortalSettings.Current.PortalId, Convert.ToInt32(productitemid));
 
                     var cachekey = "AjaxProductImgs*" + productitemid;
-                    CacheUtils.RemoveCache(cachekey);
+                    Utils.RemoveCache(cachekey);
 
 
                     var objCtrl = new NBrightBuyController();
@@ -1222,7 +1222,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
                     prodData.AddCategory(Convert.ToInt32(xrefitemid));
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductCategories(context);
                 }
                 return "Invalid parentitemid or xrefitmeid";
@@ -1244,7 +1244,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
                     prodData.SetDefaultCategory(Convert.ToInt32(xrefitemid));
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductCategories(context);
                 }
                 return "Invalid parentitemid or xrefitmeid";
@@ -1266,7 +1266,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
                     prodData.SetOwner(xrefitemid);
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductClients(context);
                 }
                 return "Invalid parentitemid or xrefitmeid";
@@ -1289,7 +1289,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(parentitemid), EditLangCurrent, false, EntityTypeCode);
                     prodData.RemoveCategory(Convert.ToInt32(xrefitemid));
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductCategories(context);
                 }
                 return "Invalid parentitemid or xrefitmeid";
@@ -1356,7 +1356,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var prodData = ProductUtils.GetProductData(parentitemid, EditLangCurrent, false, EntityTypeCode);
                     prodData.AddCategory(Convert.ToInt32(xrefitemid));
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProperties(context);
                 }
                 return "Invalid parentitemid or xrefitmeid";
@@ -1379,7 +1379,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var prodData = ProductUtils.GetProductData(parentitemid, EditLangCurrent, false);
                     prodData.RemoveCategory(Convert.ToInt32(xrefitemid));
                     ProductUtils.RemoveProductDataCache(PortalSettings.Current.PortalId, parentitemid);
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProperties(context);
                 }
                 return "Invalid parentitemid or xrefitmeid";
@@ -1431,7 +1431,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(productid), EditLangCurrent, false, EntityTypeCode);
                     prodData.RemoveRelatedProduct(Convert.ToInt32(selectedrelatedid));
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductRelated(context);
                 }
                 return "Invalid itemid or selectedrelatedid";
@@ -1458,7 +1458,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var prodData2 = ProductUtils.GetProductData(Convert.ToInt32(selectedrelatedid), EditLangCurrent, false, EntityTypeCode);
                     if (prodData2.Exists) prodData2.AddRelatedProduct(Convert.ToInt32(productid));
 
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductRelated(context);
                 }
                 return "Invalid itemid or selectedrelatedid";
@@ -1515,7 +1515,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         // ClientEditor role cannot remove themselves.
                         prodData.RemoveClient(selecteduserid);
                     }
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductClients(context);
                 }
                 return "Invalid itemid or selectedrelatedid";
@@ -1538,7 +1538,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(productid), EditLangCurrent, false, EntityTypeCode);
                     if (prodData.Exists) prodData.AddClient(Convert.ToInt32(selecteduserid));
 
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductClients(context);
                 }
                 return "Invalid itemid or selecteduserid";
@@ -2156,7 +2156,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     // get same cachekey used for DB return, and use for razor.
                     var razorcachekey = ModCtrl.GetDataListCacheKey(ps.PortalId, moduleid, EntityTypeCode, EntityTypeCodeLang, Utils.GetCurrentCulture(), strFilter, navigationdata.OrderBy, DebugMode, UserController.Instance.GetCurrentUserInfo().UserID.ToString(), returnlimit, pageNumber, pageSize, -1);
                     var cachekey = "NBrightBuyRazorOutput" + _templD + "*" + razorcachekey + ps.PortalId.ToString();
-                    retval = (String)CacheUtils.GetCache(cachekey);
+                    retval = (String)NBrightBuyUtils.GetModCache(cachekey);
                     if (retval == null || DebugMode || DoNotUseCache)
                     {
                         retval = "";
@@ -2182,7 +2182,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         if (!ModSettings.Settings().ContainsKey("recordcount")) ModSettings.Settings().Add("recordcount", "");
                         ModSettings.Settings()["recordcount"] = recordCount.ToString();
                         retval = NBrightBuyUtils.RazorTemplRenderList(_templD, moduleid, razorcachekey, l, TemplateRelPath, ModSettings.ThemeFolder, Utils.GetCurrentCulture(), ModSettings.Settings());
-                        CacheUtils.SetCache(cachekey, retval);
+                        Utils.SetCache(cachekey, retval);
                     }
 
                     if (navigationdata.SingleSearchMode) navigationdata.ResetSearch();

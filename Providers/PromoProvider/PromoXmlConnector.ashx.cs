@@ -149,8 +149,8 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
 
                 if (!Utils.IsNumeric(moduleid)) moduleid = "-2"; // use moduleid -2 for razor
 
-                if (clearCache) CacheUtils.ClearAllCache();
-            
+                if (clearCache) NBrightBuyUtils.RemoveModCache(Convert.ToInt32(moduleid));
+
                 if (newitem == "new") selecteditemid = AddNew(moduleid, typeCode);
 
                 var templateControl = "/DesktopModules/NBright/NBrightBuy/Providers/PromoProvider";
@@ -203,7 +203,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                 nbi2.ItemID = objCtrl.Update(nbi2);
             }
 
-            CacheUtils.ClearAllCache();
+            NBrightBuyUtils.RemoveModCache(nbi.ModuleId);
 
             return nbi.ItemID.ToString("");
         }

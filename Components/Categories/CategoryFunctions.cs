@@ -176,7 +176,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
             categoryData.DataRecord.ParentItemId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
             categoryData.DataRecord.SetXmlProperty("genxml/dropdownlist/ddlparentcatid", categoryData.DataRecord.ParentItemId.ToString());
             categoryData.Save();
-            CacheUtils.ClearAllCache();
+            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
             return CategoryAdminList(context, editType, EditLangCurrent);
         }
 
@@ -186,7 +186,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
             var selectedcatid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
             var categoryData = CategoryUtils.GetCategoryData(selectedcatid, EditLangCurrent);
             categoryData.Delete();
-            CacheUtils.ClearAllCache();
+            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
             return CategoryAdminList(context, editType, EditLangCurrent);
         }
 
@@ -212,7 +212,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                 }
             }
             DataCache.ClearCache();
-            CacheUtils.ClearAllCache();
+            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
             return "";
         }
 
@@ -286,7 +286,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                             }
                             catData.Save();
                             CategoryUtils.ValidateLangaugeRef(PortalSettings.Current.PortalId, catid); // do validate so we update all refs and children refs
-                            CacheUtils.ClearAllCache();
+                            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
 
                             if (parentitemid != oldparentitemId)
                             {
@@ -301,7 +301,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                     }
                 }
                 DataCache.ClearCache();
-                CacheUtils.ClearAllCache();
+                NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
             }
             return "";
         }
@@ -330,7 +330,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
             }
 
             DataCache.ClearCache();
-            CacheUtils.ClearAllCache();
+            NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
             return CategoryAdminList(context, editType, EditLangCurrent);
         }
 
@@ -371,7 +371,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                             objGrpCtrl.ReIndexCascade(fromParentItemid); // reindex from parent and parents.
                             objGrpCtrl.ReIndexCascade(selData.Info.ItemID); // reindex select and parents
                         }
-                        CacheUtils.ClearAllCache();
+                        NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
                     }
                 }
             }
@@ -441,7 +441,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                     }
                     catData.Save();
                     // remove save GetData cache
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
                     return "";
                 }
                 return "Invalid parentitemid";

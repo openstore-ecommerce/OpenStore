@@ -160,7 +160,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
         private NBrightInfo GetStats(int portalId, bool forceRefresh = false)
         {
             var cachekey = "nbrightbuydashboard*" + PortalId.ToString("");
-            var statsInfo = (NBrightInfo)CacheUtils.GetCache(cachekey);
+            var statsInfo = (NBrightInfo)Utils.GetCache(cachekey);
 
             if (statsInfo == null || StoreSettings.Current.DebugMode || forceRefresh)
             {
@@ -172,7 +172,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
 
                 var statsXml = objCtrl.GetSqlxml("exec " + dbOwner + objQual + "NBrightBuy_DashboardStats " + portalId);
                 statsInfo.XMLData = statsXml;
-                CacheUtils.SetCache(cachekey, statsInfo);
+                Utils.SetCache(cachekey, statsInfo);
             }
             return statsInfo;
         }

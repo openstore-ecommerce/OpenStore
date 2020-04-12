@@ -43,7 +43,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public static void CreateSystemPlugins(int portalId)
         {
             var cachekey = "pluginlistsystem";
-            var pList = CacheUtils.GetCache(cachekey);
+            var pList = NBrightBuyUtils.GetCache(cachekey);
             if (pList == null)
             {
                 var objCtrl = new NBrightBuyController();
@@ -67,7 +67,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         }
                     }
                 }
-                CacheUtils.SetCache(cachekey, "True");
+                NBrightBuyUtils.SetCache(cachekey, "True");
             }
         }
 
@@ -329,7 +329,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public static void ClearPluginCache(int portalId)
         {
             var cachekey = "pluginlist" + portalId;
-            CacheUtils.RemoveCache(cachekey);
+            NBrightBuyUtils.RemoveCache(cachekey);
         }
 
         public static void ResequenceRecords()

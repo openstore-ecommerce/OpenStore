@@ -119,7 +119,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                 case "saveall":
                     SaveAll();
                     NBrightBuyUtils.SetNotfiyMessage(ModuleId, NotifyRef + "save", NotifyCode.ok);
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCache(-1);
                     Response.Redirect(NBrightBuyUtils.AdminUrl(TabId, param), true);
                     break;
                 case "move":

@@ -29,7 +29,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 nodeTabList += n.Text + n.TabId + "*" + n.Breadcrumb + "*";
             }
             var cachekey = "NBrightPL*" + portalSettings.PortalId + "*" + Utils.GetCurrentCulture() + "*" + nodeTabList; // use nodeTablist incase the DDRMenu has a selector.
-            var rtnnodes = (List<MenuNode>)CacheUtils.GetCache(cachekey, "category_cachelist");
+            var rtnnodes = (List<MenuNode>)Utils.GetCache(cachekey);
             if (rtnnodes != null) return rtnnodes;
 
             var categoryInjectList = new Dictionary<int, int>();
@@ -109,7 +109,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 lp += 1;
             }
 
-            CacheUtils.SetCache(cachekey, nodes, "category_cachelist");
+            Utils.SetCacheList(cachekey, nodes, "category_cachelist");
             return nodes;
         }
 
