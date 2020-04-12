@@ -76,7 +76,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
             var strCacheKey = "bomenuhtml*" + Utils.GetCurrentCulture() + "*" + PortalId.ToString("") + "*" + UserId.ToString("");
 
             var strOut = "";
-            var obj = CacheUtils.GetCache(strCacheKey);
+            var obj = Utils.GetCache(strCacheKey);
             if (obj != null) strOut = (String) obj;
 
             if (StoreSettings.Current.DebugMode || strOut == "")
@@ -201,7 +201,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
 
                 strOut += "</ul>";
 
-                CacheUtils.SetCache(strCacheKey, strOut);
+                NBrightBuyUtils.SetModCache(0, strCacheKey, strOut);
 
                 if (StoreSettings.Current.DebugModeFileOut) Utils.SaveFile(PortalSettings.HomeDirectoryMapPath + "\\debug_menu.html", strOut);
             }

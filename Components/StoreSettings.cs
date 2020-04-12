@@ -127,7 +127,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public static void Refresh()
         {
             HttpContext.Current.Items.Remove("NBBStoreSettings" + PortalSettings.Current.PortalId.ToString(""));
-            CacheUtils.RemoveCache("NBBStoreSettings" + PortalSettings.Current.PortalId.ToString(""));
+            Utils.RemoveCache("NBBStoreSettings" + PortalSettings.Current.PortalId.ToString(""));
             DnnUtils.ClearPortalCache(PortalSettings.Current.PortalId);
         }
 

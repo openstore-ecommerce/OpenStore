@@ -34,12 +34,12 @@ namespace Nevoweb.DNN.NBrightBuy
                 src = HttpContext.Current.Server.MapPath(src);
 
                 var strCacheKey = context.Request.Url.Host.ToLower() + "*" + src + "*" + Utils.GetCurrentCulture() + "*img:" + w + "*" + h + "*";
-                var newImage = (Bitmap) CacheUtils.GetCache(strCacheKey);
+                var newImage = (Bitmap)Utils.GetCache(strCacheKey);
 
                 if (newImage == null)
                 {
                     newImage = ImgUtils.CreateThumbnail(src, Convert.ToInt32(w), Convert.ToInt32(h));
-                    CacheUtils.SetCache(strCacheKey, newImage);
+                    Utils.SetCache(strCacheKey, newImage);
                 }
 
                 if ((newImage != null))

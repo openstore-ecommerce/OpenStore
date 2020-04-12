@@ -1625,7 +1625,7 @@ namespace Nevoweb.DNN.NBrightBuy.render
 
             var strCacheKey = "NBrightBuy_BuildPropertyList" + PortalSettings.Current.PortalId + "*" + displaylevels + "*" + showHidden.ToString(CultureInfo.InvariantCulture) + "*" + showArchived.ToString(CultureInfo.InvariantCulture) + "*" + parentid + "*" + catreflist + "*" + prefix + "*" + Utils.GetCurrentCulture() + "*" + showEmpty + "*" + displayCount + "*" + groupref + "*" + lang;
 
-            var objCache = CacheUtils.GetCache(strCacheKey);
+            var objCache = NBrightBuyUtils.GetModCache(strCacheKey);
 
             if (objCache == null | StoreSettings.Current.DebugMode)
             {
@@ -1662,7 +1662,7 @@ namespace Nevoweb.DNN.NBrightBuy.render
                         }
                     }
                 }
-                CacheUtils.SetCache(strCacheKey, rtnDic);
+                NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
 
             }
             else
@@ -2635,7 +2635,7 @@ namespace Nevoweb.DNN.NBrightBuy.render
                                 var lang = Utils.GetCurrentCulture();
 
                                 var strCacheKey = lang + "*" + nbi.categoryid + "*" + lc.Text;
-                                if (!StoreSettings.Current.DebugMode) strOut = (String)CacheUtils.GetCache(strCacheKey);
+                                if (!StoreSettings.Current.DebugMode) strOut = (String)Utils.GetCache(strCacheKey);
 
                                 if (String.IsNullOrEmpty(strOut))
                                 {
@@ -2669,7 +2669,7 @@ namespace Nevoweb.DNN.NBrightBuy.render
 
                                     var itemTemplate = NBrightBuyUtils.GetGenXmlTemplate(rpTempl, _settings, PortalSettings.Current.HomeDirectory,visibleStatus);
                                     strOut = GenXmlFunctions.RenderRepeater(objL, itemTemplate);
-                                    if (!StoreSettings.Current.DebugMode) CacheUtils.SetCache(strCacheKey, strOut);                                    
+                                    if (!StoreSettings.Current.DebugMode) NBrightBuyUtils.SetModCache(-1, strCacheKey, strOut);                                    
                                 }
 
                             }
@@ -3303,12 +3303,12 @@ namespace Nevoweb.DNN.NBrightBuy.render
 
                         List<NBrightInfo> objL = null;
                         var strCacheKey = Utils.GetCurrentCulture() + "RelatedList*" + objInfo.ItemID;
-                        if (!StoreSettings.Current.DebugMode) objL = (List<NBrightInfo>)CacheUtils.GetCache(strCacheKey);
+                        if (!StoreSettings.Current.DebugMode) objL = (List<NBrightInfo>)Utils.GetCache(strCacheKey);
                         if (objL == null)
                         {
                             var prodData = ProductUtils.GetProductData(objInfo.ItemID, Utils.GetCurrentCulture());
                             objL = prodData.GetRelatedProducts();
-                            if (!StoreSettings.Current.DebugMode) CacheUtils.SetCache(strCacheKey, objL);
+                            if (!StoreSettings.Current.DebugMode) NBrightBuyUtils.SetModCache(-1, strCacheKey, objL);
                         }
                         // render repeater
                         try

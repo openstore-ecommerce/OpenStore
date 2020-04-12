@@ -26,10 +26,10 @@ namespace Nevoweb.DNN.NBrightBuy.Base
 		{
 
             //Remove any cache for the module, we don't want any cache in/after the BO editing.
-            CacheUtils.ClearAllCache();
+            NBrightBuyUtils.RemoveModCache(ModuleId);
 
-			// add required controls.
-			RpData = new Repeater();
+            // add required controls.
+            RpData = new Repeater();
             RpData.ItemCommand += CtrlItemCommand;
 
 			this.Controls.Add(RpData);
@@ -180,7 +180,8 @@ namespace Nevoweb.DNN.NBrightBuy.Base
 
                 // clear any store level cache, might be overkill to clear ALL Store cache, 
                 // but editing of settings should only happen when changes are being made.
-                CacheUtils.ClearAllCache();
+                NBrightBuyUtils.RemoveModCache(-1);
+                NBrightBuyUtils.RemoveModCache(ModuleId);
 
             }
         }
