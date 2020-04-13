@@ -39,6 +39,12 @@ function xGraphOrderTotals(){
 
 	$( document ).ready(function() {
 		xGraphOrderTotals();
+
+        //make order numbers link to order details
+        $("a.ordernumber").click(function (event) {
+            var eid = $(this).data("eid");
+            location.href = "/Admin/NBS-Back-Office/ctrl/orders/eid/" + eid.toString().substring(6);
+        });
 	});
 
 </script>
