@@ -148,9 +148,9 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             // loop through each item and calc the tax for each.
             Double taxtotal = 0;
 
-            var totalcost = cartItemInfo.GetXmlPropertyDouble("genxml/totalcost");
+            var appliedcost = cartItemInfo.GetXmlPropertyDouble("genxml/appliedcost");
             // check if dealer and if dealertotal cost exists. ()
-            if (cartItemInfo.GetXmlPropertyBool("genxml/isdealer")) totalcost = cartItemInfo.GetXmlPropertyDouble("genxml/dealercost");
+            if (cartItemInfo.GetXmlPropertyBool("genxml/isdealer")) appliedcost = cartItemInfo.GetXmlPropertyDouble("genxml/dealercost");
             var taxratecode = cartItemInfo.GetXmlProperty("genxml/taxratecode");
             if (!Utils.IsNumeric(taxratecode)) taxratecode = "0";
             if (!rateDic.ContainsKey(taxratecode)) taxratecode = "0";
@@ -159,12 +159,12 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             
             if (taxtype == "1") // included in unit price
             {
-                taxtotal += totalcost - ((totalcost / (100 + taxrate)) * 100);
+                taxtotal += appliedcost - ((appliedcost / (100 + taxrate)) * 100);
             }
             if (taxtype == "2") // NOT included in unit price
             {
-                taxtotal += (totalcost / 100) * taxrate;
-            }
+                taxtotal += (appliedcost / 100) * taxrate;
+            }   
 
             return Math.Round(taxtotal, 2);
         }
