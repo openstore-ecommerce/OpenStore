@@ -215,7 +215,6 @@
     <Compile Include="CartRazorViewSettings.ascx.designer.cs">
       <DependentUpon>CartRazorViewSettings.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\CacheUtils.cs" />
     <Compile Include="Components\Interfaces\ImageUploadInterface.cs" />
     <Compile Include="Components\ItemLists\ListCount.cs" />
     <Compile Include="ProductListAjaxFilter.ascx.cs">
