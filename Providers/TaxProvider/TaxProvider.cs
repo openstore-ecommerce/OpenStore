@@ -18,6 +18,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
         {
             var info = ProviderUtils.GetProviderSettings("tax");
             var taxtype = info.GetXmlProperty("genxml/radiobuttonlist/taxtype");
+            var enableShippingTax = info.GetXmlPropertyBool("genxml/checkbox/enableshippingtax");
 
             // return taxtype, 1 = included in cost, 2 = not included in cost, 3 = no tax, 4 = tax included in cost, but calculate to zero.
             cartInfo.SetXmlPropertyDouble("genxml/taxtype", taxtype);
@@ -38,12 +39,20 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             if (nodList != null)
             {
                 Double taxtotal = 0;
+                Double shippingtaxtotal = 0;
 
                 foreach (XmlNode nod in nodList)
                 {
                     var nbi = new NBrightInfo();
                     nbi.XMLData = nod.OuterXml;
                     taxtotal += CalculateItemTax(nbi);
+                    if (enableShippingTax) {
+                        shippingtaxtotal += CalculateItemShippingTax(nbi);
+                    }
+                }
+
+                if (enableShippingTax && taxtotal > 0 && shippingtaxtotal > 0) {
+                    taxtotal += shippingtaxtotal;
                 }
 
                 cartInfo.SetXmlPropertyDouble("genxml/taxcost", taxtotal);
@@ -145,30 +154,67 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             var rateDic = GetRates();
             if (!rateDic.Any()) return 0;
 
-            // loop through each item and calc the tax for each.
             Double taxtotal = 0;
+            var appliedcost = cartItemInfo.GetXmlPropertyDouble("genxml/appliedcost");
 
-            var totalcost = cartItemInfo.GetXmlPropertyDouble("genxml/totalcost");
             // check if dealer and if dealertotal cost exists. ()
-            if (cartItemInfo.GetXmlPropertyBool("genxml/isdealer")) totalcost = cartItemInfo.GetXmlPropertyDouble("genxml/dealercost");
-            var taxratecode = cartItemInfo.GetXmlProperty("genxml/taxratecode");
-            if (!Utils.IsNumeric(taxratecode)) taxratecode = "0";
-            if (!rateDic.ContainsKey(taxratecode)) taxratecode = "0";
-            Double taxrate = 0;
-            if (rateDic.ContainsKey(taxratecode)) taxrate = rateDic[taxratecode]; // Can happen is no default tax added.
+            if (cartItemInfo.GetXmlPropertyBool("genxml/isdealer")) appliedcost = cartItemInfo.GetXmlPropertyDouble("genxml/dealercost");
             
-            if (taxtype == "1") // included in unit price
-            {
-                taxtotal += totalcost - ((totalcost / (100 + taxrate)) * 100);
-            }
-            if (taxtype == "2") // NOT included in unit price
-            {
-                taxtotal += (totalcost / 100) * taxrate;
-            }
+            var taxrate = GetTaxRate(cartItemInfo, rateDic);
+
+            taxtotal = AddTaxCost(taxtype, taxtotal, appliedcost, taxrate);
 
             return Math.Round(taxtotal, 2);
         }
 
+        public Double CalculateItemShippingTax(NBrightInfo cartItemInfo)
+        {
+            var info = ProviderUtils.GetProviderSettings("tax");
+            var taxtype = info.GetXmlProperty("genxml/radiobuttonlist/taxtype");
+
+            if (taxtype == "3") return 0;
+
+            var rateDic = GetRates();
+            if (!rateDic.Any()) return 0;
+
+            Double taxtotal = 0;
+            var shippingcost = cartItemInfo.GetXmlPropertyDouble("genxml/shippingcost");
+
+            // check if dealer and if dealertotal cost exists.
+            if (cartItemInfo.GetXmlPropertyBool("genxml/isdealer")) shippingcost = cartItemInfo.GetXmlPropertyDouble("genxml/dealershippingcost");
+            
+            var taxrate = GetTaxRate(cartItemInfo, rateDic);
+
+            taxtotal = AddTaxCost(taxtype, taxtotal, shippingcost, taxrate);
+
+            return Math.Round(taxtotal, 2);
+        }
+
+        private static double GetTaxRate(NBrightInfo cartItemInfo, Dictionary<string, double> rateDic)
+        {
+            Double taxrate = 0;
+            var taxratecode = cartItemInfo.GetXmlProperty("genxml/taxratecode");
+
+            if (!Utils.IsNumeric(taxratecode)) taxratecode = "0";
+            if (!rateDic.ContainsKey(taxratecode)) taxratecode = "0";
+            
+            if (rateDic.ContainsKey(taxratecode)) taxrate = rateDic[taxratecode]; // Can happen if no default tax added.
+            return taxrate;
+        }
+
+        private static double AddTaxCost(string taxtype, double taxtotal, double cost, double taxrate)
+        {
+            if (taxtype == "1") // included in unit price
+            {
+                taxtotal += cost - ((cost / (100 + taxrate)) * 100);
+            }
+            if (taxtype == "2") // NOT included in unit price
+            {
+                taxtotal += (cost / 100) * taxrate;
+            }
+
+            return taxtotal;
+        }
 
         public override Dictionary<string, double> GetRates()
         {
