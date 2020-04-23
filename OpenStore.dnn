@@ -1,7 +1,7 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
 
-    <package name="OS_ProductView" type="Module" version="4.1.3">
+    <package name="OS_ProductView" type="Module" version="4.1.4">
       <friendlyName>OS_ProductView</friendlyName>
       <description>
         OpenStore open source e-commerce for DNN.
@@ -224,7 +224,7 @@
     </package>
 
 
-    <package name="OpenStoreBO" type="Skin" version="4.1.3">
+    <package name="OpenStoreBO" type="Skin" version="4.1.4">
       <friendlyName>OpenStoreBO</friendlyName>
       <description>
         OpenStore Admin Panel
@@ -270,7 +270,7 @@
 
 
 
-    <package name="OS_DisplaySearch" type="Module" version="4.1.3">
+    <package name="OS_DisplaySearch" type="Module" version="4.1.4">
       <friendlyName>OS_DisplaySearch</friendlyName>
       <description>
         OpenStore open source e-commerce for DNN.
@@ -351,7 +351,7 @@
       </components>
     </package>
 
-    <package name="OS_AddressAdmin" type="Module" version="4.1.3">
+    <package name="OS_AddressAdmin" type="Module" version="4.1.4">
 			<friendlyName>OS_AddressAdmin</friendlyName>
 			<description>OpenStore open source e-commerce for DNN.
   Admin for clients addresses from the front office.
@@ -426,7 +426,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-		<package name="OS_Payment" type="Module" version="4.1.3">
+		<package name="OS_Payment" type="Module" version="4.1.4">
 			<friendlyName>OS_Payment</friendlyName>
 			<description>OpenStore open source e-commerce for DNN.
   Process payment of orders.
@@ -500,7 +500,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-		<package name="OS_OrderAdmin" type="Module" version="4.1.3">
+		<package name="OS_OrderAdmin" type="Module" version="4.1.4">
 
 			<friendlyName>OS_OrderAdmin</friendlyName>
 			<description>OpenStore open source e-commerce for DNN.
@@ -576,7 +576,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-		<package name="OS_ProfileForm" type="Module" version="4.1.3">
+		<package name="OS_ProfileForm" type="Module" version="4.1.4">
 			<friendlyName>OS_ProfileForm</friendlyName>
 			<description>OpenStore open source e-commerce for DNN.
   This module creates a profile form that links to the DNN profile and NBS address.
@@ -652,7 +652,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		</package>
 
 		
-				<package name="OS_Checkout" type="Module" version="4.1.3">
+				<package name="OS_Checkout" type="Module" version="4.1.4">
 			<friendlyName>OS_Checkout</friendlyName>
 			<description>OpenStore open source e-commerce for DNN. Checkout process.
 			</description>
@@ -726,7 +726,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-				<package name="OS_MiniCart" type="Module" version="4.1.3">
+				<package name="OS_MiniCart" type="Module" version="4.1.4">
 			<friendlyName>OS_MiniCart</friendlyName>
 			<description>OpenStore open source e-commerce for DNN. Mini cart view.
 			</description>
@@ -800,7 +800,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-				<package name="OS_FullCart" type="Module" version="4.1.3">
+				<package name="OS_FullCart" type="Module" version="4.1.4">
 			<friendlyName>OS_FullCart</friendlyName>
 			<description>OpenStore open source e-commerce for DNN. full cart view.
 			</description>
@@ -874,7 +874,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 			</components>
 		</package>
 
-    <package name="OS_CategoryMenu" type="Module" version="4.1.3">
+    <package name="OS_CategoryMenu" type="Module" version="4.1.4">
       <friendlyName>OS_CategoryMenu</friendlyName>
       <description>
         CategoryMenu Display 
@@ -946,7 +946,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       </components>
     </package>
 
-    <package name="OS_ProductFilter" type="Module" version="4.1.3">
+    <package name="OS_ProductFilter" type="Module" version="4.1.4">
       <friendlyName>OS_ProductFilter</friendlyName>
       <description>
         Filter module for Ajax Product Display
@@ -1019,7 +1019,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       </components>
     </package>    
 
-    <package name="OS_ItemList" type="Module" version="4.1.3">
+    <package name="OS_ItemList" type="Module" version="4.1.4">
       <friendlyName>OS_ItemList</friendlyName>
       <description>
         Itemlist admin for shopping/favorites list
