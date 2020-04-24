@@ -605,6 +605,9 @@
     <None Include="Installation\04.01.03.SqlDataProvider" />
     <None Include="Installation\04.01.02.SqlDataProvider" />
     <None Include="Installation\Uninstall.SqlDataProvider" />
+    <None Include="OpenStoreUpgrade.dnn">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="Themes\ClassicAjax\css\images\Thumbs.db" />

@@ -286,7 +286,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                     objCtrl.Delete(nbi.ItemID);
 
                 }
-                CacheUtils.ClearAllCache();
+                DataCache.ClearCache();
             }
             return "";
         }
