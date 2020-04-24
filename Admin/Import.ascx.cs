@@ -129,7 +129,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                      */
                     //                    Validate();
 
-                    CacheUtils.ClearAllCache();
+                    NBrightBuyUtils.RemoveModCachePortalWide(PortalId);
                     NBrightBuyUtils.SetNotfiyMessage(ModuleId, "completed", NotifyCode.ok);
                     Response.Redirect(NBrightBuyUtils.AdminUrl(TabId, param), true);
                     break;

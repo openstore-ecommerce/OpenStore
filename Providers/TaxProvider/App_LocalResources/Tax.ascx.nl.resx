@@ -118,27 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="enableshippingtax.Text" xml:space="preserve">
-    <value>Activer la taxe d'expédition</value>
+    <value>Verzendbelasting inschakelen</value>
   </data>
   <data name="enabletaxcountry.Text" xml:space="preserve">
-    <value>Autoriser l'exonération des taxes selon le pays.</value>
+    <value>Gebruik van land inschakelen voor belastingvrijstelling.</value>
   </data>
   <data name="enabletaxnumber.Text" xml:space="preserve">
-    <value>Autoriser l'exonération des taxes selon un numéro de taxes (EU)</value>
+    <value>Gebruik van (EU) belastingnummer inschakelen voor belastingvrijstelling</value>
   </data>
   <data name="taxdefault.Text" xml:space="preserve">
-    <value>Taxe par défaut (%)</value>
+    <value>Standaardbelasting (%)</value>
   </data>
   <data name="taxexemptregions.Text" xml:space="preserve">
-    <value>Codes des taxes régionales (liste CSV)</value>
+    <value>Belastingregio codes (CSV-lijst)</value>
   </data>
   <data name="taxrate.Text" xml:space="preserve">
-    <value>Taux de taxe (%)</value>
+    <value>Belastingtarief (%)</value>
   </data>
   <data name="taxtype.data" xml:space="preserve">
-    <value>Les taxes sont incluses dans le prix unitaire;Les taxes ne sont pas incluses dans le prix unitaire;Pas de taxe</value>
+    <value>Belasting inbegrepen in eenheidsprijs; Belasting NIET inbegrepen in eenheidsprijs; Geen belasting; Belasting inbegrepen in eenheidsprijs (totaal nul belasting)</value>
   </data>
   <data name="valideutaxcountrycode.Text" xml:space="preserve">
-    <value>Codes pays EU valides (liste CSV)</value>
+    <value>Geldige EU-landcodes (CSV-lijst)</value>
   </data>
 </root>

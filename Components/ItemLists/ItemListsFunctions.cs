@@ -54,7 +54,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.ItemLists
                         strOut = cw.products;
                     }
                     break;
-                case "itemlist_deletelist":
+                case "itemlist_delete":
                     cw.DeleteList(itemlistname);
                     strOut = "deleted";
                     break;

@@ -182,7 +182,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             if (StoreSettings.Current.DebugMode) shipping.Info.XMLDoc.Save(PortalSettings.HomeDirectoryMapPath + "\\debug_Shipping.xml");
 
             //remove current setting from cache for reload
-            CacheUtils.RemoveCache("NBrightBuyShipping" + PortalSettings.Current.PortalId.ToString(""));
+            Utils.RemoveCache("NBrightBuyShipping" + PortalSettings.Current.PortalId.ToString(""));
 
         }
 
@@ -196,7 +196,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             shipping.Save();
 
             //remove current setting from cache for reload
-            CacheUtils.RemoveCache("NBrightBuyShipping" + PortalSettings.Current.PortalId.ToString(""));
+            Utils.RemoveCache("NBrightBuyShipping" + PortalSettings.Current.PortalId.ToString(""));
 
         }
 

@@ -268,9 +268,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 // clear any cache data that might be there
                 var strCacheKey = "GetByGudKey*" + objInfo.ModuleId.ToString("") + "*" + objInfo.PortalId.ToString("") + "*" + objInfo.TypeCode + "*" + objInfo.UserId + "*" + objInfo.GUIDKey;
-                CacheUtils.RemoveCache(strCacheKey);
+                Utils.RemoveCache(strCacheKey);
                 strCacheKey = "GetByType*" + objInfo.ModuleId.ToString("") + "*" + objInfo.PortalId.ToString("") + "*" + objInfo.TypeCode + "*" + objInfo.UserId + "*" + objInfo.Lang;
-                CacheUtils.RemoveCache(strCacheKey);
+                Utils.RemoveCache(strCacheKey);
 
                 // do update
                 objInfo.ModifiedDate = DateTime.Now;
@@ -302,7 +302,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             // SO caching for this DB call.
             //if (!debug)
             //{
-            //    var obj = (NBrightInfo) CacheUtils.GetCache(strCacheKey);
+            //    var obj = (NBrightInfo) Utils.GetCache(strCacheKey);
             //    if (obj != null && StoreSettings.Current.DebugMode == false) return obj;
             //    if (obj != null) return obj;
             //}
@@ -316,7 +316,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var l = CBO.FillCollection<NBrightInfo>(DataProvider.Instance().GetList(portalId, moduleId, entityTypeCode, strFilter, "", 1, 1, 1, 1, entityTypeCodeLang, lang));
             if (l.Count >= 1)
             {
-                CacheUtils.SetCache(strCacheKey, l[0]);
+                Utils.SetCache(strCacheKey, l[0]);
                 return l[0];
             }
             return null;
@@ -345,7 +345,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var strCacheKey = "GetByGudKey*" + moduleId.ToString("") + "*" + portalId.ToString("") + "*" + entityTypeCode + "*" + selUserId + "*" + guidKey + "*" + Utils.GetCurrentCulture();
             if (!debug)
             {
-                var obj = (NBrightInfo)CacheUtils.GetCache(strCacheKey);
+                var obj = (NBrightInfo)Utils.GetCache(strCacheKey);
                 if (obj != null) return obj;
             }
 
@@ -370,7 +370,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     }
                 }
             }
-            CacheUtils.SetCache(strCacheKey, rtnObj);
+            Utils.SetCache(strCacheKey, rtnObj);
             return rtnObj;
         }
 
@@ -390,14 +390,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             NBrightInfo rtnInfo = null;
             if (debugMode == false)
             {
-                var obj = CacheUtils.GetCache(strCacheKey);
+                var obj = Utils.GetCache(strCacheKey);
                 if (obj != null) rtnInfo = (NBrightInfo)obj;
             }
 
             if (rtnInfo == null)
             {
                 rtnInfo = CBO.FillObject<NBrightInfo>(DataProvider.Instance().Get(itemId, typeCodeLang, lang)); 
-                if (debugMode == false) CacheUtils.SetCache(strCacheKey, rtnInfo);
+                if (debugMode == false) Utils.SetCache(strCacheKey, rtnInfo);
             }
             return rtnInfo;
         }
@@ -444,7 +444,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var rtncount = -1;
             if (debugMode == false)
             {
-                var obj = CacheUtils.GetCache(strCacheKey);
+                var obj = Utils.GetCache(strCacheKey);
                 if (obj != null) rtncount = (int)obj;
             }
 
@@ -452,7 +452,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 if (visibleOnly) sqlSearchFilter += " and (NB3.Visible = 1) ";
                 rtncount = DataProvider.Instance().GetListCount(portalId, moduleId, typeCode, sqlSearchFilter, typeCodeLang, lang);
-                if (debugMode == false) CacheUtils.SetCache(strCacheKey, rtncount);
+                if (debugMode == false) NBrightBuyUtils.SetModCache(moduleId, strCacheKey, rtncount);
             }
             return rtncount;
         }
@@ -464,7 +464,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             ListCount listCount = null;
             if (debugMode == false)
             {
-                var obj = CacheUtils.GetCache(strCacheKey);
+                var obj = Utils.GetCache(strCacheKey);
                 if (obj != null) listCount = (ListCount)obj;
             }
 
@@ -473,7 +473,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (visibleOnly) sqlSearchFilter += " and (NB3.Visible = 1) ";
                 listCount = CBO.FillObject<ListCount>(DataProvider.Instance().GetListCountWithProperties(portalId, moduleId, typeCode, sqlSearchFilter, typeCodeLang, lang));
 
-                if (debugMode == false) CacheUtils.SetCache(strCacheKey, listCount);
+                if (debugMode == false) NBrightBuyUtils.SetModCache(moduleId, strCacheKey, listCount);
             }
             return listCount;
         }
@@ -538,13 +538,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var strCacheKey = portalId.ToString("") + "*" + moduleId.ToString("") + "*" + entityTypeCode + "*" + "*filter:" + strFilters.Replace(" ", "") + "*orderby:" + strOrderBy.Replace(" ", "") + "*" + returnLimit.ToString("") + "*" + pageNumber.ToString("") + "*" + pageSize.ToString("") + "*" + recordCount.ToString("") + "*" + entityTypeCodeLang + "*" + cultureCode;
             if (debugMode == false)
             {
-                l = (List<NBrightInfo>)CacheUtils.GetCache(strCacheKey);
+                l = (List<NBrightInfo>)Utils.GetCache(strCacheKey);
             }
 
             if (l == null)
             {
                 l = GetList(portalId, moduleId, entityTypeCode, strFilters, strOrderBy, returnLimit, pageNumber, pageSize, recordCount, entityTypeCodeLang, cultureCode);
-                if (debugMode == false) CacheUtils.SetCache(strCacheKey, l);
+                if (debugMode == false) NBrightBuyUtils.SetModCache(moduleId, strCacheKey, l);
             }
             return l;
         }
@@ -564,13 +564,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var strCacheKey = "PropertyByProductInfo" + portalId.ToString("") + "*" + moduleId.ToString("") + "*" + entityTypeCode + "*" + "*filter:" + strFilters.Replace(" ", "") + "*orderby:" + strOrderBy.Replace(" ", "") + "*" + returnLimit.ToString("") + "*" + pageNumber.ToString("") + "*" + pageSize.ToString("") + "*" + recordCount.ToString("") + "*" + entityTypeCodeLang + "*" + cultureCode;
             if (debugMode == false)
             {
-                l = (List<PropertyByProductInfo>)CacheUtils.GetCache(strCacheKey);
+                l = (List<PropertyByProductInfo>)Utils.GetCache(strCacheKey);
             }
 
             if (l == null)
             {
                 l = GetPropertyListByProduct(portalId, moduleId, entityTypeCode, strFilters, strOrderBy, returnLimit, pageNumber, pageSize, recordCount, entityTypeCodeLang, cultureCode);
-                if (debugMode == false) CacheUtils.SetCache(strCacheKey, l);
+                if (debugMode == false) NBrightBuyUtils.SetModCache(moduleId, strCacheKey, l);
             }
             return l;
         }
@@ -620,7 +620,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             string templ = null;
             var strCacheKey = templatename + "*" + moduleId.ToString("") + "*" + lang + "*" + PortalSettings.Current.PortalId.ToString("");
             
-            if (debugMode == false) templ = (String)CacheUtils.GetCache(strCacheKey);
+            if (debugMode == false) templ = (String)Utils.GetCache(strCacheKey);
 
             if (templ == null)
             {
@@ -631,7 +631,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                 // WARNING!! do not inject text here, it will cause a loop on the GetMenuTemplates function.
 
-                if (debugMode == false) CacheUtils.SetCache(strCacheKey, templ);
+                if (debugMode == false) NBrightBuyUtils.SetModCache(-1, strCacheKey, templ);
             }
             // always replace url tokens after cache, they could be different per url, not by cache key
             templ = Utils.ReplaceUrlTokens(templ);
@@ -645,14 +645,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             string templ = null;
             var strCacheKey = templatename + "*" + lang + "*" + PortalSettings.Current.PortalId.ToString("");
 
-            if (debugMode == false) templ = (String)CacheUtils.GetCache(strCacheKey);
+            if (debugMode == false) templ = (String)Utils.GetCache(strCacheKey);
 
             if (templ == null)
             {
                 var templCtrl = NBrightBuyUtils.GetTemplateGetter(themeFolder);
                 templ = templCtrl.GetTemplateData(templatename, lang, true, true, true, StoreSettings.Current.Settings());
 
-                if (debugMode == false) CacheUtils.SetCache(strCacheKey, templ);
+                if (debugMode == false) NBrightBuyUtils.SetModCache(-1, strCacheKey, templ);
             }
             // always replace url tokens after cache, they could be different per url, not by cache key
             templ = Utils.ReplaceUrlTokens(templ);
@@ -942,21 +942,21 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <returns></returns>
         private static StoreSettings GetStaticStoreSettings(int portalId)
         {
-            var objSs = (StoreSettings)CacheUtils.GetCache("NBBStoreSettings" + portalId.ToString(""));
+            var objSs = (StoreSettings)Utils.GetCache("NBBStoreSettings" + portalId.ToString(""));
             if (objSs == null)
             {
                 objSs = new StoreSettings(portalId);
-                CacheUtils.SetCache("NBBStoreSettings" + portalId.ToString(""), objSs);
+                Utils.SetCache("NBBStoreSettings" + portalId.ToString(""), objSs);
             }
             return objSs;
         }
         public StoreSettings GetStoreSettings(int portalId)
         {
-            var objSs = (StoreSettings)CacheUtils.GetCache("NBBStoreSettings" + portalId.ToString(""));
+            var objSs = (StoreSettings)Utils.GetCache("NBBStoreSettings" + portalId.ToString(""));
             if (objSs == null)
             {
                 objSs = new StoreSettings(portalId);
-                CacheUtils.SetCache("NBBStoreSettings" + portalId.ToString(""), objSs);
+                Utils.SetCache("NBBStoreSettings" + portalId.ToString(""), objSs);
             }
             return objSs;
         }
@@ -1029,7 +1029,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
 			    Update(objImp);
 
-                CacheUtils.ClearAllCache();
+                NBrightBuyUtils.RemoveModCache(ModuleID);
 
             }
 
