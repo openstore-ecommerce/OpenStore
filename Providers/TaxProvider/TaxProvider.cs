@@ -56,10 +56,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
                 if (enableShippingTax && nodList.Count > 0)
                 {
 
-                    // Set tax rate vars to use with shipping based on the 1st product in cart
-                    // NOTE: Consider adding shippingcost & dealershippingcost in the product xml
-                    //       to allow for product specific shipping tax rates
-                    
+                    // Set tax rate & dealer status based on values from the 1st product in cart
                     var productInfo = new NBrightInfo { XMLData = nodList[0].OuterXml };
                     var taxrate = GetTaxRate(productInfo, rateDic);
                     var isDealer = productInfo.GetXmlPropertyBool("genxml/isdealer");
