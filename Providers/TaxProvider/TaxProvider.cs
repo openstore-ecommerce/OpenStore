@@ -25,6 +25,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
         public override NBrightInfo Calculate(NBrightInfo cartInfo)
         {
             var enableShippingTax = _info.GetXmlPropertyBool("genxml/checkbox/enableshippingtax");
+            var shippingTaxRate = _info.GetXmlPropertyDouble("genxml/textbox/shippingtaxrate");
 
             // return taxtype, 1 = included in cost, 2 = not included in cost, 3 = no tax, 4 = tax included in cost, but calculate to zero.
             cartInfo.SetXmlPropertyDouble("genxml/taxtype", _taxType);
@@ -53,15 +54,14 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
                     taxtotal += CalculateItemTax(nbi, rateDic);
                 }
 
-                if (enableShippingTax && nodList.Count > 0)
+                if (enableShippingTax && shippingTaxRate > 0)
                 {
 
-                    // Set tax rate & dealer status based on values from the 1st product in cart
+                    // Set dealer status based on values from the 1st product in cart
                     var productInfo = new NBrightInfo { XMLData = nodList[0].OuterXml };
-                    var taxrate = GetTaxRate(productInfo, rateDic);
                     var isDealer = productInfo.GetXmlPropertyBool("genxml/isdealer");
 
-                    taxtotal += CalculateShippingTax(cartInfo, taxrate, isDealer);
+                    taxtotal += CalculateShippingTax(cartInfo, shippingTaxRate, isDealer);
                 }
 
                 cartInfo.SetXmlPropertyDouble("genxml/taxcost", taxtotal);

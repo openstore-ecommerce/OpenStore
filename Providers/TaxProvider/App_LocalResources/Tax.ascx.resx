@@ -135,6 +135,9 @@
   <data name="taxrate.Text" xml:space="preserve">
     <value>Tax Rate (%)</value>
   </data>
+    <data name="shippingtaxrate.Text" xml:space="preserve">
+    <value>Shipping Tax Rate (%)</value>
+  </data>
   <data name="taxtype.data" xml:space="preserve">
     <value>Tax Included in Unit Price;Tax NOT Included in Unit Price;No Tax;Tax Included in Unit Price (zero tax total)</value>
   </data>

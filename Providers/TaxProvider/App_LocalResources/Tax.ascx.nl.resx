@@ -126,6 +126,9 @@
   <data name="enabletaxnumber.Text" xml:space="preserve">
     <value>Gebruik van (EU) belastingnummer inschakelen voor belastingvrijstelling</value>
   </data>
+  <data name="shippingtaxarate.Text" xml:space="preserve">
+    <value>Belastingtarief voor verzending (%)</value>
+  </data>
   <data name="taxdefault.Text" xml:space="preserve">
     <value>Standaardbelasting (%)</value>
   </data>
