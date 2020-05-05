@@ -147,4 +147,7 @@
   <data name="alterpercent.Text" xml:space="preserve">
     <value>Update Shipping Costs</value>
   </data>
+  <data name="FreeShippingLimit.Text" xml:space="preserve">
+    <value>Free Shipping Limit</value>
+  </data>
 </root>

@@ -14,10 +14,11 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
 {
     public class TaxProvider : Components.Interfaces.TaxInterface
     {
-        private readonly NBrightInfo _info;
-        private readonly string _taxType;
+        private static readonly NBrightInfo _info;
+        private static readonly string _taxType;
 
-        public TaxProvider(){
+        static TaxProvider()
+        {
             _info = ProviderUtils.GetProviderSettings("tax");
             _taxType = _info.GetXmlProperty("genxml/radiobuttonlist/taxtype");
         }
@@ -56,11 +57,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
 
                 if (enableShippingTax && shippingTaxRate > 0)
                 {
-
-                    // Set dealer status based on values from the 1st product in cart
-                    var productInfo = new NBrightInfo { XMLData = nodList[0].OuterXml };
-                    var isDealer = productInfo.GetXmlPropertyBool("genxml/isdealer");
-
+                    var isDealer = false; // default until dealer shipping cost implemented
                     taxtotal += CalculateShippingTax(cartInfo, shippingTaxRate, isDealer);
                 }
 
@@ -177,12 +174,12 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
 
             var taxrate = GetTaxRate(cartItemInfo, rateDic);
 
-            taxtotal = AddTaxCost(_taxType, taxtotal, appliedcost, taxrate);
+            taxtotal = AddTaxCost(taxtotal, appliedcost, taxrate);
 
             return Math.Round(taxtotal, 2);
         }
 
-        public Double CalculateShippingTax(NBrightInfo cartInfo, double taxrate, Boolean isDealer)
+        private static Double CalculateShippingTax(NBrightInfo cartInfo, double taxrate, Boolean isDealer)
         {
 
             if (_taxType == "3") return 0;
@@ -190,10 +187,11 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             Double taxtotal = 0;
             var shippingcost = cartInfo.GetXmlPropertyDouble("genxml/shippingcost");
 
-            // check if dealer and if dealertotal cost exists.
-            if (isDealer) shippingcost = cartInfo.GetXmlPropertyDouble("genxml/dealershippingcost");
+            // check if dealer and if dealer shipping cost exists.
+            var dealerShippingCost = cartInfo.GetXmlPropertyDouble("genxml/dealershippingcost");
+            if (isDealer && dealerShippingCost > 0) shippingcost = dealerShippingCost;
 
-            taxtotal = AddTaxCost(_taxType, taxtotal, shippingcost, taxrate);
+            taxtotal = AddTaxCost(taxtotal, shippingcost, taxrate);
 
             return Math.Round(taxtotal, 2);
         }
@@ -210,13 +208,13 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             return taxrate;
         }
 
-        private static double AddTaxCost(string taxtype, double taxtotal, double cost, double taxrate)
+        private static double AddTaxCost(double taxtotal, double cost, double taxrate)
         {
-            if (taxtype == "1") // included in unit price
+            if (_taxType == "1") // included in unit price
             {
                 taxtotal += cost - ((cost / (100 + taxrate)) * 100);
             }
-            if (taxtype == "2") // NOT included in unit price
+            if (_taxType == "2") // NOT included in unit price
             {
                 taxtotal += (cost / 100) * taxrate;
             }

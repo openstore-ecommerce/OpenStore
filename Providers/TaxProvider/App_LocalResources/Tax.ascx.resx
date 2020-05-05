@@ -130,7 +130,7 @@
     <value>Default Tax (%)</value>
   </data>
   <data name="taxexemptregions.Text" xml:space="preserve">
-    <value>Taxed Region codes (CSV list)</value>
+    <value>Tax Exempt Region codes (CSV list)</value>
   </data>
   <data name="taxrate.Text" xml:space="preserve">
     <value>Tax Rate (%)</value>

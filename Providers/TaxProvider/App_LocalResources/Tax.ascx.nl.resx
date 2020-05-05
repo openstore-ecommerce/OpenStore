@@ -133,7 +133,7 @@
     <value>Standaardbelasting (%)</value>
   </data>
   <data name="taxexemptregions.Text" xml:space="preserve">
-    <value>Belastingregio codes (CSV-lijst)</value>
+    <value>Belastingvrije regiocodes (CSV-lijst)</value>
   </data>
   <data name="taxrate.Text" xml:space="preserve">
     <value>Belastingtarief (%)</value>
