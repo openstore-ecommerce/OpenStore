@@ -126,11 +126,14 @@
   <data name="enabletaxnumber.Text" xml:space="preserve">
     <value>Autoriser l'exonération des taxes selon un numéro de taxes (EU)</value>
   </data>
+  <data name="shippingtaxrate.Text" xml:space="preserve">
+    <value>Taux de taxe d'expédition (%)</value>
+  </data>
   <data name="taxdefault.Text" xml:space="preserve">
     <value>Taxe par défaut (%)</value>
   </data>
   <data name="taxexemptregions.Text" xml:space="preserve">
-    <value>Codes des taxes régionales (liste CSV)</value>
+    <value>Codes de région exonérée de taxe (liste CSV)</value>
   </data>
   <data name="taxrate.Text" xml:space="preserve">
     <value>Taux de taxe (%)</value>
