@@ -464,7 +464,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     // ---------------------------------------------------------------------
 
 
-                    if (searchText != "") filter += " and (NB3.[ProductName] like '%" + searchText + "%' or NB3.[ProductRef] like '%" + searchText + "%' or NB3.[Summary] like '%" + searchText + "%' ) ";
+                    if (searchText != "") filter += " and (NB3.[ProductName] like '%" + searchText.Replace("'","''") + "%' or NB3.[ProductRef] like '%" + searchText.Replace("'", "''") + "%' or NB3.[Summary] like '%" + searchText.Replace("'", "''") + "%' ) ";
 
                     if (searchCategory != "" || searchProperty != "")
                     {

@@ -202,11 +202,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
                         if (pageSize == 0) pageSize = 20;
 
                         // get only entity type required
-                        recordCount = objCtrl.GetDnnUsersCount(portalId, "%" + searchText + "%");
+                        recordCount = objCtrl.GetDnnUsersCount(portalId, "%" + searchText.Replace("'", "''") + "%");
 
                     }
 
-                    var list = objCtrl.GetDnnUsers(portalId, "%" + searchText + "%", 0, pageNumber, pageSize, recordCount);
+                    var list = objCtrl.GetDnnUsers(portalId, "%" + searchText.Replace("'", "''") + "%", 0, pageNumber, pageSize, recordCount);
 
                     var passSettings = settings;
                     foreach (var s in StoreSettings.Current.Settings()) // copy store setting, otherwise we get a byRef assignement
