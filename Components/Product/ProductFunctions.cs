@@ -1770,7 +1770,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     }
                     else
                     {
-                        navigationdata.OrderBy = "{bycategoryproduct}";
+                        if (String.IsNullOrEmpty(navigationdata.OrderBy))
+                        {
+                            navigationdata.OrderBy = "{bycategoryproduct}";
+                        }
                     }
                 }
 
