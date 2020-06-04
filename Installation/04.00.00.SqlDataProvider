@@ -363,7 +363,14 @@ DEALLOCATE db_cursor
 set @currentpos = (select top 1 [XMLdata].value('(genxml/sort)[1]','int')  from {databaseOwner}[{objectQualifier}NBrightBuy] where XrefItemId = @categoryid and ParentItemId = @moveproductid)
 set @newpos = (select top 1 [XMLdata].value('(genxml/sort)[1]','int')  from {databaseOwner}[{objectQualifier}NBrightBuy] where XrefItemId = @categoryid and ParentItemId = @movetoproductid)
 
-set @newpos = @newpos + 1
+IF (@currentpos > @newpos)
+BEGIN
+    set @newpos = @newpos - 1
+END
+ ELSE
+BEGIN
+    set @newpos = @newpos + 1
+END
 
 update {databaseOwner}[{objectQualifier}NBrightBuy] set XMLData = '<genxml><sort>' + convert(nvarchar(max),@newpos) + '</sort></genxml>' where  XrefItemId = @categoryid and ParentItemId = @moveproductid
 
