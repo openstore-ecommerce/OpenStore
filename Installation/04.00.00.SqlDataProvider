@@ -338,16 +338,16 @@ SET @categoryid = convert(int,LTRIM(RTRIM(PARSENAME(replace(@ExtaParams,';','. '
 SET @moveproductid = convert(int,LTRIM(RTRIM(PARSENAME(replace(@ExtaParams,';','. '), 2))))
 SET @movetoproductid = convert(int,LTRIM(RTRIM(PARSENAME(replace(@ExtaParams,';','. '), 1))))
 
-declare @newpos int
+declare @newpos decimal(10,5)
 declare @itemid int
 declare @newintpos int
 declare @currentpos int
 
 DECLARE db_cursor CURSOR FOR  
-select itemid,ROW_NUMBER() Over (ORDER BY [XMLdata].value('(genxml/sort)[1]','int') ) As Rank
+select itemid,ROW_NUMBER() Over (ORDER BY [XMLdata].value('(genxml/sort)[1]','decimal(10,5)') ) As Rank
  from {databaseOwner}[{objectQualifier}NBrightBuy]
 where XrefItemId  = @categoryid
-order by [XMLdata].value('(genxml/sort)[1]','int')
+order by [XMLdata].value('(genxml/sort)[1]','decimal(10,5)')
 
 OPEN db_cursor   
 FETCH NEXT FROM db_cursor INTO @itemid,@newintpos
@@ -360,18 +360,25 @@ END
 CLOSE db_cursor   
 DEALLOCATE db_cursor 
 
-set @currentpos = (select top 1 [XMLdata].value('(genxml/sort)[1]','int')  from {databaseOwner}[{objectQualifier}NBrightBuy] where XrefItemId = @categoryid and ParentItemId = @moveproductid)
-set @newpos = (select top 1 [XMLdata].value('(genxml/sort)[1]','int')  from {databaseOwner}[{objectQualifier}NBrightBuy] where XrefItemId = @categoryid and ParentItemId = @movetoproductid)
+set @currentpos = (select top 1 [XMLdata].value('(genxml/sort)[1]','decimal(10,5)')  from {databaseOwner}[{objectQualifier}NBrightBuy] where XrefItemId = @categoryid and ParentItemId = @moveproductid)
+set @newpos = (select top 1 [XMLdata].value('(genxml/sort)[1]','decimal(10,5)')  from {databaseOwner}[{objectQualifier}NBrightBuy] where XrefItemId = @categoryid and ParentItemId = @movetoproductid)
 
-set @newpos = @newpos + 1
+IF (@currentpos > @newpos)
+BEGIN
+set @newpos = @newpos - 0.5
+END
+ ELSE
+BEGIN
+set @newpos = @newpos + 0.5
+END
 
 update {databaseOwner}[{objectQualifier}NBrightBuy] set XMLData = '<genxml><sort>' + convert(nvarchar(max),@newpos) + '</sort></genxml>' where  XrefItemId = @categoryid and ParentItemId = @moveproductid
 
 DECLARE db_cursor CURSOR FOR  
-select itemid,ROW_NUMBER() Over (ORDER BY [XMLdata].value('(genxml/sort)[1]','int') ) As Rank
+select itemid,ROW_NUMBER() Over (ORDER BY [XMLdata].value('(genxml/sort)[1]','decimal(10,5)') ) As Rank
  from {databaseOwner}[{objectQualifier}NBrightBuy]
 where XrefItemId  = @categoryid
-order by [XMLdata].value('(genxml/sort)[1]','int')
+order by [XMLdata].value('(genxml/sort)[1]','decimal(10,5)')
 
 OPEN db_cursor   
 FETCH NEXT FROM db_cursor INTO @itemid,@newintpos
