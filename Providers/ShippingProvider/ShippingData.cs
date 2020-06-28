@@ -95,6 +95,14 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             }
         }
 
+        public String FreeshiplimitOnTotaalx
+        {
+            get
+            {
+                return Info.GetXmlProperty("genxml/checkbox/freeshiplimitontotal");
+            }
+        }
+
         #endregion
 
         #region "base methods"

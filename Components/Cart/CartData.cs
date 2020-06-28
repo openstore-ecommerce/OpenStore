@@ -263,8 +263,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             PurchaseInfo.SetXmlPropertyDouble("genxml/subtotalcost", subtotalcost);
             PurchaseInfo.SetXmlPropertyDouble("genxml/subtotal", subtotalcost);
             PurchaseInfo.SetXmlPropertyDouble("genxml/appliedsubtotal", (subtotalcost + totalsalediscount));
-
-
+ 
             // calc any voucher amounts
             var discountcode = PurchaseInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/promocode");
             Double voucherDiscount = 0;
@@ -282,7 +281,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             PurchaseInfo.SetXmlPropertyDouble("genxml/totaldiscount", totaldiscount);
             PurchaseInfo.SetXmlPropertyDouble("genxml/totalsalediscount", totalsalediscount);
-
+            
+            //Subtotal minus discount. 
+            PurchaseInfo.SetXmlPropertyDouble("genxml/carttotalvalue", (subtotalcost - totaldiscount));
 
             //add shipping
             Double shippingcost = 0;
@@ -318,8 +319,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 appliedtax = PurchaseInfo.GetXmlPropertyDouble("genxml/appliedtax");
             }
 
+
             //cart full total
             var total = (subtotalcost + shippingcost + appliedtax) - promototaldiscount;
+
+            /* Total value as seen in the cart*/
+            var carttotal = (subtotalcost) - promototaldiscount;
+            PurchaseInfo.SetXmlPropertyDouble("genxml/carttotalvalue", carttotal);
+
             if (total < 0) total = 0;
             PurchaseInfo.SetXmlPropertyDouble("genxml/total", total);
             PurchaseInfo.SetXmlPropertyDouble("genxml/appliedtotal", total);

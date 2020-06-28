@@ -57,13 +57,17 @@
         <div class="box-content">
             <div class="form-horizontal dnnForm">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.FreeShippingLimit"/>]</label>
+                    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.FreeShippingLimit" />]</label>
                     <div class="col-sm-1">
-                        [<tag id="freeshiplimit" cssclass="form-control" type="textbox" maxlength="150" Text="0"/>]
+                        [<tag id="freeshiplimit" cssclass="form-control" type="textbox" maxlength="150" Text="0" />]
                     </div>
-                    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.CountryCodesCSV"/>]</label>
+                    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.CountryCodesCSV" />]</label>
                     <div class="col-sm-3">
-                        [<tag id="freeshipcountrycodes" cssclass="form-control" type="textbox" Text=""/>]
+                        [<tag id="freeshipcountrycodes" cssclass="form-control" type="textbox" Text="" />]
+                    </div>
+                    <label class="col-sm-2 control-label">[<tag type="valueof" resourcekey="Shipping.OnCartTotal" />]</label>
+                    <div class="col-sm-2">
+                        [<tag id="freeshiplimitontotal" type="checkbox" datavalue="1" repeatcolumns="1" />]
                     </div>
                 </div>
             </div>
