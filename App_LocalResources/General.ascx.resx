@@ -1231,6 +1231,6 @@
     <value>Dealer Only</value>
   </data>
   <data name="Carttotal.Text" xml:space="preserve">
-    <value>Cart total</value>
+    <value>Subtotal</value>
   </data>
 </root>

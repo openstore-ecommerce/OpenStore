@@ -327,6 +327,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var carttotal = (subtotalcost) - promototaldiscount;
             PurchaseInfo.SetXmlPropertyDouble("genxml/carttotalvalue", carttotal);
 
+            //Data to later be use on checkoutTotals.cshtml
+            String freeshiplimitontotal = PurchaseInfo.GetXmlProperty("genxml/extrainfo/genxml/checkbox/freeshiplimitontotal");
+            PurchaseInfo.SetXmlProperty("genxml/extrainfo/genxml/checkbox/freeshiplimitontotal", freeshiplimitontotal);
+
             if (total < 0) total = 0;
             PurchaseInfo.SetXmlPropertyDouble("genxml/total", total);
             PurchaseInfo.SetXmlPropertyDouble("genxml/appliedtotal", total);
