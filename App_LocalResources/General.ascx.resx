@@ -1230,4 +1230,7 @@
   <data name="DealerOnly.Text" xml:space="preserve">
     <value>Dealer Only</value>
   </data>
+  <data name="Carttotal.Text" xml:space="preserve">
+    <value>Subtotal</value>
+  </data>
 </root>

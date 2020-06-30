@@ -20,11 +20,17 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
                 rangeValue = cartInfo.GetXmlPropertyDouble("genxml/totalweight"); 
             else
                 rangeValue = cartInfo.GetXmlPropertyDouble("genxml/appliedsubtotal");
+
+            if (shipData.FreeshiplimitOnTotaalx == "True") rangeValue = cartInfo.GetXmlPropertyDouble("genxml/carttotalvalue");
+
             var countrycode = "";
             var regioncode = "";
             var regionkey = "";
             var postCode = "";
             var total = cartInfo.GetXmlPropertyDouble("genxml/appliedsubtotal");
+
+            if (shipData.FreeshiplimitOnTotaalx == "True") total = cartInfo.GetXmlPropertyDouble("genxml/carttotalvalue");
+
             switch (shipoption)
             {
                 case "1":

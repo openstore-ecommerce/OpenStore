@@ -18,9 +18,11 @@
     // assign Model, so we can resolve var in VS
     var cart = (CartData)Model.List.First();
     var info = cart.PurchaseInfo;
-}
-
+}                   
+             @if(info.GetXmlProperty("genxml/extrainfo/genxml/checkbox/freeshiplimitontotal") == "True"){ <li class="large"><div>@ResourceKey("General.Carttotal")</div>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/carttotalvalue"))</li>}
+             else{
                 <li class="large"><div>@ResourceKey("General.Subtotal")</div>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/appliedsubtotal"))</li>
+                }
                 <li class="large"><div>@ResourceKey("General.Discount")</div>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/applieddiscount"))</li>
 <li class="large">
     <div>@ResourceKey("General.Shipping")</div>@NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/appliedshipping"))</li>
