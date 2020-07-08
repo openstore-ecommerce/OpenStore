@@ -79,14 +79,17 @@
         - Fix for product list cache issue.
         - Update EventInterface to deal with multiple event providers.
         - Upgrade GetPropertyLisyByProductIds DB interface.
-        
+
         v04.01.03
-        - INnclude the "NBrightDNN.dll" and "NBrightCore.dll" (Template System) 
+        - Include the "NBrightDNN.dll" and "NBrightCore.dll" (Template System)
         - Lax on cookie to help with Chrome cokie issue
         - Cache improvments
         - UploadImage Interface
         - Add SalesRole
-        
+
+        v04.01.04
+        - Minor updates
+        - Option to allow shipping to calculate with discounts.
 
       </releaseNotes>
       <dependencies>
