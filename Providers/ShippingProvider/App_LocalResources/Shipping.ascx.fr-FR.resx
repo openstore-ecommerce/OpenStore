@@ -144,4 +144,7 @@
   <data name="alterpercentlabel.Text" xml:space="preserve">
     <value>Modifier l'expédition par (%)</value>
   </data>
+  <data name="OnCartTotal.Text" xml:space="preserve">
+    <value>Calculer sur le total du panier (Inclure la remise)</value>
+  </data>
 </root>

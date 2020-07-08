@@ -151,6 +151,6 @@
     <value>Free Shipping Limit</value>
   </data>
   <data name="OnCartTotal.Text" xml:space="preserve">
-    <value>Calculate on cart total</value>
+    <value>Calculate on cart total (Include Discount)</value>
   </data>
 </root>
