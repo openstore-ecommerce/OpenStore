@@ -1872,11 +1872,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (!page.Items.Contains("nbrightinject")) page.Items.Add("nbrightinject", "");
             if (!page.Items["nbrightinject"].ToString().Contains(fulltemplatename + ","))
             {
-                var productid = "";
                 var razorTempl = "";
                 if (productdata == null || !productdata.Exists)
                 {
-                    productid = productdata.Info.ItemID.ToString();
                     var nbi = new NBrightInfo();
                     nbi.Lang = Utils.GetCurrentCulture();
                     razorTempl = NBrightBuyUtils.RazorTemplRender(razorTemplateName, moduleid, "RazorIncludePageHeader", nbi, controlPath, theme, Utils.GetCurrentCulture(), settings);
@@ -1888,7 +1886,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (razorTempl != "" && !razorTempl.StartsWith("ERROR"))
                 {
                     PageIncludes.IncludeTextInHeader(page, razorTempl);
-                    page.Items["nbrightinject"] = page.Items["nbrightinject"] + fulltemplatename + productid +",";
+                    page.Items["nbrightinject"] = page.Items["nbrightinject"] + fulltemplatename + ",";
                 }
             }
         }
