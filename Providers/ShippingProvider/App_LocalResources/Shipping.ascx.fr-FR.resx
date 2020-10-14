@@ -147,4 +147,10 @@
   <data name="OnCartTotal.Text" xml:space="preserve">
     <value>Calculer sur le total du panier (Inclure la remise)</value>
   </data>
+  <data name="displayname.Text" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="FreeShippingLimit.Text" xml:space="preserve">
+    <value>Limite franco de port</value>
+  </data>
 </root>
