@@ -216,9 +216,12 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         nbxproductget('itemlist_remove', '#productajaxview'); //apply serverside
     });
 
-    $('.wishlistremoveall').unbind("click");
-    $('.wishlistremoveall').click(function () {
+    $('.wishlistremoveall').click(function (e) {
+        $('#shoplistname').val(e.target.attributes.listkey.value);
         nbxproductget('itemlist_delete', '#productajaxview'); //apply serverside
+        //remove list title and products
+        $(e.target).parent().parent().prev().remove();
+        $(e.target).parent().parent().remove();
     });
 
     $('.shoplistselect').unbind("change");
