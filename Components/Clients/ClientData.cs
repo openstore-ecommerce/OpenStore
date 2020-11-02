@@ -28,21 +28,18 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public NBrightInfo DataRecord;
         public int PortalId;
         private UserInfo _userInfo;
+        private readonly string _cacheKey;
 
         public Boolean Exists;
 
         public List<NBrightInfo> DiscountCodes;
         public List<NBrightInfo> VoucherCodes;
 
-        public ClientData(int portalId, int userid)
-        {
-            Exists = false;
-            PortalId = portalId;
-            PopulateClientData(userid);
-        }
+        public ClientData(int portalId, int userid) : this(portalId, userid, false) { }
 
         public ClientData(int portalId, int userid, bool debugmode)
         {
+            _cacheKey = "ClientData" + userid + "_" + portalId;
             Exists = false;
             PortalId = portalId;
             PopulateClientData(userid, debugmode);
@@ -268,6 +265,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             var objCtrl = new NBrightBuyController();
             objCtrl.Update(DataRecord);
+            Utils.RemoveCache(_cacheKey);
         }
 
         public void AddNewDiscountCode(String xmldata = "")
@@ -414,24 +412,30 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             _clientInfo.UserId = userId;
             _clientInfo.PortalId = PortalId;
 
-            // get any datarecord on DB
-            var objCtrl = new NBrightBuyController();
-            DataRecord = objCtrl.GetByType(PortalId, -1, "CLIENT", userId.ToString(""),"","", debugmode);
+            DataRecord = (NBrightInfo)NBrightBuyUtils.GetModCache(_cacheKey);
+
             if (DataRecord == null)
             {
-                DataRecord = new NBrightInfo(true);
-                DataRecord.ItemID = -1;
-                DataRecord.UserId = userId;
-                DataRecord.PortalId = PortalId;
-                DataRecord.ModuleId = -1;
-                DataRecord.TypeCode = "CLIENT";
-                objCtrl.Update(DataRecord);
+                // get any datarecord on DB
+                var objCtrl = new NBrightBuyController();
+                DataRecord = objCtrl.GetByType(PortalId, -1, "CLIENT", userId.ToString(""), "", "", debugmode);
+                if (DataRecord == null)
+                {
+                    DataRecord = new NBrightInfo(true);
+                    DataRecord.ItemID = -1;
+                    DataRecord.UserId = userId;
+                    DataRecord.PortalId = PortalId;
+                    DataRecord.ModuleId = -1;
+                    DataRecord.TypeCode = "CLIENT";
+                    objCtrl.Update(DataRecord);
+                }
+                NBrightBuyUtils.SetModCache(-1, _cacheKey, DataRecord);
             }
             else
             {
                 _clientInfo.XMLData = DataRecord.XMLData;
             }
-            
+
 
             _userInfo = UserController.GetUserById(PortalId, userId);
             if (_userInfo != null)
