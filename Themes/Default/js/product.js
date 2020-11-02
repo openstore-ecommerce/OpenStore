@@ -217,11 +217,10 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
     });
 
     $('.wishlistremoveall').click(function (e) {
-        $('#shoplistname').val(e.target.attributes.listkey.value);
+        var listkey = $(e.target).attr("listkey");
+        $('#shoplistname').val(listkey);
         nbxproductget('itemlist_delete', '#productajaxview'); //apply serverside
-        //remove list title and products
-        $(e.target).parent().parent().prev().remove();
-        $(e.target).parent().parent().remove();
+        $("#list-" + listkey).remove();
     });
 
     $('.shoplistselect').unbind("change");
