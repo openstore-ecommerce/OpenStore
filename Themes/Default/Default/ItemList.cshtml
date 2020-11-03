@@ -42,14 +42,14 @@
                 }
             }
             Model.List = newlist;
-
+        <div id="list-@(listkey)">
             <h3>@cw.listnames[listkey]</h3>
 
             <div>
             @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Default\\Default\\ItemListProducts.cshtml", Model)
             <div class="slp-footer"><a class="wishlistremoveall primarybutton" listkey="@(listkey)"><i class="fa fa-trash"></i> @ResourceKey("ProductView.wishlistclearall")</a></div>
             </div>
-
+        </div>
         }
     }
 
