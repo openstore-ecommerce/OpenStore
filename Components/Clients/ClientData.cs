@@ -429,13 +429,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     DataRecord.TypeCode = "CLIENT";
                     objCtrl.Update(DataRecord);
                 }
+                else
+                {
+                    _clientInfo.XMLData = DataRecord.XMLData;
+                }
+
                 NBrightBuyUtils.SetModCache(-1, _cacheKey, DataRecord);
             }
             else
             {
                 _clientInfo.XMLData = DataRecord.XMLData;
             }
-
 
             _userInfo = UserController.GetUserById(PortalId, userId);
             if (_userInfo != null)
