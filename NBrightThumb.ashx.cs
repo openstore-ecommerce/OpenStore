@@ -44,12 +44,22 @@ namespace Nevoweb.DNN.NBrightBuy
 
                 if ((newImage != null))
                 {
+                    context.Response.Clear();
+
                     ImageCodecInfo useEncoder;
 
                     // due to issues on some servers not outputing the png format correctly from the thumbnailer.
                     // this thumbnailer will always output jpg, unless specifically told to do a png format.
-                    useEncoder = ImgUtils.GetEncoder(ImageFormat.Jpeg);
-                    if (imgtype.ToLower() == "png")  useEncoder = ImgUtils.GetEncoder(ImageFormat.Png);                        
+                    if (imgtype.ToLower() == "png")
+                    {
+                        useEncoder = ImgUtils.GetEncoder(ImageFormat.Png);
+                        context.Response.ContentType = "image/png";
+                    }
+                    else
+                    {
+                        useEncoder = ImgUtils.GetEncoder(ImageFormat.Jpeg);
+                        context.Response.ContentType = "image/jpeg";
+                    }
 
                     var encoderParameters = new EncoderParameters(1);
                     encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 85L);
@@ -61,7 +71,7 @@ namespace Nevoweb.DNN.NBrightBuy
                     catch (Exception exc)
                     {
                         var outArray = Utils.StrToByteArray(exc.ToString());
-                        context.Response.OutputStream.Write(outArray, 0, outArray.Count());
+                        context.Response.BinaryWrite(outArray);
                     }
                 }
             }
