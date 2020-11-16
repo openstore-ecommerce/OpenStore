@@ -45,6 +45,7 @@ namespace Nevoweb.DNN.NBrightBuy
                 if ((newImage != null))
                 {
                     context.Response.Clear();
+                    context.Response.ClearHeaders();
 
                     ImageCodecInfo useEncoder;
 
@@ -66,6 +67,10 @@ namespace Nevoweb.DNN.NBrightBuy
 
                     try
                     {
+                        context.Response.AddFileDependency(src);
+                        context.Response.Cache.SetETagFromFileDependencies();
+                        context.Response.Cache.SetLastModifiedFromFileDependencies();
+                        context.Response.Cache.SetCacheability(HttpCacheability.Public);
                         newImage.Save(context.Response.OutputStream, useEncoder, encoderParameters);
                     }
                     catch (Exception exc)
