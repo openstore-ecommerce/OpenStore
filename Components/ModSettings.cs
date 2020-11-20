@@ -57,68 +57,71 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         #region "private methods"
 
-
+        private string lockobject = "lockit";
         private void BuildSettingsDic(System.Collections.Hashtable modSettings)
         {
-            var nbbSettings = NBrightBuyUtils.GetSettings(PortalSettings.Current.PortalId, Moduleid);
-
-            _settingsDic = new Dictionary<string, string>();
-            // this function will build the Settings that is passed to the templating system.
-            var strCacheKey = PortalSettings.Current.PortalId.ToString("") + "*" + Moduleid.ToString("") + "*SettingsDic";
-            var obj = NBrightBuyUtils.GetModCache(strCacheKey);
-            if (obj != null) _settingsDic = (Dictionary<string, string>)obj;
-            if (_settingsDic.Count == 0 || StoreSettings.Current.DebugMode)
+            lock (lockobject)
             {
+                var nbbSettings = NBrightBuyUtils.GetSettings(PortalSettings.Current.PortalId, Moduleid);
 
-                if (!_settingsDic.ContainsKey("tabid")) _settingsDic.Add("tabid", PortalSettings.Current.ActiveTab.TabID.ToString(""));
-
-                // add store settings (we keep store settings at module level, because these can be overwritten by the module)
-                var storesettings = StoreSettings.Current.Settings(); // assign to var, so it doesn;t causes error if site settings change during loop.
-                foreach (var item in storesettings)
+                _settingsDic = new Dictionary<string, string>();
+                // this function will build the Settings that is passed to the templating system.
+                var strCacheKey = PortalSettings.Current.PortalId.ToString("") + "*" + Moduleid.ToString("") + "*SettingsDic";
+                var obj = NBrightBuyUtils.GetModCache(strCacheKey);
+                if (obj != null) _settingsDic = (Dictionary<string, string>)obj;
+                if (_settingsDic.Count == 0 || StoreSettings.Current.DebugMode)
                 {
-                    if (_settingsDic.ContainsKey(item.Key))
-                        _settingsDic[item.Key] = item.Value;
+
+                    if (!_settingsDic.ContainsKey("tabid")) _settingsDic.Add("tabid", PortalSettings.Current.ActiveTab.TabID.ToString(""));
+
+                    // add store settings (we keep store settings at module level, because these can be overwritten by the module)
+                    var storesettings = StoreSettings.Current.Settings(); // assign to var, so it doesn;t causes error if site settings change during loop.
+                    foreach (var item in storesettings)
+                    {
+                        if (_settingsDic.ContainsKey(item.Key))
+                            _settingsDic[item.Key] = item.Value;
+                        else
+                            _settingsDic.Add(item.Key,item.Value);                        
+                    }
+
+
+                    // add normal DNN Setting
+                    foreach (string name in modSettings.Keys)
+                    {
+                        if (!_settingsDic.ContainsKey(name)) _settingsDic.Add(name, modSettings[name].ToString());
+                    }
+
+                    // add nbbSettings Settings 
+                    AddToSettingDic(nbbSettings, "genxml/hidden/*");
+                    AddToSettingDic(nbbSettings, "genxml/textbox/*");
+                    AddToSettingDic(nbbSettings, "genxml/checkbox/*");
+                    AddToSettingDic(nbbSettings, "genxml/dropdownlist/*");
+                    AddToSettingDic(nbbSettings, "genxml/radiobuttonlist/*");
+
+
+                    // redo the moduleid key, on imported module settings this could be wrong.
+                    if (_settingsDic.ContainsKey("moduleid"))
+                        _settingsDic["moduleid"] = Moduleid.ToString("");
                     else
-                        _settingsDic.Add(item.Key,item.Value);                        
+                        _settingsDic.Add("moduleid", Moduleid.ToString(""));
+
+                    NBrightBuyUtils.SetModCache(Moduleid, strCacheKey, _settingsDic);
                 }
-
-
-                // add normal DNN Setting
-                foreach (string name in modSettings.Keys)
+                else
                 {
-                    if (!_settingsDic.ContainsKey(name)) _settingsDic.Add(name, modSettings[name].ToString());
+                    _settingsDic = (Dictionary<string, string>)obj;
                 }
 
-                // add nbbSettings Settings 
-                AddToSettingDic(nbbSettings, "genxml/hidden/*");
-                AddToSettingDic(nbbSettings, "genxml/textbox/*");
-                AddToSettingDic(nbbSettings, "genxml/checkbox/*");
-                AddToSettingDic(nbbSettings, "genxml/dropdownlist/*");
-                AddToSettingDic(nbbSettings, "genxml/radiobuttonlist/*");
+                // redo the edit langauge for backoffice.
+                if (_settingsDic != null)
+                {
+                    if (_settingsDic.ContainsKey("editlanguage"))
+                        _settingsDic["editlanguage"] = StoreSettings.Current.EditLanguage;
+                    else
+                        _settingsDic.Add("editlanguage", StoreSettings.Current.EditLanguage);                
+                }
 
-
-                // redo the moduleid key, on imported module settings this could be wrong.
-                if (_settingsDic.ContainsKey("moduleid"))
-                    _settingsDic["moduleid"] = Moduleid.ToString("");
-                else
-                    _settingsDic.Add("moduleid", Moduleid.ToString(""));
-
-                NBrightBuyUtils.SetModCache(Moduleid, strCacheKey, _settingsDic);
             }
-            else
-            {
-                _settingsDic = (Dictionary<string, string>)obj;
-            }
-
-            // redo the edit langauge for backoffice.
-            if (_settingsDic != null)
-            {
-                if (_settingsDic.ContainsKey("editlanguage"))
-                    _settingsDic["editlanguage"] = StoreSettings.Current.EditLanguage;
-                else
-                    _settingsDic.Add("editlanguage", StoreSettings.Current.EditLanguage);                
-            }
-
 
         }
 
