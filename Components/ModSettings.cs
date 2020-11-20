@@ -69,6 +69,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (obj != null) _settingsDic = (Dictionary<string, string>)obj;
             if (_settingsDic.Count == 0 || StoreSettings.Current.DebugMode)
             {
+                NBrightBuyUtils.RemoveCache(strCacheKey);
 
                 if (!_settingsDic.ContainsKey("tabid")) _settingsDic.Add("tabid", PortalSettings.Current.ActiveTab.TabID.ToString(""));
 
