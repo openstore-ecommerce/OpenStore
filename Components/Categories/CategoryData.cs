@@ -393,20 +393,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             DataRecord.ValidateXmlFormat();
 
-            if (DataLangRecord == null)
-            {
-                // we have no datalang record for this language, so get an existing one and save it.
-                var l = _objCtrl.GetList(_portalId, -1, "CATEGORYLANG", " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
-                if (l.Count > 0)
-                {
-                    DataLangRecord = (NBrightInfo)l[0].Clone();
-                    DataLangRecord.ItemID = -1;
-                    DataLangRecord.Lang = _lang;
-                    DataLangRecord.ValidateXmlFormat();
-                    _objCtrl.Update(DataLangRecord);
-                }
-            }
-
             // fix image
             var imgpath = DataRecord.GetXmlProperty("genxml/hidden/imagepath");
             var imgurl = DataRecord.GetXmlProperty("genxml/hidden/imageurl");
@@ -444,30 +430,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (errorcount > 0) _objCtrl.Update(DataRecord); // update if we find a error
 
-            // fix langauge records
-            foreach (var lang in DnnUtils.GetCultureCodeList(_portalId))
-            {
-                var l = _objCtrl.GetList(_portalId, -1, "CATEGORYLANG", " and NB1.ParentItemId = " + Info.ItemID.ToString("") + " and NB1.Lang = '" + lang + "'");
-                if (l.Count == 0 && DataLangRecord != null)
-                {
-                    var nbi = (NBrightInfo)DataLangRecord.Clone();
-                    nbi.ItemID = -1;
-                    nbi.Lang = lang;
-                    _objCtrl.Update(nbi);
-                    errorcount += 1;
-                }
-                if (l.Count > 1)
-                {
-                    // we have more records than shoudl exists, remove any old ones.
-                    var l2 = _objCtrl.GetList(_portalId, -1, "CATEGORYLANG", " and NB1.ParentItemId = " + Info.ItemID.ToString("") + " and NB1.Lang = '" + lang + "'", "order by Modifieddate desc");
-                    var lp = 1;
-                    foreach (var i in l2)
-                    {
-                      if (lp >=2) _objCtrl.Delete(i.ItemID);
-                      lp += 1;
-                    }
-                }
-            }
 
             // Build langauge refs
             if (GroupType == "cat")
