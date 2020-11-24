@@ -142,6 +142,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             try
             {
+                LogUtils.LogOnDebugMode("NBrightBuyController.GetList: portalId=" + portalId + ", moduleId=" + moduleId + ", typeCode=" + typeCode + ", sqlSearchFilter=" + sqlSearchFilter + ", sqlOrderBy=" + sqlOrderBy + ", returnLimit=" + returnLimit + ", pageNumber=" + pageNumber + ", pageSize=" + pageSize + ", recordCount=" + recordCount + ", typeCodeLang=" + typeCodeLang + ", lang=" + lang);
                 return CBO.FillCollection<NBrightInfo>(DataProvider.Instance().GetList(portalId, moduleId, typeCode, sqlSearchFilter, sqlOrderBy, returnLimit, pageNumber, pageSize, recordCount, typeCodeLang, lang));
             }
             catch (Exception e)
@@ -266,6 +267,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             try
             {
+                LogUtils.LogOnDebugMode("NBrightBuyController.Update: " + objInfo.XMLData);
+
                 // clear any cache data that might be there
                 var strCacheKey = "GetByGudKey*" + objInfo.ModuleId.ToString("") + "*" + objInfo.PortalId.ToString("") + "*" + objInfo.TypeCode + "*" + objInfo.UserId + "*" + objInfo.GUIDKey;
                 Utils.RemoveCache(strCacheKey);
@@ -278,7 +281,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
             catch (Exception e)
             {
-                Logging.Debug($"NBrightBuyController.GetListCount called with: portalId='{objInfo.PortalId}', ItemId='{objInfo.ItemID}', typeCode='{objInfo.TypeCode}', parentItemId='{objInfo.ParentItemId}'");
+                Logging.Debug($"NBrightBuyController.Update called with: portalId='{objInfo.PortalId}', ItemId='{objInfo.ItemID}', typeCode='{objInfo.TypeCode}', parentItemId='{objInfo.ParentItemId}'");
                 Logging.LogException(e);
                 throw;
             }
