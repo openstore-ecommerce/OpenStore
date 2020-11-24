@@ -21,7 +21,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
         public static string ProcessCommand(string paramCmd,HttpContext context)
         {
             var strOut = "CLIENT - ERROR!! - No Security rights for current user!";
-            if (NBrightBuyUtils.CheckManagerRights())
+            if (NBrightBuyUtils.CheckManagerOrSalesRights())
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
                 var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/userid");
@@ -149,7 +149,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
         {
             try
             {
-                if (NBrightBuyUtils.CheckManagerRights())
+                if (NBrightBuyUtils.CheckManagerOrSalesRights())
                 {
                     var settings = NBrightBuyUtils.GetAjaxDictionary(context);
 
@@ -245,7 +245,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
         {
             try
             {
-                if (NBrightBuyUtils.CheckManagerRights())
+                if (NBrightBuyUtils.CheckManagerOrSalesRights())
                 {
                     var settings = NBrightBuyUtils.GetAjaxDictionary(context);
                     var strOut = "";
@@ -298,7 +298,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Clients
         {
             try
             {
-                if (NBrightBuyUtils.CheckManagerRights())
+                if (NBrightBuyUtils.CheckManagerOrSalesRights())
                 {
                     var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
                     var userId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/userid");

@@ -2371,13 +2371,20 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static Boolean CheckRights()
         {
-            if (UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ClientEditorRole) || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.EditorRole) || UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators"))
+            if (UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.SalesRole) || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ClientEditorRole) || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.EditorRole) || UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators"))
             {
                 return true;
             }
             return false;
         }
-
+        public static Boolean CheckManagerOrSalesRights()
+        {
+            if (UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.SalesRole) || UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) || UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators"))
+            {
+                return true;
+            }
+            return false;
+        }
         public static Boolean CheckManagerRights()
         {
             if (UserController.Instance.GetCurrentUserInfo().IsInRole(StoreSettings.ManagerRole) || UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators"))
