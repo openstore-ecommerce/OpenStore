@@ -415,8 +415,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (!cList.Contains(CacheKey))
             {
                 cList.Add(CacheKey);
-                NBrightCore.common.Utils.SetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture), cList);
-                NBrightCore.common.Utils.SetCache(CacheKey, objObject, AbsoluteExpiration);
+                Utils.SetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture), cList);
+                Utils.SetCache(CacheKey, objObject, AbsoluteExpiration);
             }
         }
 
@@ -427,7 +427,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static void SetCache(string cacheKey, object objObject)
         {
-            NBrightCore.common.Utils.SetCache(cacheKey, objObject, DateTime.Now + new TimeSpan(1, 0, 0, 0));
+            var testObj = Utils.GetCache(cacheKey);
+            if (testObj == null) Utils.SetCache(cacheKey, objObject, DateTime.Now + new TimeSpan(1, 0, 0, 0));
         }
 
         public static void RemoveCache(string cacheKey)
