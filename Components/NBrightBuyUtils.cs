@@ -1657,6 +1657,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         }
 
 
+        // The lock object must be the same object across thread, so it must be static
+        // it doesn't matter what kind of object it is.
+        // sometimes it makes sense to use the actual object you're going to change inside the lock
+        // this would work fine too:
+        // private static object lockobject = new object();
+        private static string lockobjectRazorTemplRender = "lockitRazorTemplRender";
+
         /// <summary>
         /// Render a razor template with an object, this method will include the object in the List of the NBrightRazor class
         /// </summary>
@@ -1671,7 +1678,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <returns></returns>
         public static string RazorTemplRender(string razorTemplName, int moduleid, string cacheKey, object obj, string templateControlPath, string theme, string lang, Dictionary<string, string> settings)
         {
-            string lockobject = "lockitRazorTemplRender";
 
             // do razor template
             var ckey = "NBrightBuyRazorOutput" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString() + "*" + lang;
@@ -1679,60 +1685,74 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (razorTempl == null || cacheKey == "")
             {
-                lock (lockobject)
+                // the lock is now placed on the static object, meaning that once the second thread comes along,
+                // the object is already locked and the thread will wait for the lock to be released
+                // so the check to see if anything need to be done, must be inside the lock
+                // in this case it seems to make sense to check both inside and outside of the lock
+                // because in most cases the thread will take that fast path (without lock)
+                lock (lockobjectRazorTemplRender)
                 {
-                    razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
-                    if (razorTempl == "")
+                    // fetch the templ from cache again because another thread might have filled it will the current thread was waiting
+                    razorTempl = (string)GetModCache(ckey);
+                    
+                    if (razorTempl == null || cacheKey == "")
                     {
-                        // check for non-razor templates
-                        razorTemplName = razorTemplName.ToLower().Replace(".cshtml", ".html");
-                        ckey = "NBrightBuyRazorOutput" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString() + "*" + lang; // reset cachekey
-                        razorTempl = (string)GetModCache(ckey);
-                        if (razorTempl != null)
-                        {
-                            return razorTempl;
-                        }
                         razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
-                    }
-                    if (razorTempl != "" && razorTemplName.EndsWith(".cshtml"))
-                    {
-                        if (obj == null) obj = new NBrightInfo(true);
-                        var l = new List<object>();
-                        l.Add(obj);
-
-                        if (settings == null) settings = new Dictionary<string, string>();
-                        settings.Remove("userid");
-                        if (!settings.ContainsKey("userid")) settings.Add("userid", UserController.Instance.GetCurrentUserInfo().UserID.ToString());
-
-                        var nbRazor = new NBrightRazor(l, settings, HttpContext.Current.Request.QueryString);
-                        nbRazor.FullTemplateName = theme + "." + razorTemplName;
-                        nbRazor.TemplateName = razorTemplName;
-                        nbRazor.ThemeFolder = theme;
-                        nbRazor.Lang = lang;
-
-                        var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString() + "*" + lang;
-                        var debugMode = StoreSettings.Current.DebugMode;
-                        if (cacheKey == "")
+                        if (razorTempl == "")
                         {
-                            debugMode = true;
+                            // check for non-razor templates
+                            razorTemplName = razorTemplName.ToLower().Replace(".cshtml", ".html");
+                            ckey = "NBrightBuyRazorOutput" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString() + "*" + lang; // reset cachekey
+                            razorTempl = (string)GetModCache(ckey);
+                            if (razorTempl != null)
+                            {
+                                return razorTempl;
+                            }
+                            razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
                         }
-                        razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, debugMode);
-                        if (!debugMode) SetModCache(moduleid, ckey, razorTempl); // only save to cache if we pass in a cache key.
-                    }
-                    else
-                    {
-                        razorTempl = "ERROR - Razor Template Not Found: " + theme + "." + razorTemplName;
+                        if (razorTempl != "" && razorTemplName.EndsWith(".cshtml"))
+                        {
+                            if (obj == null) obj = new NBrightInfo(true);
+                            var l = new List<object>();
+                            l.Add(obj);
+
+                            if (settings == null) settings = new Dictionary<string, string>();
+                            settings.Remove("userid");
+                            if (!settings.ContainsKey("userid")) settings.Add("userid", UserController.Instance.GetCurrentUserInfo().UserID.ToString());
+
+                            var nbRazor = new NBrightRazor(l, settings, HttpContext.Current.Request.QueryString);
+                            nbRazor.FullTemplateName = theme + "." + razorTemplName;
+                            nbRazor.TemplateName = razorTemplName;
+                            nbRazor.ThemeFolder = theme;
+                            nbRazor.Lang = lang;
+
+                            var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString() + "*" + lang;
+                            var debugMode = StoreSettings.Current.DebugMode;
+                            if (cacheKey == "")
+                            {
+                                debugMode = true;
+                            }
+                            razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, debugMode);
+                            if (!debugMode) SetModCache(moduleid, ckey, razorTempl); // only save to cache if we pass in a cache key.
+                        }
+                        else
+                        {
+                            razorTempl = "ERROR - Razor Template Not Found: " + theme + "." + razorTemplName;
+                        }
                     }
                 }
             }
             return razorTempl;
         }
 
+        private static string lockobjectRazorTemplRenderNoCache = "lockitRazorTemplRenderNoCache";
         public static string RazorTemplRenderNoCache(string razorTemplName, int moduleid, string cacheKey, object obj, string templateControlPath, string theme, string lang, Dictionary<string, string> settings)
         {
             // do razor template
-                var razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
-                if (razorTempl != "")
+            var razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
+            if (razorTempl != "")
+            {
+                lock (lockobjectRazorTemplRenderNoCache)
                 {
                     if (obj == null) obj = new NBrightInfo(true);
                     var l = new List<object>();
@@ -1747,10 +1767,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                     razorTempl = RazorRender(nbRazor, razorTempl, "", true);
                 }
-                else
-                {
-                    razorTempl = "ERROR - Razor Template Not Found: " + theme + "." + razorTemplName;
-                }
+            }
+            else
+            {
+                razorTempl = "ERROR - Razor Template Not Found: " + theme + "." + razorTemplName;
+            }
             return razorTempl;
         }
 
