@@ -101,7 +101,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
 
         }
 
-                #endregion
+        #endregion
 
         #region  "Events "
 
@@ -118,7 +118,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                     var nbi = new NBrightInfo(false);
                     nbi.XMLData = importXML;
                     _recordXref = new Dictionary<int, int>();
-                    _productList = new Dictionary<int,string>();
+                    _productList = new Dictionary<int, string>();
                     DoImport(nbi);
                     DoImportImages(nbi);
                     DoImportDocs(nbi);
@@ -138,7 +138,6 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                     Response.Redirect(NBrightBuyUtils.AdminUrl(TabId, param), true);
                     break;
             }
-
         }
 
         #endregion

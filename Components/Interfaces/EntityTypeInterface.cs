@@ -30,31 +30,33 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
 		}
 
         //private static ShippingInterface objProvider = null;
-        private static Dictionary<String, EntityTypeInterface> _providerList; 
+        private static Dictionary<String, EntityTypeInterface> _providerList;
 
         // dynamically create provider
+        private static string lockobjectCreateProvider = "lockit";
         private static void CreateProvider()
         {
-
-            _providerList = new Dictionary<string, EntityTypeInterface>();
-
-            var pluginData = new PluginData(PortalSettings.Current.PortalId);
-            var l = pluginData.GetEntityTypeProviders(false);
-
-            foreach (var p in l)
+            lock (lockobjectCreateProvider)
             {
-                var prov = p.Value;
-                ObjectHandle handle = null;
-                handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"),
-                prov.GetXmlProperty("genxml/textbox/namespaceclass"));
-                var objProvider = (EntityTypeInterface)handle.Unwrap();
-                var ctrlkey = prov.GetXmlProperty("genxml/textbox/ctrl");
-                if (!_providerList.ContainsKey(ctrlkey))
+                _providerList = new Dictionary<string, EntityTypeInterface>();
+
+                var pluginData = new PluginData(PortalSettings.Current.PortalId);
+                var l = pluginData.GetEntityTypeProviders(false);
+
+                foreach (var p in l)
                 {
-                    _providerList.Add(ctrlkey, objProvider);
+                    var prov = p.Value;
+                    ObjectHandle handle = null;
+                    handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"),
+                    prov.GetXmlProperty("genxml/textbox/namespaceclass"));
+                    var objProvider = (EntityTypeInterface)handle.Unwrap();
+                    var ctrlkey = prov.GetXmlProperty("genxml/textbox/ctrl");
+                    if (!_providerList.ContainsKey(ctrlkey))
+                    {
+                        if (!_providerList.ContainsKey(ctrlkey)) _providerList.Add(ctrlkey, objProvider);
+                    }
                 }
             }
-
         }
 
         // return the provider

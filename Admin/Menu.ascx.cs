@@ -71,6 +71,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
             }
         }
 
+        private static string lockobjectGetMenu = "lockit";
         private String GetMenu()
         {
             var strCacheKey = "bomenuhtml*" + Utils.GetCurrentCulture() + "*" + PortalId.ToString("") + "*" + UserId.ToString("");
@@ -81,40 +82,42 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
 
             if (StoreSettings.Current.DebugMode || strOut == "")
             {
-                var pluginData = new PluginData(PortalId);
-
-                var bomenuattributes = DnnUtils.GetLocalizedString("bomenuattributes", _resxpath, Utils.GetCurrentCulture());
-                var bosubmenuattributes = DnnUtils.GetLocalizedString("bosubmenuattributes", _resxpath, Utils.GetCurrentCulture());
-
-                //get group list (these are the sections/first level of the menu)
-                var rootList = new Dictionary<String, String>();
-
-                var pluginList = PluginUtils.GetPluginList();
-                foreach (var p in pluginList)
+                lock (lockobjectGetMenu)
                 {
-                    if (PluginUtils.CheckSecurity(p))
+                    var pluginData = new PluginData(PortalId);
+
+                    var bomenuattributes = DnnUtils.GetLocalizedString("bomenuattributes", _resxpath, Utils.GetCurrentCulture());
+                    var bosubmenuattributes = DnnUtils.GetLocalizedString("bosubmenuattributes", _resxpath, Utils.GetCurrentCulture());
+
+                    //get group list (these are the sections/first level of the menu)
+                    var rootList = new Dictionary<String, String>();
+
+                    var pluginList = PluginUtils.GetPluginList();
+                    foreach (var p in pluginList)
                     {
-                        var grpname = p.GetXmlProperty("genxml/textbox/group");
-                        if (p.GetXmlPropertyBool("genxml/checkbox/hidden") == false)
+                        if (PluginUtils.CheckSecurity(p))
                         {
-                            var rootname = grpname;
-                            if (rootname == "") rootname = p.GetXmlProperty("genxml/textbox/ctrl");
-                            if (!rootList.ContainsKey(rootname))
+                            var grpname = p.GetXmlProperty("genxml/textbox/group");
+                            if (p.GetXmlPropertyBool("genxml/checkbox/hidden") == false)
                             {
-                                var resxname = DnnUtils.GetLocalizedString(rootname.ToLower(), _resxpath, Utils.GetCurrentCulture());
-                                if (resxname == "") resxname = rootname;
-                                rootList.Add(rootname, resxname);
+                                var rootname = grpname;
+                                if (rootname == "") rootname = p.GetXmlProperty("genxml/textbox/ctrl");
+                                if (!rootList.ContainsKey(rootname))
+                                {
+                                    var resxname = DnnUtils.GetLocalizedString(rootname.ToLower(), _resxpath, Utils.GetCurrentCulture());
+                                    if (resxname == "") resxname = rootname;
+                                    rootList.Add(rootname, resxname);
+                                }
                             }
                         }
                     }
-                }
 
-                strOut = "<ul " + bomenuattributes + ">";
+                    strOut = "<ul " + bomenuattributes + ">";
 
-                // clientEditor roles can only access products, so only add the exit button to the menu.
-                // the security restriuction on product ctrl is applied in the container.ascx.cs
-                //if (!NBrightBuyUtils.IsClientOnly()) 
-                //{
+                    // clientEditor roles can only access products, so only add the exit button to the menu.
+                    // the security restriuction on product ctrl is applied in the container.ascx.cs
+                    //if (!NBrightBuyUtils.IsClientOnly()) 
+                    //{
                     foreach (var rootname in rootList)
                     {
                         var rtnlist = pluginData.GetSubList(rootname.Key);
@@ -189,23 +192,23 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                         if (securityrootcheck) strOut += "</li>";
                     }
 
-               // }
+                    // }
 
-                // add exit button
-                strOut += "<li>";
-                var tabid = StoreSettings.Current.Get("exittab");
-                var exithref = "/";
-                if (Utils.IsNumeric(tabid)) exithref = Globals.NavigateURL(Convert.ToInt32(tabid));
-                strOut += GetRootLinkNode("Exit", "exit", DnnUtils.GetLocalizedString("exit_icon", _resxpath, Utils.GetCurrentCulture()), exithref, "");
-                strOut += "</li>";
+                    // add exit button
+                    strOut += "<li>";
+                    var tabid = StoreSettings.Current.Get("exittab");
+                    var exithref = "/";
+                    if (Utils.IsNumeric(tabid)) exithref = Globals.NavigateURL(Convert.ToInt32(tabid));
+                    strOut += GetRootLinkNode("Exit", "exit", DnnUtils.GetLocalizedString("exit_icon", _resxpath, Utils.GetCurrentCulture()), exithref, "");
+                    strOut += "</li>";
 
-                strOut += "</ul>";
+                    strOut += "</ul>";
 
-                NBrightBuyUtils.SetModCache(0, strCacheKey, strOut);
+                    NBrightBuyUtils.SetModCache(0, strCacheKey, strOut);
 
-                if (StoreSettings.Current.DebugModeFileOut) Utils.SaveFile(PortalSettings.HomeDirectoryMapPath + "\\debug_menu.html", strOut);
+                    if (StoreSettings.Current.DebugModeFileOut) Utils.SaveFile(PortalSettings.HomeDirectoryMapPath + "\\debug_menu.html", strOut);
+                }
             }
-
             return strOut;
         }
 

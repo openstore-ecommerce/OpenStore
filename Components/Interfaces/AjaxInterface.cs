@@ -31,40 +31,44 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
 			CreateProvider();
 		}
 
-		// dynamically create provider
-		private static void CreateProvider()
+        // dynamically create provider
+        private static string lockobjectCreateProvider = "lockit";
+        private static void CreateProvider()
 		{
+            lock (lockobjectCreateProvider)
+            {
+                string providerName = null;
 
-			string providerName = null;
+                _providerList = new Dictionary<string, AjaxInterface>();
 
-		    _providerList = new Dictionary<string, AjaxInterface>();
+                var pluginData = new PluginData(PortalSettings.Current.PortalId);
+                var l = pluginData.GetAjaxProviders(false);
 
-            var pluginData = new PluginData(PortalSettings.Current.PortalId);
-		    var l = pluginData.GetAjaxProviders(false);
-
-		    foreach (var p in l)
-		    {
-                try
+                foreach (var p in l)
                 {
-                    var prov = p.Value;
-                    ObjectHandle handle = null;
-                    handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"), prov.GetXmlProperty("genxml/textbox/namespaceclass"));
-                    var objProvider = (AjaxInterface)handle.Unwrap();
-                    var ctrlkey = prov.GetXmlProperty("genxml/textbox/ctrl");
-                    var lp = 1;
-                    while (_providerList.ContainsKey(ctrlkey))
+                    try
                     {
-                        ctrlkey = ctrlkey + lp.ToString("");
-                        lp += 1;
+                        var prov = p.Value;
+                        ObjectHandle handle = null;
+                        handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"), prov.GetXmlProperty("genxml/textbox/namespaceclass"));
+                        var objProvider = (AjaxInterface)handle.Unwrap();
+                        var ctrlkey = prov.GetXmlProperty("genxml/textbox/ctrl");
+                        var lp = 1;
+                        while (_providerList.ContainsKey(ctrlkey))
+                        {
+                            ctrlkey = ctrlkey + lp.ToString("");
+                            lp += 1;
+                        }
+                        objProvider.Ajaxkey = ctrlkey;
+                        if (!_providerList.ContainsKey(ctrlkey)) _providerList.Add(ctrlkey, objProvider);
+
                     }
-                    objProvider.Ajaxkey = ctrlkey;
-                    _providerList.Add(ctrlkey, objProvider);
+                    catch (Exception ex)
+                    {
+                        // ignore, we may possibly have plugin data without assembly.
+                    }
                 }
-                catch (Exception ex)
-                {
-                    // ignore, we may possibly have plugin data without assembly.
-                }
-		    }
+            }
 		}
 
 

@@ -223,7 +223,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             lp += 1;
                         }
                         i.SetXmlProperty("genxml/textbox/ctrl",ctrlkey); // add key for multiple interfacxes have ctrlkey data
-                        pList.Add(ctrlkey, i);
+                        if (!pList.ContainsKey(ctrlkey)) pList.Add(ctrlkey, i);
                     }
                 }
             }

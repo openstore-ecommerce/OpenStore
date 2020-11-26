@@ -893,55 +893,52 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static Dictionary<string, string> GetCountryList(string dnnlistname = "Country")
         {
-            var resxpath = StoreSettings.NBrightBuyPath() + "/App_LocalResources/CountryNames.ascx.resx";
-
-            var objCtrl = new DotNetNuke.Common.Lists.ListController();
-            var tList = objCtrl.GetListEntryInfoDictionary(dnnlistname);
-            var rtnDic = new Dictionary<string, string>();
-
-            var xmlNodeList = StoreSettings.Current.SettingsInfo.XMLDoc.SelectNodes("genxml/checkboxlist/countrycodelist/chk[@value='True']");
-            if (xmlNodeList != null)
-            {
-                foreach (XmlNode xmlNoda in xmlNodeList)
+                var resxpath = StoreSettings.NBrightBuyPath() + "/App_LocalResources/CountryNames.ascx.resx";
+                var rtnDic = new Dictionary<string, string>();
+                var objCtrl = new DotNetNuke.Common.Lists.ListController();
+                var tList = objCtrl.GetListEntryInfoDictionary(dnnlistname);
+                var xmlNodeList = StoreSettings.Current.SettingsInfo.XMLDoc.SelectNodes("genxml/checkboxlist/countrycodelist/chk[@value='True']");
+                if (xmlNodeList != null)
                 {
-                    if (xmlNoda.Attributes != null)
+                    foreach (XmlNode xmlNoda in xmlNodeList)
                     {
-                        if (xmlNoda.Attributes.GetNamedItem("data") != null)
+                        if (xmlNoda.Attributes != null)
                         {
-                            var datavalue = xmlNoda.Attributes["data"].Value;
-                            //use the data attribute if there
-                            if (tList.ContainsKey(datavalue))
+                            if (xmlNoda.Attributes.GetNamedItem("data") != null)
                             {
-                                var countryname = DnnUtils.GetLocalizedString(datavalue, resxpath, Utils.GetCurrentCulture());
-                                if (string.IsNullOrEmpty(countryname)) countryname = tList[datavalue].Text;
-                                rtnDic.Add(datavalue.Replace(dnnlistname + ":", ""),countryname);
+                                var datavalue = xmlNoda.Attributes["data"].Value;
+                                //use the data attribute if there
+                                if (tList.ContainsKey(datavalue))
+                                {
+                                    var countryname = DnnUtils.GetLocalizedString(datavalue, resxpath, Utils.GetCurrentCulture());
+                                    if (string.IsNullOrEmpty(countryname)) countryname = tList[datavalue].Text;
+                                    rtnDic.Add(datavalue.Replace(dnnlistname + ":", ""), countryname);
+                                }
                             }
                         }
                     }
                 }
-            }
-            var sortlist = StoreSettings.Current.Get("countrysortorder");
-            if (sortlist == "") return rtnDic;
-            
-            var rtnSort = new Dictionary<string, string>();
-            var s = sortlist.Split(';');
-            foreach (var c in s)
-            {
-                if (c != "")
+                var sortlist = StoreSettings.Current.Get("countrysortorder");
+                if (sortlist == "") return rtnDic;
+
+                var rtnSort = new Dictionary<string, string>();
+                var s = sortlist.Split(';');
+                foreach (var c in s)
                 {
-                    if (rtnDic.ContainsKey(c))
+                    if (c != "")
                     {
-                        var d = rtnDic[c];
-                        rtnSort.Add(c,d);
-                        rtnDic.Remove(c);
+                        if (rtnDic.ContainsKey(c))
+                        {
+                            var d = rtnDic[c];
+                            rtnSort.Add(c, d);
+                            rtnDic.Remove(c);
+                        }
                     }
                 }
-            }
-            foreach (var c in rtnDic)
-            {
-                rtnSort.Add(c.Key,c.Value);    
-            }
-
+                foreach (var c in rtnDic)
+                {
+                    if (!rtnSort.ContainsKey(c.Key)) rtnSort.Add(c.Key, c.Value);
+                }
             return rtnSort;
         }
 
@@ -958,7 +955,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var datavalue = r.Value;
                 var regionname = DnnUtils.GetLocalizedString(datavalue.Text, resxpath, Utils.GetCurrentCulture());
                 if (string.IsNullOrEmpty(regionname)) regionname = datavalue.Text;
-                rtnDic.Add(datavalue.Key, regionname);                
+                if (!rtnDic.ContainsKey(datavalue.Key)) rtnDic.Add(datavalue.Key, regionname);                
             }
 
             return rtnDic;
@@ -2277,7 +2274,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return ""; // no stock so return empty string.
         }
 
-
+        private static string lockobjectBuildCatList = "lockit";
         public static Dictionary<int, string> BuildCatList(int displaylevels = 20, Boolean showHidden = false, Boolean showArchived = false, int parentid = 0, string catreflist = "", string prefix = "", bool displayCount = false, bool showEmpty = true, string groupref = "", string breadcrumbseparator = ">", string lang = "")
         {
             if (lang == "") lang = Utils.GetCurrentCulture();
@@ -2290,38 +2287,39 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (objCache == null | StoreSettings.Current.DebugMode)
             {
-                var grpCatCtrl = new GrpCatController(lang);
-                var d = new Dictionary<int, string>();
-                var rtnList = new List<GroupCategoryData>();
-                rtnList = grpCatCtrl.GetTreeCategoryList(rtnList, 0, parentid, groupref, breadcrumbseparator);
-                var strCount = "";
-                foreach (var grpcat in rtnList)
+                lock (lockobjectBuildCatList)
                 {
-                    if (displayCount) strCount = " (" + grpcat.entrycount.ToString("") + ")";
-
-                    if (grpcat.depth < displaylevels)
+                    var grpCatCtrl = new GrpCatController(lang);
+                    var rtnList = new List<GroupCategoryData>();
+                    rtnList = grpCatCtrl.GetTreeCategoryList(rtnList, 0, parentid, groupref, breadcrumbseparator);
+                    var strCount = "";
+                    foreach (var grpcat in rtnList)
                     {
-                        if (showEmpty || grpcat.entrycount > 0)
+                        if (displayCount) strCount = " (" + grpcat.entrycount.ToString("") + ")";
+
+                        if (grpcat.depth < displaylevels)
                         {
-                            if (grpcat.ishidden == false || showHidden)
+                            if (showEmpty || grpcat.entrycount > 0)
                             {
-                                var addprefix = new string(' ', grpcat.depth).Replace(" ", prefix);
-                                if (catreflist == "")
-                                    rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
-                                else
+                                if (grpcat.ishidden == false || showHidden)
                                 {
-                                    if (grpcat.categoryref != "" &&
-                                        (catreflist + ",").Contains(grpcat.categoryref + ","))
-                                    {
-                                        rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
-                                    }
+                                    var addprefix = new string(' ', grpcat.depth).Replace(" ", prefix);
+                                    if (catreflist == "")
+                                        if (!rtnDic.ContainsKey(grpcat.categoryid)) rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
+                                        else
+                                        {
+                                            if (grpcat.categoryref != "" &&
+                                                (catreflist + ",").Contains(grpcat.categoryref + ","))
+                                            {
+                                                if (!rtnDic.ContainsKey(grpcat.categoryid)) rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
+                                            }
+                                        }
                                 }
                             }
                         }
                     }
+                    NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
                 }
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
-
             }
             else
             {
@@ -2330,6 +2328,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return rtnDic;
         }
 
+        private static string lockobjectBuildPropertyList = "lockit";
         public static Dictionary<int, string> BuildPropertyList(int displaylevels = 20, Boolean showHidden = false, Boolean showArchived = false, int parentid = 0, string catreflist = "", string prefix = "", bool displayCount = false, bool showEmpty = true, string groupref = "", string breadcrumbseparator = ">", string lang = "")
         {
             if (lang == "") lang = Utils.GetCurrentCulture();
@@ -2342,41 +2341,42 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (objCache == null | StoreSettings.Current.DebugMode)
             {
-                var grpCatCtrl = new GrpCatController(lang);
-                var d = new Dictionary<int, string>();
-                var rtnList = new List<GroupCategoryData>();
-                rtnList = grpCatCtrl.GetTreePropertyList(breadcrumbseparator);
-                var strCount = "";
-                foreach (var grpcat in rtnList)
+                lock (lockobjectBuildPropertyList)
                 {
-                    if (displayCount) strCount = " (" + grpcat.entrycount.ToString("") + ")";
-
-                    if (grpcat.depth < displaylevels)
+                    var grpCatCtrl = new GrpCatController(lang);
+                    var rtnList = new List<GroupCategoryData>();
+                    rtnList = grpCatCtrl.GetTreePropertyList(breadcrumbseparator);
+                    var strCount = "";
+                    foreach (var grpcat in rtnList)
                     {
-                        if (showEmpty || grpcat.entrycount > 0)
+                        if (displayCount) strCount = " (" + grpcat.entrycount.ToString("") + ")";
+
+                        if (grpcat.depth < displaylevels)
                         {
-                            if (grpcat.ishidden == false || showHidden)
+                            if (showEmpty || grpcat.entrycount > 0)
                             {
-                                if (!rtnDic.ContainsKey(grpcat.categoryid))
+                                if (grpcat.ishidden == false || showHidden)
                                 {
-                                    var addprefix = new string(' ', grpcat.depth).Replace(" ", prefix);
-                                    if (catreflist == "")
-                                        rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
-                                    else
+                                    if (!rtnDic.ContainsKey(grpcat.categoryid))
                                     {
-                                        if (grpcat.categoryref != "" &&
-                                            (catreflist + ",").Contains(grpcat.categoryref + ","))
-                                        {
-                                            rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
-                                        }
+                                        var addprefix = new string(' ', grpcat.depth).Replace(" ", prefix);
+                                        if (catreflist == "")
+                                            if (!rtnDic.ContainsKey(grpcat.categoryid)) rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
+                                            else
+                                            {
+                                                if (grpcat.categoryref != "" &&
+                                                    (catreflist + ",").Contains(grpcat.categoryref + ","))
+                                                {
+                                                    if (!rtnDic.ContainsKey(grpcat.categoryid)) rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
+                                                }
+                                            }
                                     }
                                 }
                             }
                         }
                     }
+                    NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
                 }
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
-
             }
             else
             {

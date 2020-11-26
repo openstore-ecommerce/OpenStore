@@ -123,7 +123,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Plugins
                     var passSettings = new Dictionary<string, string>();
                     foreach (var s in ajaxInfo.ToDictionary())
                     {
-                        passSettings.Add(s.Key, s.Value);
+                        if (!passSettings.ContainsKey(s.Key))  passSettings.Add(s.Key, s.Value);
                     }
                     foreach (var s in StoreSettings.Current.Settings()) // copy store setting, otherwise we get a byRef assignement
                     {

@@ -353,6 +353,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             return GetBreadCrumb(categoryid, shortLength, separator, aslist, false);
         }
+
+        private static string lockobjectGetBreadCrumb = "lockit";
         /// <summary>
         /// Get category breadcrumb, using controller langauge
         /// </summary>
@@ -364,40 +366,43 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <returns></returns>
         public String GetBreadCrumb(int categoryid, int shortLength, string separator, bool aslist, bool useSEO)
         {
-            var breadCrumb = "";
-            var checkDic = new Dictionary<int, int>();
-            while (true)
+            lock (lockobjectGetBreadCrumb)
             {
-                if (checkDic.ContainsKey(categoryid)) break; // jump out if we get data giving an infinate loop
-                int itemid1 = categoryid;
-                var lenum = from i in CategoryList where i.categoryid == itemid1 select i;
-                var l = lenum.ToList();
-                if (l.Any())
+                var breadCrumb = "";
+                var checkDic = new Dictionary<int, int>();
+                while (true)
                 {
-                    var crumbText = l.First().categoryname;
-                    if (useSEO && l.First().seoname != "") crumbText = l.First().seoname;
-                    if (crumbText != null)
+                    if (checkDic.ContainsKey(categoryid)) break; // jump out if we get data giving an infinate loop
+                    int itemid1 = categoryid;
+                    var lenum = from i in CategoryList where i.categoryid == itemid1 select i;
+                    var l = lenum.ToList();
+                    if (l.Any())
                     {
-                        if (shortLength > 0)
+                        var crumbText = l.First().categoryname;
+                        if (useSEO && l.First().seoname != "") crumbText = l.First().seoname;
+                        if (crumbText != null)
                         {
-                            if (crumbText.Length > (shortLength + 1)) crumbText = crumbText.Substring(0, shortLength) + ".";
+                            if (shortLength > 0)
+                            {
+                                if (crumbText.Length > (shortLength + 1)) crumbText = crumbText.Substring(0, shortLength) + ".";
+                            }
+
+                            var strOut = "";
+                            if (aslist)
+                                strOut = "<li>" + separator + crumbText + "</li>" + breadCrumb;
+                            else
+                                strOut = separator + crumbText + breadCrumb;
+
+                            checkDic.Add(categoryid, categoryid);
+                            categoryid = l.First().parentcatid;
+                            breadCrumb = strOut;
+                            continue;
                         }
-
-                        var strOut = "";
-                        if (aslist)
-                            strOut = "<li>" + separator + crumbText + "</li>" + breadCrumb;
-                        else
-                            strOut = separator + crumbText + breadCrumb;
-
-                        checkDic.Add(categoryid, categoryid);
-                        categoryid = l.First().parentcatid;
-                        breadCrumb = strOut;
-                        continue;
                     }
+                    if (breadCrumb.StartsWith(separator)) breadCrumb = breadCrumb.Substring(separator.Length);
+                    if (aslist && breadCrumb != "") breadCrumb = "<ul class='crumbs'>" + breadCrumb + "</ul>";
+                    return breadCrumb;
                 }
-                if (breadCrumb.StartsWith(separator)) breadCrumb = breadCrumb.Substring(separator.Length);
-                if (aslist && breadCrumb != "") breadCrumb = "<ul class='crumbs'>" + breadCrumb + "</ul>";
-                return breadCrumb;
             }
             return "";
         }
@@ -409,53 +414,57 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             return GetBreadCrumbWithLinks(categoryid, tabId, shortLength, separator, aslist, false, useSEO);
         }
+        private static string lockobjectGetBreadCrumbWithLinks = "lockit";
         public String GetBreadCrumbWithLinks(int categoryid, int tabId, int shortLength, string separator, bool aslist, bool useSEO, bool ajax = false)
         {
-            var breadCrumb = "";
-            var checkDic = new Dictionary<int, int>();
-            while (true)
+            lock (lockobjectGetBreadCrumbWithLinks)
             {
-                if (checkDic.ContainsKey(categoryid)) break; // jump out if we get data giving an infinate loop
-                int itemid1 = categoryid;
-                var lenum = from i in CategoryList where i.categoryid == itemid1 select i;
-                var l = lenum.ToList();
-                if (l.Any())
+                var breadCrumb = "";
+                var checkDic = new Dictionary<int, int>();
+                while (true)
                 {
-                    var crumbText = l.First().categoryname;
-                    if (useSEO && l.First() != null && l.First().seoname != "") crumbText = l.First().seoname;
-                    if (crumbText != null)
+                    if (checkDic.ContainsKey(categoryid)) break; // jump out if we get data giving an infinate loop
+                    int itemid1 = categoryid;
+                    var lenum = from i in CategoryList where i.categoryid == itemid1 select i;
+                    var l = lenum.ToList();
+                    if (l.Any())
                     {
-                        if (shortLength > 0)
+                        var crumbText = l.First().categoryname;
+                        if (useSEO && l.First() != null && l.First().seoname != "") crumbText = l.First().seoname;
+                        if (crumbText != null)
                         {
-                            if (crumbText.Length > (shortLength + 1)) crumbText = crumbText.Substring(0, shortLength) + ".";
-                        }
+                            if (shortLength > 0)
+                            {
+                                if (crumbText.Length > (shortLength + 1)) crumbText = crumbText.Substring(0, shortLength) + ".";
+                            }
 
-                        var strOut = "";
-                        if (ajax)
-                        {
-                            var catid = l.First().categoryid;
-                            if (aslist)
-                                strOut = "<li>" + separator + "<a href='" + GetCategoryUrl(l.First(), tabId) + "' catid='" + catid + "' class='ajaxcatmenu'>" + crumbText + "</a>" + "</li>" + breadCrumb;
+                            var strOut = "";
+                            if (ajax)
+                            {
+                                var catid = l.First().categoryid;
+                                if (aslist)
+                                    strOut = "<li>" + separator + "<a href='" + GetCategoryUrl(l.First(), tabId) + "' catid='" + catid + "' class='ajaxcatmenu'>" + crumbText + "</a>" + "</li>" + breadCrumb;
+                                else
+                                    strOut = separator + "<a href='" + GetCategoryUrl(l.First(), tabId) + "' catid='" + catid + "' class='ajaxcatmenu'>" + crumbText + "</a>" + breadCrumb;
+                            }
                             else
-                                strOut = separator + "<a href='" + GetCategoryUrl(l.First(), tabId) + "' catid='" + catid + "' class='ajaxcatmenu'>" + crumbText + "</a>" + breadCrumb;
-                        }
-                        else
-                        {
-                            if (aslist)
-                                strOut = "<li>" + separator + "<a href='" + GetCategoryUrl(l.First(), tabId) + "'>" + crumbText + "</a>" + "</li>" + breadCrumb;
-                            else
-                                strOut = separator + "<a href='" + GetCategoryUrl(l.First(), tabId) + "'>" + crumbText + "</a>" + breadCrumb;
-                        }
+                            {
+                                if (aslist)
+                                    strOut = "<li>" + separator + "<a href='" + GetCategoryUrl(l.First(), tabId) + "'>" + crumbText + "</a>" + "</li>" + breadCrumb;
+                                else
+                                    strOut = separator + "<a href='" + GetCategoryUrl(l.First(), tabId) + "'>" + crumbText + "</a>" + breadCrumb;
+                            }
 
-                        checkDic.Add(categoryid, categoryid);
-                        categoryid = l.First().parentcatid;
-                        breadCrumb = strOut;
-                        continue;
+                            checkDic.Add(categoryid, categoryid);
+                            categoryid = l.First().parentcatid;
+                            breadCrumb = strOut;
+                            continue;
+                        }
                     }
+                    if (breadCrumb.StartsWith(separator)) breadCrumb = breadCrumb.Substring(separator.Length);
+                    if (aslist) breadCrumb = "<ul class='crumbs'>" + breadCrumb + "</ul>";
+                    return breadCrumb;
                 }
-                if (breadCrumb.StartsWith(separator)) breadCrumb = breadCrumb.Substring(separator.Length);
-                if (aslist) breadCrumb = "<ul class='crumbs'>" + breadCrumb + "</ul>"; 
-                return breadCrumb;
             }
             return "";
         }
@@ -464,59 +473,62 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         #region "private methods"
 
+        private static string lockobjectLoad = "lockit";
         private void Load(String lang, Boolean debugMode = false)
         {
-            _objCtrl = new NBrightBuyController();
-            _lang = lang;
-
-            var strCacheKey = "GrpList_" + lang + "_" + _portalId;
-            GroupList = (List<NBrightInfo>)NBrightBuyUtils.GetModCache(strCacheKey);
-            if (GroupList == null || debugMode)
+            lock (lockobjectLoad)
             {
-                // get groups
-                GroupList = NBrightBuyUtils.GetCategoryGroups(_portalId, _lang, true);
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, GroupList);
-            }
 
-            strCacheKey = "GroupsDictionary_" + lang + "_" + _portalId;
-            GroupsDictionary = (Dictionary<string,string>)NBrightBuyUtils.GetModCache(strCacheKey);
-            if (GroupsDictionary == null || debugMode)
-            {
-                GroupsDictionary = new Dictionary<String, String>();
-                foreach (var g in GroupList)
+                _objCtrl = new NBrightBuyController();
+                _lang = lang;
+
+                var strCacheKey = "GrpList_" + lang + "_" + _portalId;
+                GroupList = (List<NBrightInfo>)NBrightBuyUtils.GetModCache(strCacheKey);
+                if (GroupList == null || debugMode)
                 {
-                    if (!GroupsDictionary.ContainsKey(g.GetXmlProperty("genxml/textbox/groupref"))) GroupsDictionary.Add(g.GetXmlProperty("genxml/textbox/groupref"), g.GetXmlProperty("genxml/lang/genxml/textbox/groupname"));
+                    // get groups
+                    GroupList = NBrightBuyUtils.GetCategoryGroups(_portalId, _lang, true);
+                    NBrightBuyUtils.SetModCache(-1, strCacheKey, GroupList);
                 }
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, GroupsDictionary);
+
+                strCacheKey = "GroupsDictionary_" + lang + "_" + _portalId;
+                GroupsDictionary = (Dictionary<string, string>)NBrightBuyUtils.GetModCache(strCacheKey);
+                if (GroupsDictionary == null || debugMode)
+                {
+                    GroupsDictionary = new Dictionary<String, String>();
+                    foreach (var g in GroupList)
+                    {
+                        if (!GroupsDictionary.ContainsKey(g.GetXmlProperty("genxml/textbox/groupref"))) GroupsDictionary.Add(g.GetXmlProperty("genxml/textbox/groupref"), g.GetXmlProperty("genxml/lang/genxml/textbox/groupname"));
+                    }
+                    NBrightBuyUtils.SetModCache(-1, strCacheKey, GroupsDictionary);
+                }
+
+                // build group category list
+                strCacheKey = "GrpCategoryList_" + lang + "_" + _portalId;
+                GrpCategoryList = (List<GroupCategoryData>)NBrightBuyUtils.GetModCache(strCacheKey);
+                if (GrpCategoryList == null || debugMode)
+                {
+                    GrpCategoryList = GetGrpCatListFromDatabase(lang);
+                    NBrightBuyUtils.SetModCache(-1, strCacheKey, GrpCategoryList);
+                }
+
+                // build cateogry list for navigation from group category list
+                strCacheKey = "CategoryList_" + lang + "_" + _portalId;
+                CategoryList = (List<GroupCategoryData>)NBrightBuyUtils.GetModCache(strCacheKey);
+                if (CategoryList == null || debugMode)
+                {
+                    var lenum = from i in GrpCategoryList where i.grouptyperef == "cat" select i;
+                    CategoryList = lenum.ToList();
+                    NBrightBuyUtils.SetModCache(-1, strCacheKey, CategoryList);
+                }
+
+                // add breadcrumb (needs both GrpCategoryList and CategoryList )
+                //[TODO: fix this catch 22 for list dependancy]
+                foreach (var grpcat in CategoryList)
+                {
+                    grpcat.breadcrumb = GetBreadCrumb(grpcat.categoryid, 200, ">", false);
+                }
             }
-
-            // build group category list
-            strCacheKey = "GrpCategoryList_" + lang + "_" + _portalId;
-            GrpCategoryList = (List<GroupCategoryData>)NBrightBuyUtils.GetModCache(strCacheKey);
-            if (GrpCategoryList == null || debugMode)
-            {
-                GrpCategoryList = GetGrpCatListFromDatabase(lang);
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, GrpCategoryList);
-            }
-
-            // build cateogry list for navigation from group category list
-            strCacheKey = "CategoryList_" + lang + "_" + _portalId;
-            CategoryList = (List<GroupCategoryData>)NBrightBuyUtils.GetModCache(strCacheKey);
-            if (CategoryList == null || debugMode)
-            {
-                var lenum = from i in GrpCategoryList where i.grouptyperef == "cat" select i;
-                CategoryList = lenum.ToList();
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, CategoryList);
-            }
-
-            // add breadcrumb (needs both GrpCategoryList and CategoryList )
-            //[TODO: fix this catch 22 for list dependancy]
-            foreach (var grpcat in CategoryList)
-            {
-                grpcat.breadcrumb = GetBreadCrumb(grpcat.categoryid, 200, ">", false);
-            }
-
-
         }
 
         private NBrightInfo GetLangData(List<NBrightInfo> langList,int categoryid)

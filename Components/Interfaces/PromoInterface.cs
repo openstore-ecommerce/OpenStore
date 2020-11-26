@@ -56,9 +56,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
                     }
                     objProvider.ProviderKey = ctrlkey;
                     ProviderList.Add(ctrlkey, objProvider);
+                if (!ProviderList.ContainsKey(ctrlkey)) ProviderList.Add(ctrlkey, objProvider);
             }
 
-		}
+        }
 
 
 		// return the provider
