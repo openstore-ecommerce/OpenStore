@@ -1,5 +1,110 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
@@ -7,174 +112,184 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddBill.Text">
-    <value xml:space="preserve">Factureringsadres toevoegen</value>
+  <data name="AddBill.Text" xml:space="preserve">
+    <value>Toevoegen Factureringsadres</value>
   </data>
-  <data name="addnewaddress.Text">
-    <value xml:space="preserve">Nieuw adres toevoegen</value>
+  <data name="addnewaddress.Text" xml:space="preserve">
+    <value>Nieuw adres toevoegen</value>
   </data>
-  <data name="AddShip.Text">
-    <value xml:space="preserve">Verzendadres toevoegen</value>
+  <data name="AddShip.Text" xml:space="preserve">
+    <value>Verzendadres toevoegen</value>
   </data>
-  <data name="Back.Text">
-    <value xml:space="preserve">Terug</value>
+  <data name="Back.Text" xml:space="preserve">
+    <value>Terug</value>
   </data>
-  <data name="BillingAddress.Text">
-    <value xml:space="preserve">Factuuradres</value>
+  <data name="BillingAddress.Text" xml:space="preserve">
+    <value>Factuuradres</value>
   </data>
-  <data name="cartempty.Text">
-    <value xml:space="preserve">Geen producten in winkelwagen</value>
+  <data name="cartempty.Text" xml:space="preserve">
+    <value>Geen producten in winkelwagen</value>
   </data>
-  <data name="chknews.Text">
-    <value xml:space="preserve">Ontvang onze nieuwsbrief</value>
+  <data name="chknews.Text" xml:space="preserve">
+    <value>Ontvang onze nieuwsbrief.</value>
   </data>
-  <data name="chkterms.Text">
-    <value xml:space="preserve">Ik heb gelezen en ga akkoord met de voorwaarden</value>
+  <data name="chkterms.Text" xml:space="preserve">
+    <value>&lt;p&gt;Ik heb de &lt;a href="/Terms" target="_blank"&gt;voorwaarden&lt;/a&gt; gelezen en ga hier akkoord mee . &lt;/p&gt;</value>
   </data>
-  <data name="cmdAddItem.Text">
-    <value xml:space="preserve">&lt;i class='fa fa-plus-square'&gt;&lt;/i&gt;</value>
+  <data name="cmdAddItem.Text" xml:space="preserve">
+    <value>&lt;i class='fa fa-plus-square'&gt;&lt;/i&gt;</value>
   </data>
-  <data name="cmdClearCart.confirm">
-    <value xml:space="preserve">Alle items verwijderen en bestelling annuleren?</value>
+  <data name="cmdClearCart.confirm" xml:space="preserve">
+    <value>Alle items verwijderen en de bestelling annuleren?</value>
   </data>
-  <data name="cmdClearCart.Text">
-    <value xml:space="preserve">Alles verwijderen</value>
+  <data name="cmdClearCart.Text" xml:space="preserve">
+    <value>Alles verwijderen</value>
   </data>
-  <data name="cmdDeleteItem.Text">
-    <value xml:space="preserve">&lt;i class='fa fa-times-circle fa-2x'&gt;&lt;/i&gt;</value>
+  <data name="cmdDeleteItem.Text" xml:space="preserve">
+    <value>&lt;i class='fa fa-times-circle fa-2x'&gt;&lt;/i&gt;</value>
   </data>
-  <data name="cmdRemoveItem.Text">
-    <value xml:space="preserve">&lt;i class='fa fa-minus-square'&gt;&lt;/i&gt;</value>
+  <data name="cmdRemoveItem.Text" xml:space="preserve">
+    <value>&lt;i class='fa fa-minus-square'&gt;&lt;/i&gt;</value>
   </data>
-  <data name="collectiontimes.Text">
-    <value xml:space="preserve">Collectie keer</value>
+  <data name="collectiontimes.Text" xml:space="preserve">
+    <value>Collectie keer</value>
   </data>
-  <data name="confirm.Text">
-    <value xml:space="preserve">Bevestigen</value>
+  <data name="confirm.Text" xml:space="preserve">
+    <value>Bevestigen</value>
   </data>
-  <data name="ForCollection.Text">
-    <value xml:space="preserve">Voor collectie</value>
+  <data name="ForCollection.Text" xml:space="preserve">
+    <value>Voor collectie</value>
   </data>
-  <data name="ManageOrders.Text">
-    <value xml:space="preserve">Bestellingen beheren</value>
+  <data name="ManageOrders.Text" xml:space="preserve">
+    <value>Bestellingen beheren</value>
   </data>
-  <data name="Next.Text">
-    <value xml:space="preserve">Volgende</value>
+  <data name="Next.Text" xml:space="preserve">
+    <value>Volgende</value>
   </data>
-  <data name="Order.Text">
-    <value xml:space="preserve">Bestelling plaatsen</value>
+  <data name="Order.Text" xml:space="preserve">
+    <value>Bestelling plaatsen</value>
   </data>
-  <data name="PaymentComplete.Text">
-    <value xml:space="preserve">Betaling voltooid</value>
+  <data name="PaymentComplete.Text" xml:space="preserve">
+    <value>Betaling voltooid</value>
   </data>
-  <data name="PaymentFailed.Text">
-    <value xml:space="preserve">Betaling mislukt</value>
+  <data name="PaymentFailed.Text" xml:space="preserve">
+    <value>Betaling mislukt</value>
   </data>
-  <data name="Previous.Text" lastModified="2014-11-29 14:00:31">
-    <value xml:space="preserve">Vorige</value>
+  <data name="Previous.Text" xml:space="preserve">
+    <value>Vorige</value>
   </data>
-  <data name="ProcessingDiv.Text">
-    <value xml:space="preserve">&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</value>
+  <data name="ProcessingDiv.Text" xml:space="preserve">
+    <value>&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</value>
   </data>
-  <data name="returntostore.Text">
-    <value xml:space="preserve">Terug naar winkel</value>
+  <data name="returntostore.Text" xml:space="preserve">
+    <value>Terug naar winkel</value>
   </data>
-  <data name="SaveAddress.Text">
-    <value xml:space="preserve">Adres opslaan</value>
+  <data name="SaveAddress.Text" xml:space="preserve">
+    <value>Adres opslaan</value>
   </data>
-  <data name="SaveAddress.Title">
-    <value xml:space="preserve">Adres aan adresboek opslaan</value>
+  <data name="SaveAddress.Title" xml:space="preserve">
+    <value>Adres in adresboek opslaan</value>
   </data>
-  <data name="selectaddress.Text">
-    <value xml:space="preserve">Adresboek</value>
+  <data name="selectaddress.Text" xml:space="preserve">
+    <value>Adresboek</value>
   </data>
-  <data name="SelectBill.Text">
-    <value xml:space="preserve">Selecteer factuuradres</value>
+  <data name="SelectBill.Text" xml:space="preserve">
+    <value>Selecteer factuuradres</value>
   </data>
-  <data name="SelectShip.Text">
-    <value xml:space="preserve">Selecteer verzendadres</value>
+  <data name="SelectShip.Text" xml:space="preserve">
+    <value>Selecteer verzendadres</value>
   </data>
-  <data name="ShippingAddress.Text">
-    <value xml:space="preserve">Verzendadres</value>
+  <data name="ShippingAddress.Text" xml:space="preserve">
+    <value>Verzendadres</value>
   </data>
-  <data name="shippingoption1.data">
-    <value xml:space="preserve">Verzenden naar het factuuradres;Verzenden naar een ander adres; ik zal verzamelen van winkel</value>
+  <data name="shippingoption1.data" xml:space="preserve">
+    <value>Verzenden naar het factuuradres; Verzenden naar een ander adres; ik haal het op in de winkel</value>
   </data>
-  <data name="shippingoption1.datavalue">
-    <value xml:space="preserve">1;2;3</value>
+  <data name="shippingoption1.datavalue" xml:space="preserve">
+    <value>1;2;3</value>
   </data>
-  <data name="shippingoption2.data">
-    <value xml:space="preserve">Factuuradres gebruiken;Geef verzendadres op</value>
+  <data name="shippingoption2.data" xml:space="preserve">
+    <value>Factuuradres gebruiken;Geef verzendadres op</value>
   </data>
-  <data name="shippingoption2.datavalue">
-    <value xml:space="preserve">1;2</value>
+  <data name="shippingoption2.datavalue" xml:space="preserve">
+    <value>1;2</value>
   </data>
-  <data name="Totaltopay.Text">
-    <value xml:space="preserve">Totaal te betalen</value>
+  <data name="Totaltopay.Text" xml:space="preserve">
+    <value>Totaal te betalen</value>
   </data>
-  <data name="txtitemslower.Text">
-    <value xml:space="preserve">artikel(en)</value>
+  <data name="txtitemslower.Text" xml:space="preserve">
+    <value>artikel(en)</value>
   </data>
-  <data name="txtItems.Text">
-    <value xml:space="preserve">Artikel(en)</value>
+  <data name="txtItems.Text" xml:space="preserve">
+    <value>Artikel(en)</value>
   </data>
-  <data name="UpdateCart.Text">
-    <value xml:space="preserve">Opnieuw berekenen</value>
+  <data name="UpdateCart.Text" xml:space="preserve">
+    <value>Opnieuw berekenen</value>
   </data>
-  <data name="UseBillingAddress.Text">
-    <value xml:space="preserve">Factuuradres gebruiken</value>
+  <data name="UseBillingAddress.Text" xml:space="preserve">
+    <value>Factuuradres gebruiken</value>
   </data>
-  <data name="ViewOrder.Text">
-    <value xml:space="preserve">Bestelling bekijken</value>
+  <data name="ViewOrder.Text" xml:space="preserve">
+    <value>Bestelling bekijken</value>
   </data>
-  <data name="addressmessage.Text">
-    <value>Please ensure your address is completed correctly, otherwise your order may be delayed.</value>
+  <data name="addressmessage.Text" xml:space="preserve">
+    <value>Controleer of uw adres compleet en juist is ingevoerd. Dit om vertraging van afleveren te voorkomen.</value>
   </data>
-  <data name="CartstepsAddresses.Text">
+  <data name="CartstepsAddresses.Text" xml:space="preserve">
     <value>Adressen</value>
   </data>
-  <data name="CartstepsConfirm.Text">
+  <data name="CartstepsConfirm.Text" xml:space="preserve">
     <value>Bevestiging</value>
   </data>
-  <data name="CartstepsPayment.Text">
+  <data name="CartstepsPayment.Text" xml:space="preserve">
     <value>Betaling</value>
   </data>
-  <data name="CartstepsProcess.Text">
+  <data name="CartstepsProcess.Text" xml:space="preserve">
     <value>Bestelproces</value>
   </data>
-  <data name="CartstepsRecap.Text">
+  <data name="CartstepsRecap.Text" xml:space="preserve">
     <value>Winkelwagen</value>
   </data>
-  <data name="CartstepsShipping.Text">
+  <data name="CartstepsShipping.Text" xml:space="preserve">
     <value>Samenvatting</value>
   </data>
-  <data name="lblcollectfromstore.Help">
-    <value>Allow a collect from store option</value>
+  <data name="PlaceOrder.Text" xml:space="preserve">
+    <value>Bestel</value>
   </data>
-  <data name="lblcollectfromstore.Text">
-    <value>Ophalen in de winkel</value>
-  </data>
-  <data name="PlaceOrder.Text">
-    <value>Order</value>
-  </data>
-  <data name="shippingoption1data.Text">
+  <data name="shippingoption1data.Text" xml:space="preserve">
     <value>Verstuur naar factuuradres,Verstuur naar ander adres,Ophalen bij de winkel</value>
   </data>
-  <data name="shippingoption1datavalue.Text">
+  <data name="shippingoption1datavalue.Text" xml:space="preserve">
     <value>1,2,3</value>
   </data>
-  <data name="shippingoption2data.Text">
+  <data name="shippingoption2data.Text" xml:space="preserve">
     <value>Gebruik factuuradres,Geef verzendadres op</value>
   </data>
-  <data name="shippingoption2datavalue.Text">
+  <data name="shippingoption2datavalue.Text" xml:space="preserve">
     <value>1,2</value>
   </data>
-  <data name="YourBasket.Text">
+  <data name="YourBasket.Text" xml:space="preserve">
     <value>Jouw winkelwagen</value>
+  </data>
+  <data name="AddressBookMessage.Text" xml:space="preserve">
+    <value>Inloggen om een opgeslagen adres te gebruiken.</value>
+  </data>
+  <data name="editmodeC.Text" xml:space="preserve">
+    <value>Order wordt samengesteld</value>
+  </data>
+  <data name="editmodeE.Text" xml:space="preserve">
+    <value>Order wordt bewerkt</value>
+  </data>
+  <data name="gdprterms.Text" xml:space="preserve">
+    <value>Met het verzenden van dit formulier gaat u ermee akkoord dat wij contact met u mogen opnemen.</value>
+    <comment>By submitting this form you accept that the information entered may be used to contact you in the context of the business relationship that arises from your order.</comment>
+  </data>
+  <data name="PaymentButton.Text" xml:space="preserve">
+    <value>Betalen</value>
   </data>
 </root>
