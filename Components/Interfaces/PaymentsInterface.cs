@@ -49,9 +49,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
 		        if (!_providerList.ContainsKey(ctrlkey))
 		        {
 		            objProvider.Paymentskey = ctrlkey;
-		            _providerList.Add(ctrlkey, objProvider);
-		        }
-		    }
+					if (!_providerList.ContainsKey(ctrlkey)) _providerList.Add(ctrlkey, objProvider);
+				}
+			}
 
 		}
 

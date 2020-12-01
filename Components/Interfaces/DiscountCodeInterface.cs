@@ -32,17 +32,19 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
 			CreateProvider();
 		}
 
-		// dynamically create provider
-		private static void CreateProvider()
+        // dynamically create provider
+        private static string lockobjectCreateProvider = "lockit";
+        private static void CreateProvider()
 		{
-
-            ProviderList = new Dictionary<string, DiscountCodeInterface>();
-
-            var pluginData = new PluginData(PortalSettings.Current.PortalId);
-            var l = pluginData.GetDiscountCodeProviders(false);
-
-            foreach (var p in l)
+            lock (lockobjectCreateProvider)
             {
+                ProviderList = new Dictionary<string, DiscountCodeInterface>();
+
+                var pluginData = new PluginData(PortalSettings.Current.PortalId);
+                var l = pluginData.GetDiscountCodeProviders(false);
+
+                foreach (var p in l)
+                {
                     var prov = p.Value;
                     ObjectHandle handle = null;
                     handle = Activator.CreateInstance(prov.GetXmlProperty("genxml/textbox/assembly"), prov.GetXmlProperty("genxml/textbox/namespaceclass"));
@@ -55,9 +57,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
                         lp += 1;
                     }
                     objProvider.ProviderKey = ctrlkey;
-                    ProviderList.Add(ctrlkey, objProvider);
+                    if (!ProviderList.ContainsKey(ctrlkey)) ProviderList.Add(ctrlkey, objProvider);
+                }
             }
-
 		}
 
 

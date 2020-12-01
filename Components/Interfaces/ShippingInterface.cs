@@ -57,8 +57,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
 		            lp += 1;
 		        }
 		        objProvider.Shippingkey = ctrlkey;
-		        _providerList.Add(ctrlkey, objProvider);
-		        if (prov.GetXmlPropertyBool("genxml/checkbox/default"))
+				if (!_providerList.ContainsKey(ctrlkey)) _providerList.Add(ctrlkey, objProvider);
+				if (prov.GetXmlPropertyBool("genxml/checkbox/default"))
 		        {
 		            _defaultProvider = objProvider;
 		        }

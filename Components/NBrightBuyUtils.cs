@@ -43,7 +43,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 {
     public static class NBrightBuyUtils
     {
-
         public static string DeCode(string codedval)
         {
             var strOut = "";
@@ -415,8 +414,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (!cList.Contains(CacheKey))
             {
                 cList.Add(CacheKey);
-                NBrightCore.common.Utils.SetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture), cList);
-                NBrightCore.common.Utils.SetCache(CacheKey, objObject, AbsoluteExpiration);
+                Utils.SetCache("keylist:" + moduleid.ToString(CultureInfo.InvariantCulture), cList);
+                Utils.SetCache(CacheKey, objObject, AbsoluteExpiration);
             }
         }
 
@@ -427,7 +426,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static void SetCache(string cacheKey, object objObject)
         {
-            NBrightCore.common.Utils.SetCache(cacheKey, objObject, DateTime.Now + new TimeSpan(1, 0, 0, 0));
+            var testObj = Utils.GetCache(cacheKey);
+            if (testObj == null) Utils.SetCache(cacheKey, objObject, DateTime.Now + new TimeSpan(1, 0, 0, 0));
         }
 
         public static void RemoveCache(string cacheKey)
@@ -893,55 +893,52 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public static Dictionary<string, string> GetCountryList(string dnnlistname = "Country")
         {
-            var resxpath = StoreSettings.NBrightBuyPath() + "/App_LocalResources/CountryNames.ascx.resx";
-
-            var objCtrl = new DotNetNuke.Common.Lists.ListController();
-            var tList = objCtrl.GetListEntryInfoDictionary(dnnlistname);
-            var rtnDic = new Dictionary<string, string>();
-
-            var xmlNodeList = StoreSettings.Current.SettingsInfo.XMLDoc.SelectNodes("genxml/checkboxlist/countrycodelist/chk[@value='True']");
-            if (xmlNodeList != null)
-            {
-                foreach (XmlNode xmlNoda in xmlNodeList)
+                var resxpath = StoreSettings.NBrightBuyPath() + "/App_LocalResources/CountryNames.ascx.resx";
+                var rtnDic = new Dictionary<string, string>();
+                var objCtrl = new DotNetNuke.Common.Lists.ListController();
+                var tList = objCtrl.GetListEntryInfoDictionary(dnnlistname);
+                var xmlNodeList = StoreSettings.Current.SettingsInfo.XMLDoc.SelectNodes("genxml/checkboxlist/countrycodelist/chk[@value='True']");
+                if (xmlNodeList != null)
                 {
-                    if (xmlNoda.Attributes != null)
+                    foreach (XmlNode xmlNoda in xmlNodeList)
                     {
-                        if (xmlNoda.Attributes.GetNamedItem("data") != null)
+                        if (xmlNoda.Attributes != null)
                         {
-                            var datavalue = xmlNoda.Attributes["data"].Value;
-                            //use the data attribute if there
-                            if (tList.ContainsKey(datavalue))
+                            if (xmlNoda.Attributes.GetNamedItem("data") != null)
                             {
-                                var countryname = DnnUtils.GetLocalizedString(datavalue, resxpath, Utils.GetCurrentCulture());
-                                if (string.IsNullOrEmpty(countryname)) countryname = tList[datavalue].Text;
-                                rtnDic.Add(datavalue.Replace(dnnlistname + ":", ""),countryname);
+                                var datavalue = xmlNoda.Attributes["data"].Value;
+                                //use the data attribute if there
+                                if (tList.ContainsKey(datavalue))
+                                {
+                                    var countryname = DnnUtils.GetLocalizedString(datavalue, resxpath, Utils.GetCurrentCulture());
+                                    if (string.IsNullOrEmpty(countryname)) countryname = tList[datavalue].Text;
+                                    rtnDic.Add(datavalue.Replace(dnnlistname + ":", ""), countryname);
+                                }
                             }
                         }
                     }
                 }
-            }
-            var sortlist = StoreSettings.Current.Get("countrysortorder");
-            if (sortlist == "") return rtnDic;
-            
-            var rtnSort = new Dictionary<string, string>();
-            var s = sortlist.Split(';');
-            foreach (var c in s)
-            {
-                if (c != "")
+                var sortlist = StoreSettings.Current.Get("countrysortorder");
+                if (sortlist == "") return rtnDic;
+
+                var rtnSort = new Dictionary<string, string>();
+                var s = sortlist.Split(';');
+                foreach (var c in s)
                 {
-                    if (rtnDic.ContainsKey(c))
+                    if (c != "")
                     {
-                        var d = rtnDic[c];
-                        rtnSort.Add(c,d);
-                        rtnDic.Remove(c);
+                        if (rtnDic.ContainsKey(c))
+                        {
+                            var d = rtnDic[c];
+                            rtnSort.Add(c, d);
+                            rtnDic.Remove(c);
+                        }
                     }
                 }
-            }
-            foreach (var c in rtnDic)
-            {
-                rtnSort.Add(c.Key,c.Value);    
-            }
-
+                foreach (var c in rtnDic)
+                {
+                    if (!rtnSort.ContainsKey(c.Key)) rtnSort.Add(c.Key, c.Value);
+                }
             return rtnSort;
         }
 
@@ -958,7 +955,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var datavalue = r.Value;
                 var regionname = DnnUtils.GetLocalizedString(datavalue.Text, resxpath, Utils.GetCurrentCulture());
                 if (string.IsNullOrEmpty(regionname)) regionname = datavalue.Text;
-                rtnDic.Add(datavalue.Key, regionname);                
+                if (!rtnDic.ContainsKey(datavalue.Key)) rtnDic.Add(datavalue.Key, regionname);                
             }
 
             return rtnDic;
@@ -1657,6 +1654,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         }
 
 
+        // The lock object must be the same object across thread, so it must be static
+        // it doesn't matter what kind of object it is.
+        // sometimes it makes sense to use the actual object you're going to change inside the lock
+        // this would work fine too:
+        // private static object lockobject = new object();
+        private static string lockobjectRazorTemplRender = "lockitRazorTemplRender";
+
         /// <summary>
         /// Render a razor template with an object, this method will include the object in the List of the NBrightRazor class
         /// </summary>
@@ -1671,59 +1675,81 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <returns></returns>
         public static string RazorTemplRender(string razorTemplName, int moduleid, string cacheKey, object obj, string templateControlPath, string theme, string lang, Dictionary<string, string> settings)
         {
+
             // do razor template
             var ckey = "NBrightBuyRazorOutput" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString() + "*" + lang;
             var razorTempl = (string)GetModCache(ckey);
+
             if (razorTempl == null || cacheKey == "")
             {
-                razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
-                if (razorTempl == "")
+                // the lock is now placed on the static object, meaning that once the second thread comes along,
+                // the object is already locked and the thread will wait for the lock to be released
+                // so the check to see if anything need to be done, must be inside the lock
+                // in this case it seems to make sense to check both inside and outside of the lock
+                // because in most cases the thread will take that fast path (without lock)
+                lock (lockobjectRazorTemplRender)
                 {
-                    // check for non-razor templates
-                    razorTemplName = razorTemplName.ToLower().Replace(".cshtml", ".html");
-                    ckey = "NBrightBuyRazorOutput" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString() + "*" + lang; // reset cachekey
+                    // fetch the templ from cache again because another thread might have filled it will the current thread was waiting
                     razorTempl = (string)GetModCache(ckey);
-                    if (razorTempl != null)
+                    
+                    if (razorTempl == null || cacheKey == "")
                     {
-                        return razorTempl;
-                    }
-                    razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
-                }
-                if (razorTempl != "" &&  razorTemplName.EndsWith(".cshtml"))
-                {
-                    if (obj == null) obj = new NBrightInfo(true);
-                    var l = new List<object>();
-                    l.Add(obj);
-                    if (settings == null) settings = new Dictionary<string, string>();
-                    if (!settings.ContainsKey("userid")) settings.Add("userid", UserController.Instance.GetCurrentUserInfo().UserID.ToString());
-                    var nbRazor = new NBrightRazor(l, settings, HttpContext.Current.Request.QueryString);
-                    nbRazor.FullTemplateName = theme + "." + razorTemplName;
-                    nbRazor.TemplateName = razorTemplName;
-                    nbRazor.ThemeFolder = theme;
-                    nbRazor.Lang = lang;
+                        razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
+                        if (razorTempl == "")
+                        {
+                            // check for non-razor templates
+                            razorTemplName = razorTemplName.ToLower().Replace(".cshtml", ".html");
+                            ckey = "NBrightBuyRazorOutput" + razorTemplName + "*" + cacheKey + PortalSettings.Current.PortalId.ToString() + "*" + lang; // reset cachekey
+                            razorTempl = (string)GetModCache(ckey);
+                            if (razorTempl != null)
+                            {
+                                return razorTempl;
+                            }
+                            razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
+                        }
+                        if (razorTempl != "" && razorTemplName.EndsWith(".cshtml"))
+                        {
+                            if (obj == null) obj = new NBrightInfo(true);
+                            var l = new List<object>();
+                            l.Add(obj);
 
-                    var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString() + "*" + lang;
-                    var debugMode = StoreSettings.Current.DebugMode;
-                    if (cacheKey == "")
-                    {
-                        debugMode = true;
+                            if (settings == null) settings = new Dictionary<string, string>();
+                            settings.Remove("userid");
+                            if (!settings.ContainsKey("userid")) settings.Add("userid", UserController.Instance.GetCurrentUserInfo().UserID.ToString());
+
+                            var nbRazor = new NBrightRazor(l, settings, HttpContext.Current.Request.QueryString);
+                            nbRazor.FullTemplateName = theme + "." + razorTemplName;
+                            nbRazor.TemplateName = razorTemplName;
+                            nbRazor.ThemeFolder = theme;
+                            nbRazor.Lang = lang;
+
+                            var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString() + "*" + lang;
+                            var debugMode = StoreSettings.Current.DebugMode;
+                            if (cacheKey == "")
+                            {
+                                debugMode = true;
+                            }
+                            razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, debugMode);
+                            if (!debugMode) SetModCache(moduleid, ckey, razorTempl); // only save to cache if we pass in a cache key.
+                        }
+                        else
+                        {
+                            razorTempl = "ERROR - Razor Template Not Found: " + theme + "." + razorTemplName;
+                        }
                     }
-                    razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, debugMode);
-                    if (!debugMode) SetModCache(moduleid, ckey, razorTempl); // only save to cache if we pass in a cache key.
-                }
-                else
-                {
-                    razorTempl = "ERROR - Razor Template Not Found: " + theme + "." + razorTemplName;
                 }
             }
             return razorTempl;
         }
 
+        private static string lockobjectRazorTemplRenderNoCache = "lockitRazorTemplRenderNoCache";
         public static string RazorTemplRenderNoCache(string razorTemplName, int moduleid, string cacheKey, object obj, string templateControlPath, string theme, string lang, Dictionary<string, string> settings)
         {
             // do razor template
-                var razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
-                if (razorTempl != "")
+            var razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
+            if (razorTempl != "")
+            {
+                lock (lockobjectRazorTemplRenderNoCache)
                 {
                     if (obj == null) obj = new NBrightInfo(true);
                     var l = new List<object>();
@@ -1738,10 +1764,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                     razorTempl = RazorRender(nbRazor, razorTempl, "", true);
                 }
-                else
-                {
-                    razorTempl = "ERROR - Razor Template Not Found: " + theme + "." + razorTemplName;
-                }
+            }
+            else
+            {
+                razorTempl = "ERROR - Razor Template Not Found: " + theme + "." + razorTemplName;
+            }
             return razorTempl;
         }
 
@@ -2247,7 +2274,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return ""; // no stock so return empty string.
         }
 
-
+        private static string lockobjectBuildCatList = "lockit";
         public static Dictionary<int, string> BuildCatList(int displaylevels = 20, Boolean showHidden = false, Boolean showArchived = false, int parentid = 0, string catreflist = "", string prefix = "", bool displayCount = false, bool showEmpty = true, string groupref = "", string breadcrumbseparator = ">", string lang = "")
         {
             if (lang == "") lang = Utils.GetCurrentCulture();
@@ -2260,38 +2287,39 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (objCache == null | StoreSettings.Current.DebugMode)
             {
-                var grpCatCtrl = new GrpCatController(lang);
-                var d = new Dictionary<int, string>();
-                var rtnList = new List<GroupCategoryData>();
-                rtnList = grpCatCtrl.GetTreeCategoryList(rtnList, 0, parentid, groupref, breadcrumbseparator);
-                var strCount = "";
-                foreach (var grpcat in rtnList)
+                lock (lockobjectBuildCatList)
                 {
-                    if (displayCount) strCount = " (" + grpcat.entrycount.ToString("") + ")";
-
-                    if (grpcat.depth < displaylevels)
+                    var grpCatCtrl = new GrpCatController(lang);
+                    var rtnList = new List<GroupCategoryData>();
+                    rtnList = grpCatCtrl.GetTreeCategoryList(rtnList, 0, parentid, groupref, breadcrumbseparator);
+                    var strCount = "";
+                    foreach (var grpcat in rtnList)
                     {
-                        if (showEmpty || grpcat.entrycount > 0)
+                        if (displayCount) strCount = " (" + grpcat.entrycount.ToString("") + ")";
+
+                        if (grpcat.depth < displaylevels)
                         {
-                            if (grpcat.ishidden == false || showHidden)
+                            if (showEmpty || grpcat.entrycount > 0)
                             {
-                                var addprefix = new string(' ', grpcat.depth).Replace(" ", prefix);
-                                if (catreflist == "")
-                                    rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
-                                else
+                                if (grpcat.ishidden == false || showHidden)
                                 {
-                                    if (grpcat.categoryref != "" &&
-                                        (catreflist + ",").Contains(grpcat.categoryref + ","))
-                                    {
-                                        rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
-                                    }
+                                    var addprefix = new string(' ', grpcat.depth).Replace(" ", prefix);
+                                    if (catreflist == "")
+                                        if (!rtnDic.ContainsKey(grpcat.categoryid)) rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
+                                        else
+                                        {
+                                            if (grpcat.categoryref != "" &&
+                                                (catreflist + ",").Contains(grpcat.categoryref + ","))
+                                            {
+                                                if (!rtnDic.ContainsKey(grpcat.categoryid)) rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
+                                            }
+                                        }
                                 }
                             }
                         }
                     }
+                    NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
                 }
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
-
             }
             else
             {
@@ -2300,6 +2328,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return rtnDic;
         }
 
+        private static string lockobjectBuildPropertyList = "lockit";
         public static Dictionary<int, string> BuildPropertyList(int displaylevels = 20, Boolean showHidden = false, Boolean showArchived = false, int parentid = 0, string catreflist = "", string prefix = "", bool displayCount = false, bool showEmpty = true, string groupref = "", string breadcrumbseparator = ">", string lang = "")
         {
             if (lang == "") lang = Utils.GetCurrentCulture();
@@ -2312,41 +2341,42 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (objCache == null | StoreSettings.Current.DebugMode)
             {
-                var grpCatCtrl = new GrpCatController(lang);
-                var d = new Dictionary<int, string>();
-                var rtnList = new List<GroupCategoryData>();
-                rtnList = grpCatCtrl.GetTreePropertyList(breadcrumbseparator);
-                var strCount = "";
-                foreach (var grpcat in rtnList)
+                lock (lockobjectBuildPropertyList)
                 {
-                    if (displayCount) strCount = " (" + grpcat.entrycount.ToString("") + ")";
-
-                    if (grpcat.depth < displaylevels)
+                    var grpCatCtrl = new GrpCatController(lang);
+                    var rtnList = new List<GroupCategoryData>();
+                    rtnList = grpCatCtrl.GetTreePropertyList(breadcrumbseparator);
+                    var strCount = "";
+                    foreach (var grpcat in rtnList)
                     {
-                        if (showEmpty || grpcat.entrycount > 0)
+                        if (displayCount) strCount = " (" + grpcat.entrycount.ToString("") + ")";
+
+                        if (grpcat.depth < displaylevels)
                         {
-                            if (grpcat.ishidden == false || showHidden)
+                            if (showEmpty || grpcat.entrycount > 0)
                             {
-                                if (!rtnDic.ContainsKey(grpcat.categoryid))
+                                if (grpcat.ishidden == false || showHidden)
                                 {
-                                    var addprefix = new string(' ', grpcat.depth).Replace(" ", prefix);
-                                    if (catreflist == "")
-                                        rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
-                                    else
+                                    if (!rtnDic.ContainsKey(grpcat.categoryid))
                                     {
-                                        if (grpcat.categoryref != "" &&
-                                            (catreflist + ",").Contains(grpcat.categoryref + ","))
-                                        {
-                                            rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
-                                        }
+                                        var addprefix = new string(' ', grpcat.depth).Replace(" ", prefix);
+                                        if (catreflist == "")
+                                            if (!rtnDic.ContainsKey(grpcat.categoryid)) rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
+                                            else
+                                            {
+                                                if (grpcat.categoryref != "" &&
+                                                    (catreflist + ",").Contains(grpcat.categoryref + ","))
+                                                {
+                                                    if (!rtnDic.ContainsKey(grpcat.categoryid)) rtnDic.Add(grpcat.categoryid, addprefix + grpcat.categoryname + strCount);
+                                                }
+                                            }
                                     }
                                 }
                             }
                         }
                     }
+                    NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
                 }
-                NBrightBuyUtils.SetModCache(-1, strCacheKey, rtnDic);
-
             }
             else
             {

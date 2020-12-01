@@ -384,18 +384,22 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return DataRecord.GetXmlProperty("genxml/itemlists/" + listkey);
         }
 
+        private static string lockobjectGetItemListNames = "lockit";
         public Dictionary<string,string> GetItemListNames()
         {
             var l = new Dictionary<string, string>();
-            var nodList = DataRecord.XMLDoc.SelectNodes("genxml/itemlists/*");
-            foreach (XmlNode n in nodList)
+            lock (lockobjectGetItemListNames)
             {
-                var lname = n.Name;
-                if (n.Attributes?["name"] != null)
+                var nodList = DataRecord.XMLDoc.SelectNodes("genxml/itemlists/*");
+                foreach (XmlNode n in nodList)
                 {
-                    lname = n.Attributes["name"].InnerText;
+                    var lname = n.Name;
+                    if (n.Attributes?["name"] != null)
+                    {
+                        lname = n.Attributes["name"].InnerText;
+                    }
+                    if (!l.ContainsKey(n.Name)) l.Add(n.Name, lname);
                 }
-                l.Add(n.Name,lname);
             }
             return l;
         } 

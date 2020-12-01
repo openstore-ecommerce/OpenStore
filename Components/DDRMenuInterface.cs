@@ -13,6 +13,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         #region Implementation of INodeManipulator
 		String _tabid = "";
 
+        private static string lockobjectManipulateNodes = "lockit";
         public List<MenuNode> ManipulateNodes(List<MenuNode> nodes, DotNetNuke.Entities.Portals.PortalSettings portalSettings)
         {
             var parentcatref = "";
@@ -32,84 +33,87 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var rtnnodes = (List<MenuNode>)Utils.GetCache(cachekey);
             if (rtnnodes != null) return rtnnodes;
 
-            var categoryInjectList = new Dictionary<int, int>();
-            var idx1 = 0;
-            var listCats = new List<int>();
-            if (nodes.Count(x => x.Text.ToUpper().StartsWith("[CAT")) > 0)
+            lock (lockobjectManipulateNodes)
             {
-                // find the selected node.
-                var nods = nodes.Where(x => (x.Text.ToUpper().StartsWith("[CAT"))).ToList();
-                foreach (var n in nods)
+                var categoryInjectList = new Dictionary<int, int>();
+                var idx1 = 0;
+                var listCats = new List<int>();
+                if (nodes.Count(x => x.Text.ToUpper().StartsWith("[CAT")) > 0)
                 {
-                    if (n.Text.ToUpper().StartsWith("[CAT:"))
+                    // find the selected node.
+                    var nods = nodes.Where(x => (x.Text.ToUpper().StartsWith("[CAT"))).ToList();
+                    foreach (var n in nods)
                     {
-                        var s = n.Text.Split(':');
-                        if (s.Count() >= 2)
+                        if (n.Text.ToUpper().StartsWith("[CAT:"))
                         {
-                            parentcatref = s[1].TrimEnd(']');
-                            var objCtrl = new NBrightBuyController();
-                            var parentcat = objCtrl.GetByGuidKey(PortalSettings.Current.PortalId, -1, "CATEGORY", parentcatref);
-                            if (parentcat != null)
+                            var s = n.Text.Split(':');
+                            if (s.Count() >= 2)
                             {
-                                listCats.Add(parentcat.ItemID);
-                                categoryInjectList.Add(idx1, n.TabId);
-                                idx1 += 1;
+                                parentcatref = s[1].TrimEnd(']');
+                                var objCtrl = new NBrightBuyController();
+                                var parentcat = objCtrl.GetByGuidKey(PortalSettings.Current.PortalId, -1, "CATEGORY", parentcatref);
+                                if (parentcat != null)
+                                {
+                                    listCats.Add(parentcat.ItemID);
+                                    if (!categoryInjectList.ContainsKey(idx1)) categoryInjectList.Add(idx1, n.TabId);
+                                    idx1 += 1;
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        categoryInjectList.Add(0,n.TabId);
-                        listCats.Add(0);
-                    }
-                }
-            }
-            var lp = 0;
-            foreach (var parentItemId in listCats)
-            {
-
-                _tabid = PortalSettings.Current.ActiveTab.TabID.ToString("");
-
-                var defaultListPage = "";
-                defaultListPage = StoreSettings.Current.Get("productlisttab");
-
-                var catNodeList = GetCatNodeXml(_tabid, categoryInjectList[lp] , parentItemId, true, 0, null, defaultListPage);
-
-                // see if we need to merge into the current pages, by searching for marker page [cat]
-                int idx = 0;
-                var catNods = new Dictionary<int, MenuNode>();
-                foreach (var n in nodes)
-                {
-                    if (n.Text.ToLower() == "[cat]" || n.Text.ToLower().StartsWith("[cat:"))
-                    {
-                        catNods.Add(idx, n);
-                        break;
-                    }
-                    idx += 1;
-                }
-
-
-                if (catNods.Count > 0)
-                {
-                    foreach (var catNod in catNods)
-                    {
-                        // remove marker page [cat]
-                        nodes.Remove(catNod.Value);
-                    }
-                    var insidx = idx;
-                    foreach (var n2 in catNodeList)
-                    {
-                        if (n2.Parent == null)
+                        else
                         {
-                            nodes.Insert(insidx, n2);
+                            if (!categoryInjectList.ContainsKey(idx1)) categoryInjectList.Add(0, n.TabId);
+                            listCats.Add(0);
                         }
-                        insidx += 1;
                     }
                 }
-                lp += 1;
-            }
+                var lp = 0;
+                foreach (var parentItemId in listCats)
+                {
 
-            Utils.SetCacheList(cachekey, nodes, "category_cachelist");
+                    _tabid = PortalSettings.Current.ActiveTab.TabID.ToString("");
+
+                    var defaultListPage = "";
+                    defaultListPage = StoreSettings.Current.Get("productlisttab");
+
+                    var catNodeList = GetCatNodeXml(_tabid, categoryInjectList[lp], parentItemId, true, 0, null, defaultListPage);
+
+                    // see if we need to merge into the current pages, by searching for marker page [cat]
+                    int idx = 0;
+                    var catNods = new Dictionary<int, MenuNode>();
+                    foreach (var n in nodes)
+                    {
+                        if (n.Text.ToLower() == "[cat]" || n.Text.ToLower().StartsWith("[cat:"))
+                        {
+                            if (!catNods.ContainsKey(idx)) catNods.Add(idx, n);
+                            break;
+                        }
+                        idx += 1;
+                    }
+
+
+                    if (catNods.Count > 0)
+                    {
+                        foreach (var catNod in catNods)
+                        {
+                            // remove marker page [cat]
+                            nodes.Remove(catNod.Value);
+                        }
+                        var insidx = idx;
+                        foreach (var n2 in catNodeList)
+                        {
+                            if (n2.Parent == null)
+                            {
+                                nodes.Insert(insidx, n2);
+                            }
+                            insidx += 1;
+                        }
+                    }
+                    lp += 1;
+                }
+
+                Utils.SetCacheList(cachekey, nodes, "category_cachelist");
+            }
             return nodes;
         }
 
