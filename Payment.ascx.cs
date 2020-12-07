@@ -122,7 +122,6 @@ namespace Nevoweb.DNN.NBrightBuy
                     }
                     else
                     {
-                        orderData = new OrderData(PortalId, Convert.ToInt32(orderid)); // get the updated order.
                         orderData.PaymentOk("050");
                         if (strOut == "")
                         {
