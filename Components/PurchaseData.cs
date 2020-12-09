@@ -80,12 +80,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             // save the product refs of the order to an XML node, so we can search for product ref in the BO Order Admin.
             var productrefs = "";
+            var paymentOK = PurchaseInfo.GetXmlProperty("genxml/dropdownlist/orderstatus") == "040";
             foreach (var i in GetCartItemList())
             {
                 productrefs += i.GetXmlProperty("genxml/productxml/genxml/textbox/txtproductref") + ",";
-                if (PurchaseInfo.TypeCode != null) // if we're using this class to build cart in memory for procesisng only, don;t save to DB.
+                if (paymentOK && PurchaseInfo.TypeCode != null) // if we're using this class to build cart in memory for processing only, don't save to DB.
                 {
-                   AddPurchasedDocs(i.GetXmlProperty("genxml/modelid")); // only update the userdata if we're saving data.
+                    AddPurchasedDocs(i.GetXmlProperty("genxml/modelid")); // only update the userdata if we're saving data.
                 }
             }
             PurchaseInfo.SetXmlProperty("genxml/productrefs", productrefs);
