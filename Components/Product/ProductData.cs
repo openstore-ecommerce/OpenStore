@@ -1653,8 +1653,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             var objCtrl = new NBrightBuyController();
 
-            SetGuidKey();
-            objCtrl.Update(DataRecord);
+            if (SetGuidKey()) objCtrl.Update(DataRecord);
 
             DataRecord.ValidateXmlFormat();
             if (DataLangRecord == null)
@@ -2189,12 +2188,16 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         #region " private functions"
 
-        private void SetGuidKey()
+        private bool SetGuidKey()
         {
-            if (DataRecord.GetXmlProperty("genxml/importref") == "") DataRecord.SetXmlProperty("genxml/importref", Utils.GetUniqueKey(10).ToLower());
-            DataRecord.GUIDKey = DataRecord.GetXmlProperty("genxml/importref");
+            if (DataRecord.GetXmlProperty("genxml/importref") == "")
+            {
+                DataRecord.SetXmlProperty("genxml/importref", Utils.GetUniqueKey(10).ToLower());
+                DataRecord.GUIDKey = DataRecord.GetXmlProperty("genxml/importref");
+                return true;
+            }
+            return false;
         }
-
         private string GetUniqueGuidKey(int productId, string newGUIDKey)
         {
             // make sure we have a unique guidkey
