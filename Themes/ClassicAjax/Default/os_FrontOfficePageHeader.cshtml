@@ -1,7 +1,7 @@
 @inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
 @using DotNetNuke.Entities.Portals
 @using NBrightDNN
-
+@using Nevoweb.DNN.NBrightBuy.Components;
 <!-- Include Ajax -->
 <script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.genxmlajax.js?4050" type="text/javascript"></script>
 <script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js?4050"></script>
@@ -53,6 +53,11 @@
 
 <script>
     $(document).ready(function () {
-        loadItemListPopup();
+        var tabId = $("#tabid").val();
+        if (!(tabId == "@(StoreSettings.Current.CartTabId)" ||
+            tabId == "@(StoreSettings.Current.CheckoutTabId)" ||
+            tabId == "@(StoreSettings.Current.PaymentTabId)")) {
+            loadItemListPopup();
+        }
     });
 </script>
