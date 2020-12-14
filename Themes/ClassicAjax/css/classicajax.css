@@ -23,7 +23,7 @@
 .nbrightbuy_catmenu a.level3 {padding-left:30px;}
 .nbrightbuy_catmenu a.level4 {padding-left:40px;color:red;}
 .nbrightbuy_catmenu li > a > span {float:right;margin-right:10px;} /* Caret */
-.nbrightbuy_catmenu li > a > span:before {font-family:'FontAwesome';content:"\f067";font-size:14px;color:#00a3de;font-weight:normal;}
+.nbrightbuy_catmenu li > a > span:before {font-family:'Font Awesome 5 Free';font-weight:900;content:"\f067";font-size:14px;color:#00a3de;}
 .nbrightbuy_catmenu li.open > a > span:before {content:"\f068";}
 
 /* Filters */
@@ -32,10 +32,6 @@
 .nbs-ajaxfilter ul {margin:12px 0 0 0;}
 .nbs-ajaxfilter ul li {list-style:none;}
 .nbs-ajaxfilter ul li input[type=checkbox] {margin-right:6px;}
-/* FontAwesome checkboxes NOT WORKING */
-/*.nbs-ajaxfilter ul li input[type=checkbox] {display:none;}
-.nbs-ajaxfilter ul li input[type=checkbox] + label:before {font-family:'FontAwesome';display:inline-block;content:"\f096";letter-spacing:10px;}
-.nbs-ajaxfilter ul li input[type=checkbox]:checked + label:before {content:"\f046";letter-spacing:5px;}*/
 
 /* Breadcrumbs */
 .categorybreadcrumbs {text-align:left;margin-bottom:10px;}
@@ -242,7 +238,7 @@ a.actionbutton:link, a.actionbutton:visited {background:#00a3de;color:white;disp
 a.actionbutton:active, a.actionbutton:hover {background:#222;color:white;}
 a.absec:link, a.absec:visited {background:#f1f1f1;color:#888888;}
 a.absec:active, a.absec:hover {background:#222;color:white;}
-a.actionbutton i.fa {font-weight:normal;font-size:16px;margin-right:5px;}
+a.actionbutton i.fa {font-size:16px;margin-right:5px;}
 
 /**********************************************************/
 /* MEDIA QUERIES */
