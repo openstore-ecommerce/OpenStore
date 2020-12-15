@@ -190,7 +190,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Cart
             currentcart.Save(StoreSettings.Current.DebugMode);
         }
 
-        private static string UpdateCartAddress(HttpContext context, String addresstype = "")
+        private static string UpdateCartAddress(HttpContext context, String addresstype = "", bool removeZeroQtyItems = false)
         {
             var currentcart = new CartData(PortalSettings.Current.PortalId);
             var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context, true);
@@ -200,13 +200,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Cart
             if (addresstype == "bill")
             {
                 currentcart.AddBillingAddress(ajaxInfo);
-                currentcart.Save();
+                currentcart.Save(StoreSettings.Current.DebugMode, removeZeroQtyItems, false);
             }
 
             if (addresstype == "ship")
             {
                 currentcart.AddShippingAddress(ajaxInfo);
-                currentcart.Save();
+                currentcart.Save(StoreSettings.Current.DebugMode, removeZeroQtyItems, false);
             }
 
             if (addresstype == "shipoption")

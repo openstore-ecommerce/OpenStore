@@ -58,9 +58,20 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <param name="removeZeroQtyItems">Sometimes with Stock activated we don't want to remove zero items from basket until final process on checkout</param>
         public void Save(Boolean debugMode, Boolean removeZeroQtyItems)
         {
+            Save(debugMode, removeZeroQtyItems, true);
+        }
+
+        /// <summary>
+        /// Save cart
+        /// </summary>
+        /// <param name="debugMode"></param>
+        /// <param name="removeZeroQtyItems">Sometimes with Stock activated we don't want to remove zero items from basket until final process on checkout</param>
+        /// <param name="validateCart">Boolean value determining whether or not to validate the CartData during Save</param>
+        public void Save(Boolean debugMode, Boolean removeZeroQtyItems, bool validateCart)
+        {
             //save cart so any added items are included
             _cartId = base.SavePurchaseData();
-            ValidateCart(removeZeroQtyItems);
+            if (validateCart) { ValidateCart(removeZeroQtyItems); }
             if (StoreSettings.Current.DebugModeFileOut) OutputDebugFile("debug_currentcart.xml");
             SaveCartId();
             Exists = true;
