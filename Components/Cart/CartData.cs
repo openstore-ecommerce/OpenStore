@@ -222,7 +222,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             // Calculate first, so if we add items the price is calculated
             if (PromoInterface.Instance() != null)
             {
-                var promol = PromoInterface.ProviderList;
+                var cacheKey = "promol" + PortalId;
+                var promol = (Dictionary<string, PromoInterface>)Utils.GetCache(cacheKey);
+                if (promol == null)
+                {
+                    promol = PromoInterface.ProviderList;
+                    Utils.SetCache(cacheKey, promol);
+                }
                 foreach (var p in promol)
                 {
                     PurchaseInfo = PromoInterface.Instance(p.Key).CalculatePromotion(PortalId, PurchaseInfo);
