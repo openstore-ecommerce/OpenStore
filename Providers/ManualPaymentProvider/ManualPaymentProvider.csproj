@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Razor|AnyCPU'">
+    <OutputPath>bin\Razor\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetNuke, Version=9.7.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -87,6 +90,8 @@
     </Content>
     <Content Include="pluginmanualpayment.xml" />
     <Content Include="Themes\config\js\manualpayment.js" />
+    <None Include="dnnpack.config" />
+    <None Include="DNNpackager.dnnpack" />
     <None Include="Themes\config\default\methodselection.cshtml" />
     <None Include="Themes\config\default\payment_ok.cshtml" />
     <None Include="Themes\config\default\settingsfields.cshtml" />
@@ -111,9 +116,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetFileName)" "..\..\..\..\..\..\..\bin\$(TargetFileName)"
-
-copy "$(AssemblyName).pdb" "..\..\..\..\..\..\..\bin\$(AssemblyName).pdb"
+    <PostBuildEvent>DNNpackager.exe  $(ProjectDir) $(ProjectDir)$(OutDir) $(ConfigurationName)
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

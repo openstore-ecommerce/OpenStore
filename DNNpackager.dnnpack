@@ -1,0 +1,32 @@
+<root>
+	<version>1.0.0</version>
+	<!-- Include only files that match the regular expression -->
+  <regexpr>(\.cshtml|\.html|\.resx|\.dnn|\.png|\.css|\.js|\.xml|\.txt|\.md|\.aspx|\.ascx|\.ashx)$</regexpr>
+  <directory include='false'>
+		<!-- All paths should be from the source root (project root) -->
+    <value>\.git</value>
+    <value>\.vs</value>
+    <value>\bin</value>
+    <value>\obj</value>
+    <value>\Components</value>
+    <value>\render</value>
+    <value>\_external</value>
+    <value>\Providers</value>    
+  </directory>
+  <file include='false'>
+  </file>
+  <file include='true'>
+    <value>\Installation\04.00.00.SqlDataProvider</value>
+    <value>\Installation\04.00.01.SqlDataProvider</value>
+    <value>\Installation\04.00.02.SqlDataProvider</value>
+    <value>\Installation\04.00.04.SqlDataProvider</value>
+    <value>\Installation\04.00.11.SqlDataProvider</value>
+    <value>\Installation\04.01.01.SqlDataProvider</value>
+    <value>\Installation\04.01.02.SqlDataProvider</value>
+    <value>\Installation\04.01.03.SqlDataProvider</value>
+    <value>\Installation\Uninstall.SqlDataProvider</value>
+  </file>
+	<assembly>
+		<value>NBrightBuy.dll</value>
+	</assembly>  
+</root>
