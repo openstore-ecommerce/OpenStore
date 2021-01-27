@@ -177,7 +177,7 @@ else
         <div class="details">
 
             <ul class="nav-tabs">
-              @if (info.GetXmlProperty("genxml/lang/genxml/edt/description") != "")
+              @if (info.GetXmlProperty("genxml/lang/genxml/textbox/description") != "")
               {
                   <li class="tab-active"><a href="#tab-1">@ResourceKey("ProductView.description")</a></li><!-- Product description -->
               }
@@ -191,10 +191,10 @@ else
               }
             </ul>
 
-            @if (@info.GetXmlProperty("genxml/lang/genxml/edt/description") != "")
+            @if (@info.GetXmlProperty("genxml/lang/genxml/textbox/description") != "")
             {
                 <div id="tab-1" class="tab-content tab-active">
-                    @HtmlOf(info, "genxml/lang/genxml/edt/description")
+                    @HtmlOf(info, "genxml/lang/genxml/textbox/description")
                 </div>
             }
             @if (@product.Docs.Count >= 1)
