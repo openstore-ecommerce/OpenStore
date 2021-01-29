@@ -90,7 +90,6 @@
     </Content>
     <Content Include="pluginmanualpayment.xml" />
     <Content Include="Themes\config\js\manualpayment.js" />
-    <None Include="dnnpack.config" />
     <None Include="DNNpackager.dnnpack" />
     <None Include="Themes\config\default\methodselection.cshtml" />
     <None Include="Themes\config\default\payment_ok.cshtml" />

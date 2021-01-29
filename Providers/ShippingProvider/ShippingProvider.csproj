@@ -103,7 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="dnnpack.config" />
     <None Include="DNNpackager.dnnpack" />
     <None Include="packages.config" />
   </ItemGroup>

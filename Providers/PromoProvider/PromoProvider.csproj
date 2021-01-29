@@ -116,7 +116,6 @@
     <Content Include="DiscountCodes.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <None Include="dnnpack.config" />
     <None Include="DNNpackager.dnnpack" />
     <None Include="Themes\config\default\multibuypromo.cshtml" />
     <None Include="Themes\config\default\multibuypromofields.cshtml" />
