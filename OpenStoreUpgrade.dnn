@@ -91,6 +91,10 @@
         - Minor updates
         - Option to allow shipping to calculate with discounts.
 
+        v04.01.05
+        - Minor updates
+        - Convert Dev to DNNpackager.
+
       </releaseNotes>
       <dependencies>
         <dependency type="CoreVersion">08.00.04</dependency>
@@ -141,7 +145,7 @@
           <resourceFiles>
             <basePath>DesktopModules\NBright\NBrightBuy</basePath>
             <resourceFile>
-              <name>NBrightBuy_Resource.zip</name>
+              <name>Resource.zip</name>
             </resourceFile>
           </resourceFiles>
         </component>
@@ -170,14 +174,6 @@
             <assembly>
               <name>NBrightBuy.PromoProvider.dll</name>
               <sourceFileName>NBrightBuy.PromoProvider.dll</sourceFileName>
-            </assembly>
-            <assembly>
-              <name>NBrightDNN.dll</name>
-              <sourceFileName>NBrightDNN.dll</sourceFileName>
-            </assembly>
-            <assembly>
-              <name>NBrightCore.dll</name>
-              <sourceFileName>NBrightCore.dll</sourceFileName>
             </assembly>
           </assemblies>
         </component>

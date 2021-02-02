@@ -1,5 +1,5 @@
 <root>
-	<version>1.0.0</version>
+	<version>4.1.5</version>
   <websitedestrelpath>\DesktopModules\NBright\NBrightBuy</websitedestrelpath>
   <websitedestbinrelpath>\bin</websitedestbinrelpath>
   <!-- Include only files that match the regular expression -->
@@ -27,8 +27,19 @@
     <value>\Installation\04.01.02.SqlDataProvider</value>
     <value>\Installation\04.01.03.SqlDataProvider</value>
     <value>\Installation\Uninstall.SqlDataProvider</value>
+    <value>OpenStore.dnn</value>
+    <value>\Skins\OpenStoreBO\OpenStoreBO.ascx</value>
+    <value>\Skins\OpenStoreBO\OpenStoreBO.doctype.xml</value>
   </file>
 	<assembly>
 		<value>NBrightBuy.dll</value>
-	</assembly>  
+    <value>NBrightBuy.DiscountCodesProvider.dll</value>
+    <value>NBrightBuy.EventProvider.dll</value>
+    <value>NBrightBuy.ManualPaymentProvider.dll</value>
+    <value>NBrightBuy.PromoProvider.dll</value>
+    <value>NBrightBuy.ShippingProvider.dll</value>
+    <value>NBrightBuy.TaxProvider.dll</value>
+    <value>NBrightCore.dll</value>
+    <value>NBrightDNN.dll</value>
+  </assembly>  
 </root>
