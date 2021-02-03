@@ -1,5 +1,7 @@
 <root>
 	<version>1.0.0</version>
+  <websitedestrelpath>\DesktopModules\NBright\NBrightBuy\Providers\ManualPaymentProvider</websitedestrelpath>
+  <websitedestbinrelpath>\bin</websitedestbinrelpath>
 	<!-- Include only files that match the regular expression -->
   <regexpr>(\.cshtml|\.html|\.resx|\.dnn|\.png|\.css|\.js|\.xml|\.txt|\.md|\.aspx|\.ascx|\.ashx)$</regexpr>
   <directory include='false'>
