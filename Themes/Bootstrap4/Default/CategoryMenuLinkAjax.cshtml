@@ -1,0 +1,18 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightDNN.NBrightRazor>
+@using System.Linq
+
+@{
+    var grpcat = (Nevoweb.DNN.NBrightBuy.Components.GroupCategoryData)Model.List.First();
+    var depth = grpcat.depth;
+}
+
+
+@if (grpcat.url.StartsWith("javascript"))
+{
+    <a class="level@(depth)" href="@grpcat.url" catid="@grpcat.categoryid">@grpcat.categoryname</a>
+}
+else
+{
+    <a class="level@(depth) ajaxcatmenu" href="@grpcat.url" catid="@grpcat.categoryid">@grpcat.categoryname</a>
+}
+

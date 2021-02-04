@@ -1,0 +1,121 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using DotNetNuke.Entities.Portals
+@using NBrightCore.render
+@using NBrightDNN
+@using NBrightCore.common
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var ajaxInfo = (NBrightInfo)Model.List.First();
+    var portalId = PortalSettings.Current.PortalId;
+    var catid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/catid");
+
+    // see if we want to list only filters included in the product list.
+    var propertyProductList = new List<PropertyByProductInfo>();
+    var propertySelectedList = new List<int>();
+    var propertyDisplayList = new List<int>();
+    var moduleKey = ajaxInfo.GetXmlProperty("genxml/hidden/linkmodulekey");
+    if (moduleKey != "")  // modulekey of linked product list, if empty all properties are displayed.
+    {
+        var navigationdata = new NavigationData(portalId, moduleKey);
+        propertyDisplayList = navigationdata.FilterPropertyListByProduct;
+        foreach (var p in navigationdata.FilterPropertyList.Split(','))
+        {
+            if (Utils.IsNumeric(p))
+            {
+                propertySelectedList.Add(Convert.ToInt32(p));
+            }
+        }
+    }
+}
+
+
+@{
+    var strOut = "";
+}
+
+@if (catid > 0)
+{
+    var catData = new CategoryData(catid, Model.Lang);
+
+    foreach (GroupData selGroup in catData.GetFilterGroups(Model.Lang))
+    {
+        var propList = NBrightBuyUtils.BuildCatList(1, false, false, selGroup.Info.ItemID, "", "", false, true, selGroup.Ref, "", "");
+        var cbString = "";
+        foreach (var item in propList)
+        {
+            var selected = "";
+            if (propertySelectedList.Contains(item.Key))
+            {
+                selected = "checked";
+            }
+            if (propertyDisplayList.Contains(item.Key) || moduleKey == "")
+            {
+                cbString += "<li><input type='checkbox' " + selected + " value='" + selGroup.Ref + "-" + item.Key + "' />" + item.Value + "</li>";
+            }
+        }
+        if (cbString != "")
+        {
+            strOut += "<div class='h3-headline'>" + selGroup.Name + "</div>";
+            strOut += "<ul>";
+            strOut += cbString;
+            strOut += "</ul>";
+        }
+    }
+}
+
+@foreach (var selGroup in Model.Settings.Where(kv => kv.Key.StartsWith("selectedfilterssort-")).OrderBy(kv => kv.Value == "" ? -1 : int.Parse(kv.Value)))
+{
+    var groupRef = selGroup.Key.Substring(selGroup.Key.IndexOf("-") + 1);
+    // is it selected?
+    var isSelected = Model.Settings.Any(kv => kv.Key == "selectedfilters-" + groupRef && kv.Value.ToLower() == "true");
+
+    if (!isSelected)
+    {
+        continue;
+    }
+    var nbc = new NBrightBuyController();
+    var groupnbi = nbc.GetByGuidKey(portalId, -1, "GROUP", groupRef);
+    if (groupnbi != null)
+    {
+        var grouplang = nbc.GetDataLang(groupnbi.ItemID, Model.Lang);
+        var propList = NBrightBuyUtils.BuildCatList(1, false, false, groupnbi.ItemID, "", "", false, true, groupRef, "", "");
+        var cbString = "";
+        foreach (var item in propList)
+        {
+            var selected = "";
+            if (propertySelectedList.Contains(item.Key))
+            {
+                selected = "checked";
+            }
+            if (propertyDisplayList.Contains(item.Key) || moduleKey == "")
+            {
+                cbString += "<div class=\"form-check\"><input class=\"form-check-input\" type=\"checkbox\" " + selected + " value=\"" + groupRef + "-" + item.Key + "\" id=\"defaultCheck1\"><label class=\"form-check-label\" for=\"defaultCheck1\">" + item.Value + "</label></div>";
+            }
+        }
+        if (cbString != "")
+        {
+            strOut += "<h3 class='h3-headline mt-0 mb-2'>" + grouplang.GetXmlProperty("genxml/textbox/groupname") + "</h3>";
+            strOut += cbString;
+        }
+    }
+}
+
+
+@if (strOut != "")
+{
+    <div class="nbs-ajaxfilter card mt-0">
+        <div class="card-body">
+            <div class="card-title">
+                <h2 class="h2-headline mt-0 mb-2">@ResourceKey("General.filter")</h2>
+            </div>
+            @HtmlOf(strOut)
+        </div>
+    </div>
+}
+

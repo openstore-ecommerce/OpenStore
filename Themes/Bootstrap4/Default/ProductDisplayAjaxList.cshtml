@@ -1,0 +1,123 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Web
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+@using DotNetNuke.Entities.Portals;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@AddPreProcessMetaData("itemlistname", Model.GetSetting("itemlistname"), Model.FullTemplateName, Model.ModuleId.ToString())
+
+@AddPreProcessMetaData("orderby", "{bycategoryproduct}", Model.FullTemplateName, Model.ModuleId.ToString()) <!-- set default to manual sort on category product -->
+@AddPreProcessMetaData("orderby0", "{bycategoryproduct}", Model.FullTemplateName, Model.ModuleId.ToString())
+@AddPreProcessMetaData("orderby1", "NB3.FromPrice", Model.FullTemplateName, Model.ModuleId.ToString())
+@AddPreProcessMetaData("orderby2", "NB3.FromPrice DESC", Model.FullTemplateName, Model.ModuleId.ToString())
+@AddPreProcessMetaData("orderby3", "NB3.ProductRef", Model.FullTemplateName, Model.ModuleId.ToString())
+@AddPreProcessMetaData("orderby4", "NB3.ProductName", Model.FullTemplateName, Model.ModuleId.ToString())
+
+@*@AddPreProcessMetaData("selectpagesize", "True", Model.FullTemplateName, Model.ModuleId.ToString())*@ <!-- flag to tell product list a custom pagesize may be applied -->
+@{
+    var navigationdata = new NavigationData(PortalSettings.Current.PortalId, Model.GetSetting("modref"));
+}
+<!-- Product List header -->
+<div class="nbs container">
+
+    <!-- 0=Normal 1=Search 2=Favorites  -->
+    @if (Model.GetSettingInt("displaytype") == 0)
+    {
+        <div class="categorybreadcrumbs">@CategoryBreadCrumb(navigationdata, true, Model, true, -1, "", -1, 400, true)</div>
+    }
+    @{
+        var sortClass = "custom-select col-5 sortorderselect";
+        var sortId = "sortorderselect" + Model.ModuleId;
+        var pageClass = "pagesizedropdown";
+        var sortAtts = "id='" + sortId + "' class='" + sortClass + "'";
+    }
+    <script>
+    $(document).ready(function () {
+        $(".nbs .categorybreadcrumbs ul").addClass("breadcrumb");
+        $(".nbs .categorybreadcrumbs li").addClass("breadcrumb-item");
+
+        $(".@sortClass").unbind("change");
+        $(".@sortClass").change(sortOrderChanged);
+
+        $(".@pageClass").unbind("change");
+        $(".@pageClass").change(pageSizeChanged);
+    });
+    </script>
+    <div class="productlistheader row">
+        <!-- Category details -->
+        <div class="categorydetails col-7">
+            @{
+                var totalCount = Model.GetSetting("recordcount") == "" ? Category(navigationdata, "entrycount", Model).ToString() : Model.GetSetting("recordcount");
+            }
+            @if (Model.GetSettingInt("displaytype") == 0)
+            {
+                <h1 class="mt-0">@Category(navigationdata, "categoryname", Model)</h1>
+            }
+            @if (Model.GetSettingInt("displaytype") == 1)
+            {
+                <h1 class="mt-0 mb-2">@(ResourceKey("ProductView.searchresults"))</h1>
+            }
+            <div class="mb-2">@totalCount <span>@(ResourceKey("ProductView.articles"))</span></div>
+            <!--<i>@(Category(navigationdata, "message", Model))</i>-->
+        </div>
+        <!-- Product sort -->
+        <div class="productsort text-right pt-2 col-5">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">@ResourceKey("General.pagesize"):</label>
+                </div>
+                @PageSizeDropDownList(navigationdata, "8,16,32,64,128", Model, "custom-select col-3", true, false)
+                @SortOrderAjaxDropDownList(navigationdata, ResourceKey("ProductView.orderby").ToString(), Model, sortAtts)
+            </div>        
+        </div>
+    </div>
+
+    @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Bootstrap4\\Default\\ProductDisplayListBody.cshtml", Model)
+
+</div>
+
+
+@if (Model.GetSettingInt("recordcount") > Model.GetSettingInt("pagesize"))
+{
+    var recordcount = Model.GetSettingInt("recordcount");
+    var pagesize = Model.GetSettingInt("pagesize");
+    var page = Model.GetSettingInt("page");
+    if (page <= 0)
+    {
+        page = 1;
+    }
+    if (pagesize <= 0)
+    {
+        pagesize = 32;
+    }
+    var pgdata = NBrightBuyUtils.GetPagingData(recordcount, pagesize, page);
+    <div class="container text-center">
+            <div class="NBrightPagingDiv btn-group" role="group">
+                @foreach (NBrightInfo info in pgdata)
+                {
+                    var cssClass = "NBrightNormalPg";
+                    var pagerClass = "ajaxpager";
+                    var pagerId = "ajaxpager" + Model.ModuleId;
+                    if (info.GetXmlPropertyBool("genxml/currentpage"))
+                    {
+                        cssClass = "NBrightSelectPg";
+
+                    }
+                    <a name="" id="@pagerId" class="@cssClass btn btn-default" 
+                        href="?page=@info.GetXmlProperty("genxml/pagenumber")" 
+                        role="button" 
+                        pagenumber="@info.GetXmlProperty("genxml/pagenumber")">
+                        @info.GetXmlProperty("genxml/text")
+                    </a>
+                }
+            </div>
+    </div>
+    
+
+}
+
+

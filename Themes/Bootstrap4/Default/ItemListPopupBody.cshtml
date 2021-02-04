@@ -1,0 +1,69 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Web
+@using System.Xml
+@using DotNetNuke.Entities.Users
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<div class="slp-header">@ResourceKey("Clients.ClientmenuShoppingLists")</div>
+<div class="slp-content">
+
+    @if (UserController.Instance.GetCurrentUserInfo().UserID <= 0)
+    {
+        <div>@ResourceKey("General.loginpopupmsg")</div>
+        <br/>
+        <div class="newlistdiv">
+            <a class="actionbutton redirecttologin" href="javascript:void(0)"><i class="fa fa-check"></i>@ResourceKey("General.login")</a>
+            <a class="actionbutton absec cancellogin" href="javascript:void(0)"><i class="fa fa-times"></i>@ResourceKey("General.cancellist")</a>
+        </div>
+    }
+    else
+    {
+
+
+        @ResourceKey("General.listtitle")
+        <div class="slp-ddl">
+            <select class="shoplistselect">
+                @{
+                    var info = (NBrightInfo) Model.List.First();
+                    var itemlists = info.XMLDoc.SelectSingleNode("genxml/listkeys");
+                    if (itemlists != null)
+                    {
+                        var defaultlist = "" + ResourceKey("General.favorites") + "*";
+                        var arrayitemlists = defaultlist.Split('*');
+                        if (itemlists.InnerText != "")
+                        {
+                            arrayitemlists = itemlists.InnerText.Split('*');
+                        }
+                        foreach (string itemlist in arrayitemlists)
+                        {
+                            if (itemlist != "")
+                            {
+
+                                var itemname = itemlist;
+                                if (info.XMLDoc.SelectSingleNode("genxml/list/" + itemlist) != null)
+                                {
+                                    itemname = info.XMLDoc.SelectSingleNode("genxml/list/" + itemlist).InnerText;
+                                }
+                                <option value="@itemlist">@itemname</option>
+                            }
+                        }
+                    }
+
+                }
+                <option value="-1">@ResourceKey("General.createnewlist")</option>
+            </select>
+            <div style="display: none;" class="newlistdiv">
+                <input type="text" class="newlisttext" value="@ResourceKey("General.newlist")"/>
+                <a class="actionbutton addnewlist" href="javascript:void(0)"><i class="fa fa-check"></i>@ResourceKey("General.createlist")</a>
+                <a class="actionbutton absec cancelnewlist" href="javascript:void(0)"><i class="fa fa-times"></i>@ResourceKey("General.cancellist")</a>
+            </div>
+        </div>
+        <a class="actionbutton wishlistadd" href="javascript:void(0)"><i class="fa fa-star"></i>@ResourceKey("General.shoppinglistadd")</a>
+
+    }
+
+</div>

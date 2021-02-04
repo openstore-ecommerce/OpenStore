@@ -1,0 +1,117 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Web
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+@using DotNetNuke.Entities.Portals;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<!-- Product List Body -->
+<div id="listwrapper" class="productlist">
+
+    @{
+        var lang = "";
+        var navigationdata = new NavigationData(PortalSettings.Current.PortalId, Model.GetSetting("modref"));
+        var addtobasket = ResourceKey("ProductView.addtobasket");
+        var from = ResourceKey("ProductView.fromlower");
+        var productdetail = ResourceKey("ProductView.view");
+        var promoflag = ResourceKey("ProductView.promoflag");
+        var outofstockflag = ResourceKey("ProductView.outofstockflag");
+        var cataloguemode = Model.GetSettingBool("cataloguemode");
+    }
+
+    <div class="addedtobasket" style="display:none;">@ResourceKey("ProductView.addedtobasket")</div>
+    <div class="row">
+        @foreach (NBrightInfo info in Model.List)
+        {
+            var product = new ProductData(info.ItemID, info.Lang);
+            var itemId = info.ItemID;
+            var entryUrl = EntryUrl(navigationdata, info, Model);
+            lang = info.Lang;
+            <div class="col-12 col-md-6 col-lg-4 col-xxl-3 mb-4">
+                <div class="product card text-center">
+                    <div class="card-body d-flex flex-column">
+                        <div class="card-title">
+                                <div class="productimg">
+                                    @if (product.Imgs.Count > 0)
+                                    {
+                                        <div class="image">
+                                            <a href="@entryUrl"><img class="unresponsive" title="@(info.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary"))" src="@ProductImageUrl(info, 450, 0)"></a>
+                                            
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="noimage">
+                                            <i class="fa fa-picture-o"></i>
+                                        </div>
+                                    }
+                                </div>
+                        </div>
+
+                        <div class="description row mb-3 mt-2 flex-grow-1">
+                            <h4 class="mt-0 mb-0 producttitle"><a href="@entryUrl"><span>@info.GetXmlProperty("genxml/textbox/manufacturer")</span>@ProductName(info)</a></h4>
+                        </div>
+
+                        <div class="price">
+                            @if (product.Models.Count > 1)
+                            {
+                                <span class="from">@from</span>
+                            }
+
+                            @if (product.IsOnSale)
+                            {
+                                <span class="old">@(NBrightBuyUtils.FormatToStoreCurrency(product.FromPrice()))</span>
+                                <span class="sale">@(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))</span>
+                            }
+                            else
+                            {
+                                <span class="normal">@(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))</span>
+                            }
+                        </div>
+                        <div class="flags">
+                            @if (product.IsOnSale)
+                            {
+                                <span class="onsaleflag">@promoflag</span>
+                            }
+                            @if (!product.IsInStock)
+                            {
+                                <span class="outofstockflag">@outofstockflag</span>
+                            }
+                        </div>
+
+                        <div class="buttons-wrapper mt-4">
+                            <!-- Shopping List buttons -->
+                            <a id="shoppinglistadd-@itemId" href="#shoppinglistpopup" class="btn btn-default shoppinglistadd actionbutton absec" itemid="@itemId"><i class="fa fa-star-o"></i></a>
+                            <a id="shoppinglistremove-@itemId" href="javascript:void(0)" class="btn btn-default shoppinglistremove actionbutton absec" itemid="@itemId" style="display:none;"><i class="fa fa-star"></i></a>
+
+                            @if (!cataloguemode)
+                            {
+                                if (product.Models.Count > 1)
+                                {
+                                    <a href="@entryUrl" class="actionbutton btn btn-primary"><i class="fa fa-search mr-1"></i>@productdetail</a>
+                                }
+                                else
+                                {
+                                    if (!product.Disabled)
+                                    {
+                                        <a href="javascript:void(0);" class="actionbutton addtobasket btn btn-primary" itemid="@itemId"><i class="fa fa-shopping-cart mr-1"></i>@addtobasket</a>
+                                    }
+                                }
+                            }
+                        </div>
+
+                        <!-- fields required to send required ajax data to server -->
+                        <span class="entryid@(itemId)">
+                            <input id="@(itemId)_productid" type="hidden" value="@itemId">
+                            <input id="@(itemId)_shopitemid" type="hidden" value="@itemId">
+                            <input id="@(itemId)_uilang" type="hidden" value="@lang">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

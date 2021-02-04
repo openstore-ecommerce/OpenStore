@@ -1,0 +1,101 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using NBrightCore.render
+@using NBrightDNN
+@using NBrightCore.common
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+
+    var tabid = Model.GetSettingInt("productlisttab");
+    if (tabid <= 0)
+    {
+        tabid = StoreSettings.Current.ProductListTabId;
+    }
+
+}
+
+
+<span class="nbssearchinput">
+
+    <!-- Search Textbox-->
+    @NBrightTextBox(info, "genxml/textbox/searchtext", "maxlength='150' placeholder='" + @ResourceKey("General.Search") + "' class='NormalTextBox'")           
+    <a id="cmdSimpleSearch" href="javascript:void(0);" class="postbacklink searchpostbacklink nbssearchgo"></a>
+
+    <!-- Property CheckboxList (using "spec" property group)-->
+    @PropertyCheckboxList(info, "genxml/checkboxlist/propspec", "spec")
+
+
+    <input id="uilang" type="hidden" value="@Utils.GetCurrentCulture()">
+    <input id="modulekey" type="hidden" update="save" value="@Model.GetSetting("targetmodulekey")">
+    <input id="navigationmode" update="save" type="hidden" value="f">
+    <input id="@(Model.ModuleId)_search1" type="hidden" update="save" value="<tag id='searchtext' action='open' sqloperator='and' />">
+
+    <input id="@(Model.ModuleId)_search2" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.ProductName' />">
+    <input id="@(Model.ModuleId)_search3" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.ProductRef' sqloperator='or' />">
+    <input id="@(Model.ModuleId)_search4" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.Summary' sqloperator='or' />">
+    <input id="@(Model.ModuleId)_search5" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.TagWords' sqloperator='or' />">
+
+
+    <input id="@(Model.ModuleId)_search6" type="hidden" update="save" value="<tag id='searchtext' action='like' search='genxml/textbox/searchtext' sqlcol='NB1.GUIDKey' sqloperator='or' />">
+    <input id="@(Model.ModuleId)_search7" type="hidden" update="save" value="<tag id='searchtext' action='close' />">
+    <input id="@(Model.ModuleId)_search8" type="hidden" update="save" value="<tag id='searchpropspec' action='open' sqloperator='and' />">
+    <input id="@(Model.ModuleId)_search9" type="hidden" update="save" value="<tag id='searchpropspec' action='cats' search='genxml/checkboxlist/propspec' />">
+    <input id="@(Model.ModuleId)_search10" type="hidden" update="save" value="<tag id='searchpropspec' action='close' />">
+</span>
+<div class='searchreturn' style="display: none;"></div>
+
+
+<script>
+
+
+    $(document).ready(function() {
+
+        @*
+
+    // This script turns off the default "Return" key doing a postback on a page.
+    // If we have no postback button on the page then hitting the return key on the search will work OK.
+    // If we have a postback button on the page, then you can use this script to turn off the default postback,
+    //  this however also has an effect on the postback needed for the payment page, so you cannot use the search and this sciprt on the payemnt page.
+    //$("form").submit(function (e) {
+    //    e.preventDefault();
+    //});
+
+        *@
+
+        $("form").submit(function (e) {
+            e.preventDefault();
+        });
+
+        $("input[id*='searchtext']").keyup(function (event) {
+            if (event.which == 13) {
+                var length = this.value.length;
+                if (length >= 2 && length <= 99) {
+                    $('.processing').show();
+                    nbxget('dosearch', '.nbssearchinput', '.searchreturn');
+                }
+            }
+            return false;
+        });
+
+        $('.searchpostbacklink').click(function (event) {
+            var text = $("input[id*='searchtext']").val();
+            var length = text.length;
+            if (length >= 2 && length <= 99) {
+                $('.processing').show();
+                nbxget('dosearch', '.nbssearchinput', '.searchreturn');
+            }
+        });
+
+        $('.searchreturn').change(function (event) {
+            $('.processing').show();
+            window.location.href = "@HtmlOf(NBrightBuyUtils.GetSEOLink(info.PortalId, tabid, "", "", ""))";
+        });
+    });
+
+</script>

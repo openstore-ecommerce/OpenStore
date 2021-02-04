@@ -1,0 +1,63 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using DotNetNuke.Entities.Portals
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+<!-- Include Ajax -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.genxmlajax.js?4050" type="text/javascript"></script>
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbajax.js?4050"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbbitemlist.js?4050" type="text/javascript"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/nbsfavoritescookie.js?4050" type="text/javascript"></script>
+
+<!-- Include jquery cookie plugin -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/js.cookie.js?4050"></script>
+
+<!-- Global CSS -->
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/config/css/global.css" rel="stylesheet">
+
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/Bootstrap4/css/bootstrap4.css" rel="stylesheet">
+
+<!-- Font Awesome 4 and 5 support -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
+
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/config/js/jquery.validate.min.js"></script>
+
+<!-- RAZORTEMPLATE AjaxProductDisplayList_head -->
+<!-- This template is injected into the details page head section -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/Bootstrap4/js/product.js?4050"></script>
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/Bootstrap4/js/jquery.cookie.min.js?4050"></script>
+
+<!-- Colorbox -->
+<script type="text/javascript" src="/DesktopModules/NBright/NBrightBuy/Themes/Bootstrap4/js/jquery.colorbox-min.js?4050"></script>
+<link href="/DesktopModules/NBright/NBrightBuy/Themes/Bootstrap4/css/colorbox.css" rel="stylesheet">
+
+<!-- Treeview menu https://github.com/tefra/navgoco -->
+<script src="/DesktopModules/NBright/NBrightBuy/Themes/Bootstrap4/js/jquery.navgoco.js?4050"></script>
+
+<!-- Get messages for JQuery validation -->
+@{
+    var langcode = Model.Lang;
+    if (langcode == "")
+    {
+        langcode = Model.GetUrlParam("language");
+    }
+    if (langcode != "")
+    {
+        langcode = langcode.Substring(0, 2);
+    }
+}
+@if (langcode != "" && langcode != "en")
+{
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/localization/messages_@(langcode).js?4050"></script>
+}
+
+<script>
+    $(document).ready(function () {
+        var tabId = $("#tabid").val();
+        if (!(tabId == "@(StoreSettings.Current.CartTabId)" ||
+            tabId == "@(StoreSettings.Current.CheckoutTabId)" ||
+            tabId == "@(StoreSettings.Current.PaymentTabId)")) {
+            loadItemListPopup();
+        }
+    });
+</script>

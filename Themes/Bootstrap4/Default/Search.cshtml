@@ -1,0 +1,103 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using NBrightCore.render
+@using NBrightDNN
+@using NBrightCore.common
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var info = (NBrightInfo)Model.List.First();
+
+    var tabid = Model.GetSettingInt("productlisttab");
+    if (tabid <= 0)
+    {
+        tabid = StoreSettings.Current.ProductListTabId;
+    }
+
+}
+
+<div class="nbssearch">
+    <h3 class="h3-headline mt-0 mb-2"><i class="fa fa-search"></i> @ResourceKey("General.findaproduct")</h3>
+    <div class="form-group nbssearchfield">
+        <div class="input-group mb-3 nbssearchinput">
+            @NBrightTextBox(info, "genxml/textbox/searchtext", "type='search' maxlength='150' placeholder='" + @ResourceKey("General.Search") + "' class='form-control'")
+            <div class="input-group-append">
+                <a id="cmdSimpleSearch" href="javascript:void(0);" class="btn btn-default postbacklink searchpostbacklink nbssearchgo"><i class="fa fa-search"></i></a>
+            </div>
+            <div class="input-group-append">
+                <a id="cmdClearSearch" href="javascript:void(0);" class="btn btn-default postbacklink clearsearchpostbacklink"><i class="fa fa-times"></i></a>
+            </div>
+            <input id="uilang" type="hidden" value="@Utils.GetCurrentCulture()">
+            <input id="modulekey" type="hidden" update="save" value="@Model.GetSetting("targetmodulekey")">
+            <input id="navigationmode" update="save" type="hidden" value="f">
+
+            <input id="search1" type="hidden" update="save" value="<tag id='search' action='open' sqloperator='and' />">
+            <input id="search2" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.ProductName' />">
+            <input id="search3" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.ProductRef' sqloperator='or' />">
+            <input id="search4" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' sqlcol='NB3.Summary' sqloperator='or' />">
+            <input id="search5" type="hidden" update="save" value="<tag id='search' action='like' search='genxml/textbox/searchtext' xpath='/genxml/models/genxml/textbox/volvonumber' sqloperator='or' />">
+            <input id="search6" type="hidden" update="save" value="<tag id='search' action='close' />">
+        </div>
+        <div class='searchreturn' style="display: none;"></div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        @*
+    // This script turns off the default "Return" key doing a postback on a page.
+    // If we have no postback button on the page then hitting the return key on the search will work OK.
+    // If we have a postback button on the page, then you can use this script to turn off the default postback,
+    //  this however also has an effect on the postback needed for the payment page, so you cannot use the search and this sciprt on the payemnt page.
+    //
+    //$("form").submit(function (e) {
+    //    e.preventDefault();
+    //});
+        *@
+
+        if($("input[id*='searchtext']").val() == ""){
+            $('.clearsearchpostbacklink').hide();
+        }
+
+        $("form").submit(function (e) {
+            e.preventDefault();
+        });
+
+        $("input[id*='searchtext']").keyup(function (event) {
+            if (event.which == 13) {
+                var length = this.value.length;
+                if (length >= 2 && length <= 99) {
+                    $('.processing').show();
+                    nbxget('dosearch', '.nbssearchinput', '.searchreturn');
+                }
+            }
+            return false;
+        });
+
+        $('.searchpostbacklink').click(function (event) {
+            var text = $("input[id*='searchtext']").val();
+            var length = text.length;
+            if (length >= 2 && length <= 99) {
+                $('.processing').show();
+                nbxget('dosearch', '.nbssearchinput', '.searchreturn');
+            }
+        });
+
+        $('.clearsearchpostbacklink').click(function (event) {
+            $("input[id*='searchtext']").val("");
+            $('.processing').show();
+            nbxget('dosearch', '.nbssearchinput', '.searchreturn');
+        });
+
+        $('.searchreturn').change(function (event) {
+            $('.processing').show();
+            window.location.href = "@HtmlOf(NBrightBuyUtils.GetSEOLink(info.PortalId, tabid, "", "", ""))";
+        });
+    });
+
+</script>
