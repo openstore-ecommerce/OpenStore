@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+	<!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,248 +59,266 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="AccountName.Text" xml:space="preserve">
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="AccountName.Text" xml:space="preserve">
     <value>Accountnaam</value>
   </data>
-  <data name="AccountNumber.Text" xml:space="preserve">
+	<data name="AccountNumber.Text" xml:space="preserve">
     <value>Rekeningnummer</value>
   </data>
-  <data name="addressbookupdated_ok.Text" xml:space="preserve">
+	<data name="addressbookupdated_ok.Text" xml:space="preserve">
     <value>Adres succesvol aangepast.</value>
   </data>
-  <data name="AddressUpdate.Text" xml:space="preserve">
+	<data name="AddressUpdate.Text" xml:space="preserve">
     <value>Adres aanpassen</value>
   </data>
-  <data name="Bank.Text" xml:space="preserve">
+	<data name="Bank.Text" xml:space="preserve">
     <value>Bank</value>
   </data>
-  <data name="bankinginstructions.Text" xml:space="preserve">
+	<data name="bankinginstructions.Text" xml:space="preserve">
     <value>Maakt u het verschuldigde bedrag over aan bovenstaande bankgegevens. Vermeld hierbij het nummer van de bestelling en uw naam indien dit anders is dan uw bankgegevens vermelden.</value>
   </data>
-  <data name="BillingAddress.Text" xml:space="preserve">
+	<data name="BillingAddress.Text" xml:space="preserve">
     <value>Factuuradres</value>
   </data>
-  <data name="categoryactionsave_ok.Text" xml:space="preserve">
+	<data name="categoryactionsave_ok.Text" xml:space="preserve">
     <value>Categorie succesvol aangepast</value>
   </data>
-  <data name="checkoutfailmessage.Text" xml:space="preserve">
+	<data name="checkoutfailmessage.Text" xml:space="preserve">
     <value>De bestelling is geannuleerd, of de betaling is mislukt. Controleer uw bankgegevens of neem contact op met ons op als u denkt dat het probleem bij ons zit.</value>
   </data>
-  <data name="checkoutsuccessmessage.Text" xml:space="preserve">
-    <value>Dank voor uw bestelling. U ontvangt per e-mail een bevestiging met alle Orderinformatie. Controleer uw ongewenste e-mail mappen als u niet binnen 30 minuten niets ontvangen heeft. Indien u contact met ons opneemt vernemen wij graag uw ordernummer.</value>
+	<data name="checkoutsuccessmessage.Text" xml:space="preserve">
+    <value>Dank voor uw bestelling. U ontvangt per e-mail een bevestiging met alle informatie. Controleer uw ongewenste e-mail als u na 30 minuten nog niets ontvangen heeft. Indien u contact met ons opneemt vernemen wij graag uw ordernummer.</value>
   </data>
-  <data name="Collection.Text" xml:space="preserve">
+	<data name="Collection.Text" xml:space="preserve">
     <value>Details van de bestelling</value>
   </data>
-  <data name="Contactus.Text" xml:space="preserve">
+	<data name="Contactus.Text" xml:space="preserve">
     <value>Neem contact op met ons</value>
   </data>
-  <data name="deletecompleted_ok.Text" xml:space="preserve">
+	<data name="deletecompleted_ok.Text" xml:space="preserve">
     <value>Verwijderen voltooid.</value>
   </data>
-  <data name="emailmessage.Text" xml:space="preserve">
+	<data name="emailmessage.Text" xml:space="preserve">
     <value>Hartelijk dank voor uw bestelling. Wij gaan aan de slag met uw bestelling. Indien u vragen heeft horen wij die graag.</value>
   </data>
-  <data name="general_error.Text" xml:space="preserve">
+	<data name="general_error.Text" xml:space="preserve">
     <value>Onbekende fout</value>
   </data>
-  <data name="general_fail.Text" xml:space="preserve">
+	<data name="general_fail.Text" xml:space="preserve">
     <value>Bewerking mislukt</value>
   </data>
-  <data name="general_ok.Text" xml:space="preserve">
-    <value>Operatie succesvol</value>
+	<data name="general_ok.Text" xml:space="preserve">
+    <value>Bewerking succesvol</value>
   </data>
-  <data name="general_warning.Text" xml:space="preserve">
-    <value>Operatie waarschuwing</value>
+	<data name="general_warning.Text" xml:space="preserve">
+    <value>Waarschuwing</value>
   </data>
-  <data name="groupactionsave_ok.Text" xml:space="preserve">
+	<data name="groupactionsave_ok.Text" xml:space="preserve">
     <value>Groep bijwerken geslaagd</value>
   </data>
-  <data name="InsertReference.Text" xml:space="preserve">
+	<data name="InsertReference.Text" xml:space="preserve">
     <value>Referentie invoegen.</value>
   </data>
-  <data name="ManualPayment.Text" xml:space="preserve">
-    <value>handmatige betaling middels bank</value>
+	<data name="ManualPayment.Text" xml:space="preserve">
+    <value>Handmatige betaling middels bankoverschrijving</value>
   </data>
-  <data name="notifytemplate_error.Text" xml:space="preserve">
+	<data name="notifytemplate_error.Text" xml:space="preserve">
     <value>&lt;div class="nbsnotify nbsnotifyerror bg-danger"&gt;{message}&lt;/div&gt;</value>
   </data>
-  <data name="notifytemplate_fail.Text" xml:space="preserve">
+	<data name="notifytemplate_fail.Text" xml:space="preserve">
     <value>&lt;div class="nbsnotify nbsnotifyfail bg-danger"&gt;{message}&lt;/div&gt;</value>
   </data>
-  <data name="notifytemplate_ok.Text" xml:space="preserve">
+	<data name="notifytemplate_ok.Text" xml:space="preserve">
     <value>&lt;div class="nbsnotify bg-success"&gt;{message}&lt;/div&gt;</value>
   </data>
-  <data name="notifytemplate_warning.Text" xml:space="preserve">
+	<data name="notifytemplate_warning.Text" xml:space="preserve">
     <value>&lt;div class="nbsnotify nbsnotifywarning bg-warning"&gt;{message}&lt;/div&gt;</value>
   </data>
-  <data name="orderactionemailamended_ok.Text" xml:space="preserve">
-    <value>Bestellen van gewijzigd e-mailbericht gestuurd</value>
+	<data name="orderactionemailamended_ok.Text" xml:space="preserve">
+    <value>E-mail van gewijzigde bestelling verzonden</value>
   </data>
-  <data name="orderactionemailreceipt_ok.Text" xml:space="preserve">
-    <value>Order ontvangst E-mail</value>
+	<data name="orderactionemailreceipt_ok.Text" xml:space="preserve">
+    <value>Orderkwitantie verstuurd</value>
   </data>
-  <data name="orderactionemailshipped_ok.Text" xml:space="preserve">
-    <value>Verzonden E-mail bestelling</value>
+	<data name="orderactionemailshipped_ok.Text" xml:space="preserve">
+    <value>Verzendbevestiging verstuurd</value>
   </data>
-  <data name="orderactionemailvalidated_ok.Text" xml:space="preserve">
-    <value>Gevalideerde E-mail bestelling</value>
+	<data name="orderactionemailvalidated_ok.Text" xml:space="preserve">
+    <value>E-mail verstuurd over gecontroleerde bestelling</value>
   </data>
-  <data name="orderactionprintorder_ok.Text" xml:space="preserve">
-    <value>Volgorde afgedrukt</value>
+	<data name="orderactionprintorder_ok.Text" xml:space="preserve">
+    <value>Bestelling afgedrukt</value>
   </data>
-  <data name="orderactionprintreceipt_ok.Text" xml:space="preserve">
-    <value>Ontvangst afgedrukt</value>
+	<data name="orderactionprintreceipt_ok.Text" xml:space="preserve">
+    <value>Kwitantie afgedrukt</value>
   </data>
-  <data name="orderactionsave_ok.Text" xml:space="preserve">
-    <value>Bestelling bijwerken geslaagd</value>
+	<data name="orderactionsave_ok.Text" xml:space="preserve">
+    <value>Bestelling bijgewerkt</value>
   </data>
-  <data name="OrderAmended.Text" xml:space="preserve">
+	<data name="OrderAmended.Text" xml:space="preserve">
     <value>Volgorde gewijzigd</value>
   </data>
-  <data name="orderamended_emailsubject.Text" xml:space="preserve">
-    <value>Volgorde gewijzigd</value>
+	<data name="orderamended_emailsubject.Text" xml:space="preserve">
+    <value>Bestelling gewijzigd</value>
   </data>
-  <data name="OrderCreated.Text" xml:space="preserve">
+	<data name="OrderCreated.Text" xml:space="preserve">
     <value>Order bevestigd</value>
   </data>
-  <data name="OrderCreatedClient.Text" xml:space="preserve">
+	<data name="OrderCreatedClient.Text" xml:space="preserve">
     <value>Order bevestigd</value>
   </data>
-  <data name="ordercreatedemailsubject.Text" xml:space="preserve">
+	<data name="ordercreatedemailsubject.Text" xml:space="preserve">
     <value>Order bevestigd</value>
   </data>
-  <data name="OrderReceipt.Text" xml:space="preserve">
+	<data name="OrderReceipt.Text" xml:space="preserve">
     <value>Kwitantie</value>
   </data>
-  <data name="orderreceipt_emailsubject.Text" xml:space="preserve">
+	<data name="orderreceipt_emailsubject.Text" xml:space="preserve">
     <value>Kwitantie</value>
   </data>
-  <data name="OrderShipped.Text" xml:space="preserve">
+	<data name="OrderShipped.Text" xml:space="preserve">
     <value>Verzendingen</value>
   </data>
-  <data name="ordershipped_emailsubject.Text" xml:space="preserve">
+	<data name="ordershipped_emailsubject.Text" xml:space="preserve">
     <value>Verzendingen</value>
   </data>
-  <data name="OrderValidated.Text" xml:space="preserve">
+	<data name="OrderValidated.Text" xml:space="preserve">
     <value>Bestelling gevalideerd</value>
   </data>
-  <data name="ordervalidated_emailsubject.Text" xml:space="preserve">
+	<data name="ordervalidated_emailsubject.Text" xml:space="preserve">
     <value>Bestelling gevalideerd</value>
   </data>
-  <data name="outofstock.Text" xml:space="preserve">
+	<data name="outofstock.Text" xml:space="preserve">
     <value>Niet op voorraad</value>
   </data>
-  <data name="pickupmessage.Text" xml:space="preserve">
-    <value>U bent van harte welkom om uw bestelling op te halen bij ons. Dit kan tijdens onze openingsuren. Wilt u ons van tevoren bellen, dan zorgen wij dat uw bestelling klaarstaat.</value>
+	<data name="pickupmessage.Text" xml:space="preserve">
+    <value>U bent van harte welkom om uw bestelling bij ons op te halen. Dit kan tijdens onze openingstijden. Als u vantevoren belt, dan zorgen wij dat uw bestelling klaar staat.</value>
   </data>
-  <data name="ProfileRegistered.Text" xml:space="preserve">
+	<data name="ProfileRegistered.Text" xml:space="preserve">
     <value>Profiel geregistreerd</value>
   </data>
-  <data name="profileregistered_emailsubject.Text" xml:space="preserve">
+	<data name="profileregistered_emailsubject.Text" xml:space="preserve">
     <value>Nieuw profiel geregistreerd</value>
   </data>
-  <data name="profileupdated_emailsubject.Text" xml:space="preserve">
-    <value>Profiel Update</value>
+	<data name="profileupdated_emailsubject.Text" xml:space="preserve">
+    <value>Profiel bijgewerkt</value>
   </data>
-  <data name="profileupdated_fail.Text" xml:space="preserve">
+	<data name="profileupdated_fail.Text" xml:space="preserve">
     <value>Niet in staat om te registreren als gebruiker. Controleert uw profielinformatie.</value>
   </data>
-  <data name="profileupdated_ok.Text" xml:space="preserve">
+	<data name="profileupdated_ok.Text" xml:space="preserve">
     <value>Uw profiel is bijgewerkt.</value>
   </data>
-  <data name="profileupdatedcaptcha_fail.Text" xml:space="preserve">
+	<data name="profileupdatedcaptcha_fail.Text" xml:space="preserve">
     <value>Ongeldige Security Code.</value>
   </data>
-  <data name="profileupdatedclientrole_ok.Text" xml:space="preserve">
+	<data name="profileupdatedclientrole_ok.Text" xml:space="preserve">
     <value>Uw gegevens zijn opgeslagen. U ontvangt een e-mail wanneer uw account is gevalideerd en u toegang tot de winkel heeft.</value>
   </data>
-  <data name="profileupdatedexists_fail.Text" xml:space="preserve">
+	<data name="profileupdatedexists_fail.Text" xml:space="preserve">
     <value>Reeds geregistreerde gebruiker.  Om te registreren probeer een andere gebruikersnaam/e-mail.</value>
   </data>
-  <data name="settingssetup_fail.Text" xml:space="preserve">
+	<data name="settingssetup_fail.Text" xml:space="preserve">
     <value>Winkel configuratie moet worden gedaan.</value>
   </data>
-  <data name="ShippingAddress.Text" xml:space="preserve">
+	<data name="ShippingAddress.Text" xml:space="preserve">
     <value>Verzendadres</value>
   </data>
-  <data name="ShippingDate.Text" xml:space="preserve">
+	<data name="ShippingDate.Text" xml:space="preserve">
     <value>Verzenddatum</value>
   </data>
-  <data name="ShippingMethod.Text" xml:space="preserve">
+	<data name="ShippingMethod.Text" xml:space="preserve">
     <value>Verzendmethode</value>
   </data>
-  <data name="ShippingOption.Text" xml:space="preserve">
+	<data name="ShippingOption.Text" xml:space="preserve">
     <value>Verzendoptie</value>
   </data>
-  <data name="stockadjusted.Text" xml:space="preserve">
+	<data name="stockadjusted.Text" xml:space="preserve">
     <value>Aantal aangepast aan beschikbare voorraad</value>
   </data>
-  <data name="terms.Text" xml:space="preserve">
+	<data name="terms.Text" xml:space="preserve">
     <value>De bepalingen en voorwaarden moeten worden aanvaard.</value>
   </data>
-  <data name="TrackingNumber.Text" xml:space="preserve">
+	<data name="TrackingNumber.Text" xml:space="preserve">
     <value>Tracking-nummer</value>
   </data>
-  <data name="validatecompleted_ok.Text" xml:space="preserve">
-    <value>Validatie voltooid.</value>
+	<data name="validatecompleted_ok.Text" xml:space="preserve">
+    <value>Controle voltooid.</value>
   </data>
+	<data name="removeuser_fail.Text" xml:space="preserve">
+		<value>Klant heeft bestellingen en kan niet worden verwijderd</value>
+	</data>
+	<data name="completed_ok.Text" xml:space="preserve">
+		<value>Bewerking voltooid.</value>
+	</data>
+	<data name="nopin_fail.Text" xml:space="preserve">
+		<value>Ongeldige beheerders-PIN</value>
+	</data>
+	<data name="categoryactionsave_fail.Text" xml:space="preserve">
+		<value>Bijwerken categorie mislukt</value>
+	</data>
+	<data name="onlyleafcat_fail.Text" xml:space="preserve">
+		<value>Alleen "lege" categoriën kunnen worden verwijderd</value>
+	</data>
+	<data name="emailsent.Text" xml:space="preserve">
+		<value>E-mail verzonden</value>
+	</data>
 </root>
