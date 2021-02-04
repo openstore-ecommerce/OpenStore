@@ -17,15 +17,19 @@
     var itemsInCart = info.GetXmlPropertyDouble("genxml/totalqty");
 }
 
-<div class="minicart">
-  <div class="minicarticon"><i class="fa fa-shopping-cart"></i></div>
-  <div class="h4-headline">@ResourceKey("CartView.YourBasket")</div>
-  @if (itemsInCart > 0)
-  {
-    <a href="/tabid/@Model.GetSetting("carttab")/Default.aspx">@itemsInCart @ResourceKey("CartView.txtitemslower") : @NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/appliedtotal"))</a>
-  }
-  else
-  {
-    @ResourceKey("CartView.cartempty")
-  }
+<div class="card minicart">
+    <div class="card-body">
+        <div class="card-title">
+            <div class="minicarticon"><i class="fa fa-shopping-cart mr-1"></i>@ResourceKey("CartView.YourBasket")</div>
+        </div>
+        @if (itemsInCart > 0)
+        {
+            <p class="card-text">@itemsInCart @ResourceKey("CartView.txtitemslower") : @NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/appliedtotal"))</p>
+            <a href="/tabid/@Model.GetSetting("carttab")/Default.aspx" class="btn btn-primary">@ResourceKey("CartView.PlaceOrder")</a>
+        }
+        else
+        {
+            <p class="card-text">@ResourceKey("CartView.cartempty")</p>
+        }
+    </div>
 </div>
