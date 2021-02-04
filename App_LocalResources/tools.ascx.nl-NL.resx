@@ -1,21 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="ValidateStore.confirm" lastModified="2014-11-29 13:47:25">
-    <value xml:space="preserve">Bewaar validatie?  Dit kan enige tijd duren!</value>
-  </data>
-  <data name="ValidateStore.Text" lastModified="2014-11-29 13:47:25">
-    <value xml:space="preserve">Valideren van winkel</value>
-  </data>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="ValidateStore.confirm" lastModified="2014-11-29 13:47:25">
+		<value xml:space="preserve">Webshop controle uitvoeren?  Dit kan enige tijd duren!</value>
+	</data>
+	<data name="ValidateStore.Text" lastModified="2014-11-29 13:47:25">
+		<value xml:space="preserve">Webshop controleren</value>
+	</data>
+	<data name="purgecarts.confirm" xml:space="preserve">
+		<value>Winkelwagens opruimen?</value>
+	</data>
+	<data name="purgecarts.Text" xml:space="preserve">
+		<value>Winkelwagens opruimen</value>
+	</data>
+	<data name="purgecartsdays.Text" xml:space="preserve">
+		<value>Aantal dagen bewaren (winkelwagens)</value>
+	</data>
+	<data name="languageresetto.Text" xml:space="preserve">
+		<value>Kopieer</value>
+	</data>
+	<data name="languagetoreset.Text" xml:space="preserve">
+		<value>naar</value>
+	</data>
+	<data name="resetlangauge.confirm" xml:space="preserve">
+		<value>Taal resetten kan niet ongedaan worden gemaakt. Weet u het zeker?</value>
+	</data>
+	<data name="resetlangauge.Text" xml:space="preserve">
+		<value>Taal resetten</value>
+	</data>
+	<data name="languageresetwarning.Text" xml:space="preserve">
+		<value>LET OP!!! - Uw gegevens in "{tolanguage}" wordt OVERSCHREVEN.</value>
+	</data>
 </root>

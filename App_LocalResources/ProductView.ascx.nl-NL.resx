@@ -127,16 +127,16 @@
 &lt;/span&gt;</value>
   </data>
   <data name="choosemodel.Text" xml:space="preserve">
-    <value>Selecteer Model</value>
+    <value>Kies model</value>
   </data>
   <data name="code.Text" xml:space="preserve">
     <value>Code</value>
   </data>
   <data name="convertor.Text" xml:space="preserve">
-    <value>Currency Converter</value>
+    <value>Valuta omrekenen</value>
   </data>
   <data name="currencyconvertormsg.Text" xml:space="preserve">
-    <value>&lt;p&gt;Als het al niet wordt weergegeven, selecteer uw doel-valuta en klikt u op de knop om te zetten. Het resultaat is berekend op basis van geldende marktwisselkoersen.&lt;/p&gt;&lt;p&gt;Banken en andere instellingen kosten u vergoedingen voor conversie en behandeling van vreemde valuta's en zo de eindprijs op uw creditcard factuur zal waarschijnlijk een paar procent hoger dan het resultaat, worden hier weergegeven. Gebruik dit alleen als een gids.&lt;/p&gt;&lt;p style="font-size:11px;font-style:italic"&gt;Deze dienst wordt geleverd door foreignexchangeresource.com&lt;/p&gt;</value>
+    <value>&lt;p&gt;Kies eventueel de gewenste valuta en klik op de knop om het bedrag om te rekenen. Het resultaat is berekend op basis van geldende marktwisselkoersen.&lt;/p&gt;&lt;p&gt;Banken en andere instellingen rekenen kosten voor het verwerken van vreemde valuta, waardoor het bedrag op uw creditcard afschrift waarschijnlijk een paar procent hoger zal zijn, dan hier weergegeven. Gebruik dit alleen als richtlijn.&lt;/p&gt;&lt;p style="font-size:11px;font-style:italic"&gt;Deze dienst wordt geleverd door foreignexchangeresource.com&lt;/p&gt;</value>
   </data>
   <data name="dealer.Text" xml:space="preserve">
     <value>Dealer</value>
@@ -157,7 +157,7 @@
     <value>Download dit bestand&lt;i class='fa fa-download'&gt;&lt;/i&gt;</value>
   </data>
   <data name="downloadableproduct.Text" xml:space="preserve">
-    <value>Dit is een downloadbare product. Na aankoop, of via een link in de aankoop kennisgeving het ophalen vanaf deze pagina.</value>
+    <value>Dit is een downloadbar product. Na aankoop, of via een link in de orderbevestiging, kunt u het hier downloaden.</value>
   </data>
   <data name="edit.Text" xml:space="preserve">
     <value>Bewerken</value>
@@ -166,10 +166,10 @@
     <value>&lt;i title="Edit Product" class="fa fa-edit"&gt;&lt;/i&gt;</value>
   </data>
   <data name="emailmsg.Text" xml:space="preserve">
-    <value>Informeer mij van de prijs van dit product op</value>
+    <value>Hou me op de hoogte van de prijs van dit product</value>
   </data>
   <data name="emailprice.Text" xml:space="preserve">
-    <value>E-mail voor prijs</value>
+    <value>E-mail prijs</value>
   </data>
   <data name="filebullets.Text" xml:space="preserve">
     <value>&lt;i class='fa-li fa fa-file-o'&gt;&lt;/i&gt;</value>
@@ -181,7 +181,7 @@
     <value>Vanaf</value>
   </data>
   <data name="holidaymsg.Text" xml:space="preserve">
-    <value>Gesloten voor vakantie</value>
+    <value>Gesloten wegens feestdag</value>
   </data>
   <data name="instock.Text" xml:space="preserve">
     <value>Ja</value>
@@ -196,10 +196,10 @@
     <value>&lt;i class="fa fa-camera"&gt;&lt;/i&gt;</value>
   </data>
   <data name="normally.Text" xml:space="preserve">
-    <value>Normale Retail</value>
+    <value>Reguliere verkoop</value>
   </data>
   <data name="onsale.Text" xml:space="preserve">
-    <value>Sale prijs</value>
+    <value>Aanbiedingsprijs</value>
   </data>
   <data name="onsaleflag.Text" xml:space="preserve">
     <value>Aanbieding!</value>
@@ -223,10 +223,10 @@
     <value>Download hier na aankoop&lt;i class='fa fa-exclamation-circle'&gt;&lt;/i&gt;</value>
   </data>
   <data name="related.Text" xml:space="preserve">
-    <value>Verwante producten</value>
+    <value>Gerelateerde artikelen</value>
   </data>
   <data name="remaining.Text" xml:space="preserve">
-    <value>Resterende</value>
+    <value>Resterend</value>
   </data>
   <data name="reserved.Text" xml:space="preserve">
     <value>Gereserveerd</value>
@@ -250,7 +250,7 @@
     <value>Voorraad</value>
   </data>
   <data name="view.Text" xml:space="preserve">
-    <value>Weergave</value>
+    <value>Bekijk</value>
   </data>
   <data name="viewicon.Text" xml:space="preserve">
     <value>&lt;span title="Information" class="fa-stack"&gt;
@@ -259,7 +259,7 @@
 &lt;/span&gt;</value>
   </data>
   <data name="wishlistadd.Text" xml:space="preserve">
-    <value>Voeg toe aan wenslijst</value>
+    <value>Voeg toe aan wensenlijst</value>
   </data>
   <data name="wishlistaddicon.Text" xml:space="preserve">
     <value>&lt;span title="Add to wishlist" class="fa-stack"&gt;
@@ -286,10 +286,10 @@
 &lt;/span&gt;</value>
   </data>
   <data name="endoflineflag.Text" xml:space="preserve">
-    <value>Regeleinde!</value>
+    <value>Niet meer leverbaar!</value>
   </data>
   <data name="favorites.Text" xml:space="preserve">
-    <value>Favoriten</value>
+    <value>Favorieten</value>
   </data>
   <data name="products.Text" xml:space="preserve">
     <value>artikel</value>
@@ -304,10 +304,10 @@
     <value>Aanbieding !</value>
   </data>
   <data name="recommend.Text" xml:space="preserve">
-    <value>Aanbevolen bij dit produkt :</value>
+    <value>Aanbevolen bij dit artikel :</value>
   </data>
   <data name="references.Text" xml:space="preserve">
-    <value>References</value>
+    <value>Referenties</value>
   </data>
   <data name="searchresults.Text" xml:space="preserve">
     <value>Zoekresultaten</value>

@@ -1,0 +1,24 @@
+<root>
+	<version>1.0.0</version>
+  <websitedestrelpath>\DesktopModules\NBright\NBrightBuy\Providers\EventProvider</websitedestrelpath>
+  <websitedestbinrelpath>\bin</websitedestbinrelpath>
+	<!-- Include only files that match the regular expression -->
+  <regexpr>(\.cshtml|\.html|\.resx|\.dnn|\.png|\.css|\.js|\.xml|\.txt|\.md|\.aspx|\.ascx|\.ashx)$</regexpr>
+  <directory include='false'>
+		<!-- All paths should be from the source root (project root) -->
+    <value>\.git</value>
+    <value>\.vs</value>
+    <value>\bin</value>
+    <value>\obj</value>
+    <value>\Components</value>
+    <value>\render</value>
+    <value>\_external</value>
+  </directory>
+  <file include='false'>
+  </file>
+  <file include='true'>
+  </file>
+	<assembly>
+		<value>NBrightBuy.EventProvider.dll</value>
+	</assembly>  
+</root>

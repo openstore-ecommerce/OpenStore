@@ -1,0 +1,45 @@
+<root>
+	<version>4.1.5</version>
+  <websitedestrelpath>\DesktopModules\NBright\NBrightBuy</websitedestrelpath>
+  <websitedestbinrelpath>\bin</websitedestbinrelpath>
+  <!-- Include only files that match the regular expression -->
+  <regexpr>(\.cshtml|\.html|\.resx|\.dnn|\.png|\.css|\.js|\.xml|\.txt|\.md|\.aspx|\.ascx|\.ashx)$</regexpr>
+  <directory include='false'>
+		<!-- All paths should be from the source root (project root) -->
+    <value>\.git</value>
+    <value>\.vs</value>
+    <value>\bin</value>
+    <value>\obj</value>
+    <value>\Components</value>
+    <value>\render</value>
+    <value>\_external</value>
+    <value>\Providers</value>    
+  </directory>
+  <file include='false'>
+  </file>
+  <file include='true'>
+    <value>\Installation\04.00.00.SqlDataProvider</value>
+    <value>\Installation\04.00.01.SqlDataProvider</value>
+    <value>\Installation\04.00.02.SqlDataProvider</value>
+    <value>\Installation\04.00.04.SqlDataProvider</value>
+    <value>\Installation\04.00.11.SqlDataProvider</value>
+    <value>\Installation\04.01.01.SqlDataProvider</value>
+    <value>\Installation\04.01.02.SqlDataProvider</value>
+    <value>\Installation\04.01.03.SqlDataProvider</value>
+    <value>\Installation\Uninstall.SqlDataProvider</value>
+    <value>OpenStore.dnn</value>
+    <value>\Skins\OpenStoreBO\OpenStoreBO.ascx</value>
+    <value>\Skins\OpenStoreBO\OpenStoreBO.doctype.xml</value>
+  </file>
+	<assembly>
+		<value>NBrightBuy.dll</value>
+    <value>NBrightBuy.DiscountCodesProvider.dll</value>
+    <value>NBrightBuy.EventProvider.dll</value>
+    <value>NBrightBuy.ManualPaymentProvider.dll</value>
+    <value>NBrightBuy.PromoProvider.dll</value>
+    <value>NBrightBuy.ShippingProvider.dll</value>
+    <value>NBrightBuy.TaxProvider.dll</value>
+    <value>NBrightCore.dll</value>
+    <value>NBrightDNN.dll</value>
+  </assembly>  
+</root>
