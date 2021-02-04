@@ -1,0 +1,23 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using System.Web
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@AddPreProcessMetaData("itemlistname", Model.GetSetting("itemlistname"), Model.FullTemplateName, Model.ModuleId.ToString())
+
+@AddPreProcessMetaData("orderby", "{bycategoryproduct}", Model.FullTemplateName, Model.ModuleId.ToString()) <!-- set default to manual sort on category product -->
+
+<div class="nbs">
+
+    <div class="productlistheader">
+      <div class="categorydetails">
+        <h1>@Category("categoryname", Model)</h1>
+      </div>
+    </div>
+
+    @RenderTemplate("\\DesktopModules\\NBright\\NBrightBuy\\Themes\\Bootstrap4\\Default\\ProductDisplayListBody.cshtml", Model)
+
+</div>

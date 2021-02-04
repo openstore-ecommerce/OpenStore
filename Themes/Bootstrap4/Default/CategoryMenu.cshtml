@@ -1,0 +1,60 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using NBrightCore.render
+@using NBrightDNN
+@using NBrightCore.common
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var catid = 0;
+    if (Utils.IsNumeric(Model.GetUrlParam("catid")))
+    {
+        catid = Convert.ToInt32(Model.GetUrlParam("catid"));
+    }
+    var tabid = Model.GetSettingInt("productlisttab");
+    if (tabid <= 0)
+    {
+        tabid = StoreSettings.Current.ProductListTabId;
+    }
+
+}
+
+<div class="treemenu">
+    @if (Model.GetSettingBool("activateajax"))
+    {
+        @CategoryTreeMenu(Model.GetSettingInt("parentcatid"), "CategoryMenuLinkAjax.cshtml", "/DesktopModules/NBright/NBrightBuy", Model.GetSetting("themefolder"), catid, Utils.GetCurrentCulture(), tabid)
+    }
+    else
+    {
+        @CategoryTreeMenu(Model.GetSettingInt("parentcatid"), "CategoryMenuLink.cshtml", "/DesktopModules/NBright/NBrightBuy", Model.GetSetting("themefolder"), catid, Utils.GetCurrentCulture(), tabid)
+    }
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	// Initialize navgoco with default options
+	$(".nbrightbuy_catmenu").navgoco({
+		accordion: true, // Because the script requires lower case
+		openClass: 'open',
+		save: false,
+		slide: {
+			duration: 200,
+			easing: 'swing' // linear or swing
+		},
+		// Add Active class to clicked menu item
+		onClickAfter: function(e, submenu) {
+			//e.preventDefault();
+			$('.nbrightbuy_catmenu').find('li').removeClass('active');
+			var li =  $(this).parent();
+			var lis = li.parents('li');
+			li.addClass('active');
+			lis.addClass('active');
+		},
+	});
+
+});
+</script>

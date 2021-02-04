@@ -1,0 +1,32 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System
+@using System.Collections.Generic
+@using System.Linq
+@using NBrightCore.render
+@using NBrightDNN
+@using NBrightCore.common
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+@{
+    var catid = 0;
+    if (Utils.IsNumeric(Model.GetUrlParam("catid")))
+    {
+        catid = Convert.ToInt32(Model.GetUrlParam("catid"));
+    }
+    if (catid == 0)
+    {
+        catid = Model.GetSettingInt("parentcatid");
+    }
+    var tabid = Model.GetSettingInt("productlisttab");
+    if (tabid <= 0)
+    {
+        tabid = StoreSettings.Current.ProductListTabId;
+    }
+
+}
+
+<div class="drilldownlist">
+    @CategoryDrillDown(catid, "CategoryMenuDrillLink.cshtml", "/DesktopModules/NBright/NBrightBuy", Model.GetSetting("themefolder"), catid, Utils.GetCurrentCulture(), tabid) 
+</div>

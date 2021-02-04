@@ -1,0 +1,375 @@
+@inherits NBrightBuy.render.NBrightBuyRazorTokens<NBrightRazor>
+@using System.Linq
+@using NBrightCore.common
+@using NBrightDNN
+@using Nevoweb.DNN.NBrightBuy.Components;
+
+@AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
+
+<!-- "pageheaderdetail.cshtml" template will be auto injected as dynamic data into page head section -->
+@{
+    // assign Model, so we can resolve var in VS
+    var product = (ProductData)Model.List.First();
+    var info = (NBrightInfo)product.Info;
+}
+
+<script>
+    $(document).ready(function () {
+        if($(".nbs .categorybreadcrumbs li").length > 0){
+            $(".nbs .categorybreadcrumbs ul").addClass("breadcrumb");
+            $(".nbs .categorybreadcrumbs li").addClass("breadcrumb-item");
+        }
+        if($(".nbs .options .option").length > 0){
+            $(".nbs .options .option").addClass("form-group mb-2");
+        }
+        // style the dropdowns
+        if($(".nbs .options .option .optionvalue select").length > 0){
+            $(".nbs .options .option select").addClass("custom-select");
+        }
+        // style the checkboxes
+        if($(".nbs .options .option .optionvalue input[type='checkbox']").length > 0){
+            $(".nbs .options .option .optionvalue input[type='checkbox']").parent(".optionvalue").addClass("custom-control custom-checkbox");
+            $(".nbs .options .option .optionvalue input[type='checkbox']").addClass("custom-control-input");
+            $(".nbs .options .option .optionvalue input[type='checkbox']").parent(".optionvalue").children("label").addClass("custom-control-label");
+        }
+    });
+</script>
+
+
+<div class="addedtobasket" style="display:none;">@ResourceKey("ProductView.addedtobasket")</div>
+<div class="nbs">
+
+    <div class="categorybreadcrumbs">@CategoryBreadCrumb(true, Model)</div>
+
+    <div class="productdetail">
+        <h1 class="mt-0">@(product.ProductName)</h1>
+        <div class="row">
+            <div class="col-6">
+                @if (@product.Imgs.Count >= 1)
+                {
+                    <div class="images">
+
+                        <div class="image">
+
+                            @if (product.Imgs.Count > 0)
+                            {
+                                <img src="@ProductImageUrl(info)" alt="@(product.Imgs.First().GetXmlProperty("genxml/textbox/txtimagedesc"))" id="mainimage" />
+                            }
+                            else
+                            {
+                                <div class="noimage">
+                                    <i class="fa fa-picture-o"></i>
+                                </div>
+                            }
+
+                            <div class="flags">
+                            @if (@product.IsOnSale)
+                            {
+                                <span class="onsaleflag">@ResourceKey("ProductView.promoflag")</span>
+                            }
+                            @if (!@product.IsInStock)
+                            {
+                                <span class="outofstockflag">@ResourceKey("ProductView.outofstockflag")</span>
+                            }
+                            </div>
+
+                        </div>
+
+                        <!-- display images -->
+                        <ul class="gallery">
+                            @{
+                                var lp = 1;
+                                foreach (var img in product.Imgs)
+                                {
+                                if (product.Imgs.Count > 1)
+                                {
+                                    <li class="image@(lp.ToString())">
+                                    <a href="javascript:void(0)" title="@(img.GetXmlProperty("genxml/textbox/txtimagedesc"))"><img src="@ProductImageUrl(info, 90, 0, lp)" alt="@(img.GetXmlProperty("genxml/textbox/txtimagedesc"))" onclick="showImage('@ProductImageUrl(info, 0, 0, lp,"&imgtype=png")','@(img.GetXmlProperty("genxml/textbox/txtimagedesc"))');"></a>
+                                    </li>
+                                }
+                                lp += 1;
+                                }
+                            }
+                        </ul>
+
+                    </div>
+                }
+            </div>
+            <div class="col-6">
+                <!-- fields required to send required ajax data to server to purchase product -->
+                <div class="purchasing entryid@(info.ItemID)">
+                    <input id="@(info.ItemID)_productid" type="hidden" value="@(info.ItemID)">
+                    <input id="@(info.ItemID)_uilang" type="hidden" value="@(info.Lang)">
+
+                    <div class="row">
+                        <div class="col-9">
+                            @if (@info.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary") != "")
+                            {
+                                <div class="summary">@BreakOf(info, "genxml/lang/genxml/textbox/txtsummary")</div>
+                            }
+                        </div>
+                        <div class="col-3 text-right">
+                            <div class="text-right return"><a href="@EntryReturnUrl(Model)" class="btn btn-default actionbutton absec"><i class="fa fa-reply mr-1"></i>@ResourceKey("ProductView.return")</a></div>
+                        </div>
+                    </div>
+
+
+                    @if (@info.GetXmlProperty("genxml/textbox/manufacturer") != "")
+                    {
+                        <h2>@info.GetXmlProperty("genxml/textbox/manufacturer")</h2>
+                    }
+
+                    <div class="price mt-3">
+                        @if (product.Models.Count > 1)
+                        {
+                            <span class="from">@ResourceKey("ProductView.fromlower")</span>
+                        }
+
+                        @if (product.IsOnSale)
+                        {
+                            <span class="old">@(NBrightBuyUtils.FormatToStoreCurrency(product.FromPrice()))</span>
+                            <span class="sale">@(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))</span>
+                        }
+                        else
+                        {
+                            <span class="normal">@(NBrightBuyUtils.FormatToStoreCurrency(product.BestPrice()))</span>
+                        }
+                    </div>
+
+                    @if (@product.Models.Count >= 2)
+                    {
+                        <div class="models mt-3">@ModelsDropDown(info, "class=\"custom-select\"")</div>
+                    }
+
+                    @if (@product.Options.Count >= 1)
+                    {
+                        <div class="options mt-3">@ProductOptions(product)</div>
+                    }
+
+                    @if (Model.GetSetting("cataloguemode") != "True")
+                    {
+                        <div class="row mt-3 buy">
+                            @if (@product.IsInStock)
+                            {
+                            <div class="col-6">
+                                <div class="input-group mb-3 quantityoptions">
+                                    <div class="input-group-prepend">
+                                        <a class="btn btn-default qtyminus" href="javascript:void(0)"><i class="fa fa-minus"></i></a>
+                                    </div>
+                                    <!-- "selectedaddqty"" expected by server as name of qty field -->
+                                    @TextBox(info, "genxml/textbox/selectedaddqty", "class='form-control quantity selectedaddqty'", "1")
+                                    <div class="input-group-append">
+                                        <a class="btn btn-default qtyplus" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 text-right">
+                                <!-- Shopping List buttons -->
+                                <a id="shoppinglistadd-@(info.ItemID)" href="#shoppinglistpopup" class="btn btn-default shoppinglistadd actionbutton absec" itemid="@(info.ItemID)"><i class="fa fa-star-o"></i></a>
+                                <a id="shoppinglistremove-@(info.ItemID)" href="javascript:void(0)" class="btn btn-default shoppinglistremove actionbutton absec" itemid="@(info.ItemID)" style="display:none;"><i class="fa fa-star"></i></a>
+
+                                @if (!product.Disabled)
+                                {
+                                    <a class="btn btn-primary actionbutton addtobasket " itemid="@(info.ItemID)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>@ResourceKey("ProductView.addtobasket")</a>
+                                }
+
+                                <script>
+                                    if (IsInFavorites(@(info.ItemID))) {
+                                        $('#shoppinglistadd-@(info.ItemID)').hide();
+                                        $('#shoppinglistremove-@(info.ItemID)').show();
+                                    } else {
+                                        $('#shoppinglistadd-@(info.ItemID)').show();
+                                        $('#shoppinglistremove-@(info.ItemID)').hide();
+                                    }
+                                </script>
+
+                            </div>
+                            }
+                            else
+                            {
+                                <span class="outofstock">@ResourceKey("ProductView.outofstock")</span>
+                            }
+                        </div>
+                    }
+                    @if (@info.GetXmlProperty("genxml/textbox/txtproductref") != "")
+                    {
+                        <div class="properties">
+                            @ResourceKey("General.Ref") @info.GetXmlProperty("genxml/textbox/txtproductref")
+                        </div>
+                    }
+                    <div>
+                    @HtmlOf(product.Info, "genxml/lang/genxml/hidden/promodesc")
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Details -->
+        <div class="mt-3 details">
+            <ul class="nav nav-tabs" role="tablist">
+            @if (info.GetXmlProperty("genxml/lang/genxml/textbox/description") != "")
+            {
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">@ResourceKey("ProductView.description")</a>
+                </li><!-- Product description -->
+            }
+            @if (product.Docs.Count >= 1)
+            {
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">@ResourceKey("ProductView.documentation")</a>
+                </li><!-- Document downloads -->
+            }
+            @if (product.Models.Count > 1)
+            {
+                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">@ResourceKey("ProductView.models")</a></li>
+            }
+            </ul>
+            <div class="tab-content mt-3">
+                @if (@info.GetXmlProperty("genxml/lang/genxml/textbox/description") != "")
+                {
+                    <div id="tab-1" class="tab-pane fade show active" role="tabpanel">
+                        @HtmlOf(info, "genxml/lang/genxml/textbox/description")
+                    </div>
+                }
+                @if (@product.Docs.Count >= 1)
+                {
+                    var uData = new UserData();
+                    <div id="tab-2" class="tab-pane fade">
+                        <div class="documents">
+                        <table>
+                            <tbody>
+                                @foreach (var doc in product.Docs)
+                                {
+                                    if (!doc.GetXmlPropertyBool("genxml/checkbox/chkpurchase") || (uData.HasPurchasedDocByFileName(doc.GetXmlProperty("genxml/hidden/filename"))))
+                                    {
+
+                                        <tr><td><i class='fa fa-file-pdf-o fa-lg'></i><a href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@doc.GetXmlProperty("genxml/textbox/txtfilename")&filename=@doc.GetXmlProperty("genxml/hidden/filerelpath")' title='@doc.GetXmlProperty("genxml/textbox/txtdocdesc")'>@doc.GetXmlProperty("genxml/textbox/txttitle")</a></td></tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                }
+                @if (@product.Models.Count > 1)
+                {
+                    <div id="tab-3" class="tab-pane fade">
+                        <div class="models">
+                            <table class="table mt-3">
+                                <tbody>
+                                <!-- Model list -->
+                                @foreach (var m in product.Models)
+                                {
+                                    if (!m.GetXmlPropertyBool("genxml/checkbox/chkishidden") && !m.GetXmlPropertyBool("genxml/checkbox/chkdeleted"))
+                                    {
+                                        <tr>
+                                            <td class="models-option">@m.GetXmlProperty("genxml/lang/genxml/textbox/txtmodelname")</td><!-- Model Name -->
+                                            <td>@ResourceKey("ProductView.model")<text> </text>@m.GetXmlProperty("genxml/textbox/txtmodelref")</td>
+                                            <td>
+                                            @if (m.GetXmlPropertyDouble("genxml/textbox/txtsaleprice") > 0)
+                                            {
+                                                <span class="old">@NBrightBuyUtils.FormatToStoreCurrency(m.GetXmlPropertyDouble("genxml/textbox/txtunitcost"))</span>
+                                                <strong>@NBrightBuyUtils.FormatToStoreCurrency(m.GetXmlPropertyDouble("genxml/textbox/txtsaleprice"))</strong>
+                                            }
+                                            else
+                                            {
+                                                <span>@NBrightBuyUtils.FormatToStoreCurrency(m.GetXmlPropertyDouble("genxml/textbox/txtunitcost"))</span>
+                                            }
+                                            </td>
+                                            <td class="models-value">
+                                                @if (m.GetXmlPropertyBool("genxml/checkbox/chkstockon") && (m.GetXmlPropertyDouble("genxml/textbox/txtqtyremaining") <= m.GetXmlPropertyDouble("genxml/textbox/txtqtyminstock")))
+                                                {
+                                                    <strong>@ResourceKey("ProductView.outofstock")</strong>
+                                                    if (m.GetXmlProperty("genxml/lang/genxml/textbox/txtextra") != "")
+                                                    {
+                                                        <span> - </span>
+                                                        <span>@m.GetXmlProperty("genxml/lang/genxml/textbox/txtextra")</span>
+                                                    }
+                                                }
+                                                @if (m.GetXmlProperty("genxml/lang/genxml/textbox/txtextra") != "")
+                                                {
+                                                    <span>@m.GetXmlProperty("genxml/lang/genxml/textbox/txtextra")</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+        <!-- End Details -->
+        <!-- Related Items -->
+        @if (@product.GetRelatedProducts().Count >= 1)
+        {
+            <h3>@ResourceKey("ProductView.recommend")</h3>
+            <div id="relatedwrapper" class="row productlist">
+            <!-- Related products -->
+            @foreach (var rp in product.GetRelatedProducts())
+            {
+                var rproduct = new ProductData(rp.ItemID, rp.Lang);
+                <div class="col-12 col-md-6 col-lg-4 col-xxl-3 mb-4">
+                    <div class="product card text-center">
+                        <div class="card-body d-flex flex-column">
+                            <div class="card-title">
+                                    <div class="productimg">
+                                        @if (rproduct.Imgs.Count > 0)
+                                        {
+                                            <div class="image">
+                                                <a href="@EntryUrl(rp, Model)"><img class="unresponsive" title="@(rp.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary"))" src="@ProductImageUrl(info, 450, 0)"></a>
+                                                
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="noimage">
+                                                <i class="fa fa-picture-o"></i>
+                                            </div>
+                                        }
+                                    </div>
+                            </div>
+
+                            <div class="description row mb-3 mt-2 flex-grow-1">
+                                <h4 class="mt-0 mb-0 producttitle"><a href="@EntryUrl(rp, Model)"><span>@rp.GetXmlProperty("genxml/textbox/manufacturer")</span>@ProductName(rp)</a></h4>
+                            </div>
+
+                            <div class="price">
+                                @if (rproduct.Models.Count > 1)
+                                {
+                                    <span class="from">@ResourceKey("ProductView.fromlower")</span>
+                                }
+
+                                @if (rproduct.IsOnSale)
+                                {
+                                    <span class="old">@(NBrightBuyUtils.FormatToStoreCurrency(rproduct.FromPrice()))</span>
+                                    <span class="sale">@(NBrightBuyUtils.FormatToStoreCurrency(rproduct.BestPrice()))</span>
+                                }
+                                else
+                                {
+                                    <span class="normal">@(NBrightBuyUtils.FormatToStoreCurrency(rproduct.BestPrice()))</span>
+                                }
+                            </div>
+                            <div class="flags">
+                                @if (rproduct.IsOnSale)
+                                {
+                                    <span class="onsaleflag">@ResourceKey("ProductView.promoflag")</span>
+                                }
+                                @if (!rproduct.IsInStock)
+                                {
+                                    <span class="outofstockflag">@ResourceKey("ProductView.outofstockflag")</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+        }
+    </div>
+</div>
