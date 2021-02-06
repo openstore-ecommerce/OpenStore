@@ -209,7 +209,7 @@
         <!-- Details -->
         <div class="mt-3 details">
             <ul class="nav nav-tabs" role="tablist">
-            @if (info.GetXmlProperty("genxml/lang/genxml/textbox/description") != "")
+            @if (info.GetXmlProperty("genxml/lang/genxml/edt/description") != "")
             {
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">@ResourceKey("ProductView.description")</a>
@@ -227,10 +227,10 @@
             }
             </ul>
             <div class="tab-content mt-3">
-                @if (@info.GetXmlProperty("genxml/lang/genxml/textbox/description") != "")
+                @if (@info.GetXmlProperty("genxml/lang/genxml/edt/description") != "")
                 {
                     <div id="tab-1" class="tab-pane fade show active" role="tabpanel">
-                        @HtmlOf(info, "genxml/lang/genxml/textbox/description")
+                        @HtmlOf(info, "genxml/lang/genxml/edt/description")
                     </div>
                 }
                 @if (@product.Docs.Count >= 1)

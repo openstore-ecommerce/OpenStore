@@ -145,7 +145,7 @@
     <value>De bestelling is geannuleerd, of de betaling is mislukt. Controleer uw bankgegevens of neem contact op met ons op als u denkt dat het probleem bij ons zit.</value>
   </data>
 	<data name="checkoutsuccessmessage.Text" xml:space="preserve">
-    <value>Dank voor uw bestelling. U ontvangt per e-mail een bevestiging met alle informatie. Controleer uw ongewenste e-mail als u na 30 minuten nog niets ontvangen heeft. Indien u contact met ons opneemt vernemen wij graag uw ordernummer.</value>
+    <value>Dank voor uw bestelling. U ontvangt per e-mail een bevestiging met alle informatie. Controleer uw ongewenste e-mail als u na 30 minuten nog niets ontvangen heeft. Indien u contact met ons opneemt vernemen wij graag uw bestelnummer.</value>
   </data>
 	<data name="Collection.Text" xml:space="preserve">
     <value>Details van de bestelling</value>

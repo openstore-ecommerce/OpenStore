@@ -127,7 +127,7 @@
     <value>&lt;i class="fa fa-bar-chart-o fa-fw"&gt;&lt;/i&gt;</value>
   </data>
   <data name="assembly.Text" xml:space="preserve">
-    <value>Vergadering</value>
+    <value>Assembly</value>
   </data>
   <data name="bomenuattributes.Text" xml:space="preserve">
     <value>class="nav main-menu"</value>
