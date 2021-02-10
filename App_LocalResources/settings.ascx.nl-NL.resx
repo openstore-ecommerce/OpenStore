@@ -145,7 +145,7 @@
     <value>Fiscale codeveld</value>
   </data>
   <data name="copyorderto.Text" xml:space="preserve">
-    <value>Kopiëren van bestelling naar E-mail</value>
+    <value>Kopie van bestelling naar e-mail</value>
   </data>
   <data name="currencysymbol.Text" xml:space="preserve">
     <value>Valutasymbool</value>
