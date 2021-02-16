@@ -102,106 +102,131 @@
     </Compile>
     <Compile Include="Admin\PropertiesValue.ascx.cs">
       <DependentUpon>PropertiesValue.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\PropertiesValue.ascx.designer.cs">
       <DependentUpon>PropertiesValue.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Categories.ascx.cs">
       <DependentUpon>Categories.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Categories.ascx.designer.cs">
       <DependentUpon>Categories.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Clients.ascx.cs">
       <DependentUpon>Clients.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Clients.ascx.designer.cs">
       <DependentUpon>Clients.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\BackOffice.ascx.cs">
       <DependentUpon>BackOffice.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\BackOffice.ascx.designer.cs">
       <DependentUpon>BackOffice.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Tools.ascx.cs">
       <DependentUpon>Tools.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Tools.ascx.designer.cs">
       <DependentUpon>Tools.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Import.ascx.cs">
       <DependentUpon>Import.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Import.ascx.designer.cs">
       <DependentUpon>Import.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Export.ascx.cs">
       <DependentUpon>Export.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Export.ascx.designer.cs">
       <DependentUpon>Export.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\EditLanguage.ascx.cs">
       <DependentUpon>EditLanguage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\EditLanguage.ascx.designer.cs">
       <DependentUpon>EditLanguage.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Products.ascx.cs">
       <DependentUpon>Products.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Products.ascx.designer.cs">
       <DependentUpon>Products.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\PropertyGroups.ascx.cs">
       <DependentUpon>PropertyGroups.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\PropertyGroups.ascx.designer.cs">
       <DependentUpon>PropertyGroups.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Settings.ascx.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\DashSummary.ascx.cs">
       <DependentUpon>DashSummary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\DashSummary.ascx.designer.cs">
       <DependentUpon>DashSummary.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Plugins.ascx.cs">
       <DependentUpon>Plugins.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Plugins.ascx.designer.cs">
       <DependentUpon>Plugins.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Menu.ascx.cs">
       <DependentUpon>Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Menu.ascx.designer.cs">
       <DependentUpon>Menu.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Orders.ascx.cs">
       <DependentUpon>Orders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Orders.ascx.designer.cs">
       <DependentUpon>Orders.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="Base\NBrightBuyFrontOfficeBase.cs" />
-    <Compile Include="Base\NBrightBuyAdminBase.cs" />
-    <Compile Include="Base\NBrightBuyBase.cs" />
-    <Compile Include="Base\NBrightBuySettingBase.cs" />
+    <Compile Include="Base\NBrightBuyFrontOfficeBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\NBrightBuyAdminBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\NBrightBuyBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base\NBrightBuySettingBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="CartRazorView.ascx.cs">
       <DependentUpon>CartRazorView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CartRazorView.ascx.designer.cs">
       <DependentUpon>CartRazorView.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="CartRazorViewSettings.ascx.cs">
       <DependentUpon>CartRazorViewSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CartRazorViewSettings.ascx.designer.cs">
       <DependentUpon>CartRazorViewSettings.ascx.cs</DependentUpon>
@@ -210,12 +235,14 @@
     <Compile Include="Components\ItemLists\ListCount.cs" />
     <Compile Include="ProductListAjaxFilter.ascx.cs">
       <DependentUpon>ProductListAjaxFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductListAjaxFilter.ascx.designer.cs">
       <DependentUpon>ProductListAjaxFilter.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductListAjaxFilterSettings.ascx.cs">
       <DependentUpon>ProductListAjaxFilterSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductListAjaxFilterSettings.ascx.designer.cs">
       <DependentUpon>ProductListAjaxFilterSettings.ascx.cs</DependentUpon>
@@ -240,36 +267,42 @@
     <Compile Include="Components\Product\ProductUtils.cs" />
     <Compile Include="ItemListRazor.ascx.cs">
       <DependentUpon>ItemListRazor.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ItemListRazor.ascx.designer.cs">
       <DependentUpon>ItemListRazor.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemListRazorSettings.ascx.cs">
       <DependentUpon>ItemListRazorSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ItemListRazorSettings.ascx.designer.cs">
       <DependentUpon>ItemListRazorSettings.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductRazorSearch.ascx.cs">
       <DependentUpon>ProductRazorSearch.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductRazorSearch.ascx.designer.cs">
       <DependentUpon>ProductRazorSearch.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductRazorSearchSettings.ascx.cs">
       <DependentUpon>ProductRazorSearchSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductRazorSearchSettings.ascx.designer.cs">
       <DependentUpon>ProductRazorSearchSettings.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="CategoryRazorMenuSettings.ascx.cs">
       <DependentUpon>CategoryRazorMenuSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CategoryRazorMenuSettings.ascx.designer.cs">
       <DependentUpon>CategoryRazorMenuSettings.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="CategoryRazorMenu.ascx.cs">
       <DependentUpon>CategoryRazorMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CategoryRazorMenu.ascx.designer.cs">
       <DependentUpon>CategoryRazorMenu.ascx.cs</DependentUpon>
@@ -278,36 +311,42 @@
     <Compile Include="Components\Interfaces\EntityTypeInterface.cs" />
     <Compile Include="OrderRazorAdmin.ascx.cs">
       <DependentUpon>OrderRazorAdmin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="OrderRazorAdmin.ascx.designer.cs">
       <DependentUpon>OrderRazorAdmin.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderRazorAdminSettings.ascx.cs">
       <DependentUpon>OrderRazorAdminSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="OrderRazorAdminSettings.ascx.designer.cs">
       <DependentUpon>OrderRazorAdminSettings.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductAjaxView.ascx.cs">
       <DependentUpon>ProductAjaxView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductAjaxView.ascx.designer.cs">
       <DependentUpon>ProductAjaxView.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="ProductAjaxViewSettings.ascx.cs">
       <DependentUpon>ProductAjaxViewSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProductAjaxViewSettings.ascx.designer.cs">
       <DependentUpon>ProductAjaxViewSettings.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="ProfileRazorFormSettings.ascx.cs">
       <DependentUpon>ProfileRazorFormSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProfileRazorFormSettings.ascx.designer.cs">
       <DependentUpon>ProfileRazorFormSettings.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="ProfileRazorForm.ascx.cs">
       <DependentUpon>ProfileRazorForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProfileRazorForm.ascx.designer.cs">
       <DependentUpon>ProfileRazorForm.ascx.cs</DependentUpon>
@@ -343,36 +382,42 @@
     <Compile Include="Components\StoreSettings.cs" />
     <Compile Include="AddressAdmin.ascx.cs">
       <DependentUpon>AddressAdmin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AddressAdmin.ascx.designer.cs">
       <DependentUpon>AddressAdmin.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="AddressAdminSettings.ascx.cs">
       <DependentUpon>AddressAdminSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AddressAdminSettings.ascx.designer.cs">
       <DependentUpon>AddressAdminSettings.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Container.ascx.cs">
       <DependentUpon>Container.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Container.ascx.designer.cs">
       <DependentUpon>Container.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="Payment.ascx.cs">
       <DependentUpon>Payment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Payment.ascx.designer.cs">
       <DependentUpon>Payment.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="PaymentSettings.ascx.cs">
       <DependentUpon>PaymentSettings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PaymentSettings.ascx.designer.cs">
       <DependentUpon>PaymentSettings.ascx.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintView.aspx.cs">
       <DependentUpon>PrintView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PrintView.aspx.designer.cs">
       <DependentUpon>PrintView.aspx.cs</DependentUpon>
@@ -1772,7 +1817,6 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets'))" />
   </Target>
   <Import Project="packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets" Condition="Exists('packages\MSBuildTasks.1.5.0.235\build\MSBuildTasks.targets')" />
   <PropertyGroup>

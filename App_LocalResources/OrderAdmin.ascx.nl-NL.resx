@@ -100,7 +100,7 @@
 		<value xml:space="preserve">Kwitantie</value>
 	</data>
 	<data name="PaymentMethod.Text">
-		<value xml:space="preserve">Betalingsmethode: </value>
+		<value xml:space="preserve">Betaalmethode: </value>
 	</data>
 	<data name="PaymentStatus.Text" lastModified="2014-11-29 13:56:22">
 		<value xml:space="preserve">Status betaling</value>

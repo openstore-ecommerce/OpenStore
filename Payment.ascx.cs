@@ -73,9 +73,12 @@ namespace Nevoweb.DNN.NBrightBuy
                         {
                             cartInfo.SaveModelTransQty(); // move qty into trans
                             var orderData = cartInfo.ConvertToOrder(StoreSettings.Current.DebugMode);
-                            orderData.PaymentProviderKey = providerkey.ToLower(); // provider keys should always be lowecase
-                            orderData.SavePurchaseData();
-                            PaymentsInterface.Instance(orderData.PaymentProviderKey).RedirectForPayment(orderData);
+                            if (orderData != null)
+                            {
+                                orderData.PaymentProviderKey = providerkey.ToLower(); // provider keys should always be lowecase
+                                orderData.SavePurchaseData();
+                                PaymentsInterface.Instance(orderData.PaymentProviderKey).RedirectForPayment(orderData);
+                            }
                         }
                     }
                     else

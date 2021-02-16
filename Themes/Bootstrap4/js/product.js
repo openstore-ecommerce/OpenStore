@@ -116,7 +116,7 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         $('.processingminicart').show();
         $('input[id*="optionfilelist"]').val(''); // clear any clientupload file names
         $('#carttemplate').val('MiniCart.cshtml');
-        nbxproductget('cart_renderminicart', '#productajaxview', '.container_classicajax_minicart'); // Reload Cart
+        nbxproductget('cart_renderminicart', '#productajaxview', '.container_bootstrap4_minicart'); // Reload Cart
         $('.addedtobasket').delay(1000).fadeOut('fast');
     }
 

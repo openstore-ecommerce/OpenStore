@@ -333,4 +333,10 @@
   &lt;i class="fa fa-star fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
 &lt;/span&gt;</value>
   </data>
+  <data name="article.Text" xml:space="preserve">
+    <value>artikel</value>
+  </data>
+  <data name="articles.Text" xml:space="preserve">
+    <value>artikelen</value>
+  </data>
 </root>
