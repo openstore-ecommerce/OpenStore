@@ -1549,6 +1549,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return RazorTemplRenderList(razorTemplName, moduleid, cacheKey, objList, templateControlPath, theme, lang, settings, null);
         }
 
+        private static string lockobjectRazorTemplRenderList = "lockitRazorTemplRenderList";
         public static string RazorTemplRenderList(string razorTemplName, int moduleid, string cacheKey, List<NBrightInfo> objList, string templateControlPath, string theme, string lang, Dictionary<string, string> settings, NBrightInfo headerData)
         {
             // do razor template
@@ -1560,26 +1561,30 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var razorTempl = (string)GetModCache(ckey);
             if (razorTempl == null || StoreSettings.Current.DebugMode)
             {
-                razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
-                if (razorTempl != "")
+                lock (lockobjectRazorTemplRenderList)
                 {
-                    var nbRazor = new NBrightRazor(objList.Cast<object>().ToList(), settings, HttpContext.Current.Request.QueryString);
-                    nbRazor.ModuleId = moduleid;
-                    nbRazor.FullTemplateName = theme + "." + razorTemplName;
-                    nbRazor.TemplateName = razorTemplName;
-                    nbRazor.ThemeFolder = theme;
-                    nbRazor.Lang = lang;
+                    razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
+                    if (razorTempl != "")
+                    {
+                        var nbRazor = new NBrightRazor(objList.Cast<object>().ToList(), settings, HttpContext.Current.Request.QueryString);
+                        nbRazor.ModuleId = moduleid;
+                        nbRazor.FullTemplateName = theme + "." + razorTemplName;
+                        nbRazor.TemplateName = razorTemplName;
+                        nbRazor.ThemeFolder = theme;
+                        nbRazor.Lang = lang;
 
-                    nbRazor.HeaderData = headerData;
+                        nbRazor.HeaderData = headerData;
 
-                    var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString();
-                    razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, StoreSettings.Current.DebugMode);
-                    if (cacheKey != "") SetModCache(moduleid, ckey, razorTempl); // only save to cache if we pass in a cache key.
+                        var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString();
+                        razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, StoreSettings.Current.DebugMode);
+                        if (cacheKey != "") SetModCache(moduleid, ckey, razorTempl); // only save to cache if we pass in a cache key.
+                    }
                 }
             }
             return razorTempl;
         }
 
+        private static string lockobjectRenderGroupCategoryList = "lockitRenderGroupCategoryList";
         public static string RazorTemplRenderGroupCategoryList(string razorTemplName, int moduleid, string cacheKey, List<GroupCategoryData> objList, string templateControlPath, string theme, string lang, Dictionary<string, string> settings)
         {
             // do razor template
@@ -1587,24 +1592,28 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var razorTempl = (string)GetModCache(cachekey);
             if (razorTempl == null || StoreSettings.Current.DebugMode)
             {
-                razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
-                if (razorTempl != "")
+                lock (lockobjectRenderGroupCategoryList)
                 {
-                    var nbRazor = new NBrightRazor(objList.Cast<object>().ToList(), settings, HttpContext.Current.Request.QueryString);
-                    nbRazor.ModuleId = moduleid;
-                    nbRazor.FullTemplateName = theme + "." + razorTemplName;
-                    nbRazor.TemplateName = razorTemplName;
-                    nbRazor.ThemeFolder = theme;
-                    nbRazor.Lang = lang;
+                    razorTempl = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
+                    if (razorTempl != "")
+                    {
+                        var nbRazor = new NBrightRazor(objList.Cast<object>().ToList(), settings, HttpContext.Current.Request.QueryString);
+                        nbRazor.ModuleId = moduleid;
+                        nbRazor.FullTemplateName = theme + "." + razorTemplName;
+                        nbRazor.TemplateName = razorTemplName;
+                        nbRazor.ThemeFolder = theme;
+                        nbRazor.Lang = lang;
 
-                    var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString();
-                    razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, StoreSettings.Current.DebugMode);
-                    if (cacheKey != "") SetModCache(moduleid, cachekey, razorTempl); // only save to cache if we pass in a cache key.
+                        var razorTemplateKey = "NBrightBuyRazorKey" + theme + razorTemplName + PortalSettings.Current.PortalId.ToString();
+                        razorTempl = RazorRender(nbRazor, razorTempl, razorTemplateKey, StoreSettings.Current.DebugMode);
+                        if (cacheKey != "") SetModCache(moduleid, cachekey, razorTempl); // only save to cache if we pass in a cache key.
+                    }
                 }
             }
             return razorTempl;
         }
 
+        private static string lockobjectRazorPreProcessTempl = "lockitRazorPreProcessTempl";
         public static Dictionary<string, string> RazorPreProcessTempl(string razorTemplName, string templateControlPath, string theme, string lang, Dictionary<string, string> settings, string moduleid = "")
         {
             // match the "AddPreProcessMetaData()" cachekey.
@@ -1618,37 +1627,40 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (cachedlist != null) return cachedlist;
             }
 
-            // build cache data from template.
-            var razorTemplate = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
-            if (razorTemplate != "" && razorTemplate.Contains("AddPreProcessMetaData"))
+            lock (lockobjectRazorPreProcessTempl)
             {
-                var obj = new NBrightInfo(true);
-                obj.Lang = lang;
-                obj.ModuleId = -1;
-                var l = new List<object>();
-                l.Add(obj);
-                var modRazor = new NBrightRazor(l, settings, HttpContext.Current.Request.QueryString);
-                modRazor.FullTemplateName = theme + "." + razorTemplName;
-                modRazor.TemplateName = razorTemplName;
-                modRazor.ThemeFolder = theme;
-                modRazor.Lang = lang;
-                try
+                // build cache data from template.
+                var razorTemplate = GetRazorTemplateData(razorTemplName, templateControlPath, theme, lang);
+                if (razorTemplate != "" && razorTemplate.Contains("AddPreProcessMetaData"))
                 {
-                    // do razor and cache preprocessmetadata
-                    razorTemplate = RazorRender(modRazor, razorTemplate, cachekey, false);
+                    var obj = new NBrightInfo(true);
+                    obj.Lang = lang;
+                    obj.ModuleId = -1;
+                    var l = new List<object>();
+                    l.Add(obj);
+                    var modRazor = new NBrightRazor(l, settings, HttpContext.Current.Request.QueryString);
+                    modRazor.FullTemplateName = theme + "." + razorTemplName;
+                    modRazor.TemplateName = razorTemplName;
+                    modRazor.ThemeFolder = theme;
+                    modRazor.Lang = lang;
+                    try
+                    {
+                        // do razor and cache preprocessmetadata
+                        razorTemplate = RazorRender(modRazor, razorTemplate, cachekey, false);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Only log exception, could be a error because of missing data.  The preprocessing doesn't care.
+                    }
+                    cachedlist = (Dictionary<string, string>)Utils.GetCache(cachekey);
+                    if (cachedlist == null) cachedlist = new Dictionary<string, string>();
+                    Utils.SetCache(cachekey, cachedlist);
                 }
-                catch (Exception ex)
+                else
                 {
-                    // Only log exception, could be a error because of missing data.  The preprocessing doesn't care.
+                    cachedlist = new Dictionary<string, string>();
+                    Utils.SetCache(cachekey, cachedlist);
                 }
-                cachedlist = (Dictionary<string, string>) Utils.GetCache(cachekey);
-                if (cachedlist == null) cachedlist = new Dictionary<string, string>();
-                Utils.SetCache(cachekey, cachedlist);
-            }
-            else
-            {
-                cachedlist = new Dictionary<string, string>();
-                Utils.SetCache(cachekey, cachedlist);
             }
             return cachedlist;
         }

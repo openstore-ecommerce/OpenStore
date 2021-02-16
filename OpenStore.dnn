@@ -93,6 +93,8 @@
 
         v04.01.05
         - Minor updates
+        - Fix problem with cahce on product header.
+        - Fix duplicate plugin records.
         - Convert Dev to DNNpackager. 
 
       </releaseNotes>
