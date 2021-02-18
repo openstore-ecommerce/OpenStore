@@ -209,7 +209,7 @@ else
                                 if (!doc.GetXmlPropertyBool("genxml/checkbox/chkpurchase") || (uData.HasPurchasedDocByFileName(doc.GetXmlProperty("genxml/hidden/filename"))))
                                 {
 
-                                    <tr><td><i class='fa fa-file-pdf-o fa-lg'></i><a href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@doc.GetXmlProperty("genxml/textbox/txtfilename")&filename=@doc.GetXmlProperty("genxml/hidden/filerelpath")' title='@doc.GetXmlProperty("genxml/textbox/txtdocdesc")'>@doc.GetXmlProperty("genxml/textbox/txttitle")</a></td></tr>
+                                    <tr><td><i class='fa fa-file-pdf-o fa-lg'></i><a rel='nofollow'  href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@doc.GetXmlProperty("genxml/textbox/txtfilename")&filename=@doc.GetXmlProperty("genxml/hidden/filerelpath")' title='@doc.GetXmlProperty("genxml/textbox/txtdocdesc")'>@doc.GetXmlProperty("genxml/textbox/txttitle")</a></td></tr>
                                 }
                             }
                         </tbody>

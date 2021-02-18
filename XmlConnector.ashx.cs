@@ -264,42 +264,46 @@ namespace Nevoweb.DNN.NBrightBuy
             }
         }
 
+        private static string lockobjectDownloadSystemFile = "lockit";
         private string DownloadSystemFile(string paramCmd, HttpContext context)
         {
             var strOut = "";
-            var fname = Utils.RequestQueryStringParam(context, "filename");
-            var filekey = Utils.RequestQueryStringParam(context, "key");
-            if (filekey != "")
+            lock (lockobjectDownloadSystemFile)
             {
-                var uData = new UserData();
-                if (uData.HasPurchasedDocByKey(filekey)) fname = uData.GetPurchasedFileName(filekey);
-                fname = StoreSettings.Current.FolderDocuments + "/" + fname;
-            }
-            if (fname != "")
-            {
-                strOut = fname; // return this is error.
-                var downloadname = Utils.RequestQueryStringParam(context, "downloadname");
-                var fpath = HttpContext.Current.Server.MapPath(fname);
-                if (downloadname == "") downloadname = Path.GetFileName(fname);
-                try
+                var fname = Utils.RequestQueryStringParam(context, "filename");
+                var filekey = Utils.RequestQueryStringParam(context, "key");
+                if (filekey != "")
                 {
-                    if (fpath.ToLower().Contains("\\secure"))
+                    var uData = new UserData();
+                    if (uData.HasPurchasedDocByKey(filekey)) fname = uData.GetPurchasedFileName(filekey);
+                    fname = StoreSettings.Current.FolderDocuments + "/" + fname;
+                }
+                if (fname != "")
+                {
+                    strOut = fname; // return this is error.
+                    var downloadname = Utils.RequestQueryStringParam(context, "downloadname");
+                    var fpath = HttpContext.Current.Server.MapPath(fname);
+                    if (downloadname == "") downloadname = Path.GetFileName(fname);
+                    try
                     {
-                        if (NBrightBuyUtils.CheckManagerRights())
+                        if (fpath.ToLower().Contains("\\secure"))
+                        {
+                            if (NBrightBuyUtils.CheckManagerRights())
+                            {
+                                Utils.ForceDocDownload(fpath, downloadname, context.Response);
+                            }
+                        }
+                        else
                         {
                             Utils.ForceDocDownload(fpath, downloadname, context.Response);
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Utils.ForceDocDownload(fpath, downloadname, context.Response);
+                        // ignore, robots can cause error on thread abort.
+                        //Exceptions.LogException(ex);
+                        Logging.Debug($"XmlConnector.ProcessRequest exception for {paramCmd} which is ignored because bots tend to cause these on thread abort: {ex.Message}.");
                     }
-                }
-                catch (Exception ex)
-                {
-                    // ignore, robots can cause error on thread abort.
-                    //Exceptions.LogException(ex);
-                    Logging.Debug($"XmlConnector.ProcessRequest exception for {paramCmd} which is ignored because bots tend to cause these on thread abort: {ex.Message}.");
                 }
             }
             return strOut;

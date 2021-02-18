@@ -18,6 +18,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscountCodesProvider", "Providers\DiscountCodesProvider\DiscountCodesProvider.csproj", "{A634CB2D-946E-4C73-B7DC-0677CE5AA7D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F7C3DDA-C643-40C8-B411-99C6C8AF5ED6}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Websites\OpenStore\www.agrilisa.com\Install\Portals\0\Themes\Default\Default\CheckoutAddress.cshtml = ..\..\..\..\Websites\OpenStore\www.agrilisa.com\Install\Portals\0\Themes\Default\Default\CheckoutAddress.cshtml
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NBrightDNN", "..\NBrightData\NBrightDNN.csproj", "{EC815D38-62CF-4B46-8177-CF40CE1AAB62}"
 EndProject
