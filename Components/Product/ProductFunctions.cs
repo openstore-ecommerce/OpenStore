@@ -299,10 +299,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
                 var itemid = -1;
-                if (!newrecord)
-                {
-                    itemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/itemid");
-                }
+                if (!newrecord) itemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/itemid");
                 if (itemid != 0)
                 {
                     var prdData = new ProductData(itemid, EditLangCurrent, true, EntityTypeCode);
@@ -329,6 +326,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var productXml = ajaxInfo.XMLData;
 
                     prdData.Update(productXml);
+
+                    if (newrecord) prdData.DataLangRecord.SetXmlProperty("genxml/textbox/txtproductname", prdData.ProductName + " - Copy");
+
                     prdData.Save(true,newrecord);
 
                     ProductUtils.CreateFriendlyImages(prdData.DataRecord.ItemID, EditLangCurrent);
