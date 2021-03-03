@@ -299,7 +299,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Plugins
                     var objCtrl = new NBrightBuyController();
                     objCtrl.Delete(Convert.ToInt32(itemid));
 
-                    PluginUtils.CopySystemPluginsToPortal();
+                    // We NEED to deletel, this action can create duplicate records.
+                    // PluginUtils.CopySystemPluginsToPortal();
 
                     // remove save GetData cache
                     DataCache.ClearCache();
