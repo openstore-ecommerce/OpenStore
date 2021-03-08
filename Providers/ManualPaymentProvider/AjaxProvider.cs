@@ -31,17 +31,21 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
 
             var objCtrl = new NBrightBuyController();
             var strOut = "manualpayment Ajax Error";
-            switch (paramCmd)
+
+            if (PluginUtils.CheckPluginSecurity(PortalSettings.Current.PortalId, "manualpayment"))
             {
-                case "manualpayment_savesettings":
-                    strOut = objCtrl.SavePluginSinglePageData(context);
-                    break;
-                case "manualpayment_selectlang":
-                    objCtrl.SavePluginSinglePageData(context);
-                    var nextlang = ajaxInfo.GetXmlProperty("genxml/hidden/nextlang");
-                    var info = objCtrl.GetPluginSinglePageData("manualpayment", "MANUALPAYMENT", nextlang);
-                    strOut = NBrightBuyUtils.RazorTemplRender("settingsfields.cshtml", 0, "", info, "/DesktopModules/NBright/NBrightBuy/Providers/ManualPaymentProvider", "config", nextlang, StoreSettings.Current.Settings());
-                    break;
+                switch (paramCmd)
+                {
+                    case "manualpayment_savesettings":
+                        strOut = objCtrl.SavePluginSinglePageData(context);
+                        break;
+                    case "manualpayment_selectlang":
+                        objCtrl.SavePluginSinglePageData(context);
+                        var nextlang = ajaxInfo.GetXmlProperty("genxml/hidden/nextlang");
+                        var info = objCtrl.GetPluginSinglePageData("manualpayment", "MANUALPAYMENT", nextlang);
+                        strOut = NBrightBuyUtils.RazorTemplRender("settingsfields.cshtml", 0, "", info, "/DesktopModules/NBright/NBrightBuy/Providers/ManualPaymentProvider", "config", nextlang, StoreSettings.Current.Settings());
+                        break;
+                }
             }
 
             return strOut;
