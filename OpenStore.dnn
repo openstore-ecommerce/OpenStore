@@ -96,6 +96,7 @@
         - Fix problem with cahce on product header.
         - Fix duplicate plugin records.
         - Convert Dev to DNNpackager. 
+        - Bi-Directional Related Products option.
 
       </releaseNotes>
       <dependencies>
