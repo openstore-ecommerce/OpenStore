@@ -32,7 +32,7 @@
                 }
 
 
-            <a class="productAdmin_cmdEdit" itemid="@nbiRel.ItemID" href="javascript:void(0)">
+            <a class="product_admin_cmdEdit" itemid="@nbiRel.ItemID" href="javascript:void(0)">
                 <li class="title name">
                     @adminname
                 </li>
@@ -42,3 +42,21 @@
     </li>
 
 }
+
+<script>
+
+    $(document).ready(function () {
+
+
+        $('.product_admin_cmdEdit').unbind('click');
+        $('.product_admin_cmdEdit').click(function () {
+            $('.processing').show();
+            $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
+            $('#p1_selecteditemid').val($(this).attr("itemid")); // assign the sleected itemid, so the server knows what item is being edited
+            nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay'); // do ajax call to get edit form
+        });
+        $('.processing').hide();
+
+    });
+
+</script>

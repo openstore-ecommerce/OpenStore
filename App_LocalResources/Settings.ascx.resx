@@ -555,4 +555,7 @@
   <data name="seoimagesmsg.Text" xml:space="preserve">
     <value>Images can be renmaed to the alt of the image in the product detail, it will default to the product name.  A friendly SEO name will be created for each language and will also create mulitple sizes of images.  This is optional and does NOT give any great advantage to product SEO, but can help the images be reference if you require it.  You should run a store validation to rebuild all the images after this is turned on (It will take a LONG time, if you have a lot of images).</value>
   </data>
+  <data name="bidirectionrelatedproducts.Text" xml:space="preserve">
+    <value>Bi-Directional Related Products</value>
+  </data>
 </root>

@@ -105,6 +105,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             DealerRole = Get("dealerrole");
             if (DealerRole == "") DealerRole = "Dealer";
+            BiDirectionRelatedProducts = GetBool("bidirectionrelatedproducts");
         }
 
         #endregion
@@ -251,6 +252,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public bool DebugMode { get; private set; }
         public bool DebugModeFileOut { get; private set; }
         public bool EnableFileLogging { get; private set; }
+        public bool BiDirectionRelatedProducts { get; private set; }
         /// <summary>
         /// Get Client StorageType type Cookie,SessionMemory
         /// </summary>
