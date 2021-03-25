@@ -1021,7 +1021,7 @@
     <value>Paramètres</value>
   </data>
   <data name="Shipping.Text" xml:space="preserve">
-    <value>Livraison</value>
+    <value>Livraison (TTC)</value>
   </data>
   <data name="shippingdate.Text" xml:space="preserve">
     <value>Date de livraison</value>
