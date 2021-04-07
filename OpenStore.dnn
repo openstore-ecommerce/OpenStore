@@ -97,6 +97,7 @@
         - Fix duplicate plugin records.
         - Convert Dev to DNNpackager. 
         - Bi-Directional Related Products option.
+        - Fix tax on not included tax prices.
 
       </releaseNotes>
       <dependencies>
