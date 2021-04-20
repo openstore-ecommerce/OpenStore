@@ -300,12 +300,12 @@ else
 
                                 <div class="price">
 
-                                    @if (product.Models.Count > 1)
+                                    @if (rproduct.Models.Count > 1)
                                     {
                                         <span class="from">@ResourceKey("ProductView.from")</span>
                                     }
 
-                                    @if (product.IsOnSale)
+                                    @if (rproduct.IsOnSale)
                                     {
                                         <span class="old">@(NBrightBuyUtils.FormatToStoreCurrency(rproduct.FromPrice()))</span>
                                         <span class="sale">@(NBrightBuyUtils.FormatToStoreCurrency(rproduct.BestPrice()))</span>
@@ -317,11 +317,11 @@ else
                                 </div>
 
                                 <div class="flags">
-                                @if (product.IsOnSale)
+                                @if (rproduct.IsOnSale)
                                 {
                                     <span class="onsaleflag">@ResourceKey("ProductView.onsaleflag")</span>
                                 }
-                                @if (!product.IsInStock)
+                                @if (!rproduct.IsInStock)
                                 {
                                     <span class="outofstockflag">@ResourceKey("ProductView.outofstockflag")</span>
                                 }

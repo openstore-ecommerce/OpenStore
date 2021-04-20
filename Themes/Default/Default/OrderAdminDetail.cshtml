@@ -26,7 +26,7 @@
 
         @if (nbi.GetXmlProperty("genxml/hidden/invoicefilename") != "")
         {
-            <a class="documentlink btn btn-default primarybutton" href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@nbi.GetXmlProperty("genxml/hidden/invoicedownloadname")&filename=@nbi.GetXmlProperty("genxml/hidden/invoicefilerelpath")'>@ResourceKey("OrderAdmin.downloadinvoice")</a>
+            <a class="documentlink btn btn-default primarybutton" href='/DesktopModules/NBright/NBrightBuy/XmlConnector.ashx?cmd=docdownload&downloadname=@nbi.GetXmlProperty("genxml/hidden/invoicedownloadname")&userid=@nbi.UserId&filename=@nbi.GetXmlProperty("genxml/hidden/invoicefilerelpath")'>@ResourceKey("OrderAdmin.downloadinvoice")</a>
         }
     </div>
 

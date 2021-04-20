@@ -287,13 +287,14 @@ namespace Nevoweb.DNN.NBrightBuy
                 {
                     strOut = fname; // return this is error.
                     var downloadname = Utils.RequestQueryStringParam(context, "downloadname");
+                    var userid = Utils.RequestQueryStringParam(context, "userid");                    
                     var fpath = HttpContext.Current.Server.MapPath(fname);
                     if (downloadname == "") downloadname = Path.GetFileName(fname);
                     try
                     {
                         if (fpath.ToLower().Contains("\\secure"))
                         {
-                            if (NBrightBuyUtils.CheckManagerRights())
+                            if (NBrightBuyUtils.CheckManagerRights() || UserController.Instance.GetCurrentUserInfo().UserID.ToString() == userid)
                             {
                                 Utils.ForceDocDownload(fpath, downloadname, context.Response);
                             }
@@ -487,12 +488,14 @@ namespace Nevoweb.DNN.NBrightBuy
                 Regex fexpr = new Regex(StoreSettings.Current.Get("fileregexpr"));
                 if (fexpr.Match(file.FileName.ToLower()).Success)
                 {
+                    var ext = Path.GetExtension(file.FileName);
                     var fn = DnnUtils.Encrypt(file.FileName, StoreSettings.Current.Get("adminpin"));
                     foreach (char c in System.IO.Path.GetInvalidFileNameChars())
                     {
                         fn = fn.Replace(c, '_');
                     }
-                    file.SaveAs(StoreSettings.Current.FolderTempMapPath + "\\" + fn);
+                    fn = ext + "-" + fn; // add extension to front, so it cannot be servered but we can add to order data.
+                    file.SaveAs(StoreSettings.Current.FolderTempMapPath + "\\" + fn); 
                     statuses.Add(new FilesStatus(Path.GetFileName(fn), file.ContentLength));
                 }
             }

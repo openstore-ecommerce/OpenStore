@@ -214,6 +214,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
                             {
                                 var fname = Path.GetFileName(ajaxInfo.GetXmlProperty("genxml/hidden/optionfilelist"));
 
+                                var ext = Path.GetExtension(fname);
+                                fname = DnnUtils.Encrypt(fname, StoreSettings.Current.Get("adminpin"));
+                                foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+                                {
+                                    fname = fname.Replace(c, '_');
+                                }
+                                fname = ext + "-" + fname; // add extension to front, so it cannot be servered but we can add to order data.
+
                                 if (File.Exists(StoreSettings.Current.FolderTempMapPath.TrimEnd('\\') + "\\" + fname))
                                 {
                                     var newfname = "secure" + Utils.GetUniqueKey();
@@ -229,9 +237,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
                                     ordData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicefilepath", StoreSettings.Current.FolderUploadsMapPath.TrimEnd('\\') + "\\" + newfname);
                                     ordData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicefilename", newfname);
                                     ordData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoiceuploadname", fname);
-                                    ordData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicefileext", Path.GetExtension(fname));
+
+                                    var ext2 = "";
+                                    var extSplit = fname.Split('-');
+                                    if (extSplit.Count() > 0) ext2 = extSplit[0]; // we add the extension to the front of upload for IIS default security in serving file.
+
+                                    ordData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicefileext", ext2);
                                     ordData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicefilerelpath", StoreSettings.Current.FolderUploads + "/" + newfname);
-                                    ordData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicedownloadname", "NBS" + ordData.OrderNumber + Path.GetExtension(fname));
+                                    ordData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicedownloadname", "OS" + ordData.OrderNumber + ext2);
                                 }
                             }
 
