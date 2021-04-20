@@ -53,6 +53,7 @@ namespace Nevoweb.DNN.NBrightBuy
             #region "Initialize"
 
             var strOut = "** No Action **";
+            var sendResponse = true;
 
             var paramCmd = Utils.RequestQueryStringParam(context, "cmd");
             var itemId = Utils.RequestQueryStringParam(context, "itemid");
@@ -164,6 +165,7 @@ namespace Nevoweb.DNN.NBrightBuy
                             break;
                         case "docdownload":
                             strOut = DownloadSystemFile(paramCmd, context);
+                            sendResponse = false;
                             break;
                         case "printproduct":
                             break;
@@ -246,11 +248,14 @@ namespace Nevoweb.DNN.NBrightBuy
 
             #region "return results"
 
-            //send back xml as plain text
-            context.Response.Clear();
-            context.Response.ContentType = "text/plain";
-            context.Response.Write(strOut);
-            context.Response.End();
+            if (sendResponse)
+            {
+                //send back xml as plain text
+                context.Response.Clear();
+                context.Response.ContentType = "text/plain";
+                context.Response.Write(strOut);
+                context.Response.End();
+            }
 
             #endregion
 
