@@ -914,12 +914,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     {
                         if (ImgUtils.IsImageFile(Path.GetExtension(img)) && img != "")
                         {
+                            var extension = Path.GetExtension(img);
                             var fn = DnnUtils.Encrypt(img, StoreSettings.Current.Get("adminpin"));
                             foreach (char c in System.IO.Path.GetInvalidFileNameChars())
                             {
                                 fn = fn.Replace(c, '_');
                             }
-                            var extension = Path.GetExtension(img);
+                            fn = extension + "-" + fn; // add extension to front, so it cannot be servered but we can add to order data.
+
                             var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fn;
                             if (File.Exists(fullName))
                             {
@@ -929,7 +931,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                                 imageInfo = NBrightBuyUtils.ProcessImageProvider("product", imageInfo);
                                 var newfullName = imageInfo.GetXmlProperty("genxml/uploadedimagemappath");
                                 if (newfullName != "") fullName = newfullName;
-                                
+
                                 // deal with image
                                 File.Move(fullName, fullName + extension);
                                 fullName = fullName + extension;
@@ -1156,8 +1158,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                         {
                             fn = fn.Replace(c, '_');
                         }
+                        fn = extension + "-" + fn; // add extension to front, so it cannot be servered but we can add to order data.
 
-                        string fullName = StoreSettings.Current.FolderTempMapPath + "\\" + fn;
+                        var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fn;
                         //if ((extension.ToLower() == ".pdf" || extension.ToLower() == ".zip"))
                         //{
                             if (File.Exists(fullName))
