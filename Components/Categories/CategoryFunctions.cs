@@ -589,12 +589,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
                 {
                     if (ImgUtils.IsImageFile(Path.GetExtension(img)) && img != "")
                     {
+                        var extension = Path.GetExtension(img);
                         var fn = DnnUtils.Encrypt(img, StoreSettings.Current.Get("adminpin"));
                         foreach (char c in System.IO.Path.GetInvalidFileNameChars())
                         {
                             fn = fn.Replace(c, '_');
                         }
-                        var extension = Path.GetExtension(img);
+                        fn = extension + "-" + fn; // add extension to front, so it cannot be servered but we can add to order data.
+
                         var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fn;
                         if (File.Exists(fullName))
                         {
