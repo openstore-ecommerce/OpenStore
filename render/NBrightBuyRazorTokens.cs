@@ -435,6 +435,102 @@ namespace NBrightBuy.render
             return new RawString(strOut);
         }
 
+        public IEncodedString ProductOptionAsRadiobuttons(ProductData productdata, int index, String attributes = "", Boolean required = false)
+        {
+            var strOut = "";
+
+            var objL = productdata.Options;
+
+            if (objL.Count > index)
+            {
+                var requiredattr = "";
+                var obj = objL[index];
+                var optid = obj.GetXmlProperty("genxml/hidden/optionid");
+                var optvalList = productdata.GetOptionValuesById(optid);
+                if (obj.GetXmlPropertyBool("genxml/checkbox/optrequired")) required = true;
+
+                strOut += "<div  class='option option" + (index + 1) + "' " + attributes + ">";
+                strOut += "<span class='optionname optionname" + (index + 1) + "'>" + obj.GetXmlProperty("genxml/lang/genxml/textbox/txtoptiondesc") + "</span>";
+                strOut += "<span class='optionvalue optionvalue" + (index + 1) + "'>";
+
+                if (optvalList.Count > 1)
+                {
+                    if (required) requiredattr = " required='' name='optionddl" + (index + 1) + "'"; // name also needs to be added for JQuery Validation to work correctly
+
+                    var cnt = 0;
+
+                    foreach (var optval in optvalList)
+                    {
+                        var addcost = optval.GetXmlPropertyDouble("genxml/textbox/txtaddedcost");
+                        var addedcostdisplay = "";
+                        //put a span around it, so at least we can hide with css...
+                        if (addcost > 0)
+                        {
+                            addedcostdisplay = " <span class='addcst addcs" + (index + 1) + "'>(+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")</span>";
+                        }
+
+                        var selected = "";
+                        if ((cnt == 0) && required)
+                        {
+                            selected = "checked='checked'";
+                        }
+                        cnt += 1;
+
+                        strOut += "<input type='checkbox' id='optionrb" + (index + 1) + "' name='optionrb" + (index + 1) + "' " + selected + " value='" + optval.GetXmlProperty("genxml/hidden/optionvalueid") + "'>";
+                        strOut += "<label for='optionrb" + (index + 1) + "'>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label>";
+                    }
+
+                }
+
+                if (optvalList.Count == 1)
+                {
+                    //checkbox
+                    foreach (var optval in optvalList)
+                    {
+                        var addcost = optval.GetXmlPropertyDouble("genxml/textbox/txtaddedcost");
+                        var addedcostdisplay = "";
+                        if (addcost > 0)
+                        {
+                            addedcostdisplay = "    (+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")";
+                        }
+
+                        strOut += "    <input id='optionchk" + (index + 1) + "' type='checkbox' " + attributes + " update='save' /><label>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label>";
+                    }
+                }
+
+                if (optvalList.Count == 0)
+                {
+                    // textbox
+                    if (required) requiredattr = " required='' name='optiontxt" + (index + 1) + "'"; // name also needs to be added for JQuery Validation to work correctly
+                    strOut += "<input id='optiontxt" + (index + 1) + "' " + requiredattr + " update='save' type='text' />";
+                }
+
+                strOut += "<input id='optionid" + (index + 1) + "' update='save' type='hidden' value='" + optid + "' />";
+                strOut += "</span>";
+                strOut += "</div>";
+
+            }
+
+
+            return new RawString(strOut);
+        }
+
+        public IEncodedString ProductOptionsAsRadiobuttons(ProductData productdata, String attributes = "")
+        {
+            var strOut = "";
+
+            var objL = productdata.Options;
+            var c = objL.Count;
+            for (int i = 0; i < c; i++)
+            {
+                strOut += ProductOptionAsRadiobuttons(productdata, i, attributes);
+            }
+
+            return new RawString(strOut);
+        }
+
+
+
         #endregion
 
         #region "categories"
