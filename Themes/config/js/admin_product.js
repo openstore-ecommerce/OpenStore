@@ -163,7 +163,9 @@ function Admin_product_nbxgetCompleted(e) {
         $('.cmdPg').click(function () {
             $('.processing').show();
             $('#p1_pagenumber').val($(this).attr('pagenumber'));
-            product_admin_search();
+            var moveproductid = $("#p1_moveproductid").val(); // product_admin_search() clears  #p1_moveproductid
+            product_admin_search(); 
+            $("#p1_moveproductid").val(moveproductid); 
         });
 
         // Move products
