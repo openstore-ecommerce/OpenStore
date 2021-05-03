@@ -466,7 +466,7 @@ namespace NBrightBuy.render
                         //put a span around it, so at least we can hide with css...
                         if (addcost > 0)
                         {
-                            addedcostdisplay = " <span class='addcst addcs" + (index + 1) + "'>(+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")</span>";
+                            addedcostdisplay = " <span class='addcst addcs" + (index + 1) + cnt + "'>(+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")</span>";
                         }
 
                         var selected = "";
@@ -478,7 +478,6 @@ namespace NBrightBuy.render
 
                         strOut += "<input type='checkbox' id='optionrb" + (index + 1) + cnt + "' name='optionrb" + (index + 1) + "' " + selected + " value='" + optval.GetXmlProperty("genxml/hidden/optionvalueid") + "'>";
                         strOut += "<label for='optionrb" + (index + 1) + cnt + "'>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label>";
-
                     }
 
                 }
@@ -492,7 +491,7 @@ namespace NBrightBuy.render
                         var addedcostdisplay = "";
                         if (addcost > 0)
                         {
-                            addedcostdisplay = "    (+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")";
+                            addedcostdisplay = " <span class='addcst addcs" + (index + 1) + "'>(+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")</span>";
                         }
 
                         strOut += "    <input id='optionchk" + (index + 1) + "' type='checkbox' " + attributes + " update='save' /><label>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label>";
