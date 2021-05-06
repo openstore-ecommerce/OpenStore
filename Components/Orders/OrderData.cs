@@ -79,7 +79,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             // reset order fields
             ShippedDate = "";
-            OrderStatus = "010";
             TrackingCode = "";
             InvoiceFileExt = "";
             InvoiceFileName = "";
@@ -88,6 +87,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             OrderNumber = "";
 
             var cartId = base.SavePurchaseData(true);
+
+            OrderStatus = "010";
+
             var cartData = new CartData(PortalId,  "", cartId.ToString("")); //create the client record (cookie)
 
             cartData.Save();
