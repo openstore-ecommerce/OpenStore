@@ -94,6 +94,10 @@ if exists (select * from {databaseOwner}sysobjects where id = object_id(N'{datab
 drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetDNNUsersCount]
 GO
 
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetData]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetData]
+GO
+
 if exists (select * from {databaseOwner}sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetDataLang]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetDataLang]
 GO
@@ -117,3 +121,118 @@ GO
 if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetListCountWithProperties]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
 drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetListCountWithProperties]
 GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductList]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}[{objectQualifier}NBrightBuy_GetPropertyByProductList]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_MoveProductinCateogry]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_MoveProductinCateogry]
+GO
+
+-------------------------------------------------------------------------------
+--------------                       TABLES                        ------------
+-------------------------------------------------------------------------------
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_ProductXML]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_ProductXML]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Products]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Products]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Product_Docs]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Product_Docs]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Product_Images]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Product_Images]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Product_Models]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Product_Models]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Product_Options]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Product_Options]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Product_Options_Values]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Product_Options_Values]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Orders]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Orders]
+END
+GO
+                                                                    
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Order_Products]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Order_Products]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Order_Audits]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Order_Audits]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Order_Items]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Order_Items]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_CategoryXML]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_CategoryXML]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Categories]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Categories]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_PropertyXML]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_PropertyXML]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Properties]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Properties]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_Userdata]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_Userdata]
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[vw_OS_UserInfos]'))
+BEGIN
+	DROP VIEW [dbo].[vw_OS_UserInfos]
+END
+GO
+
