@@ -982,7 +982,7 @@
     <value>Bestelling zoeken</value>
   </data>
 	<data name="findaproduct.Text" xml:space="preserve">
-    <value>Zoek en artikel</value>
+    <value>Zoek een artikel</value>
   </data>
 	<data name="hello.Text" xml:space="preserve">
     <value>Hi there</value>
