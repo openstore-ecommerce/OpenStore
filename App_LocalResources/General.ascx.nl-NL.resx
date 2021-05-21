@@ -340,10 +340,10 @@
     <value>Terug</value>
   </data>
 	<data name="cmdReturnButton.Text" xml:space="preserve">
-    <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; retourneren</value>
+    <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; Terug</value>
   </data>
 	<data name="cmdReturnIcon.Text" xml:space="preserve">
-    <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; retourneren</value>
+    <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; Terug</value>
   </data>
 	<data name="cmdSave.Text" xml:space="preserve">
     <value>Opslaan</value>
@@ -1120,10 +1120,10 @@
 		<value>Dealer aanbieding</value>
 	</data>
 	<data name="disablesale.Text" xml:space="preserve">
-		<value>Sale uitschakelen</value>
+		<value>geen sale</value>
 	</data>
 	<data name="disabledealer.Text" xml:space="preserve">
-		<value>Dealer uitschakelen</value>
+		<value>geen dealer</value>
 	</data>
 	<data name="searchfilter.Text" xml:space="preserve">
 		<value>Zoekfilter weergeven</value>
