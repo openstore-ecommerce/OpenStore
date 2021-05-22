@@ -95,12 +95,17 @@
             }
             if (propertyDisplayList.Contains(item.Key) || moduleKey == "")
             {
-                cbString += "<li><input type='checkbox' " + selected + " value='" + groupRef + "-" + item.Key + "' />" + item.Value + "</li>";
+                cbString += "<li  class=\"nbsfilteroption\" data-groupref=\"" + groupRef + "\" data-itemvalue=\"" + item.Value + "\"><input type='checkbox' " + selected + " value='" + groupRef + "-" + item.Key + "' />" + item.Value + "</li>";
             }
         }
         if (cbString != "")
         {
+            var addSearchBox = groupnbi.GetXmlPropertyBool("/genxml/checkbox/addsearchbox");
             strOut += "<div class='h3-headline'>" + grouplang.GetXmlProperty("genxml/textbox/groupname") + "</div>";
+            if (addSearchBox)
+            {
+                strOut += "<input type=\"text\" class=\"NormalTextBox\" onkeyup=\"filterFilterOptions(this, '" + groupRef + "')\" >";
+            }
             strOut += "<ul>";
             strOut += cbString;
             strOut += "</ul>";
