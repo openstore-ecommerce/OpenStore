@@ -1041,5 +1041,25 @@ function productdetail()
 }
 
     // ---------------------------------------------------------------------------
+jQuery.fn.toggleOption = function (show) {
+    $(this).each(function () {
+        if (show) {
+            if ($(this).parent("span.toggleOption").length)
+                $(this).unwrap();
+        } else {
+            if ($(this).parent("span.toggleOption").length === 0)
+                $(this).wrap('<span class="toggleOption" style="display: none;" />');
+        }
+    });
+};
 
-
+function filterSelect(searchbox, selectid) {
+    var s = $(searchbox).val();
+    $(`#${selectid} option`).each(function(index) {
+        if ($(this).text().indexOf(s) >= 0) {
+            $(this).toggleOption(true);
+        } else {
+            $(this).toggleOption(false);
+        }
+    });
+}
