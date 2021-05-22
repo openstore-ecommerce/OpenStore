@@ -27,6 +27,12 @@ $(document).ready(function() {
 		$(".savebutton").show();
     });
 
+    $("input[[id*='addsearchbox']]").change(function () {
+        var id = $(this).attr("id").replace('addsearchbox', 'isdirty');
+		$('#' + id).val(true);
+		$(".savebutton").show();
+    });
+
     $("select[[id*='grouptype']]").change(function () {
         var id = $(this).attr("id").replace('grouptype', 'isdirty');
         $('#' + id).val(true);
@@ -91,8 +97,9 @@ $(document).ready(function() {
 									<th>[<tag type="valueof" resourcekey="General.group" />]</th>
 									<th>[<tag type="valueof" resourcekey="General.Ref" />]</th>
 									<th>[<tag type="valueof" resourcekey="General.propertygroup" />]</th>
+                                    <th>[<tag type="valueof" resourcekey="General.PropertyGroupAddSearchBox" />]</th>
 									<th> </th>
-                                    <th> </th>
+									<th> </th>
 								</tr>
 							</thead>
 							<tbody>
