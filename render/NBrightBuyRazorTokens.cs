@@ -744,8 +744,9 @@ namespace NBrightBuy.render
 
         public IEncodedString CategorySelectList(NBrightInfo info, String xpath, String attributes = "", Boolean allowEmpty = true, int displaylevels = 20, Boolean showHidden = false, Boolean showArchived = false, int parentid = 0, String catreflist = "", String prefix = "", bool displayCount = false, bool showEmpty = true, string groupref = "", string breadcrumbseparator = ">", string lang = "")
         {
-            var propertyGroups = NBrightBuyUtils.GetCategoryGroups(StoreSettings.Current.EditLanguage, StoreSettings.Current.DebugMode);
-            var group = propertyGroups.FirstOrDefault(g => g.GUIDKey == groupref);
+            var nbc = new NBrightBuyController();
+            var group = nbc.GetByGuidKey(info.PortalId, -1, "GROUP", groupref);
+
             var addSearchBox = false;
             if (group != null) addSearchBox = group.GetXmlPropertyBool("/genxml/checkbox/addsearchbox");
             var rtnList = NBrightBuyUtils.BuildCatList(displaylevels, showHidden, showArchived, parentid, catreflist, prefix, displayCount, showEmpty, groupref, breadcrumbseparator, lang);

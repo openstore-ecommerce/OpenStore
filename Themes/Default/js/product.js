@@ -353,6 +353,17 @@ function loadFilters() {
     nbxproductget('product_ajaxview_getfilters', '#productajaxview', '#ajaxfilter');
 }
 
+function filterFilterOptions(searchbox, groupref) {
+    var s = $(searchbox).val();
+    $(`.nbsfilteroption[data-groupref='${groupref}']`).each(function(index) {
+        if ($(this).children("input[type='checkbox']").is(":checked") || $(this).attr('data-itemvalue').indexOf(s) >= 0) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+}
+
 function IsInFavorites(productid) {
     var productitemlist = $.cookie("NBSShoppingList");
     if (typeof productitemlist !== 'undefined') {
