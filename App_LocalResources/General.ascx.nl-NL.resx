@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,1169 +59,1172 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="AccountUpdate.Text" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountUpdate.Text" xml:space="preserve">
     <value>Gebruikersaccount Update</value>
   </data>
-	<data name="AccountUpdateMessage.Text" xml:space="preserve">
+  <data name="AccountUpdateMessage.Text" xml:space="preserve">
     <value>Het profiel van de volgende websitegebruiker is bijgewerkt. Wijzig uw eigen gegevens indien nodig.</value>
   </data>
-	<data name="Actions.Text" xml:space="preserve">
+  <data name="Actions.Text" xml:space="preserve">
     <value>Acties</value>
   </data>
-	<data name="ActivateStock.Text" xml:space="preserve">
+  <data name="ActivateStock.Text" xml:space="preserve">
     <value>Voorraad activeren</value>
   </data>
-	<data name="Active.Text" xml:space="preserve">
+  <data name="Active.Text" xml:space="preserve">
     <value>Actief</value>
   </data>
-	<data name="Address.Text" xml:space="preserve">
+  <data name="Address.Text" xml:space="preserve">
     <value>Adres</value>
   </data>
-	<data name="AddressBook.Text" xml:space="preserve">
+  <data name="AddressBook.Text" xml:space="preserve">
     <value>Adresboek</value>
   </data>
-	<data name="AddressEditor.Text" xml:space="preserve">
+  <data name="AddressEditor.Text" xml:space="preserve">
     <value>Adres Editor</value>
   </data>
-	<data name="AdminPin.Text" xml:space="preserve">
+  <data name="AdminPin.Text" xml:space="preserve">
     <value>Beheerder PIN</value>
   </data>
-	<data name="Amount.Text" xml:space="preserve">
+  <data name="Amount.Text" xml:space="preserve">
     <value>Bedrag</value>
   </data>
-	<data name="Any.Text" xml:space="preserve">
+  <data name="Any.Text" xml:space="preserve">
     <value>Elke</value>
   </data>
-	<data name="Archived.Text" xml:space="preserve">
+  <data name="Archived.Text" xml:space="preserve">
     <value>Gearchiveerd</value>
   </data>
-	<data name="Att.Text" xml:space="preserve">
+  <data name="Att.Text" xml:space="preserve">
     <value>ATT</value>
   </data>
-	<data name="Authorised.Text" xml:space="preserve">
+  <data name="Authorised.Text" xml:space="preserve">
     <value>Toegestaan</value>
   </data>
-	<data name="availabledate.Text" xml:space="preserve">
+  <data name="availabledate.Text" xml:space="preserve">
     <value>Beschikbaarheidsdatum</value>
   </data>
-	<data name="Barcode.Text" xml:space="preserve">
+  <data name="Barcode.Text" xml:space="preserve">
     <value>Barcode</value>
   </data>
-	<data name="BillTo.Text" xml:space="preserve">
+  <data name="BillTo.Text" xml:space="preserve">
     <value>Factuur naar</value>
   </data>
-	<data name="Breadcrumb.Text" xml:space="preserve">
+  <data name="Breadcrumb.Text" xml:space="preserve">
     <value>Kruimelpad</value>
   </data>
-	<data name="Catalogue.Text" xml:space="preserve">
+  <data name="Catalogue.Text" xml:space="preserve">
     <value>Catalogus</value>
   </data>
-	<data name="Categories.Text" xml:space="preserve">
+  <data name="Categories.Text" xml:space="preserve">
     <value>Categorieën</value>
   </data>
-	<data name="Category.Text" xml:space="preserve">
+  <data name="Category.Text" xml:space="preserve">
     <value>Categorie</value>
   </data>
-	<data name="ChooseAddress.Text" xml:space="preserve">
+  <data name="ChooseAddress.Text" xml:space="preserve">
     <value>Een opgeslagen adres invoegen</value>
   </data>
-	<data name="cmdAdd.Text" xml:space="preserve">
+  <data name="cmdAdd.Text" xml:space="preserve">
     <value>Toevoegen</value>
   </data>
-	<data name="cmdAdd.ToolTip" xml:space="preserve">
+  <data name="cmdAdd.ToolTip" xml:space="preserve">
     <value>Nieuwe toevoegen</value>
   </data>
-	<data name="cmdAddButton.Text" xml:space="preserve">
+  <data name="cmdAddButton.Text" xml:space="preserve">
     <value>&lt;i title="Nieuwe toevoegen" class="fa fa-plus-circle fa-fw fa-lg"&gt;&lt;/i&gt; Toevoegen</value>
   </data>
-	<data name="cmdAddIcon.Text" xml:space="preserve">
+  <data name="cmdAddIcon.Text" xml:space="preserve">
     <value>&lt;i title="Nieuwe toevoegen" class="fa fa-plus-circle fa-fw fa-lg"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdAddProducts.Text" xml:space="preserve">
+  <data name="cmdAddProducts.Text" xml:space="preserve">
     <value>Producten toevoegen</value>
   </data>
-	<data name="cmdCancel.Text" xml:space="preserve">
+  <data name="cmdCancel.Text" xml:space="preserve">
     <value>Annuleren</value>
   </data>
-	<data name="cmdCancel.ToolTip" xml:space="preserve">
+  <data name="cmdCancel.ToolTip" xml:space="preserve">
     <value>Annuleren</value>
   </data>
-	<data name="cmdCancelButton.Text" xml:space="preserve">
+  <data name="cmdCancelButton.Text" xml:space="preserve">
     <value>&lt;i title="Annuleren" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt;Annuleren</value>
   </data>
-	<data name="cmdCancelSelect.Text" xml:space="preserve">
+  <data name="cmdCancelSelect.Text" xml:space="preserve">
     <value>Annuleer keuze</value>
   </data>
-	<data name="cmdClear.Text" xml:space="preserve">
+  <data name="cmdClear.Text" xml:space="preserve">
     <value>Wissen</value>
   </data>
-	<data name="cmdClear.ToolTip" xml:space="preserve">
+  <data name="cmdClear.ToolTip" xml:space="preserve">
     <value>Gegevens wissen</value>
   </data>
-	<data name="cmdDelete.confirm" xml:space="preserve">
+  <data name="cmdDelete.confirm" xml:space="preserve">
     <value>Item verwijderen?</value>
   </data>
-	<data name="cmdDelete.Text" xml:space="preserve">
+  <data name="cmdDelete.Text" xml:space="preserve">
     <value>Verwijderen</value>
   </data>
-	<data name="cmdDelete.ToolTip" xml:space="preserve">
+  <data name="cmdDelete.ToolTip" xml:space="preserve">
     <value>Verwijderen</value>
   </data>
-	<data name="cmdDeleteButton.confirm" xml:space="preserve">
+  <data name="cmdDeleteButton.confirm" xml:space="preserve">
     <value>Record verwijderen?</value>
   </data>
-	<data name="cmdDeleteButton.Text" xml:space="preserve">
+  <data name="cmdDeleteButton.Text" xml:space="preserve">
     <value>&lt;i title="Verwijderen" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt;Verwijderen</value>
   </data>
-	<data name="cmdDeleteFile.commandname" xml:space="preserve">
+  <data name="cmdDeleteFile.commandname" xml:space="preserve">
     <value>deletefile</value>
   </data>
-	<data name="cmdDeleteFile.confirm" xml:space="preserve">
+  <data name="cmdDeleteFile.confirm" xml:space="preserve">
     <value>Bestand verwijderen?</value>
   </data>
-	<data name="cmdDeleteFile.ToolTip" xml:space="preserve">
+  <data name="cmdDeleteFile.ToolTip" xml:space="preserve">
     <value>Verwijder bestand</value>
   </data>
-	<data name="cmdDeleteIcon.confirm" xml:space="preserve">
+  <data name="cmdDeleteIcon.confirm" xml:space="preserve">
     <value>Item verwijderen?</value>
   </data>
-	<data name="cmdDeleteIcon.Text" xml:space="preserve">
+  <data name="cmdDeleteIcon.Text" xml:space="preserve">
     <value>&lt;i title="Bestand" class="fa fa-minus-square fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdDeleteLang.confirm" xml:space="preserve">
+  <data name="cmdDeleteLang.confirm" xml:space="preserve">
     <value>Item taalrecord verwijderen?</value>
   </data>
-	<data name="cmdDeleteLang.Text" xml:space="preserve">
+  <data name="cmdDeleteLang.Text" xml:space="preserve">
     <value>Taal verwijderen</value>
   </data>
-	<data name="cmdDeleteLang.ToolTip" xml:space="preserve">
+  <data name="cmdDeleteLang.ToolTip" xml:space="preserve">
     <value>Taalrecord verwijderen</value>
   </data>
-	<data name="cmdDownloadButton.Text" xml:space="preserve">
+  <data name="cmdDownloadButton.Text" xml:space="preserve">
     <value>&lt;i title="Download" class="fa fa-download fa-fw fa-lg"&gt;&lt;/i&gt; downloaden</value>
   </data>
-	<data name="cmdEdit.Text" xml:space="preserve">
+  <data name="cmdEdit.Text" xml:space="preserve">
     <value>Bewerken</value>
   </data>
-	<data name="cmdEdit.ToolTip" xml:space="preserve">
+  <data name="cmdEdit.ToolTip" xml:space="preserve">
     <value>Bewerken</value>
   </data>
-	<data name="cmdEditButton.Text" xml:space="preserve">
+  <data name="cmdEditButton.Text" xml:space="preserve">
     <value>&lt;i title="Bewerken" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt;Bewerken</value>
   </data>
-	<data name="cmdEditIcon.Text" xml:space="preserve">
+  <data name="cmdEditIcon.Text" xml:space="preserve">
     <value>&lt;i title="Bewerken" class="fa fa-edit fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdExit.confirm" xml:space="preserve">
+  <data name="cmdExit.confirm" xml:space="preserve">
     <value>Afsluiten?</value>
   </data>
-	<data name="cmdExit.Text" xml:space="preserve">
+  <data name="cmdExit.Text" xml:space="preserve">
     <value>Afsluiten</value>
   </data>
-	<data name="cmdExit.ToolTip" xml:space="preserve">
+  <data name="cmdExit.ToolTip" xml:space="preserve">
     <value>Afsluiten</value>
   </data>
-	<data name="cmdExport.Text" xml:space="preserve">
+  <data name="cmdExport.Text" xml:space="preserve">
     <value>Exporteren</value>
   </data>
-	<data name="cmdExport.ToolTip" xml:space="preserve">
+  <data name="cmdExport.ToolTip" xml:space="preserve">
     <value>Module gegevens exporteren</value>
   </data>
-	<data name="cmdFolder.Text" xml:space="preserve">
+  <data name="cmdFolder.Text" xml:space="preserve">
     <value>Map</value>
   </data>
-	<data name="cmdFolderIcon.Text" xml:space="preserve">
+  <data name="cmdFolderIcon.Text" xml:space="preserve">
     <value>&lt;i title="Open" class="fa fa-folder fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdMove.Text" xml:space="preserve">
+  <data name="cmdMove.Text" xml:space="preserve">
     <value>Verplaatsen</value>
   </data>
-	<data name="cmdMyAddressBookIcon.Text" xml:space="preserve">
+  <data name="cmdMyAddressBookIcon.Text" xml:space="preserve">
     <value>&lt;i class="fa fa-home fa-lg"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdMyAccount.Text" xml:space="preserve">
+  <data name="cmdMyAccount.Text" xml:space="preserve">
     <value>&lt;i class="fa fa-user fa-lg"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdMyOrdersIcon.Text" xml:space="preserve">
+  <data name="cmdMyOrdersIcon.Text" xml:space="preserve">
     <value>&lt;i title="Mijn bestellingen" class="fa fa-credit-card fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdOk.Text" xml:space="preserve">
+  <data name="cmdOk.Text" xml:space="preserve">
     <value>OK</value>
   </data>
-	<data name="cmdRemove.Text" xml:space="preserve">
+  <data name="cmdRemove.Text" xml:space="preserve">
     <value>Verwijderen</value>
   </data>
-	<data name="cmdRemoveButton.Text" xml:space="preserve">
+  <data name="cmdRemoveButton.Text" xml:space="preserve">
     <value>&lt;i title="Verwijderen" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt;Verwijderen</value>
   </data>
-	<data name="cmdRemoveIcon.Text" xml:space="preserve">
+  <data name="cmdRemoveIcon.Text" xml:space="preserve">
     <value>&lt;i title="Verwijderen" class="fa fa-minus-square fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdReset.Text" xml:space="preserve">
+  <data name="cmdReset.Text" xml:space="preserve">
     <value>Reset</value>
   </data>
-	<data name="cmdReset.ToolTip" xml:space="preserve">
+  <data name="cmdReset.ToolTip" xml:space="preserve">
     <value>Gegevens resetten</value>
   </data>
-	<data name="cmdResetButton.Text" xml:space="preserve">
+  <data name="cmdResetButton.Text" xml:space="preserve">
     <value>&lt;i title="Reset" class="fa fa-refresh fa-fw fa-lg"&gt;&lt;/i&gt; opnieuw instellen</value>
   </data>
-	<data name="cmdResetIcon.Text" xml:space="preserve">
+  <data name="cmdResetIcon.Text" xml:space="preserve">
     <value>&lt;i title="Reset" class="fa fa-refresh fa-fw fa-lg"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdResetSearch.Text" xml:space="preserve">
+  <data name="cmdResetSearch.Text" xml:space="preserve">
     <value>Reset</value>
   </data>
-	<data name="cmdResetSearch.ToolTip" xml:space="preserve">
+  <data name="cmdResetSearch.ToolTip" xml:space="preserve">
     <value>Reset zoekcriteria</value>
   </data>
-	<data name="cmdReturn.Text" xml:space="preserve">
+  <data name="cmdReturn.Text" xml:space="preserve">
     <value>Terug</value>
   </data>
-	<data name="cmdReturn.ToolTip" xml:space="preserve">
+  <data name="cmdReturn.ToolTip" xml:space="preserve">
     <value>Terug</value>
   </data>
-	<data name="cmdReturnButton.Text" xml:space="preserve">
+  <data name="cmdReturnButton.Text" xml:space="preserve">
     <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; retourneren</value>
   </data>
-	<data name="cmdReturnIcon.Text" xml:space="preserve">
+  <data name="cmdReturnIcon.Text" xml:space="preserve">
     <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; retourneren</value>
   </data>
-	<data name="cmdSave.Text" xml:space="preserve">
+  <data name="cmdSave.Text" xml:space="preserve">
     <value>Opslaan</value>
   </data>
-	<data name="cmdSave.ToolTip" xml:space="preserve">
+  <data name="cmdSave.ToolTip" xml:space="preserve">
     <value>Opslaan</value>
   </data>
-	<data name="cmdSaveAsButton.confirm" xml:space="preserve">
+  <data name="cmdSaveAsButton.confirm" xml:space="preserve">
     <value>Opslaan als een nieuwe record?</value>
   </data>
-	<data name="cmdSaveAsButton.Text" xml:space="preserve">
+  <data name="cmdSaveAsButton.Text" xml:space="preserve">
     <value>&lt;i title="Opslaan als" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt;Opslaan als</value>
   </data>
-	<data name="cmdSaveButton.Text" xml:space="preserve">
+  <data name="cmdSaveButton.Text" xml:space="preserve">
     <value>&lt;i title="Opslaan" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt;Opslaan</value>
   </data>
-	<data name="cmdSaveExit.confirm" xml:space="preserve">
+  <data name="cmdSaveExit.confirm" xml:space="preserve">
     <value>Opslaan en afsluiten?</value>
   </data>
-	<data name="cmdSaveExit.Text" xml:space="preserve">
+  <data name="cmdSaveExit.Text" xml:space="preserve">
     <value>Afsluiten</value>
   </data>
-	<data name="cmdSaveExit.ToolTip" xml:space="preserve">
+  <data name="cmdSaveExit.ToolTip" xml:space="preserve">
     <value>Afsluiten</value>
   </data>
-	<data name="cmdSaveIcon.Text" xml:space="preserve">
+  <data name="cmdSaveIcon.Text" xml:space="preserve">
     <value>&lt;i title="Opslaan" class="fa fa-save fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdSearch.Text" xml:space="preserve">
+  <data name="cmdSearch.Text" xml:space="preserve">
     <value>Zoeken</value>
   </data>
-	<data name="cmdSearch.ToolTip" xml:space="preserve">
+  <data name="cmdSearch.ToolTip" xml:space="preserve">
     <value>Zoeken</value>
   </data>
-	<data name="cmdSearchButton.Text" xml:space="preserve">
+  <data name="cmdSearchButton.Text" xml:space="preserve">
     <value>&lt;i title="Zoeken" class="fa fa-search fa-fw fa-lg"&gt;&lt;/i&gt;Zoeken</value>
   </data>
-	<data name="cmdSearchIcon.Text" xml:space="preserve">
+  <data name="cmdSearchIcon.Text" xml:space="preserve">
     <value>&lt;i title="Zoeken" class="fa fa-search fa-fw fa-lg"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdSelect.Text" xml:space="preserve">
+  <data name="cmdSelect.Text" xml:space="preserve">
     <value>Selecteer</value>
   </data>
-	<data name="cmdSelect.ToolTip" xml:space="preserve">
+  <data name="cmdSelect.ToolTip" xml:space="preserve">
     <value>Selecteer</value>
   </data>
-	<data name="cmdSort.Text" xml:space="preserve">
+  <data name="cmdSort.Text" xml:space="preserve">
     <value>Sorteren</value>
   </data>
-	<data name="cmdSort.ToolTip" xml:space="preserve">
+  <data name="cmdSort.ToolTip" xml:space="preserve">
     <value>Sorteren</value>
   </data>
-	<data name="cmdUpdateExit.Text" xml:space="preserve">
+  <data name="cmdUpdateExit.Text" xml:space="preserve">
     <value>Opslaan en afsluiten</value>
   </data>
-	<data name="cmdUpdateExit.ToolTip" xml:space="preserve">
+  <data name="cmdUpdateExit.ToolTip" xml:space="preserve">
     <value>Opslaan en afsluiten</value>
   </data>
-	<data name="cmdUploadFile.commandname" xml:space="preserve">
+  <data name="cmdUploadFile.commandname" xml:space="preserve">
     <value>uploadfile</value>
   </data>
-	<data name="cmdUploadFile.Text" xml:space="preserve">
+  <data name="cmdUploadFile.Text" xml:space="preserve">
     <value>Uploaden</value>
   </data>
-	<data name="cmdUploadFile.ToolTip" xml:space="preserve">
+  <data name="cmdUploadFile.ToolTip" xml:space="preserve">
     <value>Bestand uploaden</value>
   </data>
-	<data name="cmdUploadFileButton.Text" xml:space="preserve">
+  <data name="cmdUploadFileButton.Text" xml:space="preserve">
     <value>&lt;i title="Uploaden" class="fa fa-upload fa-fw fa-lg"&gt;&lt;/i&gt; Uploaden</value>
   </data>
-	<data name="Code.Text" xml:space="preserve">
+  <data name="Code.Text" xml:space="preserve">
     <value>Code</value>
   </data>
-	<data name="Confirm.Text" xml:space="preserve">
+  <data name="Confirm.Text" xml:space="preserve">
     <value>Weet u het zeker?</value>
   </data>
-	<data name="Copy.Text" xml:space="preserve">
+  <data name="Copy.Text" xml:space="preserve">
     <value>Kopiëren</value>
   </data>
-	<data name="copyorderto.Text" xml:space="preserve">
+  <data name="copyorderto.Text" xml:space="preserve">
     <value>Kopieer deze bestelling naar</value>
   </data>
-	<data name="CopyTo.Text" xml:space="preserve">
+  <data name="CopyTo.Text" xml:space="preserve">
     <value>Kopieer naar</value>
   </data>
-	<data name="CopyToButton.Text" xml:space="preserve">
+  <data name="CopyToButton.Text" xml:space="preserve">
     <value>&lt;i title="Kopiëren naar" class="fa fa-copy fa-fw fa-lg"&gt;&lt;/i&gt;Kopiëren naar</value>
   </data>
-	<data name="CopyToIcon.Text" xml:space="preserve">
+  <data name="CopyToIcon.Text" xml:space="preserve">
     <value>&lt;i title="Kopiëren" class="fa fa-copy fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="Cost.Text" xml:space="preserve">
+  <data name="Cost.Text" xml:space="preserve">
     <value>Kostprijs</value>
   </data>
-	<data name="creditcardpayment.Text" xml:space="preserve">
+  <data name="creditcardpayment.Text" xml:space="preserve">
     <value>Credit card</value>
   </data>
-	<data name="Customer.Text" xml:space="preserve">
+  <data name="Customer.Text" xml:space="preserve">
     <value>Klant</value>
   </data>
-	<data name="DataXML.Text" xml:space="preserve">
+  <data name="DataXML.Text" xml:space="preserve">
     <value>XML-gegevensbestand</value>
   </data>
-	<data name="Dealer.Text" xml:space="preserve">
+  <data name="Dealer.Text" xml:space="preserve">
     <value>Dealer</value>
   </data>
-	<data name="DebugMessage.Text" xml:space="preserve">
+  <data name="DebugMessage.Text" xml:space="preserve">
     <value>Debug modus is ingeschakeld - Caching is uitgeschakeld</value>
   </data>
-	<data name="DebugMode.Text" xml:space="preserve">
+  <data name="DebugMode.Text" xml:space="preserve">
     <value>Debug modus</value>
   </data>
-	<data name="Default.Text" xml:space="preserve">
+  <data name="Default.Text" xml:space="preserve">
     <value>Standaard</value>
   </data>
-	<data name="delay.Text" xml:space="preserve">
+  <data name="delay.Text" xml:space="preserve">
     <value>Vertraging</value>
   </data>
-	<data name="Delete.Text" xml:space="preserve">
+  <data name="Delete.Text" xml:space="preserve">
     <value>Verwijderen</value>
   </data>
-	<data name="Deleted.Text" xml:space="preserve">
+  <data name="Deleted.Text" xml:space="preserve">
     <value>Verwijderd</value>
   </data>
-	<data name="Depth.Text" xml:space="preserve">
+  <data name="Depth.Text" xml:space="preserve">
     <value>Diepte</value>
   </data>
-	<data name="Description.Text" xml:space="preserve">
+  <data name="Description.Text" xml:space="preserve">
     <value>Beschrijving</value>
   </data>
-	<data name="Detail.Text" xml:space="preserve">
+  <data name="Detail.Text" xml:space="preserve">
     <value>Detail</value>
   </data>
-	<data name="Details.Text" xml:space="preserve">
+  <data name="Details.Text" xml:space="preserve">
     <value>Details</value>
   </data>
-	<data name="Disable.Text" xml:space="preserve">
+  <data name="Disable.Text" xml:space="preserve">
     <value>Uitschakelen</value>
   </data>
-	<data name="Discount.Text" xml:space="preserve">
+  <data name="Discount.Text" xml:space="preserve">
     <value>Korting</value>
   </data>
-	<data name="Documents.Text" xml:space="preserve">
+  <data name="Documents.Text" xml:space="preserve">
     <value>Documenten</value>
   </data>
-	<data name="DocumentZip.Text" xml:space="preserve">
+  <data name="DocumentZip.Text" xml:space="preserve">
     <value>Zip-bestand met documenten</value>
   </data>
-	<data name="Download.Text" xml:space="preserve">
+  <data name="Download.Text" xml:space="preserve">
     <value>Downloaden</value>
   </data>
-	<data name="Downloads.Text" xml:space="preserve">
+  <data name="Downloads.Text" xml:space="preserve">
     <value>Downloads</value>
   </data>
-	<data name="Editor.Text" xml:space="preserve">
+  <data name="Editor.Text" xml:space="preserve">
     <value>Beheerder</value>
   </data>
-	<data name="Email.Text" xml:space="preserve">
+  <data name="Email.Text" xml:space="preserve">
     <value>E-mail</value>
   </data>
-	<data name="Enter.Text" xml:space="preserve">
+  <data name="Enter.Text" xml:space="preserve">
     <value>Voer in</value>
   </data>
-	<data name="Export.confirm" xml:space="preserve">
+  <data name="Export.confirm" xml:space="preserve">
     <value>Geselecteerde gegevens exporteren?</value>
   </data>
-	<data name="Export.Text" xml:space="preserve">
+  <data name="Export.Text" xml:space="preserve">
     <value>Exporteren</value>
   </data>
-	<data name="ExportDocuments.confirm" xml:space="preserve">
+  <data name="ExportDocuments.confirm" xml:space="preserve">
     <value>Documenten exporteren?</value>
   </data>
-	<data name="ExportDocuments.Text" xml:space="preserve">
+  <data name="ExportDocuments.Text" xml:space="preserve">
     <value>Exporteer documenten</value>
   </data>
-	<data name="ExportImages.confirm" xml:space="preserve">
+  <data name="ExportImages.confirm" xml:space="preserve">
     <value>Afbeeldingen exporteren? </value>
   </data>
-	<data name="ExportImages.Text" xml:space="preserve">
+  <data name="ExportImages.Text" xml:space="preserve">
     <value>Exporteer afbeeldingen</value>
   </data>
-	<data name="Extra.Text" xml:space="preserve">
+  <data name="Extra.Text" xml:space="preserve">
     <value>Extra</value>
   </data>
-	<data name="ExtraCost.Text" xml:space="preserve">
+  <data name="ExtraCost.Text" xml:space="preserve">
     <value>Extra kosten</value>
   </data>
-	<data name="FileName.Text" xml:space="preserve">
+  <data name="FileName.Text" xml:space="preserve">
     <value>Bestandsnaam</value>
   </data>
-	<data name="Find.Text" xml:space="preserve">
+  <data name="Find.Text" xml:space="preserve">
     <value>Zoeken</value>
   </data>
-	<data name="From.Text" xml:space="preserve">
+  <data name="From.Text" xml:space="preserve">
     <value>Van</value>
   </data>
-	<data name="Height.Text" xml:space="preserve">
+  <data name="Height.Text" xml:space="preserve">
     <value>Hoogte</value>
   </data>
-	<data name="Hidden.Text" xml:space="preserve">
+  <data name="Hidden.Text" xml:space="preserve">
     <value>Verborgen</value>
   </data>
-	<data name="Image.Text" xml:space="preserve">
+  <data name="Image.Text" xml:space="preserve">
     <value>Afbeelding</value>
   </data>
-	<data name="Images.Text" xml:space="preserve">
+  <data name="Images.Text" xml:space="preserve">
     <value>Afbeeldingen</value>
   </data>
-	<data name="ImageZip.Text" xml:space="preserve">
+  <data name="ImageZip.Text" xml:space="preserve">
     <value>Zip-bestand met afbeeldingen</value>
   </data>
-	<data name="Import.confirm" xml:space="preserve">
+  <data name="Import.confirm" xml:space="preserve">
     <value>Gegevens importeren?</value>
   </data>
-	<data name="Import.Text" xml:space="preserve">
+  <data name="Import.Text" xml:space="preserve">
     <value>Importeren</value>
   </data>
-	<data name="Invoice.Text" xml:space="preserve">
+  <data name="Invoice.Text" xml:space="preserve">
     <value>Factuur</value>
   </data>
-	<data name="Item.Text" xml:space="preserve">
+  <data name="Item.Text" xml:space="preserve">
     <value>Item</value>
   </data>
-	<data name="Keywords.Text" xml:space="preserve">
+  <data name="Keywords.Text" xml:space="preserve">
     <value>Trefwoorden</value>
   </data>
-	<data name="lblAddress1.Text" xml:space="preserve">
+  <data name="lblAddress1.Text" xml:space="preserve">
     <value>Adresregel 1</value>
   </data>
-	<data name="lblAddress2.Text" xml:space="preserve">
+  <data name="lblAddress2.Text" xml:space="preserve">
     <value>Adresregel 2</value>
   </data>
-	<data name="lblcartlist.Text" xml:space="preserve">
+  <data name="lblcartlist.Text" xml:space="preserve">
     <value>Artikelen in winkelwagen</value>
   </data>
-	<data name="lblCity.Text" xml:space="preserve">
+  <data name="lblCity.Text" xml:space="preserve">
     <value>Plaats</value>
   </data>
-	<data name="lblcollectionoptions.Text" xml:space="preserve">
+  <data name="lblcollectionoptions.Text" xml:space="preserve">
     <value>Afhaalmogelijkheden</value>
   </data>
-	<data name="lblCompany.Text" xml:space="preserve">
+  <data name="lblCompany.Text" xml:space="preserve">
     <value>Bedrijf</value>
   </data>
-	<data name="lblCountry.Text" xml:space="preserve">
+  <data name="lblCountry.Text" xml:space="preserve">
     <value>Land</value>
   </data>
-	<data name="lblFirstName.Text" xml:space="preserve">
+  <data name="lblFirstName.Text" xml:space="preserve">
     <value>Voornaam</value>
   </data>
-	<data name="lblLastName.Text" xml:space="preserve">
+  <data name="lblLastName.Text" xml:space="preserve">
     <value>Achternaam</value>
   </data>
-	<data name="lblordersummary.Text" xml:space="preserve">
+  <data name="lblordersummary.Text" xml:space="preserve">
     <value>Overzicht van bestelling</value>
   </data>
-	<data name="lblPhone.Text" xml:space="preserve">
+  <data name="lblPhone.Text" xml:space="preserve">
     <value>Telefoon</value>
   </data>
-	<data name="lblPostCode.Text" xml:space="preserve">
+  <data name="lblPostCode.Text" xml:space="preserve">
     <value>Postcode</value>
   </data>
-	<data name="lblRegion.Text" xml:space="preserve">
+  <data name="lblRegion.Text" xml:space="preserve">
     <value>Provincie</value>
   </data>
-	<data name="lblshippingoptions.Text" xml:space="preserve">
+  <data name="lblshippingoptions.Text" xml:space="preserve">
     <value>Verzendmogelijkheden</value>
   </data>
-	<data name="lblspecialinstructions.Text" xml:space="preserve">
+  <data name="lblspecialinstructions.Text" xml:space="preserve">
     <value>Speciale instructies</value>
   </data>
-	<data name="lblTotals.Text" xml:space="preserve">
+  <data name="lblTotals.Text" xml:space="preserve">
     <value>Totaal</value>
   </data>
-	<data name="lblTown.Text" xml:space="preserve">
+  <data name="lblTown.Text" xml:space="preserve">
     <value>Stad</value>
   </data>
-	<data name="List.Text" xml:space="preserve">
+  <data name="List.Text" xml:space="preserve">
     <value>Lijst</value>
   </data>
-	<data name="manualpayment.Text" xml:space="preserve">
+  <data name="manualpayment.Text" xml:space="preserve">
     <value>Handmatige betaling</value>
   </data>
-	<data name="Max.Text" xml:space="preserve">
+  <data name="Max.Text" xml:space="preserve">
     <value>Max</value>
   </data>
-	<data name="Message.Text" xml:space="preserve">
+  <data name="Message.Text" xml:space="preserve">
     <value>Bericht</value>
   </data>
-	<data name="Meta.Text" xml:space="preserve">
+  <data name="Meta.Text" xml:space="preserve">
     <value>Meta</value>
   </data>
-	<data name="Min.Text" xml:space="preserve">
+  <data name="Min.Text" xml:space="preserve">
     <value>Min</value>
   </data>
-	<data name="Models.Text" xml:space="preserve">
+  <data name="Models.Text" xml:space="preserve">
     <value>Modellen</value>
   </data>
-	<data name="modelstatus.Code" xml:space="preserve">
+  <data name="modelstatus.Code" xml:space="preserve">
     <value>010,020,030,040,050</value>
   </data>
-	<data name="modelstatus.Text" xml:space="preserve">
+  <data name="modelstatus.Text" xml:space="preserve">
     <value>Beschikbaar, Niet op voorraad, Voorradig bij leverancier, Pre-order, Speciaal</value>
   </data>
-	<data name="Modified.Text" xml:space="preserve">
+  <data name="Modified.Text" xml:space="preserve">
     <value>Gewijzigd</value>
   </data>
-	<data name="MoveTo.Text" xml:space="preserve">
+  <data name="MoveTo.Text" xml:space="preserve">
     <value>Verplaatsen naar</value>
   </data>
-	<data name="MoveToButton.Text" xml:space="preserve">
+  <data name="MoveToButton.Text" xml:space="preserve">
     <value>&lt;i title="Move To" class="fa fa-cut fa-fw fa-lg"&gt;&lt;/i&gt; verplaatsen naar</value>
   </data>
-	<data name="Name.Text" xml:space="preserve">
+  <data name="Name.Text" xml:space="preserve">
     <value>Naam</value>
   </data>
-	<data name="New.Text" xml:space="preserve">
+  <data name="New.Text" xml:space="preserve">
     <value>Nieuw</value>
   </data>
-	<data name="Number.Text" xml:space="preserve">
+  <data name="Number.Text" xml:space="preserve">
     <value>Nummer</value>
   </data>
-	<data name="OptionalAddress.Text" xml:space="preserve">
+  <data name="OptionalAddress.Text" xml:space="preserve">
     <value>Optionele Address</value>
   </data>
-	<data name="Options.Text" xml:space="preserve">
+  <data name="Options.Text" xml:space="preserve">
     <value>Opties</value>
   </data>
-	<data name="Order.Text" xml:space="preserve">
+  <data name="Order.Text" xml:space="preserve">
     <value>Bestelling</value>
   </data>
-	<data name="OrderBy.Text" xml:space="preserve">
+  <data name="OrderBy.Text" xml:space="preserve">
     <value>Sorteer op</value>
   </data>
-	<data name="OrderDate.Text" xml:space="preserve">
+  <data name="OrderDate.Text" xml:space="preserve">
     <value>Datum</value>
   </data>
-	<data name="OrderNumber.Text" xml:space="preserve">
+  <data name="OrderNumber.Text" xml:space="preserve">
     <value>Bestelling</value>
   </data>
-	<data name="Orders.Text" xml:space="preserve">
+  <data name="Orders.Text" xml:space="preserve">
     <value>Bestellingen</value>
   </data>
-	<data name="orderstatus.Code" xml:space="preserve">
+  <data name="orderstatus.Code" xml:space="preserve">
     <value>010,020,030,040,050,060,070,080,090,100,110</value>
   </data>
-	<data name="orderstatus.Text" xml:space="preserve">
+  <data name="orderstatus.Text" xml:space="preserve">
     <value>Onvolledig, Wacht op Bank, Geannuleerd, Betaling in orde, Betaling niet geverifieerd, Wacht op betaling, Wacht op voorraad, Wacht, In productie, Verzonden, Afgerond, Gearchiveerd</value>
   </data>
-	<data name="Parent.Text" xml:space="preserve">
+  <data name="Parent.Text" xml:space="preserve">
     <value>Bovenliggende</value>
   </data>
-	<data name="Password.Text" xml:space="preserve">
+  <data name="Password.Text" xml:space="preserve">
     <value>Wachtwoord</value>
   </data>
-	<data name="Percentage.Text" xml:space="preserve">
+  <data name="Percentage.Text" xml:space="preserve">
     <value>Percentage</value>
   </data>
-	<data name="Ph.Text" xml:space="preserve">
+  <data name="Ph.Text" xml:space="preserve">
     <value>PH</value>
   </data>
-	<data name="PickupAddress.Text" xml:space="preserve">
+  <data name="PickupAddress.Text" xml:space="preserve">
     <value>Afhaaladres</value>
   </data>
-	<data name="PickupReference.Text" xml:space="preserve">
+  <data name="PickupReference.Text" xml:space="preserve">
     <value>Afhaal referentie</value>
   </data>
-	<data name="Price.Text" xml:space="preserve">
+  <data name="Price.Text" xml:space="preserve">
     <value>Prijs</value>
   </data>
-	<data name="PrimaryAddress.Text" xml:space="preserve">
+  <data name="PrimaryAddress.Text" xml:space="preserve">
     <value>Primaire adres</value>
   </data>
-	<data name="PrimaryAddressMessage.Text" xml:space="preserve">
+  <data name="PrimaryAddressMessage.Text" xml:space="preserve">
     <value>Zorg dat uw adresgegevens altijd geldig en correct is.</value>
   </data>
-	<data name="Processing.Text" xml:space="preserve">
+  <data name="Processing.Text" xml:space="preserve">
     <value>Verwerken</value>
   </data>
-	<data name="ProcessingDiv.Text" xml:space="preserve">
+  <data name="ProcessingDiv.Text" xml:space="preserve">
     <value>&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="Product.Text" xml:space="preserve">
+  <data name="Product.Text" xml:space="preserve">
     <value>Artikel</value>
   </data>
-	<data name="Products.Text" xml:space="preserve">
+  <data name="Products.Text" xml:space="preserve">
     <value>Artikelen</value>
   </data>
-	<data name="PromotionalCode.Text" xml:space="preserve">
+  <data name="PromotionalCode.Text" xml:space="preserve">
     <value>Promotiecode</value>
   </data>
-	<data name="Properties.Text" xml:space="preserve">
+  <data name="Properties.Text" xml:space="preserve">
     <value>Eigenschappen</value>
   </data>
-	<data name="Property.Text" xml:space="preserve">
+  <data name="Property.Text" xml:space="preserve">
     <value>Eigenschap</value>
   </data>
-	<data name="Purchase.Text" xml:space="preserve">
+  <data name="Purchase.Text" xml:space="preserve">
     <value>Voor aanschaf</value>
   </data>
-	<data name="Qty.Text" xml:space="preserve">
+  <data name="Qty.Text" xml:space="preserve">
     <value>Aantal</value>
   </data>
-	<data name="Quantity.Text" xml:space="preserve">
+  <data name="Quantity.Text" xml:space="preserve">
     <value>Aantal</value>
   </data>
-	<data name="Ref.Text" xml:space="preserve">
+  <data name="Ref.Text" xml:space="preserve">
     <value>Ref</value>
   </data>
-	<data name="Refresh.Text" xml:space="preserve">
+  <data name="Refresh.Text" xml:space="preserve">
     <value>Verversen</value>
   </data>
-	<data name="Register.Text" xml:space="preserve">
+  <data name="Register.Text" xml:space="preserve">
     <value>Registreren</value>
   </data>
-	<data name="Related.Text" xml:space="preserve">
+  <data name="Related.Text" xml:space="preserve">
     <value>Gerelateerd</value>
   </data>
-	<data name="Remove.Text" xml:space="preserve">
+  <data name="Remove.Text" xml:space="preserve">
     <value>Verwijderen</value>
   </data>
-	<data name="RemoveAll.confirm" xml:space="preserve">
+  <data name="RemoveAll.confirm" xml:space="preserve">
     <value>Wees voorzichtig. U gaat al uw producten verwijderen. Als dat klopt, klikt u op Akkoord. Om terug te gaan naar uw winkelwagen, klikt u op Annuleren</value>
   </data>
-	<data name="RemoveAll.Text" xml:space="preserve">
+  <data name="RemoveAll.Text" xml:space="preserve">
     <value>Verwijder alle</value>
   </data>
-	<data name="RemoveAllButton.Text" xml:space="preserve">
+  <data name="RemoveAllButton.Text" xml:space="preserve">
     <value>&lt;i title="Remove All" class="fa fa-eraser fa-fw fa-lg"&gt;&lt;/i&gt; alles verwijderen</value>
   </data>
-	<data name="RemovefromStore.confirm" xml:space="preserve">
+  <data name="RemovefromStore.confirm" xml:space="preserve">
     <value>Verwijder alle geselecteerde gegevens uit de webshop. Weet je het zeker?</value>
   </data>
-	<data name="RemovefromStore.Text" xml:space="preserve">
+  <data name="RemovefromStore.Text" xml:space="preserve">
     <value>Uit webshop verwijderen</value>
   </data>
-	<data name="RequiredField.errormessage" xml:space="preserve">
+  <data name="RequiredField.errormessage" xml:space="preserve">
     <value>Verplicht veld</value>
   </data>
-	<data name="RequiredField.Text" xml:space="preserve">
+  <data name="RequiredField.Text" xml:space="preserve">
     <value>Verplicht</value>
   </data>
-	<data name="Reset.Text" xml:space="preserve">
+  <data name="Reset.Text" xml:space="preserve">
     <value>Reset</value>
   </data>
-	<data name="SalePrice.Text" xml:space="preserve">
+  <data name="SalePrice.Text" xml:space="preserve">
     <value>Sale prijs</value>
   </data>
-	<data name="Sales.Text" xml:space="preserve">
+  <data name="Sales.Text" xml:space="preserve">
     <value>Verkoop</value>
   </data>
-	<data name="Save.Text" xml:space="preserve">
+  <data name="Save.Text" xml:space="preserve">
     <value>Opslaan</value>
   </data>
-	<data name="SaveChanges.Text" xml:space="preserve">
+  <data name="SaveChanges.Text" xml:space="preserve">
     <value>Wijzigingen opslaan</value>
   </data>
-	<data name="Search.Text" xml:space="preserve">
+  <data name="Search.Text" xml:space="preserve">
     <value>Zoeken</value>
   </data>
-	<data name="SEO.Text" xml:space="preserve">
+  <data name="SEO.Text" xml:space="preserve">
     <value>SEO</value>
   </data>
-	<data name="Settings.Text" xml:space="preserve">
+  <data name="Settings.Text" xml:space="preserve">
     <value>Instellingen</value>
   </data>
-	<data name="Shipping.Text" xml:space="preserve">
+  <data name="Shipping.Text" xml:space="preserve">
     <value>Versturen</value>
   </data>
-	<data name="shippingdate.Text" xml:space="preserve">
+  <data name="shippingdate.Text" xml:space="preserve">
     <value>Verzenddatum</value>
   </data>
-	<data name="shippingmethods.Text" xml:space="preserve">
+  <data name="shippingmethods.Text" xml:space="preserve">
     <value>Verzendmethoden</value>
   </data>
-	<data name="ShipTo.Text" xml:space="preserve">
+  <data name="ShipTo.Text" xml:space="preserve">
     <value>Verzenden naar</value>
   </data>
-	<data name="status.Text" xml:space="preserve">
+  <data name="status.Text" xml:space="preserve">
     <value>Status</value>
   </data>
-	<data name="Stock.Text" xml:space="preserve">
+  <data name="Stock.Text" xml:space="preserve">
     <value>Voorraad</value>
   </data>
-	<data name="Submit.Text" xml:space="preserve">
+  <data name="Submit.Text" xml:space="preserve">
     <value>Opslaan</value>
   </data>
-	<data name="Subtotal.Text" xml:space="preserve">
+  <data name="Subtotal.Text" xml:space="preserve">
     <value>Subtotaal</value>
   </data>
-	<data name="Summary.Text" xml:space="preserve">
+  <data name="Summary.Text" xml:space="preserve">
     <value>Samenvatting</value>
   </data>
-	<data name="Support.Text" xml:space="preserve">
+  <data name="Support.Text" xml:space="preserve">
     <value>Ondersteuning</value>
   </data>
-	<data name="Tags.Text" xml:space="preserve">
+  <data name="Tags.Text" xml:space="preserve">
     <value>Tags</value>
   </data>
-	<data name="Tax.Text" xml:space="preserve">
+  <data name="Tax.Text" xml:space="preserve">
     <value>BTW</value>
   </data>
-	<data name="Taxno.Text" xml:space="preserve">
+  <data name="Taxno.Text" xml:space="preserve">
     <value>BTW Nummer</value>
   </data>
-	<data name="TaxNumber.Text" xml:space="preserve">
+  <data name="TaxNumber.Text" xml:space="preserve">
     <value>BTW nummer</value>
   </data>
-	<data name="Templates.Text" xml:space="preserve">
+  <data name="Templates.Text" xml:space="preserve">
     <value>Sjablonen</value>
   </data>
-	<data name="Title.Text" xml:space="preserve">
+  <data name="Title.Text" xml:space="preserve">
     <value>Titel</value>
   </data>
-	<data name="To.Text" xml:space="preserve">
+  <data name="To.Text" xml:space="preserve">
     <value>Tot</value>
   </data>
-	<data name="Tools.Text" xml:space="preserve">
+  <data name="Tools.Text" xml:space="preserve">
     <value>Tools</value>
   </data>
-	<data name="Total.Text" xml:space="preserve">
+  <data name="Total.Text" xml:space="preserve">
     <value>Totaal</value>
   </data>
-	<data name="trackingcode.Text" xml:space="preserve">
+  <data name="trackingcode.Text" xml:space="preserve">
     <value>Tracking code</value>
   </data>
-	<data name="Type.Text" xml:space="preserve">
+  <data name="Type.Text" xml:space="preserve">
     <value>Type</value>
   </data>
-	<data name="Undo.Text" xml:space="preserve">
+  <data name="Undo.Text" xml:space="preserve">
     <value>Ongedaan maken</value>
   </data>
-	<data name="UndoButton.Text" xml:space="preserve">
+  <data name="UndoButton.Text" xml:space="preserve">
     <value>&lt;i title="Ongedaan maken" class="fa fa-undo fa-fw fa-lg"&gt;&lt;/i&gt;Ongedaan maken</value>
   </data>
-	<data name="UndoIcon.Text" xml:space="preserve">
+  <data name="UndoIcon.Text" xml:space="preserve">
     <value>&lt;i title="Ongedaan maken" class="fa fa-undo fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="unit.Text" xml:space="preserve">
+  <data name="unit.Text" xml:space="preserve">
     <value>Eenheid</value>
   </data>
-	<data name="Update.Text" xml:space="preserve">
+  <data name="Update.Text" xml:space="preserve">
     <value>Bijwerken</value>
   </data>
-	<data name="Upload.Text" xml:space="preserve">
+  <data name="Upload.Text" xml:space="preserve">
     <value>Uploaden</value>
   </data>
-	<data name="UploadImage.Text" xml:space="preserve">
+  <data name="UploadImage.Text" xml:space="preserve">
     <value>Afbeelding uploaden</value>
   </data>
-	<data name="Username.Text" xml:space="preserve">
+  <data name="Username.Text" xml:space="preserve">
     <value>Gebruikersnaam</value>
   </data>
-	<data name="Value.Text" xml:space="preserve">
+  <data name="Value.Text" xml:space="preserve">
     <value>Waarde</value>
   </data>
-	<data name="Voucher.Text" xml:space="preserve">
+  <data name="Voucher.Text" xml:space="preserve">
     <value>Waardebon</value>
   </data>
-	<data name="Web.Text" xml:space="preserve">
+  <data name="Web.Text" xml:space="preserve">
     <value>Web</value>
   </data>
-	<data name="Weight.Text" xml:space="preserve">
+  <data name="Weight.Text" xml:space="preserve">
     <value>Gewicht</value>
   </data>
-	<data name="Width.Text" xml:space="preserve">
+  <data name="Width.Text" xml:space="preserve">
     <value>Breedte</value>
   </data>
-	<data name="ActiveProducts.Text" xml:space="preserve">
+  <data name="ActiveProducts.Text" xml:space="preserve">
     <value>Actieve produkten</value>
   </data>
-	<data name="AreYouSure.Text" xml:space="preserve">
+  <data name="AreYouSure.Text" xml:space="preserve">
     <value>Weet je het zeker?</value>
   </data>
-	<data name="Article.Text" xml:space="preserve">
+  <data name="Article.Text" xml:space="preserve">
     <value>Artikel</value>
   </data>
-	<data name="attrcode.Text" xml:space="preserve">
+  <data name="attrcode.Text" xml:space="preserve">
     <value>Attribuut code</value>
   </data>
-	<data name="AverageRevenue.Text" xml:space="preserve">
+  <data name="AverageRevenue.Text" xml:space="preserve">
     <value>Gemiddelde ordergrootte</value>
   </data>
-	<data name="basket.Text" xml:space="preserve">
+  <data name="basket.Text" xml:space="preserve">
     <value>Winkelwagen</value>
   </data>
-	<data name="Cart.Text" xml:space="preserve">
+  <data name="Cart.Text" xml:space="preserve">
     <value>Winkelwagen</value>
   </data>
-	<data name="Clients.Text" xml:space="preserve">
+  <data name="Clients.Text" xml:space="preserve">
     <value>Klanten</value>
   </data>
-	<data name="cmdAddFiles.Text" xml:space="preserve">
+  <data name="cmdAddFiles.Text" xml:space="preserve">
     <value>&lt;i title="Add New" class="fa fa-plus-circle fa-fw fa-lg"&gt;&lt;/i&gt; Add</value>
   </data>
-	<data name="cmdDelete.noText" xml:space="preserve">
+  <data name="cmdDelete.noText" xml:space="preserve">
     <value>NOPP</value>
   </data>
-	<data name="cmdDelete.yesText" xml:space="preserve">
+  <data name="cmdDelete.yesText" xml:space="preserve">
     <value>YEPPPP</value>
   </data>
-	<data name="cmdEditIconSmall.Text" xml:space="preserve">
+  <data name="cmdEditIconSmall.Text" xml:space="preserve">
     <value>&lt;i title="Edit product in store" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdExtLinkSmall.Text" xml:space="preserve">
+  <data name="cmdExtLinkSmall.Text" xml:space="preserve">
     <value>&lt;i title="View product in store" class="fa fa-external-link fa-fw fa-lg"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdFilter.Text" xml:space="preserve">
+  <data name="cmdFilter.Text" xml:space="preserve">
     <value>Filter</value>
   </data>
-	<data name="cmdMoveIcon.Text" xml:space="preserve">
+  <data name="cmdMoveIcon.Text" xml:space="preserve">
     <value>&lt;i title="Move to here" class="fa fa-arrow-circle-left fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
-	<data name="cmdResetFilters.Text" xml:space="preserve">
+  <data name="cmdResetFilters.Text" xml:space="preserve">
     <value>&amp;lt;i class="fa fa-times-circle"&amp;gt;&amp;lt;/i&amp;gt; Reset filter(s)</value>
   </data>
-	<data name="cmdSaveExitButton.Text" xml:space="preserve">
+  <data name="cmdSaveExitButton.Text" xml:space="preserve">
     <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Opslaan en afsluiten</value>
   </data>
-	<data name="Configuration.Text" xml:space="preserve">
+  <data name="Configuration.Text" xml:space="preserve">
     <value>Configuratie</value>
   </data>
-	<data name="CustomerCount.Text" xml:space="preserve">
+  <data name="CustomerCount.Text" xml:space="preserve">
     <value>Aantal klanten</value>
   </data>
-	<data name="dashsummary.Text" xml:space="preserve">
+  <data name="dashsummary.Text" xml:space="preserve">
     <value>Dashboard</value>
   </data>
-	<data name="favorites.Text" xml:space="preserve">
+  <data name="favorites.Text" xml:space="preserve">
     <value>Favorieten</value>
   </data>
-	<data name="filterkeywords.Text" xml:space="preserve">
+  <data name="filterkeywords.Text" xml:space="preserve">
     <value>Trefwoord(en)</value>
   </data>
-	<data name="findanorder.Text" xml:space="preserve">
+  <data name="findanorder.Text" xml:space="preserve">
     <value>Bestelling zoeken</value>
   </data>
-	<data name="findaproduct.Text" xml:space="preserve">
+  <data name="findaproduct.Text" xml:space="preserve">
     <value>Zoek en artikel</value>
   </data>
-	<data name="hello.Text" xml:space="preserve">
+  <data name="hello.Text" xml:space="preserve">
     <value>Hi there</value>
   </data>
-	<data name="HiddenProducts.Text" xml:space="preserve">
+  <data name="HiddenProducts.Text" xml:space="preserve">
     <value>Verborgen artikelen</value>
   </data>
-	<data name="History.Text" xml:space="preserve">
+  <data name="History.Text" xml:space="preserve">
     <value>History</value>
   </data>
-	<data name="logoff.Text" xml:space="preserve">
+  <data name="logoff.Text" xml:space="preserve">
     <value>Afmelden</value>
   </data>
-	<data name="MontlyRevenue.Text" xml:space="preserve">
+  <data name="MontlyRevenue.Text" xml:space="preserve">
     <value>Omzet per maand</value>
   </data>
-	<data name="nbsid.Text" xml:space="preserve">
+  <data name="nbsid.Text" xml:space="preserve">
     <value>NBS ID</value>
   </data>
-	<data name="nbsref.Text" xml:space="preserve">
+  <data name="nbsref.Text" xml:space="preserve">
     <value>NBS Ref.</value>
   </data>
-	<data name="OrderCount.Text" xml:space="preserve">
+  <data name="OrderCount.Text" xml:space="preserve">
     <value>Aantal bestellingen</value>
   </data>
-	<data name="orderstatus010.Text" xml:space="preserve">
+  <data name="orderstatus010.Text" xml:space="preserve">
     <value>Incomplete</value>
   </data>
-	<data name="orderstatus020.Text" xml:space="preserve">
+  <data name="orderstatus020.Text" xml:space="preserve">
     <value>Waiting for Bank</value>
   </data>
-	<data name="orderstatus030.Text" xml:space="preserve">
+  <data name="orderstatus030.Text" xml:space="preserve">
     <value>Geannuleerd</value>
   </data>
-	<data name="orderstatus040.Text" xml:space="preserve">
+  <data name="orderstatus040.Text" xml:space="preserve">
     <value>Betaling ok</value>
   </data>
-	<data name="orderstatus050.Text" xml:space="preserve">
+  <data name="orderstatus050.Text" xml:space="preserve">
     <value>Betaling niet geverifieerd</value>
   </data>
-	<data name="orderstatus060.Text" xml:space="preserve">
+  <data name="orderstatus060.Text" xml:space="preserve">
     <value>Wacht op betaling</value>
   </data>
-	<data name="orderstatus070.Text" xml:space="preserve">
+  <data name="orderstatus070.Text" xml:space="preserve">
     <value>Waiting for Stock</value>
   </data>
-	<data name="orderstatus080.Text" xml:space="preserve">
+  <data name="orderstatus080.Text" xml:space="preserve">
     <value>In productie</value>
   </data>
-	<data name="orderstatus090.Text" xml:space="preserve">
+  <data name="orderstatus090.Text" xml:space="preserve">
     <value>Verstuurd</value>
   </data>
-	<data name="orderstatus100.Text" xml:space="preserve">
+  <data name="orderstatus100.Text" xml:space="preserve">
     <value>Completed</value>
   </data>
-	<data name="orderstatus110.Text" xml:space="preserve">
+  <data name="orderstatus110.Text" xml:space="preserve">
     <value>Archived</value>
   </data>
-	<data name="orderstatus120.Text" xml:space="preserve">
+  <data name="orderstatus120.Text" xml:space="preserve">
     <value>Wachten</value>
   </data>
-	<data name="Owners.Text" xml:space="preserve">
+  <data name="Owners.Text" xml:space="preserve">
     <value>Klanten</value>
   </data>
-	<data name="pagesize.Text" xml:space="preserve">
+  <data name="pagesize.Text" xml:space="preserve">
     <value>Aantal per pagina</value>
   </data>
-	<data name="productswithprop.Text" xml:space="preserve">
+  <data name="productswithprop.Text" xml:space="preserve">
     <value>Artikelen met deze eigenschap</value>
   </data>
-	<data name="Promotion.Text" xml:space="preserve">
+  <data name="Promotion.Text" xml:space="preserve">
     <value>Promotie</value>
   </data>
-	<data name="propertygroup.Text" xml:space="preserve">
+  <data name="propertygroup.Text" xml:space="preserve">
     <value>Groep soort</value>
   </data>
-	<data name="propertytypes.Text" xml:space="preserve">
+  <data name="propertytypes.Text" xml:space="preserve">
     <value>Eigenschap soorten</value>
   </data>
-	<data name="relatedproducts.Text" xml:space="preserve">
+  <data name="relatedproducts.Text" xml:space="preserve">
     <value>Gerelateerde artikelen</value>
   </data>
-	<data name="selectable.Text" xml:space="preserve">
+  <data name="selectable.Text" xml:space="preserve">
     <value>Selecteerbaar</value>
   </data>
-	<data name="seoname.Text" xml:space="preserve">
+  <data name="seoname.Text" xml:space="preserve">
     <value>SEO Naam</value>
   </data>
-	<data name="seotitle.Text" xml:space="preserve">
+  <data name="seotitle.Text" xml:space="preserve">
     <value>SEO Titel</value>
   </data>
-	<data name="StatusofOrders.Text" xml:space="preserve">
+  <data name="StatusofOrders.Text" xml:space="preserve">
     <value>Status of Orders</value>
   </data>
-	<data name="TotalDiscounts.Text" xml:space="preserve">
+  <data name="TotalDiscounts.Text" xml:space="preserve">
     <value>Totaal kortingen</value>
   </data>
-	<data name="TotalProducts.Text" xml:space="preserve">
+  <data name="TotalProducts.Text" xml:space="preserve">
     <value>Aantal artikelen</value>
   </data>
-	<data name="TotalRevenue.Text" xml:space="preserve">
+  <data name="TotalRevenue.Text" xml:space="preserve">
     <value>Totaal omzet</value>
   </data>
-	<data name="TotalShipping.Text" xml:space="preserve">
+  <data name="TotalShipping.Text" xml:space="preserve">
     <value>Totaal verzendkosten </value>
   </data>
-	<data name="updated.Text" xml:space="preserve">
+  <data name="updated.Text" xml:space="preserve">
     <value>Bijgewerkt</value>
   </data>
-	<data name="DealerOnly.Text" xml:space="preserve">
+  <data name="DealerOnly.Text" xml:space="preserve">
     <value>Alleen dealer</value>
   </data>
-	<data name="seooptimization.Text" xml:space="preserve">
-		<value>SEO (optioneel)</value>
-	</data>
-	<data name="seonamehelp.Text" xml:space="preserve">
-		<value>Alternatieve naam voor het produkt, voor gebruik in de URL.</value>
-	</data>
-	<data name="seotitlehelp.Text" xml:space="preserve">
-		<value>Alternatieve META Title (produktnaam is standaard)</value>
-	</data>
-	<data name="seodescriptionhelp.Text" xml:space="preserve">
-		<value>Alternatieve Meta Description (samenvatting is standaard)</value>
-	</data>
-	<data name="allowupload.Text" xml:space="preserve">
-		<value>Uploads van klanten toestaan</value>
-	</data>
-	<data name="ReturnTo.Text" xml:space="preserve">
-		<value>Terug naar</value>
-	</data>
-	<data name="Manufacturer.Text" xml:space="preserve">
-		<value>Fabrikant</value>
-	</data>
-	<data name="DealerSale.Text" xml:space="preserve">
-		<value>Dealer aanbieding</value>
-	</data>
-	<data name="disablesale.Text" xml:space="preserve">
-		<value>Sale uitschakelen</value>
-	</data>
-	<data name="disabledealer.Text" xml:space="preserve">
-		<value>Dealer uitschakelen</value>
-	</data>
-	<data name="searchfilter.Text" xml:space="preserve">
-		<value>Zoekfilter weergeven</value>
-	</data>
-	<data name="fea.Text" xml:space="preserve">
-		<value>Features</value>
-	</data>
-	<data name="promo.Text" xml:space="preserve">
-		<value>Promoties</value>
-	</data>
-	<data name="spec.Text" xml:space="preserve">
-		<value>Specificaties</value>
-	</data>
-	<data name="supp.Text" xml:space="preserve">
-		<value>Leverancier</value>
-	</data>
-	<data name="temp.Text" xml:space="preserve">
-		<value>Tijdelijk</value>
-	</data>
-	<data name="cat.Text" xml:space="preserve">
-		<value>Categoriën</value>
-	</data>
-	<data name="man.Text" xml:space="preserve">
-		<value>Fabrikant</value>
-	</data>
-	<data name="QtyUnits.Text" xml:space="preserve">
-		<value>Aantal eenh.</value>
-	</data>
-	<data name="txtemptybasket.Text" xml:space="preserve">
-		<value>Uw winkelwagen is leeg</value>
-	</data>
-	<data name="txtitems.Text" xml:space="preserve">
-		<value>Subtotaal</value>
-	</data>
-	<data name="pleaseselect.Text" xml:space="preserve">
-		<value>Maak een keuze</value>
-	</data>
-	<data name="ApplyTax.Text" xml:space="preserve">
-		<value>BTW percentage toepassen op alle artikelen in categorie</value>
-	</data>
-	<data name="GroupType.Text" xml:space="preserve">
-		<value>Soort groep</value>
-	</data>
-	<data name="filtergroups.Text" xml:space="preserve">
-		<value>Filtergroepen</value>
-	</data>
-	<data name="group.Text" xml:space="preserve">
-		<value>Groep</value>
-	</data>
-	<data name="filter.Text" xml:space="preserve">
-		<value>Filter</value>
-	</data>
-	<data name="createnewlist.Text" xml:space="preserve">
-		<value>Maak nieuwe lijst</value>
-	</data>
-	<data name="listtitle.Text" xml:space="preserve">
-		<value>Kies een lijst</value>
-	</data>
-	<data name="shoppinglistadd.Text" xml:space="preserve">
-		<value>Aan deze lijst toevoegen</value>
-	</data>
-	<data name="createlist.Text" xml:space="preserve">
-		<value>Maak lijst</value>
-	</data>
-	<data name="cancellist.Text" xml:space="preserve">
-		<value>Annuleren</value>
-	</data>
-	<data name="IgnoreShared.Text" xml:space="preserve">
-		<value>Gedeelde records negeren</value>
-	</data>
-	<data name="login.Text" xml:space="preserve">
-		<value>Inloggen</value>
-	</data>
-	<data name="loginpopupmsg.Text" xml:space="preserve">
-		<value>Log in om artikelen aan uw favorieten toe te voegen.</value>
-	</data>
-	<data name="AccessToClient.Text" xml:space="preserve">
-		<value>Toegang verleend aan klant</value>
-	</data>
-	<data name="cmdResetButton.confirm" xml:space="preserve">
-		<value>Reset record?</value>
-	</data>
-	<data name="included.Text" xml:space="preserve">
-		<value>(incl.)</value>
-	</data>
-	<data name="AddressName.Text" xml:space="preserve">
-		<value>Adres naam</value>
-	</data>
-	<data name="cascade.Text" xml:space="preserve">
-		<value>Cascade</value>
-	</data>
-	<data name="enabled.Text" xml:space="preserve">
-		<value>Ingeschakeld</value>
-	</data>
-	<data name="visible.Text" xml:space="preserve">
-		<value>Zichtbaar</value>
-	</data>
-	<data name="owner.Text" xml:space="preserve">
-		<value>Eigenaar</value>
-	</data>
+  <data name="seooptimization.Text" xml:space="preserve">
+    <value>SEO (optioneel)</value>
+  </data>
+  <data name="seonamehelp.Text" xml:space="preserve">
+    <value>Alternatieve naam voor het produkt, voor gebruik in de URL.</value>
+  </data>
+  <data name="seotitlehelp.Text" xml:space="preserve">
+    <value>Alternatieve META Title (produktnaam is standaard)</value>
+  </data>
+  <data name="seodescriptionhelp.Text" xml:space="preserve">
+    <value>Alternatieve Meta Description (samenvatting is standaard)</value>
+  </data>
+  <data name="allowupload.Text" xml:space="preserve">
+    <value>Uploads van klanten toestaan</value>
+  </data>
+  <data name="ReturnTo.Text" xml:space="preserve">
+    <value>Terug naar</value>
+  </data>
+  <data name="Manufacturer.Text" xml:space="preserve">
+    <value>Fabrikant</value>
+  </data>
+  <data name="DealerSale.Text" xml:space="preserve">
+    <value>Dealer aanbieding</value>
+  </data>
+  <data name="disablesale.Text" xml:space="preserve">
+    <value>Sale uitschakelen</value>
+  </data>
+  <data name="disabledealer.Text" xml:space="preserve">
+    <value>Dealer uitschakelen</value>
+  </data>
+  <data name="searchfilter.Text" xml:space="preserve">
+    <value>Zoekfilter weergeven</value>
+  </data>
+  <data name="fea.Text" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="promo.Text" xml:space="preserve">
+    <value>Promoties</value>
+  </data>
+  <data name="spec.Text" xml:space="preserve">
+    <value>Specificaties</value>
+  </data>
+  <data name="supp.Text" xml:space="preserve">
+    <value>Leverancier</value>
+  </data>
+  <data name="temp.Text" xml:space="preserve">
+    <value>Tijdelijk</value>
+  </data>
+  <data name="cat.Text" xml:space="preserve">
+    <value>Categoriën</value>
+  </data>
+  <data name="man.Text" xml:space="preserve">
+    <value>Fabrikant</value>
+  </data>
+  <data name="QtyUnits.Text" xml:space="preserve">
+    <value>Aantal eenh.</value>
+  </data>
+  <data name="txtemptybasket.Text" xml:space="preserve">
+    <value>Uw winkelwagen is leeg</value>
+  </data>
+  <data name="txtitems.Text" xml:space="preserve">
+    <value>Subtotaal</value>
+  </data>
+  <data name="pleaseselect.Text" xml:space="preserve">
+    <value>Maak een keuze</value>
+  </data>
+  <data name="ApplyTax.Text" xml:space="preserve">
+    <value>BTW percentage toepassen op alle artikelen in categorie</value>
+  </data>
+  <data name="GroupType.Text" xml:space="preserve">
+    <value>Soort groep</value>
+  </data>
+  <data name="filtergroups.Text" xml:space="preserve">
+    <value>Filtergroepen</value>
+  </data>
+  <data name="group.Text" xml:space="preserve">
+    <value>Groep</value>
+  </data>
+  <data name="filter.Text" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="createnewlist.Text" xml:space="preserve">
+    <value>Maak nieuwe lijst</value>
+  </data>
+  <data name="listtitle.Text" xml:space="preserve">
+    <value>Kies een lijst</value>
+  </data>
+  <data name="shoppinglistadd.Text" xml:space="preserve">
+    <value>Aan deze lijst toevoegen</value>
+  </data>
+  <data name="createlist.Text" xml:space="preserve">
+    <value>Maak lijst</value>
+  </data>
+  <data name="cancellist.Text" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="IgnoreShared.Text" xml:space="preserve">
+    <value>Gedeelde records negeren</value>
+  </data>
+  <data name="login.Text" xml:space="preserve">
+    <value>Inloggen</value>
+  </data>
+  <data name="loginpopupmsg.Text" xml:space="preserve">
+    <value>Log in om artikelen aan uw favorieten toe te voegen.</value>
+  </data>
+  <data name="AccessToClient.Text" xml:space="preserve">
+    <value>Toegang verleend aan klant</value>
+  </data>
+  <data name="cmdResetButton.confirm" xml:space="preserve">
+    <value>Reset record?</value>
+  </data>
+  <data name="included.Text" xml:space="preserve">
+    <value>(incl.)</value>
+  </data>
+  <data name="AddressName.Text" xml:space="preserve">
+    <value>Adres naam</value>
+  </data>
+  <data name="cascade.Text" xml:space="preserve">
+    <value>Cascade</value>
+  </data>
+  <data name="enabled.Text" xml:space="preserve">
+    <value>Ingeschakeld</value>
+  </data>
+  <data name="visible.Text" xml:space="preserve">
+    <value>Zichtbaar</value>
+  </data>
+  <data name="owner.Text" xml:space="preserve">
+    <value>Eigenaar</value>
+  </data>
+  <data name="RefValidationMessage.Text" xml:space="preserve">
+    <value>Ref mag alleen in kleine letters alfanumeriek zijn zonder lege spaties.</value>
+  </data>
 </root>

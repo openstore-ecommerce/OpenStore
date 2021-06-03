@@ -194,9 +194,23 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
         public String CategoryAdminSaveList(HttpContext context)
         {
             var ajaxInfoList = NBrightBuyUtils.GetAjaxInfoList(context);
+            var strOut = "";
+            var regex = new Regex(@"^[a-z0-9]+$");
+            var isPropertyList = (context.Request.QueryString.Get("cmd") == "property_admin_savelist");
 
             foreach (var nbi in ajaxInfoList)
             {
+
+                // validate property refs
+                if (isPropertyList) {
+                    var propertyRef = nbi.GetXmlProperty("genxml/textbox/propertyref");
+                    if (propertyRef != "" && !regex.IsMatch(propertyRef))
+                    {
+                        strOut = "Error: Invalid Ref. Only use lower case alpha numeric values. No spaces. " + propertyRef;
+                        break;
+                    };
+                }
+
                 if (nbi.GetXmlPropertyBool("genxml/hidden/isdirty"))
                 {
                     var categoryData = CategoryUtils.GetCategoryData(nbi.GetXmlPropertyInt("genxml/hidden/itemid"), nbi.GetXmlProperty("genxml/hidden/categorylang"));
@@ -213,7 +227,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
             }
             DataCache.ClearCache();
             NBrightBuyUtils.RemoveModCachePortalWide(PortalSettings.Current.PortalId);
-            return "";
+            return strOut;
         }
 
         public String ProductAdminSave(HttpContext context, string editLangCurrent)
