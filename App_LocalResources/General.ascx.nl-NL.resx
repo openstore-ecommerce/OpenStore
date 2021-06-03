@@ -1224,6 +1224,9 @@
   <data name="owner.Text" xml:space="preserve">
     <value>Eigenaar</value>
   </data>
+  <data name="RefValidationMessage.Text" xml:space="preserve">
+    <value>Ref mag alleen in kleine letters alfanumeriek zijn zonder lege spaties.</value>
+  </data>
   <data name="PropertyGroupAddSearchBox.Text" xml:space="preserve">
     <value>Zoekvak toevoegen</value>
   </data>

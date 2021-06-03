@@ -1050,4 +1050,7 @@
   <data name="DealerOnly.Text" xml:space="preserve">
     <value>Commerciante Solo</value>
   </data>
+  <data name="RefValidationMessage.Text" xml:space="preserve">
+    <value>Ref dovrebbe essere solo alfanumerico minuscolo senza spazi vuoti.</value>
+  </data>
 </root>

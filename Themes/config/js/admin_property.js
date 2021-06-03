@@ -176,8 +176,24 @@
 
                 $('#propertyAdmin_cmdSaveList').unbind("click");
                 $("#propertyAdmin_cmdSaveList").click(function () {
-                    $('.processing').show();
-                    nbxget('property_admin_savelist', '.propertyfields', '', '.propertyitemfields');
+
+                    var regEx = /[^a-z\d]/i;
+                    var elems = ".propertyitemfields input#propertyref";
+                    var isValid = ($(elems).length > 0);
+                    $(elems).each(function(){
+                        isValid = !(regEx.test($(this).val()));
+                        if (!isValid) {
+                            alert($("#refvalidationmessage").val());
+                            $(this).select();
+                            return false;
+                        }
+                    });
+
+                    if (isValid) {
+                        $('.processing').show();
+                        nbxget('property_admin_savelist', '.propertyfields', '', '.propertyitemfields');
+                    }
+                    
                 });
 
                 $('.categorynametextbox').unbind("change");
