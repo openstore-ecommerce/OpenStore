@@ -163,7 +163,9 @@ function Admin_product_nbxgetCompleted(e) {
         $('.cmdPg').click(function () {
             $('.processing').show();
             $('#p1_pagenumber').val($(this).attr('pagenumber'));
-            product_admin_search();
+            var moveproductid = $("#p1_moveproductid").val(); // product_admin_search() clears  #p1_moveproductid
+            product_admin_search(); 
+            $("#p1_moveproductid").val(moveproductid); 
         });
 
         // Move products
@@ -1039,5 +1041,25 @@ function productdetail()
 }
 
     // ---------------------------------------------------------------------------
+jQuery.fn.toggleOption = function (show) {
+    $(this).each(function () {
+        if (show) {
+            if ($(this).parent("span.toggleOption").length)
+                $(this).unwrap();
+        } else {
+            if ($(this).parent("span.toggleOption").length === 0)
+                $(this).wrap('<span class="toggleOption" style="display: none;" />');
+        }
+    });
+};
 
-
+function filterSelect(searchbox, selectid) {
+    var s = $(searchbox).val();
+    $(`#${selectid} option`).each(function(index) {
+        if ($(this).text().indexOf(s) >= 0) {
+            $(this).toggleOption(true);
+        } else {
+            $(this).toggleOption(false);
+        }
+    });
+}

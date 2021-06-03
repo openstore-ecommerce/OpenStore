@@ -151,9 +151,11 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                         var grpname = GenXmlFunctions.GetField(rtnItem, "groupname");
                         var grpref = GenXmlFunctions.GetField(rtnItem, "groupref");
                         var grptype = GenXmlFunctions.GetField(rtnItem, "grouptype");
+                        var addsearchbox = GenXmlFunctions.GetField(rtnItem, "addsearchbox");
                         grpData.Name = grpname;
                         grpData.Ref = grpref;
                         grpData.Type = grptype;
+                        grpData.AddSearchBox = addsearchbox;
                         grpData.Save();
                     }
                 }

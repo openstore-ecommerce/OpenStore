@@ -369,3 +369,12 @@ a.sortelementLeft, a.sortelementRight {
     height: 100%;
   }
 }
+
+
+#editBarContainer {
+    display: none !important
+}
+
+.personalBarContainer {
+    display: none !important
+}

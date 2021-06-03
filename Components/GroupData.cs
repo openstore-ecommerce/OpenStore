@@ -80,6 +80,30 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
         }
 
+        public string AddSearchBox
+        {
+            get
+            {
+                if (Exists) return Info.GetXmlPropertyBool("genxml/checkbox/addsearchbox").ToString();
+                return false.ToString();
+            }
+            set
+            {
+                if (Exists)
+                {
+                    bool b;
+                    if (bool.TryParse(value, out b))
+                    {
+                        DataRecord.SetXmlProperty("genxml/checkbox/addsearchbox", b.ToString());
+                    }
+                    else
+                    {
+                        DataRecord.SetXmlProperty("genxml/checkbox/addsearchbox", false.ToString());
+                    }
+                }
+            }
+        }
+
 
         public void Save()
         {

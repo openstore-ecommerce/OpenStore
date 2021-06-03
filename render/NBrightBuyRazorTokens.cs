@@ -27,6 +27,7 @@ using RazorEngine.Text;
 using System.Drawing.Imaging;
 using NBrightCore.images;
 using System.IO;
+using System.Xml.Schema;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Users;
 using Nevoweb.DNN.NBrightBuy;
@@ -466,7 +467,7 @@ namespace NBrightBuy.render
                         //put a span around it, so at least we can hide with css...
                         if (addcost > 0)
                         {
-                            addedcostdisplay = " <span class='addcst addcs" + (index + 1) + "'>(+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")</span>";
+                            addedcostdisplay = " <span class='addcst addcs" + (index + 1) + cnt + "'>(+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")</span>";
                         }
 
                         var selected = "";
@@ -476,8 +477,8 @@ namespace NBrightBuy.render
                         }
                         cnt += 1;
 
-                        strOut += "<input type='checkbox' id='optionrb" + (index + 1) + "' name='optionrb" + (index + 1) + "' " + selected + " value='" + optval.GetXmlProperty("genxml/hidden/optionvalueid") + "'>";
-                        strOut += "<label for='optionrb" + (index + 1) + "'>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label>";
+                        strOut += "<input type='checkbox' id='optionrb" + (index + 1) + cnt + "' name='optionrb" + (index + 1) + "' " + selected + " value='" + optval.GetXmlProperty("genxml/hidden/optionvalueid") + "'>";
+                        strOut += "<label for='optionrb" + (index + 1) + cnt + "'>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label>";
                     }
 
                 }
@@ -491,7 +492,7 @@ namespace NBrightBuy.render
                         var addedcostdisplay = "";
                         if (addcost > 0)
                         {
-                            addedcostdisplay = "    (+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")";
+                            addedcostdisplay = " <span class='addcst addcs" + (index + 1) + "'>(+" + NBrightBuyUtils.FormatToStoreCurrency(addcost) + ")</span>";
                         }
 
                         strOut += "    <input id='optionchk" + (index + 1) + "' type='checkbox' " + attributes + " update='save' /><label>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label>";
@@ -743,15 +744,25 @@ namespace NBrightBuy.render
 
         public IEncodedString CategorySelectList(NBrightInfo info, String xpath, String attributes = "", Boolean allowEmpty = true, int displaylevels = 20, Boolean showHidden = false, Boolean showArchived = false, int parentid = 0, String catreflist = "", String prefix = "", bool displayCount = false, bool showEmpty = true, string groupref = "", string breadcrumbseparator = ">", string lang = "")
         {
+            var nbc = new NBrightBuyController();
+            var group = nbc.GetByGuidKey(info.PortalId, -1, "GROUP", groupref);
+
+            var addSearchBox = false;
+            if (group != null) addSearchBox = group.GetXmlPropertyBool("/genxml/checkbox/addsearchbox");
             var rtnList = NBrightBuyUtils.BuildCatList(displaylevels, showHidden, showArchived, parentid, catreflist, prefix, displayCount, showEmpty, groupref, breadcrumbseparator, lang);
 
             if (attributes.StartsWith("ResourceKey:")) attributes = ResourceKey(attributes.Replace("ResourceKey:", "")).ToString();
 
-            var strOut = "";
-
+            var strOut = "<div class=\"col-sm-12\">";
             var upd = getUpdateAttr(xpath, attributes);
             var id = getIdFromXpath(xpath);
-            strOut = "<select id='" + id + "' " + upd + " " + attributes + ">";
+
+            if (addSearchBox)
+            {
+                strOut += $"<div class=\"form-group\"><label>{ResourceKey("General.PropertyGroupSearchLabel")}</label><input type=\"text\" class=\"form-control\" onkeyup=\"filterSelect(this, '{id}')\" ></div>";
+            }
+
+            strOut += "<div class=\"form-group\"><select id='" + id + "' " + upd + " " + attributes + ">";
             var s = "";
             if (allowEmpty) strOut += "    <option value=''></option>";
             foreach (var tItem in rtnList)
@@ -762,7 +773,8 @@ namespace NBrightBuy.render
                     s = "";
                 strOut += "    <option value='" + tItem.Key.ToString() + "' " + s + ">" + tItem.Value + "</option>";
             }
-            strOut += "</select>";
+            strOut += "</select></div>";
+            strOut += "</div>";
 
             return new RawString(strOut);
         }

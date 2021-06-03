@@ -3,7 +3,7 @@
   <websitedestrelpath>\DesktopModules\NBright\NBrightBuy</websitedestrelpath>
   <websitedestbinrelpath>\bin</websitedestbinrelpath>
   <!-- Include only files that match the regular expression -->
-  <regexpr>(\.cshtml|\.html|\.resx|OpenStore\.dnn|\.png|\.gif|\.jpg|\.jpeg|\.css|\.js|\.xml|\.txt|\.md|\.aspx|\.ascx|\.ashx)$</regexpr>
+  <regexpr>(\.cshtml|\.html|\.resx|OpenStore\.dnn|\.png|\.gif|\.jpg|\.jpeg|\.css|\.js|\.xml|\.txt|\.md|\.aspx|\.ascx|\.ashx|\.config)$</regexpr>
   <directory include='false'>
 		<!-- All paths should be from the source root (project root) -->
     <value>\.git</value>
@@ -12,10 +12,33 @@
     <value>\obj</value>
     <value>\Components</value>
     <value>\render</value>
+    <value>\packages</value>
+    <value>\Installation</value>
     <value>\_external</value>
-    <value>\Providers</value>    
+    <value>\Skins</value>
+    <value>\Providers\EventProvider</value>
+    <value>\Providers\DiscountCodesProvider\bin</value>
+    <value>\Providers\DiscountCodesProvider\obj</value>
+    <value>\Providers\ManualPaymentProvider\bin</value>
+    <value>\Providers\ManualPaymentProvider\obj</value>
+    <value>\Providers\PromoProvider\bin</value>
+    <value>\Providers\PromoProvider\obj</value>
+    <value>\Providers\ShippingProvider\bin</value>
+    <value>\Providers\ShippingProvider\obj</value>
+    <value>\Providers\TaxProvider\bin</value>
+    <value>\Providers\TaxProvider\obj</value>
   </directory>
   <file include='false'>
+    <value>\Providers\DiscountCodesProvider\app.config</value>
+    <value>\Providers\DiscountCodesProvider\packages.config</value>
+    <value>\Providers\ManualPaymentProvider\app.config</value>
+    <value>\Providers\ManualPaymentProvider\packages.config</value>
+    <value>\Providers\PromoProvider\app.config</value>
+    <value>\Providers\PromoProvider\packages.config</value>
+    <value>\Providers\ShippingProvider\app.config</value>
+    <value>\Providers\ShippingProvider\packages.config</value>
+    <value>\Providers\TaxProvider\app.config</value>
+    <value>\Providers\TaxProvider\packages.config</value>
   </file>
   <file include='true'>
     <value>\Installation\04.00.00.SqlDataProvider</value>
