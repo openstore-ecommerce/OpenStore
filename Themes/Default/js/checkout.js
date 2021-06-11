@@ -307,7 +307,6 @@ function processCartStep(buttontype) {
     }
 
     if ($('#cartstep').val() == '2') {
-        $('#cartstep').val("2");
         $('.processingcheckout').show();
         $('#carttemplate').val('CheckoutAddress.cshtml');
         $('#cmdDeleteCart').hide();
