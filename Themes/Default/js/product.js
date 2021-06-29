@@ -194,7 +194,7 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
     $('.shoppinglistadd').click(function () {
         $('#shopitemid').val($(this).attr('itemid'));
         $(".shoppinglistadd").colorbox({
-            inline: true, maxWidth: "230px", maxHeight: "250px", fixed: true,
+            inline: true, maxWidth: "640px", fixed: true,
             onClosed: function () {
                 $('#shopitemid').val('');
             }
