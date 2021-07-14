@@ -1233,4 +1233,13 @@
   <data name="Carttotal.Text" xml:space="preserve">
     <value>Subtotal</value>
   </data>
+  <data name="RefValidationMessage.Text" xml:space="preserve">
+    <value>Ref should be lower case alpha numeric only with no empty spaces.</value>
+  </data>
+  <data name="PropertyGroupAddSearchBox.Text" xml:space="preserve">
+    <value>Add Search Box</value>
+  </data>
+  <data name="PropertyGroupSearchLabel.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
 </root>

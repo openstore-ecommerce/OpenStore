@@ -1209,4 +1209,7 @@
   <data name="DealerOnly.Text" xml:space="preserve">
     <value>Revendeur Seulement</value>
   </data>
+  <data name="RefValidationMessage.Text" xml:space="preserve">
+    <value>La référence doit être en minuscules alphanumériques uniquement sans espaces vides.</value>
+  </data>
 </root>
