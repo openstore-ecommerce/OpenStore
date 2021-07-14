@@ -269,12 +269,15 @@ else
         </div>
         <!-- End Details -->
         <!-- Related Items -->
-        @if (@product.GetRelatedProducts().Count >= 1)
+        @{
+            var relatedProducts = product.GetRelatedProducts();
+        }
+        @if (relatedProducts.Count >= 1)
         {
             <div class="h2-headline">@ResourceKey("ProductView.recommend")</div>
             <div id="relatedwrapper" class="productlist">
                 <!-- Related products -->
-                @foreach (var rp in product.GetRelatedProducts())
+                @foreach (var rp in relatedProducts)
                 {
                     var rproduct = new ProductData(rp.ItemID, rp.Lang);
                     <div class="product">

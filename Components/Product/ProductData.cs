@@ -77,7 +77,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             LoadData(productId, hydrateLists);
 
-            
+
         }
 
         public ProductData()
@@ -105,7 +105,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             _portalId = portalId;
             ResetData(productId, lang, hydrateLists, typeCode);
         }
-        
+
         #region "public functions/interface"
 
         /// <summary>
@@ -138,14 +138,16 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public String ProductRef
         {
-            get {
+            get
+            {
                 return DataRecord.GetXmlProperty("genxml/textbox/txtproductref");
             }
         }
 
         public String ProductName
         {
-            get {
+            get
+            {
                 return DataLangRecord.GetXmlProperty("genxml/textbox/txtproductname");
             }
         }
@@ -193,7 +195,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             obj.SetXmlProperty("genxml/hidden/lang", Info.Lang.Trim());
                             obj.SetXmlProperty("genxml/hidden/optionid", optionid);
                             var selectSingleNode = xNod.SelectSingleNode("hidden/optionvalueid");
-                            if (selectSingleNode != null) obj.SetXmlProperty("genxml/hidden/optionvalueid", selectSingleNode.InnerText);                                
+                            if (selectSingleNode != null) obj.SetXmlProperty("genxml/hidden/optionvalueid", selectSingleNode.InnerText);
                             obj.AddSingleNode("lang", "", "genxml");
                             obj.AddXmlNode(nodLang, "genxml", "genxml/lang");
                         }
@@ -254,12 +256,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public Double FromBulkPrice()
         {
-           return DataRecord.GetXmlPropertyDouble("genxml/calcfrombulkprice");
+            return DataRecord.GetXmlPropertyDouble("genxml/calcfrombulkprice");
         }
 
         public Double SaleBulkPrice()
         {
-           return DataRecord.GetXmlPropertyDouble("genxml/calcsalebulkprice");
+            return DataRecord.GetXmlPropertyDouble("genxml/calcsalebulkprice");
         }
         public Double FromBulkUnitPrice()
         {
@@ -359,12 +361,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return DataRecord.GetXmlPropertyDouble("genxml/calchighdealerunitprice");
         }
 
-        public void AdjustModelQtyBy(String modelid,Double qty)
+        public void AdjustModelQtyBy(String modelid, Double qty)
         {
             var model = GetModel(modelid);
             var newqty = DataRecord.GetXmlPropertyDouble("genxml/models/genxml[" + model.ItemID.ToString("") + "]/textbox/txtqtyremaining");
             newqty = newqty - qty;
-            DataRecord.SetXmlPropertyDouble("genxml/models/genxml[" + model.ItemID.ToString("") + "]/textbox/txtqtyremaining", newqty);            
+            DataRecord.SetXmlPropertyDouble("genxml/models/genxml[" + model.ItemID.ToString("") + "]/textbox/txtqtyremaining", newqty);
         }
 
         /// <summary>
@@ -375,7 +377,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <param name="modelid"></param>
         /// <param name="orderid"></param>
         /// <param name="addqty"></param>
-        public void UpdateModelTransQty(String modelid,int orderid, Double addqty)
+        public void UpdateModelTransQty(String modelid, int orderid, Double addqty)
         {
             var key = "modeltrans*" + modelid + "*" + _portalId.ToString("");
             var l = (List<ModelTransData>)Utils.GetCache(key);
@@ -388,7 +390,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             t.modelid = modelid;
             t.setdate = DateTime.Now;
             l.Add(t);
-            Utils.SetCache(key,l);
+            Utils.SetCache(key, l);
         }
 
         public Double GetModelTransQty(String modelid, int orderid)
@@ -415,7 +417,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 l.RemoveAll(s => s.setdate < DateTime.Now.AddMinutes(-20)); // remove timed out records
                 l.RemoveAll(s => s.orderid == orderid); // remove orderid
-                Utils.SetCache(key, l);                
+                Utils.SetCache(key, l);
             }
         }
 
@@ -445,7 +447,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <param name="groupref">groupref for select, "" = all, "cat"= Category only, "!cat" = all non-category, "{groupref}"=this group only</param>
         /// <param name="cascade">get all cascade records to get all parent categories</param>
         /// <returns></returns>
-        public List<GroupCategoryData> GetCategories(String groupref = "",Boolean cascade = false)
+        public List<GroupCategoryData> GetCategories(String groupref = "", Boolean cascade = false)
         {
             if (Info == null) return new List<GroupCategoryData>(); // stop throwing an error no product exists,
 
@@ -515,10 +517,48 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public Boolean IsInCategory(String categoryref)
         {
             var objGrpCtrl = new GrpCatController(_lang);
-            var l = objGrpCtrl.GetProductCategories(Info.ItemID, "cat",true);
+            var l = objGrpCtrl.GetProductCategories(Info.ItemID, "cat", true);
             return l.Any(i => i.categoryref == categoryref);
         }
 
+        /// <summary>
+        /// This overloads of GetRelatedProducts add random products from the same categories to the returned list of related products, up to the monimum number that's passed in.
+        /// </summary>
+        /// <param name="minimumNumber"></param>
+        /// <returns></returns>
+        public List<NBrightInfo> GetRelatedProducts(int minimumNumber)
+        {
+            var related = GetRelatedProducts();
+
+            if (related.Count < minimumNumber)
+            {
+                var cats = GetCategories("cat");
+
+                // safety catch
+                if (cats == null) return related;
+
+                if (related.Count < minimumNumber)
+                {
+                    foreach (var cat in cats.OrderByDescending(c => c.Parents.Count))
+                    {
+                        var objCtrl = new NBrightBuyController();
+                        var list = objCtrl.GetList(_portalId, -1, "CATXREF", $" and NB1.xrefitemid = {cat.categoryid} and NOT NB1.parentitemid = {Info.ItemID}");
+                        while (related.Count < minimumNumber)
+                        {
+                            var rnd = new Random();
+                            int index = rnd.Next(list.Count);
+                            related.Add(objCtrl.GetData(list[index].ParentItemId, "PRDLANG", _lang));
+                            list.RemoveAt(index);
+
+                            if (related.Count >= minimumNumber) break;
+                        }
+                        if (related.Count >= minimumNumber) break;
+                    }
+                }
+            }
+
+            return related;
+        }
         public List<NBrightInfo> GetRelatedProducts()
         {
             var objCtrl = new NBrightBuyController();
@@ -564,7 +604,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public void Save(bool triggerevent)
         {
-            Save(triggerevent,false);
+            Save(triggerevent, false);
         }
 
         /// <summary>
@@ -607,7 +647,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var plangid = objCtrl.Update(DataLangRecord);
 
             // reload data so it's upto date with new ids
-            DataRecord = objCtrl.Get(productid); 
+            DataRecord = objCtrl.Get(productid);
             DataLangRecord = objCtrl.Get(plangid);
             Info = objCtrl.Get(productid, _typeLangCode, _lang);
 
@@ -629,7 +669,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         {
                             if (nbilang.GetXmlPropertyBool("genxml/newrecord"))
                             {
-                                var nbi = (NBrightInfo) DataLangRecord.Clone();
+                                var nbi = (NBrightInfo)DataLangRecord.Clone();
                                 nbi.ItemID = nbilang.ItemID;
                                 nbi.Lang = lang;
                                 nbi.RemoveXmlNode("genxml/newrecord");
@@ -682,11 +722,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     var unitqty = m.GetXmlPropertyDouble("genxml/textbox/unitqty");
                     if (unitqty == 0) unitqty = 1;
                     var unitcost = m.GetXmlPropertyDouble("genxml/textbox/txtunitcost");
-                    var unitprice = Math.Round((unitcost / unitqty),2);
+                    var unitprice = Math.Round((unitcost / unitqty), 2);
                     var sprice = m.GetXmlPropertyDouble("genxml/textbox/txtsaleprice");
                     var dealercost = m.GetXmlPropertyDouble("genxml/textbox/txtdealercost");
-                    var dealersale = m.GetXmlPropertyDouble("genxml/textbox/txtdealersale"); 
-                    var dealerunitprice = Math.Round((dealercost / unitqty),2);
+                    var dealersale = m.GetXmlPropertyDouble("genxml/textbox/txtdealersale");
+                    var dealerunitprice = Math.Round((dealercost / unitqty), 2);
 
                     if ((highunitprice == -1) || (highunitprice < unitprice)) highunitprice = unitprice;
                     if ((highdealerunitprice == -1) || (highdealerunitprice < dealerunitprice)) highdealerunitprice = dealerunitprice;
@@ -699,7 +739,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                     // calc fromprice / frompriceunit
                     if ((fromprice == -1) || (fromprice > unitcost)) fromprice = unitcost;
-                    if ((frompriceunit == -1) || (frompriceunit > (unitcost/unitqty))) frompriceunit = Math.Round((unitcost/unitqty),2);
+                    if ((frompriceunit == -1) || (frompriceunit > (unitcost / unitqty))) frompriceunit = Math.Round((unitcost / unitqty), 2);
 
                     if (!m.GetXmlPropertyBool("genxml/checkbox/chkdisablesale"))
                     {
@@ -735,7 +775,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (highunitprice < 0) highunitprice = 0;
                 if (highdealerunitprice < 0) highdealerunitprice = 0;
                 if ((frombulkpriceunit < 0)) frombulkpriceunit = 0;
-                if ((salebulkpriceunit < 0)) salebulkpriceunit = 0;                
+                if ((salebulkpriceunit < 0)) salebulkpriceunit = 0;
 
                 DataRecord.SetXmlPropertyDouble("genxml/calcfromprice", fromprice);
                 DataRecord.SetXmlPropertyDouble("genxml/calcsaleprice", saleprice);
@@ -796,7 +836,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     DataRecord.SetXmlPropertyDouble("genxml/calcbestpriceallunit", bestpriceunit);
                 }
 
-                
+
 
             }
             catch (Exception ex)
@@ -849,7 +889,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     if (f.StartsWith("genxml/checkboxlist"))
                     {
                         // process checkboxlist by copy xml node.
-                        DataLangRecord.ReplaceXmlNode(info.XMLData,f, "genxml/checkboxlist");
+                        DataLangRecord.ReplaceXmlNode(info.XMLData, f, "genxml/checkboxlist");
                     }
                     else
                     {
@@ -940,7 +980,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             var strAjaxXml = info.GetXmlProperty("genxml/hidden/xmlupdateproductdocs");
             strAjaxXml = Utils.UnCode(strAjaxXml);
-            var docList = NBrightBuyUtils.GetGenXmlListByAjax(strAjaxXml, "");            
+            var docList = NBrightBuyUtils.GetGenXmlListByAjax(strAjaxXml, "");
             UpdateDocs(docList);
 
             //add new doc if uploaded
@@ -1230,7 +1270,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             // replace models xml 
             DataRecord.ReplaceXmlNode(strXml, "genxml/options", "genxml");
-            DataLangRecord.ReplaceXmlNode(strXmlLang, "genxml/options", "genxml");        
+            DataLangRecord.ReplaceXmlNode(strXmlLang, "genxml/options", "genxml");
         }
 
         public void UpdateOptionValues(String xmlAjaxData, string editlang)
@@ -1309,7 +1349,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                                     else if (datatype == "double")
                                         objInfoLang.SetXmlProperty(f, objDataInfo.GetXmlPropertyDouble(f).ToString(""), TypeCode.Double);
                                     else
-                                    objInfoLang.SetXmlProperty(f, objDataInfo.GetXmlProperty(f));
+                                        objInfoLang.SetXmlProperty(f, objDataInfo.GetXmlProperty(f));
                                 }
                                 strXmlLang += objInfoLang.XMLData;
 
@@ -1322,7 +1362,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                                     else if (datatype == "double")
                                         objInfo.SetXmlProperty(f, objDataInfo.GetXmlPropertyDouble(f).ToString(""), TypeCode.Double);
                                     else
-                                    objInfo.SetXmlProperty(f, objDataInfo.GetXmlProperty(f));
+                                        objInfo.SetXmlProperty(f, objDataInfo.GetXmlProperty(f));
                                 }
                                 strXml += objInfo.XMLData;
                             }
@@ -1332,7 +1372,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                         // replace  xml 
                         DataRecord.ReplaceXmlNode(strXml, "genxml/optionvalues[@optionid='" + optid + "']", "genxml");
-                        DataLangRecord.ReplaceXmlNode(strXmlLang, "genxml/optionvalues[@optionid='" + optid + "']","genxml");
+                        DataLangRecord.ReplaceXmlNode(strXmlLang, "genxml/optionvalues[@optionid='" + optid + "']", "genxml");
                     }
 
                     // tidy up any invlid option values (usually created in a migration phase)
@@ -1453,7 +1493,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public void AddProperty(String propertyref)
         {
             var objCtrl = new NBrightBuyController();
-            var pinfo = objCtrl.GetByGuidKey(_portalId, -1,"CATEGORY",propertyref);
+            var pinfo = objCtrl.GetByGuidKey(_portalId, -1, "CATEGORY", propertyref);
             if (pinfo == null)
             {
                 // not using the unique ref, look for the friendly propertyref name.
@@ -1496,7 +1536,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         foreach (var p in parentcats.Parents)
                         {
                             strGuid = p.ToString("") + "x" + Info.ItemID.ToString("");
-                            var obj = objCtrl.GetByGuidKey(_portalId, -1, "CATCASCADE", strGuid,"", true);
+                            var obj = objCtrl.GetByGuidKey(_portalId, -1, "CATCASCADE", strGuid, "", true);
                             if (obj == null)
                             {
                                 nbi = new NBrightInfo();
@@ -1514,7 +1554,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             }
                         }
                     }
-                }                
+                }
             }
         }
 
@@ -1568,11 +1608,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public void AddRelatedProduct(int productid)
         {
-            if (productid!= Info.ItemID)  //cannot be related to itself
+            if (productid != Info.ItemID)  //cannot be related to itself
             {
                 var strGuid = productid.ToString("") + "x" + Info.ItemID.ToString("");
                 var objCtrl = new NBrightBuyController();
-                var nbi = objCtrl.GetByGuidKey(_portalId, -1, _typeCode + "XREF", strGuid,"",true);
+                var nbi = objCtrl.GetByGuidKey(_portalId, -1, _typeCode + "XREF", strGuid, "", true);
                 if (nbi == null)
                 {
                     nbi = new NBrightInfo();
@@ -1587,7 +1627,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     nbi.Lang = null;
                     nbi.GUIDKey = strGuid;
                     objCtrl.Update(nbi);
-                }                
+                }
             }
         }
 
@@ -1606,7 +1646,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             var strGuid = userid.ToString("") + "x" + Info.ItemID.ToString("");
             var objCtrl = new NBrightBuyController();
-            var nbi = objCtrl.GetByGuidKey(_portalId, -1, "USERPRDXREF", strGuid,"",true);
+            var nbi = objCtrl.GetByGuidKey(_portalId, -1, "USERPRDXREF", strGuid, "", true);
             if (nbi == null)
             {
                 nbi = new NBrightInfo();
@@ -1642,7 +1682,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var resetToLangData = ProductUtils.GetProductData(DataRecord.ItemID, resetToLang);
                 var objCtrl = new NBrightBuyController();
                 DataLangRecord.XMLData = resetToLangData.DataLangRecord.XMLData;
-                objCtrl.Update(DataLangRecord);                
+                objCtrl.Update(DataLangRecord);
             }
         }
 
@@ -1661,7 +1701,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 // we have no datalang record for this language, so get an existing one and save it.
                 var l = objCtrl.GetList(_portalId, -1, _typeLangCode, " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
                 if (l.Count > 0)
-                    DataLangRecord = (NBrightInfo) l[0].Clone();
+                    DataLangRecord = (NBrightInfo)l[0].Clone();
                 else
                     DataLangRecord = new NBrightInfo(true);
 
@@ -1676,7 +1716,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             // if we have no images search for a default image matching the product ref.
             if (ProductRef != "" && Imgs.Count == 0)
             {
-                if (File.Exists(_storeSettings.FolderImagesMapPath.TrimEnd('\\') + "\\" + ProductRef + ".jpg")) 
+                if (File.Exists(_storeSettings.FolderImagesMapPath.TrimEnd('\\') + "\\" + ProductRef + ".jpg"))
                 {
                     AddNewImage(_storeSettings.FolderImages.TrimEnd('/') + "/" + ProductRef + ".jpg", _storeSettings.FolderImagesMapPath.TrimEnd('\\') + "\\" + ProductRef + ".jpg");
                     upd = true;
@@ -1732,7 +1772,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var l = objCtrl.GetList(_portalId, -1, _typeLangCode, " and NB1.ParentItemId = " + Info.ItemID.ToString("") + " and NB1.Lang = '" + lang + "'");
                 if (l.Count == 0 && DataLangRecord != null)
                 {
-                    var nbi = (NBrightInfo) DataLangRecord.Clone();
+                    var nbi = (NBrightInfo)DataLangRecord.Clone();
                     nbi.ItemID = -1;
                     nbi.Lang = lang;
                     objCtrl.Update(nbi);
@@ -1774,7 +1814,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
 
             // remove duplicate catcascade records
-            var cascadeList = objCtrl.GetList(_portalId, -1, "CATCASCADE", " and NB1.ParentItemId = " + Info.ItemID.ToString("") );
+            var cascadeList = objCtrl.GetList(_portalId, -1, "CATCASCADE", " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
             foreach (var c in cascadeList)
             {
                 var l2 = objCtrl.GetList(_portalId, -1, "CATCASCADE", " and GUIDKey = '" + c.GUIDKey + "'");
@@ -1806,10 +1846,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             var catlist2 = GetCategories();
             if (catlist2.Any())
             {
+                var objGrpCtrl = new GrpCatController(_lang, true);
                 foreach (var cat in catlist2)
                 {
-
-                    var objGrpCtrl = new GrpCatController(_lang, true);
                     var parentcats = objGrpCtrl.GetCategory(cat.categoryid);
                     if (parentcats != null)
                     {
@@ -1840,7 +1879,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
 
             // update shared product if flagged
-            if (StoreSettings.Current.GetBool("shareproducts") && DataRecord.PortalId >= 0 ) 
+            if (StoreSettings.Current.GetBool("shareproducts") && DataRecord.PortalId >= 0)
             {
                 upd = true;
                 DataRecord.PortalId = -1;
@@ -1950,7 +1989,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             dr.ItemID = -1;
             dr.SetXmlProperty("genxml/importref", Utils.GetUniqueKey());
             var newid = objCtrl.Update(dr);
-            
+
             // copy all language records
             var l = objCtrl.GetList(_portalId, -1, _typeLangCode, " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
             foreach (var dlr in l)
@@ -1988,14 +2027,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 dr3.ItemID = -1;
                 dr3.GUIDKey = dr3.GUIDKey.Replace("x" + Info.ItemID.ToString(""), "x" + newid.ToString(""));
                 objCtrl.Update(dr3);
-                
+
                 // create bi-directional relationship
                 var newXrefId = dr3.ParentItemId; var newParentItemId = dr3.XrefItemId;
                 dr3.ParentItemId = newParentItemId;
                 dr3.XrefItemId = newXrefId;
                 dr3.GUIDKey = newid.ToString("") + "x" + dr3.GUIDKey.Replace("x" + newid.ToString(""), "");
                 objCtrl.Update(dr3);
-            }            
+            }
 
             // copy USERPRDXREF records
             l = objCtrl.GetList(_portalId, -1, "USERPRDXREF", " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
@@ -2020,155 +2059,155 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     var dlang = objCtrl.GetDataLang(DataRecord.ItemID, toLang) ?? DataLangRecord;
                     dlang.Lang = toLang;
                     // product
-                        var nodList = DataLangRecord.XMLDoc.SelectNodes("genxml/textbox/*");
-                        if (nodList != null)
+                    var nodList = DataLangRecord.XMLDoc.SelectNodes("genxml/textbox/*");
+                    if (nodList != null)
+                    {
+                        foreach (XmlNode nod in nodList)
                         {
-                            foreach (XmlNode nod in nodList)
+                            if (nod.InnerText.Trim() != "")
                             {
-                                if (nod.InnerText.Trim() != "")
+                                if (dlang.GetXmlProperty("genxml/textbox/" + nod.Name) == "")
                                 {
-                                    if (dlang.GetXmlProperty("genxml/textbox/" + nod.Name) == "")
-                                    {
-                                        dlang.SetXmlProperty("genxml/textbox/" + nod.Name, nod.InnerText);
-                                    }
+                                    dlang.SetXmlProperty("genxml/textbox/" + nod.Name, nod.InnerText);
                                 }
                             }
                         }
+                    }
 
-                        // editor
-                        if (DataLangRecord.GetXmlProperty("genxml/edt/description") != "")
+                    // editor
+                    if (DataLangRecord.GetXmlProperty("genxml/edt/description") != "")
+                    {
+                        if (dlang.GetXmlProperty("genxml/edt/description") == "")
                         {
-                            if (dlang.GetXmlProperty("genxml/edt/description") == "")
-                            {
-                                dlang.SetXmlProperty("genxml/edt/description", DataLangRecord.GetXmlPropertyRaw("genxml/edt/description"));
-                            }
+                            dlang.SetXmlProperty("genxml/edt/description", DataLangRecord.GetXmlPropertyRaw("genxml/edt/description"));
                         }
+                    }
 
 
-                        // models
-                        var nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/models/genxml");
-                        if (nodList1 != null)
+                    // models
+                    var nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/models/genxml");
+                    if (nodList1 != null)
+                    {
+                        var c = 1;
+                        foreach (XmlNode nod1 in nodList1)
                         {
-                            var c = 1;
-                            foreach (XmlNode nod1 in nodList1)
+                            nodList = nod1.SelectNodes("textbox/*");
+                            if (nodList != null)
                             {
-                                nodList = nod1.SelectNodes("textbox/*");
-                                if (nodList != null)
+                                foreach (XmlNode nod in nodList)
                                 {
-                                    foreach (XmlNode nod in nodList)
+                                    if (nod.InnerText.Trim() != "")
                                     {
-                                        if (nod.InnerText.Trim() != "")
+                                        if (dlang.GetXmlProperty("genxml/models/genxml[" + c + "]/textbox/" + nod.Name) == "")
                                         {
-                                            if (dlang.GetXmlProperty("genxml/models/genxml[" + c + "]/textbox/" + nod.Name) == "")
-                                            {
-                                                dlang.SetXmlProperty("genxml/models/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
-                                            }
+                                            dlang.SetXmlProperty("genxml/models/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
                                         }
                                     }
                                 }
-                                c += 1;
                             }
+                            c += 1;
                         }
+                    }
 
-                        // options
-                        nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/options/genxml");
-                        if (nodList1 != null)
+                    // options
+                    nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/options/genxml");
+                    if (nodList1 != null)
+                    {
+                        var c = 1;
+                        foreach (XmlNode nod1 in nodList1)
                         {
-                            var c = 1;
-                            foreach (XmlNode nod1 in nodList1)
+                            nodList = nod1.SelectNodes("textbox/*");
+                            if (nodList != null)
                             {
-                                nodList = nod1.SelectNodes("textbox/*");
-                                if (nodList != null)
+                                foreach (XmlNode nod in nodList)
                                 {
-                                    foreach (XmlNode nod in nodList)
+                                    if (nod.InnerText.Trim() != "")
                                     {
-                                        if (nod.InnerText.Trim() != "")
+                                        if (dlang.GetXmlProperty("genxml/options/genxml[" + c + "]/textbox/" + nod.Name) == "")
                                         {
-                                            if (dlang.GetXmlProperty("genxml/options/genxml[" + c + "]/textbox/" + nod.Name) == "")
-                                            {
-                                                dlang.SetXmlProperty("genxml/options/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
-                                            }
+                                            dlang.SetXmlProperty("genxml/options/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
                                         }
                                     }
                                 }
-                                c += 1;
                             }
+                            c += 1;
                         }
+                    }
 
-                        // imgs
-                        nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/imgs/genxml");
-                        if (nodList1 != null)
+                    // imgs
+                    nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/imgs/genxml");
+                    if (nodList1 != null)
+                    {
+                        var c = 1;
+                        foreach (XmlNode nod1 in nodList1)
                         {
-                            var c = 1;
-                            foreach (XmlNode nod1 in nodList1)
+                            nodList = nod1.SelectNodes("textbox/*");
+                            if (nodList != null)
                             {
-                                nodList = nod1.SelectNodes("textbox/*");
-                                if (nodList != null)
+                                foreach (XmlNode nod in nodList)
                                 {
-                                    foreach (XmlNode nod in nodList)
+                                    if (nod.InnerText.Trim() != "")
                                     {
-                                        if (nod.InnerText.Trim() != "")
+                                        if (dlang.GetXmlProperty("genxml/imgs/genxml[" + c + "]/textbox/" + nod.Name) == "")
                                         {
-                                            if (dlang.GetXmlProperty("genxml/imgs/genxml[" + c + "]/textbox/" + nod.Name) == "")
-                                            {
-                                                dlang.SetXmlProperty("genxml/imgs/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
-                                            }
+                                            dlang.SetXmlProperty("genxml/imgs/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
                                         }
                                     }
                                 }
-                                c += 1;
                             }
+                            c += 1;
                         }
+                    }
 
-                        // docs
-                        nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/docs/genxml");
-                        if (nodList1 != null)
+                    // docs
+                    nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/docs/genxml");
+                    if (nodList1 != null)
+                    {
+                        var c = 1;
+                        foreach (XmlNode nod1 in nodList1)
                         {
-                            var c = 1;
-                            foreach (XmlNode nod1 in nodList1)
+                            nodList = nod1.SelectNodes("textbox/*");
+                            if (nodList != null)
                             {
-                                nodList = nod1.SelectNodes("textbox/*");
-                                if (nodList != null)
+                                foreach (XmlNode nod in nodList)
                                 {
-                                    foreach (XmlNode nod in nodList)
+                                    if (nod.InnerText.Trim() != "")
                                     {
-                                        if (nod.InnerText.Trim() != "")
+                                        if (dlang.GetXmlProperty("genxml/docs/genxml[" + c + "]/textbox/" + nod.Name) == "")
                                         {
-                                            if (dlang.GetXmlProperty("genxml/docs/genxml[" + c + "]/textbox/" + nod.Name) == "")
-                                            {
-                                                dlang.SetXmlProperty("genxml/docs/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
-                                            }
+                                            dlang.SetXmlProperty("genxml/docs/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
                                         }
                                     }
                                 }
-                                c += 1;
                             }
+                            c += 1;
                         }
+                    }
 
-                        // optionvalues
-                        nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/optionvalues/genxml");
-                        if (nodList1 != null)
+                    // optionvalues
+                    nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/optionvalues/genxml");
+                    if (nodList1 != null)
+                    {
+                        var c = 1;
+                        foreach (XmlNode nod1 in nodList1)
                         {
-                            var c = 1;
-                            foreach (XmlNode nod1 in nodList1)
+                            nodList = nod1.SelectNodes("textbox/*");
+                            if (nodList != null)
                             {
-                                nodList = nod1.SelectNodes("textbox/*");
-                                if (nodList != null)
+                                foreach (XmlNode nod in nodList)
                                 {
-                                    foreach (XmlNode nod in nodList)
+                                    if (nod.InnerText.Trim() != "")
                                     {
-                                        if (nod.InnerText.Trim() != "")
+                                        if (dlang.GetXmlProperty("genxml/optionvalues/genxml[" + c + "]/textbox/" + nod.Name) == "")
                                         {
-                                            if (dlang.GetXmlProperty("genxml/optionvalues/genxml[" + c + "]/textbox/" + nod.Name) == "")
-                                            {
-                                                dlang.SetXmlProperty("genxml/optionvalues/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
-                                            }
+                                            dlang.SetXmlProperty("genxml/optionvalues/genxml[" + c + "]/textbox/" + nod.Name, nod.InnerText);
                                         }
                                     }
                                 }
-                                c += 1;
                             }
-                        }                        
+                            c += 1;
+                        }
+                    }
 
                     objCtrl.Update(dlang);
                 }
@@ -2230,7 +2269,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             Info = objCtrl.Get(productId, _typeLangCode, _lang);
             if (Info != null)
             {
-                if(_portalId<0) _portalId = PortalSettings.Current.PortalId;
+                if (_portalId < 0) _portalId = PortalSettings.Current.PortalId;
                 _storeSettings = new StoreSettings(_portalId);
                 Exists = true;
                 if (hydrateLists)
@@ -2245,7 +2284,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     foreach (var o in Options)
                     {
                         var l = GetOptionValuesById(o.GetXmlProperty("genxml/hidden/optionid"));
-                        OptionValues.AddRange(l);   
+                        OptionValues.AddRange(l);
                     }
                 }
                 Exists = true;
@@ -2262,7 +2301,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 IsOnSale = CheckIsOnSale();
                 DealerIsOnSale = DealerCheckIsOnSale();
                 IsInStock = CheckIsInStock();
-                ClientFileUpload = CheckClientFileUpload(); 
+                ClientFileUpload = CheckClientFileUpload();
             }
             else
             {
@@ -2318,7 +2357,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         var obj = new NBrightInfo();
                         obj.XMLData = xNod.OuterXml;
                         obj.ItemID = lp;
-                        obj.Lang = Info.Lang;                        
+                        obj.Lang = Info.Lang;
                         var nodLang = "<genxml>" + Info.GetXmlNode("genxml/lang/genxml/" + entityName + "/genxml[" + lp.ToString("") + "]") + "</genxml>";
                         if (nodLang != "")
                         {
