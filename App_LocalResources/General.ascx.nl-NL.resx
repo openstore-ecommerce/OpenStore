@@ -339,11 +339,11 @@
   <data name="cmdReturn.ToolTip" xml:space="preserve">
     <value>Terug</value>
   </data>
-  <data name="cmdReturnButton.Text" xml:space="preserve">
-    <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; retourneren</value>
+	<data name="cmdReturnButton.Text" xml:space="preserve">
+    <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; Terug</value>
   </data>
-  <data name="cmdReturnIcon.Text" xml:space="preserve">
-    <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; retourneren</value>
+	<data name="cmdReturnIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; Terug</value>
   </data>
   <data name="cmdSave.Text" xml:space="preserve">
     <value>Opslaan</value>
@@ -981,8 +981,8 @@
   <data name="findanorder.Text" xml:space="preserve">
     <value>Bestelling zoeken</value>
   </data>
-  <data name="findaproduct.Text" xml:space="preserve">
-    <value>Zoek en artikel</value>
+	<data name="findaproduct.Text" xml:space="preserve">
+    <value>Zoek een artikel</value>
   </data>
   <data name="hello.Text" xml:space="preserve">
     <value>Hi there</value>
@@ -1095,135 +1095,135 @@
   <data name="DealerOnly.Text" xml:space="preserve">
     <value>Alleen dealer</value>
   </data>
-  <data name="seooptimization.Text" xml:space="preserve">
-    <value>SEO (optioneel)</value>
-  </data>
-  <data name="seonamehelp.Text" xml:space="preserve">
-    <value>Alternatieve naam voor het produkt, voor gebruik in de URL.</value>
-  </data>
-  <data name="seotitlehelp.Text" xml:space="preserve">
-    <value>Alternatieve META Title (produktnaam is standaard)</value>
-  </data>
-  <data name="seodescriptionhelp.Text" xml:space="preserve">
-    <value>Alternatieve Meta Description (samenvatting is standaard)</value>
-  </data>
-  <data name="allowupload.Text" xml:space="preserve">
-    <value>Uploads van klanten toestaan</value>
-  </data>
-  <data name="ReturnTo.Text" xml:space="preserve">
-    <value>Terug naar</value>
-  </data>
-  <data name="Manufacturer.Text" xml:space="preserve">
-    <value>Fabrikant</value>
-  </data>
-  <data name="DealerSale.Text" xml:space="preserve">
-    <value>Dealer aanbieding</value>
-  </data>
-  <data name="disablesale.Text" xml:space="preserve">
-    <value>Sale uitschakelen</value>
-  </data>
-  <data name="disabledealer.Text" xml:space="preserve">
-    <value>Dealer uitschakelen</value>
-  </data>
-  <data name="searchfilter.Text" xml:space="preserve">
-    <value>Zoekfilter weergeven</value>
-  </data>
-  <data name="fea.Text" xml:space="preserve">
-    <value>Features</value>
-  </data>
-  <data name="promo.Text" xml:space="preserve">
-    <value>Promoties</value>
-  </data>
-  <data name="spec.Text" xml:space="preserve">
-    <value>Specificaties</value>
-  </data>
-  <data name="supp.Text" xml:space="preserve">
-    <value>Leverancier</value>
-  </data>
-  <data name="temp.Text" xml:space="preserve">
-    <value>Tijdelijk</value>
-  </data>
-  <data name="cat.Text" xml:space="preserve">
-    <value>Categoriën</value>
-  </data>
-  <data name="man.Text" xml:space="preserve">
-    <value>Fabrikant</value>
-  </data>
-  <data name="QtyUnits.Text" xml:space="preserve">
-    <value>Aantal eenh.</value>
-  </data>
-  <data name="txtemptybasket.Text" xml:space="preserve">
-    <value>Uw winkelwagen is leeg</value>
-  </data>
-  <data name="txtitems.Text" xml:space="preserve">
-    <value>Subtotaal</value>
-  </data>
-  <data name="pleaseselect.Text" xml:space="preserve">
-    <value>Maak een keuze</value>
-  </data>
-  <data name="ApplyTax.Text" xml:space="preserve">
-    <value>BTW percentage toepassen op alle artikelen in categorie</value>
-  </data>
-  <data name="GroupType.Text" xml:space="preserve">
-    <value>Soort groep</value>
-  </data>
-  <data name="filtergroups.Text" xml:space="preserve">
-    <value>Filtergroepen</value>
-  </data>
-  <data name="group.Text" xml:space="preserve">
-    <value>Groep</value>
-  </data>
-  <data name="filter.Text" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="createnewlist.Text" xml:space="preserve">
-    <value>Maak nieuwe lijst</value>
-  </data>
-  <data name="listtitle.Text" xml:space="preserve">
-    <value>Kies een lijst</value>
-  </data>
-  <data name="shoppinglistadd.Text" xml:space="preserve">
-    <value>Aan deze lijst toevoegen</value>
-  </data>
-  <data name="createlist.Text" xml:space="preserve">
-    <value>Maak lijst</value>
-  </data>
-  <data name="cancellist.Text" xml:space="preserve">
-    <value>Annuleren</value>
-  </data>
-  <data name="IgnoreShared.Text" xml:space="preserve">
-    <value>Gedeelde records negeren</value>
-  </data>
-  <data name="login.Text" xml:space="preserve">
-    <value>Inloggen</value>
-  </data>
-  <data name="loginpopupmsg.Text" xml:space="preserve">
-    <value>Log in om artikelen aan uw favorieten toe te voegen.</value>
-  </data>
-  <data name="AccessToClient.Text" xml:space="preserve">
-    <value>Toegang verleend aan klant</value>
-  </data>
-  <data name="cmdResetButton.confirm" xml:space="preserve">
-    <value>Reset record?</value>
-  </data>
-  <data name="included.Text" xml:space="preserve">
-    <value>(incl.)</value>
-  </data>
-  <data name="AddressName.Text" xml:space="preserve">
-    <value>Adres naam</value>
-  </data>
-  <data name="cascade.Text" xml:space="preserve">
-    <value>Cascade</value>
-  </data>
-  <data name="enabled.Text" xml:space="preserve">
-    <value>Ingeschakeld</value>
-  </data>
-  <data name="visible.Text" xml:space="preserve">
-    <value>Zichtbaar</value>
-  </data>
-  <data name="owner.Text" xml:space="preserve">
-    <value>Eigenaar</value>
-  </data>
+	<data name="seooptimization.Text" xml:space="preserve">
+		<value>SEO (optioneel)</value>
+	</data>
+	<data name="seonamehelp.Text" xml:space="preserve">
+		<value>Alternatieve naam voor het produkt, voor gebruik in de URL.</value>
+	</data>
+	<data name="seotitlehelp.Text" xml:space="preserve">
+		<value>Alternatieve META Title (produktnaam is standaard)</value>
+	</data>
+	<data name="seodescriptionhelp.Text" xml:space="preserve">
+		<value>Alternatieve Meta Description (samenvatting is standaard)</value>
+	</data>
+	<data name="allowupload.Text" xml:space="preserve">
+		<value>Uploads van klanten toestaan</value>
+	</data>
+	<data name="ReturnTo.Text" xml:space="preserve">
+		<value>Terug naar</value>
+	</data>
+	<data name="Manufacturer.Text" xml:space="preserve">
+		<value>Fabrikant</value>
+	</data>
+	<data name="DealerSale.Text" xml:space="preserve">
+		<value>Dealer aanbieding</value>
+	</data>
+	<data name="disablesale.Text" xml:space="preserve">
+		<value>geen sale</value>
+	</data>
+	<data name="disabledealer.Text" xml:space="preserve">
+		<value>geen dealer</value>
+	</data>
+	<data name="searchfilter.Text" xml:space="preserve">
+		<value>Zoekfilter weergeven</value>
+	</data>
+	<data name="fea.Text" xml:space="preserve">
+		<value>Features</value>
+	</data>
+	<data name="promo.Text" xml:space="preserve">
+		<value>Promoties</value>
+	</data>
+	<data name="spec.Text" xml:space="preserve">
+		<value>Specificaties</value>
+	</data>
+	<data name="supp.Text" xml:space="preserve">
+		<value>Leverancier</value>
+	</data>
+	<data name="temp.Text" xml:space="preserve">
+		<value>Tijdelijk</value>
+	</data>
+	<data name="cat.Text" xml:space="preserve">
+		<value>Categoriën</value>
+	</data>
+	<data name="man.Text" xml:space="preserve">
+		<value>Fabrikant</value>
+	</data>
+	<data name="QtyUnits.Text" xml:space="preserve">
+		<value>Aantal eenh.</value>
+	</data>
+	<data name="txtemptybasket.Text" xml:space="preserve">
+		<value>Uw winkelwagen is leeg</value>
+	</data>
+	<data name="txtitems.Text" xml:space="preserve">
+		<value>Subtotaal</value>
+	</data>
+	<data name="pleaseselect.Text" xml:space="preserve">
+		<value>Maak een keuze</value>
+	</data>
+	<data name="ApplyTax.Text" xml:space="preserve">
+		<value>BTW percentage toepassen op alle artikelen in categorie</value>
+	</data>
+	<data name="GroupType.Text" xml:space="preserve">
+		<value>Soort groep</value>
+	</data>
+	<data name="filtergroups.Text" xml:space="preserve">
+		<value>Filtergroepen</value>
+	</data>
+	<data name="group.Text" xml:space="preserve">
+		<value>Groep</value>
+	</data>
+	<data name="filter.Text" xml:space="preserve">
+		<value>Filter</value>
+	</data>
+	<data name="createnewlist.Text" xml:space="preserve">
+		<value>Maak nieuwe lijst</value>
+	</data>
+	<data name="listtitle.Text" xml:space="preserve">
+		<value>Kies een lijst</value>
+	</data>
+	<data name="shoppinglistadd.Text" xml:space="preserve">
+		<value>Aan deze lijst toevoegen</value>
+	</data>
+	<data name="createlist.Text" xml:space="preserve">
+		<value>Maak lijst</value>
+	</data>
+	<data name="cancellist.Text" xml:space="preserve">
+		<value>Annuleren</value>
+	</data>
+	<data name="IgnoreShared.Text" xml:space="preserve">
+		<value>Gedeelde records negeren</value>
+	</data>
+	<data name="login.Text" xml:space="preserve">
+		<value>Inloggen</value>
+	</data>
+	<data name="loginpopupmsg.Text" xml:space="preserve">
+		<value>Log in om artikelen aan uw favorieten toe te voegen.</value>
+	</data>
+	<data name="AccessToClient.Text" xml:space="preserve">
+		<value>Toegang verleend aan klant</value>
+	</data>
+	<data name="cmdResetButton.confirm" xml:space="preserve">
+		<value>Reset record?</value>
+	</data>
+	<data name="included.Text" xml:space="preserve">
+		<value>(incl.)</value>
+	</data>
+	<data name="AddressName.Text" xml:space="preserve">
+		<value>Adres naam</value>
+	</data>
+	<data name="cascade.Text" xml:space="preserve">
+		<value>Cascade</value>
+	</data>
+	<data name="enabled.Text" xml:space="preserve">
+		<value>Ingeschakeld</value>
+	</data>
+	<data name="visible.Text" xml:space="preserve">
+		<value>Zichtbaar</value>
+	</data>
+	<data name="owner.Text" xml:space="preserve">
+		<value>Eigenaar</value>
+	</data>
   <data name="RefValidationMessage.Text" xml:space="preserve">
     <value>Ref mag alleen in kleine letters alfanumeriek zijn zonder lege spaties.</value>
   </data>

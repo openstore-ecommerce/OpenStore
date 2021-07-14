@@ -133,7 +133,7 @@
     <value>E-mailbericht voor klant</value>
   </data>
 	<data name="cmdEditOrder.confirm">
-		<value>BEstelling aanpassen?</value>
+		<value>Bestelling aanpassen?</value>
 	</data>
 	<data name="cmdEditOrder.Text">
 		<value>&lt;i  title="View and Edit" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt; Bewerken</value>

@@ -144,12 +144,12 @@
                                                     <div class="col-sm-1">
                                                         <label class="control-label">@ResourceKey("General.SalePrice")</label>
                                                         @TextBox(nbiModel, "genxml/textbox/txtsaleprice_" + lp1, "class='form-control input-sm saleprice' maxlength='250'  datatype='double'", "0.00")
-                                                        @CheckBox(nbiModel, "genxml/checkbox/chkdisablesale_" + lp1, "ResourceKey:General.Disable", " class='chkdisabledealer' ")
+                                                        @CheckBox(nbiModel, "genxml/checkbox/chkdisablesale_" + lp1, "ResourceKey:General.disablesale", " class='chkdisabledealer' ")
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <label class="control-label">@ResourceKey("General.Dealer")</label>
                                                         @TextBox(nbiModel, "genxml/textbox/txtdealercost_" + lp1, "class='form-control input-sm saleprice' maxlength='250'  datatype='double'", "0.00")
-                                                        @CheckBox(nbiModel, "genxml/checkbox/chkdisabledealer_" + lp1, "ResourceKey:General.Disable", " class='chkdisabledealer' ")
+                                                        @CheckBox(nbiModel, "genxml/checkbox/chkdisabledealer_" + lp1, "ResourceKey:General.disabledealer", " class='chkdisabledealer' ")
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <label class="control-label">@ResourceKey("General.DealerSale")</label>
