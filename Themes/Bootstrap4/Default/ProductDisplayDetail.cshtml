@@ -306,12 +306,15 @@
         </div>
         <!-- End Details -->
         <!-- Related Items -->
-        @if (@product.GetRelatedProducts().Count >= 1)
+        @{
+            var relatedProducts = product.GetRelatedProducts();
+        }
+        @if (relatedProducts.Count >= 1)
         {
             <h3>@ResourceKey("ProductView.recommend")</h3>
             <div id="relatedwrapper" class="row productlist">
             <!-- Related products -->
-            @foreach (var rp in product.GetRelatedProducts())
+            @foreach (var rp in relatedProducts)
             {
                 var rproduct = new ProductData(rp.ItemID, rp.Lang);
                 <div class="col-12 col-md-6 col-lg-4 col-xxl-3 mb-4">
