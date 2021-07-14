@@ -173,7 +173,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     //n.CommandArgument = string.Format("entrycount={0}|moduleid={1}", obj.GetXmlProperty("genxml/hidden/entrycount"), obj.ModuleId.ToString(""));
                     n.CommandArgument = obj.entrycount.ToString(""); // not used, so we use it to store the entry count
 
-                    if (recursive && depth < 5) //stop infinate loop, only allow 50 sub levels
+                    if (recursive && depth < 50) //stop infinate loop, only allow 50 sub levels
                     {
                         depth += 1;
                         var childrenNodes = GetCatNodeXml(tabid, categoryInjectTabId, obj.categoryid, true, depth, n, defaultListPage);

@@ -322,7 +322,7 @@
                                         @if (rproduct.Imgs.Count > 0)
                                         {
                                             <div class="image">
-                                                <a href="@EntryUrl(rp, Model)"><img class="unresponsive" title="@(rp.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary"))" src="@ProductImageUrl(info, 450, 0)"></a>
+                                                <a href="@EntryUrl(rp, Model)"><img class="unresponsive" title="@(rp.GetXmlProperty("genxml/lang/genxml/textbox/txtsummary"))" src="@ProductImageUrl(rp, 450, 0)"></a>
                                                 
                                             </div>
                                         }

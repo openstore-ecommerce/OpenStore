@@ -146,9 +146,9 @@
                         <input id="itemcode_@(lp)" value="@(nbi.GetXmlProperty("genxml/itemcode"))" type="hidden" />
 
                         <div class="quantityfields">
-                            <a class="qtyminus" href="javascript:void(0)" itemcode="@(nbi.GetXmlProperty("genxml/itemcode"))"><i class="fa fa-minus"></i></a>
-                            @NBrightTextBox(nbi, "genxml/qty_" + lp, "class='quantity itemcode" + nbi.GetXmlProperty("genxml/itemcode") + "'", "1")
-                            <a class="qtyplus" href="javascript:void(0)" itemcode="@(nbi.GetXmlProperty("genxml/itemcode"))"><i class="fa fa-plus"></i></a>
+                            <a class="qtyminus" href="javascript:void(0)" itemcode="@(nbi.GetXmlProperty("genxml/itemcode").Replace(":","_"))"><i class="fa fa-minus"></i></a>
+                            @NBrightTextBox(nbi, "genxml/qty_" + lp, "class='quantity itemcode" + nbi.GetXmlProperty("genxml/itemcode").Replace(":","_") + "'", "1")
+                            <a class="qtyplus" href="javascript:void(0)" itemcode="@(nbi.GetXmlProperty("genxml/itemcode").Replace(":","_"))"><i class="fa fa-plus"></i></a>
                         </div>
 
                         <!-- Stock adjustment message -->
