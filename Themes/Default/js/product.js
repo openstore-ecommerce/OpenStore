@@ -354,7 +354,7 @@ function loadFilters() {
 }
 
 function filterFilterOptions(searchbox, groupref) {
-    var s = $(searchbox).val();
+    var s = $(searchbox).val().toLowerCase();
     $(`.nbsfilteroption[data-groupref='${groupref}']`).each(function(index) {
         if ($(this).children("input[type='checkbox']").is(":checked") || $(this).attr('data-itemvalue').indexOf(s) >= 0) {
             $(this).show();
