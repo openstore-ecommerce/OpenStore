@@ -43,7 +43,11 @@ function xGraphOrderTotals(){
 		//make order numbers link to order details
 		$("a.ordernumber").click(function (event) {
 			var eid = $(this).data("eid");
-			location.href = "../orders/eid/" + eid.toString().substring(6);
+            var path = location.pathname;
+            if(path.search("/ctrl") > 0) {
+                path = path.substring(0, path.search("/ctrl"));
+            }
+            location.href = path + "/ctrl/orders/eid/" + eid.toString().substring(6);
         });
 	});
 
