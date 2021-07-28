@@ -220,8 +220,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 var existingrecord = objCtrl.GetByGuidKey(PortalSettings.Current.PortalId, -1, "PLUGIN", p.GUIDKey);
                 if (existingrecord == null)
                 {
-                    var filepath = HttpContext.Current.Server.MapPath(p.GetXmlProperty("genxml/textbox/path"));
-                    if (File.Exists(filepath))
+                    var pathProp = p.GetXmlProperty("genxml/textbox/path");
+                    var filepath = HttpContext.Current.Server.MapPath(pathProp);
+                    // if a control path is specified, it must exist
+                    if (string.IsNullOrEmpty(pathProp) || File.Exists(filepath))
                     {
                         p.ItemID = -1;
                         p.PortalId = PortalSettings.Current.PortalId;
