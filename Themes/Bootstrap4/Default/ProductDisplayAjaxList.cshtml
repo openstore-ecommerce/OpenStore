@@ -30,10 +30,10 @@
         <div class="categorybreadcrumbs">@CategoryBreadCrumb(navigationdata, true, Model, true, -1, "", -1, 400, true)</div>
     }
     @{
-        var sortClass = "custom-select col-5 sortorderselect";
+        var sortClass = "sortorderselect";
         var sortId = "sortorderselect" + Model.ModuleId;
         var pageClass = "pagesizedropdown";
-        var sortAtts = "id='" + sortId + "' class='" + sortClass + "'";
+        var sortAtts = "id='" + sortId + "' class='custom-select col-5 " + sortClass + "'";
     }
     <script>
     $(document).ready(function () {
