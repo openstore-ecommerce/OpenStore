@@ -86,7 +86,8 @@
             nam = strID.split('_');
             var shortID = nam[nam.length - 1];
             var lp = 1;
-            while (shortID.length < 4 && nam.length > lp) {
+            var reg = /^\d+$/;
+            while (reg.test(shortID) && nam.length > lp) {
                 lp++;
                 shortID = nam[nam.length - lp];
             }
@@ -111,7 +112,8 @@
                 nam = strID.split('_');
                 var shortID = nam[nam.length - 1];
                 var lp = 1;
-                while (shortID.length < 4 && nam.length > lp) {
+                var reg = /^\d+$/;
+                while (reg.test(shortID) && nam.length > lp) {
                     lp++;
                     shortID = nam[nam.length - lp];
                 }
@@ -146,7 +148,8 @@
             nam = strID.split('_');
             var shortID = nam[nam.length - 1];
             var lp = 1;
-            while (shortID.length < 4 && nam.length > lp) {
+            var reg = /^\d+$/;
+            while (reg.test(shortID) && nam.length > lp) {
                 lp++;
                 shortID = nam[nam.length - lp];
             }
@@ -187,7 +190,8 @@
             var nam = strID.split('_');
             var shortID = nam[nam.length - 1];
             var lp = 1;
-            while (shortID.length < 4 && nam.length > lp) {
+            var reg = /^\d+$/;
+            while (reg.test(shortID) && nam.length > lp) {
                 lp++;
                 shortID = nam[nam.length - lp];
             }
