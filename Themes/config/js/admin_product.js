@@ -1053,13 +1053,19 @@ jQuery.fn.toggleOption = function (show) {
     });
 };
 
+var filterSelectTimeout = null;
 function filterSelect(searchbox, selectid) {
-    var s = $(searchbox).val();
-    $(`#${selectid} option`).each(function(index) {
-        if ($(this).text().indexOf(s) >= 0) {
-            $(this).toggleOption(true);
-        } else {
-            $(this).toggleOption(false);
-        }
-    });
+    if (filterSelectTimeout) {
+        clearTimeout(filterSelectTimeout);
+    }
+    filterSelectTimeout = setTimeout(function() {
+        var s = $(searchbox).val().toLowerCase();
+        $(`#${selectid} option`).each(function(index) {
+            if ($(this).attr("data-lowervalue").indexOf(s) >= 0) {
+                $(this).toggleOption(true);
+            } else {
+                $(this).toggleOption(false);
+            }
+        });
+    }, 500);
 }
