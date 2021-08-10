@@ -759,19 +759,19 @@ namespace NBrightBuy.render
 
             if (addSearchBox)
             {
-                strOut += $"<div class=\"form-group\"><label>{ResourceKey("General.PropertyGroupSearchLabel")}</label><input type=\"text\" class=\"form-control\" onkeyup=\"filterSelect(this, '{id}')\" ></div>";
+                strOut += $"<div class=\"form-group\"><label>{ResourceKey("General.PropertyGroupSearchLabel")}</label><input type=\"text\" class=\"form-control\" onkeyup=\"filterSelect(this, '{id}')\" ></div>\r\n";
             }
 
-            strOut += "<div class=\"form-group\"><select id='" + id + "' " + upd + " " + attributes + ">";
+            strOut += "<div class=\"form-group\"><select id='" + id + "' " + upd + " " + attributes + ">\r\n";
             var s = "";
-            if (allowEmpty) strOut += "    <option value=''></option>";
+            if (allowEmpty) strOut += "    <option value=''></option>\r\n";
             foreach (var tItem in rtnList)
             {
                 if (info.GetXmlProperty(xpath) == tItem.Key.ToString())
                     s = "selected";
                 else
                     s = "";
-                strOut += "    <option value='" + tItem.Key.ToString() + "' " + s + ">" + tItem.Value + "</option>";
+                strOut += $"    <option value='{tItem.Key}' data-lowervalue=\"{tItem.Value.ToLowerInvariant()}\" {s}>{tItem.Value}</option>\r\n";
             }
             strOut += "</select></div>";
             strOut += "</div>";
