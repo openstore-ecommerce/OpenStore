@@ -543,12 +543,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     {
                         var objCtrl = new NBrightBuyController();
                         var list = objCtrl.GetList(_portalId, -1, "CATXREF", $" and NB1.xrefitemid = {cat.categoryid} and NOT NB1.parentitemid = {Info.ItemID}");
-                        while (related.Count < minimumNumber)
+                        while (related.Count < minimumNumber && list.Count > 0)
                         {
                             var rnd = new Random();
-                            int index = rnd.Next(list.Count);
-                            related.Add(objCtrl.GetData(list[index].ParentItemId, "PRDLANG", _lang));
-                            list.RemoveAt(index);
+                            int index = Math.Max(rnd.Next(list.Count - 1), 0);
+                            var item = list[index];
+                            related.Add(objCtrl.GetData(item.ParentItemId, "PRDLANG", _lang));
+                            list.Remove(item);
 
                             if (related.Count >= minimumNumber) break;
                         }
