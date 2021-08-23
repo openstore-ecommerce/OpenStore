@@ -455,6 +455,29 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return mcList;
         }
 
+        /// <summary>
+        /// Get ProductData class with cacheing
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="portalId"></param>
+        /// <param name="lang"></param>
+        /// <param name="hydrateLists"></param>
+        /// <param name="typeCode">Typecode of record default "PRD"</param>
+        /// <param name="typeLangCode">Langauge Typecode of record default "PRDLANG"</param>
+        /// <returns></returns>
+        public static ProductData GetProductData(int productId, int portalId, String lang, Boolean hydrateLists = true, String typeCode = "PRD")
+        {
+            ProductData prdData;
+            var cacheKey = "NBSProductData*" + productId.ToString("") + "*" + lang;
+            prdData = (ProductData)Utils.GetCache(cacheKey);
+            if ((prdData == null) || (productId == -1))
+            {
+                prdData = new ProductData(productId, portalId, lang, hydrateLists, typeCode);
+                Utils.SetCache(cacheKey, prdData);
+            }
+            return prdData;
+        }
+
 
         /// <summary>
         /// Get ProductData class with cacheing
@@ -467,15 +490,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <returns></returns>
         public static ProductData GetProductData(int productId, String lang, Boolean hydrateLists = true, String typeCode = "PRD")
         {
-            ProductData prdData;
-            var cacheKey = "NBSProductData*" + productId.ToString("") + "*" + lang;
-            prdData = (ProductData)Utils.GetCache(cacheKey);
-            if ((prdData == null) || (productId == -1))
+            if (Utils.IsNumeric(productId))
             {
-                prdData = new ProductData(productId, lang, hydrateLists, typeCode);
-                Utils.SetCache(cacheKey, prdData);
+                return GetProductData(Convert.ToInt32(productId), PortalSettings.Current.PortalId, lang, hydrateLists, typeCode);
             }
-            return prdData;
+            return null;
         }
 
 	    public static ProductData GetProductData(String productId, String lang, Boolean hydrateLists = true)
