@@ -338,10 +338,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 notcat = "cat";
             }
 
-            var joinItems = (from d1 in GrpCategoryList
+            var joinItems = new List<GroupCategoryData>();
+            if (GrpCategoryList != null)
+            {
+                joinItems = (from d1 in GrpCategoryList
                              join d2 in catxrefList on d1.categoryid equals d2.XrefItemId
                              where (d1.grouptyperef == groupref || groupref == "") && d1.grouptyperef != notcat
                              select d1).OrderBy(d1 => d1.grouptyperef).ThenBy(d1 => d1.breadcrumb).ToList<GroupCategoryData>();
+
+            }
             return joinItems;
         }
 

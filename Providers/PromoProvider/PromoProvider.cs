@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Web.Hosting;
-using System.Web.UI.WebControls;
-using System.Xml;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.Entities.Portals;
-using NBrightCore.common;
+﻿using NBrightCore.common;
 using NBrightDNN;
 using Nevoweb.DNN.NBrightBuy.Components;
+using System;
+using System.Collections.Generic;
 
 namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
 {
@@ -20,9 +12,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
         {
             return PromoUtils.CalcGroupPromo(portalId);
         }
-
     }
-
 
     public class MultiBuyPromoScheudler : Components.Interfaces.SchedulerInterface
     {
@@ -30,7 +20,6 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
         {
             return PromoUtils.CalcMultiBuyPromo(portalId);
         }
-
     }
 
     public class CalcPromo : Components.Interfaces.PromoInterface
@@ -59,7 +48,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                         var promoData = objCtrl.GetData(promoid);
                         if (promoData != null)
                         {
-                            //NOTE: WE nedd to process disabld promotions so they can be removed from cart
+                            //NOTE: WE need to process disabld promotions so they can be removed from cart
 
                             var buyqty = promoData.GetXmlPropertyInt("genxml/textbox/buyqty");
                             var validfrom = promoData.GetXmlProperty("genxml/textbox/validfrom");
@@ -69,8 +58,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                             var amounttype = promoData.GetXmlProperty("genxml/radiobuttonlist/amounttype");
                             var amount = promoData.GetXmlPropertyDouble("genxml/textbox/amount");
 
-
-                                // Applied discount to this single cart item
+                            // Applied discount to this single cart item
                             if (!promoData.GetXmlPropertyBool("genxml/checkbox/disabled") && cartItemInfo.GetXmlPropertyInt("genxml/qty") >= buyqty && Utils.IsDate(validfrom) && Utils.IsDate(validuntil)) // check we have correct qty to activate promo
                             {
                                 var dteF = Convert.ToDateTime(validfrom).Date;
@@ -155,7 +143,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
             var promoid = nbrightInfo.GetXmlPropertyInt("genxml/hidden/promoid"); // legacy promo flag
             if (nbrightInfo.GetXmlPropertyBool("genxml/hidden/promoflag") || promoid > 0)
             {
-                var prdData = ProductUtils.GetProductData(nbrightInfo.ItemID, nbrightInfo.Lang);
+                var prdData = ProductUtils.GetProductData(nbrightInfo.ItemID, nbrightInfo.PortalId, nbrightInfo.Lang);
                 // loop on models to get all promoid at model level.
                 var modelpromoids = new List<int>();
                 if (promoid > 0) modelpromoids.Add(promoid);
@@ -183,7 +171,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                     var propapplygroupid = promoData.GetXmlPropertyInt("genxml/dropdownlist/propapply");
 
                     var removepromo = true;
-                    foreach (var c in prdData.GetCategories())
+                    foreach (var c in prdData.GetCategories(nbrightInfo.PortalId))
                     {
                         if (c.categoryid == catgroupid) removepromo = false;
                         if (c.categoryid == propgroupid) removepromo = false;
