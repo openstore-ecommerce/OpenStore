@@ -27,7 +27,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             var postCode = "";
             var total = cartInfo.GetXmlPropertyDouble("genxml/appliedsubtotal");
 
-            if (shipData.FreeshiplimitOnTotaalx == "True") total = cartInfo.GetXmlPropertyDouble("genxml/carttotalvalue");
+            if (shipData.FreeshiplimitOnTotal == "True") total = cartInfo.GetXmlPropertyDouble("genxml/carttotalvalue");
 
             switch (shipoption)
             {
