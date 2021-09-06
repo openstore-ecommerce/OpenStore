@@ -21,8 +21,6 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             else
                 rangeValue = cartInfo.GetXmlPropertyDouble("genxml/appliedsubtotal");
 
-            if (shipData.FreeshiplimitOnTotaalx == "True") rangeValue = cartInfo.GetXmlPropertyDouble("genxml/carttotalvalue");
-
             var countrycode = "";
             var regioncode = "";
             var regionkey = "";
