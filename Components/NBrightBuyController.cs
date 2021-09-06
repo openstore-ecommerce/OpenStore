@@ -915,28 +915,33 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return dlang;
         }
 
-        /// <summary>
-            /// Get current portal StoreSettings
-            /// </summary>
-            /// <returns></returns>
-        public static StoreSettings GetCurrentPortalData()
-	    {
+        public static StoreSettings GetPortalData(int portalId)
+        {
             StoreSettings objPortalSettings = null;
             if (HttpContext.Current != null)
             {
                 // build StoreSettings and place in httpcontext
-                if (HttpContext.Current.Items["NBBStoreSettings" + PortalSettings.Current.PortalId.ToString("")] == null)
+                if (HttpContext.Current.Items["NBBStoreSettings" + portalId.ToString()] == null)
                 {
-                    HttpContext.Current.Items.Add("NBBStoreSettings" + PortalSettings.Current.PortalId.ToString(""),GetStaticStoreSettings(PortalSettings.Current.PortalId));
+                    HttpContext.Current.Items.Add("NBBStoreSettings" + portalId.ToString(), GetStaticStoreSettings(portalId));
                 }
-                objPortalSettings = (StoreSettings)HttpContext.Current.Items["NBBStoreSettings" + PortalSettings.Current.PortalId.ToString("")];
+                objPortalSettings = (StoreSettings)HttpContext.Current.Items["NBBStoreSettings" + portalId.ToString()];
             }
             else
             {
                 // capture all to ensure we pass something.
-                objPortalSettings = GetStaticStoreSettings(PortalSettings.Current.PortalId);
+                objPortalSettings = GetStaticStoreSettings(portalId);
             }
             return objPortalSettings;
+        }
+
+        /// <summary>
+        /// Get current portal StoreSettings
+        /// </summary>
+        /// <returns></returns>
+        public static StoreSettings GetCurrentPortalData()
+	    {
+            return GetPortalData(PortalSettings.Current.PortalId);
 	    }
 
         /// <summary>

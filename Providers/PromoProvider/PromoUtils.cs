@@ -102,7 +102,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                                 RemoveProductPromoData(p.PortalId, productid, p.ItemID);
                             }
                             ProductUtils.RemoveProductDataCache(p.PortalId, productid);
-                            var productData = ProductUtils.GetProductData(productid, lang);
+                            var productData = ProductUtils.GetProductData(productid, p.PortalId, lang);
                             productData.Save(); // recalc any new prices.
                         }
                         if (DateTime.Now.Date > dteU)
@@ -122,7 +122,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                         // CALC Promo
                         CalcProductSalePrice(p.PortalId, productid, amounttype, amount, p.ItemID, whichprice, overwrite);
                         ProductUtils.RemoveProductDataCache(p.PortalId, productid);
-                        var productData = ProductUtils.GetProductData(productid, lang);
+                        var productData = ProductUtils.GetProductData(productid, p.PortalId, lang);
                         productData.Save(); // recalc any new prices.
                     }
                     p.SetXmlProperty("genxml/checkbox/disabled", "True");
@@ -136,7 +136,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                         if (typeselect == "all") productid = prd.ItemID;
                         RemoveProductPromoData(p.PortalId, productid, p.ItemID);
                         ProductUtils.RemoveProductDataCache(p.PortalId, productid);
-                        var productData = ProductUtils.GetProductData(productid, lang);
+                        var productData = ProductUtils.GetProductData(productid, p.PortalId, lang);
                         productData.Save(); // recalc any new prices.
                     }
 
@@ -181,7 +181,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                 // END Promo
                 RemoveProductPromoData(portalId, productid, p.ItemID);
                 ProductUtils.RemoveProductDataCache(prd.PortalId, productid);
-                var productData = ProductUtils.GetProductData(productid, lang);
+                var productData = ProductUtils.GetProductData(productid, portalId, lang);
                 productData.Save(); // recalc any new prices.
             }
             return "OK";
@@ -209,7 +209,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                     }
                     objCtrl.Update(prdData);
                     RemoveProductPromoData(portalId, productId, promoid);
-                    var productData = ProductUtils.GetProductData(productId, lang);
+                    var productData = ProductUtils.GetProductData(productId, portalId, lang);
                     productData.Save(); // recalc any new prices.
                 }
             }
@@ -419,7 +419,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                             objCtrl.Update(p);
                         }
                         ProductUtils.RemoveProductDataCache(p.PortalId, prd.ParentItemId);
-                        var productData = ProductUtils.GetProductData(prd.ParentItemId, lang);
+                        var productData = ProductUtils.GetProductData(prd.ParentItemId, p.PortalId, lang);
                         productData.Save(); // recalc any new prices.
                     }
 
@@ -492,7 +492,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                     // END Promo
                     RemoveProductPromoData(portalId, prd.ParentItemId, promoid);
                     ProductUtils.RemoveProductDataCache(prd.PortalId, prd.ParentItemId);
-                    var productData = ProductUtils.GetProductData(prd.ParentItemId, lang);
+                    var productData = ProductUtils.GetProductData(prd.ParentItemId, portalId, lang);
                     productData.Save(); // recalc any new prices.
                 }
             }
@@ -509,7 +509,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers.PromoProvider
                         // END Promo
                         RemoveProductPromoData(p.PortalId, prd.ParentItemId, p.ItemID);
                         ProductUtils.RemoveProductDataCache(p.PortalId, prd.ParentItemId);
-                        var productData = ProductUtils.GetProductData(prd.ParentItemId, lang);
+                        var productData = ProductUtils.GetProductData(prd.ParentItemId, p.PortalId, lang);
                         productData.Save(); // recalc any new prices.
                     }
                 }

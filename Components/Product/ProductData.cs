@@ -444,14 +444,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <summary>
         /// Select categories linked to product, by groupref
         /// </summary>
+        /// <param name="portalId"></param>
         /// <param name="groupref">groupref for select, "" = all, "cat"= Category only, "!cat" = all non-category, "{groupref}"=this group only</param>
         /// <param name="cascade">get all cascade records to get all parent categories</param>
         /// <returns></returns>
-        public List<GroupCategoryData> GetCategories(String groupref = "", Boolean cascade = false)
+        public List<GroupCategoryData> GetCategories(int portalId, String groupref = "", Boolean cascade = false)
         {
             if (Info == null) return new List<GroupCategoryData>(); // stop throwing an error no product exists,
 
-            var objGrpCtrl = new GrpCatController(_lang);
+            var objGrpCtrl = new GrpCatController(_lang, portalId);
             var catl = objGrpCtrl.GetProductCategories(Info.ItemID, groupref, cascade);
             if (Utils.IsNumeric(DataRecord.GetXmlProperty("genxml/defaultcatid")) && catl.Count > 0)
             {
@@ -466,6 +467,19 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (groupCategoryDatas.Any()) groupCategoryDatas.First().isdefault = true;
             }
             return catl;
+        }
+
+
+        /// <summary>
+        /// Select categories linked to product, by groupref
+        /// </summary>
+        /// <param name="groupref">groupref for select, "" = all, "cat"= Category only, "!cat" = all non-category, "{groupref}"=this group only</param>
+        /// <param name="cascade">get all cascade records to get all parent categories</param>
+        /// <returns></returns>
+        public List<GroupCategoryData> GetCategories(String groupref = "", Boolean cascade = false)
+        {
+            var portalId = PortalSettings.Current.PortalId;
+            return GetCategories(portalId, groupref, cascade);
         }
 
         /// <summary>
@@ -690,6 +704,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 DataRecord = objCtrl.Get(productid);
                 DataLangRecord = objCtrl.Get(plangid);
             }
+
         }
 
         private void UpdateDisplayCalcPrices()
@@ -1745,6 +1760,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 }
                 lp += 1;
             }
+
             //Fix document paths
             lp = 1;
             foreach (var d in Docs)
@@ -1795,7 +1811,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
 
             // remove duplicate category xrefs.
-            var catlist = GetCategories();
+            var catlist = GetCategories(_portalId);
             foreach (var c in catlist)
             {
                 var l = objCtrl.GetList(_portalId, -1, "CATXREF", " and NB1.ParentItemId = " + Info.ItemID.ToString("") + " and NB1.XrefItemId = " + c.categoryid.ToString(""));
@@ -1836,6 +1852,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 objCtrl.Delete(c.ItemID);
                 errorcount += 1;
             }
+
             // remove catcascade record that have no catxref record for the product.
             var caslist = new List<int>();
             var catcascadelist = objCtrl.GetList(_portalId, -1, "CATCASCADE", " and nb1.ParentItemId = '" + Info.ItemID + "' ");
@@ -1844,10 +1861,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 caslist.Add(n.XrefItemId);
             }
 
-            var catlist2 = GetCategories();
+            var catlist2 = GetCategories(_portalId);
             if (catlist2.Any())
             {
-                var objGrpCtrl = new GrpCatController(_lang, true);
+                var objGrpCtrl = new GrpCatController(_lang, _portalId, true);
                 foreach (var cat in catlist2)
                 {
                     var parentcats = objGrpCtrl.GetCategory(cat.categoryid);
@@ -1877,10 +1894,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 }
             }
 
-
-
             // update shared product if flagged
-            if (StoreSettings.Current.GetBool("shareproducts") && DataRecord.PortalId >= 0)
+            StoreSettings storeSettings  = (System.Web.HttpContext.Current != null) ? StoreSettings.Current : new StoreSettings(_portalId);
+            if (storeSettings.GetBool("shareproducts") && DataRecord.PortalId >= 0)
             {
                 upd = true;
                 DataRecord.PortalId = -1;
@@ -1890,7 +1906,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 }
             }
 
-            // check if we have empty model name ()
+            // check if we have empty model name
             var modellp = 1;
             foreach (var m in Models)
             {
@@ -1976,13 +1992,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 }
             }
 
-
             return errorcount;
         }
 
         public int Copy()
         {
-
             var objCtrl = new NBrightBuyController();
 
             //Copy Base record 
@@ -2083,7 +2097,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             dlang.SetXmlProperty("genxml/edt/description", DataLangRecord.GetXmlPropertyRaw("genxml/edt/description"));
                         }
                     }
-
 
                     // models
                     var nodList1 = DataLangRecord.XMLDoc.SelectNodes("genxml/models/genxml");
@@ -2215,14 +2228,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
         }
 
-
         public void OutputDebugFile(String filePathName)
         {
             Info.XMLDoc.Save(filePathName);
         }
-
-
-
 
         #endregion
 
@@ -2312,7 +2321,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         private int AddNew()
         {
-
             var nbi = new NBrightInfo(true);
             if (StoreSettings.Current.Get("shareproducts") == "True") // option in storesetting to share products created here across all portals.
                 _portalId = -1;
@@ -2468,7 +2476,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (price == -1) price = 0;
             return price;
         }
-
 
         private bool CheckClientFileUpload()
         {
