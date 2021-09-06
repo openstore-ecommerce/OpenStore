@@ -95,7 +95,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             }
         }
 
-        public String FreeshiplimitOnTotaalx
+        public String FreeshiplimitOnTotal
         {
             get
             {
