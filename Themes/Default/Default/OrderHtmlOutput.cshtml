@@ -344,54 +344,54 @@
 
                                                         @foreach (NBrightInfo nbiitem in ordData.GetCartItemList())
                                                         {
-                                                            <tr>
-                                                                <td class="m-ticker">
-                                                                    <div>
-                                                                        <b> <a href="@EntryUrl(nbiitem,Model,false)">@nbiitem.GetXmlProperty("genxml/productname")&nbsp;@nbiitem.GetXmlProperty("genxml/modeldesc")</a></b>
-                                                                    </div>
+                                                    <tr>
+                                                        <td class="m-ticker">
+                                                            <div>
+                                                                <b> <a href="@EntryUrl(nbiitem,Model,false)">@nbiitem.GetXmlProperty("genxml/productname")&nbsp;@nbiitem.GetXmlProperty("genxml/modeldesc")</a></b>
+                                                            </div>
 
-                                                                    <div>
+                                                            <div>
 
-                                                                        @{
+                                                                @{
 
-                                                                            var optList = new List<NBrightInfo>();
-                                                                            var xmlNodList = nbiitem.XMLDoc.SelectNodes("genxml/options/option");
-                                                                            foreach (XmlNode n in xmlNodList)
-                                                                            {
-                                                                                var nb = new NBrightInfo();
-                                                                                nb.XMLData = n.OuterXml;
-                                                                                optList.Add(nb);
-                                                                            }
+                                                                    var optList = new List<NBrightInfo>();
+                                                                    var xmlNodList = nbiitem.XMLDoc.SelectNodes("genxml/options/option");
+                                                                    foreach (XmlNode n in xmlNodList)
+                                                                    {
+                                                                        var nb = new NBrightInfo();
+                                                                        nb.XMLData = n.OuterXml;
+                                                                        optList.Add(nb);
+                                                                    }
 
-                                                                            var lp = 0;
-                                                                            foreach (NBrightInfo nbiopt in optList)
-                                                                            {
-                                                                                if (nbiopt.GetXmlProperty("option/optname") != "" && ((nbiopt.GetXmlProperty("option/optvaltext") != "" && nbiopt.GetXmlProperty("option/optvalueid") != "False") || nbiopt.GetXmlProperty("option/optvalueid") == "True"))
+                                                                    var lp = 0;
+                                                                    foreach (NBrightInfo nbiopt in optList)
+                                                                    {
+                                                                        if (nbiopt.GetXmlProperty("option/optname") != "" && ((nbiopt.GetXmlProperty("option/optvaltext") != "" && nbiopt.GetXmlProperty("option/optvalueid") != "False") || nbiopt.GetXmlProperty("option/optvalueid") == "True"))
+                                                                        {
+                                                                            <span>
+                                                                                @if (lp > 0)
                                                                                 {
-                                                                                    <span>
-                                                                                        @if (lp > 0)
-                                                                                        {
-                                                                                            <span>,</span>
-                                                                                        }
-                                                                                        @nbiopt.GetXmlProperty("option/optname"): @nbiopt.GetXmlProperty("option/optvaltext")
-                                                                                        @if (nbiopt.GetXmlPropertyDouble("option/optvalcost") > 0)
-                                                                                        {
-                                                                                            @CurrencyOf(nbiopt.GetXmlPropertyDouble("option/optvalcost"))
-                                                                                        }
-                                                                                    </span>
-                                                                                    lp += 1;
+                                                                                    <span>,</span>
                                                                                 }
-                                                                            }
-
+                                                                                @nbiopt.GetXmlProperty("option/optname"): @nbiopt.GetXmlProperty("option/optvaltext")
+                                                                                @if (nbiopt.GetXmlPropertyDouble("option/optvalcost") > 0)
+                                                                                {
+                                                                                    @CurrencyOf(nbiopt.GetXmlPropertyDouble("option/optvalcost"))
+                                                                                }
+                                                                            </span>
+                                                                            lp += 1;
                                                                         }
+                                                                    }
 
-                                                                    </div>
-                                                                </td>
-                                                                <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/modelref")</td>
-                                                                <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/qty")</td>
-                                                                <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedcost"))</td>
-                                                                <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedtotalcost"))</td>
-                                                            </tr>
+                                                                }
+
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/modelref")</td>
+                                                        <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/qty")</td>
+                                                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/unitcost"))</td>
+                                                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/totalcost"))</td>
+                                                    </tr>
                                                         }
 
 
@@ -399,13 +399,13 @@
                                                             <td></td>
                                                             <td></td>
                                                             <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Subtotal", emaillang)</td>
-                                                            <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/appliedsubtotal"))</td>
+                                                            <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/subtotalcost"))</td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>
                                                             <td></td>
                                                             <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Discount", emaillang)</td>
-                                                            <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/applieddiscount"))</td>
+                                                            <td class="text-right"><b>-&nbsp;@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/applieddiscount"))</b></td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>

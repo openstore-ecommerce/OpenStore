@@ -395,23 +395,23 @@ $(document).ready(function () {
                         </td>
                         <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/modelref")</td>
                         <td class="text-center removecolumn">@nbiitem.GetXmlProperty("genxml/qty")</td>
-                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedcost"))</td>
-                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/appliedtotalcost"))</td>
+                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/unitcost"))</td>
+                        <td class="text-right">@CurrencyOf(@nbiitem.GetXmlPropertyDouble("genxml/totalcost"))</td>
                     </tr>
 
                 }
 
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Subtotal")</td>
-                    <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/appliedsubtotal"))</td>
-                </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Subtotal")</td>
+                <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/subtotalcost"))</td>
+            </tr>
                 <tr>
                     <td></td>
                     <td></td>
                     <td colspan="2" class="text-right removecolumn">@ResourceKey("General.Discount")</td>
-                    <td class="text-right">@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/applieddiscount"))</td>
+                    <td class="text-right"><b>-&nbsp;@CurrencyOf(@nbi.GetXmlPropertyDouble("genxml/applieddiscount"))</b></td>
                 </tr>
                 <tr>
                     <td></td>
