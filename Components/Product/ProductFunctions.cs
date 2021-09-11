@@ -152,6 +152,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     case "product_admin_updateboolean":
                         strOut = UpdateBoolean(context);
                         break;
+                    case "product_admin_validate":
+                        strOut = ProductAdminValidate(context).ToString();
+                        break;
                 }
             }
 
@@ -346,8 +349,23 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             return -1;
         }
 
+        public int ProductAdminValidate(HttpContext context)
+        {
+            if (NBrightBuyUtils.CheckRights())
+            {
+                var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
+                var itemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                if (itemid != 0)
+                {
+                    var prdData = new ProductData(itemid, EditLangCurrent, true, EntityTypeCode);
+                    return prdData.Validate();
+                }
+            }
+            return -1;
+        }
 
-       public string UpdateBoolean(HttpContext context)
+
+        public string UpdateBoolean(HttpContext context)
         {
             try
             {

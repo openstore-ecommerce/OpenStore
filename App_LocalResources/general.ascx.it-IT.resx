@@ -250,7 +250,7 @@
     <value>Eliminare il record?</value>
   </data>
   <data name="cmdDeleteButton.Text" xml:space="preserve">
-    <value>&lt;i title="Delete" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt; Cancella</value>
+    <value>&lt;i title="Cancella" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm-hidden"&gt;Cancella&lt;/span&gt;</value>
   </data>
   <data name="cmdDeleteFile.commandname" xml:space="preserve">
     <value>cancellafile</value>
@@ -370,7 +370,7 @@
     <value>Ritorno</value>
   </data>
   <data name="cmdReturnButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Ritorna" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; Ritorna</value>
+    <value>&lt;i title="Ritorna" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="md-hidden"&gt;Ritorna&lt;/span&gt;</value>
   </data>
   <data name="cmdReturnIcon.Text" xml:space="preserve">
     <value>&lt;i  title="Ritorna" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; Ritorna</value>
@@ -385,10 +385,10 @@
     <value>Salva come un nuovo record?</value>
   </data>
   <data name="cmdSaveAsButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Salva come" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Salva come</value>
+    <value>&lt;i title="Salva come" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm3-hidden"&gt;Salva come&lt;/span&gt;</value>
   </data>
   <data name="cmdSaveButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Salva" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Salva</value>
+    <value>&lt;i title="Salva" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt;Salva&lt;span&gt;</value>
   </data>
   <data name="cmdSaveExit.confirm" xml:space="preserve">
     <value>Salva ed esci?</value>
@@ -400,7 +400,7 @@
     <value>Uscita</value>
   </data>
   <data name="cmdSaveExitButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Salva" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Salva ed Esci</value>
+    <value>&lt;i title="Salva ed Esci" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt;Salva ed Esci&lt;/span&gt;</value>
   </data>
   <data name="cmdSaveIcon.Text" xml:space="preserve">
     <value>&lt;i  title="Salva" class="fa fa-save fa-fw fa-2x"&gt;&lt;/i&gt; Salva</value>
@@ -1052,5 +1052,20 @@
   </data>
   <data name="RefValidationMessage.Text" xml:space="preserve">
     <value>Ref dovrebbe essere solo alfanumerico minuscolo senza spazi vuoti.</value>
+  </data>
+  <data name="cmdValidateButton.Text" xml:space="preserve">
+    <value>&lt;i title="Convalidare" class="fa fa-check fa-fw"&gt;&lt;/i&gt;&lt;span class="lg-hidden"&gt;Convalidare&lt;/span&gt;</value>
+  </data>
+  <data name="ProductValidationFailureMessage.Text" xml:space="preserve">
+    <value>Prodotto convalidato con errori.</value>
+  </data>
+  <data name="ProductValidationMessageTitle.Text" xml:space="preserve">
+    <value>Operazione completata</value>
+  </data>
+  <data name="ProductValidationSuccessMessage.Text" xml:space="preserve">
+    <value>Prodotto convalidato con successo</value>
+  </data>
+  <data name="ProductValidationErrorCount.Text" xml:space="preserve">
+    <value>Conteggio errori</value>
   </data>
 </root>

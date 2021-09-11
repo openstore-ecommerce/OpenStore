@@ -229,7 +229,7 @@
     <value>Record verwijderen?</value>
   </data>
   <data name="cmdDeleteButton.Text" xml:space="preserve">
-    <value>&lt;i title="Verwijderen" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt;Verwijderen</value>
+    <value>&lt;i title="Verwijderen" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm-hidden"&gt;Verwijderen&lt;/span&gt;</value>
   </data>
   <data name="cmdDeleteFile.commandname" xml:space="preserve">
     <value>deletefile</value>
@@ -339,10 +339,10 @@
   <data name="cmdReturn.ToolTip" xml:space="preserve">
     <value>Terug</value>
   </data>
-	<data name="cmdReturnButton.Text" xml:space="preserve">
-    <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; Terug</value>
+  <data name="cmdReturnButton.Text" xml:space="preserve">
+    <value>&lt;i title="Terug" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="md-hidden"&gt;Terug&lt;/span&gt;</value>
   </data>
-	<data name="cmdReturnIcon.Text" xml:space="preserve">
+  <data name="cmdReturnIcon.Text" xml:space="preserve">
     <value>&lt;i title="Return" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; Terug</value>
   </data>
   <data name="cmdSave.Text" xml:space="preserve">
@@ -355,10 +355,10 @@
     <value>Opslaan als een nieuwe record?</value>
   </data>
   <data name="cmdSaveAsButton.Text" xml:space="preserve">
-    <value>&lt;i title="Opslaan als" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt;Opslaan als</value>
+    <value>&lt;i title="Opslaan als" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm3-hidden"&gt;Opslaan als&lt;/span&gt;</value>
   </data>
   <data name="cmdSaveButton.Text" xml:space="preserve">
-    <value>&lt;i title="Opslaan" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt;Opslaan</value>
+    <value>&lt;i title="Opslaan" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt;Opslaan&lt;/span&gt;</value>
   </data>
   <data name="cmdSaveExit.confirm" xml:space="preserve">
     <value>Opslaan en afsluiten?</value>
@@ -961,7 +961,7 @@
     <value>&amp;lt;i class="fa fa-times-circle"&amp;gt;&amp;lt;/i&amp;gt; Reset filter(s)</value>
   </data>
   <data name="cmdSaveExitButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Opslaan en afsluiten</value>
+    <value>&lt;i  title="Opslaan en afsluiten" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt;Opslaan en afsluiten&lt;/span&gt;</value>
   </data>
   <data name="Configuration.Text" xml:space="preserve">
     <value>Configuratie</value>
@@ -981,7 +981,7 @@
   <data name="findanorder.Text" xml:space="preserve">
     <value>Bestelling zoeken</value>
   </data>
-	<data name="findaproduct.Text" xml:space="preserve">
+  <data name="findaproduct.Text" xml:space="preserve">
     <value>Zoek een artikel</value>
   </data>
   <data name="hello.Text" xml:space="preserve">
@@ -1229,5 +1229,20 @@
   </data>
   <data name="PropertyGroupAddSearchBox.Text" xml:space="preserve">
     <value>Zoekvak toevoegen</value>
+  </data>
+  <data name="cmdValidateButton.Text" xml:space="preserve">
+    <value>&lt;i title="Valideren" class="fa fa-check fa-fw"&gt;&lt;/i&gt;&lt;span class="lg-hidden"&gt;Valideren&lt;span&gt;</value>
+  </data>
+  <data name="ProductValidationFailureMessage.Text" xml:space="preserve">
+    <value>Product gevalideerd met fouten.</value>
+  </data>
+  <data name="ProductValidationMessageTitle.Text" xml:space="preserve">
+    <value>Operatie voltooid</value>
+  </data>
+  <data name="ProductValidationSuccessMessage.Text" xml:space="preserve">
+    <value>Product succesvol gevalideerd</value>
+  </data>
+  <data name="ProductValidationErrorCount.Text" xml:space="preserve">
+    <value>Aantal fouten</value>
   </data>
 </root>

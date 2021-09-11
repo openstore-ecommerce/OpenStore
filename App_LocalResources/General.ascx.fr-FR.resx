@@ -268,7 +268,7 @@
     <value>Confirmer la suppression ?</value>
   </data>
   <data name="cmdDeleteButton.Text" xml:space="preserve">
-    <value>&lt;i title="Supprimer" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt; Supprimer</value>
+    <value>&lt;i title="Supprimer" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm-hidden"&gt;Supprimer&lt;/span&gt;</value>
   </data>
   <data name="cmdDeleteFile.commandname" xml:space="preserve">
     <value>Supprimer le fichier</value>
@@ -394,7 +394,7 @@
     <value>Retour</value>
   </data>
   <data name="cmdReturnButton.Text" xml:space="preserve">
-    <value>&lt;i title="Retour" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; Retour</value>
+    <value>&lt;i title="Retour" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="md-hidden"&gt;Retour&lt;/span&gt;</value>
   </data>
   <data name="cmdReturnIcon.Text" xml:space="preserve">
     <value>&lt;i title="Retour" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; Retour</value>
@@ -409,10 +409,10 @@
     <value>Enregistrer comme une nouvelle entrée ?</value>
   </data>
   <data name="cmdSaveAsButton.Text" xml:space="preserve">
-    <value>&lt;i title="Enregistrer sous" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Enregistrer sous</value>
+    <value>&lt;i title="Enregistrer sous" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm-hidden"&gt; Enregistrer sous&lt;/span&gt;</value>
   </data>
   <data name="cmdSaveButton.Text" xml:space="preserve">
-    <value>&lt;i title="Enregistrer" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Enregistrer</value>
+    <value>&lt;i title="Enregistrer" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt;Enregistrer&lt;/span&gt;</value>
   </data>
   <data name="cmdSaveExit.confirm" xml:space="preserve">
     <value>Enregistrer et quitter ?</value>
@@ -424,7 +424,7 @@
     <value>Quitter</value>
   </data>
   <data name="cmdSaveExitButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Enregistrer et quitter</value>
+    <value>&lt;i  title="Enregistrer et quitter" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt; Enregistrer et quitter&lt;/span&gt;</value>
   </data>
   <data name="cmdSaveIcon.Text" xml:space="preserve">
     <value>&lt;i title="Enregistrer" class="fa fa-save fa-fw fa-2x"&gt;&lt;/i&gt;</value>
@@ -1211,5 +1211,20 @@
   </data>
   <data name="RefValidationMessage.Text" xml:space="preserve">
     <value>La référence doit être en minuscules alphanumériques uniquement sans espaces vides.</value>
+  </data>
+  <data name="cmdValidateButton.Text" xml:space="preserve">
+    <value>&lt;i  title="Valider" class="fa fa-check fa-fw"&gt;&lt;/i&gt;&lt;span class="lg-hidden"&gt;Valider&lt;/span&gt;</value>
+  </data>
+  <data name="ProductValidationFailureMessage.Text" xml:space="preserve">
+    <value>Produit validé avec des erreurs</value>
+  </data>
+  <data name="ProductValidationMessageTitle.Text" xml:space="preserve">
+    <value>Opération terminée</value>
+  </data>
+  <data name="ProductValidationSuccessMessage.Text" xml:space="preserve">
+    <value>Produit validé avec succès</value>
+  </data>
+  <data name="ProductValidationErrorCount.Text" xml:space="preserve">
+    <value>Nombre d'erreurs</value>
   </data>
 </root>

@@ -157,7 +157,7 @@
     <value>&lt;i title="Delete" class="fa fa-minus-square fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
   <data name="cmdDeleteButton.Text" xml:space="preserve">
-    <value>&lt;i title="Delete" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt; Delete</value>
+    <value>&lt;i title="Delete" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm-hidden"&gt;Delete&lt;/span&gt;</value>
   </data>
   <data name="cmdDelete.ToolTip" xml:space="preserve">
     <value>Delete</value>
@@ -310,7 +310,7 @@
     <value>&lt;i  title="Return" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; Return</value>
   </data>
   <data name="cmdReturnButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; Return</value>
+    <value>&lt;i  title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="md-hidden"&gt;Return&lt;/span&gt;</value>
   </data>
   <data name="cmdExport.Text" xml:space="preserve">
     <value>Export</value>
@@ -424,7 +424,7 @@
     <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
   <data name="cmdSaveButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Save</value>
+    <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt;Save&lt;/span&gt;</value>
   </data>
   <data name="Update.Text" xml:space="preserve">
     <value>Update</value>
@@ -823,7 +823,7 @@
     <value>Save as a new record ?</value>
   </data>
   <data name="cmdSaveAsButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Save As" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Save As</value>
+    <value>&lt;i  title="Save As" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm3-hidden"&gt;Save As&lt;/span&gt;</value>
   </data>
   <data name="CopyToIcon.Text" xml:space="preserve">
     <value>&lt;i title="Copy" class="fa fa-copy fa-fw fa-2x"&gt;&lt;/i&gt;</value>
@@ -997,7 +997,7 @@
     <value>Waiting</value>
   </data>
   <data name="cmdSaveExitButton.Text" xml:space="preserve">
-    <value>&lt;i  title="Save" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; Save &amp; Exit</value>
+    <value>&lt;i  title="Save Exit" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt;Save &amp; Exit&lt;/span&gt;</value>
   </data>
   <data name="OrderCount.Text" xml:space="preserve">
     <value>Order Count</value>
@@ -1241,5 +1241,20 @@
   </data>
   <data name="PropertyGroupSearchLabel.Text" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="cmdValidateButton.Text" xml:space="preserve">
+    <value>&lt;i title="Validate" class="fa fa-check fa-fw"&gt;&lt;/i&gt;&lt;span class="lg-hidden"&gt;Validate&lt;/span&gt;</value>
+  </data>
+  <data name="ProductValidationFailureMessage.Text" xml:space="preserve">
+    <value>Product validated with errors.</value>
+  </data>
+  <data name="ProductValidationMessageTitle.Text" xml:space="preserve">
+    <value>Operation Complete</value>
+  </data>
+  <data name="ProductValidationSuccessMessage.Text" xml:space="preserve">
+    <value>Product successfully validated</value>
+  </data>
+  <data name="ProductValidationErrorCount.Text" xml:space="preserve">
+    <value>Error Count</value>
   </data>
 </root>

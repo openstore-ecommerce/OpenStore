@@ -2162,6 +2162,22 @@ td.beauty-hover {
   width: 600px;
   z-index:6000;
 }
+
+@media (max-width: 768px) {
+    #modalbox .devoops-modal {
+        margin-left:auto;
+        width: 80vw;
+        left: 10vw;
+    }
+}
+
+@media (max-width: 425px) {
+    #modalbox .devoops-modal {
+        width: 90vw;
+        left: 5vw;
+    }
+}
+
 #modalbox .devoops-modal-header {
   color: #363636;
   font-size: 16px;

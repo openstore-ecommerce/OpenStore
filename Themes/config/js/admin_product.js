@@ -50,6 +50,12 @@
         product_admin_save('product_admin_saveas');
     });
 
+    $('#product_admin_cmdValidate').unbind("click");
+    $('#product_admin_cmdValidate').click(function () {
+        $('.processing').show();
+        nbxget('product_admin_validate', '#selectparams_Product_Admin', '#datadisplay');
+    });
+
     $('#product_admin_cmdReturn').unbind('click');
     $('#product_admin_cmdReturn').click(function () {
         $('#p1_selecteditemid').val('');       
@@ -116,6 +122,13 @@ function Admin_product_nbxgetCompleted(e) {
         $('#p1_selecteditemid').val('');
         $('#p1_razortemplate').val('Admin_ProductList.cshtml');
         nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
+    }
+
+    if (e.cmd == 'product_admin_validate') {
+        $('.processing').show();
+        $('#p1_validationerrorcount').val($('#datadisplay').text());
+        $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
+        nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay');
     }
 
     if (e.cmd == 'product_admin_updateboolean') {
@@ -290,6 +303,13 @@ function Admin_product_nbxgetCompleted(e) {
     }
 
     if (e.cmd == 'product_admin_getdetail' || e.cmd == 'product_admin_addproductmodels') {
+        
+        //validation message check
+        if ($('#p1_validationerrorcount').val()) {
+            showValidationMessage();
+            $('#p1_validationerrorcount').val("");
+        }
+
         productdetail();
     }
 
@@ -369,6 +389,7 @@ function product_admin_DetailButtons() {
     $('#product_admin_cmdSave').show();
     $('#product_admin_cmdSaveExit').show();
     $('#product_admin_cmdSaveAs').show();
+    $('#product_admin_cmdValidate').show();
     $('#product_admin_cmdDelete').show();
     $('#product_admin_cmdReturn').show();
     $('#product_admin_cmdAddNew').hide();
@@ -376,24 +397,26 @@ function product_admin_DetailButtons() {
 }
 
 function product_admin_ListButtons() {
-        $('.editlanguage').show();
+    $('.editlanguage').show();
     $('#product_admin_cmdSave').hide();
     $('#product_admin_cmdSaveExit').hide();
     $('#product_admin_cmdSaveAs').hide();
+    $('#product_admin_cmdValidate').hide();
     $('#product_admin_cmdDelete').hide();
     $('#product_admin_cmdReturn').hide();
     $('#product_admin_cmdAddNew').show();
 }
 
 function product_admin_NoButtons() {
-        $('.editlanguage').hide();
+    $('.editlanguage').hide();
     $('#product_admin_cmdSave').hide();
     $('#product_admin_cmdSaveExit').hide();
     $('#product_admin_cmdSaveAs').hide();
+    $('#product_admin_cmdValidate').hide();
     $('#product_admin_cmdDelete').hide();
     $('#product_admin_cmdReturn').hide();
     $('#product_admin_cmdAddNew').hide();
-    }
+}
 
 
 function moveUp(item) {
@@ -1036,11 +1059,33 @@ function productdetail()
     initModelDisplay();
 
     $('.processing').hide();
+}
 
+function showValidationMessage() {
+
+    var errorCount = $('#p1_validationerrorcount').val();
+    var msg = $('#validationfailuremessage').val() || $("#datadisplay").text();
+    var msgtitle = $('#validationmessagetitle').val() || "";
+    
+    if (!isNaN(errorCount)) {
+        msg = $('#validationsuccessmessage').val();
+
+        if (errorCount > 0) {
+            msg = $('#validationfailuremessage').val();
+            msg += "<br/> " + $('#validationerrorcounttext').val() + ": " + errorCount;
+        }
+    }
+
+    OpenModalBox(msgtitle, msg, null)
+    
+    setTimeout(function () {
+        CloseModalBox();
+    }, 2500);
 
 }
 
-    // ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
 jQuery.fn.toggleOption = function (show) {
     $(this).each(function () {
         if (show) {
