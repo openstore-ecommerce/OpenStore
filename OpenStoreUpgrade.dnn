@@ -97,6 +97,14 @@
         - Fix duplicate plugin records.
         - Convert Dev to DNNpackager.
 
+        v04.01.06
+        - Minor updates
+        - Fix problem product save being slow.
+        - Translation improvements NL
+        - DDRMenu depth fix
+        - Filter improvments
+        - remove limit on orders in NBrightBuy_DashboardStats
+
       </releaseNotes>
       <dependencies>
         <dependency type="CoreVersion">08.00.04</dependency>
@@ -136,6 +144,10 @@
             <script type="Install">
               <name>04.01.03.SqlDataProvider</name>
               <version>04.01.03</version>
+            </script>
+            <script type="Install">
+              <name>04.01.06.SqlDataProvider</name>
+              <version>04.01.06</version>
             </script>
             <script type="UnInstall">
               <name>Uninstall.SqlDataProvider</name>
