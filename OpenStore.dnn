@@ -104,7 +104,8 @@
         - Fix problem product save being slow.
         - Translation improvements NL
         - DDRMenu depth fix
-        - Filter improvments              
+        - Filter improvments
+        - remove limit on orders in NBrightBuy_DashboardStats
 
       </releaseNotes>
       <dependencies>
@@ -145,6 +146,10 @@
             <script type="Install">
               <name>04.01.03.SqlDataProvider</name>
               <version>04.01.03</version>
+            </script>
+            <script type="Install">
+              <name>04.01.06.SqlDataProvider</name>
+              <version>04.01.06</version>
             </script>
             <script type="UnInstall">
               <name>Uninstall.SqlDataProvider</name>
