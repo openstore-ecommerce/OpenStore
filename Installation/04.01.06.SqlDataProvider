@@ -1,0 +1,100 @@
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}NBrightBuy_DashboardStats]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_DashboardStats]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}NBrightBuy_DashboardStats]
+@PortalId int
+AS
+BEGIN
+
+declare @rtndata as nvarchar(max)
+declare @getdata as nvarchar(max)
+
+SET @rtndata = '<root>'
+SET @rtndata +=  (select count(itemid) as [totalproducts] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'PRD' and PortalId = @PortalId FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [hiddenproducts] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'PRD' and PortalId = @PortalId and [XMLData].value('(genxml/checkbox/chkishidden)[1]','nvarchar(max)') = 'True' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [activeproducts] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'PRD' and PortalId = @PortalId and [XMLData].value('(genxml/checkbox/chkishidden)[1]','nvarchar(max)') = 'False' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select sum([XMLData].value('(genxml/appliedtotal)[1]','decimal(10,2)')) as [totalrevenue] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select sum([XMLData].value('(genxml/applieddiscount)[1]','decimal(10,2)')) as [applieddiscount] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select sum([XMLData].value('(genxml/appliedshipping)[1]','decimal(10,2)')) as [appliedshipping] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [totalorders] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (SELECT count(U.UserId) as [clientcount] FROM    {databaseOwner}{objectQualifier}vw_Users U WHERE U.PortalId = @PortalId  FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select (sum([XMLData].value('(genxml/appliedtotal)[1]','decimal(10,2)')) / count(itemid)) as [avgorder] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' FOR XML RAW , ELEMENTS)
+
+
+SET @rtndata +=  (select count(itemid) as [status1] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '010' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status2] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '020' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status3] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '030' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status4] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '040' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status5] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '050' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status6] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '060' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status7] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '070' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status8] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '080' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status9] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '090' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status10] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '100' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status11] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '110' FOR XML RAW , ELEMENTS)
+SET @rtndata +=  (select count(itemid) as [status12] FROM {databaseOwner}[{objectQualifier}NBrightBuy] where typecode = 'ORDER' and PortalId = @PortalId and GUIDKey = '120' FOR XML RAW , ELEMENTS)
+	
+
+SET @getdata =  (SELECT top(10) [ItemId] as [itemid]
+      ,[PortalId] as [portalid]
+      ,[ModuleId] as [moduleid]
+      ,[TypeCode] as [typecode]
+      ,[XMLData] as [genxml]
+      ,[GUIDKey] as [guidkey]
+      ,[ModifiedDate] as [modifieddate]
+      ,[TextData] as [textdata]
+      ,[XrefItemId] as [xrefitemId]
+      ,[ParentItemId] as [parentitemId]
+      ,[Lang] as [lang]
+      ,[UserId] as [userid]
+      ,[LegacyItemId] as [legacyitemid]
+  FROM {databaseOwner}[{objectQualifier}NBrightBuy]
+  where typecode = 'ORDER'
+  and PortalId = @PortalId
+  and (GUIDKey = '040' or GUIDKey = '050'  or GUIDKey = '060')
+  order by ModifiedDate desc FOR XML RAW ('item'), root ('orders'), ELEMENTS)
+
+  SET @rtndata += ISNULL(@getdata,'') 
+
+
+  DECLARE @temptable TABLE(
+createdmonth int,
+createdyear int,
+appliedtotal decimal(10,2)
+);
+
+INSERT INTO @temptable
+select month(isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'')) as createdmonth
+	  ,year(isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'')) as createdyear
+	  ,isnull([XMLData].value('(genxml/appliedtotal)[1]','decimal(10,2)'),0) as appliedtotal
+  FROM {databaseOwner}[{objectQualifier}NBrightBuy]
+  where typecode = 'ORDER' and GUIDKey != '010' and GUIDKey != '020' and GUIDKey != '030' and GUIDKey != '110'
+  and PortalId = @PortalId
+  and isnull([XMLData].value('(genxml/createddate)[1]','datetime'),'') > dateadd(M,-25,GETDATE())
+  
+set @getdata = (select createdyear, createdmonth, sum(appliedtotal) as appliedtotal, count(createdyear) as [ordercount]  from @temptable
+ group by createdyear, createdmonth
+ order by createdyear, createdmonth desc FOR XML RAW ('item'), root ('orderstats'), ELEMENTS)
+
+  SET @rtndata += ISNULL(@getdata,'') 
+
+
+SET @rtndata += '</root>'
+
+select @rtndata
+
+END
+
+GO
+
+
