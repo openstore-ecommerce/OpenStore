@@ -49,6 +49,7 @@
     <value>\Installation\04.01.01.SqlDataProvider</value>
     <value>\Installation\04.01.02.SqlDataProvider</value>
     <value>\Installation\04.01.03.SqlDataProvider</value>
+    <value>\Installation\04.01.06.SqlDataProvider</value>
     <value>\Installation\Uninstall.SqlDataProvider</value>
     <value>OpenStore.dnn</value>
     <value>\Skins\OpenStoreBO\OpenStoreBO.ascx</value>
