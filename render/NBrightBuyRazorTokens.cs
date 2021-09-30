@@ -478,7 +478,7 @@ namespace NBrightBuy.render
                         cnt += 1;
 
                         strOut += "<input type='radio' id='optionrb" + (index + 1) + cnt + "' name='optionrb" + (index + 1) + "' " + selected + " value='" + optval.GetXmlProperty("genxml/hidden/optionvalueid") + "'>";
-                        strOut += "<label for='optionrb" + (index + 1) + cnt + "'>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label>";
+                        strOut += "<label for='optionrb" + (index + 1) + cnt + "'>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label><br />";
                     }
 
                 }
