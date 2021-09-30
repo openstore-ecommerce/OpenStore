@@ -55,6 +55,7 @@ namespace Nevoweb.DNN.NBrightBuy.Base
                 }
             }
 
+            ModSettings.Set("v", Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
             // insert page header text
             NBrightBuyUtils.RazorIncludePageHeader(ModuleId, Page, "FrontOfficePageHeader.cshtml", _controlPath, ThemeFolder, ModSettings.Settings());
