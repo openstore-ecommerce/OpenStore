@@ -524,7 +524,7 @@ namespace NBrightBuy.render
             var c = objL.Count;
             for (int i = 0; i < c; i++)
             {
-                strOut += ProductOptionAsRadiobuttons(productdata, i, attributes);
+                strOut += ProductOptionAsRadiobuttons(productdata, i, attributes, true);
             }
 
             return new RawString(strOut);
