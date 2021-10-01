@@ -454,6 +454,30 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                                 if (nod.InnerText.ToLower() == "true") additionalCosts += optionValueInfo.GetXmlPropertyDouble("genxml/textbox/txtaddedcost");
                                 if (!optionDataList.ContainsKey(idx)) optionDataList.Add(idx, strXmlIn);
                         }
+                    nodList = objInfoIn.XMLDoc.SelectNodes("genxml/radiobuttonlist/*[starts-with(name(), 'optionrb')]");
+                    if (nodList != null)
+                    {
+                        var i = 0;
+                        foreach (XmlNode nod in nodList)
+                        {
+                            i += 1;
+                            strXmlIn = "<option>";
+                            var idx = i.ToString();
+                            var optionid = objInfoIn.GetXmlProperty("genxml/hidden/optionid" + idx);
+                            var optionvalueid = nod.InnerText;
+                            var optionValueInfo = productData.GetOptionValue(optionid, optionvalueid);
+                            var optionInfo = productData.GetOption(optionid);
+                            strXmlIn += "<optid>" + optionid + "</optid>";
+                            strXmlIn += "<optvalueid>" + optionvalueid + "</optvalueid>";
+                            itemcode += optionid + ":" + optionvalueid + "-";
+                            strXmlIn += "<optname>" + optionInfo.GetXmlProperty("genxml/lang/genxml/textbox/txtoptiondesc") + "</optname>";
+                            strXmlIn += "<optvalcost>" + optionValueInfo.GetXmlPropertyRaw("genxml/textbox/txtaddedcost") + "</optvalcost>";
+                            strXmlIn += "<optvaltext>" + optionValueInfo.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + "</optvaltext>";
+                            strXmlIn += "</option>";
+                            additionalCosts += optionValueInfo.GetXmlPropertyDouble("genxml/textbox/txtaddedcost");
+                            if (!optionDataList.ContainsKey(idx)) optionDataList.Add(idx, strXmlIn);
+                        }
+                    }
                 }
 
                 // we need to save the options in the same order as in product, so index works correct on the template tokens.

@@ -477,8 +477,8 @@ namespace NBrightBuy.render
                         }
                         cnt += 1;
 
-                        strOut += "<input type='checkbox' id='optionrb" + (index + 1) + cnt + "' name='optionrb" + (index + 1) + "' " + selected + " value='" + optval.GetXmlProperty("genxml/hidden/optionvalueid") + "'>";
-                        strOut += "<label for='optionrb" + (index + 1) + cnt + "'>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label>";
+                        strOut += "<input type='radio' id='optionrb" + (index + 1) + cnt + "' name='optionrb" + (index + 1) + "' " + selected + " value='" + optval.GetXmlProperty("genxml/hidden/optionvalueid") + "'>";
+                        strOut += "<label for='optionrb" + (index + 1) + cnt + "'>" + optval.GetXmlProperty("genxml/lang/genxml/textbox/txtoptionvaluedesc") + addedcostdisplay + "</label><br />";
                     }
 
                 }
@@ -524,7 +524,7 @@ namespace NBrightBuy.render
             var c = objL.Count;
             for (int i = 0; i < c; i++)
             {
-                strOut += ProductOptionAsRadiobuttons(productdata, i, attributes);
+                strOut += ProductOptionAsRadiobuttons(productdata, i, attributes, true);
             }
 
             return new RawString(strOut);

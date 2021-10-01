@@ -163,6 +163,7 @@
 .productdetail .purchasing .optionname:after {content:" :";}
 .productdetail .purchasing .optionvalue {display:block;}
 .productdetail .purchasing .optionvalue select {border:#ddd solid 1px;height:32px;padding:0 0 0 10px;color:#666;min-width:50%;}
+.productdetail .purchasing .optionvalue input[type=radio] {margin-right:.3em;}
 .productdetail .purchasing .buy {border-top:#ececec solid 1px;border-bottom:#ececec solid 1px;padding:25px 0;}
 .productdetail .purchasing .buy:after {content:"";display:table;clear:both;}
 .productdetail .purchasing .buy .outofstock {color:#395876;font-size:12px;font-weight:bold;}
