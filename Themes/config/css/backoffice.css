@@ -82,6 +82,27 @@ a.show-sidebar {margin-top:15px;}
 .nbstore .backoffice-logo {background:#00a3de;}
 .amylis .backoffice-logo {background:#bbcf1f;}
 .amylis #sidebar-left{background:#bbcf1f;}
+@media (min-width: 768px) {
+    .backoffice-logo img {
+        width: 90px;
+        margin-top:1.2em;
+    }
+}
+@media (min-width: 900px) {
+    .backoffice-logo img {
+        width: 118px;
+    }
+}
+@media (min-width: 1024px) {
+    .backoffice-logo img {
+        width: 140px;
+    }
+}
+@media (min-width: 1440px) {
+    .backoffice-logo img {
+        width: 180px;
+    }
+}
 
 /* Font-Awesome icons */
 .btn i.fa-lg {vertical-align: -1px;}
@@ -115,6 +136,11 @@ a.show-sidebar {margin-top:15px;}
 .editlanguage{list-style: none outside none;margin: 0;padding: 0;}
 .editlanguage > li{float:right;}
 .editlanguage li img{margin-left:10px;cursor:pointer;}
+@media (max-width: 767px) {
+    .editlanguage {
+        margin-top:-50px;
+    }
+}
 
 /* Productlist items as table rows */
 .productadmintable .edititem{top:0;right:0;position:absolute;}
@@ -377,4 +403,53 @@ a.sortelementLeft, a.sortelementRight {
 
 .personalBarContainer {
     display: none !important
+}
+
+/*responsive display helpers*/
+@media (max-width: 900px) {
+    .lg-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 830px) {
+    .md-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .sm-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 570px) {
+    .sm2-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 530px) {
+    .sm3-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 515px) {
+    .sm4-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 424px) {
+    .xs-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .xxs-hidden {
+        display: none !important;
+    }
 }

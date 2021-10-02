@@ -20,8 +20,6 @@
     var prdData = new ProductData(info.ItemID, info.PortalId, info.Lang);
 }
 
-<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
-
 <span id="productdatasection">
 
     <input id="itemid" type="hidden" value="@info.ItemID" />
@@ -35,7 +33,12 @@
     <input id="xmlupdateproductdocs" type="hidden" datatype="coded" value="" />
     <input id="uilang1" type="hidden" value="@Utils.GetCurrentCulture()" />
 
-    
+    <input id="validationmessagetitle" type="hidden" value="@ResourceKey("General.ProductValidationMessageTitle")" />
+    <input id="validationfailuremessage" type="hidden" value="@ResourceKey("General.ProductValidationFailureMessage")" />
+    <input id="validationsuccessmessage" type="hidden" value="@ResourceKey("General.ProductValidationSuccessMessage")" />
+    <input id="validationerrorcounttext" type="hidden" value="@ResourceKey("General.ProductValidationErrorCount")" />
+    <input id="validationerrorcount" type="hidden" value="" />
+
     <div class="row">
         <div class="col-xs-12 col-sm-12 productdatadisplay">
             <div class="box" id="accordion">
@@ -532,7 +535,7 @@
 
 
             </div>
-    </div>
+        </div>
     </div>
 </span>
 

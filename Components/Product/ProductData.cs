@@ -622,11 +622,18 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             Save(triggerevent, false);
         }
 
+        public void Save(bool triggerevent, bool newrecord)
+        {
+            Save(triggerevent, newrecord, false);
+        }
+
         /// <summary>
         /// Save all Product Data
         /// </summary>
         /// <param name="triggerevent"> Used to stop infinate loop when Save used in event method</param>
-        public void Save(bool triggerevent, bool newrecord)
+        /// <param name="newrecord"></param>
+        /// <param name="validate">Boolean value determining if validation occurs during save</param>
+        public void Save(bool triggerevent, bool newrecord, bool validate)
         {
             foreach (var model in Models)
             {
@@ -670,8 +677,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             UpdateDisplayCalcPrices();
             objCtrl.Update(DataRecord);
 
-            // copy langauge data to new langauge record, so we don;t get empty language records.
-            if (!newrecord) // new record don;t need this, they will be created with newrecord flag and that should only be removed on normal user save.
+            // copy language data to new langauge record, so we don't get empty language records.
+            if (!newrecord) // new records don't need this, they will be created with newrecord flag and that should only be removed on normal user save.
             {
                 foreach (var lang in DnnUtils.GetCultureCodeList(_portalId))
                 {
@@ -695,7 +702,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 }
             }
 
-            Validate();
+            if(validate) { Validate(); }
 
             if (triggerevent)
             {

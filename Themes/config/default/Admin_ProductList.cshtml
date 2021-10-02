@@ -69,7 +69,6 @@
     </div>
 </div>
 
-
 <br />
 
 <div class="row">
@@ -99,16 +98,14 @@
                         <tr>
                             <th></th>
                             <th style="width:100%"></th>
-                            <th>@ResourceKey("General.Hidden")</th>
-                            <th>@ResourceKey("General.Disable")</th>
-                            <th></th>
+                            <th class="sm3-hidden">@ResourceKey("General.Hidden")</th>
+                            <th class="xs-hidden">@ResourceKey("General.Disable")</th>
+                            <th class="xxs-hidden"></th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-
-
 
                         @foreach (NBrightInfo nbi in Model.List)
                         {
@@ -129,7 +126,7 @@
                                         @(refout)
                                     }
                                 </td>
-                                <td class="centered">
+                                <td class="centered sm3-hidden">
                                     @{
                                         var checkdisplay = "";
                                     }
@@ -141,7 +138,7 @@
                                         <i class="fa fa@(checkdisplay)-circle fa-2x updateboolean " xpath="genxml/checkbox/chkishidden" itemid="@nbi.ItemID"></i>
                                     </a>
                                 </td>
-                                <td class="centered">
+                                <td class="centered xs-hidden">
                                     @{
                                         var checkdisplay2 = "";
                                     }
@@ -153,7 +150,7 @@
                                         <i class="fa fa@(checkdisplay2)-circle fa-2x updateboolean " xpath="genxml/checkbox/chkdisable" itemid="@nbi.ItemID"></i>
                                     </a>
                                 </td>
-                                <td>
+                                <td class="xxs-hidden">
                                     <a class="product_admin_cmdDelete" itemid="@(nbi.ItemID)" href="javascript:void(0)">@ResourceKey("General.cmdDeleteIcon")</a>
                                 </td>
                                 <td>
