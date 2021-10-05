@@ -69,7 +69,7 @@ namespace NBrightBuy.render
                 foreach (var l in enabledlanguages)
                 {
                     strOut1 += "<li class='selectlang' editlang='" + l.Value.Code + "'>";
-                    strOut1 += "<img src='" + StoreSettings.NBrightBuyPath() + "/Themes/config/img/flags/" + size + "/" + l.Value.Code + ".png' alt='" + l.Value.EnglishName + "' />";
+                    strOut1 += "<img src='/DnnImageHandler.ashx?mode=file&file=/images/flags/" + l.Value.Code + ".gif&h=" + size + "' alt='" + l.Value.EnglishName + "' />";
                     strOut1 += "</li>";
                 }
                 strOut1 += "</ul>";
@@ -1317,7 +1317,8 @@ namespace NBrightBuy.render
 
         public IEncodedString LangFlag(string lang, int size)
         {
-            var strOut = "<img src = '/DesktopModules/NBright/NBrightBuy/Themes/config/img/flags/" + size + "/" + lang + ".png' />"; ;
+            var strOut = "<img src='/DnnImageHandler.ashx?mode=file&file=/images/flags/" + lang + ".gif&w=" + size + "' />";
+
             return new RawString(strOut);
         }
         
