@@ -1317,7 +1317,7 @@ namespace NBrightBuy.render
 
         public IEncodedString LangFlag(string lang, int size)
         {
-            var strOut = "<img src='/DnnImageHandler.ashx?mode=file&file=/images/flags/" + lang + ".gif&w=" + size + "' />";
+            var strOut = "<img src='/DnnImageHandler.ashx?mode=file&file=/images/flags/" + lang + ".gif&h=" + size + "' />";
 
             return new RawString(strOut);
         }
