@@ -310,9 +310,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     var optionXml = Utils.UnCode(ajaxInfo.GetXmlProperty("genxml/hidden/xmlupdateoptiondata"));
                     var optionvalueXml = Utils.UnCode(ajaxInfo.GetXmlProperty("genxml/hidden/xmlupdateoptionvaluesdata"));
 
-                    prdData.UpdateModels(modelXml, UiLang);
-                    prdData.UpdateOptions(optionXml, UiLang);
-                    prdData.UpdateOptionValues(optionvalueXml, UiLang);
+                    prdData.UpdateModels(modelXml, EditLangCurrent);
+                    prdData.UpdateOptions(optionXml, EditLangCurrent);
+                    prdData.UpdateOptionValues(optionvalueXml, EditLangCurrent);
                     prdData.UpdateImages(ajaxInfo);
                     prdData.UpdateDocs(ajaxInfo);
 
