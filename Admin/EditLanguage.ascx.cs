@@ -62,7 +62,7 @@ namespace Nevoweb.DNN.NBrightBuy.Admin
                 {
                     Controls.Add(new LiteralControl("<li>"));
                     var cmd = new LinkButton();
-                    cmd.Text = "<img src='/images/flags/" + l.Value.Code + ".gif' alt='" + l.Value.EnglishName + "' />";
+                    cmd.Text = "<img 'langflag' src='/images/flags/" + l.Value.Code + ".gif' alt='" + l.Value.EnglishName + "' />";
                     cmd.CommandArgument = l.Value.Code;
                     cmd.CommandName = "selectlang";
                     cmd.Command += (s, cmde) =>
