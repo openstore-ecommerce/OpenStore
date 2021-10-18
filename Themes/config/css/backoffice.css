@@ -141,6 +141,7 @@ a.show-sidebar {margin-top:15px;}
         margin-top:-50px;
     }
 }
+.langflag {width:16px}
 
 /* Productlist items as table rows */
 .productadmintable .edititem{top:0;right:0;position:absolute;}

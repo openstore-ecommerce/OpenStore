@@ -69,7 +69,7 @@ namespace NBrightBuy.render
                 foreach (var l in enabledlanguages)
                 {
                     strOut1 += "<li class='selectlang' editlang='" + l.Value.Code + "'>";
-                    strOut1 += "<img src='" + StoreSettings.NBrightBuyPath() + "/Themes/config/img/flags/" + size + "/" + l.Value.Code + ".png' alt='" + l.Value.EnglishName + "' />";
+                    strOut1 += "<img class='langflag' src='/images/flags/" + l.Value.Code + ".gif' alt='" + l.Value.EnglishName + "' />";
                     strOut1 += "</li>";
                 }
                 strOut1 += "</ul>";
@@ -1315,9 +1315,10 @@ namespace NBrightBuy.render
             return LangFlag(lang,16);
         }
 
+        [Obsolete("Flag images are using css for sizes.  The size parameter has no effect. Use the langflag class for display mods.")]
         public IEncodedString LangFlag(string lang, int size)
         {
-            var strOut = "<img src = '/DesktopModules/NBright/NBrightBuy/Themes/config/img/flags/" + size + "/" + lang + ".png' />"; ;
+            var strOut = "<img class='langflag' src = '/images/flags/" + lang + ".gif' />"; ;
             return new RawString(strOut);
         }
         
