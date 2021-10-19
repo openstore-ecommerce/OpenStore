@@ -4020,7 +4020,7 @@ namespace Nevoweb.DNN.NBrightBuy.render
             var lc = new Literal();
             var size = "16";
             if (xmlNod.Attributes != null && (xmlNod.Attributes["size"] != null)) size = xmlNod.Attributes["size"].Value;
-            lc.Text = "<img src='" + StoreSettings.NBrightBuyPath() + "/Themes/config/img/flags/" + size + "/" + StoreSettings.Current.EditLanguage + ".png' />";
+            lc.Text = "<img 'langflag' src='" + StoreSettings.NBrightBuyPath() + "/images/flags/" + StoreSettings.Current.EditLanguage + ".gif' />";
             lc.DataBinding += EditFlagDataBind;
             container.Controls.Add(lc);
         }
@@ -4779,7 +4779,7 @@ namespace Nevoweb.DNN.NBrightBuy.render
             foreach (var l in enabledlanguages)
             {
                 strOut.Append("<li><a href='javascript:void(0)' lang='" + l.Value.Code + "' class='" + cssclassli + "'>");
-                strOut.Append("<img src='" + StoreSettings.NBrightBuyPath() + "/Themes/config/img/flags/" + size + "/" + l.Value.Code + ".png' alt='" + l.Value.NativeName + "' />");
+                strOut.Append("<img class='langflag' src='/images/flags/" + l.Value.Code + ".gif' alt='" + l.Value.NativeName + "' />");
                 strOut.Append("</a></li>");
             }
             strOut.Append("</ul>");
