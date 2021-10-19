@@ -90,11 +90,11 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         PaymentNotVerified = 050,
         WaitingForPayment = 060,
         WaitingForStock = 070,
-        BeingManufactured = 120,
         Waiting = 080,
         Shipped = 090,
         Completed = 100,
-        Archived = 110
+        Archived = 110,
+        BeingManufactured = 120,
     }
 
 

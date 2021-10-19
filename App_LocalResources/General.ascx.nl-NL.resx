@@ -688,10 +688,10 @@
     <value>Bestellingen</value>
   </data>
   <data name="orderstatus.Code" xml:space="preserve">
-    <value>010,020,030,040,050,060,070,080,090,100,110</value>
+    <value>010,020,030,040,050,060,070,080,090,100,110,120</value>
   </data>
   <data name="orderstatus.Text" xml:space="preserve">
-    <value>Onvolledig, Wacht op Bank, Geannuleerd, Betaling in orde, Betaling niet geverifieerd, Wacht op betaling, Wacht op voorraad, Wacht, In productie, Verzonden, Afgerond, Gearchiveerd</value>
+    <value>Onvolledig, Wacht op Bank, Geannuleerd, Betaling in orde, Betaling niet geverifieerd, Wacht op betaling, Wacht op voorraad, Wacht, Verzonden, Afgerond, Gearchiveerd, In productie</value>
   </data>
   <data name="Parent.Text" xml:space="preserve">
     <value>Bovenliggende</value>
