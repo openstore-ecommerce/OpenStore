@@ -42,7 +42,7 @@
     @if (UserController.Instance.GetCurrentUserInfo().UserID > 0)
     {
         <div class="formrow">
-            <a class="primarybutton" href="/tabid/@(Model.GetSetting("ordermanagertab"))/eid/@eid">@ResourceKey("CartView.ViewOrder")</a>
+            <a class="primarybutton" href="/tabid/@(Model.GetSetting("ordermanagertab"))">@ResourceKey("CartView.ViewOrder")</a>
         </div>
     }
     else
