@@ -8,6 +8,10 @@ $(document).ready(function () {
 
     $(document).on("nbxproductgetcompleted", AjaxView_GetList_nbxproductgetCompleted); // assign a completed event for the ajax calls
 
+    if (localStorage && $(".productlist").length === 0) {
+        localStorage.setItem('returnedfromitemid', $(".addtobasket").attr("itemid"));
+    }
+
     // $('.nav-tabs > li > a').click(function (event) {
     //     event.preventDefault();//stop browser to take action for clicked anchor
 
@@ -271,8 +275,21 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         $('#shoppinglistpopup').colorbox.close();
     });
 
-}
+    if (localStorage) {
+        var returnedfromitemid = localStorage.getItem('returnedfromitemid');
 
+        if (returnedfromitemid && !isNaN(returnedfromitemid)) {
+            $(".addtobasket").each(function () {
+                if ($(this).attr("itemid") == returnedfromitemid) {
+                    $([document.documentElement, document.body]).animate({ scrollTop: $(this).closest(".product").offset().top }, 200);
+                    return false;
+                }
+            });
+            localStorage.setItem('returnedfromitemid', '');
+        }
+    }
+
+}
 
 
 // *****************************************************************************
