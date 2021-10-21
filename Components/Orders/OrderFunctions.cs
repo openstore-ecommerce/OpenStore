@@ -120,7 +120,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
                         var orderData = new OrderData(PortalSettings.Current.PortalId, Convert.ToInt32(selecteditemid));
                         if (orderData.UserId == UserController.Instance.GetCurrentUserInfo().UserID || NBrightBuyUtils.CheckRights())
                         {
-                            orderData.CopyToCart(false);
+                            CopyToCart(orderData);
                         }
                     }
                     return "";
@@ -132,6 +132,31 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Orders
                 return ex.ToString();
             }
         }
+
+        public static CartData CopyToCart(OrderData orderdata)
+        {
+            var cartData = new CartData(orderdata.PortalId, "", ""); //create the client record (cookie)
+            cartData.PurchaseInfo.XMLData = orderdata.PurchaseInfo.XMLData;
+            cartData.EditMode = "R";
+
+            // reset order fields
+            cartData.PurchaseInfo.SetXmlProperty("genxml/textbox/shippingdate", "");
+            cartData.PurchaseInfo.SetXmlProperty("genxml/textbox/trackingcode", "");
+            cartData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicefileext", "");
+            cartData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicefilename", "");
+            cartData.PurchaseInfo.SetXmlProperty("genxml/hidden/invoicefilepath", "");
+            cartData.PurchaseInfo.SetXmlProperty("genxml/audit", "");
+            cartData.PurchaseInfo.SetXmlProperty("genxml/ordernumber", "");
+            cartData.PurchaseInfo.SetXmlProperty("genxml/dropdownlist/orderstatus", "");
+
+            // Get existing, for when we copy an ORDER to a CART
+            // QUICK FIX: So we do not change any code other than this copy funciton. (It's works!!! but yes I agree!!!)
+            cartData._itemList = cartData.GetCartItemList(); 
+
+            cartData.Save();
+            return cartData;
+        }
+
 
         private static String OrderAdminEdit(HttpContext context)
         {

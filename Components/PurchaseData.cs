@@ -25,7 +25,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
     {
         private int _entryId;
         public NBrightInfo PurchaseInfo;
-        private List<NBrightInfo> _itemList;
+        public List<NBrightInfo> _itemList;
         private int _userId = -1;
 
         public String PurchaseTypeCode;

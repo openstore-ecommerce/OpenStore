@@ -14,7 +14,7 @@ using NBrightCore.common;
 using NBrightCore.render;
 using NBrightDNN;
 using Nevoweb.DNN.NBrightBuy.Components.Interfaces;
-
+using Nevoweb.DNN.NBrightBuy.Components.Orders;
 
 namespace Nevoweb.DNN.NBrightBuy.Components
 {
@@ -72,29 +72,6 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             }
         }
 
-        public void CopyToCart(Boolean debugMode = false, String storageType = "Cookie", string nameAppendix = "")
-        {
-            PurchaseTypeCode = "CART";
-            EditMode = "R";
-
-            // reset order fields
-            ShippedDate = "";
-            TrackingCode = "";
-            InvoiceFileExt = "";
-            InvoiceFileName = "";
-            InvoiceFilePath = "";
-            PurchaseInfo.SetXmlProperty("genxml/audit","");
-            OrderNumber = "";
-
-            var cartId = base.SavePurchaseData(true);
-
-            OrderStatus = "010";
-
-            var cartData = new CartData(PortalId,  "", cartId.ToString("")); //create the client record (cookie)
-
-            cartData.Save();
-            if (StoreSettings.Current.DebugModeFileOut) OutputDebugFile("debug_copytocart.xml");
-        }
 
         /// <summary>
         /// Order status
@@ -309,7 +286,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     //PurchaseTypeCode = "CART";                  
 
                     // make a new cart and copy the order data to it.
-                    CopyToCart();
+                    OrderFunctions.CopyToCart(this);
 
                     PurchaseTypeCode = "ORDER"; // Make sure this order is moved to an order.
                     CreatedDate = DateTime.Now.ToString("O");
