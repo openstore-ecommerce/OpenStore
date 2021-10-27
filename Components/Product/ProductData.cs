@@ -639,12 +639,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 var qty = DataRecord.GetXmlPropertyDouble("genxml/models/genxml[" + model.ItemID.ToString("") + "]/textbox/txtqtyremaining");
                 var minqty = DataRecord.GetXmlPropertyDouble("genxml/models/genxml[" + model.ItemID.ToString("") + "]/textbox/txtqtyminstock");
+                if (minqty == 0) { minqty = StoreSettings.Current.SettingsInfo.GetXmlPropertyDouble("genxml/textbox/minimumstocklevel"); }
                 var currentstatus = DataRecord.GetXmlProperty("genxml/models/genxml[" + model.ItemID.ToString("") + "]/dropdownlist/modelstatus");
                 var activatestock = DataRecord.GetXmlPropertyBool("genxml/models/genxml[" + model.ItemID.ToString("") + "]/checkbox/chkstockon");
                 if (activatestock && currentstatus != "040" && currentstatus != "050")
                 {
                     if (qty > 0) DataRecord.SetXmlProperty("genxml/models/genxml[" + model.ItemID.ToString("") + "]/dropdownlist/modelstatus", "010");
-                    if (minqty == qty) DataRecord.SetXmlProperty("genxml/models/genxml[" + model.ItemID.ToString("") + "]/dropdownlist/modelstatus", "020");
+                    if (minqty >= qty) DataRecord.SetXmlProperty("genxml/models/genxml[" + model.ItemID.ToString("") + "]/dropdownlist/modelstatus", "020");
                     if (qty <= 0 && minqty < qty) DataRecord.SetXmlProperty("genxml/models/genxml[" + model.ItemID.ToString("") + "]/dropdownlist/modelstatus", "030");
                 }
                 else

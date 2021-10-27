@@ -37,7 +37,7 @@
             <a id="shoppinglistremove-@itemId" href="javascript:void(0)" class="shoppinglistremove actionbutton absec" itemid="@itemId" style="display:none;"><i class="fa fa-star"></i></a>
 
             <div class="product-overlay">
-                @if (!cataloguemode)
+                @if (!cataloguemode && !product.Disabled && product.IsInStock)
                 {
                     if (product.Models.Count > 1)
                     {
@@ -45,10 +45,7 @@
                     }
                     else
                     {
-                        if (!product.Disabled)
-                        {
-                            <a href="javascript:void(0);" class="actionbutton addtobasket" itemid="@itemId"><i class="fa fa-shopping-cart"></i>@addtobasket</a>
-                        }
+                        <a href="javascript:void(0);" class="actionbutton addtobasket" itemid="@itemId"><i class="fa fa-shopping-cart"></i>@addtobasket</a>
                     }
                 }
             </div>
