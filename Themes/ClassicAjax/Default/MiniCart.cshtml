@@ -6,6 +6,7 @@
 @using System.Web.Razor.Parser.SyntaxTree
 @using NBrightDNN
 @using Nevoweb.DNN.NBrightBuy.Components;
+@using DotNetNuke.Common;
 
 @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/App_LocalResources/")
 @AddMetaData("resourcepath", "/DesktopModules/NBright/NBrightBuy/Themes/ClassicAjax/resx")
@@ -22,7 +23,7 @@
   <div class="h4-headline">@ResourceKey("CartView.YourBasket")</div>
   @if (itemsInCart > 0)
   {
-    <a href="/tabid/@Model.GetSetting("carttab")/Default.aspx">@itemsInCart @ResourceKey("CartView.txtitemslower") : @NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/appliedtotal"))</a>
+    <a href='@(Globals.NavigateURL(Model.GetSettingInt("carttab")))'>@itemsInCart @ResourceKey("CartView.txtitemslower") : @NBrightBuyUtils.FormatToStoreCurrency(info.GetXmlPropertyDouble("genxml/appliedtotal"))</a>
   }
   else
   {
