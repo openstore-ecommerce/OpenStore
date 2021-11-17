@@ -1,7 +1,7 @@
 ﻿<dotnetnuke type="Package" version="5.0">
 	<packages>
 
-    <package name="OS_ProductView" type="Module" version="4.1.6">
+    <package name="OS_ProductView" type="Module" version="4.1.7">
       <friendlyName>OS_ProductView</friendlyName>
       <description>
         OpenStore open source e-commerce for DNN.
