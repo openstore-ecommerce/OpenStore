@@ -93,8 +93,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                 SavePurchaseData();
 
-                NBrightBuyUtils.ProcessEventProvider(EventActions.AfterOrderStatusChange, PurchaseInfo);
-
+                PurchaseInfo = NBrightBuyUtils.ProcessEventProvider(EventActions.AfterOrderStatusChange, PurchaseInfo);
             }  
         }
 
