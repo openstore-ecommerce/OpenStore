@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="cmdEditOrderIcon.Text" xml:space="preserve">
+        <value>&lt;i  title="Ver y editar" class="fa fa-edit fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+        <comment>&lt;i  title="View and Edit" class="fa fa-edit fa-fw fa-2x"&gt;&lt;/i&gt;</comment>
+    </data>
+    <data name="cmdEditOrderButton.Text" xml:space="preserve">
+        <value>&lt;i  title="Ver y editar" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt;Editar</value>
+        <comment>&lt;i  title="View and Edit" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt; Edit</comment>
+    </data>
+    <data name="cmdEmailAmended.confirm" xml:space="preserve">
+        <value>¿Enviar correo electrónico modificado al cliente?</value>
+        <comment>Send Amended Email to Client ?</comment>
+    </data>
+    <data name="cmdEmailAmended.Text" xml:space="preserve">
+        <value>Enmendado</value>
+        <comment>Amended</comment>
+    </data>
+    <data name="cmdEmailReceipt.confirm" xml:space="preserve">
+        <value>¿Enviar correo electrónico de recibo al cliente?</value>
+        <comment>Send Receipt Email to Client ?</comment>
+    </data>
+    <data name="cmdEmailReceipt.Text" xml:space="preserve">
+        <value>Recibo</value>
+        <comment>Receipt</comment>
+    </data>
+    <data name="cmdEmailShipped.confirm" xml:space="preserve">
+        <value>¿Enviar correo electrónico enviado al cliente?</value>
+        <comment>Send Shipped Email to Client ?</comment>
+    </data>
+    <data name="cmdEmailShipped.Text" xml:space="preserve">
+        <value>Enviado</value>
+        <comment>Shipped</comment>
+    </data>
+    <data name="cmdEmailValidated.confirm" xml:space="preserve">
+        <value>¿Enviar correo electrónico confirmado al cliente?</value>
+        <comment>Send Confirmed Email to Client ?</comment>
+    </data>
+    <data name="cmdEmailValidated.Text" xml:space="preserve">
+        <value>Confirmado</value>
+        <comment>Confirmed</comment>
+    </data>
+    <data name="cmdPrintOrder.Text" xml:space="preserve">
+        <value>Impresión</value>
+        <comment>Print</comment>
+    </data>
+    <data name="cmdPrintReceipt.Text" xml:space="preserve">
+        <value>Recibo</value>
+        <comment>Receipt</comment>
+    </data>
+    <data name="cmdReOrder.Text" xml:space="preserve">
+        <value>Repetir</value>
+        <comment>Repeat</comment>
+    </data>
+    <data name="cmdReOrderIcon.Text" xml:space="preserve">
+        <value>&lt;i  title="Repetir" class="fa fa-repeat fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+        <comment>&lt;i  title="Repeat" class="fa fa-repeat fa-fw fa-2x"&gt;&lt;/i&gt;</comment>
+    </data>
+    <data name="cmdReOrderButton.Text" xml:space="preserve">
+        <value>&lt;i  title="Repetir" class="fa fa-repeat fa-fw fa-lg"&gt;&lt;/i&gt;Repetir</value>
+        <comment>&lt;i  title="Repeat" class="fa fa-repeat fa-fw fa-lg"&gt;&lt;/i&gt; Repeat</comment>
+    </data>
+    <data name="cmdReturn.Text" xml:space="preserve">
+        <value>Regresar</value>
+        <comment>Return</comment>
+    </data>
+    <data name="cmdView.Text" xml:space="preserve">
+        <value>Vista</value>
+        <comment>View</comment>
+    </data>
+    <data name="cmdViewIcon.Text" xml:space="preserve">
+        <value>&lt;i  title="Ver y editar" class="fa fa-edit fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+        <comment>&lt;i  title="View and Edit" class="fa fa-edit fa-fw fa-2x"&gt;&lt;/i&gt;</comment>
+    </data>
+    <data name="cmdViewButton.Text" xml:space="preserve">
+        <value>&lt;i  title="Ver y editar" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt;Vista</value>
+        <comment>&lt;i  title="View and Edit" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt; View</comment>
+    </data>
+    <data name="cmdPrintDeliveryLabel.Text" xml:space="preserve">
+        <value>Etiqueta de entrega</value>
+        <comment>Delivery Label</comment>
+    </data>
+    <data name="cmdDeleteInvoice.confirm" xml:space="preserve">
+        <value>¿Eliminar factura?</value>
+        <comment>Remove Invoice ?</comment>
+    </data>
+    <data name="cmdDeleteInvoice.Text" xml:space="preserve">
+        <value>Eliminar factura</value>
+        <comment>Remove Invoice</comment>
+    </data>
+    <data name="ProcessOrder.Text" xml:space="preserve">
+        <value>Orden de proceso</value>
+        <comment>Process Order</comment>
+    </data>
+    <data name="VATincluded.Text" xml:space="preserve">
+        <value>VAT incluido</value>
+        <comment>VAT included</comment>
+    </data>
+    <data name="qty.Text" xml:space="preserve">
+        <value>Cant.</value>
+        <comment>Qty</comment>
+    </data>
+    <data name="total.Text" xml:space="preserve">
+        <value>Total</value>
+        <comment>Total</comment>
+    </data>
+    <data name="myorders.Text" xml:space="preserve">
+        <value>Mis ordenes</value>
+        <comment>My orders</comment>
+    </data>
+    <data name="orderdate.Text" xml:space="preserve">
+        <value>Fecha de orden</value>
+        <comment>Order date</comment>
+    </data>
+    <data name="ordernumber.Text" xml:space="preserve">
+        <value>Número de orden</value>
+        <comment>Order number</comment>
+    </data>
+    <data name="orderreceipt.Text" xml:space="preserve">
+        <value>Recibo de pedido</value>
+        <comment>Order receipt</comment>
+    </data>
+    <data name="none.Text" xml:space="preserve">
+        <value>Ninguna</value>
+        <comment>None</comment>
+    </data>
+    <data name="PaymentMethod.Text" xml:space="preserve">
+        <value>Método de pago</value>
+        <comment>Payment Method</comment>
+    </data>
+    <data name="cmdReturnButton.Text" xml:space="preserve">
+        <value>&lt;i  title="Regreso" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt;Regreso</value>
+        <comment>&lt;i  title="Return" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; Return</comment>
+    </data>
+    <data name="EmailOrder.Text" xml:space="preserve">
+        <value>Pedido por correo electrónico</value>
+        <comment>Email Order</comment>
+    </data>
+    <data name="PrintOrder.Text" xml:space="preserve">
+        <value>Imprimir Orden</value>
+        <comment>Print Order</comment>
+    </data>
+    <data name="ToggleDropdown.Text" xml:space="preserve">
+        <value>Alternar menú desplegable</value>
+        <comment>Toggle Dropdown</comment>
+    </data>
+    <data name="PaymentStatus.Text" xml:space="preserve">
+        <value>Estado de pago</value>
+        <comment>Payment Status</comment>
+    </data>
+    <data name="OrderHistory.Text" xml:space="preserve">
+        <value>Historial de pedidos</value>
+        <comment>Order History</comment>
+    </data>
+    <data name="addnotes.Text" xml:space="preserve">
+        <value>Agregar una nota al historial de pedidos</value>
+        <comment>Add a note to the order history</comment>
+    </data>
+    <data name="emailmsg.Text" xml:space="preserve">
+        <value>Mensaje de correo electrónico para el cliente</value>
+        <comment>Email message for client </comment>
+    </data>
+    <data name="cmdEditOrder.confirm" xml:space="preserve">
+        <value>¿Editar pedido?</value>
+        <comment>Edit Order?</comment>
+    </data>
+    <data name="cmdEditOrder.Text" xml:space="preserve">
+        <value>&lt;i  title="Ver y editar" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt;Editar</value>
+        <comment>&lt;i  title="View and Edit" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt; Edit</comment>
+    </data>
+    <data name="choosefile.Text" xml:space="preserve">
+        <value>Elija el archivo</value>
+        <comment>Choose File</comment>
+    </data>
+    <data name="downloadinvoice.Text" xml:space="preserve">
+        <value>Descargar factura</value>
+        <comment>Download Invoice</comment>
+    </data>
+    <data name="clientlanguage.Text" xml:space="preserve">
+        <value>Idioma del cliente</value>
+        <comment>Client Language</comment>
+    </data>
+</root>

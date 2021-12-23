@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Configuración de administrador de pedidos</value>
+  <comment>Order Admin Settings</comment></data>
+  <data name="lbladvancedsettings.Text" xml:space="preserve">
+    <value>Avanzado</value>
+  <comment>Advanced</comment></data>
+  <data name="lblbasicsettings.Text" xml:space="preserve">
+    <value>General</value>
+  <comment>General</comment></data>
+  <data name="lbllistbody.Help" xml:space="preserve">
+    <value>Plantilla para ser utilizada como cuerpo, esta se repite para cada pedido.</value>
+  <comment>Template to be used as body, this is repeated for each order.</comment></data>
+  <data name="lbllistbody.Text" xml:space="preserve">
+    <value>Cuerpo de la lista de pedidos:</value>
+  <comment>Order List Body : </comment></data>
+  <data name="lbllistfooter.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como pie de página.</value>
+  <comment>Template to be used as footer.</comment></data>
+  <data name="lbllistfooter.Text" xml:space="preserve">
+    <value>Pie de página de la lista de pedidos:</value>
+  <comment>Order List Footer : </comment></data>
+  <data name="lbllistheader.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como encabezado.</value>
+  <comment>Template to be used as header.</comment></data>
+  <data name="lbllistheader.Text" xml:space="preserve">
+    <value>Encabezado de la lista de pedidos:</value>
+  <comment>Order List Header : </comment></data>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Nombre del tema que se utilizará para esta lista de carritos.</value>
+  <comment>Name of the theme to use for this cart list.</comment></data>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Tema :</value>
+  <comment>Theme : </comment></data>
+  <data name="lblthemesettings.Text" xml:space="preserve">
+    <value>Configuración de temas</value>
+  <comment>Theme Settings</comment></data>
+  <data name="detailtemplates.Text" xml:space="preserve">
+    <value>Plantillas de detalles</value>
+  <comment>Detail Templates</comment></data>
+  <data name="lbldetailbody.Help" xml:space="preserve">
+    <value>Plantilla para usar como cuerpo</value>
+  <comment>Template to be used as  body</comment></data>
+  <data name="lbldetailbody.Text" xml:space="preserve">
+    <value>Cuerpo del detalle del pedido:</value>
+  <comment>Order Detail Body : </comment></data>
+  <data name="lbldetailfooter.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como pie de página.</value>
+  <comment>Template to be used as footer.</comment></data>
+  <data name="lbldetailfooter.Text" xml:space="preserve">
+    <value>Pie de página de detalles del pedido:</value>
+  <comment>Order Detail Footer : </comment></data>
+  <data name="lbldetailheader.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como encabezado.</value>
+  <comment>Template to be used as header.</comment></data>
+  <data name="lbldetailheader.Text" xml:space="preserve">
+    <value>Encabezado de detalle de pedido:</value>
+  <comment>Order Detail Header : </comment></data>
+  <data name="listtemplates.Text" xml:space="preserve">
+    <value>Plantillas de lista</value>
+  <comment>List Templates</comment></data>
+  <data name="lblitemdetailbody.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como cuerpo de la lista de elementos</value>
+  <comment>Template to be used as item list body</comment></data>
+  <data name="lblitemdetailbody.Text" xml:space="preserve">
+    <value>Detalle del pedido Cuerpo de la lista de artículos:</value>
+  <comment>Order Detail Item List Body : </comment></data>
+  <data name="lblitemdetailfooter.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como pie de página.</value>
+  <comment>Template to be used as footer.</comment></data>
+  <data name="lblitemdetailfooter.Text" xml:space="preserve">
+    <value>Detalle del pedido Pie de página de la lista de artículos:</value>
+  <comment>Order Detail Item List Footer : </comment></data>
+  <data name="lblitemdetailheader.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como encabezado.</value>
+  <comment>Template to be used as header.</comment></data>
+  <data name="lblitemdetailheader.Text" xml:space="preserve">
+    <value>Encabezado de la lista de artículos del detalle del pedido:</value>
+  <comment>Order Detail Item List Header : </comment></data>
+</root>

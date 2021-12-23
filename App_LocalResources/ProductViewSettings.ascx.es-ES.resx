@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Configuración de vista de producto</value>
+  <comment>Product View Settings</comment></data>
+  <data name="lbladvancedsettings.Text" xml:space="preserve">
+    <value>Avanzado</value>
+  <comment>Advanced</comment></data>
+  <data name="lblbasicsettings.Text" xml:space="preserve">
+    <value>General</value>
+  <comment>General</comment></data>
+  <data name="lblcascaderesults.Help" xml:space="preserve">
+    <value>Si se selecciona una categoría principal, también se mostrarán todos los productos de las categorías secundarias.</value>
+  <comment>If a parent category is selected, all products in children categories will also be displayed.</comment></data>
+  <data name="lblcascaderesults.Text" xml:space="preserve">
+    <value>Resultados en cascada:</value>
+  <comment>Cascade Results : </comment></data>
+  <data name="lbldefaultcatid.Help" xml:space="preserve">
+    <value>Categoría predeterminada que se mostrará en la lista, si no se selecciona ninguna otra categoría. Anule la selección de esta opción si utiliza el token &amp;quot;sqlfilter&amp;quot; en la plantilla de encabezado.</value>
+  <comment>Default Category to be displayed by the list, if no other category selected.  Deselect this if using the "sqlfilter" token in the header template.</comment></data>
+  <data name="lbldefaultcatid.Text" xml:space="preserve">
+    <value>Categoría predeterminada:</value>
+  <comment>Default Category : </comment></data>
+  <data name="lbldetailbody.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como cuerpo de detalle del producto.</value>
+  <comment>Template to be used as product detail body.</comment></data>
+  <data name="lbldetailbody.Text" xml:space="preserve">
+    <value>Detalle del cuerpo:</value>
+  <comment>Detail Body : </comment></data>
+  <data name="lbldetailfooter.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como pie de página de detalles del producto.</value>
+  <comment>Template to be used as product detail footer.</comment></data>
+  <data name="lbldetailfooter.Text" xml:space="preserve">
+    <value>Detalle de pie de página:</value>
+  <comment>Detail Footer : </comment></data>
+  <data name="lbldetailheader.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como encabezado de detalles del producto.</value>
+  <comment>Template to be used as product detail header.</comment></data>
+  <data name="lbldetailheader.Text" xml:space="preserve">
+    <value>Encabezado de detalle:</value>
+  <comment>Detail Header : </comment></data>
+  <data name="lbldetailmoduleref.Help" xml:space="preserve">
+    <value>Módulo Clave del módulo de detalle para mostrar el Producto. Si está en blanco, entonces todos los módulos de Vista de producto en la página pueden mostrar el detalle de la entrada. Esto se activa usando el token de configuración en el atributo modkey del token &amp;quot;nbs: entrylink&amp;quot; en la plantilla de lista.</value>
+  <comment>Module Key of the detail module to display the Product.  If blank then all Product View modules on the page may display the entry detail.  This is activated by using the settings token on the modkey attribute of the "nbs:entrylink" token in the list template.</comment></data>
+  <data name="lbldetailmoduleref.Text" xml:space="preserve">
+    <value>Detalle de la clave del módulo:</value>
+  <comment>Detail Module Key : </comment></data>
+  <data name="lbldetailtab.Help" xml:space="preserve">
+    <value>La página a la que se redirigirá al usuario cuando se haga clic en el botón &amp;quot;Ver producto&amp;quot;. Si está en blanco, se utiliza la página actual. Esto se activa usando el token de configuración en el atributo tabid del token &amp;quot;nbs: entrylink&amp;quot; en la plantilla de lista.</value>
+  <comment>The page the user will be redirected to when the "View Product" button is clicked.  If blank the current page is used.  This is activated by using the settings token on the tabid attribute of the "nbs:entrylink" token in the list template.</comment></data>
+  <data name="lbldetailtab.Text" xml:space="preserve">
+    <value>Página de detalles del producto:</value>
+  <comment>Product Detail Page : </comment></data>
+  <data name="lbllistbody.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como cuerpo de la lista de productos, esto se repite para cada producto.</value>
+  <comment>Template to be used as product list body, this is repeated for each product.</comment></data>
+  <data name="lbllistbody.Text" xml:space="preserve">
+    <value>Cuerpo de la lista:</value>
+  <comment>List Body : </comment></data>
+  <data name="lbllistfooter.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como pie de página de la lista de productos.</value>
+  <comment>Template to be used as product list footer.</comment></data>
+  <data name="lbllistfooter.Text" xml:space="preserve">
+    <value>Pie de página de lista:</value>
+  <comment>List Footer : </comment></data>
+  <data name="lbllistheader.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como encabezado de lista de productos.</value>
+  <comment>Template to be used as product list header.</comment></data>
+  <data name="lbllistheader.Text" xml:space="preserve">
+    <value>Encabezado de lista:</value>
+  <comment>List Header : </comment></data>
+  <data name="lbllistonly.Help" xml:space="preserve">
+    <value>Mostrar solo la vista de lista para este módulo, no se mostrará ninguna vista detallada en este módulo.</value>
+  <comment>Only display list view for this module, no detail view will be displayed on this module.</comment></data>
+  <data name="lbllistonly.Text" xml:space="preserve">
+    <value>Solo lista:</value>
+  <comment>List Only : </comment></data>
+  <data name="lblmoduleref.Help" xml:space="preserve">
+    <value>Clave de módulo única. Se utiliza para identificar este módulo con otros módulos NBS.</value>
+  <comment>Unique Module Key.  This is used to identify this module to other NBS modules.</comment></data>
+  <data name="lblmoduleref.Text" xml:space="preserve">
+    <value>Clave del módulo:</value>
+  <comment>Module  Key : </comment></data>
+  <data name="lblpagesize.Help" xml:space="preserve">
+    <value>Número de productos que se mostrarán en cada página.</value>
+  <comment>Number of products to be displayed on each page.</comment></data>
+  <data name="lblpagesize.Text" xml:space="preserve">
+    <value>Tamaño de página :</value>
+  <comment>Page Size : </comment></data>
+  <data name="lblreturnlimit.Help" xml:space="preserve">
+    <value>Número máximo de productos que mostrará el módulo. (cero es ningún límite establecido)</value>
+  <comment>Maximum number of products that will be displayed by the module.  (zero is no limit set)</comment></data>
+  <data name="lblreturnlimit.Text" xml:space="preserve">
+    <value>Límite de devolución de producto</value>
+  <comment>Product Return Limt</comment></data>
+  <data name="lblreturntab.Help" xml:space="preserve">
+    <value>La página a la que se regresa al usuario cuando se hace clic en el botón &amp;quot;Volver a la lista&amp;quot;. Si está en blanco, se utiliza la página actual. Esto se activa usando el token de configuración en el atributo tabid del token &amp;quot;nbs: returnlink&amp;quot; en la plantilla de detalles.</value>
+  <comment>The page the user is returned to when the "Return to List" button is clicked.  If blank the current page is used.  This is activated by using the settings token on the tabid attribute of the "nbs:returnlink" token in the detail template.</comment></data>
+  <data name="lblreturntab.Text" xml:space="preserve">
+    <value>Detalles de la página de devolución:</value>
+  <comment>Detail Return Page : </comment></data>
+  <data name="lblstaticlist.Help" xml:space="preserve">
+    <value>Las listas estáticas siempre usarán las categorías predeterminadas, independientemente de la categoría seleccionada. Estos se utilizan para mostrar productos destacados o productos en promoción.</value>
+  <comment>Static Lists will always use the default categories, regardless of any category selected.  These are used to display featured products or products on promotion.</comment></data>
+  <data name="lblstaticlist.Text" xml:space="preserve">
+    <value>Lista estática:</value>
+  <comment>Static List : </comment></data>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Nombre del tema que se utilizará para esta lista de productos.</value>
+  <comment>Name of the theme to use for this productlist.</comment></data>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Tema :</value>
+  <comment>Theme : </comment></data>
+  <data name="lblthemesettings.Text" xml:space="preserve">
+    <value>Configuración de temas</value>
+  <comment>Theme Settings</comment></data>
+  <data name="themehidden.Text" xml:space="preserve">
+    <value>La configuración del tema antiguo se ha deshabilitado, actualice para activar el nuevo tema.</value>
+  <comment>Old Theme Settings have been disabled, update to activate new theme. </comment></data>
+  <data name="lbllightboxspeed.Text" xml:space="preserve">
+    <value>Velocidad de LightBox en ms:</value>
+  <comment>LightBox Speed in ms : </comment></data>
+  <data name="lbllightboxspeed.Help" xml:space="preserve">
+    <value>Velocidad de animación para lightbox</value>
+  <comment>Animation speed for lightbox</comment></data>
+  <data name="lblitemwidth.Text" xml:space="preserve">
+    <value>Ancho del elemento de lista en px:</value>
+  <comment>List Item Width in px : </comment></data>
+  <data name="lblitemheight.Text" xml:space="preserve">
+    <value>Altura del artículo de lista (incluida la unidad o automático):</value>
+  <comment>List Item Height (incl unit or auto) : </comment></data>
+  <data name="lblitemimagecontainerheight.Text" xml:space="preserve">
+    <value>Elemento de lista Imagen Altura del contenedor (incluida la unidad o automático):</value>
+  <comment>List Item Image Container Height (incl unit or auto) : </comment></data>
+  <data name="lblitemgutter.Text" xml:space="preserve">
+    <value>Elemento de lista Canalón en px:</value>
+  <comment>List Item Gutter in px: </comment></data>
+  <data name="lblitembottommargin.Text" xml:space="preserve">
+    <value>Margen inferior del elemento de lista en px:</value>
+  <comment>List Item Bottom Margin in px : </comment></data>
+  <data name="lblthumbnailwidth.Text" xml:space="preserve">
+    <value>Mostrar ancho de imagen en px o 0 para automático:</value>
+  <comment>List Image Width in px or 0 for auto : </comment></data>
+  <data name="lblthumbnailheight.Text" xml:space="preserve">
+    <value>Mostrar altura de imagen en px o 0 para automático:</value>
+  <comment>List Image Height in px or 0 for auto : </comment></data>
+  <data name="lblimagewidth.Text" xml:space="preserve">
+    <value>Detalles Ancho de la imagen en px o 0 para automático:</value>
+  <comment>Details Image Width in px or 0 for auto : </comment></data>
+  <data name="lblimageheight.Text" xml:space="preserve">
+    <value>Detalles Altura de la imagen en px o 0 para automático:</value>
+  <comment>Details Image Height in px or 0 for auto : </comment></data>
+  <data name="lblgallerywidth.Text" xml:space="preserve">
+    <value>Ancho de la imagen de la galería en px o 0 para automático:</value>
+  <comment>Gallery Image Width in px or 0 for auto : </comment></data>
+  <data name="lblgalleryheight.Text" xml:space="preserve">
+    <value>Altura de la imagen de la galería en px o 0 para automático:</value>
+  <comment>Gallery Image Height in px or 0 for auto : </comment></data>
+  <data name="lblrelateditemwidth.Text" xml:space="preserve">
+    <value>Ancho de elemento relacionado en px o 0 para automático:</value>
+  <comment>Related Item Width in px or 0 for auto : </comment></data>
+  <data name="lblrelateditemheight.Text" xml:space="preserve">
+    <value>Altura del artículo relacionado (incluida la unidad o automático):</value>
+  <comment>Related Item Height (incl unit or auto) : </comment></data>
+  <data name="lblrelateditemimagecontainerheight.Text" xml:space="preserve">
+    <value>Imagen del artículo relacionado Altura del contenedor (incluida la unidad o automático):</value>
+  <comment>Related Item Image Container Height (incl unit or auto) : </comment></data>
+  <data name="lblrelateditemgutter.Text" xml:space="preserve">
+    <value>Canal de elemento relacionado en px:</value>
+  <comment>Related Item Gutter in px: </comment></data>
+  <data name="lblrelateditembottommargin.Text" xml:space="preserve">
+    <value>Margen inferior del elemento relacionado en px:</value>
+  <comment>Related Item Bottom Margin in px : </comment></data>
+  <data name="lblrelatedimagewidth.Text" xml:space="preserve">
+    <value>Ancho de la imagen relacionada en px o 0 para automático:</value>
+  <comment>Related Image Width in px or 0 for auto : </comment></data>
+  <data name="lblrelatedimageheight.Text" xml:space="preserve">
+    <value>Altura de la imagen relacionada en px o 0 para automático:</value>
+  <comment>Related Image Height in px or 0 for auto : </comment></data>
+  <data name="lblcategorydetails.Text" xml:space="preserve">
+    <value>Mostrar detalles de la categoría:</value>
+  <comment>Show Category Details : </comment></data>
+  <data name="lblmodelstable.Text" xml:space="preserve">
+    <value>Mostrar tabla de modelos:</value>
+  <comment>Show Models Table : </comment></data>
+  <data name="lblproductcode.Text" xml:space="preserve">
+    <value>Mostrar Código / Ref:</value>
+  <comment>Show Code/Ref : </comment></data>
+  <data name="lblshowstock.Text" xml:space="preserve">
+    <value>Mostrar stock:</value>
+  <comment>Show Stock : </comment></data>
+  <data name="lblcurrencyconverter.Text" xml:space="preserve">
+    <value>Habilitar conversor de divisas:</value>
+  <comment>Enable Currency Converter : </comment></data>
+  <data name="lbltabbedcontent.Text" xml:space="preserve">
+    <value>Habilitar pestañas:</value>
+  <comment>Enable Tabs : </comment></data>
+  <data name="lblwishlist.Text" xml:space="preserve">
+    <value>Habilitar lista de deseos:</value>
+  <comment>Enable Wishlist : </comment></data>
+  <data name="lblplaceholderimage.Text" xml:space="preserve">
+    <value>Habilitar imagen de marcador de posición:</value>
+  <comment>Enable Placeholder Image : </comment></data>
+  <data name="lblnoimageicon.Text" xml:space="preserve">
+    <value>Icono de imagen de marcador de posición (fontawesome.io):</value>
+  <comment>Placeholder Image Icon (fontawesome.io) : </comment></data>
+  <data name="lblallowzeroprice.Text" xml:space="preserve">
+    <value>Permitir compra a precio cero:</value>
+  <comment>Allow Zero-price Purchase : </comment></data>
+  <data name="lblholidaymode.Text" xml:space="preserve">
+    <value>Modo vacaciones:</value>
+  <comment>Holiday Mode : </comment></data>
+  <data name="lblcataloguemode.Text" xml:space="preserve">
+    <value>Modo de catálogo:</value>
+  <comment>Catalogue Mode : </comment></data>
+  <data name="lbllistimages.Text" xml:space="preserve">
+    <value>Imágenes de la lista:</value>
+  <comment>List Images : </comment></data>
+  <data name="lbldetailimages.Text" xml:space="preserve">
+    <value>Imágenes de detalle:</value>
+  <comment>Detail Images : </comment></data>
+  <data name="lblrelatedimages.Text" xml:space="preserve">
+    <value>Imágenes de productos relacionados:</value>
+  <comment>Related Product Images : </comment></data>
+  <data name="lbldisplayfeatures.Text" xml:space="preserve">
+    <value>Características de la pantalla:</value>
+  <comment>Display Features : </comment></data>
+  <data name="lblsocialseodata.Text" xml:space="preserve">
+    <value>Social y SEO:</value>
+  <comment>Social and SEO : </comment></data>
+  <data name="lblogobjecttype.Text" xml:space="preserve">
+    <value>Tipo de objeto de gráfico abierto:</value>
+  <comment>Open Graph Obect Type : </comment></data>
+  <data name="lblogobjecttype.Help" xml:space="preserve">
+    <value>Tipo de objeto de gráfico abierto: normalmente, &amp;#39;sitio web&amp;#39;. Consulte https://developers.facebook.com/docs/reference/opengraph/</value>
+  <comment>Open Graph Obect Type - Normally 'website'. Refer https://developers.facebook.com/docs/reference/opengraph/ </comment></data>
+  <data name="lblfacebookid.Text" xml:space="preserve">
+    <value>Número de identificación de Facebook:</value>
+  <comment>Facebook ID Number : </comment></data>
+  <data name="lblfacebookid.Help" xml:space="preserve">
+    <value>Número de identificación de Facebook para Page Insights. Puede ser un único fb: ID de administrador o una lista de ID separados por comas. Consulte https://developers.facebook.com/docs/insights/</value>
+  <comment>Facebook ID number for Page Insights. Can be a single fb:admins ID or a comma-separated list of IDs. Refer https://developers.facebook.com/docs/insights/</comment></data>
+  <data name="lbltwittersite.Text" xml:space="preserve">
+    <value>Sitio web de Twitter @nombredeusuario:</value>
+  <comment>Twitter Website @username : </comment></data>
+  <data name="lbltwittersite.Help" xml:space="preserve">
+    <value>El nombre de usuario de Twitter del sitio web, incluido el símbolo @. Puede ser el mismo que el usuario de Twitter. Consulte https://dev.twitter.com/docs/cards/markup-reference</value>
+  <comment>The Twitter user name of the website , including the @ symbol. May be the same as the Twitter user. Refer https://dev.twitter.com/docs/cards/markup-reference</comment></data>
+  <data name="lbltwitteruser.Text" xml:space="preserve">
+    <value>Usuario de Twitter @nombredeusuario:</value>
+  <comment>Twitter User @username : </comment></data>
+  <data name="lbltwitteruser.Help" xml:space="preserve">
+    <value>El nombre de usuario de Twitter, incluido el símbolo @ del cartel de contenido. Puede ser el mismo que el usuario del sitio web de Twitter. Consulte https://dev.twitter.com/docs/cards/markup-reference</value>
+  <comment>The Twitter user name, including the @ symbol of the content poster. May be the same as the Twitter website user. Refer https://dev.twitter.com/docs/cards/markup-reference</comment></data>
+  <data name="lbldefaultproperty.Help" xml:space="preserve">
+    <value>Establezca la lista predeterminada para productos con esta propiedad adjunta.</value>
+  <comment>Set the default list to products with this property attached.</comment></data>
+  <data name="lbldefaultproperty.Text" xml:space="preserve">
+    <value>Propiedad predeterminada para la lista:</value>
+  <comment>Default Property for List : </comment></data>
+  <data name="lblmodeldisplaytype.Text" xml:space="preserve">
+    <value>Método de visualización del modelo</value>
+  <comment>Model Display Method</comment></data>
+  <data name="lbldefaultlistmodule.Text" xml:space="preserve">
+    <value>Módulo de lista predeterminada</value>
+  <comment>Default List module</comment></data>
+  <data name="displaytype.Help" xml:space="preserve">
+    <value>Tipo de lista para mostrar (Normal, lista de productos normal. Búsqueda, Resultados de la búsqueda de productos. Lista seleccionada, Lista de favoritos).</value>
+  <comment>Type of list to display (Normal, normal product list. Search, Search Results of products. Selected List, Favorite list.)</comment></data>
+  <data name="displaytype.Text" xml:space="preserve">
+    <value>Tipo de visualización</value>
+  <comment>Display Type</comment></data>
+  <data name="caturlfilter.Text" xml:space="preserve">
+    <value>Filtrar por categoría seleccionada</value>
+  <comment>Filter by Selected Category</comment></data>
+  <data name="EntityTypeCode.Text" xml:space="preserve">
+    <value>Código de tipo de entidad</value>
+  <comment>Entity TypeCode</comment></data>
+  <data name="categoryselection.Text" xml:space="preserve">
+    <value>Seleccionar varias categorías</value>
+  <comment>Select Multiple Categories</comment></data>
+  <data name="propertyselection.Text" xml:space="preserve">
+    <value>Seleccionar varias propiedades</value>
+  <comment>Select Multiple Properties</comment></data>
+</root>

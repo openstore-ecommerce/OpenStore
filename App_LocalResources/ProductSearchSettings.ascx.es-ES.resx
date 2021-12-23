@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="lblcatsearchtype.Help" xml:space="preserve">
+        <value>Tipo de búsqueda para realizar en varias categorías seleccionadas</value>
+        <comment>Type of search to do on multiple selected categories</comment>
+    </data>
+    <data name="lblcatsearchtype.Text" xml:space="preserve">
+        <value>Tipo de búsqueda de categoría</value>
+        <comment>Category search type</comment>
+    </data>
+    <data name="lblcatselect.Help" xml:space="preserve">
+        <value>Activar la búsqueda de categorías</value>
+        <comment>Turn on the category search</comment>
+    </data>
+    <data name="lblcatselect.Text" xml:space="preserve">
+        <value>Búsqueda de grupo de categoría</value>
+        <comment>Category Group Search</comment>
+    </data>
+    <data name="lbldescription.Help" xml:space="preserve">
+        <value>Active la búsqueda de texto de descripción del producto</value>
+        <comment>Turn on the product description text search</comment>
+    </data>
+    <data name="lbldescription.Text" xml:space="preserve">
+        <value>Descripción Búsqueda de texto</value>
+        <comment>Description Text Search</comment>
+    </data>
+    <data name="lblpricerange.Help" xml:space="preserve">
+        <value>Activar la selección de rango de precios</value>
+        <comment>Turn on price range selection</comment>
+    </data>
+    <data name="lblpricerange.Text" xml:space="preserve">
+        <value>Rango de precios</value>
+        <comment>Price Range</comment>
+    </data>
+    <data name="lblorderselector.Text" xml:space="preserve">
+        <value>Selector de orden de clasificación</value>
+        <comment>Sort Order Selector</comment>
+    </data>
+    <data name="lbltextsearch.Help" xml:space="preserve">
+        <value>Encienda el selector de orden de clasificación</value>
+        <comment>Turn on the sort order selector</comment>
+    </data>
+    <data name="lbltextsearch.Text" xml:space="preserve">
+        <value>Búsqueda de texto</value>
+        <comment>Text Search</comment>
+    </data>
+    <data name="lblmanufacturer.Help" xml:space="preserve">
+        <value>Active la búsqueda de texto del fabricante</value>
+        <comment>Turn on the Manufacturer text search</comment>
+    </data>
+    <data name="lblmanufacturer.Text" xml:space="preserve">
+        <value>Búsqueda de texto del fabricante</value>
+        <comment>Manufacturer Text Search</comment>
+    </data>
+    <data name="lbltxtseoname.Help" xml:space="preserve">
+        <value>Active la búsqueda de texto de nombre de SEO</value>
+        <comment>Turn on the SEO name text search</comment>
+    </data>
+    <data name="lbltxtseoname.Text" xml:space="preserve">
+        <value>Búsqueda de texto de nombre SEO</value>
+        <comment>SEO name Text Search</comment>
+    </data>
+    <data name="lbltxtseopagetitle.Help" xml:space="preserve">
+        <value>Active la búsqueda de texto del título de la página SEO</value>
+        <comment>Turn on the SEOpage title text search</comment>
+    </data>
+    <data name="lbltxtseopagetitle.Text" xml:space="preserve">
+        <value>Título de la página SEO Búsqueda de texto</value>
+        <comment>SEO page title Text Search</comment>
+    </data>
+    <data name="lbltxtsummary.Help" xml:space="preserve">
+        <value>Activar la búsqueda de texto de resumen</value>
+        <comment>Turn on the summary text search</comment>
+    </data>
+    <data name="lbltxtsummary.Text" xml:space="preserve">
+        <value>Búsqueda de texto de resumen</value>
+        <comment>Summary Text Search</comment>
+    </data>
+    <data name="lbltxttagwords.Help" xml:space="preserve">
+        <value>Activar la búsqueda de texto de palabras de etiqueta</value>
+        <comment>Turn on the tag words text search</comment>
+    </data>
+    <data name="lbltxttagwords.Text" xml:space="preserve">
+        <value>Búsqueda de texto de palabras de etiqueta</value>
+        <comment>Tag Words Text Search</comment>
+    </data>
+    <data name="lbltargetmodulekey.Help" xml:space="preserve">
+        <value>Módulo Clave del módulo que mostrará los resultados.</value>
+        <comment>Module Key of the module that will display the results.</comment>
+    </data>
+    <data name="lbltargetmodulekey.Text" xml:space="preserve">
+        <value>Clave del módulo de destino:</value>
+        <comment>Target Module Key : </comment>
+    </data>
+    <data name="lbltheme.Help" xml:space="preserve">
+        <value>Nombre del tema que se utilizará para esta lista de productos.</value>
+        <comment>Name of the theme to use for this productlist.</comment>
+    </data>
+    <data name="lbltheme.Text" xml:space="preserve">
+        <value>Tema :</value>
+        <comment>Theme : </comment>
+    </data>
+    <data name="ControlTitle_settings.Text" xml:space="preserve">
+        <value>Configuración de búsqueda de productos</value>
+        <comment>Product Search Settings</comment>
+    </data>
+    <data name="lblbasicsettings.Text" xml:space="preserve">
+        <value>General</value>
+        <comment>General</comment>
+    </data>
+    <data name="lblcatreflist.Help" xml:space="preserve">
+        <value>Una lista CSV de referencias de categoría / grupo que se mostrará en el formulario de búsqueda. Por ejemplo, (Cat1, Cat2, Cat3) Esto solo se aplicará a las categorías devueltas de la selección de referencia principal, si no se especifica una lista de referencias, se mostrarán todas las categorías devueltas.</value>
+        <comment>A CSV list of Category/Group Refs to be displayed on the search form. e.g. (Cat1,Cat2,Cat3)  This will only apply to the returned categories from Parent Ref selection, if no Ref List is specified all returned categories will be displayed.</comment>
+    </data>
+    <data name="lblcatreflist.Text" xml:space="preserve">
+        <value>Lista de referencias de categoría:</value>
+        <comment>Category Ref List : </comment>
+    </data>
+    <data name="lblcatreflist1.Help" xml:space="preserve">
+        <value>Una lista CSV de referencias de categoría / grupo que se mostrará en el formulario de búsqueda. Por ejemplo, (Cat1, Cat2, Cat3) Esto solo se aplicará a las categorías devueltas de la selección de referencia principal, si no se especifica una lista de referencias, se mostrarán todas las categorías devueltas.</value>
+        <comment>A CSV list of Category/Group Refs to be displayed on the search form. e.g. (Cat1,Cat2,Cat3)  This will only apply to the returned categories from Parent Ref selection, if no Ref List is specified all returned categories will be displayed.</comment>
+    </data>
+    <data name="lblcatreflist1.Text" xml:space="preserve">
+        <value>Lista de referencias de categoría / grupo:</value>
+        <comment>Category/Group Ref List : </comment>
+    </data>
+    <data name="lblcatreflist2.Help" xml:space="preserve">
+        <value>Una lista CSV de referencias de categoría / grupo que se mostrará en el formulario de búsqueda. Por ejemplo, (Cat1, Cat2, Cat3) Esto solo se aplicará a las categorías devueltas de la selección de referencia principal, si no se especifica una lista de referencias, se mostrarán todas las categorías devueltas.</value>
+        <comment>A CSV list of Category/Group Refs to be displayed on the search form. e.g. (Cat1,Cat2,Cat3)  This will only apply to the returned categories from Parent Ref selection, if no Ref List is specified all returned categories will be displayed.</comment>
+    </data>
+    <data name="lblcatreflist2.Text" xml:space="preserve">
+        <value>Lista de referencias de categoría / grupo:</value>
+        <comment>Category/Group Ref List : </comment>
+    </data>
+    <data name="lblcatrepeatcolumns.Help" xml:space="preserve">
+        <value>Número de columnas que se mostrarán.</value>
+        <comment>Number of columns to be displayed.</comment>
+    </data>
+    <data name="lblcatrepeatcolumns.Text" xml:space="preserve">
+        <value>Columnas:</value>
+        <comment>Columns : </comment>
+    </data>
+    <data name="lblcatrepeatcolumns1.Help" xml:space="preserve">
+        <value>Número de columnas que se mostrarán.</value>
+        <comment>Number of columns to be displayed.</comment>
+    </data>
+    <data name="lblcatrepeatcolumns1.Text" xml:space="preserve">
+        <value>Columnas:</value>
+        <comment>Columns : </comment>
+    </data>
+    <data name="lblcatrepeatcolumns2.Help" xml:space="preserve">
+        <value>Número de columnas que se mostrarán.</value>
+        <comment>Number of columns to be displayed.</comment>
+    </data>
+    <data name="lblcatrepeatcolumns2.Text" xml:space="preserve">
+        <value>Columnas:</value>
+        <comment>Columns : </comment>
+    </data>
+    <data name="lbldisplaylevels.Help" xml:space="preserve">
+        <value>Número de subniveles de categorías para mostrar.</value>
+        <comment>Number of sub levels of categories to display.</comment>
+    </data>
+    <data name="lbldisplaylevels.Text" xml:space="preserve">
+        <value>Niveles de visualización:</value>
+        <comment>Display Levels :</comment>
+    </data>
+    <data name="lbldisplaylevels1.Help" xml:space="preserve">
+        <value>Número de subniveles de categorías para mostrar.</value>
+        <comment>Number of sub levels of categories to display.</comment>
+    </data>
+    <data name="lbldisplaylevels1.Text" xml:space="preserve">
+        <value>Niveles de visualización:</value>
+        <comment>Display Levels :</comment>
+    </data>
+    <data name="lbldisplaylevels2.Help" xml:space="preserve">
+        <value>Número de subniveles de categorías para mostrar.</value>
+        <comment>Number of sub levels of categories to display.</comment>
+    </data>
+    <data name="lbldisplaylevels2.Text" xml:space="preserve">
+        <value>Niveles de visualización:</value>
+        <comment>Display Levels :</comment>
+    </data>
+    <data name="lblgroupselect1.Help" xml:space="preserve">
+        <value>Activa una cláusula AND en un segundo grupo de categorías &amp;quot;Grupo 2&amp;quot;.</value>
+        <comment>Activates a AND clause on a second category group "Group 2".</comment>
+    </data>
+    <data name="lblgroupselect1.Text" xml:space="preserve">
+        <value>Activar Y buscar grupo 2:</value>
+        <comment>Activate AND Search Group 2 : </comment>
+    </data>
+    <data name="lblgroupselect2.Help" xml:space="preserve">
+        <value>Activa una cláusula AND en un tercer grupo de categorías &amp;quot;Grupo 3&amp;quot;.</value>
+        <comment>Activates a AND clause on a third category group "Group 3".</comment>
+    </data>
+    <data name="lblgroupselect2.Text" xml:space="preserve">
+        <value>Activar Y buscar grupo 3:</value>
+        <comment>Activate AND Search Group 3 : </comment>
+    </data>
+    <data name="lblparentcatref.Help" xml:space="preserve">
+        <value>Se devolverán todas las categorías por debajo de esta categoría principal. Si no se especifica, se devolverán todas las categorías.</value>
+        <comment>All categories below this parent category will be returned.  If not specified all categories will be returned.</comment>
+    </data>
+    <data name="lblparentcatref.Text" xml:space="preserve">
+        <value>Categoría / Grupo Referencia principal:</value>
+        <comment>Category/Group Parent Ref : </comment>
+    </data>
+    <data name="lblparentcatref1.Help" xml:space="preserve">
+        <value>Se devolverán todas las categorías por debajo de esta categoría principal. Si no se especifica, se devolverán todas las categorías.</value>
+        <comment>All categories below this parent category will be returned.  If not specified all categories will be returned.</comment>
+    </data>
+    <data name="lblparentcatref1.Text" xml:space="preserve">
+        <value>Categoría / Grupo Referencia principal:</value>
+        <comment>Category/Group Parent Ref : </comment>
+    </data>
+    <data name="lblparentcatref2.Help" xml:space="preserve">
+        <value>Se devolverán todas las categorías por debajo de esta categoría principal. Si no se especifica, se devolverán todas las categorías.</value>
+        <comment>All categories below this parent category will be returned.  If not specified all categories will be returned.</comment>
+    </data>
+    <data name="lblparentcatref2.Text" xml:space="preserve">
+        <value>Categoría / Grupo Referencia principal:</value>
+        <comment>Category/Group Parent Ref : </comment>
+    </data>
+    <data name="lblthemesettings.Text" xml:space="preserve">
+        <value>Configuración de temas</value>
+        <comment>Theme Settings</comment>
+    </data>
+    <data name="themehidden.Text" xml:space="preserve">
+        <value>La configuración del tema antiguo se ha deshabilitado, actualice para activar el nuevo tema.</value>
+        <comment>Old Theme Settings have been disabled, update to activate new theme. </comment>
+    </data>
+    <data name="lblfiltermode.Help" xml:space="preserve">
+        <value>Modo para módulo de búsqueda. Buscar = Las opciones de búsqueda serán estáticas; Filtro = Las opciones de búsqueda serán dinámicas según la selección del menú de categorías, la selección de categorías también persistirá en todas las búsquedas.</value>
+        <comment>Mode for search module.  Search=Search options will be static; Filter=Search options will be dynamic based on category menu selection, the category selection will also persist across searches.</comment>
+    </data>
+    <data name="lblfiltermode.Text" xml:space="preserve">
+        <value>Modo de búsqueda :</value>
+        <comment>Search Mode : </comment>
+    </data>
+    <data name="rblfiltermode.data" xml:space="preserve">
+        <value>Filtro de búsqueda</value>
+        <comment>Search;Filter</comment>
+    </data>
+    <data name="lblprimarybuttonclass.Text" xml:space="preserve">
+        <value>Clase CSS del botón principal:</value>
+        <comment>Primary Button CSS Class : </comment>
+    </data>
+    <data name="lblsecondarybuttonclass.Text" xml:space="preserve">
+        <value>Clase CSS del botón secundario:</value>
+        <comment>Secondary Button CSS Class : </comment>
+    </data>
+    <data name="lblRedirectTab.Text" xml:space="preserve">
+        <value>Página para mostrar resultados:</value>
+        <comment>Page to Display Results : </comment>
+    </data>
+    <data name="lblsearchtemplate.Text" xml:space="preserve">
+        <value>Plantilla :</value>
+        <comment>Template : </comment>
+    </data>
+    <data name="lblinstock.Text" xml:space="preserve">
+        <value>Casilla de verificación de stock:</value>
+        <comment>Stock Checkbox : </comment>
+    </data>
+    <data name="lblhidden.Text" xml:space="preserve">
+        <value>Oculto</value>
+        <comment>Hidden</comment>
+    </data>
+    <data name="emailmessage.Text" xml:space="preserve">
+        <value>Gracias por su orden. Estamos aquí para ayudar ! No dude en ponerse en contacto con nosotros para cualquier consulta relacionada con su pedido.</value>
+        <comment>Thank you for your order. We are here to help ! Do not hesitate to get in touch for any questions regarding your order.</comment>
+    </data>
+</root>

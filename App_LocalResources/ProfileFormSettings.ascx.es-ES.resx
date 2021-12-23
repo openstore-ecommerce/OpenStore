@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Configuración de formulario de perfil</value>
+  <comment>Profile Form Settings</comment></data>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Nombre del tema que se utilizará para esta lista de carritos.</value>
+  <comment>Name of the theme to use for this cart list.</comment></data>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Tema :</value>
+  <comment>Theme : </comment></data>
+  <data name="lblinputform.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como formulario de entrada de datos para la dirección.</value>
+  <comment>Template to be used as the data entry foem for the address.</comment></data>
+  <data name="lblinputform.Text" xml:space="preserve">
+    <value>Plantilla de formulario de entrada:</value>
+  <comment>Input form Template : </comment></data>
+  <data name="lblemailtemplate.Help" xml:space="preserve">
+    <value>Correo electrónico que se enviará cuando se actualice un perfil. (Si está vacío, no se envía ningún correo electrónico)</value>
+  <comment>Email to be sent when a profile is updated.  (If empty no email is sent)</comment></data>
+  <data name="lblemailtemplate.Text" xml:space="preserve">
+    <value>Plantilla de correo electrónico:</value>
+  <comment>Email Template : </comment></data>
+  <data name="emailsubject.Text" xml:space="preserve">
+    <value>Actualización de perfil de usuario</value>
+  <comment>User Profile Update</comment></data>
+  <data name="lblclientrole.Help" xml:space="preserve">
+    <value>Los usuarios recibirán un mensaje de que deben esperar el nivel de seguridad del rol &amp;quot;Cliente&amp;quot; antes de que se pueda acceder a la tienda.</value>
+  <comment>Users will be given a message that they must wait for "Client" role security level before the store is accessible.  </comment></data>
+  <data name="lblclientrole.Text" xml:space="preserve">
+    <value>Activar la seguridad del rol del cliente:</value>
+  <comment>Activate Client Role Security : </comment></data>
+  <data name="lblredirecttab.Help" xml:space="preserve">
+    <value>Redirigir página después de la actualización</value>
+  <comment>Redirect Page after update</comment></data>
+  <data name="lblredirecttab.Text" xml:space="preserve">
+    <value>Página de redireccionamiento:</value>
+  <comment>Redirect Page : </comment></data>
+  <data name="lblemailregisteredclienttemplate.Help" xml:space="preserve">
+    <value>Correo electrónico que se enviará al Cliente cuando se registre. (Si está vacío, no se envía ningún correo electrónico)</value>
+  <comment>Email to be sent to Client when they register. (If empty no email is sent)</comment></data>
+  <data name="lblemailregisteredclienttemplate.Text" xml:space="preserve">
+    <value>Plantilla de correo electrónico de cliente registrado:</value>
+  <comment>Email Registered Client Template : </comment></data>
+  <data name="lblemailregisteredtemplate.Help" xml:space="preserve">
+    <value>Correo electrónico que se enviará al administrador cuando un cliente se registre. (Si está vacío, no se envía ningún correo electrónico)</value>
+  <comment>Email to be sent to Manager when a client registers. (If empty no email is sent)</comment></data>
+  <data name="lblemailregisteredtemplate.Text" xml:space="preserve">
+    <value>Plantilla de correo electrónico registrado:</value>
+  <comment>Email Registered Template : </comment></data>
+</root>

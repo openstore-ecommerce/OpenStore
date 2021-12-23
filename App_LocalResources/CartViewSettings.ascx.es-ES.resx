@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblcollectionactive.Text" xml:space="preserve">
+    <value>Activar opción de colección:</value>
+  <comment>Activate Collection Option : </comment></data>
+  <data name="lblcollectiontimes.Text" xml:space="preserve">
+    <value>Tiempos de recogida:</value>
+  <comment>Collection times : </comment></data>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Configuración de vista de carrito</value>
+  <comment>Cart View Settings</comment></data>
+  <data name="lbladvancedsettings.Text" xml:space="preserve">
+    <value>Avanzado</value>
+  <comment>Advanced</comment></data>
+  <data name="lblbasicsettings.Text" xml:space="preserve">
+    <value>General</value>
+  <comment>General</comment></data>
+  <data name="lbllistbody.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como cuerpo del carro, esto se repite para cada artículo del carro.</value>
+  <comment>Template to be used as cart body, this is repeated for each cart item.</comment></data>
+  <data name="lbllistbody.Text" xml:space="preserve">
+    <value>Cuerpo del carro:</value>
+  <comment>Cart Body : </comment></data>
+  <data name="lbllistfooter.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como pie de página del carrito.</value>
+  <comment>Template to be used as cart footer.</comment></data>
+  <data name="lbllistfooter.Text" xml:space="preserve">
+    <value>Pie de página del carrito:</value>
+  <comment>Cart Footer : </comment></data>
+  <data name="lbllistheader.Help" xml:space="preserve">
+    <value>Plantilla que se utilizará como encabezado del carrito.</value>
+  <comment>Template to be used as cart header.</comment></data>
+  <data name="lbllistheader.Text" xml:space="preserve">
+    <value>Encabezado del carrito:</value>
+  <comment>Cart Header : </comment></data>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Nombre del tema que se utilizará para esta lista de carritos.</value>
+  <comment>Name of the theme to use for this cart list.</comment></data>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Tema :</value>
+  <comment>Theme : </comment></data>
+  <data name="lblthemesettings.Text" xml:space="preserve">
+    <value>Configuración de temas</value>
+  <comment>Theme Settings</comment></data>
+  <data name="ddlcarttype.data" xml:space="preserve">
+    <value>Minicart; Fullcart; Checkout</value>
+  <comment>Minicart;Fullcart;Checkout</comment></data>
+  <data name="ddlcarttype.datavalue" xml:space="preserve">
+    <value>1; 3; 2</value>
+  <comment>1;3;2</comment></data>
+  <data name="lblcarttype.Help" xml:space="preserve">
+    <value>Elija el modo de visualización entre minicart mínimo, minicart completo y el carrito de pago completo.</value>
+  <comment>Choose display mode from minimal minicart, full minicart and the complete checkout cart.</comment></data>
+  <data name="lblcarttype.Text" xml:space="preserve">
+    <value>Tipo de carrito:</value>
+  <comment>Cart Type : </comment></data>
+  <data name="lblPaymentTab.Help" xml:space="preserve">
+    <value>Página a la que se redirigirá este módulo al enviar. Por lo general, la opción de pago para este módulo redirigirá a la página de pago con el módulo de pago. La opción de lista Fullcart para este módulo debe redirigir a la página de pago.</value>
+  <comment>Page which this module will redirect to on Submit.  Usually The Checkout option for this module will redirect to the Payment page with the Payment module.  The Fullcart list option for this module should redirect to the Checkout page. </comment></data>
+  <data name="lblPaymentTab.Text" xml:space="preserve">
+    <value>Página de redireccionamiento:</value>
+  <comment>Redirect Page : </comment></data>
+  <data name="lblgroupresults.Help" xml:space="preserve">
+    <value>Los artículos del carrito se agruparán por producto&amp;gt; modelo</value>
+  <comment>Cart items will be grouped by product&gt;model</comment></data>
+  <data name="lblgroupresults.Text" xml:space="preserve">
+    <value>Artículos del carrito de grupo:</value>
+  <comment>Group Cart Items :</comment></data>
+</root>

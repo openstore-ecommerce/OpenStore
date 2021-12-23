@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="addressbookupdated_ok.Text" xml:space="preserve">
+        <value>Actualización de dirección exitosa</value>
+        <comment>Address Update Successful</comment>
+    </data>
+    <data name="notifytemplate_error.Text" xml:space="preserve">
+        <value>&lt;div class="nbsnotify nbsnotifyerror bg-danger"&gt;{mensaje}&lt;/div&gt;</value>
+        <comment>&lt;div class="nbsnotify nbsnotifyerror bg-danger"&gt;{message}&lt;/div&gt;</comment>
+    </data>
+    <data name="notifytemplate_fail.Text" xml:space="preserve">
+        <value>&lt;div class="nbsnotify nbsnotifyfail bg-danger"&gt;{mensaje}&lt;/div&gt;</value>
+        <comment>&lt;div class="nbsnotify nbsnotifyfail bg-danger"&gt;{message}&lt;/div&gt;</comment>
+    </data>
+    <data name="notifytemplate_ok.Text" xml:space="preserve">
+        <value>&lt;div class="nbsnotify bg-success"&gt;{mensaje}&lt;/div&gt;</value>
+        <comment>&lt;div class="nbsnotify bg-success"&gt;{message}&lt;/div&gt;</comment>
+    </data>
+    <data name="notifytemplate_warning.Text" xml:space="preserve">
+        <value>&lt;div class="nbsnotify nbsnotifywarning bg-warning"&gt;{mensaje}&lt;/div&gt;</value>
+        <comment>&lt;div class="nbsnotify nbsnotifywarning bg-warning"&gt;{message}&lt;/div&gt;</comment>
+    </data>
+    <data name="profileupdatedclientrole_ok.Text" xml:space="preserve">
+        <value>Sus datos han sido guardados, recibirá un correo electrónico cuando su cuenta haya sido validada y pueda acceder a la tienda.</value>
+        <comment>Your details have been saved, you will recieve an email when your account has been validated and you are able to access the store.</comment>
+    </data>
+    <data name="profileupdated_emailsubject.Text" xml:space="preserve">
+        <value>Actualización de perfil</value>
+        <comment>Profile Update</comment>
+    </data>
+    <data name="profileupdated_ok.Text" xml:space="preserve">
+        <value>Tu perfil ha sido actualizado.</value>
+        <comment>Your profile has been updated.</comment>
+    </data>
+    <data name="general_error.Text" xml:space="preserve">
+        <value>Error desconocido</value>
+        <comment>Unknown Error</comment>
+    </data>
+    <data name="general_fail.Text" xml:space="preserve">
+        <value>Operación fallida</value>
+        <comment>Operation Failed</comment>
+    </data>
+    <data name="general_ok.Text" xml:space="preserve">
+        <value>Operación exitosa</value>
+        <comment>Operation Successful</comment>
+    </data>
+    <data name="general_warning.Text" xml:space="preserve">
+        <value>Advertencia de operación</value>
+        <comment>Operation Warning</comment>
+    </data>
+    <data name="orderactionemailamended_ok.Text" xml:space="preserve">
+        <value>Orden de correo electrónico enmendado enviado</value>
+        <comment>Order Amended Email Sent</comment>
+    </data>
+    <data name="orderactionemailreceipt_ok.Text" xml:space="preserve">
+        <value>Recibo de pedido enviado por correo electrónico</value>
+        <comment>Order Receipt Email Sent</comment>
+    </data>
+    <data name="orderactionemailshipped_ok.Text" xml:space="preserve">
+        <value>Pedido enviado Correo electrónico enviado</value>
+        <comment>Order Shipped Email Sent</comment>
+    </data>
+    <data name="orderactionemailvalidated_ok.Text" xml:space="preserve">
+        <value>Pedido de correo electrónico validado enviado</value>
+        <comment>Order Validated Email Sent</comment>
+    </data>
+    <data name="orderactionprintorder_ok.Text" xml:space="preserve">
+        <value>Pedido impreso</value>
+        <comment>Order Printed</comment>
+    </data>
+    <data name="orderactionprintreceipt_ok.Text" xml:space="preserve">
+        <value>Recibo impreso</value>
+        <comment>Receipt Printed</comment>
+    </data>
+    <data name="orderactionsave_ok.Text" xml:space="preserve">
+        <value>Actualización de la orden exitosa</value>
+        <comment>Order update Successful</comment>
+    </data>
+    <data name="orderamended_emailsubject.Text" xml:space="preserve">
+        <value>Orden enmendada</value>
+        <comment>Order Amended</comment>
+    </data>
+    <data name="orderreceipt_emailsubject.Text" xml:space="preserve">
+        <value>Recibo de pedido</value>
+        <comment>Order Receipt</comment>
+    </data>
+    <data name="ordershipped_emailsubject.Text" xml:space="preserve">
+        <value>Orden enviada</value>
+        <comment>Order Shipped</comment>
+    </data>
+    <data name="ordervalidated_emailsubject.Text" xml:space="preserve">
+        <value>Pedido validado</value>
+        <comment>Order Validated</comment>
+    </data>
+    <data name="categoryactionsave_ok.Text" xml:space="preserve">
+        <value>Actualización de categoría exitosa</value>
+        <comment>Category update Successful</comment>
+    </data>
+    <data name="groupactionsave_ok.Text" xml:space="preserve">
+        <value>Actualización de grupo exitosa</value>
+        <comment>Group update Successful</comment>
+    </data>
+    <data name="profileupdatedexists_fail.Text" xml:space="preserve">
+        <value>Usuario ya registrado. Para registrarse, pruebe con un nombre de usuario / correo electrónico diferente.</value>
+        <comment>User already registered.  To register please try a different username/email.</comment>
+    </data>
+    <data name="profileupdated_fail.Text" xml:space="preserve">
+        <value>No se puede registrar al usuario, verifique la información de su perfil.</value>
+        <comment>Unable to register user, please check you profile information.</comment>
+    </data>
+    <data name="profileregistered_emailsubject.Text" xml:space="preserve">
+        <value>Nuevo perfil registrado</value>
+        <comment>New Profile Registered</comment>
+    </data>
+    <data name="profileupdatedcaptcha_fail.Text" xml:space="preserve">
+        <value>Código de seguridad invalido.</value>
+        <comment>Invalid Security Code.</comment>
+    </data>
+    <data name="stockadjusted.Text" xml:space="preserve">
+        <value>Cantidad ajustada para coincidir con el stock disponible</value>
+        <comment>Qty adjusted to match available stock</comment>
+    </data>
+    <data name="outofstock.Text" xml:space="preserve">
+        <value>Agotado</value>
+        <comment>Out of Stock</comment>
+    </data>
+    <data name="terms.Text" xml:space="preserve">
+        <value>Deben aceptarse los Términos y Condiciones.</value>
+        <comment>The Terms and Conditions must be accepted.</comment>
+    </data>
+    <data name="ordercreatedemailsubject.Text" xml:space="preserve">
+        <value>Orden confirmada</value>
+        <comment>Order confirmed</comment>
+    </data>
+    <data name="deletecompleted_ok.Text" xml:space="preserve">
+        <value>Eliminado Completado.</value>
+        <comment>Deleted Completed.</comment>
+    </data>
+    <data name="validatecompleted_ok.Text" xml:space="preserve">
+        <value>Validación completada.</value>
+        <comment>Validation Completed.</comment>
+    </data>
+    <data name="OrderCreated.Text" xml:space="preserve">
+        <value>Orden confirmada</value>
+        <comment>Order confirmed</comment>
+    </data>
+    <data name="OrderCreatedClient.Text" xml:space="preserve">
+        <value>Orden confirmada</value>
+        <comment>Order confirmed</comment>
+    </data>
+    <data name="OrderAmended.Text" xml:space="preserve">
+        <value>Orden modificada</value>
+        <comment>Order amended</comment>
+    </data>
+    <data name="OrderReceipt.Text" xml:space="preserve">
+        <value>Recibo de pedido</value>
+        <comment>Order receipt</comment>
+    </data>
+    <data name="OrderShipped.Text" xml:space="preserve">
+        <value>Orden enviada</value>
+        <comment>Order shipped</comment>
+    </data>
+    <data name="OrderValidated.Text" xml:space="preserve">
+        <value>Pedido validado</value>
+        <comment>Order validated</comment>
+    </data>
+    <data name="ProfileRegistered.Text" xml:space="preserve">
+        <value>Perfil registrado</value>
+        <comment>Profile Registered</comment>
+    </data>
+    <data name="AddressUpdate.Text" xml:space="preserve">
+        <value>Actualización de dirección</value>
+        <comment>Address Update</comment>
+    </data>
+    <data name="bankinginstructions.Text" xml:space="preserve">
+        <value>Realice el pago bancario lo antes posible a la cuenta siguiente. Inserte el número de pedido en el campo de referencia e incluya su nombre también si es diferente del nombre de la cuenta.</value>
+        <comment>Please make your bank payment as soon as possible to the account below. Insert the order number in the reference field and include your name as well if it is different from the acccount name.</comment>
+    </data>
+    <data name="emailmessage.Text" xml:space="preserve">
+        <value>Gracias por su orden. ¡Estamos aquí para ayudar! Llámenos durante el horario de oficina de lunes a viernes o visítenos en la tienda si tiene alguna pregunta sobre su pedido.</value>
+        <comment>Thank you for your order. We're here to help! Call us during office hours Monday to Friday, or visit us in-store if you have any questions about your order.</comment>
+    </data>
+    <data name="pickupmessage.Text" xml:space="preserve">
+        <value>Le invitamos a recoger su pedido en la tienda durante el horario de apertura. Llámenos si desea asegurarse de que esté listo para ser recogido.</value>
+        <comment>You are welcome to pick your order up from us in store during opening hours. Please ring us if you want to ensure it is ready for pickup.</comment>
+    </data>
+    <data name="checkoutsuccessmessage.Text" xml:space="preserve">
+        <value>Gracias por su orden. Recibirá una confirmación por correo electrónico con todos los detalles del pedido. Por favor revise sus carpetas de correo no deseado si no lo recibe dentro de los 30 minutos. Tome nota del número a continuación si desea contactarnos sobre este pedido.</value>
+        <comment>Thank you for your order. You will receive an emailed confirmation containing all order details. Please check your junk email folders if you don't receive it within 30 minutes. Take note of the number below if you wish to contact us about this order.</comment>
+    </data>
+    <data name="checkoutfailmessage.Text" xml:space="preserve">
+        <value>El pedido fue cancelado o el pago falló. Comuníquese con su banco si necesita ayuda con su tarjeta de crédito, o contáctenos si cree que hay un problema con el pago.</value>
+        <comment>The order was cancelled or the payment failed. Contact your bank if you need assistance with your credit card, or contact us if you believe there is a problem with the checkout.</comment>
+    </data>
+    <data name="Contactus.Text" xml:space="preserve">
+        <value>Contáctenos</value>
+        <comment>Contact us</comment>
+    </data>
+    <data name="ManualPayment.Text" xml:space="preserve">
+        <value>Pago con cheque y banco</value>
+        <comment>Check and Bank Payment</comment>
+    </data>
+    <data name="Bank.Text" xml:space="preserve">
+        <value>Banco</value>
+        <comment>Bank</comment>
+    </data>
+    <data name="AccountName.Text" xml:space="preserve">
+        <value>Nombre de la cuenta</value>
+        <comment>Account Name</comment>
+    </data>
+    <data name="AccountNumber.Text" xml:space="preserve">
+        <value>Número de cuenta</value>
+        <comment>Account Number</comment>
+    </data>
+    <data name="InsertReference.Text" xml:space="preserve">
+        <value>Insertar referencia</value>
+        <comment>Insert Reference</comment>
+    </data>
+    <data name="BillingAddress.Text" xml:space="preserve">
+        <value>Dirección de Envio</value>
+        <comment>Billing Address</comment>
+    </data>
+    <data name="ShippingAddress.Text" xml:space="preserve">
+        <value>Dirección de envío</value>
+        <comment>Shipping Address</comment>
+    </data>
+    <data name="ShippingMethod.Text" xml:space="preserve">
+        <value>Método de envío</value>
+        <comment>Shipping Method</comment>
+    </data>
+    <data name="ShippingOption.Text" xml:space="preserve">
+        <value>Opción de envío</value>
+        <comment>Shipping Option</comment>
+    </data>
+    <data name="TrackingNumber.Text" xml:space="preserve">
+        <value>El número de rastreo</value>
+        <comment>Tracking Number</comment>
+    </data>
+    <data name="ShippingDate.Text" xml:space="preserve">
+        <value>Fecha de envío</value>
+        <comment>Shipping Date</comment>
+    </data>
+    <data name="Collection.Text" xml:space="preserve">
+        <value>Detalles de la colección</value>
+        <comment>Collection Details</comment>
+    </data>
+    <data name="settingssetup_fail.Text" xml:space="preserve">
+        <value>Es necesario realizar la configuración de la tienda.</value>
+        <comment>Store Configuration needs to be done.</comment>
+    </data>
+    <data name="removeuser_fail.Text" xml:space="preserve">
+        <value>El cliente tiene pedidos existentes, no puede eliminar al usuario</value>
+        <comment>Client has existing orders, cannot remove user</comment>
+    </data>
+    <data name="completed_ok.Text" xml:space="preserve">
+        <value>Operación completada.</value>
+        <comment>Operation Completed.</comment>
+    </data>
+    <data name="noproviderdata_warning.Text" xml:space="preserve">
+        <value>No se pueden encontrar datos de proveedores. Asegúrese de haber guardado los datos del proveedor en el Back Office.</value>
+        <comment>No provider data can be found. Make sure you have saved the provider data in the Back Office.</comment>
+    </data>
+    <data name="nopin_fail.Text" xml:space="preserve">
+        <value>PIN de administrador no válido</value>
+        <comment>Invalid Admin PIN</comment>
+    </data>
+    <data name="categoryactionsave_fail.Text" xml:space="preserve">
+        <value>Error al actualizar la categoría. Asegúrese de que la categoría principal no esté configurada como secundaria.</value>
+        <comment>Category update Failed.  Ensure Parent category is not set to a child of itself.</comment>
+    </data>
+    <data name="onlyleafcat_fail.Text" xml:space="preserve">
+        <value>Solo se pueden eliminar las categorías de la hoja final.</value>
+        <comment>Only end leaf categories can be deleted.</comment>
+    </data>
+    <data name="emailsent.Text" xml:space="preserve">
+        <value>Email enviado</value>
+        <comment>Email Sent</comment>
+    </data>
+    <data name="product01_fail.Text" xml:space="preserve">
+        <value>Error de comunicación: no se pudo guardar el producto. (Recuento de modelos no válido)</value>
+        <comment>Communication Error: Product Save Failed.  (Invalid Model Count)</comment>
+    </data>
+</root>
