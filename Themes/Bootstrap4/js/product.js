@@ -8,8 +8,14 @@ $(document).ready(function () {
 
     $(document).on("nbxproductgetcompleted", AjaxView_GetList_nbxproductgetCompleted); // assign a completed event for the ajax calls
 
-    if (localStorage && $(".productlist").length === 0) {
-        localStorage.setItem('returnedfromitemid', $(".addtobasket").attr("itemid"));
+    if (localStorage) {
+        let returnedfromitemid = $(".productdetail input[id$='_productid']").val();
+        if (returnedfromitemid && !isNaN(returnedfromitemid)) {
+            $(".return .actionbutton").off("click");
+            $(".return .actionbutton").on("click", function () {
+                localStorage.setItem('returnedfromitemid', returnedfromitemid);
+            });
+        }
     }
 
     // $('.nav-tabs > li > a').click(function (event) {
@@ -275,17 +281,17 @@ function AjaxView_GetList_nbxproductgetCompleted(e) {
         $('#shoppinglistpopup').colorbox.close();
     });
 
-    if (localStorage) {
-        var returnedfromitemid = localStorage.getItem('returnedfromitemid');
-
+    if (localStorage && $(".product").length > 0) {
+        let returnedfromitemid = localStorage.getItem('returnedfromitemid');
         if (returnedfromitemid && !isNaN(returnedfromitemid)) {
-            $(".addtobasket").each(function () {
-                if ($(this).attr("itemid") == returnedfromitemid) {
-                    $([document.documentElement, document.body]).animate({ scrollTop: $(this).closest(".product").offset().top }, 200);
+            $("#ajaxproducts" + $("#moduleid").val() + " input[id$='_productid']").each(function () {
+                let $elem = $(this).closest(".product");
+                if ($(this).val() == returnedfromitemid && $elem.length > 0) {
+                    localStorage.removeItem('returnedfromitemid');
+                    $([document.documentElement, document.body]).animate({ scrollTop: $elem.offset().top }, 200);
                     return false;
                 }
             });
-            localStorage.setItem('returnedfromitemid', '');
         }
     }
 

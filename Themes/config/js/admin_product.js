@@ -58,6 +58,8 @@
 
     $('#product_admin_cmdReturn').unbind('click');
     $('#product_admin_cmdReturn').click(function () {
+        checkForReturnTab();
+
         $('#p1_selecteditemid').val('');       
         $('#p1_razortemplate').val('Admin_ProductList.cshtml');
         nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
@@ -114,6 +116,8 @@ function Admin_product_nbxgetCompleted(e) {
     }
 
     if (e.cmd == 'product_admin_saveexit') {
+        checkForReturnTab();
+
         $('#p1_selecteditemid').val(''); 
         $('#p1_razortemplate').val('Admin_ProductList.cshtml');
         nbxget('product_admin_getlist', '#selectparams_Product_Admin', '#datadisplay');
@@ -1084,7 +1088,27 @@ function showValidationMessage() {
 
 }
 
+function checkForReturnTab() {
+    //check for rtntab in path (EditUrl token support)
+    let path = window.location.pathname;
+    if (path.indexOf("/rtntab/") > 0) {
+        let re = /(\/rtntab\/)\d+/g;
+        let rtntab = path.match(re) != null ? path.match(re).toString().replace("/rtntab/", "") : null;
+        if (rtntab && !isNaN(rtntab)) {
 
+            //get path eid and save to localStorage to help return users to list positions
+            re = /(\/eid\/)\d+/g;
+            let eid = path.match(re) != null ? path.match(re).toString().replace("/eid/", "") : null;
+            if (eid != null && !isNaN(eid)) {
+                localStorage.setItem('returnedfromitemid', eid);
+            }
+
+            //redirect using referrer to allow list and/or details EditUrl tokens
+            location.href = document.referrer;
+            return false;
+        }
+    }
+}
 // ---------------------------------------------------------------------------
 jQuery.fn.toggleOption = function (show) {
     $(this).each(function () {
