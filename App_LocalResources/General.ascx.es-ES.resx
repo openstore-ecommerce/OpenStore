@@ -1637,4 +1637,7 @@
         <value>Recuento de errores</value>
         <comment>Error Count</comment>
     </data>
+    <data name="QtyMinPurchase.Text" xml:space="preserve">
+        <value>Cantidad mínima de compra</value>
+    </data>
 </root>

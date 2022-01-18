@@ -39,7 +39,7 @@
             <div class="product-overlay">
                 @if (!cataloguemode && !product.Disabled && product.IsInStock)
                 {
-                    if (product.Models.Count > 1)
+                    if (product.Models.Count > 1 || product.Models.Exists(x => x.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase") > 0))
                     {
                         <a href="@entryUrl" class="actionbutton"><i class="fa fa-search"></i>@productdetail</a>
                     }

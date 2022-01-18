@@ -157,7 +157,7 @@
                                         <a class="btn btn-default qtyminus" href="javascript:void(0)"><i class="fa fa-minus"></i></a>
                                     </div>
                                     <!-- "selectedaddqty"" expected by server as name of qty field -->
-                                    @TextBox(info, "genxml/textbox/selectedaddqty", "class='form-control quantity selectedaddqty'", "1")
+                                    @TextBox(info, "genxml/textbox/selectedaddqty", "min=" + @info.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase") + " class='form-control quantity selectedaddqty'", "1")
                                     <div class="input-group-append">
                                         <a class="btn btn-default qtyplus" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
                                     </div>

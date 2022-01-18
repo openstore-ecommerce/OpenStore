@@ -226,15 +226,19 @@
                                                 <div style="margin-top: 10px;" class="row stockoptions">
                                                     <div class="col-sm-1">
                                                         <label class="control-label">@ResourceKey("General.Stock")</label>
-                                                        @TextBox(nbiModel, "genxml/textbox/txtqtyremaining_" + lp1, "class='form-control input-sm' maxlength='250'  datatype='double'", "0")
+                                                        @TextBox(nbiModel, "genxml/textbox/txtqtyremaining_" + lp1, "class='form-control input-sm' maxlength='250' datatype='double'", "0")
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <label class="control-label">@ResourceKey("General.Min")</label>
-                                                        @TextBox(nbiModel, "genxml/textbox/txtqtyminstock_" + lp1, "class='form-control input-sm' maxlength='250'  datatype='double'", "0")
+                                                        @TextBox(nbiModel, "genxml/textbox/txtqtyminstock_" + lp1, "class='form-control input-sm' maxlength='250' datatype='double'", "0")
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <label class="control-label">@ResourceKey("General.Max")</label>
-                                                        @TextBox(nbiModel, "genxml/textbox/txtqtystockset_" + lp1, "class='form-control input-sm' maxlength='250'  datatype='double'", "0")
+                                                        @TextBox(nbiModel, "genxml/textbox/txtqtystockset_" + lp1, "class='form-control input-sm' maxlength='250' datatype='double'", "0")
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label class="control-label">@ResourceKey("General.QtyMinPurchase")</label>
+                                                        @TextBox(nbiModel, "genxml/textbox/txtqtyminpurchase_" + lp1, "class='form-control input-sm' maxlength='10' datatype='double'", "0")
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <label class="control-label">@ResourceKey("General.unit")</label>

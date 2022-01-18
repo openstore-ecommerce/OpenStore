@@ -85,10 +85,10 @@
                             <!-- Shopping List buttons -->
                             <a id="shoppinglistadd-@itemId" href="#shoppinglistpopup" class="btn btn-default shoppinglistadd actionbutton absec" itemid="@itemId"><i class="fa fa-star-o"></i></a>
                             <a id="shoppinglistremove-@itemId" href="javascript:void(0)" class="btn btn-default shoppinglistremove actionbutton absec" itemid="@itemId" style="display:none;"><i class="fa fa-star"></i></a>
-
+                            <pre></pre>
                             @if (!cataloguemode && !product.Disabled && product.IsInStock)
                             {
-                                if (product.Models.Count > 1)
+                                if (product.Models.Count > 1 || product.Models.Exists(x => x.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase") > 0))
                                 {
                                     <a href="@entryUrl" class="actionbutton btn btn-primary"><i class="fa fa-search mr-1"></i>@productdetail</a>
                                 }

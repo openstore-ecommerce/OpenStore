@@ -129,7 +129,7 @@
                 <div class="quantityoptions">
                     <a class="qtyminus" href="javascript:void(0)"><i class="fa fa-minus"></i></a>
                     <!-- "selectedaddqty"" expected by server as name of qty field -->
-                    @TextBox(info, "genxml/textbox/selectedaddqty", "class='quantity selectedaddqty'", "1")
+                    @TextBox(info, "genxml/textbox/selectedaddqty", "min=" + @info.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase") + " class='quantity selectedaddqty'", "1")
                     <a class="qtyplus" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
                 </div>
 

@@ -1227,4 +1227,7 @@
   <data name="ProductValidationErrorCount.Text" xml:space="preserve">
     <value>Nombre d'erreurs</value>
   </data>
+  <data name="QtyMinPurchase.Text" xml:space="preserve">
+    <value>Quantité minimale d'achat</value>
+  </data>
 </root>
