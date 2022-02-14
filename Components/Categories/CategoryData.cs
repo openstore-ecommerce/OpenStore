@@ -446,7 +446,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (GroupType != "cat")
             {
                 var grp = _objCtrl.Get(DataRecord.ParentItemId, "GROUP");
-                if (grp != null)
+                if (grp != null && grp.TypeCode == "GROUP")
                 {
                     if (grp.GUIDKey != GroupType)
                     {
@@ -486,7 +486,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (categoryId == -1) categoryId = AddNew(); // add new record if -1 is used as id.
             if (_lang == "") _lang = Utils.GetCurrentCulture();
             Info = _objCtrl.Get(categoryId, "CATEGORYLANG", _lang);
-            if (Info != null)
+            if (Info != null && Info.TypeCode == "CATEGORYLANG") // check typecode to ensure URL param is a category.
             {
                 Exists = true;
                 _portalId = Info.PortalId;
@@ -497,6 +497,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     Validate();
                     DataLangRecord = _objCtrl.GetDataLang(categoryId, _lang);
                 }
+            }
+            else
+            {
+                // invalid category, just try to prevent error message.
+                // This can happen by an invlaid URL.  e.g. When data is imported and changed ID.
+                DataLangRecord = new NBrightInfo();
+                DataRecord = new NBrightInfo();
             }
         }
 
