@@ -105,6 +105,25 @@
         - Filter improvments
         - remove limit on orders in NBrightBuy_DashboardStats
 
+        v04.01.09
+        - Infinite loop with incorrect category URL #241 **
+        - origin/feature/236-min-purchase-qty
+        - origin/feature/229-return-btn
+        - Merge pull request #217 from openstore-ecommerce/feature/216-fix-for-changes-in-eventrovider-overwritten-by-OS
+        - Fix language for money format
+        - Merge branch 'feature/170-product-validaton' into develop
+        - Merge branch 'bugfix/195-product-options-as-radio' into develop
+        - Merge remote-tracking branch 'remotes/origin-OpenStore/bugfix/198-default-sorting' into develop
+        - CopyCart Fix v4.1.10
+        - Minicart link fix
+        - Fix models status stock level checks
+        - add weight to the order
+
+        v04.01.10
+        - Add Categories, Properties, clients and Related products to Product copy.
+        - Issue: New Categories do not update. #251
+        - Tidy Language display on categories in product detail.
+
       </releaseNotes>
       <dependencies>
         <dependency type="CoreVersion">08.00.04</dependency>
