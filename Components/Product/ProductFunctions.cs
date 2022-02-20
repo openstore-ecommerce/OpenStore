@@ -336,6 +336,39 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     ProductUtils.CreateFriendlyImages(prdData.DataRecord.ItemID, EditLangCurrent);
 
+                    // Copy Categories, properties, related products, members.
+                    if (newrecord)
+                    {
+                        var originalItemId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/itemid");
+                        var originalPrdData = new ProductData(originalItemId, EditLangCurrent, true, EntityTypeCode);
+                        foreach (var c in originalPrdData.GetCategories())
+                        {
+                            prdData.AddCategory(c.categoryid);
+                        }
+                        foreach (var p in originalPrdData.GetProperties())
+                        {
+                            prdData.AddProperty(p.propertyref);
+                        }
+                        foreach (var r in originalPrdData.GetRelatedProducts())
+                        {
+                            prdData.AddRelatedProduct(r.ItemID);
+                        }
+                        foreach (var r in originalPrdData.GetRelatedProducts())
+                        {
+                            prdData.AddRelatedProduct(r.ItemID);
+                            if (StoreSettings.Current.BiDirectionRelatedProducts)
+                            {
+                                // do bi-direction
+                                var prodData2 = ProductUtils.GetProductData(r.ItemID, EditLangCurrent, false, EntityTypeCode);
+                                if (prodData2.Exists) prodData2.AddRelatedProduct(prdData.Info.ItemID);
+                            }
+                        }
+                        foreach (var cl in originalPrdData.GetClients())
+                        {
+                            prdData.AddClient(cl.ItemID);
+                        }
+                    }
+
                     // remove save GetData cache
                     var strCacheKey = prdData.Info.ItemID.ToString("") + "*" + prdData.DataRecord.TypeCode  + "LANG*" + "*" + EditLangCurrent;
                     Utils.RemoveCache(strCacheKey);

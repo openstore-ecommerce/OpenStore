@@ -23,12 +23,21 @@
         userid = 0;
     }
 
-<tr>
-    <td>@nbiClient.GetXmlProperty("genxml/textbox/firstname") @nbiClient.GetXmlProperty("genxml/textbox/lastname")</td>
-    <td>@nbiClient.GetXmlProperty("genxml/textbox/email")</td>
-    <td>@nbiClient.GetXmlProperty("genxml/textbox/username")</td>
-    <td><a class="entryowner" categoryid="@nbiClient.ItemID" itemid="@info.ItemID" userid="@(nbiClient.ItemID)" href="javascript:void(0)"><i class="fa fa@(displaydefault)-circle"></i></a></td>
-    <td><a title="Add" class="removeclient selectuserid@(nbiClient.ItemID)" itemid="@(info.ItemID)" userid="@(nbiClient.ItemID)" href="javascript:void(0)"><i class="fa fa-minus-square"></i></a></td>
-</tr>
+    <tr>
+        <td>@nbiClient.GetXmlProperty("genxml/textbox/firstname") @nbiClient.GetXmlProperty("genxml/textbox/lastname")</td>
+        <td>@nbiClient.GetXmlProperty("genxml/textbox/email")</td>
+        <td>@nbiClient.GetXmlProperty("genxml/textbox/username")</td>
+        <td><a class="entryowner" categoryid="@nbiClient.ItemID" itemid="@info.ItemID" userid="@(nbiClient.ItemID)" href="javascript:void(0)"><i class="fa fa@(displaydefault)-circle"></i></a></td>
+        <td><a title="Add" class="removeclient selectuserid@(nbiClient.ItemID)" itemid="@(info.ItemID)" userid="@(nbiClient.ItemID)" href="javascript:void(0)"><i class="fa fa-minus-square"></i></a></td>
+    </tr>
 }
+
+<script>
+
+    $(document).ready(function () {
+        $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
+        $('#p1_selecteditemid').val('@info.ItemID'); // assign the sleected itemid, so the server knows what item is being edited
+    });
+
+</script>
 

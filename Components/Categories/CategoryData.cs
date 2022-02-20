@@ -486,7 +486,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (categoryId == -1) categoryId = AddNew(); // add new record if -1 is used as id.
             if (_lang == "") _lang = Utils.GetCurrentCulture();
             Info = _objCtrl.Get(categoryId, "CATEGORYLANG", _lang);
-            if (Info != null && Info.TypeCode == "CATEGORYLANG") // check typecode to ensure URL param is a category.
+            if (Info != null && (Info.TypeCode == "CATEGORY" || Info.TypeCode == "CATEGORYLANG")) // check typecode to ensure URL param is a category.
             {
                 Exists = true;
                 _portalId = Info.PortalId;
@@ -494,9 +494,19 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 DataLangRecord = _objCtrl.GetDataLang(categoryId, _lang);
                 if (DataLangRecord == null) // rebuild langauge if we have a missing lang record
                 {
-                    Validate();
+                    //Validate(); // creates infinate loop
                     DataLangRecord = _objCtrl.GetDataLang(categoryId, _lang);
                 }
+                if (DataLangRecord == null)
+                {
+                    // missing record, but we cannot validate
+                    DataLangRecord = new NBrightInfo(true);
+                    DataLangRecord.ItemID = -1;
+                    DataLangRecord.ParentItemId = categoryId;
+                    DataLangRecord.Lang = _lang;
+                    _objCtrl.Update(DataLangRecord);
+                }
+
             }
             else
             {

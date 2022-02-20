@@ -22,23 +22,23 @@
 
     <li>
         <ul class="relatedlistitem">
-                @if (nbiRel.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
-                {
-                    <li class="image name" data-toggle="tooltip" data-original-title="@adminname"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@nbiRel.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")"/></li>
-                }
-                else
-                {
-                    <li class="noimage name" data-toggle="tooltip" data-original-title="@adminname"><i class="fa fa-picture-o fa-5x"></i></li>
-                }
+            @if (nbiRel.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl") != "")
+            {
+                <li class="image name" data-toggle="tooltip" data-original-title="@adminname"><img src="/DesktopModules/NBright/NBrightBuy/NBrightThumb.ashx?w=100&h=0&src=@nbiRel.GetXmlProperty("genxml/imgs/genxml[1]/hidden/imageurl")" /></li>
+            }
+            else
+            {
+                <li class="noimage name" data-toggle="tooltip" data-original-title="@adminname"><i class="fa fa-picture-o fa-5x"></i></li>
+            }
 
 
             <a class="product_admin_cmdEdit" itemid="@nbiRel.ItemID" href="javascript:void(0)">
-                <li class="title name">
-                    @adminname
-                </li>
+            <li class="title name">
+                @adminname
+            </li>
             </a>
             <li class="removeitem"><a title="Remove" class="removerelated" productid="@nbiRel.ItemID" itemid="@info.ItemID"><i class="fa fa-minus-square"></i></a></li>
-</ul>
+        </ul>
     </li>
 
 }
@@ -56,6 +56,9 @@
             nbxget('product_admin_getdetail', '#selectparams_Product_Admin', '#datadisplay'); // do ajax call to get edit form
         });
         $('.processing').hide();
+
+        $('#p1_razortemplate').val('Admin_ProductDetail.cshtml');
+        $('#p1_selecteditemid').val('@info.ItemID'); // assign the sleected itemid, so the server knows what item is being edited
 
     });
 
