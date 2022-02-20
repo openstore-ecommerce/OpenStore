@@ -121,6 +121,10 @@
         - Fix models status stock level checks
         - add weight to the order
 
+        v04.01.10
+        - Add Categories, Properties, clients and Related products to Product copy.
+        - Issue: New Categories do not update. #251
+        - Tidy Language display on categories in product detail.
 
       </releaseNotes>
       <dependencies>
