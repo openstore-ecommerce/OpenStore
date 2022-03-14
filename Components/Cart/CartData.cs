@@ -534,11 +534,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                 //add update genxml/discountcodeamt
                 var discountcode = PurchaseInfo.GetXmlProperty("genxml/extrainfo/genxml/textbox/promocode");
-                if (discountcode != "") 
+                if (!string.IsNullOrWhiteSpace(discountcode))
                 {
-                    cartItemInfo = DiscountCodeInterface.UpdateItemPercentDiscountCode(PortalId, UserId, cartItemInfo, discountcode);
-                    discountcodeamt = cartItemInfo.GetXmlPropertyDouble("genxml/discountcodeamt");
-                    if (discountcodeamt > 0) PurchaseInfo.SetXmlProperty("genxml/discountprocessed", "False");
+                    var objCtrl = new NBrightBuyController();
+                    var discountCodeInfo = objCtrl.GetByGuidKey(PortalSettings.Current.PortalId, -1, "DISCOUNTCODE", discountcode);
+
+                    if (discountCodeInfo != null && !discountCodeInfo.GetXmlPropertyBool("genxml/checkbox/disabled"))
+                    {
+                        cartItemInfo = DiscountCodeInterface.UpdateItemPercentDiscountCode(PortalId, UserId, cartItemInfo, discountcode);
+                        discountcodeamt = cartItemInfo.GetXmlPropertyDouble("genxml/discountcodeamt");
+                        if (discountcodeamt > 0) PurchaseInfo.SetXmlProperty("genxml/discountprocessed", "False");
+                    }
                 }
 
                 if (NBrightBuyUtils.IsDealer())
