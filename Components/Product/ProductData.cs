@@ -578,11 +578,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             var objCtrl = new NBrightBuyController();
             var strSelectedIds = "";
-            var arylist = objCtrl.GetList(_portalId, -1, _typeCode + "XREF", " and NB1.parentitemid = " + Info.ItemID.ToString(""));
-            foreach (var obj in arylist)
-            {
-                strSelectedIds += obj.XrefItemId.ToString("") + ",";
-            }
+
+            if (Info != null) {
+                var arylist = objCtrl.GetList(_portalId, -1, _typeCode + "XREF", " and NB1.parentitemid = " + Info.ItemID.ToString(""));
+                foreach (var obj in arylist)
+                {
+                    strSelectedIds += obj.XrefItemId.ToString("") + ",";
+                }
+            }            
+
             var relList = new List<NBrightInfo>();
             if (strSelectedIds.TrimEnd(',') != "")
             {
