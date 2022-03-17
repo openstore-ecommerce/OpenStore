@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="addtobasket.Text" xml:space="preserve">
+    <value>купити</value>
+  </data>
+  <data name="addtobasketicon.Text" xml:space="preserve">
+    <value>&lt;span title="Додати до кошика" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-shopping-cart fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="edit.Text" xml:space="preserve">
+    <value>редагувати</value>
+  </data>
+  <data name="editicon.Text" xml:space="preserve">
+    <value>&lt;i title="Змінити продукт" class="fa fa-edit"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="description.Text" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="documentation.Text" xml:space="preserve">
+    <value>Завантаження</value>
+  </data>
+  <data name="models.Text" xml:space="preserve">
+    <value>Моделі</value>
+  </data>
+  <data name="related.Text" xml:space="preserve">
+    <value>Пов'язані продукти</value>
+  </data>
+  <data name="convertor.Text" xml:space="preserve">
+    <value>Конвертер валют</value>
+  </data>
+  <data name="return.Text" xml:space="preserve">
+    <value>Повернутися</value>
+  </data>
+  <data name="pricerequest.Text" xml:space="preserve">
+    <value>Запит ціни</value>
+  </data>
+  <data name="emailmsg.Text" xml:space="preserve">
+    <value>Будь ласка, повідомте мені про ціну цього продукту за адресою</value>
+  </data>
+  <data name="noimage.Text" xml:space="preserve">
+    <value>&lt;i class="fa fa-camera"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="from.Text" xml:space="preserve">
+    <value>З</value>
+  </data>
+  <data name="fromlower.Text" xml:space="preserve">
+    <value>З</value>
+  </data>
+  <data name="emailprice.Text" xml:space="preserve">
+    <value>Електронна пошта за ціною</value>
+  </data>
+  <data name="normally.Text" xml:space="preserve">
+    <value>Звичайна роздрібна торгівля</value>
+  </data>
+  <data name="onsale.Text" xml:space="preserve">
+    <value>Продаж</value>
+  </data>
+  <data name="onsaleflag.Text" xml:space="preserve">
+    <value>У продажу!</value>
+  </data>
+  <data name="retail.Text" xml:space="preserve">
+    <value>Роздрібні</value>
+  </data>
+  <data name="dealer.Text" xml:space="preserve">
+    <value>Дилер</value>
+  </data>
+  <data name="holidaymsg.Text" xml:space="preserve">
+    <value>Закрито для відпустки</value>
+  </data>
+  <data name="outofstock.Text" xml:space="preserve">
+    <value>Немає в наявності</value>
+  </data>
+  <data name="outofstockflag.Text" xml:space="preserve">
+    <value>Немає в наявності</value>
+  </data>
+  <data name="instock.Text" xml:space="preserve">
+    <value>Так</value>
+  </data>
+  <data name="downloadableproduct.Text" xml:space="preserve">
+    <value>Це завантажуваний продукт. Отримайте його зі сторінки замовлень облікового запису після покупки.</value>
+  </data>
+  <data name="model.Text" xml:space="preserve">
+    <value>модель</value>
+  </data>
+  <data name="code.Text" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="price.Text" xml:space="preserve">
+    <value>Ціна</value>
+  </data>
+  <data name="saleprice.Text" xml:space="preserve">
+    <value>Ціна продажу</value>
+  </data>
+  <data name="dealerprice.Text" xml:space="preserve">
+    <value>Дилерська ціна</value>
+  </data>
+  <data name="stock.Text" xml:space="preserve">
+    <value>Запас</value>
+  </data>
+  <data name="reserved.Text" xml:space="preserve">
+    <value>Захищені</value>
+  </data>
+  <data name="remaining.Text" xml:space="preserve">
+    <value>Залишилися</value>
+  </data>
+  <data name="download.Text" xml:space="preserve">
+    <value>Завантажити цей файл &lt;i class='fa fa-download'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="purchasabledocument.Text" xml:space="preserve">
+    <value>Завантажити тут після покупки &lt;i class='fa fa-exclamation-circle'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="filebullets.Text" xml:space="preserve">
+    <value>&lt;i class='fa-li fa fa-file-o'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="currencyconvertormsg.Text" xml:space="preserve">
+    <value>&lt;p&gt;Якщо вона ще не відображається, виберіть цільову грошову одиницю та натисніть кнопку 
+для перетворення. Результат розраховується на основі поточної ринкової біржі 
+Ставки.&lt;/p&gt;&lt;p&gt;Банки та інші установи стягують з вас комісію за конвертацію та 
+обробка іноземних валют і, отже, остаточна ціна на рахунок вашої кредитної картки 
+ймовірно, буде на кілька відсотків вище, ніж результат, показаний тут. Використовуйте це 
+Так само, як і гід.&lt;/p&gt;&lt;p style="font-size:11px;font-style:italic"&gt;Ця послуга 
+забезпечується foreignexchangeresource.com&lt;/p&gt;</value>
+  </data>
+  <data name="debugmode.Text" xml:space="preserve">
+    <value>Режим налагодження увімкнено - Кешування вимкнено</value>
+  </data>
+  <data name="returnicon.Text" xml:space="preserve">
+    <value>&lt;span title="Повернутися до списку" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-reply fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="view.Text" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="share.Text" xml:space="preserve">
+    <value>Ділити</value>
+  </data>
+  <data name="viewicon.Text" xml:space="preserve">
+    <value>&lt;span title="Інформація" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-search fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="wishlistadd.Text" xml:space="preserve">
+    <value>Додати до вподобань</value>
+  </data>
+  <data name="wishlistaddicon.Text" xml:space="preserve">
+    <value>&lt;span title="Додати до вподобань" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-star-o fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="wishlistremove.Text" xml:space="preserve">
+    <value>Видалити з уподобань</value>
+  </data>
+  <data name="wishlistremoveicon.Text" xml:space="preserve">
+    <value>&lt;span title="Видалити з уподобань" class="fa-stack"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-star fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="choosemodel.Text" xml:space="preserve">
+    <value>Вибрати модель</value>
+  </data>
+  <data name="addtobasketicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="Додати до кошика" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-shopping-cart fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="viewicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="Переглянути подробиці" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-search fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="wishlistaddicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="Додати до вподобань" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-star-o fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="wishlistremoveicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="Видалити з уподобань" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-star fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="productunavailable.Text" xml:space="preserve">
+    <value>Цей продукт наразі недоступний.</value>
+  </data>
+  <data name="addedtobasket.Text" xml:space="preserve">
+    <value>Елемент, доданий до кошика</value>
+  </data>
+  <data name="products.Text" xml:space="preserve">
+    <value>Продукти</value>
+  </data>
+  <data name="promo.Text" xml:space="preserve">
+    <value>Акційна пропозиція</value>
+  </data>
+  <data name="promoflag.Text" xml:space="preserve">
+    <value>Просування</value>
+  </data>
+  <data name="references.Text" xml:space="preserve">
+    <value>Посилання</value>
+  </data>
+  <data name="recommend.Text" xml:space="preserve">
+    <value>З цим продуктом ми рекомендуємо:</value>
+  </data>
+  <data name="orderby.Text" xml:space="preserve">
+    <value>Сортування за промовчанням,Сортувати за ціною (від низької до високої),Сортувати за ціною (від високої до низької),Сортувати за посиланням,Сортувати за назвою</value>
+  </data>
+  <data name="favorites.Text" xml:space="preserve">
+    <value>Уподобання</value>
+  </data>
+  <data name="searchresults.Text" xml:space="preserve">
+    <value>Результати пошуку</value>
+  </data>
+  <data name="endoflineflag.Text" xml:space="preserve">
+    <value>Кінець лінії!</value>
+  </data>
+  <data name="wishlistclearall.Text" xml:space="preserve">
+    <value>Очистити всі уподобання</value>
+  </data>
+  <data name="wishlistclearallicon-lg.Text" xml:space="preserve">
+    <value>&lt;span title="Очистити всі уподобання" class="fa-stack fa-lg"&gt;
+  &lt;i class="fa fa-stop fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-close fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="articles.Text" xml:space="preserve">
+    <value>Елементи</value>
+  </data>
+  <data name="clientfileuploadmsg.Text" xml:space="preserve">
+    <value>Будь ласка, виберіть потрібні файли.</value>
+  </data>
+  <data name="clientfileuploadmsgend.Text" xml:space="preserve">
+    <value>Передавання файлу завершено</value>
+  </data>
+  <data name="article.Text" xml:space="preserve">
+    <value>пункт</value>
+  </data>
+  <data name="page404title.Text" xml:space="preserve">
+    <value>Сторінка, яку ви шукаєте, не існує (404</value>
+  </data>
+  <data name="productnotfound.Text" xml:space="preserve">
+    <value>404 - Товар не знайдено</value>
+  </data>
+  <data name="addicon.Text" xml:space="preserve">
+    <value>&lt;span title="Додати" class="fa-stack"&gt;
+  &lt;i class="fa fa-plus fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-plus-o fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="cancelicon.Text" xml:space="preserve">
+    <value>&lt;span title="Скасувати" class="fa-stack"&gt;
+  &lt;i class="fa fa-times fa-stack-2x"&gt;&lt;/i&gt;
+  &lt;i class="fa fa-times-o fa-stack-1x fa-inverse"&gt;&lt;/i&gt;
+&lt;/span&gt;</value>
+  </data>
+  <data name="productdetail.Text" xml:space="preserve">
+    <value>Відомості про продукт</value>
+  </data>
+</root>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddBill.Text" xml:space="preserve">
+    <value>Додавання адреси виставлення рахунків</value>
+  </data>
+  <data name="addnewaddress.Text" xml:space="preserve">
+    <value>Додати нову адресу</value>
+  </data>
+  <data name="AddShip.Text" xml:space="preserve">
+    <value>Додати адресу доставки</value>
+  </data>
+  <data name="Back.Text" xml:space="preserve">
+    <value>Задній</value>
+  </data>
+  <data name="BillingAddress.Text" xml:space="preserve">
+    <value>Платіжна адреса</value>
+  </data>
+  <data name="confirm.Text" xml:space="preserve">
+    <value>Підтвердити</value>
+  </data>
+  <data name="Next.Text" xml:space="preserve">
+    <value>Наступний</value>
+  </data>
+  <data name="Order.Text" xml:space="preserve">
+    <value>Надіслати замовлення</value>
+  </data>
+  <data name="SelectBill.Text" xml:space="preserve">
+    <value>Вибір адреси виставлення рахунків</value>
+  </data>
+  <data name="SelectShip.Text" xml:space="preserve">
+    <value>Виберіть адресу доставки</value>
+  </data>
+  <data name="ShippingAddress.Text" xml:space="preserve">
+    <value>Адреса доставки</value>
+  </data>
+  <data name="ForCollection.Text" xml:space="preserve">
+    <value>Для колекції</value>
+  </data>
+  <data name="UseBillingAddress.Text" xml:space="preserve">
+    <value>Використання адреси виставлення рахунків</value>
+  </data>
+  <data name="collectiontimes.Text" xml:space="preserve">
+    <value>Час колекції</value>
+  </data>
+  <data name="selectaddress.Text" xml:space="preserve">
+    <value>Адресна книга</value>
+  </data>
+  <data name="AddressBookMessage.Text" xml:space="preserve">
+    <value>Увійдіть, щоб вибрати збережену адресу.</value>
+  </data>
+  <data name="shippingoption1.data" xml:space="preserve">
+    <value>Відправити на адресу виставлення рахунків; Доставка за окремою адресою; Збирати з магазину</value>
+  </data>
+  <data name="shippingoption1.datavalue" xml:space="preserve">
+    <value>1;2;3</value>
+  </data>
+  <data name="shippingoption2.data" xml:space="preserve">
+    <value>Використовувати платіжну адресу; Введіть адресу доставки</value>
+  </data>
+  <data name="shippingoption2.datavalue" xml:space="preserve">
+    <value>1;2</value>
+  </data>
+  <data name="SaveAddress.Text" xml:space="preserve">
+    <value>Зберегти адресу</value>
+  </data>
+  <data name="SaveAddress.Title" xml:space="preserve">
+    <value>Зберегти адресу в адресній книзі</value>
+  </data>
+  <data name="cmdAddItem.Text" xml:space="preserve">
+    <value>&lt;i class='fa fa-plus-square'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdRemoveItem.Text" xml:space="preserve">
+    <value>&lt;i class='fa fa-minus-square'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdDeleteItem.Text" xml:space="preserve">
+    <value>&lt;i class='fa fa-times-circle fa-2x'&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="UpdateCart.Text" xml:space="preserve">
+    <value>Переобчислення</value>
+  </data>
+  <data name="cmdClearCart.Text" xml:space="preserve">
+    <value>Очистити кошик</value>
+  </data>
+  <data name="cmdClearCart.confirm" xml:space="preserve">
+    <value>Видалити всі елементи та скасувати замовлення?</value>
+  </data>
+  <data name="chknews.Text" xml:space="preserve">
+    <value>Отримайте нашу розсилку</value>
+  </data>
+  <data name="chkterms.Text" xml:space="preserve">
+    <value>Надсилання замовлення підтверджує, що ви приймаєте умови та положення.</value>
+  </data>
+  <data name="txtItems.Text" xml:space="preserve">
+    <value>Елементи</value>
+  </data>
+  <data name="txtitemslower.Text" xml:space="preserve">
+    <value>елементи</value>
+  </data>
+  <data name="cartempty.Text" xml:space="preserve">
+    <value>Немає товарів у кошику</value>
+  </data>
+  <data name="returntostore.Text" xml:space="preserve">
+    <value>Повернутися до магазину</value>
+  </data>
+  <data name="Totaltopay.Text" xml:space="preserve">
+    <value>Всього для оплати</value>
+  </data>
+  <data name="PaymentComplete.Text" xml:space="preserve">
+    <value>Оплата завершена</value>
+  </data>
+  <data name="PaymentFailed.Text" xml:space="preserve">
+    <value>Не вдалося виконати платіж</value>
+  </data>
+  <data name="ManageOrders.Text" xml:space="preserve">
+    <value>Керування замовленнями</value>
+  </data>
+  <data name="ViewOrder.Text" xml:space="preserve">
+    <value>Переглянути замовлення</value>
+  </data>
+  <data name="ProcessingDiv.Text" xml:space="preserve">
+    <value>&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="Previous.Text" xml:space="preserve">
+    <value>Попередній</value>
+  </data>
+  <data name="addressmessage.Text" xml:space="preserve">
+    <value>Будь ласка, переконайтеся, що ваша адреса заповнена правильно, інакше ваше замовлення може бути відкладено.</value>
+  </data>
+  <data name="PlaceOrder.Text" xml:space="preserve">
+    <value>Замовлення</value>
+  </data>
+  <data name="YourBasket.Text" xml:space="preserve">
+    <value>Кошик для покупок</value>
+  </data>
+  <data name="CartstepsProcess.Text" xml:space="preserve">
+    <value>Процес замовлення</value>
+  </data>
+  <data name="CartstepsRecap.Text" xml:space="preserve">
+    <value>Кошик</value>
+  </data>
+  <data name="CartstepsAddresses.Text" xml:space="preserve">
+    <value>Адреса</value>
+  </data>
+  <data name="CartstepsShipping.Text" xml:space="preserve">
+    <value>Зведення</value>
+  </data>
+  <data name="CartstepsPayment.Text" xml:space="preserve">
+    <value>Внесок</value>
+  </data>
+  <data name="CartstepsConfirm.Text" xml:space="preserve">
+    <value>Підтвердження</value>
+  </data>
+  <data name="shippingoption1data.Text" xml:space="preserve">
+    <value>рахунків,Доставка за окремою адресою,Зібрати з магазину</value>
+  </data>
+  <data name="shippingoption1datavalue.Text" xml:space="preserve">
+    <value>1,2,3</value>
+  </data>
+  <data name="shippingoption2data.Text" xml:space="preserve">
+    <value>Використовувати адресу виставлення рахунків, введіть адресу доставки</value>
+  </data>
+  <data name="shippingoption2datavalue.Text" xml:space="preserve">
+    <value>1,2</value>
+  </data>
+  <data name="editmodeC.Text" xml:space="preserve">
+    <value>Замовлення створюється</value>
+  </data>
+  <data name="editmodeE.Text" xml:space="preserve">
+    <value>Замовлення, що редагується</value>
+  </data>
+  <data name="gdprterms.Text" xml:space="preserve">
+    <value>Надсилаючи цю форму, ви визнаєте, що введена інформація може бути використана для зв'язку з вами в контексті ділових відносин, які виникають у вашому замовленні.</value>
+  </data>
+  <data name="PaymentButton.Text" xml:space="preserve">
+    <value>Сплатити</value>
+  </data>
+</root>

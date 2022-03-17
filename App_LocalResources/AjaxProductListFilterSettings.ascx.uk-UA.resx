@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Параметри фільтра списку продуктів Ajax</value>
+  </data>
+  <data name="lblalwaysshow.Help" xml:space="preserve">
+    <value>Завжди показувати меню в кінці гілки та для подання продукту, коли немає записів категорій.(Буде показано список кореневих категорій)</value>
+  </data>
+  <data name="lblalwaysshow.Text" xml:space="preserve">
+    <value>Завжди показувати :</value>
+  </data>
+  <data name="lbldefaultcatid.Help" xml:space="preserve">
+    <value>Коренева категорія відображення, з якої почне відображатися меню, leaft blank, щоб почати з кореня.</value>
+  </data>
+  <data name="lbldefaultcatid.Text" xml:space="preserve">
+    <value>Коренева категорія відображення :</value>
+  </data>
+  <data name="lbldetailtab.Help" xml:space="preserve">
+    <value>Сторінка, на яку користувач буде перенаправлено після натискання категорії.Якщо використовується пуста поточна сторінка.</value>
+  </data>
+  <data name="lbldetailtab.Text" xml:space="preserve">
+    <value>Сторінка списку продуктів:</value>
+  </data>
+  <data name="lbllistbody.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як тіло категорії, це повторюється для кожної категорії.</value>
+  </data>
+  <data name="lbllistbody.Text" xml:space="preserve">
+    <value>Текст категорії:</value>
+  </data>
+  <data name="lbllistbodyfoot.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як кінець категорії, це повторюється для кожної категорії.</value>
+  </data>
+  <data name="lbllistbodyfoot.Text" xml:space="preserve">
+    <value>Кінець категорії:</value>
+  </data>
+  <data name="lbllistfooter.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як нижній колонтитул меню категорій.</value>
+  </data>
+  <data name="lbllistfooter.Text" xml:space="preserve">
+    <value>Нижній колонтитул меню :</value>
+  </data>
+  <data name="lbllistheader.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як заголовок меню категорій.</value>
+  </data>
+  <data name="lbllistheader.Text" xml:space="preserve">
+    <value>Заголовок меню :</value>
+  </data>
+  <data name="lblmenutype.Help" xml:space="preserve">
+    <value>Тип відображення меню</value>
+  </data>
+  <data name="lblmenutype.Text" xml:space="preserve">
+    <value>Тип меню :</value>
+  </data>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Ім'я теми, яку слід використовувати для цього списку продуктів.</value>
+  </data>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Тема:</value>
+  </data>
+  <data name="lblthemesettings.Text" xml:space="preserve">
+    <value>Параметри теми</value>
+  </data>
+  <data name="lbltreebehaviour.Text" xml:space="preserve">
+    <value>Меню дерева автоматичного згортання :</value>
+  </data>
+  <data name="lblplaceholderimage.Text" xml:space="preserve">
+    <value>Увімкнути зображення покажчика місця заповнення :</value>
+  </data>
+  <data name="lblnoimageicon.Text" xml:space="preserve">
+    <value>Піктограма зображення покажчика місця заповнення (fontawesome.io) :</value>
+  </data>
+  <data name="lblitemwidth.Text" xml:space="preserve">
+    <value>Ширина елемента категорії в пікселях :</value>
+  </data>
+  <data name="lblitemheight.Text" xml:space="preserve">
+    <value>Висота елемента категорії (включаючи одиницю вимірювання або авто) :</value>
+  </data>
+  <data name="lblitemimagecontainerheight.Text" xml:space="preserve">
+    <value>Висота контейнера зображення елемента категорії (включає одиницю вимірювання або авто) :</value>
+  </data>
+  <data name="lblitemgutter.Text" xml:space="preserve">
+    <value>Категорія Елемент Жолоб в px:</value>
+  </data>
+  <data name="lblitembottommargin.Text" xml:space="preserve">
+    <value>Нижнє поле елемента категорії в px :</value>
+  </data>
+  <data name="lblthumbnailwidth.Text" xml:space="preserve">
+    <value>Категорія Ширина зображення в px або 0 для авто:</value>
+  </data>
+  <data name="lblthumbnailheight.Text" xml:space="preserve">
+    <value>Категорія Висота зображення в px або 0 для авто:</value>
+  </data>
+  <data name="lbladvancedsettings.Text" xml:space="preserve">
+    <value>Передові</value>
+  </data>
+  <data name="lblbasicsettings.Text" xml:space="preserve">
+    <value>Загальне</value>
+  </data>
+  <data name="lbldepth.Help" xml:space="preserve">
+    <value>Глибина, яку відобразиться меню.</value>
+  </data>
+  <data name="lbldepth.Text" xml:space="preserve">
+    <value>Глибина:</value>
+  </data>
+  <data name="lbltargetmodulekey.Help" xml:space="preserve">
+    <value>Клавіша модуля модуля, який відображатиме результати.</value>
+  </data>
+  <data name="lbltargetmodulekey.Text" xml:space="preserve">
+    <value>Клавіша цільового модуля:</value>
+  </data>
+  <data name="lbltreeidentclass.Help" xml:space="preserve">
+    <value>Визначення імені класу CSS, яке буде розміщено на корені "ul" структури дерева.Це буде використано для ідентифікації дерева на Javascript.</value>
+  </data>
+  <data name="lbltreeidentclass.Text" xml:space="preserve">
+    <value>Визначення css класу:</value>
+  </data>
+  <data name="lbltreerootclass.Help" xml:space="preserve">
+    <value>Необов'язкове ім'я класу CSS, яке буде розміщено на корені "ul" структури дерева.Для укладання дерева.</value>
+  </data>
+  <data name="lbltreerootclass.Text" xml:space="preserve">
+    <value>Стиль Css клас :</value>
+  </data>
+  <data name="themehidden.Text" xml:space="preserve">
+    <value>Старі налаштування теми вимкнено, оновіть, щоб активувати нову тему.</value>
+  </data>
+  <data name="injectseo.Help" xml:space="preserve">
+    <value>Вводить вибрані дані SEO категорії на сторінку, це також робиться поданням продукту, тому, якщо у вас є вид продукту на сторінці, це не потрібно.</value>
+  </data>
+  <data name="injectseo.Text" xml:space="preserve">
+    <value>Ін'єкційний SEO</value>
+  </data>
+</root>

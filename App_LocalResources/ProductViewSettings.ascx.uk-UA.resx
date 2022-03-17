@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Параметри подання продукту</value>
+  </data>
+  <data name="lbladvancedsettings.Text" xml:space="preserve">
+    <value>Передові</value>
+  </data>
+  <data name="lblbasicsettings.Text" xml:space="preserve">
+    <value>Загальне</value>
+  </data>
+  <data name="lblcascaderesults.Help" xml:space="preserve">
+    <value>Якщо вибрано батьківську категорію, також відображатимуться всі товари в дочірніх категоріях.</value>
+  </data>
+  <data name="lblcascaderesults.Text" xml:space="preserve">
+    <value>Каскадні результати:</value>
+  </data>
+  <data name="lbldefaultcatid.Help" xml:space="preserve">
+    <value>Категорія за промовчанням відображатиметься у списку, якщо не вибрано жодної іншої категорії. Зніміть цей прапорець, якщо використовуєте маркер "sqlfilter" у шаблоні заголовка.</value>
+  </data>
+  <data name="lbldefaultcatid.Text" xml:space="preserve">
+    <value>Категорія за замовчуванням :</value>
+  </data>
+  <data name="lbldetailbody.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як тіло деталі продукту.</value>
+  </data>
+  <data name="lbldetailbody.Text" xml:space="preserve">
+    <value>Детальне тіло:</value>
+  </data>
+  <data name="lbldetailfooter.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як нижній колонтитул для відомостей про продукт.</value>
+  </data>
+  <data name="lbldetailfooter.Text" xml:space="preserve">
+    <value>Нижній колонтитул для деталей :</value>
+  </data>
+  <data name="lbldetailheader.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як заголовок відомостей про продукт.</value>
+  </data>
+  <data name="lbldetailheader.Text" xml:space="preserve">
+    <value>Заголовок відомостей:</value>
+  </data>
+  <data name="lbldetailmoduleref.Help" xml:space="preserve">
+    <value>Клавіша модуля модуля detail для відображення Продукту. Якщо порожній, то всі модулі подання продукту на сторінці можуть відображати відомості про запис. Це активується за допомогою маркера налаштувань на атрибуті modkey маркера "nbs:entrylink" у шаблоні списку.</value>
+  </data>
+  <data name="lbldetailmoduleref.Text" xml:space="preserve">
+    <value>Ключ модуля відомостей:</value>
+  </data>
+  <data name="lbldetailtab.Help" xml:space="preserve">
+    <value>Сторінка, на яку користувач буде перенаправлений, коли буде натиснуто кнопку «Переглянути продукт». Якщо використовується пуста поточна сторінка. Це активується за допомогою маркера налаштувань на табідному атрибуті маркера "nbs:entrylink" у шаблоні списку.</value>
+  </data>
+  <data name="lbldetailtab.Text" xml:space="preserve">
+    <value>Сторінка відомостей про продукт:</value>
+  </data>
+  <data name="lbllistbody.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як тіло списку продуктів, повторюється для кожного продукту.</value>
+  </data>
+  <data name="lbllistbody.Text" xml:space="preserve">
+    <value>Тіло списку :</value>
+  </data>
+  <data name="lbllistfooter.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як нижній колонтитул списку продуктів.</value>
+  </data>
+  <data name="lbllistfooter.Text" xml:space="preserve">
+    <value>Нижній колонтитул списку :</value>
+  </data>
+  <data name="lbllistheader.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як заголовок списку продуктів.</value>
+  </data>
+  <data name="lbllistheader.Text" xml:space="preserve">
+    <value>Заголовок списку :</value>
+  </data>
+  <data name="lbllistonly.Help" xml:space="preserve">
+    <value>Відображати лише подання списку для цього модуля, на цьому модулі не відображатиметься подання деталей.</value>
+  </data>
+  <data name="lbllistonly.Text" xml:space="preserve">
+    <value>Тільки список :</value>
+  </data>
+  <data name="lblmoduleref.Help" xml:space="preserve">
+    <value>Унікальний ключ модуля. Це використовується для ідентифікації цього модуля з іншими модулями NBS.</value>
+  </data>
+  <data name="lblmoduleref.Text" xml:space="preserve">
+    <value>Ключ модуля :</value>
+  </data>
+  <data name="lblpagesize.Help" xml:space="preserve">
+    <value>Кількість продуктів, які будуть відображатися на кожній сторінці.</value>
+  </data>
+  <data name="lblpagesize.Text" xml:space="preserve">
+    <value>Розмір сторінки :</value>
+  </data>
+  <data name="lblreturnlimit.Help" xml:space="preserve">
+    <value>Максимальна кількість продуктів, які будуть відображатися модулем. (нуль не встановлено обмежень)</value>
+  </data>
+  <data name="lblreturnlimit.Text" xml:space="preserve">
+    <value>Повернення продукту лімт</value>
+  </data>
+  <data name="lblreturntab.Help" xml:space="preserve">
+    <value>Сторінка, на яку користувач повертається, коли натиснуто кнопку "Повернутися до списку". Якщо використовується пуста поточна сторінка. Це активується за допомогою маркера параметрів на табідний атрибут маркера "nbs:returnlink" у шаблоні відомостей.</value>
+  </data>
+  <data name="lblreturntab.Text" xml:space="preserve">
+    <value>Сторінка повернення відомостей:</value>
+  </data>
+  <data name="lblstaticlist.Help" xml:space="preserve">
+    <value>Статичні списки завжди використовуватимуть категорії за замовчуванням, незалежно від будь-якої вибраної категорії. Вони використовуються для відображення рекомендованих продуктів або продуктів під час просування.</value>
+  </data>
+  <data name="lblstaticlist.Text" xml:space="preserve">
+    <value>Статичний список :</value>
+  </data>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Ім'я теми, яку слід використовувати для цього списку продуктів.</value>
+  </data>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Тема:</value>
+  </data>
+  <data name="lblthemesettings.Text" xml:space="preserve">
+    <value>Параметри теми</value>
+  </data>
+  <data name="themehidden.Text" xml:space="preserve">
+    <value>Старі налаштування теми вимкнено, оновіть, щоб активувати нову тему.</value>
+  </data>
+  <data name="lbllightboxspeed.Text" xml:space="preserve">
+    <value>Швидкість lightbox в мс :</value>
+  </data>
+  <data name="lbllightboxspeed.Help" xml:space="preserve">
+    <value>Швидкість анімації для лайтбоксу</value>
+  </data>
+  <data name="lblitemwidth.Text" xml:space="preserve">
+    <value>Ширина елемента списку в px :</value>
+  </data>
+  <data name="lblitemheight.Text" xml:space="preserve">
+    <value>Список елементів жолоба в px:</value>
+  </data>
+  <data name="lblitemimagecontainerheight.Text" xml:space="preserve">
+    <value>Висота контейнера зображення елемента списку (включаючи одиницю вимірювання або авто) :</value>
+  </data>
+  <data name="lblitemgutter.Text" xml:space="preserve">
+    <value>Список елементів жолоба в px:</value>
+  </data>
+  <data name="lblitembottommargin.Text" xml:space="preserve">
+    <value>Нижнє поле елемента списку в px :</value>
+  </data>
+  <data name="lblthumbnailwidth.Text" xml:space="preserve">
+    <value>Список Ширини зображення в px або 0 для авто :</value>
+  </data>
+  <data name="lblthumbnailheight.Text" xml:space="preserve">
+    <value>Висота зображення в px або 0 для авто :</value>
+  </data>
+  <data name="lblimagewidth.Text" xml:space="preserve">
+    <value>Подробиці Ширина зображення в px або 0 для авто:</value>
+  </data>
+  <data name="lblimageheight.Text" xml:space="preserve">
+    <value>Подробиці Висота зображення в px або 0 для авто :</value>
+  </data>
+  <data name="lblgallerywidth.Text" xml:space="preserve">
+    <value>Ширина зображення галереї в px або 0 для авто:</value>
+  </data>
+  <data name="lblgalleryheight.Text" xml:space="preserve">
+    <value>Галерея Висота зображення в px або 0 для авто:</value>
+  </data>
+  <data name="lblrelateditemwidth.Text" xml:space="preserve">
+    <value>Пов'язана ширина елемента в px або 0 для авто:</value>
+  </data>
+  <data name="lblrelateditemheight.Text" xml:space="preserve">
+    <value>Пов'язана висота елемента (включаючи одиницю вимірювання або авто) :</value>
+  </data>
+  <data name="lblrelateditemimagecontainerheight.Text" xml:space="preserve">
+    <value>Висота контейнера зображення пов'язаного елемента (включаючи блок або авто) :</value>
+  </data>
+  <data name="lblrelateditemgutter.Text" xml:space="preserve">
+    <value>Пов'язаний елемент жолоб в px:</value>
+  </data>
+  <data name="lblrelateditembottommargin.Text" xml:space="preserve">
+    <value>Нижнє поле пов'язаного елемента в px :</value>
+  </data>
+  <data name="lblrelatedimagewidth.Text" xml:space="preserve">
+    <value>Пов'язана ширина зображення в px або 0 для авто:</value>
+  </data>
+  <data name="lblrelatedimageheight.Text" xml:space="preserve">
+    <value>Пов'язана висота зображення в px або 0 для авто:</value>
+  </data>
+  <data name="lblcategorydetails.Text" xml:space="preserve">
+    <value>Показати відомості про категорію:</value>
+  </data>
+  <data name="lblmodelstable.Text" xml:space="preserve">
+    <value>Показати таблицю моделей :</value>
+  </data>
+  <data name="lblproductcode.Text" xml:space="preserve">
+    <value>Показати код / Ref :</value>
+  </data>
+  <data name="lblshowstock.Text" xml:space="preserve">
+    <value>Показати запас :</value>
+  </data>
+  <data name="lblcurrencyconverter.Text" xml:space="preserve">
+    <value>Увімкнути конвертер валют:</value>
+  </data>
+  <data name="lbltabbedcontent.Text" xml:space="preserve">
+    <value>Увімкнути вкладки:</value>
+  </data>
+  <data name="lblwishlist.Text" xml:space="preserve">
+    <value>Увімкнути список бажань:</value>
+  </data>
+  <data name="lblplaceholderimage.Text" xml:space="preserve">
+    <value>Увімкнути зображення покажчика місця заповнення :</value>
+  </data>
+  <data name="lblnoimageicon.Text" xml:space="preserve">
+    <value>Піктограма зображення покажчика місця заповнення (fontawesome.io) :</value>
+  </data>
+  <data name="lblallowzeroprice.Text" xml:space="preserve">
+    <value>Дозволити покупку з нульовою ціною:</value>
+  </data>
+  <data name="lblholidaymode.Text" xml:space="preserve">
+    <value>Святковий режим :</value>
+  </data>
+  <data name="lblcataloguemode.Text" xml:space="preserve">
+    <value>Режим каталогу :</value>
+  </data>
+  <data name="lbllistimages.Text" xml:space="preserve">
+    <value>Список зображень :</value>
+  </data>
+  <data name="lbldetailimages.Text" xml:space="preserve">
+    <value>Детальні зображення :</value>
+  </data>
+  <data name="lblrelatedimages.Text" xml:space="preserve">
+    <value>Зображення пов'язаних продуктів:</value>
+  </data>
+  <data name="lbldisplayfeatures.Text" xml:space="preserve">
+    <value>Функції відображення :</value>
+  </data>
+  <data name="lblsocialseodata.Text" xml:space="preserve">
+    <value>Соціальні та SEO:</value>
+  </data>
+  <data name="lblogobjecttype.Text" xml:space="preserve">
+    <value>Тип обекта відкритого графіка:</value>
+  </data>
+  <data name="lblogobjecttype.Help" xml:space="preserve">
+    <value>Відкрити тип об'єкта графіка - Зазвичай 'website'. Посилатися https://developers.facebook.com/docs/reference/opengraph/ </value>
+  </data>
+  <data name="lblfacebookid.Text" xml:space="preserve">
+    <value>Ідентифікаційний номер Facebook:</value>
+  </data>
+  <data name="lblfacebookid.Help" xml:space="preserve">
+    <value>Ідентифікаційний номер Facebook для статистики сторінок. Може бути один fb:admins ID або список посвідчень, розділених комами. Зверніться https://developers.facebook.com/docs/insights/</value>
+  </data>
+  <data name="lbltwittersite.Text" xml:space="preserve">
+    <value>Веб-сайт Twitter @username:</value>
+  </data>
+  <data name="lbltwittersite.Help" xml:space="preserve">
+    <value>Ім'я користувача Twitter веб-сайту, включаючи символ @. Це може бути те ж саме, що і у користувача Twitter. Посилатися https://dev.twitter.com/docs/cards/markup-reference</value>
+  </data>
+  <data name="lbltwitteruser.Text" xml:space="preserve">
+    <value>Користувач Twitter @username:</value>
+  </data>
+  <data name="lbltwitteruser.Help" xml:space="preserve">
+    <value>Ім'я користувача Twitter, включаючи символ @ плаката вмісту. Це може бути те ж саме, що і користувач веб-сайту Twitter. Посилатися https://dev.twitter.com/docs/cards/markup-reference</value>
+  </data>
+  <data name="lbldefaultproperty.Help" xml:space="preserve">
+    <value>Установіть список за промовчанням для продуктів із цією властивістю.</value>
+  </data>
+  <data name="lbldefaultproperty.Text" xml:space="preserve">
+    <value>Властивість за промовчанням для списку :</value>
+  </data>
+  <data name="lblmodeldisplaytype.Text" xml:space="preserve">
+    <value>Метод відображення моделі</value>
+  </data>
+  <data name="lbldefaultlistmodule.Text" xml:space="preserve">
+    <value>Модуль списку за промовчанням</value>
+  </data>
+  <data name="displaytype.Help" xml:space="preserve">
+    <value>Тип списку для відображення (звичайний, звичайний список продуктів. Пошук, пошук результатів продукції. Вибраний список, список уподобань.)</value>
+  </data>
+  <data name="displaytype.Text" xml:space="preserve">
+    <value>Тип дисплея</value>
+  </data>
+  <data name="caturlfilter.Text" xml:space="preserve">
+    <value>Фільтр за вибраною категорією</value>
+  </data>
+  <data name="EntityTypeCode.Text" xml:space="preserve">
+    <value>Код типу сутності</value>
+  </data>
+  <data name="categoryselection.Text" xml:space="preserve">
+    <value>Вибір кількох категорій</value>
+  </data>
+  <data name="propertyselection.Text" xml:space="preserve">
+    <value>Вибір кількох властивостей</value>
+  </data>
+</root>
