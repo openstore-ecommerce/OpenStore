@@ -688,7 +688,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 if (sendEmailFlag)
                 {
                     var emailBody = "";
-                    emailBody = NBrightBuyUtils.RazorTemplRender("OrderHtmlOutput.cshtml", 0, "", ordData, "/DesktopModules/NBright/NBrightBuy", StoreSettings.Current.Get("themefolder"), lang, passSettings);
+                    var theme = StoreSettings.Current.Get("emailthemefolder");
+                    if (theme == "") theme = StoreSettings.Current.Get("themefolder");
+                    emailBody = NBrightBuyUtils.RazorTemplRender("OrderHtmlOutput.cshtml", 0, "", ordData, "/DesktopModules/NBright/NBrightBuy", theme, lang, passSettings);
                     if (StoreSettings.Current.DebugModeFileOut) Utils.SaveFile(PortalSettings.Current.HomeDirectoryMapPath + "\\testemail.html", emailBody);
 
                     SendEmail(emailBody, emailList, emailtype, ordData.GetInfo(), emailsubjectresxkey, fromEmail, lang);
@@ -696,10 +698,9 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     // also send to manager is created. 
                     if (emailtype == "OrderCreatedClient")
                     {
-                        emailBody = NBrightBuyUtils.RazorTemplRender("OrderHtmlOutput.cshtml", 0, "", ordData, "/DesktopModules/NBright/NBrightBuy", StoreSettings.Current.Get("themefolder"), StoreSettings.Current.Get("merchantculturecode"), passSettings);
+                        emailBody = NBrightBuyUtils.RazorTemplRender("OrderHtmlOutput.cshtml", 0, "", ordData, "/DesktopModules/NBright/NBrightBuy", theme, StoreSettings.Current.Get("merchantculturecode"), passSettings);
                         SendEmail(emailBody, StoreSettings.Current.ManagerEmail, "OrderCreatedManager", ordData.GetInfo(), emailsubjectresxkey, fromEmail, StoreSettings.Current.Get("merchantculturecode"));
                     }
-
 
                     ordData.AddAuditMessage(emailmsg, "email", UserController.Instance.GetCurrentUserInfo().Username, "False", NBrightBuyUtils.ResourceKey("Notification." + emailsubjectresxkey, lang));
                     ordData.SavePurchaseData();

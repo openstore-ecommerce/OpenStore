@@ -70,7 +70,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     if (StoreSettings.Current.Get("sendclientroleemail") == "True")
                     {
                         var emailBody = "";
-                        emailBody = NBrightBuyUtils.RazorTemplRender("AddClientRole.cshtml", 0, "", _clientInfo, "/DesktopModules/NBright/NBrightBuy", StoreSettings.Current.Get("themefolder"), _userInfo.Profile.PreferredLocale, StoreSettings.Current.Settings());
+                        var theme = StoreSettings.Current.Get("emailthemefolder");
+                        if (theme == "") theme = StoreSettings.Current.Get("themefolder");
+
+                        emailBody = NBrightBuyUtils.RazorTemplRender("AddClientRole.cshtml", 0, "", _clientInfo, "/DesktopModules/NBright/NBrightBuy", theme, _userInfo.Profile.PreferredLocale, StoreSettings.Current.Settings());
                         NBrightBuyUtils.SendEmail(emailBody, _userInfo.Email, "ClientRole", _clientInfo, StoreSettings.Current.SettingsInfo.GetXmlProperty("genxml/textbox/storecompany"), StoreSettings.Current.ManagerEmail, _userInfo.Profile.PreferredLocale);
                     }
                 }
