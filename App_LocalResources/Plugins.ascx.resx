@@ -130,7 +130,7 @@
     <value>Exit</value>
   </data>
   <data name="lblctrl.Help" xml:space="preserve">
-    <value>Plugin Ref to identify the plugin to the system, must be unique and used to referece the resx file entry for the menu name.</value>
+    <value>Plugin Ref to identify the plugin to the system, must be unique and used to reference the resx file entry for the menu name.</value>
   </data>
   <data name="lblctrl.Text" xml:space="preserve">
     <value>Plugin Ref</value>

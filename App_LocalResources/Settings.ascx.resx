@@ -523,7 +523,7 @@
     <value>Activate product 404</value>
   </data>
   <data name="activate404msg.Text" xml:space="preserve">
-    <value>Activate a 404 status respsone for any product url which is no longer found in the system. </value>
+    <value>Activate a 404 status response for any product url which is no longer found in the system. </value>
   </data>
   <data name="activategdpr.Text" xml:space="preserve">
     <value>Activate GDPR</value>

@@ -139,7 +139,7 @@
     <value>to</value>
   </data>
   <data name="resetlangauge.confirm" xml:space="preserve">
-    <value>Resetting the langauge will NOT be recoverable. Are You Sure?</value>
+    <value>Resetting the language will NOT be recoverable. Are You Sure?</value>
   </data>
   <data name="resetlangauge.Text" xml:space="preserve">
     <value>Reset Language</value>

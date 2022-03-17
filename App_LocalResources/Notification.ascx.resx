@@ -133,7 +133,7 @@
     <value>&lt;div class="nbsnotify nbsnotifywarning bg-warning"&gt;{message}&lt;/div&gt;</value>
   </data>
   <data name="profileupdatedclientrole_ok.Text" xml:space="preserve">
-    <value>Your details have been saved, you will recieve an email when your account has been validated and you are able to access the store.</value>
+    <value>Your details have been saved, you will receive an email when your account has been validated and you are able to access the store.</value>
   </data>
   <data name="profileupdated_emailsubject.Text" xml:space="preserve">
     <value>Profile Update</value>
