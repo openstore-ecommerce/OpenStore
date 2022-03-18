@@ -246,7 +246,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
         {
             try
             {
-                ProductSave(context, true);
+                ProductSave(context, true, true);
                 return "";
             }
             catch (Exception ex)
@@ -296,7 +296,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             }
         }
 
-        public int ProductSave(HttpContext context, bool newrecord = false)
+        public int ProductSave(HttpContext context)
+        {
+            return ProductSave(context, false, false);
+        }
+        public int ProductSave(HttpContext context, bool newrecord)
+        {
+            return ProductSave(context, newrecord, false);
+        }
+        public int ProductSave(HttpContext context, bool newrecord, bool copyproduct)
         {
             if (NBrightBuyUtils.CheckRights())
             {
@@ -330,14 +338,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
 
                     prdData.Update(productXml);
 
-                    if (newrecord) prdData.DataLangRecord.SetXmlProperty("genxml/textbox/txtproductname", prdData.ProductName + " - Copy");
+                    if (copyproduct) prdData.DataLangRecord.SetXmlProperty("genxml/textbox/txtproductname", prdData.ProductName + " - Copy");
 
                     prdData.Save(true,newrecord);
 
                     ProductUtils.CreateFriendlyImages(prdData.DataRecord.ItemID, EditLangCurrent);
 
                     // Copy Categories, properties, related products, members.
-                    if (newrecord)
+                    if (copyproduct)
                     {
                         var originalItemId = ajaxInfo.GetXmlPropertyInt("genxml/hidden/itemid");
                         var originalPrdData = new ProductData(originalItemId, EditLangCurrent, true, EntityTypeCode);
