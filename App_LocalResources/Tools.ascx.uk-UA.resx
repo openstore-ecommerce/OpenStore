@@ -118,60 +118,60 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ValidateStore.confirm" xml:space="preserve">
-    <value>Do store validation?  This may take some time!</value>
+    <value>Чи є перевірка сховища? Це може зайняти деякий час!</value>
   </data>
   <data name="ValidateStore.Text" xml:space="preserve">
-    <value>Validate Store</value>
+    <value>Перевірити сховище</value>
   </data>
   <data name="purgecarts.confirm" xml:space="preserve">
-    <value>Purge Carts?</value>
+    <value>Чистити візки?</value>
   </data>
   <data name="purgecarts.Text" xml:space="preserve">
-    <value>Purge Carts</value>
+    <value>Кошики для чищення</value>
   </data>
   <data name="purgecartsdays.Text" xml:space="preserve">
-    <value>Days to Keep carts</value>
+    <value>Дні, щоб зберегти візки</value>
   </data>
   <data name="languageresetto.Text" xml:space="preserve">
-    <value>Copy</value>
+    <value>Копіювати</value>
   </data>
   <data name="languagetoreset.Text" xml:space="preserve">
-    <value>to</value>
+    <value>до</value>
   </data>
   <data name="resetlangauge.confirm" xml:space="preserve">
-    <value>Resetting the language will NOT be recoverable. Are You Sure?</value>
+    <value>Скидання мови не буде відновлено. Ти впевнений?</value>
   </data>
   <data name="resetlangauge.Text" xml:space="preserve">
-    <value>Reset Language</value>
+    <value>Скинути мову</value>
   </data>
   <data name="languageresetwarning.Text" xml:space="preserve">
-    <value>WARNING!!! - Your "{tolanguage}" data will be OVERWRITTEN.</value>
+    <value>ПОПЕРЕДЖЕННЯ!!! - Ваші дані "{tolanguage}" будуть ПЕРЕЗАПИСАНІ.</value>
   </data>
   <data name="resetportalmenu.confirm" xml:space="preserve">
-    <value>Resetting Portal Menu will DELETE all portal menu settings and revert back the default system level menu.</value>
+    <value>Скидання меню порталу призведе до видалення всіх параметрів меню порталу та повернення меню системного рівня за замовчуванням.</value>
   </data>
   <data name="resetportalmenu.Text" xml:space="preserve">
-    <value>Reset Portal Back Office Menu</value>
+    <value>Скидання меню зворотного офісу порталу</value>
   </data>
   <data name="purgeimages.Text" xml:space="preserve">
-    <value>Purge Unused Images</value>
+    <value>Очищення невикористовуваних зображень</value>
   </data>
   <data name="purgeimageswarn.Text" xml:space="preserve">
-    <value>Purging Images will DELETE all images not linked to a product or category.  If any plugins use the NBSstore\images folder, these images will be deleted.</value>
+    <value>Очищення зображень призведе до видалення всіх зображень, не пов'язаних із продуктом або категорією. Якщо будь-які плагіни використовують папку NBSstore\images, ці зображення будуть видалені.</value>
   </data>
   <data name="customprovider.Text" xml:space="preserve">
-    <value>Custom Action Provider</value>
+    <value>Постачальник настроюваних дій</value>
   </data>
   <data name="providerassembly.Text" xml:space="preserve">
-    <value>Provider Assembly</value>
+    <value>Збірка постачальника</value>
   </data>
   <data name="providernamespaceclass.Text" xml:space="preserve">
-    <value>Provider Namespace,Class</value>
+    <value>Простір імен постачальника, клас</value>
   </data>
   <data name="runcustomprovider.Text" xml:space="preserve">
-    <value>Run Custom Action Provider</value>
+    <value>Запуск постачальника настроюваних дій</value>
   </data>
   <data name="paramdata.Text" xml:space="preserve">
-    <value>Parameter Data</value>
+    <value>Дані параметрів</value>
   </data>
 </root>

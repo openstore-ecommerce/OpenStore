@@ -117,61 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ValidateStore.confirm" xml:space="preserve">
-    <value>Do store validation?  This may take some time!</value>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Параметри форми профілю</value>
   </data>
-  <data name="ValidateStore.Text" xml:space="preserve">
-    <value>Validate Store</value>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Ім'я теми, яку слід використовувати для цього списку кошиків.</value>
   </data>
-  <data name="purgecarts.confirm" xml:space="preserve">
-    <value>Purge Carts?</value>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Тема:</value>
   </data>
-  <data name="purgecarts.Text" xml:space="preserve">
-    <value>Purge Carts</value>
+  <data name="lblinputform.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як foem введення даних для адреси.</value>
   </data>
-  <data name="purgecartsdays.Text" xml:space="preserve">
-    <value>Days to Keep carts</value>
+  <data name="lblinputform.Text" xml:space="preserve">
+    <value>Шаблон форми вводу:</value>
   </data>
-  <data name="languageresetto.Text" xml:space="preserve">
-    <value>Copy</value>
+  <data name="lblemailtemplate.Help" xml:space="preserve">
+    <value>Електронна пошта, яку буде надіслано після оновлення профілю. (Якщо порожній, електронний лист не надсилається)</value>
   </data>
-  <data name="languagetoreset.Text" xml:space="preserve">
-    <value>to</value>
+  <data name="lblemailtemplate.Text" xml:space="preserve">
+    <value>Шаблон електронної пошти :</value>
   </data>
-  <data name="resetlangauge.confirm" xml:space="preserve">
-    <value>Resetting the language will NOT be recoverable. Are You Sure?</value>
+  <data name="emailsubject.Text" xml:space="preserve">
+    <value>Оновлення профілю користувача</value>
   </data>
-  <data name="resetlangauge.Text" xml:space="preserve">
-    <value>Reset Language</value>
+  <data name="lblclientrole.Help" xml:space="preserve">
+    <value>Користувачам буде надано повідомлення про те, що вони повинні чекати рівня безпеки ролі "Клієнт", перш ніж магазин стане доступним.</value>
   </data>
-  <data name="languageresetwarning.Text" xml:space="preserve">
-    <value>WARNING!!! - Your "{tolanguage}" data will be OVERWRITTEN.</value>
+  <data name="lblclientrole.Text" xml:space="preserve">
+    <value>Активувати безпеку ролей клієнта:</value>
   </data>
-  <data name="resetportalmenu.confirm" xml:space="preserve">
-    <value>Resetting Portal Menu will DELETE all portal menu settings and revert back the default system level menu.</value>
+  <data name="lblredirecttab.Help" xml:space="preserve">
+    <value>Переспрямування сторінки після оновлення</value>
   </data>
-  <data name="resetportalmenu.Text" xml:space="preserve">
-    <value>Reset Portal Back Office Menu</value>
+  <data name="lblredirecttab.Text" xml:space="preserve">
+    <value>Сторінка перенаправлення :</value>
   </data>
-  <data name="purgeimages.Text" xml:space="preserve">
-    <value>Purge Unused Images</value>
+  <data name="lblemailregisteredclienttemplate.Help" xml:space="preserve">
+    <value>Електронна пошта, яка буде відправлена клієнту, коли вони зареєструються. (Якщо порожній, електронний лист не надсилається)</value>
   </data>
-  <data name="purgeimageswarn.Text" xml:space="preserve">
-    <value>Purging Images will DELETE all images not linked to a product or category.  If any plugins use the NBSstore\images folder, these images will be deleted.</value>
+  <data name="lblemailregisteredclienttemplate.Text" xml:space="preserve">
+    <value>Шаблон зареєстрованого клієнта електронної пошти:</value>
   </data>
-  <data name="customprovider.Text" xml:space="preserve">
-    <value>Custom Action Provider</value>
+  <data name="lblemailregisteredtemplate.Help" xml:space="preserve">
+    <value>Електронна пошта, яка буде відправлена менеджеру, коли клієнт реєструється. (Якщо порожній, електронний лист не надсилається)</value>
   </data>
-  <data name="providerassembly.Text" xml:space="preserve">
-    <value>Provider Assembly</value>
-  </data>
-  <data name="providernamespaceclass.Text" xml:space="preserve">
-    <value>Provider Namespace,Class</value>
-  </data>
-  <data name="runcustomprovider.Text" xml:space="preserve">
-    <value>Run Custom Action Provider</value>
-  </data>
-  <data name="paramdata.Text" xml:space="preserve">
-    <value>Parameter Data</value>
+  <data name="lblemailregisteredtemplate.Text" xml:space="preserve">
+    <value>Зареєстрований шаблон електронної пошти:</value>
   </data>
 </root>

@@ -1,0 +1,1263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdAdd.Text" xml:space="preserve">
+    <value>Додати</value>
+  </data>
+  <data name="cmdAdd.ToolTip" xml:space="preserve">
+    <value>Додати новий</value>
+  </data>
+  <data name="cmdAddIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Додати новий" class="fa fa-plus-circle fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdAddButton.Text" xml:space="preserve">
+    <value>&lt;i title="Додати новий" class="fa fa-plus-circle fa-fw fa-lg"&gt;&lt;/i&gt; Додати</value>
+  </data>
+  <data name="cmdAddFiles.Text" xml:space="preserve">
+    <value>&lt;i title="Додати новий" class="fa fa-plus-circle fa-fw fa-lg"&gt;&lt;/i&gt; Додати</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>скасування</value>
+  </data>
+  <data name="cmdCancel.ToolTip" xml:space="preserve">
+    <value>скасування</value>
+  </data>
+  <data name="cmdCancelButton.Text" xml:space="preserve">
+    <value>&lt;i title="скасування" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; скасування</value>
+  </data>
+  <data name="cmdClear.Text" xml:space="preserve">
+    <value>Зрозуміло</value>
+  </data>
+  <data name="cmdClear.ToolTip" xml:space="preserve">
+    <value>Очистити дані</value>
+  </data>
+  <data name="cmdDelete.confirm" xml:space="preserve">
+    <value>Видалити елемент?</value>
+  </data>
+  <data name="cmdDelete.Text" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="cmdDeleteIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Видалити" class="fa fa-minus-square fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdDeleteButton.Text" xml:space="preserve">
+    <value>&lt;i title="Видалити" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm-hidden"&gt;Видалити&lt;/span&gt;</value>
+  </data>
+  <data name="cmdDelete.ToolTip" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="cmdDeleteLang.confirm" xml:space="preserve">
+    <value>Видалити мовний запис елемента?</value>
+  </data>
+  <data name="cmdDeleteLang.Text" xml:space="preserve">
+    <value>Видалити Лангауге</value>
+  </data>
+  <data name="cmdDeleteLang.ToolTip" xml:space="preserve">
+    <value>Видалити мовний запис</value>
+  </data>
+  <data name="cmdEdit.Text" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="cmdEditIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Редагувати" class="fa fa-edit fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdEditButton.Text" xml:space="preserve">
+    <value>&lt;i title="Редагувати" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt; Редагувати</value>
+  </data>
+  <data name="cmdEdit.ToolTip" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="cmdExit.confirm" xml:space="preserve">
+    <value>Вийти?</value>
+  </data>
+  <data name="cmdExit.Text" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="cmdExit.ToolTip" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="cmdReset.Text" xml:space="preserve">
+    <value>Скинути</value>
+  </data>
+  <data name="cmdReset.ToolTip" xml:space="preserve">
+    <value>Скидання даних</value>
+  </data>
+  <data name="cmdResetIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Скинути" class="fa fa-refresh fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdResetButton.Text" xml:space="preserve">
+    <value>&lt;i title="Скинути" class="fa fa-refresh fa-fw fa-lg"&gt;&lt;/i&gt; Скинути</value>
+  </data>
+  <data name="cmdSave.Text" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="cmdSave.ToolTip" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="cmdSaveExit.confirm" xml:space="preserve">
+    <value>Зберегти та вийти?</value>
+  </data>
+  <data name="cmdSaveExit.Text" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="cmdSaveExit.ToolTip" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="cmdSearch.Text" xml:space="preserve">
+    <value>Шукати</value>
+  </data>
+  <data name="cmdSearch.ToolTip" xml:space="preserve">
+    <value>Шукати</value>
+  </data>
+  <data name="cmdSearchIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Шукати" class="fa fa-search fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdSearchButton.Text" xml:space="preserve">
+    <value>&lt;i title="Шукати" class="fa fa-search fa-fw fa-lg"&gt;&lt;/i&gt; Шукати</value>
+  </data>
+  <data name="cmdSelect.Text" xml:space="preserve">
+    <value>Виберіть</value>
+  </data>
+  <data name="cmdSelect.ToolTip" xml:space="preserve">
+    <value>Виберіть</value>
+  </data>
+  <data name="cmdAddProducts.Text" xml:space="preserve">
+    <value>Додати продукти</value>
+  </data>
+  <data name="cmdSort.Text" xml:space="preserve">
+    <value>Сортувати</value>
+  </data>
+  <data name="cmdSort.ToolTip" xml:space="preserve">
+    <value>Сортувати</value>
+  </data>
+  <data name="cmdUpdateExit.Text" xml:space="preserve">
+    <value>Збереження та вихід</value>
+  </data>
+  <data name="cmdUpdateExit.ToolTip" xml:space="preserve">
+    <value>Збереження та вихід</value>
+  </data>
+  <data name="RequiredField.errormessage" xml:space="preserve">
+    <value>Обов'язкове поле</value>
+  </data>
+  <data name="RequiredField.Text" xml:space="preserve">
+    <value>Необхідні</value>
+  </data>
+  <data name="cmdUploadFile.Text" xml:space="preserve">
+    <value>Завантажити</value>
+  </data>
+  <data name="cmdUploadFile.ToolTip" xml:space="preserve">
+    <value>Завантажити файл</value>
+  </data>
+  <data name="cmdUploadFileButton.Text" xml:space="preserve">
+    <value>&lt;i  title="Завантажити" class="fa fa-upload fa-fw fa-lg"&gt;&lt;/i&gt; Завантажити</value>
+  </data>
+  <data name="cmdDeleteFile.commandname" xml:space="preserve">
+    <value>deletefile</value>
+  </data>
+  <data name="cmdDeleteFile.confirm" xml:space="preserve">
+    <value>Видалити файл?</value>
+  </data>
+  <data name="cmdDeleteFile.ToolTip" xml:space="preserve">
+    <value>Видалити файл</value>
+  </data>
+  <data name="cmdUploadFile.commandname" xml:space="preserve">
+    <value>uploadfile</value>
+  </data>
+  <data name="cmdReturn.Text" xml:space="preserve">
+    <value>Повернутися</value>
+  </data>
+  <data name="cmdReturn.ToolTip" xml:space="preserve">
+    <value>Повернутися</value>
+  </data>
+  <data name="seooptimization.Text" xml:space="preserve">
+    <value>SEO (необов'язково)</value>
+  </data>
+  <data name="seoname.Text" xml:space="preserve">
+    <value>SEO ім'я</value>
+  </data>
+  <data name="seonamehelp.Text" xml:space="preserve">
+    <value>Альтернативна назва продукту (замінює його в URL-адресі).</value>
+  </data>
+  <data name="seotitle.Text" xml:space="preserve">
+    <value>Тег заголовка</value>
+  </data>
+  <data name="seotitlehelp.Text" xml:space="preserve">
+    <value>Альтернативна мета-назва. (типовим є назва продукту)</value>
+  </data>
+  <data name="seodescription.Text" xml:space="preserve">
+    <value>Мета-опис</value>
+  </data>
+  <data name="seodescriptionhelp.Text" xml:space="preserve">
+    <value>Альтернативний мета-опис. (за замовчуванням резюме)</value>
+  </data>
+  <data name="cmdReturnIcon.Text" xml:space="preserve">
+    <value>&lt;i  title="Повернутися" class="fa fa-reply fa-fw fa-2x"&gt;&lt;/i&gt; Повернутися</value>
+  </data>
+  <data name="cmdReturnButton.Text" xml:space="preserve">
+    <value>&lt;i  title="Повернутися" class="fa fa-reply fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="md-hidden"&gt;Повернутися&lt;/span&gt;</value>
+  </data>
+  <data name="cmdExport.Text" xml:space="preserve">
+    <value>Експорт</value>
+  </data>
+  <data name="cmdExport.ToolTip" xml:space="preserve">
+    <value>Експорт даних модуля</value>
+  </data>
+  <data name="Value.Text" xml:space="preserve">
+    <value>Цінність</value>
+  </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="cmdResetSearch.Text" xml:space="preserve">
+    <value>Скинути</value>
+  </data>
+  <data name="cmdResetSearch.ToolTip" xml:space="preserve">
+    <value>Скинути умови пошуку</value>
+  </data>
+  <data name="Default.Text" xml:space="preserve">
+    <value>За промовчанням</value>
+  </data>
+  <data name="Description.Text" xml:space="preserve">
+    <value>Опис</value>
+  </data>
+  <data name="Image.Text" xml:space="preserve">
+    <value>Зображення</value>
+  </data>
+  <data name="Name.Text" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
+  <data name="Ref.Text" xml:space="preserve">
+    <value>Посилання</value>
+  </data>
+  <data name="Title.Text" xml:space="preserve">
+    <value>Назва</value>
+  </data>
+  <data name="Archived.Text" xml:space="preserve">
+    <value>Архівовані</value>
+  </data>
+  <data name="Breadcrumb.Text" xml:space="preserve">
+    <value>Панірувальні сухарі</value>
+  </data>
+  <data name="Copy.Text" xml:space="preserve">
+    <value>Копіювати</value>
+  </data>
+  <data name="Hidden.Text" xml:space="preserve">
+    <value>Приховані</value>
+  </data>
+  <data name="Keywords.Text" xml:space="preserve">
+    <value>Ключові слова</value>
+  </data>
+  <data name="Order.Text" xml:space="preserve">
+    <value>Порядку</value>
+  </data>
+  <data name="findanorder.Text" xml:space="preserve">
+    <value>Знайти замовлення</value>
+  </data>
+  <data name="Parent.Text" xml:space="preserve">
+    <value>Родитель</value>
+  </data>
+  <data name="SEO.Text" xml:space="preserve">
+    <value>SEO</value>
+  </data>
+  <data name="Settings.Text" xml:space="preserve">
+    <value>Параметри</value>
+  </data>
+  <data name="Summary.Text" xml:space="preserve">
+    <value>Резюме</value>
+  </data>
+  <data name="Download.Text" xml:space="preserve">
+    <value>Завантажити</value>
+  </data>
+  <data name="cmdDownloadButton.Text" xml:space="preserve">
+    <value>&lt;i title="Завантажити" class="fa fa-download fa-fw fa-lg"&gt;&lt;/i&gt; Завантажити</value>
+  </data>
+  <data name="Categories.Text" xml:space="preserve">
+    <value>Категорії</value>
+  </data>
+  <data name="Processing.Text" xml:space="preserve">
+    <value>Обробки</value>
+  </data>
+  <data name="ProcessingDiv.Text" xml:space="preserve">
+    <value>&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="Reset.Text" xml:space="preserve">
+    <value>Скинути</value>
+  </data>
+  <data name="Search.Text" xml:space="preserve">
+    <value>Шукати</value>
+  </data>
+  <data name="OrderBy.Text" xml:space="preserve">
+    <value>Замовити за</value>
+  </data>
+  <data name="Any.Text" xml:space="preserve">
+    <value>Будь-який</value>
+  </data>
+  <data name="cmdRemove.Text" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="cmdRemoveIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Видалити" class="fa fa-minus-square fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdRemoveButton.Text" xml:space="preserve">
+    <value>&lt;i title="Видалити" class="fa fa-minus-square fa-fw fa-lg"&gt;&lt;/i&gt; Видалити</value>
+  </data>
+  <data name="Save.Text" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="cmdSaveIcon.Text" xml:space="preserve">
+    <value>&lt;i  title="Зберегти" class="fa fa-save fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdSaveButton.Text" xml:space="preserve">
+    <value>&lt;i  title="Зберегти" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt;Зберегти&lt;/span&gt;</value>
+  </data>
+  <data name="Update.Text" xml:space="preserve">
+    <value>Оновлювати</value>
+  </data>
+  <data name="lblCompany.Text" xml:space="preserve">
+    <value>Компанія</value>
+  </data>
+  <data name="lblFirstName.Text" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
+  <data name="lblLastName.Text" xml:space="preserve">
+    <value>Прізвище</value>
+  </data>
+  <data name="lblAddress1.Text" xml:space="preserve">
+    <value>Рядок адреси 1</value>
+  </data>
+  <data name="lblAddress2.Text" xml:space="preserve">
+    <value>Рядок адреси 2</value>
+  </data>
+  <data name="lblTown.Text" xml:space="preserve">
+    <value>Місто</value>
+  </data>
+  <data name="lblCity.Text" xml:space="preserve">
+    <value>Місто</value>
+  </data>
+  <data name="lblPostCode.Text" xml:space="preserve">
+    <value>Поштовий індекс</value>
+  </data>
+  <data name="lblRegion.Text" xml:space="preserve">
+    <value>Регіоні</value>
+  </data>
+  <data name="lblPhone.Text" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="lblCountry.Text" xml:space="preserve">
+    <value>Країні</value>
+  </data>
+  <data name="TaxNumber.Text" xml:space="preserve">
+    <value>Податковий номер</value>
+  </data>
+  <data name="PromotionalCode.Text" xml:space="preserve">
+    <value>Промокод</value>
+  </data>
+  <data name="Email.Text" xml:space="preserve">
+    <value>Електронна пошта</value>
+  </data>
+  <data name="Refresh.Text" xml:space="preserve">
+    <value>Оновити</value>
+  </data>
+  <data name="From.Text" xml:space="preserve">
+    <value>З</value>
+  </data>
+  <data name="To.Text" xml:space="preserve">
+    <value>На</value>
+  </data>
+  <data name="lblshippingoptions.Text" xml:space="preserve">
+    <value>Варіанти доставки</value>
+  </data>
+  <data name="lblspecialinstructions.Text" xml:space="preserve">
+    <value>Спеціальні інструкції</value>
+  </data>
+  <data name="lblordersummary.Text" xml:space="preserve">
+    <value>Резюме замовлення</value>
+  </data>
+  <data name="lblTotals.Text" xml:space="preserve">
+    <value>Загальна</value>
+  </data>
+  <data name="lblcollectionoptions.Text" xml:space="preserve">
+    <value>Параметри колекції</value>
+  </data>
+  <data name="lblcartlist.Text" xml:space="preserve">
+    <value>Товари в кошику</value>
+  </data>
+  <data name="orderstatus.Code" xml:space="preserve">
+    <value>010,020,030,040,050,060,070,080,120,090,100,110</value>
+  </data>
+  <data name="orderstatus.Text" xml:space="preserve">
+    <value>Неповний, Очікування банку, скасовано, оплата ОК, оплата не перевірена, очікування платежу, очікування запасів, очікування, що виробляється, відвантажено,завершено, архівований</value>
+  </data>
+  <data name="shippingdate.Text" xml:space="preserve">
+    <value>Дата доставки</value>
+  </data>
+  <data name="status.Text" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="trackingcode.Text" xml:space="preserve">
+    <value>Код відстеження</value>
+  </data>
+  <data name="cmdCancelSelect.Text" xml:space="preserve">
+    <value>Скасувати вибрати</value>
+  </data>
+  <data name="cmdMove.Text" xml:space="preserve">
+    <value>Переміщення</value>
+  </data>
+  <data name="cmdMoveIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Перейти сюди" class="fa fa-arrow-circle-left fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="Undo.Text" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="UndoIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Скасувати" class="fa fa-undo fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="UndoButton.Text" xml:space="preserve">
+    <value>&lt;i title="Скасувати" class="fa fa-undo fa-fw fa-lg"&gt;&lt;/i&gt; Скасувати</value>
+  </data>
+  <data name="RemoveAll.Text" xml:space="preserve">
+    <value>Видалити все</value>
+  </data>
+  <data name="RemoveAllButton.Text" xml:space="preserve">
+    <value>&lt;i title="Видалити все" class="fa fa-eraser fa-fw fa-lg"&gt;&lt;/i&gt; Видалити все</value>
+  </data>
+  <data name="Confirm.Text" xml:space="preserve">
+    <value>Ти впевнений?</value>
+  </data>
+  <data name="Upload.Text" xml:space="preserve">
+    <value>Завантажити</value>
+  </data>
+  <data name="UploadImage.Text" xml:space="preserve">
+    <value>Завантажити зображення</value>
+  </data>
+  <data name="CopyTo.Text" xml:space="preserve">
+    <value>Копіювати до</value>
+  </data>
+  <data name="CopyToButton.Text" xml:space="preserve">
+    <value>&lt;i title="Копіювати до" class="fa fa-copy fa-fw fa-lg"&gt;&lt;/i&gt; Копіювати до</value>
+  </data>
+  <data name="MoveTo.Text" xml:space="preserve">
+    <value>Перейти до</value>
+  </data>
+  <data name="MoveToButton.Text" xml:space="preserve">
+    <value>&lt;i title="Перейти до" class="fa fa-cut fa-fw fa-lg"&gt;&lt;/i&gt; Перейти до</value>
+  </data>
+  <data name="New.Text" xml:space="preserve">
+    <value>Новий</value>
+  </data>
+  <data name="Export.Text" xml:space="preserve">
+    <value>Експорт</value>
+  </data>
+  <data name="Import.Text" xml:space="preserve">
+    <value>Імпорт</value>
+  </data>
+  <data name="Orders.Text" xml:space="preserve">
+    <value>Замовлення</value>
+  </data>
+  <data name="Products.Text" xml:space="preserve">
+    <value>Статті</value>
+  </data>
+  <data name="Properties.Text" xml:space="preserve">
+    <value>Властивості</value>
+  </data>
+  <data name="ExportImages.Text" xml:space="preserve">
+    <value>Export Images</value>
+  </data>
+  <data name="ExportImages.confirm" xml:space="preserve">
+    <value>Експортувати зображення?</value>
+  </data>
+  <data name="Export.confirm" xml:space="preserve">
+    <value>Експортувати вибрані дані?</value>
+  </data>
+  <data name="ExportDocuments.confirm" xml:space="preserve">
+    <value>Експортувати документи?</value>
+  </data>
+  <data name="ExportDocuments.Text" xml:space="preserve">
+    <value>Експорт документів</value>
+  </data>
+  <data name="DataXML.Text" xml:space="preserve">
+    <value>XML-файл даних</value>
+  </data>
+  <data name="DocumentZip.Text" xml:space="preserve">
+    <value>Zip-файл документа</value>
+  </data>
+  <data name="ImageZip.Text" xml:space="preserve">
+    <value>Zip-файл зображення</value>
+  </data>
+  <data name="Import.confirm" xml:space="preserve">
+    <value>Імпортувати дані?</value>
+  </data>
+  <data name="Enter.Text" xml:space="preserve">
+    <value>входити</value>
+  </data>
+  <data name="Password.Text" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="RemovefromStore.confirm" xml:space="preserve">
+    <value>Очистити всі вибрані дані зі сховища. Ти впевнений?</value>
+  </data>
+  <data name="RemovefromStore.Text" xml:space="preserve">
+    <value>Видалити з магазину</value>
+  </data>
+  <data name="Tools.Text" xml:space="preserve">
+    <value>інструменти</value>
+  </data>
+  <data name="Invoice.Text" xml:space="preserve">
+    <value>Рахунок</value>
+  </data>
+  <data name="Register.Text" xml:space="preserve">
+    <value>Зареєструватися</value>
+  </data>
+  <data name="Submit.Text" xml:space="preserve">
+    <value>Представити</value>
+  </data>
+  <data name="FileName.Text" xml:space="preserve">
+    <value>FileName</value>
+  </data>
+  <data name="modelstatus.Code" xml:space="preserve">
+    <value>010,020,030,040,050</value>
+  </data>
+  <data name="modelstatus.Text" xml:space="preserve">
+    <value>Є,З запасу,На складі з постачальником,Попереднє замовлення,Спеціальна</value>
+  </data>
+  <data name="ActivateStock.Text" xml:space="preserve">
+    <value>Активувати запас</value>
+  </data>
+  <data name="availabledate.Text" xml:space="preserve">
+    <value>Доступна дата</value>
+  </data>
+  <data name="Barcode.Text" xml:space="preserve">
+    <value>Штрих-код</value>
+  </data>
+  <data name="Code.Text" xml:space="preserve">
+    <value>Код</value>
+  </data>
+  <data name="Cost.Text" xml:space="preserve">
+    <value>Вартість</value>
+  </data>
+  <data name="Dealer.Text" xml:space="preserve">
+    <value>Дилер</value>
+  </data>
+  <data name="Deleted.Text" xml:space="preserve">
+    <value>Видалені</value>
+  </data>
+  <data name="Extra.Text" xml:space="preserve">
+    <value>Додаткові</value>
+  </data>
+  <data name="Price.Text" xml:space="preserve">
+    <value>Роздрібні</value>
+  </data>
+  <data name="Max.Text" xml:space="preserve">
+    <value>Макс</value>
+  </data>
+  <data name="Min.Text" xml:space="preserve">
+    <value>Хв</value>
+  </data>
+  <data name="Stock.Text" xml:space="preserve">
+    <value>Запас</value>
+  </data>
+  <data name="Disable.Text" xml:space="preserve">
+    <value>Вимкнути</value>
+  </data>
+  <data name="delay.Text" xml:space="preserve">
+    <value>Затримки</value>
+  </data>
+  <data name="unit.Text" xml:space="preserve">
+    <value>Одиниці</value>
+  </data>
+  <data name="SaveChanges.Text" xml:space="preserve">
+    <value>Зберегти зміни</value>
+  </data>
+  <data name="cmdDeleteIcon.confirm" xml:space="preserve">
+    <value>Видалити елемент?</value>
+  </data>
+  <data name="Depth.Text" xml:space="preserve">
+    <value>Глибина</value>
+  </data>
+  <data name="Height.Text" xml:space="preserve">
+    <value>Зріст</value>
+  </data>
+  <data name="Weight.Text" xml:space="preserve">
+    <value>Важ</value>
+  </data>
+  <data name="Width.Text" xml:space="preserve">
+    <value>Ширина</value>
+  </data>
+  <data name="Actions.Text" xml:space="preserve">
+    <value>Дії</value>
+  </data>
+  <data name="Catalogue.Text" xml:space="preserve">
+    <value>Каталог</value>
+  </data>
+  <data name="Category.Text" xml:space="preserve">
+    <value>Категорія</value>
+  </data>
+  <data name="Detail.Text" xml:space="preserve">
+    <value>Деталь</value>
+  </data>
+  <data name="Details.Text" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
+  <data name="Documents.Text" xml:space="preserve">
+    <value>Документи</value>
+  </data>
+  <data name="Downloads.Text" xml:space="preserve">
+    <value>Завантаження</value>
+  </data>
+  <data name="Editor.Text" xml:space="preserve">
+    <value>Редактор</value>
+  </data>
+  <data name="Find.Text" xml:space="preserve">
+    <value>Знайти</value>
+  </data>
+  <data name="findaproduct.Text" xml:space="preserve">
+    <value>Пошук продукту</value>
+  </data>
+  <data name="Images.Text" xml:space="preserve">
+    <value>Зображення</value>
+  </data>
+  <data name="List.Text" xml:space="preserve">
+    <value>Список</value>
+  </data>
+  <data name="Message.Text" xml:space="preserve">
+    <value>Повідомлення</value>
+  </data>
+  <data name="Meta.Text" xml:space="preserve">
+    <value>Мета</value>
+  </data>
+  <data name="Models.Text" xml:space="preserve">
+    <value>Моделі</value>
+  </data>
+  <data name="Options.Text" xml:space="preserve">
+    <value>Параметри</value>
+  </data>
+  <data name="Property.Text" xml:space="preserve">
+    <value>Власність</value>
+  </data>
+  <data name="Purchase.Text" xml:space="preserve">
+    <value>Купити</value>
+  </data>
+  <data name="Related.Text" xml:space="preserve">
+    <value>Пов'язані</value>
+  </data>
+  <data name="Remove.Text" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="Tags.Text" xml:space="preserve">
+    <value>Мітки</value>
+  </data>
+  <data name="Templates.Text" xml:space="preserve">
+    <value>Шаблони</value>
+  </data>
+  <data name="Discount.Text" xml:space="preserve">
+    <value>Знижка</value>
+  </data>
+  <data name="Shipping.Text" xml:space="preserve">
+    <value>Доставка</value>
+  </data>
+  <data name="Subtotal.Text" xml:space="preserve">
+    <value>Проміжні підсумки</value>
+  </data>
+  <data name="Tax.Text" xml:space="preserve">
+    <value>Податок</value>
+  </data>
+  <data name="Total.Text" xml:space="preserve">
+    <value>Підсумок</value>
+  </data>
+  <data name="Address.Text" xml:space="preserve">
+    <value>Адреса</value>
+  </data>
+  <data name="Item.Text" xml:space="preserve">
+    <value>Пункт</value>
+  </data>
+  <data name="Modified.Text" xml:space="preserve">
+    <value>Змінений</value>
+  </data>
+  <data name="Qty.Text" xml:space="preserve">
+    <value>Кількість</value>
+  </data>
+  <data name="AdminPin.Text" xml:space="preserve">
+    <value>PIN-код адміністратора</value>
+  </data>
+  <data name="RemoveAll.confirm" xml:space="preserve">
+    <value>Будь обережний. Ви збираєтеся видалити всі свої продукти. Якщо ви згодні, натисніть перевірити. Щоб повернутися до кошика, натисніть кнопку "Скасувати"</value>
+  </data>
+  <data name="Product.Text" xml:space="preserve">
+    <value>Стаття</value>
+  </data>
+  <data name="OrderDate.Text" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="Customer.Text" xml:space="preserve">
+    <value>Клієнтів</value>
+  </data>
+  <data name="OrderNumber.Text" xml:space="preserve">
+    <value>Порядку</value>
+  </data>
+  <data name="Active.Text" xml:space="preserve">
+    <value>Активний</value>
+  </data>
+  <data name="Type.Text" xml:space="preserve">
+    <value>типу</value>
+  </data>
+  <data name="cmdDeleteButton.confirm" xml:space="preserve">
+    <value>Видалити запис?</value>
+  </data>
+  <data name="cmdSaveAsButton.confirm" xml:space="preserve">
+    <value>Зберегти як новий запис?</value>
+  </data>
+  <data name="cmdSaveAsButton.Text" xml:space="preserve">
+    <value>&lt;i  title="Зберегти як" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="sm3-hidden"&gt;Save As&lt;/span&gt;</value>
+  </data>
+  <data name="CopyToIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Копіювати" class="fa fa-copy fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="ChooseAddress.Text" xml:space="preserve">
+    <value>Вставлення збереженої адреси</value>
+  </data>
+  <data name="AddressBook.Text" xml:space="preserve">
+    <value>Адресна книга</value>
+  </data>
+  <data name="AddressEditor.Text" xml:space="preserve">
+    <value>Редактор адрес</value>
+  </data>
+  <data name="PrimaryAddress.Text" xml:space="preserve">
+    <value>Основна адреса</value>
+  </data>
+  <data name="PrimaryAddressMessage.Text" xml:space="preserve">
+    <value>Будь ласка, переконайтеся, що ваша основна адреса клієнта завжди актуальна та точна.</value>
+  </data>
+  <data name="OptionalAddress.Text" xml:space="preserve">
+    <value>Необов'язкова адреса</value>
+  </data>
+  <data name="AccountUpdate.Text" xml:space="preserve">
+    <value>Оновлення облікового запису користувача</value>
+  </data>
+  <data name="AccountUpdateMessage.Text" xml:space="preserve">
+    <value>Профіль облікового запису користувача веб-сайту оновлено. Будь ласка, змініть свої записи, якщо це необхідно.</value>
+  </data>
+  <data name="Number.Text" xml:space="preserve">
+    <value>Номер</value>
+  </data>
+  <data name="ShipTo.Text" xml:space="preserve">
+    <value>Відправляйтеся до</value>
+  </data>
+  <data name="BillTo.Text" xml:space="preserve">
+    <value>Білл до</value>
+  </data>
+  <data name="Quantity.Text" xml:space="preserve">
+    <value>Кількість</value>
+  </data>
+  <data name="DebugMessage.Text" xml:space="preserve">
+    <value>Режим налагодження увімкнено - Кешування вимкнено</value>
+  </data>
+  <data name="DebugMode.Text" xml:space="preserve">
+    <value>Режим налагодження</value>
+  </data>
+  <data name="Taxno.Text" xml:space="preserve">
+    <value>Податок немає</value>
+  </data>
+  <data name="Sales.Text" xml:space="preserve">
+    <value>Продажу</value>
+  </data>
+  <data name="Support.Text" xml:space="preserve">
+    <value>Підтримка</value>
+  </data>
+  <data name="Web.Text" xml:space="preserve">
+    <value>Веб</value>
+  </data>
+  <data name="Ph.Text" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="Att.Text" xml:space="preserve">
+    <value>Атрибут</value>
+  </data>
+  <data name="Amount.Text" xml:space="preserve">
+    <value>Кількість</value>
+  </data>
+  <data name="Voucher.Text" xml:space="preserve">
+    <value>Ваучер</value>
+  </data>
+  <data name="Percentage.Text" xml:space="preserve">
+    <value>Відсоток</value>
+  </data>
+  <data name="Authorised.Text" xml:space="preserve">
+    <value>Уповноважених</value>
+  </data>
+  <data name="Username.Text" xml:space="preserve">
+    <value>Ім'я користувача</value>
+  </data>
+  <data name="PickupReference.Text" xml:space="preserve">
+    <value>Посилання на отримання</value>
+  </data>
+  <data name="PickupAddress.Text" xml:space="preserve">
+    <value>Адреса отримання</value>
+  </data>
+  <data name="SalePrice.Text" xml:space="preserve">
+    <value>Продаж</value>
+  </data>
+  <data name="cmdMyOrdersIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Мої замовлення" class="fa fa-credit-card fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdMyAddressBookIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Моя адресна книга" class="fa fa-home fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdMyAccount.Text" xml:space="preserve">
+    <value>&lt;i title="Профіль мого облікового запису" class="fa fa-user fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="copyorderto.Text" xml:space="preserve">
+    <value>Скопіюйте цей наказ до</value>
+  </data>
+  <data name="shippingmethods.Text" xml:space="preserve">
+    <value>Способи доставки</value>
+  </data>
+  <data name="creditcardpayment.Text" xml:space="preserve">
+    <value>Кредитна картка</value>
+  </data>
+  <data name="manualpayment.Text" xml:space="preserve">
+    <value>Оплата вручну</value>
+  </data>
+  <data name="cmdOk.Text" xml:space="preserve">
+    <value>Гаразд</value>
+  </data>
+  <data name="hello.Text" xml:space="preserve">
+    <value>Привіт</value>
+  </data>
+  <data name="cmdFolder.Text" xml:space="preserve">
+    <value>Папку</value>
+  </data>
+  <data name="cmdFolderIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Відкрити" class="fa fa-folder-open fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="ExtraCost.Text" xml:space="preserve">
+    <value>Додаткові витрати</value>
+  </data>
+  <data name="cmdEditIconSmall.Text" xml:space="preserve">
+    <value>&lt;i title="Редагування продукту в магазині" class="fa fa-edit fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdExtLinkSmall.Text" xml:space="preserve">
+    <value>&lt;i title="Перегляд товару в магазині" class="fa fa-external-link fa-fw fa-lg"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="Cart.Text" xml:space="preserve">
+    <value>Віз</value>
+  </data>
+  <data name="History.Text" xml:space="preserve">
+    <value>Історії</value>
+  </data>
+  <data name="orderstatus010.Text" xml:space="preserve">
+    <value>Неповні</value>
+  </data>
+  <data name="orderstatus020.Text" xml:space="preserve">
+    <value>В очікуванні банку</value>
+  </data>
+  <data name="orderstatus030.Text" xml:space="preserve">
+    <value>Скасовано</value>
+  </data>
+  <data name="orderstatus040.Text" xml:space="preserve">
+    <value>Оплата ОК</value>
+  </data>
+  <data name="orderstatus050.Text" xml:space="preserve">
+    <value>Платіж не перевірено</value>
+  </data>
+  <data name="orderstatus060.Text" xml:space="preserve">
+    <value>В очікуванні оплати</value>
+  </data>
+  <data name="orderstatus070.Text" xml:space="preserve">
+    <value>В очікуванні запасів</value>
+  </data>
+  <data name="orderstatus080.Text" xml:space="preserve">
+    <value>Виробляється</value>
+  </data>
+  <data name="orderstatus090.Text" xml:space="preserve">
+    <value>Виробляється</value>
+  </data>
+  <data name="orderstatus100.Text" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="orderstatus110.Text" xml:space="preserve">
+    <value>Архівовані</value>
+  </data>
+  <data name="orderstatus120.Text" xml:space="preserve">
+    <value>Очікування</value>
+  </data>
+  <data name="cmdSaveExitButton.Text" xml:space="preserve">
+    <value>&lt;i  title="Зберегти вихід" class="fa fa-save fa-fw fa-lg"&gt;&lt;/i&gt; &lt;span class="xs-hidden"&gt;Зберегти та вийти&lt;/span&gt;</value>
+  </data>
+  <data name="OrderCount.Text" xml:space="preserve">
+    <value>Кількість замовлень</value>
+  </data>
+  <data name="CustomerCount.Text" xml:space="preserve">
+    <value>Кількість клієнтів</value>
+  </data>
+  <data name="TotalRevenue.Text" xml:space="preserve">
+    <value>Загальний дохід</value>
+  </data>
+  <data name="AverageRevenue.Text" xml:space="preserve">
+    <value>Середній дохід</value>
+  </data>
+  <data name="TotalDiscounts.Text" xml:space="preserve">
+    <value>Всього знижок</value>
+  </data>
+  <data name="TotalShipping.Text" xml:space="preserve">
+    <value>Всього доставки</value>
+  </data>
+  <data name="StatusofOrders.Text" xml:space="preserve">
+    <value>Статус замовлень</value>
+  </data>
+  <data name="TotalProducts.Text" xml:space="preserve">
+    <value>Всього продуктів</value>
+  </data>
+  <data name="HiddenProducts.Text" xml:space="preserve">
+    <value>Приховані продукти</value>
+  </data>
+  <data name="ActiveProducts.Text" xml:space="preserve">
+    <value>Активні продукти</value>
+  </data>
+  <data name="MontlyRevenue.Text" xml:space="preserve">
+    <value>Щомісячний дохід</value>
+  </data>
+  <data name="dashsummary.Text" xml:space="preserve">
+    <value>Панелі</value>
+  </data>
+  <data name="basket.Text" xml:space="preserve">
+    <value>Кошик</value>
+  </data>
+  <data name="favorites.Text" xml:space="preserve">
+    <value>Уподобання</value>
+  </data>
+  <data name="nbsref.Text" xml:space="preserve">
+    <value>NBS Ref.</value>
+  </data>
+  <data name="nbsid.Text" xml:space="preserve">
+    <value>NBS ID</value>
+  </data>
+  <data name="relatedproducts.Text" xml:space="preserve">
+    <value>Супутні товари</value>
+  </data>
+  <data name="propertytypes.Text" xml:space="preserve">
+    <value>Типи властивостей</value>
+  </data>
+  <data name="productswithprop.Text" xml:space="preserve">
+    <value>Товари з цією властивістю</value>
+  </data>
+  <data name="cmdDelete.noText" xml:space="preserve">
+    <value>NOPP</value>
+  </data>
+  <data name="cmdDelete.yesText" xml:space="preserve">
+    <value>Так</value>
+  </data>
+  <data name="Clients.Text" xml:space="preserve">
+    <value>Членів</value>
+  </data>
+  <data name="pagesize.Text" xml:space="preserve">
+    <value>Розмір сторінки</value>
+  </data>
+  <data name="logoff.Text" xml:space="preserve">
+    <value>Вийти з системи</value>
+  </data>
+  <data name="Owners.Text" xml:space="preserve">
+    <value>Членів</value>
+  </data>
+  <data name="AreYouSure.Text" xml:space="preserve">
+    <value>Ти впевнений?</value>
+  </data>
+  <data name="Article.Text" xml:space="preserve">
+    <value>Стаття</value>
+  </data>
+  <data name="attrcode.Text" xml:space="preserve">
+    <value>Код атрибута</value>
+  </data>
+  <data name="cmdFilter.Text" xml:space="preserve">
+    <value>Фільтр</value>
+  </data>
+  <data name="cmdResetFilters.Text" xml:space="preserve">
+    <value>&amp;lt;i class="fa fa-times-circle"&amp;gt;&amp;lt;/i&amp;gt; Скидання фільтрів</value>
+  </data>
+  <data name="filterkeywords.Text" xml:space="preserve">
+    <value>Ключові слова</value>
+  </data>
+  <data name="propertygroup.Text" xml:space="preserve">
+    <value>Тип групи</value>
+  </data>
+  <data name="selectable.Text" xml:space="preserve">
+    <value>Вибір</value>
+  </data>
+  <data name="updated.Text" xml:space="preserve">
+    <value>Оновлено</value>
+  </data>
+  <data name="Configuration.Text" xml:space="preserve">
+    <value>Конфігурації</value>
+  </data>
+  <data name="Promotion.Text" xml:space="preserve">
+    <value>Просування</value>
+  </data>
+  <data name="allowupload.Text" xml:space="preserve">
+    <value>Активація завантаження клієнтського файлу</value>
+  </data>
+  <data name="ReturnTo.Text" xml:space="preserve">
+    <value>Повернутися до</value>
+  </data>
+  <data name="Manufacturer.Text" xml:space="preserve">
+    <value>Виробник</value>
+  </data>
+  <data name="DealerSale.Text" xml:space="preserve">
+    <value>Продаж дилерів</value>
+  </data>
+  <data name="disablesale.Text" xml:space="preserve">
+    <value>Вимкнути ціну продажу</value>
+  </data>
+  <data name="disabledealer.Text" xml:space="preserve">
+    <value>Вимкнути дилера</value>
+  </data>
+  <data name="searchfilter.Text" xml:space="preserve">
+    <value>Відобразити фільтр пошуку</value>
+  </data>
+  <data name="fea.Text" xml:space="preserve">
+    <value>Функції</value>
+  </data>
+  <data name="promo.Text" xml:space="preserve">
+    <value>Акції</value>
+  </data>
+  <data name="spec.Text" xml:space="preserve">
+    <value>Специфікації</value>
+  </data>
+  <data name="supp.Text" xml:space="preserve">
+    <value>Постачальника</value>
+  </data>
+  <data name="temp.Text" xml:space="preserve">
+    <value>Темп</value>
+  </data>
+  <data name="cat.Text" xml:space="preserve">
+    <value>Категорії</value>
+  </data>
+  <data name="man.Text" xml:space="preserve">
+    <value>Виробник</value>
+  </data>
+  <data name="QtyUnits.Text" xml:space="preserve">
+    <value>Кількість одиниць вимірювання</value>
+  </data>
+  <data name="txtemptybasket.Text" xml:space="preserve">
+    <value>Ваш кошик порожній</value>
+  </data>
+  <data name="txtitems.Text" xml:space="preserve">
+    <value>проміжний підсумок елемента</value>
+  </data>
+  <data name="pleaseselect.Text" xml:space="preserve">
+    <value>Будь ласка, виберіть</value>
+  </data>
+  <data name="ApplyTax.Text" xml:space="preserve">
+    <value>Застосувати ставку податку до всіх продуктів у категорії</value>
+  </data>
+  <data name="GroupType.Text" xml:space="preserve">
+    <value>Тип групи</value>
+  </data>
+  <data name="filtergroups.Text" xml:space="preserve">
+    <value>Групи фільтрів</value>
+  </data>
+  <data name="group.Text" xml:space="preserve">
+    <value>Група</value>
+  </data>
+  <data name="filter.Text" xml:space="preserve">
+    <value>Фільтр</value>
+  </data>
+  <data name="createnewlist.Text" xml:space="preserve">
+    <value>Створення нового списку</value>
+  </data>
+  <data name="listtitle.Text" xml:space="preserve">
+    <value>Будь ласка, виберіть список</value>
+  </data>
+  <data name="shoppinglistadd.Text" xml:space="preserve">
+    <value>Додати до цього списку</value>
+  </data>
+  <data name="createlist.Text" xml:space="preserve">
+    <value>Створити список</value>
+  </data>
+  <data name="cancellist.Text" xml:space="preserve">
+    <value>скасування</value>
+  </data>
+  <data name="IgnoreShared.Text" xml:space="preserve">
+    <value>Ігнорувати спільні записи</value>
+  </data>
+  <data name="login.Text" xml:space="preserve">
+    <value>Логін</value>
+  </data>
+  <data name="loginpopupmsg.Text" xml:space="preserve">
+    <value>Ви повинні увійти в свій обліковий запис, щоб додати продукти до улюблених списків.</value>
+  </data>
+  <data name="AccessToClient.Text" xml:space="preserve">
+    <value>Доступ, наданий клієнту</value>
+  </data>
+  <data name="roles.Text" xml:space="preserve">
+    <value>Адміністратори, Менеджер, Редактор, Клієнт Редактор, Продажі</value>
+  </data>
+  <data name="cmdResetButton.confirm" xml:space="preserve">
+    <value>Скинути запис?</value>
+  </data>
+  <data name="included.Text" xml:space="preserve">
+    <value>(включити)</value>
+  </data>
+  <data name="AddressName.Text" xml:space="preserve">
+    <value>Ім'я адреси</value>
+  </data>
+  <data name="cascade.Text" xml:space="preserve">
+    <value>Каскад</value>
+  </data>
+  <data name="enabled.Text" xml:space="preserve">
+    <value>Включений</value>
+  </data>
+  <data name="visible.Text" xml:space="preserve">
+    <value>Видимий</value>
+  </data>
+  <data name="owner.Text" xml:space="preserve">
+    <value>Власник</value>
+  </data>
+  <data name="DealerOnly.Text" xml:space="preserve">
+    <value>Лише для дилерів</value>
+  </data>
+  <data name="Carttotal.Text" xml:space="preserve">
+    <value>Проміжні підсумки</value>
+  </data>
+  <data name="RefValidationMessage.Text" xml:space="preserve">
+    <value>Посилання має бути цифровим цифровим регістром нижнього регістру лише без пробілів.</value>
+  </data>
+  <data name="PropertyGroupAddSearchBox.Text" xml:space="preserve">
+    <value>Додати поле пошуку</value>
+  </data>
+  <data name="PropertyGroupSearchLabel.Text" xml:space="preserve">
+    <value>Шукати</value>
+  </data>
+  <data name="cmdValidateButton.Text" xml:space="preserve">
+    <value>&lt;i title="Перевірити" class="fa fa-check fa-fw"&gt;&lt;/i&gt;&lt;span class="lg-hidden"&gt;Перевірити&lt;/span&gt;</value>
+  </data>
+  <data name="ProductValidationFailureMessage.Text" xml:space="preserve">
+    <value>Продукт перевірено помилками.</value>
+  </data>
+  <data name="ProductValidationMessageTitle.Text" xml:space="preserve">
+    <value>Операцію завершено</value>
+  </data>
+  <data name="ProductValidationSuccessMessage.Text" xml:space="preserve">
+    <value>Продукт успішно перевірено</value>
+  </data>
+  <data name="ProductValidationErrorCount.Text" xml:space="preserve">
+    <value>Кількість помилок</value>
+  </data>
+  <data name="QtyMinPurchase.Text" xml:space="preserve">
+    <value>Мінімальна кількість покупки</value>
+  </data>
+</root>

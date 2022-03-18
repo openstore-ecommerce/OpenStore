@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="addressbookupdated_ok.Text" xml:space="preserve">
-    <value>Address Update Successful</value>
+    <value>Оновлення адреси виконано успішно</value>
   </data>
   <data name="notifytemplate_error.Text" xml:space="preserve">
     <value>&lt;div class="nbsnotify nbsnotifyerror bg-danger"&gt;{message}&lt;/div&gt;</value>
@@ -133,198 +133,201 @@
     <value>&lt;div class="nbsnotify nbsnotifywarning bg-warning"&gt;{message}&lt;/div&gt;</value>
   </data>
   <data name="profileupdatedclientrole_ok.Text" xml:space="preserve">
-    <value>Your details have been saved, you will receive an email when your account has been validated and you are able to access the store.</value>
+    <value>Ваші дані були збережені, ви отримаєте електронний лист, коли ваш обліковий запис буде перевірено, і ви зможете отримати доступ до магазину.</value>
   </data>
   <data name="profileupdated_emailsubject.Text" xml:space="preserve">
-    <value>Profile Update</value>
+    <value>Оновлення профілю</value>
   </data>
   <data name="profileupdated_ok.Text" xml:space="preserve">
-    <value>Your profile has been updated.</value>
+    <value>Ваш профіль оновлено.</value>
   </data>
   <data name="general_error.Text" xml:space="preserve">
-    <value>Unknown Error</value>
+    <value>Невідома помилка</value>
   </data>
   <data name="general_fail.Text" xml:space="preserve">
-    <value>Operation Failed</value>
+    <value>Не вдалося виконати операцію</value>
   </data>
   <data name="general_ok.Text" xml:space="preserve">
-    <value>Operation Successful</value>
+    <value>Операція успішна</value>
   </data>
   <data name="general_warning.Text" xml:space="preserve">
-    <value>Operation Warning</value>
+    <value>Попередження про операцію</value>
   </data>
   <data name="orderactionemailamended_ok.Text" xml:space="preserve">
-    <value>Order Amended Email Sent</value>
+    <value>Надіслано змінену електронну пошту</value>
   </data>
   <data name="orderactionemailreceipt_ok.Text" xml:space="preserve">
-    <value>Order Receipt Email Sent</value>
+    <value>Надіслано електронний лист із сповіщенням про замовлення</value>
   </data>
   <data name="orderactionemailshipped_ok.Text" xml:space="preserve">
-    <value>Order Shipped Email Sent</value>
+    <value>Надіслано надіслану електронну пошту за замовленням</value>
   </data>
   <data name="orderactionemailvalidated_ok.Text" xml:space="preserve">
-    <value>Order Validated Email Sent</value>
+    <value>Надіслано перевірену електронну пошту за замовленням</value>
   </data>
   <data name="orderactionprintorder_ok.Text" xml:space="preserve">
-    <value>Order Printed</value>
+    <value>Замовлення надруковано</value>
   </data>
   <data name="orderactionprintreceipt_ok.Text" xml:space="preserve">
-    <value>Receipt Printed</value>
+    <value>Квитанція надрукована</value>
   </data>
   <data name="orderactionsave_ok.Text" xml:space="preserve">
-    <value>Order update Successful</value>
+    <value>Успішне оновлення замовлення</value>
   </data>
   <data name="orderamended_emailsubject.Text" xml:space="preserve">
-    <value>Order Amended</value>
+    <value>Наказ зі змінами</value>
   </data>
   <data name="orderreceipt_emailsubject.Text" xml:space="preserve">
-    <value>Order Receipt</value>
+    <value>Квитанція про замовлення</value>
   </data>
   <data name="ordershipped_emailsubject.Text" xml:space="preserve">
-    <value>Order Shipped</value>
+    <value>Замовлення відправлено</value>
   </data>
   <data name="ordervalidated_emailsubject.Text" xml:space="preserve">
-    <value>Order Validated</value>
+    <value>Замовлення перевірено</value>
   </data>
   <data name="categoryactionsave_ok.Text" xml:space="preserve">
-    <value>Category update Successful</value>
+    <value>Оновлення категорій виконано успішно</value>
   </data>
   <data name="groupactionsave_ok.Text" xml:space="preserve">
-    <value>Group update Successful</value>
+    <value>Групове оновлення успішно</value>
   </data>
   <data name="profileupdatedexists_fail.Text" xml:space="preserve">
-    <value>User already registered.  To register please try a different username/email.</value>
+    <value>Користувач вже зареєстрований. Щоб зареєструватися, будь ласка, спробуйте інше ім'я користувача / електронну пошту.</value>
   </data>
   <data name="profileupdated_fail.Text" xml:space="preserve">
-    <value>Unable to register user, please check you profile information.</value>
+    <value>Не в змозі зареєструвати користувача, будь ласка, перевірте інформацію про ваш профіль.</value>
   </data>
   <data name="profileregistered_emailsubject.Text" xml:space="preserve">
-    <value>New Profile Registered</value>
+    <value>Новий профіль зареєстровано</value>
   </data>
   <data name="profileupdatedcaptcha_fail.Text" xml:space="preserve">
-    <value>Invalid Security Code.</value>
+    <value>Неприпустимий код безпеки.</value>
   </data>
   <data name="stockadjusted.Text" xml:space="preserve">
-    <value>Qty adjusted to match available stock</value>
+    <value>Кількість, скоригована відповідно до наявних запасів</value>
   </data>
   <data name="outofstock.Text" xml:space="preserve">
-    <value>Out of Stock</value>
+    <value>Немає в наявності</value>
   </data>
   <data name="terms.Text" xml:space="preserve">
-    <value>The Terms and Conditions must be accepted.</value>
+    <value>Правила та умови повинні бути прийняті.</value>
   </data>
   <data name="ordercreatedemailsubject.Text" xml:space="preserve">
-    <value>Order confirmed</value>
+    <value>Замовлення підтверджено</value>
   </data>
   <data name="deletecompleted_ok.Text" xml:space="preserve">
-    <value>Deleted Completed.</value>
+    <value>Видалено завершено.</value>
   </data>
   <data name="validatecompleted_ok.Text" xml:space="preserve">
-    <value>Validation Completed.</value>
+    <value>Перевірку завершено.</value>
   </data>
   <data name="OrderCreated.Text" xml:space="preserve">
-    <value>Order confirmed</value>
+    <value>Замовлення підтверджено</value>
   </data>
   <data name="OrderCreatedClient.Text" xml:space="preserve">
-    <value>Order confirmed</value>
+    <value>Замовлення підтверджено</value>
   </data>
   <data name="OrderAmended.Text" xml:space="preserve">
-    <value>Order amended</value>
+    <value>Наказ змінено</value>
   </data>
   <data name="OrderReceipt.Text" xml:space="preserve">
-    <value>Order receipt</value>
+    <value>Квитанція про замовлення</value>
   </data>
   <data name="OrderShipped.Text" xml:space="preserve">
-    <value>Order shipped</value>
+    <value>Замовлення відправлено</value>
   </data>
   <data name="OrderValidated.Text" xml:space="preserve">
-    <value>Order validated</value>
+    <value>Замовлення перевірено</value>
   </data>
   <data name="ProfileRegistered.Text" xml:space="preserve">
-    <value>Profile Registered</value>
+    <value>Профіль зареєстрований</value>
   </data>
   <data name="AddressUpdate.Text" xml:space="preserve">
-    <value>Address Update</value>
+    <value>Оновлення адреси</value>
   </data>
   <data name="bankinginstructions.Text" xml:space="preserve">
-    <value>Please make your bank payment as soon as possible to the account below. Insert the order number in the reference field and include your name as well if it is different from the acccount name.</value>
+    <value>Будь ласка, зробіть свій банківський платіж якомога швидше на рахунок нижче.Вставте номер замовлення в поле посилання та включіть своє ім'я, якщо воно відрізняється від імені облікового запису.</value>
   </data>
   <data name="emailmessage.Text" xml:space="preserve">
-    <value>Thank you for your order. We're here to help! Call us during office hours Monday to Friday, or visit us in-store if you have any questions about your order.</value>
+    <value>Дякуємо за ваше замовлення. Ми тут, щоб допомогти!Зателефонуйте нам в робочий час з понеділка по п'ятницю або відвідайте нас в магазині, якщо у вас виникли питання щодо вашого замовлення.</value>
   </data>
   <data name="pickupmessage.Text" xml:space="preserve">
-    <value>You are welcome to pick your order up from us in store during opening hours. Please ring us if you want to ensure it is ready for pickup.</value>
+    <value>Ви можете забрати своє замовлення у нас в магазині в години роботи.Будь ласка, зателефонуйте нам, якщо ви хочете переконатися, що він готовий до самовивозу.</value>
   </data>
   <data name="checkoutsuccessmessage.Text" xml:space="preserve">
-    <value>Thank you for your order. You will receive an emailed confirmation containing all order details. Please check your junk email folders if you don't receive it within 30 minutes. Take note of the number below if you wish to contact us about this order.</value>
+    <value>Дякуємо за ваше замовлення. Ви отримаєте електронною поштою підтвердження, що містить усі деталі замовлення.Перевірте папки небажаної пошти, якщо ви не отримаєте їх протягом 30 хвилин. Зверніть увагу на наведений нижче номер, якщо ви хочете зв'язатися з нами щодо цього замовлення.</value>
   </data>
   <data name="checkoutfailmessage.Text" xml:space="preserve">
-    <value>The order was cancelled or the payment failed. Contact your bank if you need assistance with your credit card, or contact us if you believe there is a problem with the checkout.</value>
+    <value>Замовлення скасовано або платіж не вдалося виконати. Зв'яжіться зі своїм банком, якщо вам потрібна допомога з вашою кредитною карткою, або зв'яжіться з нами, якщо ви вважаєте, що є проблема з оформленням замовлення.</value>
   </data>
   <data name="Contactus.Text" xml:space="preserve">
-    <value>Contact us</value>
+    <value>Зв'яжіться з нами</value>
   </data>
   <data name="ManualPayment.Text" xml:space="preserve">
-    <value>Check and Bank Payment</value>
+    <value>Чек і банківський платіж</value>
   </data>
   <data name="Bank.Text" xml:space="preserve">
-    <value>Bank</value>
+    <value>Банк</value>
   </data>
   <data name="AccountName.Text" xml:space="preserve">
-    <value>Account Name</value>
+    <value>Ім'я облікового запису</value>
   </data>
   <data name="AccountNumber.Text" xml:space="preserve">
-    <value>Account Number</value>
+    <value>Номер рахунку</value>
   </data>
   <data name="InsertReference.Text" xml:space="preserve">
-    <value>Insert Reference</value>
+    <value>Вставити посилання</value>
   </data>
   <data name="BillingAddress.Text" xml:space="preserve">
-    <value>Billing Address</value>
+    <value>Платіжна адреса</value>
   </data>
   <data name="ShippingAddress.Text" xml:space="preserve">
-    <value>Shipping Address</value>
+    <value>Адреса доставки</value>
   </data>
   <data name="ShippingMethod.Text" xml:space="preserve">
-    <value>Shipping Method</value>
+    <value>Спосіб доставки</value>
   </data>
   <data name="ShippingOption.Text" xml:space="preserve">
-    <value>Shipping Option</value>
+    <value>Варіант доставки</value>
   </data>
   <data name="TrackingNumber.Text" xml:space="preserve">
-    <value>Tracking Number</value>
+    <value>Номер відстеження</value>
   </data>
   <data name="ShippingDate.Text" xml:space="preserve">
-    <value>Shipping Date</value>
+    <value>Дата доставки</value>
   </data>
   <data name="Collection.Text" xml:space="preserve">
-    <value>Collection Details</value>
+    <value>Відомості про колекцію</value>
   </data>
   <data name="settingssetup_fail.Text" xml:space="preserve">
-    <value>Store Configuration needs to be done.</value>
+    <value>Конфігурація магазину повинна бути виконана.</value>
   </data>
   <data name="removeuser_fail.Text" xml:space="preserve">
-    <value>Client has existing orders, cannot remove user</value>
+    <value>Клієнт має наявні замовлення, не може видалити користувача</value>
   </data>
   <data name="completed_ok.Text" xml:space="preserve">
-    <value>Operation Completed.</value>
+    <value>Операцію завершено.</value>
   </data>
   <data name="noproviderdata_warning.Text" xml:space="preserve">
-    <value>No provider data can be found. Make sure you have saved the provider data in the Back Office.</value>
+    <value>Не вдалося знайти дані постачальника. Переконайтеся, що дані постачальника збережено в бек-офісі.</value>
   </data>
   <data name="nopin_fail.Text" xml:space="preserve">
-    <value>Invalid Admin PIN</value>
+    <value>Неприпустимий PIN-код адміністратора</value>
   </data>
   <data name="categoryactionsave_fail.Text" xml:space="preserve">
-    <value>Category update Failed.  Ensure Parent category is not set to a child of itself.</value>
+    <value>Не вдалося оновити категорію категорії.Переконайтеся, що батьківська категорія не налаштована на дитину сама по собі.</value>
   </data>
   <data name="onlyleafcat_fail.Text" xml:space="preserve">
-    <value>Only end leaf categories can be deleted.</value>
+    <value>Видалити можна лише категорії кінцевих листів.
+Copy
+Download
+Отримайте PRO-переклад</value>
   </data>
   <data name="emailsent.Text" xml:space="preserve">
-    <value>Email Sent</value>
+    <value>Надіслано електронною поштою</value>
   </data>
   <data name="product01_fail.Text" xml:space="preserve">
-    <value>Communication Error: Product Save Failed.  (Invalid Model Count)</value>
+    <value>Помилка зв'язку: не вдалося зберегти продукт. (Неприпустима кількість моделей)</value>
   </data>
 </root>

@@ -118,444 +118,444 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="pagesize.Text" xml:space="preserve">
-    <value>Page Length</value>
+    <value>Довжина сторінки</value>
   </data>
   <data name="Settings.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Параметри</value>
   </data>
   <data name="productlisttab.Help" xml:space="preserve">
-    <value>Used to redirect user/manager to the product page when certain actions are done.</value>
+    <value>Використовується для перенаправлення користувача/менеджера на сторінку продукту, коли виконуються певні дії.</value>
   </data>
   <data name="productlisttab.Text" xml:space="preserve">
-    <value>Product List</value>
+    <value>Список товарів</value>
   </data>
   <data name="adminemail.Help" xml:space="preserve">
-    <value>Email Address of administrator, this is the default sending email address.</value>
+    <value>Адреса електронної пошти адміністратора, це адреса електронної пошти за замовчуванням, що надсилається.</value>
   </data>
   <data name="adminemail.Text" xml:space="preserve">
-    <value>Administrator</value>
+    <value>Адміністратор</value>
   </data>
   <data name="carttab.Help" xml:space="preserve">
-    <value>Used to redirect user/manager when certain actions are done.  Typically set to a page containing the OS_FullCart or OS_Checkout module.</value>
+    <value>Використовується для перенаправлення користувача/ менеджера, коли виконуються певні дії. Зазвичай встановлюється сторінка, що містить OS_FullCart або OS_Checkout модуль.</value>
   </data>
   <data name="carttab.Text" xml:space="preserve">
-    <value>Redirect To (Cart)</value>
+    <value>Перенаправлення на (Кошик)</value>
   </data>
   <data name="favoritestab.Text" xml:space="preserve">
-    <value>Favorites</value>
+    <value>Уподобання</value>
   </data>
   <data name="manageremail.Help" xml:space="preserve">
-    <value>Email address(es) of the manager(s) of the store (separed by comas).</value>
+    <value>Адреса електронної пошти (es) менеджера (ів) магазину (separed by comas).</value>
   </data>
   <data name="manageremail.Text" xml:space="preserve">
-    <value>Manager</value>
+    <value>Голова</value>
   </data>
   <data name="resetpasswordonclientvalidate.Text" xml:space="preserve">
-    <value>Reset Password on Client Validation</value>
+    <value>Скидання пароля під час перевірки клієнта</value>
   </data>
   <data name="cataloguemode.Text" xml:space="preserve">
-    <value>Catalogue mode</value>
+    <value>Режим каталогу</value>
   </data>
   <data name="folderdocs.Text" xml:space="preserve">
-    <value>Document Folder</value>
+    <value>Папка документа</value>
   </data>
   <data name="folderimages.Text" xml:space="preserve">
-    <value>Image Folder</value>
+    <value>Папка зображень</value>
   </data>
   <data name="folderuploads.Text" xml:space="preserve">
-    <value>Upload Folder</value>
+    <value>Передати папку</value>
   </data>
   <data name="minimumstocklevel.Text" xml:space="preserve">
-    <value>Minimum Stock</value>
+    <value>Мінімальний запас</value>
   </data>
   <data name="pageactions.Text" xml:space="preserve">
-    <value>Page Actions</value>
+    <value>Дії сторінки</value>
   </data>
   <data name="backofficeexittab.Text" xml:space="preserve">
-    <value>Back Office Exit Page</value>
+    <value>Сторінка виходу з офісу</value>
   </data>
   <data name="sendclientroleemail.Text" xml:space="preserve">
-    <value>Send Email to Client when added to Client role</value>
+    <value>Надсилання електронної пошти клієнту під час додавання до ролі клієнта</value>
   </data>
   <data name="defaultthemefolder.Text" xml:space="preserve">
-    <value>Default Theme Folder</value>
+    <value>Папка теми за промовчанням</value>
   </data>
   <data name="devoptions.Text" xml:space="preserve">
-    <value>Developer Options</value>
+    <value>Параметри розробника</value>
   </data>
   <data name="enabledealer.Text" xml:space="preserve">
-    <value>Enable Dealer</value>
+    <value>Увімкнути дилера</value>
   </data>
   <data name="removelogo.confirm" xml:space="preserve">
-    <value>Remove logo?</value>
+    <value>Видалити логотип?</value>
   </data>
   <data name="removelogo.Text" xml:space="preserve">
-    <value>Remove</value>
+    <value>Видалити</value>
   </data>
   <data name="orderprefix.Text" xml:space="preserve">
-    <value>Order Prefix</value>
+    <value>Префікс замовлення</value>
   </data>
   <data name="currencysymbol.Text" xml:space="preserve">
-    <value>Currency Symbol</value>
+    <value>Символ грошової одиниці</value>
   </data>
   <data name="paymenttab.Help" xml:space="preserve">
-    <value>Tab where the client will be redirected to select a method of payment.</value>
+    <value>Вкладка, де клієнт буде перенаправлений, щоб вибрати спосіб оплати.</value>
   </data>
   <data name="paymenttab.Text" xml:space="preserve">
-    <value>Payment</value>
+    <value>Внесок</value>
   </data>
   <data name="fontawesome.Text" xml:space="preserve">
-    <value>Include FontAwesome</value>
+    <value>Включити FontAwesome</value>
   </data>
   <data name="jqueryuicss.Text" xml:space="preserve">
-    <value>Include jQuery UI CSS</value>
+    <value>Включити jQuery інтерфейсу CSS</value>
   </data>
   <data name="jqueryuijs.Text" xml:space="preserve">
-    <value>Include jQuery UI JS</value>
+    <value>Включити jQuery UI JS</value>
   </data>
   <data name="ordermanagertab.Text" xml:space="preserve">
-    <value>My Orders</value>
+    <value>Мої замовлення</value>
   </data>
   <data name="addressestab.Text" xml:space="preserve">
-    <value>My Address</value>
+    <value>Моя адреса</value>
   </data>
   <data name="profiletab.Text" xml:space="preserve">
-    <value>My Profile</value>
+    <value>Мій профіль</value>
   </data>
   <data name="Enabled.Text" xml:space="preserve">
-    <value>Enabled</value>
+    <value>Включений</value>
   </data>
   <data name="copyorderto.Text" xml:space="preserve">
-    <value>Copy Order to Email</value>
+    <value>Копіювати замовлення на електронну пошту</value>
   </data>
   <data name="subscribenewsletter.Text" xml:space="preserve">
-    <value>Newsletter Checkbox</value>
+    <value>Прапорець бюлетеня</value>
   </data>
   <data name="checkoutpromocode.Text" xml:space="preserve">
-    <value>Promo Code Field</value>
+    <value>Поле промокоду</value>
   </data>
   <data name="checkouttaxcode.Text" xml:space="preserve">
-    <value>Tax Code Field</value>
+    <value>Поле Податкового кодексу</value>
   </data>
   <data name="productimageresize.Text" xml:space="preserve">
-    <value>Image Resize</value>
+    <value>Зміна розміру зображення</value>
   </data>
   <data name="bonoimageicon.Text" xml:space="preserve">
-    <value>Placeholder Icon</value>
+    <value>Піктограма покажчика місця заповнення</value>
   </data>
   <data name="productdetailtab.Text" xml:space="preserve">
-    <value>Product Detail</value>
+    <value>Відомості про продукт</value>
   </data>
   <data name="groupresults.Text" xml:space="preserve">
-    <value>Group Models by Product</value>
+    <value>Групові моделі за продуктом</value>
   </data>
   <data name="emailthemefolder.Help" xml:space="preserve">
-    <value>The Theme folder that will be used for emails and prints.</value>
+    <value>Папка Тема, яка буде використовуватися для електронних листів і друку.</value>
   </data>
   <data name="emailthemefolder.Text" xml:space="preserve">
-    <value>Email Theme Folder</value>
+    <value>Папка теми електронної пошти</value>
   </data>
   <data name="debugfileout.Text" xml:space="preserve">
-    <value>Debug File Output</value>
+    <value>Налагодження виводу файлу</value>
   </data>
   <data name="debugfileoutmsg.Text" xml:space="preserve">
-    <value>Outputs debug files, do NOT use on production site</value>
+    <value>Виводить налагоджувальні файли, НЕ використовуйте на виробничому майданчику</value>
   </data>
   <data name="shareproducts.Text" xml:space="preserve">
-    <value>Share products</value>
+    <value>Поділитися продуктами</value>
   </data>
   <data name="shareproductsmsg.Text" xml:space="preserve">
-    <value>Share PRODUCTS created in this portal with all portals in the DNN installation</value>
+    <value>Поділіться продуктами, створеними на цьому порталі, з усіма порталами в установці DNN</value>
   </data>
   <data name="alloweditorder.Text" xml:space="preserve">
-    <value>Allow Order Edit</value>
+    <value>Дозволити редагування замовлення</value>
   </data>
   <data name="carttitle.Text" xml:space="preserve">
-    <value>Show Cart Title</value>
+    <value>Показати назву кошика</value>
   </data>
   <data name="cartsteps.Text" xml:space="preserve">
-    <value>Show Cart Steps</value>
+    <value>Показати кроки кошика</value>
   </data>
   <data name="friendlyurlids.Help" xml:space="preserve">
-    <value>Instead of the database unique id for products and cateogries the reference will be used in preference.  This option expect usable and unique category and product refs.</value>
+    <value>Замість унікального ідентифікатора бази даних для продуктів і катеогрій буде використовуватися посилання в перевагу. Цей параметр очікує корисних і унікальних категорій і продуктів refs.</value>
   </data>
   <data name="friendlyurlids.Text" xml:space="preserve">
-    <value>Use SEO friendly URL ids</value>
+    <value>Використовуйте ідентифікатори URL-адрес, зручні для SEO</value>
   </data>
   <data name="allowdnnindex.Text" xml:space="preserve">
-    <value>Allow DNN Search Indexing of products</value>
+    <value>Дозволити індексацію продуктів пошуку DNN</value>
   </data>
   <data name="startupctrl.Text" xml:space="preserve">
-    <value>Default BO control</value>
+    <value>Елемент керування BO за промовчанням</value>
   </data>
   <data name="merchantdetails.Text" xml:space="preserve">
-    <value>Merchant details</value>
+    <value>Відомості про продавця</value>
   </data>
   <data name="emailaddresses.Text" xml:space="preserve">
-    <value>Email address</value>
+    <value>Адреса електронної пошти</value>
   </data>
   <data name="supportemail.Text" xml:space="preserve">
-    <value>Support</value>
+    <value>Підтримка</value>
   </data>
   <data name="supportemail.Help" xml:space="preserve">
-    <value>Display with the merchant details inside the notifications emails from the store.</value>
+    <value>Відображення з інформацією продавця всередині сповіщень електронної пошти з магазину.</value>
   </data>
   <data name="salesemail.Text" xml:space="preserve">
-    <value>Sales</value>
+    <value>Продажу</value>
   </data>
   <data name="salesemail.Help" xml:space="preserve">
-    <value>Display with the merchant details inside the notifications emails from the store.</value>
+    <value>Відображення з інформацією продавця всередині сповіщень електронної пошти з магазину.</value>
   </data>
   <data name="merchantaddress.Text" xml:space="preserve">
-    <value>Merchant address</value>
+    <value>Адреса продавця</value>
   </data>
   <data name="merchantattention.Text" xml:space="preserve">
-    <value>Attention</value>
+    <value>Увага</value>
   </data>
   <data name="merchantpostbox.Text" xml:space="preserve">
-    <value>Post box</value>
+    <value>Поштова скринька</value>
   </data>
   <data name="bankingdetails.Text" xml:space="preserve">
-    <value>Banking details</value>
+    <value>Банківські реквізити</value>
   </data>
   <data name="bank.Text" xml:space="preserve">
-    <value>Bank</value>
+    <value>Банк</value>
   </data>
   <data name="accountname.Text" xml:space="preserve">
-    <value>Account name</value>
+    <value>Ім'я облікового запису</value>
   </data>
   <data name="accountnumber.Text" xml:space="preserve">
-    <value>Account number</value>
+    <value>Номер рахунку</value>
   </data>
   <data name="bankinginstructions.Text" xml:space="preserve">
-    <value>Banking instructions</value>
+    <value>Банківські інструкції</value>
   </data>
   <data name="emailbranding.Text" xml:space="preserve">
-    <value>Email branding</value>
+    <value>Брендинг електронної пошти</value>
   </data>
   <data name="storename.Text" xml:space="preserve">
-    <value>Store name</value>
+    <value>Назва сховища</value>
   </data>
   <data name="logoimage.Text" xml:space="preserve">
-    <value>Logo image</value>
+    <value>Зображення логотипу</value>
   </data>
   <data name="emailmessage.Text" xml:space="preserve">
-    <value>Email message</value>
+    <value>Повідомлення електронної пошти</value>
   </data>
   <data name="socialnetworking.Text" xml:space="preserve">
-    <value>Social networking</value>
+    <value>Соціальні мережі</value>
   </data>
   <data name="twitterpage.Text" xml:space="preserve">
-    <value>Twitter page</value>
+    <value>Сторінка в Twitter</value>
   </data>
   <data name="facebookpage.Text" xml:space="preserve">
-    <value>Facebook page</value>
+    <value>Сторінка у Facebook</value>
   </data>
   <data name="sharingwidget.Text" xml:space="preserve">
-    <value>Sharing widget</value>
+    <value>Спільний доступ до віджета</value>
   </data>
   <data name="checkout.Text" xml:space="preserve">
-    <value>Checkout</value>
+    <value>Касі</value>
   </data>
   <data name="storepickupmessage.Text" xml:space="preserve">
-    <value>Store pickup message</value>
+    <value>Повідомлення про самовивіз магазину</value>
   </data>
   <data name="successfulcheckoutmessage.Text" xml:space="preserve">
-    <value>Successful checkout message</value>
+    <value>Повідомлення про успішну взяття на редагування</value>
   </data>
   <data name="failedcheckoutmessage.Text" xml:space="preserve">
-    <value>Failed checkout message</value>
+    <value>Повідомлення про помилку взяття на редагування</value>
   </data>
   <data name="folders.Text" xml:space="preserve">
-    <value>Folders</value>
+    <value>Папки</value>
   </data>
   <data name="storeconfiguration.Text" xml:space="preserve">
-    <value>Store configuration</value>
+    <value>Конфігурація сховища</value>
   </data>
   <data name="countrydetails.Text" xml:space="preserve">
-    <value>Country details</value>
+    <value>Відомості про країну</value>
   </data>
   <data name="merchantculture.Text" xml:space="preserve">
-    <value>Merchant Culture</value>
+    <value>Торгова культура</value>
   </data>
   <data name="currencycode.Text" xml:space="preserve">
-    <value>Currency Code</value>
+    <value>Код валюти</value>
   </data>
   <data name="commoncountries.Text" xml:space="preserve">
-    <value>Common Countries</value>
+    <value>Спільні країни</value>
   </data>
   <data name="selectedcountries.Text" xml:space="preserve">
-    <value>Selected countries (Drag to sort)</value>
+    <value>Вибрані країни (перетягніть, щоб відсортувати)</value>
   </data>
   <data name="othercountries.Text" xml:space="preserve">
-    <value>Other countries</value>
+    <value>Інші країни</value>
   </data>
   <data name="checkall.Text" xml:space="preserve">
-    <value>Check all</value>
+    <value>Перевірити всі</value>
   </data>
   <data name="Theme.Text" xml:space="preserve">
-    <value>Theme</value>
+    <value>Тема</value>
   </data>
   <data name="defaultcategory.Text" xml:space="preserve">
-    <value>Default Category</value>
+    <value>Категорія за промовчанням</value>
   </data>
   <data name="defaultproperty.Text" xml:space="preserve">
-    <value>Default Property</value>
+    <value>Властивість за промовчанням</value>
   </data>
   <data name="productsearchmod.Text" xml:space="preserve">
-    <value>Product Search Results Module Ref</value>
+    <value>Модуль результатів пошуку продуктів Ref</value>
   </data>
   <data name="productsearchtab.Text" xml:space="preserve">
-    <value>Product Search Results Page</value>
+    <value>Сторінка результатів пошуку продуктів</value>
   </data>
   <data name="boclass.Text" xml:space="preserve">
-    <value>Back Office Class</value>
+    <value>Клас back office</value>
   </data>
   <data name="debugmode.Text" xml:space="preserve">
-    <value>Activate this to allow editing of razor templates, without the need to clear cache.  Warning!! Do NOT use in production, this can cause a memory leak and bad performance.</value>
+    <value>Активуйте це, щоб дозволити редагування шаблонів бритви, без необхідності очищати кеш. Попередження!! Не використовуйте у виробництві, це може викликати витік пам'яті і погану продуктивність.</value>
   </data>
   <data name="lbltemplate.Help" xml:space="preserve">
-    <value>Name of razor template to use.</value>
+    <value>Ім'я шаблону бритви для використання.</value>
   </data>
   <data name="lbltemplate.Text" xml:space="preserve">
-    <value>Razor Template</value>
+    <value>Шаблон бритви</value>
   </data>
   <data name="razordetailtemplate.Text" xml:space="preserve">
-    <value>Detail Template</value>
+    <value>Шаблон відомостей</value>
   </data>
   <data name="razorlisttemplate.Text" xml:space="preserve">
-    <value>List Template</value>
+    <value>Шаблон списку</value>
   </data>
   <data name="razortemplate.Text" xml:space="preserve">
-    <value>Template</value>
+    <value>Шаблон</value>
   </data>
   <data name="parentcategory.Text" xml:space="preserve">
-    <value>Parent Category</value>
+    <value>Батьківська категорія</value>
   </data>
   <data name="itemlistname.Help" xml:space="preserve">
-    <value>Name of wishlist to be added/remove to, or displayed in when displaying selected list.</value>
+    <value>Ім'я списку бажань, до якого потрібно додати/видалити або відобразити його під час відображення вибраного списку.</value>
   </data>
   <data name="itemlistname.Text" xml:space="preserve">
-    <value>Wishlist Name</value>
+    <value>Ім'я списку бажань</value>
   </data>
   <data name="addthispubid.Text" xml:space="preserve">
     <value>AddThis PubID</value>
   </data>
   <data name="allowupload.Text" xml:space="preserve">
-    <value>Activate Client File Upload Option </value>
+    <value>Активація параметра передавання клієнтського файлу</value>
   </data>
   <data name="folderclientuploads.Text" xml:space="preserve">
-    <value>Client Upload Folder</value>
+    <value>Папка завантаження клієнта</value>
   </data>
   <data name="fileregexpr.Text" xml:space="preserve">
-    <value>Accepted File Upload RegEx</value>
+    <value>Допустиме завантаження файлу RegEx</value>
   </data>
   <data name="websiteurl.Text" xml:space="preserve">
-    <value>Website URL</value>
+    <value>URL-адреса веб-сайту</value>
   </data>
   <data name="dealerrole.Text" xml:space="preserve">
-    <value>Dealer Role ( * = Everyone)</value>
+    <value>Роль дилера (* = Всі)</value>
   </data>
   <data name="shareorders.Text" xml:space="preserve">
-    <value>Share orders</value>
+    <value>Діліться замовленнями на спільний</value>
   </data>
   <data name="shareordersmsg.Text" xml:space="preserve">
-    <value>Administer ORDERS made in this portal from any portal in the DNN installation</value>
+    <value>Адмініструвати замовлення, зроблені на цьому порталі з будь-якого порталу в установці DNN</value>
   </data>
   <data name="sharecategories.Text" xml:space="preserve">
-    <value>Share categories</value>
+    <value>Надання спільного доступу до категорій</value>
   </data>
   <data name="sharecategoriesmsg.Text" xml:space="preserve">
-    <value>Share CATEGORIES created in this portal with all portals in the DNN installation. Sharing categories will also share any producs add to the category across ALL portals.</value>
+    <value>Поділіться категоріями, створеними на цьому порталі, з усіма порталами в установці DNN. Спільні категорії також поділяться будь-якими продуктами, доданими до категорії, на всіх порталах.</value>
   </data>
   <data name="selectedfilters.Text" xml:space="preserve">
-    <value>Select Filters&lt;br/&gt;&lt;span style="font-weight: normal;"&gt;(drag-drop to sort)&lt;/span&gt;</value>
+    <value>Вибір фільтрів&lt;br/&gt;&lt;span style="font-weight: normal;"&gt;(перетягніть вказівник миші, щоб відсортувати)&lt;/span&gt;</value>
   </data>
   <data name="filtertypeinsidedata.Text" xml:space="preserve">
-    <value>Product must have all selected properties,Product must have one or more of selected properties</value>
+    <value>Продукт повинен мати всі вибрані властивості,Продукт повинен мати одну або кілька вибраних властивостей</value>
   </data>
   <data name="filtertypeinsidedatavalue.Text" xml:space="preserve">
     <value>AND,OR</value>
   </data>
   <data name="lblfiltertypeinsideproperty.Help" xml:space="preserve">
-    <value>Select the type of filter to be use when multiple options are checked within the same property.</value>
+    <value>Виберіть тип фільтра, який слід використовувати, якщо в межах однієї властивості буде позначено кілька параметрів.</value>
   </data>
   <data name="lblfiltertypeinsideproperty.Text" xml:space="preserve">
-    <value>Filter Type Inside Property</value>
+    <value>Властивість "Тип фільтра всередині"</value>
   </data>
   <data name="filtertypeoutsidedata.Text" xml:space="preserve">
-    <value>Product must meet conditions of all properties,Product must meet conditions of one or more properties</value>
+    <value>Продукт повинен відповідати умовам усіх властивостей, Продукт повинен відповідати умовам однієї або декількох властивостей</value>
   </data>
   <data name="filtertypeoutsidedatavalue.Text" xml:space="preserve">
     <value>AND,OR</value>
   </data>
   <data name="lblfiltertypeoutsideproperty.Help" xml:space="preserve">
-    <value>Select the type of filter to be use when options are checked within different properties.</value>
+    <value>Виберіть тип фільтра, який слід використовувати, якщо параметри перевіряються в різних властивостях.</value>
   </data>
   <data name="lblfiltertypeoutsideproperty.Text" xml:space="preserve">
-    <value>Filter Type Outside Property</value>
+    <value>Властивість "Тип фільтра зовнішній"</value>
   </data>
   <data name="selectedfilters.Help" xml:space="preserve">
-    <value>Drag and drop individual items to change the sort order.</value>
+    <value>Перетягніть окремі елементи, щоб змінити порядок сортування.</value>
   </data>
   <data name="enablefilelogging.Text" xml:space="preserve">
-    <value>Enable File Logging</value>
+    <value>Увімкнути журналювання файлів</value>
   </data>
   <data name="enablefileloggingmsg.Text" xml:space="preserve">
-    <value>To be able to actually see a logfile, you need to add a logger and an appender to the DotNetNuke.Log4Net.config file in the root of your DNN installation.</value>
+    <value>Щоб мати можливість насправді бачити файл журналу, вам потрібно додати реєстратор і додаток до файлу DotNetNuke.Log4Net.config в корені вашої установки DNN.</value>
   </data>
   <data name="providercontrolpath.Text" xml:space="preserve">
-    <value>Provider Path</value>
+    <value>Шлях постачальника</value>
   </data>
   <data name="providercontrolpath.Help" xml:space="preserve">
-    <value>If a provider plugin is being used to display data, this setting defines the control path which will be used to find the templates. (Default: NBrightBuy)</value>
+    <value>Якщо плагін постачальника використовується для відображення даних, цей параметр визначає шлях керування, який буде використовуватися для пошуку шаблонів. (За замовчуванням: NBrightBuy)</value>
   </data>
   <data name="activateajax.Text" xml:space="preserve">
-    <value>Activate Ajax</value>
+    <value>Активація Ajax</value>
   </data>
   <data name="logintab.Text" xml:space="preserve">
-    <value>Login Page</value>
+    <value>Сторінка входу</value>
   </data>
   <data name="cartmessages.Text" xml:space="preserve">
-    <value>Cart Messages</value>
+    <value>Повідомлення кошика</value>
   </data>
   <data name="activate404.Text" xml:space="preserve">
-    <value>Activate product 404</value>
+    <value>Активація продукту 404</value>
   </data>
   <data name="activate404msg.Text" xml:space="preserve">
-    <value>Activate a 404 status response for any product url which is no longer found in the system. </value>
+    <value>Активуйте відповідь на стан 404 для будь-якої URL-адреси продукту, якої більше немає в системі.</value>
   </data>
   <data name="activategdpr.Text" xml:space="preserve">
-    <value>Activate GDPR</value>
+    <value>Активація GDPR</value>
   </data>
   <data name="gdprmsg.Text" xml:space="preserve">
-    <value>GDPR Message</value>
+    <value>Повідомлення GDPR</value>
   </data>
   <data name="checkoutstart.Text" xml:space="preserve">
-    <value>Check Start Point</value>
+    <value>Перевірка початкової точки</value>
   </data>
   <data name="checkoutstartlist.Text" xml:space="preserve">
-    <value>list,address,summary</value>
+    <value>список, адреса, резюме</value>
   </data>
   <data name="singlepaymentoption.Text" xml:space="preserve">
-    <value>Skip payment page</value>
+    <value>Пропустити сторінку оплати</value>
   </data>
   <data name="singlepaymentoptionmsg.Text" xml:space="preserve">
-    <value>Skip payment page if only 1 payment provider</value>
+    <value>Пропустити сторінку оплати, якщо тільки 1 постачальник платежів</value>
   </data>
   <data name="linkmodulekey.Text" xml:space="preserve">
-    <value>Linked Product Module Ref.</value>
+    <value>Зв'язаний модуль продукту Ref.</value>
   </data>
   <data name="linkmodulekey.Help" xml:space="preserve">
-    <value>Module Ref. of the product list module that you want to link the filters to.  If linked to a product list module only filters that exist in the product list will be displayed.  You can find the module ref. on the product list module settings. </value>
+    <value>Модуль Ref. модуля списку продуктів, з яким потрібно зв'язати фільтри. Якщо зв'язано з модулем списку продуктів, відображатимуться лише фільтри, які існують у списку продуктів. Ви можете знайти модуль ref. у налаштуваннях модуля списку продуктів.</value>
   </data>
   <data name="seoimages.Text" xml:space="preserve">
-    <value>SEO Images</value>
+    <value>ЗОБРАЖЕННЯ SEO</value>
   </data>
   <data name="seoimagesmsg.Text" xml:space="preserve">
-    <value>Images can be renmaed to the alt of the image in the product detail, it will default to the product name.  A friendly SEO name will be created for each language and will also create mulitple sizes of images.  This is optional and does NOT give any great advantage to product SEO, but can help the images be reference if you require it.  You should run a store validation to rebuild all the images after this is turned on (It will take a LONG time, if you have a lot of images).</value>
+    <value>Зображення можуть бути віднесені до alt зображення в деталях продукту, це буде за замовчуванням для назви продукту. Для кожної мови буде створено дружнє SEO-ім'я, а також буде створено мулітні розміри зображень. Це необов'язково і не дає великої переваги ДЛЯ SEO продукту, але може допомогти зображення бути посиланням, якщо вам це потрібно. Ви повинні запустити перевірку магазину, щоб відновити всі зображення після того, як це буде ввімкнено (це займе багато часу, якщо у вас багато зображень).</value>
   </data>
   <data name="bidirectionrelatedproducts.Text" xml:space="preserve">
-    <value>Bi-Directional Related Products</value>
+    <value>Двонаправлені супутні товари</value>
   </data>
 </root>

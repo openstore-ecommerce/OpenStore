@@ -118,91 +118,91 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="admin.Text" xml:space="preserve">
-    <value>Admin</value>
+    <value>Адміністратора</value>
   </data>
   <data name="catalog.Text" xml:space="preserve">
-    <value>Catalog</value>
+    <value>Каталог</value>
   </data>
   <data name="dashboard.Text" xml:space="preserve">
-    <value>Dashboard</value>
+    <value>Панелі</value>
   </data>
   <data name="exit.Text" xml:space="preserve">
-    <value>Exit</value>
+    <value>Вийти</value>
   </data>
   <data name="lblctrl.Help" xml:space="preserve">
-    <value>Plugin Ref to identify the plugin to the system, must be unique and used to reference the resx file entry for the menu name.</value>
+    <value>Плагін Ref для ідентифікації плагіна в системі, повинен бути унікальним і використовуватися для позначення запису файлу resx для назви меню.</value>
   </data>
   <data name="lblctrl.Text" xml:space="preserve">
-    <value>Plugin Ref</value>
+    <value>Плагін Ref</value>
   </data>
   <data name="lbldescription.Help" xml:space="preserve">
-    <value>Turn on the product description text search</value>
+    <value>Увімкнення пошуку тексту опису продукту</value>
   </data>
   <data name="lbldescription.Text" xml:space="preserve">
-    <value>Description Text Search</value>
+    <value>Пошук тексту опису</value>
   </data>
   <data name="lblhelp.Help" xml:space="preserve">
-    <value>Description of the public for menu tooltip.</value>
+    <value>Опис підказки "Загальнодоступні для меню".</value>
   </data>
   <data name="lblhelp.Text" xml:space="preserve">
-    <value>Help</value>
+    <value>Допо</value>
   </data>
   <data name="lblname.Help" xml:space="preserve">
-    <value>Friendly Name for the Plugin. (used as default name on menu if no resx entry in plugins.ascx.resx)</value>
+    <value>Дружнє ім'я плагіна. (використовується як ім'я за замовчуванням у меню, якщо немає запису resx у плагінах.ascx.resx)</value>
   </data>
   <data name="lblname.Text" xml:space="preserve">
-    <value>Default Name</value>
+    <value>Ім'я за промовчанням</value>
   </data>
   <data name="lblpath.Help" xml:space="preserve">
-    <value>Relative path to the ascx control of the plugin.</value>
+    <value>Відносний шлях до управління ascx плагіна.</value>
   </data>
   <data name="lblpath.Text" xml:space="preserve">
-    <value>Path to Control</value>
+    <value>Шлях до керування</value>
   </data>
   <data name="settings.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Параметри</value>
   </data>
   <data name="addressbook.Text" xml:space="preserve">
-    <value>Address Book</value>
+    <value>Адресна книга</value>
   </data>
   <data name="promotions.Text" xml:space="preserve">
-    <value>Promotions</value>
+    <value>Акції</value>
   </data>
   <data name="shipping.Text" xml:space="preserve">
-    <value>Shipping</value>
+    <value>Доставка</value>
   </data>
   <data name="shipping_icon.Text" xml:space="preserve">
     <value>&lt;i class="fa fa-truck fa-fw"&gt;&lt;/i&gt;</value>
   </data>
   <data name="tax.Text" xml:space="preserve">
-    <value>Tax</value>
+    <value>Податок</value>
   </data>
   <data name="utilities.Text" xml:space="preserve">
-    <value>Utilities</value>
+    <value>Утиліти</value>
   </data>
   <data name="clients.Text" xml:space="preserve">
-    <value>Clients</value>
+    <value>Клієнтів</value>
   </data>
   <data name="cmdView.Text" xml:space="preserve">
-    <value>View</value>
+    <value>Вид</value>
   </data>
   <data name="dashsummary.Text" xml:space="preserve">
-    <value>Overview</value>
+    <value>Огляд</value>
   </data>
   <data name="plugins.Text" xml:space="preserve">
-    <value>Plugins</value>
+    <value>Плагіни</value>
   </data>
   <data name="lblhidden.Help" xml:space="preserve">
-    <value>Do not display on menu.</value>
+    <value>Не відображати в меню.</value>
   </data>
   <data name="lblhidden.Text" xml:space="preserve">
-    <value>Hidden</value>
+    <value>Приховані</value>
   </data>
   <data name="lblroles.Help" xml:space="preserve">
-    <value>CSV list of roles that are able to view this control</value>
+    <value>Список ролей CSV, які можуть переглядати цей елемент керування</value>
   </data>
   <data name="lblroles.Text" xml:space="preserve">
-    <value>Security Roles</value>
+    <value>Ролі безпеки</value>
   </data>
   <data name="bomenuattributes.Text" xml:space="preserve">
     <value>class="nav main-menu"</value>
@@ -211,22 +211,22 @@
     <value>class="dropdown-menu"</value>
   </data>
   <data name="lblgroup.Text" xml:space="preserve">
-    <value>Group</value>
+    <value>Група</value>
   </data>
   <data name="cmdEdit.Text" xml:space="preserve">
-    <value>Edit</value>
+    <value>Редагувати</value>
   </data>
   <data name="cmdUpIcon.Text" xml:space="preserve">
-    <value>&lt;i  title="Move Up" class="fa fa-arrow-circle-up fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+    <value>&lt;i  title="Перемістити вгору" class="fa fa-arrow-circle-up fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
   <data name="cmdDownIcon.Text" xml:space="preserve">
     <value>&lt;i  title="Move Down" class="fa fa-arrow-circle-down fa-fw fa-2x"&gt;&lt;/i&gt;</value>
   </data>
   <data name="lblicon.Hep" xml:space="preserve">
-    <value>Icon to show on menu.</value>
+    <value>Піктограма для відображення в меню.</value>
   </data>
   <data name="lblicon.Text" xml:space="preserve">
-    <value>Icon html</value>
+    <value>Піктограма html</value>
   </data>
   <data name="admin_icon.Text" xml:space="preserve">
     <value>&lt;i class="fa fa-cog fa-fw"&gt;&lt;/i&gt;</value>
@@ -247,37 +247,37 @@
     <value>&lt;i class="fa fa-power-off fa-fw"&gt;&lt;/i&gt;</value>
   </data>
   <data name="categories.Text" xml:space="preserve">
-    <value>Categories</value>
+    <value>Категорії</value>
   </data>
   <data name="export.Text" xml:space="preserve">
-    <value>Export</value>
+    <value>Експорт</value>
   </data>
   <data name="import.Text" xml:space="preserve">
-    <value>Import</value>
+    <value>Імпорт</value>
   </data>
   <data name="properties.Text" xml:space="preserve">
-    <value>Properties</value>
+    <value>Властивості</value>
   </data>
   <data name="propertygroups.Text" xml:space="preserve">
-    <value>Property Groups</value>
+    <value>Групи властивостей</value>
   </data>
   <data name="sales.Text" xml:space="preserve">
-    <value>Sales</value>
+    <value>Продажу</value>
   </data>
   <data name="tools.Text" xml:space="preserve">
-    <value>Tools</value>
+    <value>інструменти</value>
   </data>
   <data name="orders.Text" xml:space="preserve">
-    <value>Orders</value>
+    <value>Замовлення</value>
   </data>
   <data name="assembly.Text" xml:space="preserve">
-    <value>Assembly</value>
+    <value>Асамблеї</value>
   </data>
   <data name="lblprovidertype.Text" xml:space="preserve">
-    <value>Provider type</value>
+    <value>Тип постачальника</value>
   </data>
   <data name="namespaceclass.Text" xml:space="preserve">
-    <value>Namespace and Class</value>
+    <value>Простір імен і клас</value>
   </data>
   <data name="providertype.data" xml:space="preserve">
     <value>UI Only,Shipping,Tax,Promotions,Scheduler,Events,Payments,DiscountCode,Filter,TemplateExt,EntityType,Ajax,ImageUpload,Other</value>
@@ -286,39 +286,39 @@
     <value>01,02,03,04,05,06,07,08,09,10,11,12,14,99</value>
   </data>
   <data name="templatepath.Text" xml:space="preserve">
-    <value>Template File Relative Path</value>
+    <value>Відносний шлях файлу шаблону</value>
   </data>
   <data name="propertiesvalue.Text" xml:space="preserve">
-    <value>Properties</value>
+    <value>Властивості</value>
   </data>
   <data name="products.Text" xml:space="preserve">
-    <value>Articles</value>
+    <value>Статті</value>
   </data>
   <data name="EmailOrder.Text" xml:space="preserve">
-    <value>Emails</value>
+    <value>Електронні листи</value>
   </data>
   <data name="ToggleDropdown.Text" xml:space="preserve">
-    <value>Print</value>
+    <value>Друкувати</value>
   </data>
   <data name="promotions_icon.Text" xml:space="preserve">
     <value>&lt;i class="fa fa-tags fa-fw"&gt;&lt;/i&gt;</value>
   </data>
   <data name="pluginsmsg.Text" xml:space="preserve">
-    <value>(The first plugin listed is the default entry point for Back Office)</value>
+    <value>(Перший у списку плагінів є точкою входу за замовчуванням для Back Office)</value>
   </data>
   <data name="interfaces.Text" xml:space="preserve">
-    <value>Interfaces</value>
+    <value>Інтерфейси</value>
   </data>
   <data name="ui.Text" xml:space="preserve">
-    <value>User Interface</value>
+    <value>Інтерфейс користувача</value>
   </data>
   <data name="vouchers.Text" xml:space="preserve">
-    <value>Vouchers</value>
+    <value>Ваучери</value>
   </data>
   <data name="grouppromo.Text" xml:space="preserve">
-    <value>Group</value>
+    <value>Група</value>
   </data>
   <data name="multibuypromo.Text" xml:space="preserve">
-    <value>Multi-Buy</value>
+    <value>Мульти-купити</value>
   </data>
 </root>

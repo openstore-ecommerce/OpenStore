@@ -117,61 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ValidateStore.confirm" xml:space="preserve">
-    <value>Do store validation?  This may take some time!</value>
+  <data name="lblcollectionactive.Text" xml:space="preserve">
+    <value>Активувати опцію збору:</value>
   </data>
-  <data name="ValidateStore.Text" xml:space="preserve">
-    <value>Validate Store</value>
+  <data name="lblcollectiontimes.Text" xml:space="preserve">
+    <value>Час збору:</value>
   </data>
-  <data name="purgecarts.confirm" xml:space="preserve">
-    <value>Purge Carts?</value>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Налаштування перегляду кошика</value>
   </data>
-  <data name="purgecarts.Text" xml:space="preserve">
-    <value>Purge Carts</value>
+  <data name="lbladvancedsettings.Text" xml:space="preserve">
+    <value>Розширений</value>
   </data>
-  <data name="purgecartsdays.Text" xml:space="preserve">
-    <value>Days to Keep carts</value>
+  <data name="lblbasicsettings.Text" xml:space="preserve">
+    <value>Генеральний</value>
   </data>
-  <data name="languageresetto.Text" xml:space="preserve">
-    <value>Copy</value>
+  <data name="lbllistbody.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як тіло кошика, це повторюється для кожного елемента кошика.</value>
   </data>
-  <data name="languagetoreset.Text" xml:space="preserve">
-    <value>to</value>
+  <data name="lbllistbody.Text" xml:space="preserve">
+    <value>Корпус візка:</value>
   </data>
-  <data name="resetlangauge.confirm" xml:space="preserve">
-    <value>Resetting the language will NOT be recoverable. Are You Sure?</value>
+  <data name="lbllistfooter.Help" xml:space="preserve">
+    <value>Шаблон для використання як нижній колонтитул кошика.</value>
   </data>
-  <data name="resetlangauge.Text" xml:space="preserve">
-    <value>Reset Language</value>
+  <data name="lbllistfooter.Text" xml:space="preserve">
+    <value>Нижній колонтитул кошика:</value>
   </data>
-  <data name="languageresetwarning.Text" xml:space="preserve">
-    <value>WARNING!!! - Your "{tolanguage}" data will be OVERWRITTEN.</value>
+  <data name="lbllistheader.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як заголовок кошика.</value>
   </data>
-  <data name="resetportalmenu.confirm" xml:space="preserve">
-    <value>Resetting Portal Menu will DELETE all portal menu settings and revert back the default system level menu.</value>
+  <data name="lbllistheader.Text" xml:space="preserve">
+    <value>Заголовок кошика:</value>
   </data>
-  <data name="resetportalmenu.Text" xml:space="preserve">
-    <value>Reset Portal Back Office Menu</value>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Назва теми для цього списку кошиків.</value>
   </data>
-  <data name="purgeimages.Text" xml:space="preserve">
-    <value>Purge Unused Images</value>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Тема:</value>
   </data>
-  <data name="purgeimageswarn.Text" xml:space="preserve">
-    <value>Purging Images will DELETE all images not linked to a product or category.  If any plugins use the NBSstore\images folder, these images will be deleted.</value>
+  <data name="lblthemesettings.Text" xml:space="preserve">
+    <value>Налаштування теми</value>
   </data>
-  <data name="customprovider.Text" xml:space="preserve">
-    <value>Custom Action Provider</value>
+  <data name="ddlcarttype.data" xml:space="preserve">
+    <value>Кошик; Повний кошик; Оформити замовлення</value>
   </data>
-  <data name="providerassembly.Text" xml:space="preserve">
-    <value>Provider Assembly</value>
+  <data name="ddlcarttype.datavalue" xml:space="preserve">
+    <value>1;3;2</value>
   </data>
-  <data name="providernamespaceclass.Text" xml:space="preserve">
-    <value>Provider Namespace,Class</value>
+  <data name="lblcarttype.Help" xml:space="preserve">
+    <value>Виберіть режим відображення з мінімального візка, повного візка та повного кошика для оформлення замовлення.</value>
   </data>
-  <data name="runcustomprovider.Text" xml:space="preserve">
-    <value>Run Custom Action Provider</value>
+  <data name="lblcarttype.Text" xml:space="preserve">
+    <value>Тип кошика:</value>
   </data>
-  <data name="paramdata.Text" xml:space="preserve">
-    <value>Parameter Data</value>
+  <data name="lblPaymentTab.Help" xml:space="preserve">
+    <value>Сторінка, на яку цей модуль буде перенаправлено під час надсилання. Зазвичай опція «Оформити замовлення» для цього модуля переспрямує на сторінку «Оплата» з модулем «Оплата». Опція списку повного кошика для цього модуля має перенаправляти на сторінку оплати.</value>
+  </data>
+  <data name="lblPaymentTab.Text" xml:space="preserve">
+    <value>Сторінка переспрямування:</value>
+  </data>
+  <data name="lblgroupresults.Help" xml:space="preserve">
+    <value>Товари в кошику будуть згруповані за продуктом&gt;моделлю</value>
+  </data>
+  <data name="lblgroupresults.Text" xml:space="preserve">
+    <value>Групові товари кошика:</value>
   </data>
 </root>

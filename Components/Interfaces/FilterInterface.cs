@@ -39,7 +39,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Interfaces
             _providerList = new Dictionary<string, FilterInterface>();
 
             var pluginData = new PluginData(PortalSettings.Current.PortalId);
-		    var l = pluginData.GetFilterProviders(false);
+            var l = pluginData.GetFilterProviders(false).Where(x => x.Value.GetXmlPropertyBool("genxml/checkbox/active"));
 
             foreach (var p in l)
             {

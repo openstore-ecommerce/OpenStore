@@ -117,61 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ValidateStore.confirm" xml:space="preserve">
-    <value>Do store validation?  This may take some time!</value>
+  <data name="CheckAll.Text" xml:space="preserve">
+    <value>Перевірити все</value>
   </data>
-  <data name="ValidateStore.Text" xml:space="preserve">
-    <value>Validate Store</value>
+  <data name="ddlOrderBy.data" xml:space="preserve">
+    <value>Ціна; Ціна спадна; Назва продукту; Виробник; Довідковий код; Запас</value>
   </data>
-  <data name="purgecarts.confirm" xml:space="preserve">
-    <value>Purge Carts?</value>
+  <data name="NoCategorySelected.Text" xml:space="preserve">
+    <value>Категорію не вибрано</value>
   </data>
-  <data name="purgecarts.Text" xml:space="preserve">
-    <value>Purge Carts</value>
+  <data name="OnlyInStock.Text" xml:space="preserve">
+    <value>Тільки товари на складі</value>
   </data>
-  <data name="purgecartsdays.Text" xml:space="preserve">
-    <value>Days to Keep carts</value>
+  <data name="SearchText.Text" xml:space="preserve">
+    <value>Знайти текст</value>
   </data>
-  <data name="languageresetto.Text" xml:space="preserve">
-    <value>Copy</value>
+  <data name="PriceRange.Text" xml:space="preserve">
+    <value>Ціновий діапазон</value>
   </data>
-  <data name="languagetoreset.Text" xml:space="preserve">
-    <value>to</value>
+  <data name="PriceRangeSeperator.Text" xml:space="preserve">
+    <value>до</value>
   </data>
-  <data name="resetlangauge.confirm" xml:space="preserve">
-    <value>Resetting the language will NOT be recoverable. Are You Sure?</value>
+  <data name="RefineSearch.Text" xml:space="preserve">
+    <value>Уточнення пошуку</value>
   </data>
-  <data name="resetlangauge.Text" xml:space="preserve">
-    <value>Reset Language</value>
+  <data name="Search.Text" xml:space="preserve">
+    <value>Шукати</value>
   </data>
-  <data name="languageresetwarning.Text" xml:space="preserve">
-    <value>WARNING!!! - Your "{tolanguage}" data will be OVERWRITTEN.</value>
+  <data name="Reset.Text" xml:space="preserve">
+    <value>Зрозуміло</value>
   </data>
-  <data name="resetportalmenu.confirm" xml:space="preserve">
-    <value>Resetting Portal Menu will DELETE all portal menu settings and revert back the default system level menu.</value>
-  </data>
-  <data name="resetportalmenu.Text" xml:space="preserve">
-    <value>Reset Portal Back Office Menu</value>
-  </data>
-  <data name="purgeimages.Text" xml:space="preserve">
-    <value>Purge Unused Images</value>
-  </data>
-  <data name="purgeimageswarn.Text" xml:space="preserve">
-    <value>Purging Images will DELETE all images not linked to a product or category.  If any plugins use the NBSstore\images folder, these images will be deleted.</value>
-  </data>
-  <data name="customprovider.Text" xml:space="preserve">
-    <value>Custom Action Provider</value>
-  </data>
-  <data name="providerassembly.Text" xml:space="preserve">
-    <value>Provider Assembly</value>
-  </data>
-  <data name="providernamespaceclass.Text" xml:space="preserve">
-    <value>Provider Namespace,Class</value>
-  </data>
-  <data name="runcustomprovider.Text" xml:space="preserve">
-    <value>Run Custom Action Provider</value>
-  </data>
-  <data name="paramdata.Text" xml:space="preserve">
-    <value>Parameter Data</value>
+  <data name="Processing.Text" xml:space="preserve">
+    <value>&lt;i class='fa fa-refresh fa-spin fa-2x'&gt;&lt;/i&gt;</value>
   </data>
 </root>

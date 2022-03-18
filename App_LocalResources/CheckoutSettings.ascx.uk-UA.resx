@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,61 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ValidateStore.confirm" xml:space="preserve">
-    <value>Do store validation?  This may take some time!</value>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Параметри оформлення замовлення</value>
   </data>
-  <data name="ValidateStore.Text" xml:space="preserve">
-    <value>Validate Store</value>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Ім'я теми, яку слід використовувати для цього списку кошиків.</value>
   </data>
-  <data name="purgecarts.confirm" xml:space="preserve">
-    <value>Purge Carts?</value>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Тема:</value>
   </data>
-  <data name="purgecarts.Text" xml:space="preserve">
-    <value>Purge Carts</value>
-  </data>
-  <data name="purgecartsdays.Text" xml:space="preserve">
-    <value>Days to Keep carts</value>
-  </data>
-  <data name="languageresetto.Text" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="languagetoreset.Text" xml:space="preserve">
-    <value>to</value>
-  </data>
-  <data name="resetlangauge.confirm" xml:space="preserve">
-    <value>Resetting the language will NOT be recoverable. Are You Sure?</value>
-  </data>
-  <data name="resetlangauge.Text" xml:space="preserve">
-    <value>Reset Language</value>
-  </data>
-  <data name="languageresetwarning.Text" xml:space="preserve">
-    <value>WARNING!!! - Your "{tolanguage}" data will be OVERWRITTEN.</value>
-  </data>
-  <data name="resetportalmenu.confirm" xml:space="preserve">
-    <value>Resetting Portal Menu will DELETE all portal menu settings and revert back the default system level menu.</value>
-  </data>
-  <data name="resetportalmenu.Text" xml:space="preserve">
-    <value>Reset Portal Back Office Menu</value>
-  </data>
-  <data name="purgeimages.Text" xml:space="preserve">
-    <value>Purge Unused Images</value>
-  </data>
-  <data name="purgeimageswarn.Text" xml:space="preserve">
-    <value>Purging Images will DELETE all images not linked to a product or category.  If any plugins use the NBSstore\images folder, these images will be deleted.</value>
-  </data>
-  <data name="customprovider.Text" xml:space="preserve">
-    <value>Custom Action Provider</value>
-  </data>
-  <data name="providerassembly.Text" xml:space="preserve">
-    <value>Provider Assembly</value>
-  </data>
-  <data name="providernamespaceclass.Text" xml:space="preserve">
-    <value>Provider Namespace,Class</value>
-  </data>
-  <data name="runcustomprovider.Text" xml:space="preserve">
-    <value>Run Custom Action Provider</value>
-  </data>
-  <data name="paramdata.Text" xml:space="preserve">
-    <value>Parameter Data</value>
+  <data name="lblthemesettings.Text" xml:space="preserve">
+    <value>Параметри теми</value>
   </data>
 </root>

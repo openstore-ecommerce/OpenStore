@@ -118,204 +118,206 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lblcatsearchtype.Help" xml:space="preserve">
-    <value>Type of search to do on multiple selected categories</value>
+    <value>Тип пошуку для виконання за кількома вибраними категоріями</value>
   </data>
   <data name="lblcatsearchtype.Text" xml:space="preserve">
-    <value>Category search type</value>
+    <value>Тип пошуку за категоріями</value>
   </data>
   <data name="lblcatselect.Help" xml:space="preserve">
-    <value>Turn on the category search</value>
+    <value>Увімкнення пошуку за категоріями</value>
   </data>
   <data name="lblcatselect.Text" xml:space="preserve">
-    <value>Category Group Search</value>
+    <value>Пошук груп категорій</value>
   </data>
   <data name="lbldescription.Help" xml:space="preserve">
-    <value>Turn on the product description text search</value>
+    <value>Увімкнення пошуку тексту опису продукту</value>
   </data>
   <data name="lbldescription.Text" xml:space="preserve">
-    <value>Description Text Search</value>
+    <value>Пошук тексту опису</value>
   </data>
   <data name="lblpricerange.Help" xml:space="preserve">
-    <value>Turn on price range selection</value>
+    <value>Увімкнення вибору цінового діапазону</value>
   </data>
   <data name="lblpricerange.Text" xml:space="preserve">
-    <value>Price Range</value>
+    <value>Ціновий діапазон</value>
   </data>
   <data name="lblorderselector.Text" xml:space="preserve">
-    <value>Sort Order Selector</value>
+    <value>Вибір порядку сортування</value>
   </data>
   <data name="lbltextsearch.Help" xml:space="preserve">
-    <value>Turn on the sort order selector</value>
+    <value>Увімкнення засобу вибору порядку сортування</value>
   </data>
   <data name="lbltextsearch.Text" xml:space="preserve">
-    <value>Text Search</value>
+    <value>Пошук тексту</value>
   </data>
   <data name="lblmanufacturer.Help" xml:space="preserve">
-    <value>Turn on the Manufacturer text search</value>
+    <value>Увімкнення текстового пошуку виробника</value>
   </data>
   <data name="lblmanufacturer.Text" xml:space="preserve">
-    <value>Manufacturer Text Search</value>
+    <value>Пошук тексту виробника</value>
   </data>
   <data name="lbltxtseoname.Help" xml:space="preserve">
-    <value>Turn on the SEO name text search</value>
+    <value>Увімкніть пошук тексту імені SEO</value>
   </data>
   <data name="lbltxtseoname.Text" xml:space="preserve">
-    <value>SEO name Text Search</value>
+    <value>SEO назва Текстовий пошук</value>
   </data>
   <data name="lbltxtseopagetitle.Help" xml:space="preserve">
-    <value>Turn on the SEO page title text search</value>
+    <value>Увімкнення пошуку тексту заголовка сторінки SEO</value>
   </data>
   <data name="lbltxtseopagetitle.Text" xml:space="preserve">
-    <value>SEO page title Text Search</value>
+    <value>SEO назва сторінки Текстовий пошук</value>
   </data>
   <data name="lbltxtsummary.Help" xml:space="preserve">
-    <value>Turn on the summary text search</value>
+    <value>Увімкнення пошуку підсумкового тексту</value>
   </data>
   <data name="lbltxtsummary.Text" xml:space="preserve">
-    <value>Summary Text Search</value>
+    <value>Пошук підсумкового тексту</value>
   </data>
   <data name="lbltxttagwords.Help" xml:space="preserve">
-    <value>Turn on the tag words text search</value>
+    <value>Увімкнення пошуку тексту слів тегів</value>
   </data>
   <data name="lbltxttagwords.Text" xml:space="preserve">
-    <value>Tag Words Text Search</value>
+    <value>Пошук тексту "Теги слів"</value>
   </data>
   <data name="lbltargetmodulekey.Help" xml:space="preserve">
-    <value>Module Key of the module that will display the results.</value>
+    <value>Клавіша модуля модуля, який відображатиме результати.</value>
   </data>
   <data name="lbltargetmodulekey.Text" xml:space="preserve">
-    <value>Target Module Key : </value>
+    <value>Клавіша цільового модуля:</value>
   </data>
   <data name="lbltheme.Help" xml:space="preserve">
-    <value>Name of the theme to use for this productlist.</value>
+    <value>Ім'я теми, яку слід використовувати для цього списку продуктів.</value>
   </data>
   <data name="lbltheme.Text" xml:space="preserve">
-    <value>Theme : </value>
+    <value>Тема:</value>
   </data>
   <data name="ControlTitle_settings.Text" xml:space="preserve">
-    <value>Product Search Settings</value>
+    <value>Параметри пошуку продукту</value>
   </data>
   <data name="lblbasicsettings.Text" xml:space="preserve">
-    <value>General</value>
+    <value>Загальне</value>
   </data>
   <data name="lblcatreflist.Help" xml:space="preserve">
-    <value>A CSV list of Category/Group Refs to be displayed on the search form. e.g. (Cat1,Cat2,Cat3)  This will only apply to the returned categories from Parent Ref selection, if no Ref List is specified all returned categories will be displayed.</value>
+    <value>167 letters translated
+413 letters left today
+Список CSV категорії/групи refs, який відображатиметься у формі пошуку.наприклад(Cat1, Cat2, Cat3) Це стосуватиметься лише повернених категорій з вибору Parent Ref, якщо не вказано список ref вказано всі повернуті категорії будуть відображатися.</value>
   </data>
   <data name="lblcatreflist.Text" xml:space="preserve">
-    <value>Category Ref List : </value>
+    <value>Список категорій ref:</value>
   </data>
   <data name="lblcatreflist1.Help" xml:space="preserve">
-    <value>A CSV list of Category/Group Refs to be displayed on the search form. e.g. (Cat1,Cat2,Cat3)  This will only apply to the returned categories from Parent Ref selection, if no Ref List is specified all returned categories will be displayed.</value>
+    <value>Список CSV категорії/групи refs, який відображатиметься у формі пошуку. наприклад, (Cat1, Cat2, Cat3) Це буде застосовуватися тільки до повернених категорій з батьківського вибору Ref Ref, якщо не вказано список ref всі повернуті категорії будуть відображатися.</value>
   </data>
   <data name="lblcatreflist1.Text" xml:space="preserve">
-    <value>Category/Group Ref List : </value>
+    <value>Список розділів категорій/груп:</value>
   </data>
   <data name="lblcatreflist2.Help" xml:space="preserve">
-    <value>A CSV list of Category/Group Refs to be displayed on the search form. e.g. (Cat1,Cat2,Cat3)  This will only apply to the returned categories from Parent Ref selection, if no Ref List is specified all returned categories will be displayed.</value>
+    <value>Список CSV категорії/групи refs, який відображатиметься у формі пошуку. наприклад, (Cat1, Cat2, Cat3) Це буде застосовуватися тільки до повернених категорій з батьківського вибору Ref Ref, якщо не вказано список ref всі повернуті категорії будуть відображатися.</value>
   </data>
   <data name="lblcatreflist2.Text" xml:space="preserve">
-    <value>Category/Group Ref List : </value>
+    <value>Список розділів категорій/груп:</value>
   </data>
   <data name="lblcatrepeatcolumns.Help" xml:space="preserve">
-    <value>Number of columns to be displayed.</value>
+    <value>Кількість стовпців, які потрібно відобразити.</value>
   </data>
   <data name="lblcatrepeatcolumns.Text" xml:space="preserve">
-    <value>Columns : </value>
+    <value>Стовпці:</value>
   </data>
   <data name="lblcatrepeatcolumns1.Help" xml:space="preserve">
-    <value>Number of columns to be displayed.</value>
+    <value>Кількість стовпців, які потрібно відобразити.</value>
   </data>
   <data name="lblcatrepeatcolumns1.Text" xml:space="preserve">
-    <value>Columns : </value>
+    <value>Стовпці:</value>
   </data>
   <data name="lblcatrepeatcolumns2.Help" xml:space="preserve">
-    <value>Number of columns to be displayed.</value>
+    <value>Кількість стовпців, які потрібно відобразити.</value>
   </data>
   <data name="lblcatrepeatcolumns2.Text" xml:space="preserve">
-    <value>Columns : </value>
+    <value>Стовпці:</value>
   </data>
   <data name="lbldisplaylevels.Help" xml:space="preserve">
-    <value>Number of sub levels of categories to display.</value>
+    <value>Кількість підрівнів категорій для відображення.</value>
   </data>
   <data name="lbldisplaylevels.Text" xml:space="preserve">
-    <value>Display Levels :</value>
+    <value>Рівні відображення :</value>
   </data>
   <data name="lbldisplaylevels1.Help" xml:space="preserve">
-    <value>Number of sub levels of categories to display.</value>
+    <value>Кількість підрівнів категорій для відображення.</value>
   </data>
   <data name="lbldisplaylevels1.Text" xml:space="preserve">
-    <value>Display Levels :</value>
+    <value>Рівні відображення :</value>
   </data>
   <data name="lbldisplaylevels2.Help" xml:space="preserve">
-    <value>Number of sub levels of categories to display.</value>
+    <value>Кількість підрівнів категорій для відображення.</value>
   </data>
   <data name="lbldisplaylevels2.Text" xml:space="preserve">
-    <value>Display Levels :</value>
+    <value>Рівні відображення :</value>
   </data>
   <data name="lblgroupselect1.Help" xml:space="preserve">
-    <value>Activates a AND clause on a second category group "Group 2".</value>
+    <value>Активує речення AND для другої категорії групи "Група 2".</value>
   </data>
   <data name="lblgroupselect1.Text" xml:space="preserve">
-    <value>Activate AND Search Group 2 : </value>
+    <value>Активувати та шукати групу 2:</value>
   </data>
   <data name="lblgroupselect2.Help" xml:space="preserve">
-    <value>Activates a AND clause on a third category group "Group 3".</value>
+    <value>Активує речення AND для третьої категорії групи "Група 3".</value>
   </data>
   <data name="lblgroupselect2.Text" xml:space="preserve">
-    <value>Activate AND Search Group 3 : </value>
+    <value>Активувати та шукати групу 3:</value>
   </data>
   <data name="lblparentcatref.Help" xml:space="preserve">
-    <value>All categories below this parent category will be returned.  If not specified all categories will be returned.</value>
+    <value>Усі категорії, наведені нижче цієї батьківської категорії, будуть повернуті. Якщо не вказано, всі категорії будуть повернуті.</value>
   </data>
   <data name="lblparentcatref.Text" xml:space="preserve">
-    <value>Category/Group Parent Ref : </value>
+    <value>Категорія/Група Батьківський Ref:</value>
   </data>
   <data name="lblparentcatref1.Help" xml:space="preserve">
-    <value>All categories below this parent category will be returned.  If not specified all categories will be returned.</value>
+    <value>Усі категорії, наведені нижче цієї батьківської категорії, будуть повернуті. Якщо не вказано, всі категорії будуть повернуті.</value>
   </data>
   <data name="lblparentcatref1.Text" xml:space="preserve">
-    <value>Category/Group Parent Ref : </value>
+    <value>Категорія/Група Батьківський Ref:</value>
   </data>
   <data name="lblparentcatref2.Help" xml:space="preserve">
-    <value>All categories below this parent category will be returned.  If not specified all categories will be returned.</value>
+    <value>Усі категорії, наведені нижче цієї батьківської категорії, будуть повернуті. Якщо не вказано, всі категорії будуть повернуті.</value>
   </data>
   <data name="lblparentcatref2.Text" xml:space="preserve">
-    <value>Category/Group Parent Ref : </value>
+    <value>Категорія/Група Батьківський Ref:</value>
   </data>
   <data name="lblthemesettings.Text" xml:space="preserve">
-    <value>Theme Settings</value>
+    <value>Параметри теми</value>
   </data>
   <data name="themehidden.Text" xml:space="preserve">
-    <value>Old Theme Settings have been disabled, update to activate new theme. </value>
+    <value>Старі налаштування теми вимкнено, оновіть, щоб активувати нову тему.</value>
   </data>
   <data name="lblfiltermode.Help" xml:space="preserve">
-    <value>Mode for search module.  Search=Search options will be static; Filter=Search options will be dynamic based on category menu selection, the category selection will also persist across searches.</value>
+    <value>Режим для модуля пошуку. Пошук=Параметри пошуку будуть статичними; Параметри filter=Search будуть динамічними на основі вибору меню категорій, вибір категорії також зберігатиметься під час пошуку.</value>
   </data>
   <data name="lblfiltermode.Text" xml:space="preserve">
-    <value>Search Mode : </value>
+    <value>Режим пошуку :</value>
   </data>
   <data name="rblfiltermode.data" xml:space="preserve">
-    <value>Search;Filter</value>
+    <value>Пошук;Фільтр</value>
   </data>
   <data name="lblprimarybuttonclass.Text" xml:space="preserve">
-    <value>Primary Button CSS Class : </value>
+    <value>Основна кнопка CSS класу:</value>
   </data>
   <data name="lblsecondarybuttonclass.Text" xml:space="preserve">
-    <value>Secondary Button CSS Class : </value>
+    <value>Додаткова кнопка CSS клас:</value>
   </data>
   <data name="lblRedirectTab.Text" xml:space="preserve">
-    <value>Page to Display Results : </value>
+    <value>Сторінка для відображення результатів:</value>
   </data>
   <data name="lblsearchtemplate.Text" xml:space="preserve">
-    <value>Template : </value>
+    <value>Шаблон:</value>
   </data>
   <data name="lblinstock.Text" xml:space="preserve">
-    <value>Stock Checkbox : </value>
+    <value>Фондовий прапорець :</value>
   </data>
   <data name="lblhidden.Text" xml:space="preserve">
-    <value>Hidden</value>
+    <value>Приховані</value>
   </data>
   <data name="emailmessage.Text" xml:space="preserve">
-    <value>Thank you for your order. We are here to help ! Do not hesitate to get in touch for any questions regarding your order.</value>
+    <value>Дякуємо за ваше замовлення. Ми тут, щоб допомогти!Не соромтеся зв'язатися з будь-якими питаннями, що стосуються вашого замовлення.</value>
   </data>
 </root>

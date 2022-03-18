@@ -117,61 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ValidateStore.confirm" xml:space="preserve">
-    <value>Do store validation?  This may take some time!</value>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Параметри адміністратора адреси</value>
   </data>
-  <data name="ValidateStore.Text" xml:space="preserve">
-    <value>Validate Store</value>
+  <data name="lblbasicsettings.Text" xml:space="preserve">
+    <value>Загальне</value>
   </data>
-  <data name="purgecarts.confirm" xml:space="preserve">
-    <value>Purge Carts?</value>
+  <data name="lbllistbody.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як тіло адреси, повторюється для кожної адреси.</value>
   </data>
-  <data name="purgecarts.Text" xml:space="preserve">
-    <value>Purge Carts</value>
+  <data name="lbllistbody.Text" xml:space="preserve">
+    <value>Тіло адреси : </value>
   </data>
-  <data name="purgecartsdays.Text" xml:space="preserve">
-    <value>Days to Keep carts</value>
+  <data name="lbllistfooter.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як нижній колонтитул адреси.</value>
   </data>
-  <data name="languageresetto.Text" xml:space="preserve">
-    <value>Copy</value>
+  <data name="lbllistfooter.Text" xml:space="preserve">
+    <value>Нижній колонтитул адреси : </value>
   </data>
-  <data name="languagetoreset.Text" xml:space="preserve">
-    <value>to</value>
+  <data name="lbllistheader.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як заголовок адреси.</value>
   </data>
-  <data name="resetlangauge.confirm" xml:space="preserve">
-    <value>Resetting the language will NOT be recoverable. Are You Sure?</value>
+  <data name="lbllistheader.Text" xml:space="preserve">
+    <value>Заголовок адреси : </value>
   </data>
-  <data name="resetlangauge.Text" xml:space="preserve">
-    <value>Reset Language</value>
+  <data name="lbltheme.Help" xml:space="preserve">
+    <value>Ім'я теми, яка використовуватиметься для цього списку адрес.</value>
   </data>
-  <data name="languageresetwarning.Text" xml:space="preserve">
-    <value>WARNING!!! - Your "{tolanguage}" data will be OVERWRITTEN.</value>
+  <data name="lbltheme.Text" xml:space="preserve">
+    <value>Тема : </value>
   </data>
-  <data name="resetportalmenu.confirm" xml:space="preserve">
-    <value>Resetting Portal Menu will DELETE all portal menu settings and revert back the default system level menu.</value>
+  <data name="lblinputform.Help" xml:space="preserve">
+    <value>Шаблон, який буде використовуватися як форма введення даних для адреси.</value>
   </data>
-  <data name="resetportalmenu.Text" xml:space="preserve">
-    <value>Reset Portal Back Office Menu</value>
+  <data name="lblinputform.Text" xml:space="preserve">
+    <value>Шаблон форми вводу : </value>
   </data>
-  <data name="purgeimages.Text" xml:space="preserve">
-    <value>Purge Unused Images</value>
+  <data name="emailmanageropt.data" xml:space="preserve">
+    <value>Лише для змінення адреси за промовчанням;на всіх змінах адреси</value>
   </data>
-  <data name="purgeimageswarn.Text" xml:space="preserve">
-    <value>Purging Images will DELETE all images not linked to a product or category.  If any plugins use the NBSstore\images folder, these images will be deleted.</value>
+  <data name="lblemailmanager.Help" xml:space="preserve">
+    <value>Диспетчер електронної пошти щодо зміни адреси</value>
   </data>
-  <data name="customprovider.Text" xml:space="preserve">
-    <value>Custom Action Provider</value>
+  <data name="lblemailmanager.Text" xml:space="preserve">
+    <value>Диспетчер електронної пошти : </value>
   </data>
-  <data name="providerassembly.Text" xml:space="preserve">
-    <value>Provider Assembly</value>
+  <data name="lblemailtemplate.Help" xml:space="preserve">
+    <value>Повідомлення електронної пошти, яке буде надіслано після оновлення адреси.</value>
   </data>
-  <data name="providernamespaceclass.Text" xml:space="preserve">
-    <value>Provider Namespace,Class</value>
-  </data>
-  <data name="runcustomprovider.Text" xml:space="preserve">
-    <value>Run Custom Action Provider</value>
-  </data>
-  <data name="paramdata.Text" xml:space="preserve">
-    <value>Parameter Data</value>
+  <data name="lblemailtemplate.Text" xml:space="preserve">
+    <value>Шаблон електронної пошти : </value>
   </data>
 </root>

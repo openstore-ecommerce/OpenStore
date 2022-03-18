@@ -578,11 +578,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         {
             var objCtrl = new NBrightBuyController();
             var strSelectedIds = "";
-            var arylist = objCtrl.GetList(_portalId, -1, _typeCode + "XREF", " and NB1.parentitemid = " + Info.ItemID.ToString(""));
-            foreach (var obj in arylist)
-            {
-                strSelectedIds += obj.XrefItemId.ToString("") + ",";
-            }
+
+            if (Info != null) {
+                var arylist = objCtrl.GetList(_portalId, -1, _typeCode + "XREF", " and NB1.parentitemid = " + Info.ItemID.ToString(""));
+                foreach (var obj in arylist)
+                {
+                    strSelectedIds += obj.XrefItemId.ToString("") + ",";
+                }
+            }            
+
             var relList = new List<NBrightInfo>();
             if (strSelectedIds.TrimEnd(',') != "")
             {
@@ -2003,73 +2007,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             return errorcount;
         }
 
+        [Obsolete("The Copy function has been removed.  it did not work correctly, but has been left in the code for possible compatibility with plugins.")]
         public int Copy()
         {
-            var objCtrl = new NBrightBuyController();
-
-            //Copy Base record 
-            var dr = (NBrightInfo)DataRecord.Clone();
-            dr.ItemID = -1;
-            dr.SetXmlProperty("genxml/importref", Utils.GetUniqueKey());
-            var newid = objCtrl.Update(dr);
-
-            // copy all language records
-            var l = objCtrl.GetList(_portalId, -1, _typeLangCode, " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
-            foreach (var dlr in l)
-            {
-                dlr.ParentItemId = newid;
-                dlr.ItemID = -1;
-                objCtrl.Update(dlr);
-            }
-
-            // copy CATXREF records
-            l = objCtrl.GetList(_portalId, -1, "CATXREF", " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
-            foreach (var dr1 in l)
-            {
-                dr1.ParentItemId = newid;
-                dr1.ItemID = -1;
-                dr1.GUIDKey = dr1.GUIDKey.Replace("x" + Info.ItemID.ToString(""), "x" + newid.ToString(""));
-                objCtrl.Update(dr1);
-            }
-
-            // copy CATCASCADE records
-            l = objCtrl.GetList(_portalId, -1, "CATCASCADE", " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
-            foreach (var dr2 in l)
-            {
-                dr2.ParentItemId = newid;
-                dr2.ItemID = -1;
-                dr2.GUIDKey = dr2.GUIDKey.Replace("x" + Info.ItemID.ToString(""), "x" + newid.ToString(""));
-                objCtrl.Update(dr2);
-            }
-
-            // copy PRDXREF records
-            l = objCtrl.GetList(_portalId, -1, _typeCode + "XREF", " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
-            foreach (var dr3 in l)
-            {
-                dr3.ParentItemId = newid;
-                dr3.ItemID = -1;
-                dr3.GUIDKey = dr3.GUIDKey.Replace("x" + Info.ItemID.ToString(""), "x" + newid.ToString(""));
-                objCtrl.Update(dr3);
-
-                // create bi-directional relationship
-                var newXrefId = dr3.ParentItemId; var newParentItemId = dr3.XrefItemId;
-                dr3.ParentItemId = newParentItemId;
-                dr3.XrefItemId = newXrefId;
-                dr3.GUIDKey = newid.ToString("") + "x" + dr3.GUIDKey.Replace("x" + newid.ToString(""), "");
-                objCtrl.Update(dr3);
-            }
-
-            // copy USERPRDXREF records
-            l = objCtrl.GetList(_portalId, -1, "USERPRDXREF", " and NB1.ParentItemId = " + Info.ItemID.ToString(""));
-            foreach (var dr4 in l)
-            {
-                dr4.ParentItemId = newid;
-                dr4.ItemID = -1;
-                dr4.GUIDKey = dr4.GUIDKey.Replace("x" + Info.ItemID.ToString(""), "x" + newid.ToString(""));
-                objCtrl.Update(dr4);
-            }
-
-            return newid;
+            return -999;
         }
 
         public void FillEmptyLanguageFields()
