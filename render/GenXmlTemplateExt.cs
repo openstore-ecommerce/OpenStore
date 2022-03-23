@@ -4020,7 +4020,7 @@ namespace Nevoweb.DNN.NBrightBuy.render
             var lc = new Literal();
             var size = "16";
             if (xmlNod.Attributes != null && (xmlNod.Attributes["size"] != null)) size = xmlNod.Attributes["size"].Value;
-            lc.Text = "<img 'langflag' src='" + StoreSettings.NBrightBuyPath() + "/images/flags/" + StoreSettings.Current.EditLanguage + ".gif' />";
+            lc.Text = "<img 'langflag' src='/images/flags/" + StoreSettings.Current.EditLanguage + ".gif' />";
             lc.DataBinding += EditFlagDataBind;
             container.Controls.Add(lc);
         }
