@@ -1493,6 +1493,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 {
                     var prodData = ProductUtils.GetProductData(Convert.ToInt32(productid), EditLangCurrent, false, EntityTypeCode);
                     prodData.RemoveRelatedProduct(Convert.ToInt32(selectedrelatedid));
+
+                    if (StoreSettings.Current.BiDirectionRelatedProducts)
+                    {
+                        // do bi-direction
+                        var prodData2 = ProductUtils.GetProductData(Convert.ToInt32(selectedrelatedid), EditLangCurrent, false, EntityTypeCode);
+                        if (prodData2.Exists) prodData2.RemoveRelatedProduct(Convert.ToInt32(productid));
+                    }
+
                     NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
                     return GetProductRelated(context);
                 }
