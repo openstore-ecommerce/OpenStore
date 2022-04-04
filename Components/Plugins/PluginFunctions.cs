@@ -299,7 +299,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Plugins
 
                 if (!String.IsNullOrEmpty(ctrl))
                 {
-                    var sql = "DELETE FROM " + dbOwner + objQual + "NBrightBuy WHERE GuidKey='" + ctrl + "'";
+                    var sql = "DELETE FROM " + dbOwner + objQual + "NBrightBuy WHERE TypeCode='PLUGIN' AND GuidKey='" + ctrl + "'";
                     DataProvider.Instance().ExecSql(sql);
 
                     // remove save GetData cache
