@@ -293,18 +293,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Plugins
             if (NBrightBuyUtils.CheckRights())
             {
                 var ajaxInfo = NBrightBuyUtils.GetAjaxFields(context);
-                var itemid = ajaxInfo.GetXmlProperty("genxml/hidden/itemid");
-                if (Utils.IsNumeric(itemid))
-                {
-                    var objCtrl = new NBrightBuyController();
-                    objCtrl.Delete(Convert.ToInt32(itemid));
+                var ctrl = ajaxInfo.GetXmlProperty("genxml/textbox/ctrl");
+                var objQual = DotNetNuke.Data.DataProvider.Instance().ObjectQualifier;
+                var dbOwner = DotNetNuke.Data.DataProvider.Instance().DatabaseOwner;
 
-                    // We NEED to deletel, this action can create duplicate records.
-                    // PluginUtils.CopySystemPluginsToPortal();
+                if (!String.IsNullOrEmpty(ctrl))
+                {
+                    var sql = "DELETE FROM " + dbOwner + objQual + "NBrightBuy WHERE GuidKey='" + ctrl + "'";
+                    DataProvider.Instance().ExecSql(sql);
 
                     // remove save GetData cache
                     DataCache.ClearCache();
-
                 }
             }
         }
