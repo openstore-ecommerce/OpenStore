@@ -60,26 +60,28 @@ $(document).ready(function () {
             });
 
             $('.qtyminus').unbind();
-            $('.qtyminus').click(function() {
-                var oldqty = $('.itemcode' + $(this).attr('itemcode')).val();
+            $('.qtyminus').click(function () {
+                let itemcode = $(this).attr('itemcode').replace(":", "\\:");
+                var oldqty = $('.itemcode' + itemcode).val();
                 var newQty = parseInt(oldqty, 10);
                 if (isNaN(newQty)) {
                     newQty = 2;
                 }
                 if (newQty >= 1) {
                     --newQty;
-                    $('.itemcode' + $(this).attr('itemcode')).val(newQty);
+                    $('.itemcode' + itemcode).val(newQty);
                 }
             });
             $('.qtyplus').unbind();
-            $('.qtyplus').click(function() {
-                var oldqty = $('.itemcode' + $(this).attr('itemcode')).val();
+            $('.qtyplus').click(function () {
+                let itemcode = $(this).attr('itemcode').replace(":", "\\:");
+                var oldqty = $('.itemcode' + itemcode).val();
                 var newQty = parseInt(oldqty, 10);
                 if (isNaN(newQty)) {
                     newQty = 0;
                 }
                 ++newQty;
-                $('.itemcode' + $(this).attr('itemcode')).val(newQty);
+                $('.itemcode' + itemcode).val(newQty);
             });
 
         }
