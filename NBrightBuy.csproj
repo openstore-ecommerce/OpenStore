@@ -1627,6 +1627,7 @@
     <EmbeddedResource Include="App_LocalResources\Clients.ascx.nl-NL.resx" />
     <EmbeddedResource Include="App_LocalResources\Clients.ascx.resx" />
     <EmbeddedResource Include="App_LocalResources\Clients.ascx.uk-UA.resx" />
+    <EmbeddedResource Include="App_LocalResources\CountryNames.ascx.nl-NL.resx" />
     <EmbeddedResource Include="App_LocalResources\CountryNames.ascx.es-ES.resx" />
     <EmbeddedResource Include="App_LocalResources\CountryNames.ascx.fr-FR.resx" />
     <EmbeddedResource Include="App_LocalResources\countrynames.ascx.it-IT.resx" />
