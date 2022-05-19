@@ -9,14 +9,30 @@
 @{
     var info = (NBrightInfo)Model.List.First();
     var prdData = new ProductData(info.ItemID, info.PortalId, info.Lang);
+    var prdProps = prdData.GetProperties();
 }
 
-@foreach (var nbiCat in prdData.GetProperties())
+@foreach (var nbiCat in prdProps)
 {
     <tr>
         <td style="white-space:nowrap" title="Reference code: @nbiCat.grouptyperef">@nbiCat.groupname</td>
         <td title="Breadcrumb: @nbiCat.breadcrumb">@nbiCat.categoryname</td>
-        <td><a class="removegroupcategory" itemid="@info.ItemID" categoryid="@nbiCat.categoryid">@ResourceKey("General.cmdRemoveIcon")</a><span class="hidden">@nbiCat.categoryid</span></td>
+        <td>
+            <a class="removegroupcategory" itemid="@info.ItemID" categoryid="@nbiCat.categoryid">@ResourceKey("General.cmdRemoveIcon")</a><span class="hidden">@nbiCat.categoryid</span>
+        </td>
+        <td>
+            @if (prdProps.IndexOf(nbiCat) < prdProps.Count - 1)
+            {
+                <a class="movedngroupcategory" itemid="@info.ItemID" categoryid="@nbiCat.categoryid">@ResourceKey("General.cmdMoveDownIcon")</a><span class="hidden">@nbiCat.categoryid</span>
+            }
+        </td>
+        <td>
+            @if (prdProps.IndexOf(nbiCat) > 0)
+            {
+                <a class="moveupgroupcategory" itemid="@info.ItemID" categoryid="@nbiCat.categoryid">@ResourceKey("General.cmdMoveUpIcon")</a>
+                <span class="hidden">@nbiCat.categoryid</span>
+            }
+        </td>
     </tr>
 }
 

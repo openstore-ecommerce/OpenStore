@@ -125,6 +125,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     case "product_admin_removeproperty":
                         strOut = RemoveProperty(context);
                         break;
+                    case "product_admin_moveupproperty":
+                        strOut = MoveProperty(context, -1);
+                        break;
+                    case "product_admin_movednproperty":
+                        strOut = MoveProperty(context, 1);
+                        break;
                     case "product_admin_removerelated":
                         strOut = RemoveRelatedProduct(context);
                         break;
@@ -1442,6 +1448,28 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     prodData.RemoveCategory(Convert.ToInt32(xrefitemid));
                     ProductUtils.RemoveProductDataCache(PortalSettings.Current.PortalId, parentitemid);
                     NBrightBuyUtils.RemoveModCachePortalWide(prodData.Info.PortalId);
+                    return GetProperties(context);
+                }
+                return "Invalid parentitemid or xrefitmeid";
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+        }
+
+        public string MoveProperty(HttpContext context, int change)
+        {
+            try
+            {
+                var ajaxInfo = NBrightBuyUtils.GetAjaxInfo(context);
+                var parentitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selecteditemid");
+                var xrefitemid = ajaxInfo.GetXmlPropertyInt("genxml/hidden/selectedcatid");
+                if (xrefitemid > 0 && parentitemid > 0)
+                {
+                    var prodData = ProductUtils.GetProductData(parentitemid, EditLangCurrent, false);
+                    prodData.MoveProperty(Convert.ToInt32(xrefitemid), change);
+                    ProductUtils.RemoveProductDataCache(PortalSettings.Current.PortalId, parentitemid);
                     return GetProperties(context);
                 }
                 return "Invalid parentitemid or xrefitmeid";

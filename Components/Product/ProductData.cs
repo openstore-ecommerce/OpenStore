@@ -448,12 +448,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <param name="groupref">groupref for select, "" = all, "cat"= Category only, "!cat" = all non-category, "{groupref}"=this group only</param>
         /// <param name="cascade">get all cascade records to get all parent categories</param>
         /// <returns></returns>
-        public List<GroupCategoryData> GetCategories(int portalId, String groupref = "", Boolean cascade = false)
+        public List<GroupCategoryData> GetCategories(int portalId, String groupref = "", bool cascade = false, bool useSort = false)
         {
             if (Info == null) return new List<GroupCategoryData>(); // stop throwing an error no product exists,
 
             var objGrpCtrl = new GrpCatController(_lang, portalId);
-            var catl = objGrpCtrl.GetProductCategories(Info.ItemID, groupref, cascade);
+            var catl = objGrpCtrl.GetProductCategories(Info.ItemID, groupref, cascade, useSort);
             if (Utils.IsNumeric(DataRecord.GetXmlProperty("genxml/defaultcatid")) && catl.Count > 0)
             {
                 var objl = catl.Where(i => i.isdefault == true);
@@ -476,10 +476,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <param name="groupref">groupref for select, "" = all, "cat"= Category only, "!cat" = all non-category, "{groupref}"=this group only</param>
         /// <param name="cascade">get all cascade records to get all parent categories</param>
         /// <returns></returns>
-        public List<GroupCategoryData> GetCategories(String groupref = "", Boolean cascade = false)
+        public List<GroupCategoryData> GetCategories(String groupref = "", bool cascade = false, bool useSort = false)
         {
             var portalId = PortalSettings.Current.PortalId;
-            return GetCategories(portalId, groupref, cascade);
+            return GetCategories(portalId, groupref, cascade, useSort);
         }
 
         /// <summary>
@@ -488,9 +488,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <param name="groupref">groupref for select, "" = all, "cat"= Category only, "!cat" = all non-category, "{groupref}"=this group only</param>
         /// <param name="cascade">get all cascade records to get all parent categories</param>
         /// <returns></returns>
-        public List<GroupCategoryData> GetProperties(String groupref = "!cat", Boolean cascade = false)
+        public List<GroupCategoryData> GetProperties(String groupref = "!cat", bool cascade = false)
         {
-            return GetCategories(groupref, cascade);
+            return GetCategories(groupref, cascade, true);
+        }
+        public void MoveProperty(int categoryid, int change)
+        {
+            var objGrpCtrl = new GrpCatController(_lang);
+            objGrpCtrl.MoveProductCategory(Info.ItemID, categoryid, change);
         }
 
         public GroupCategoryData GetDefaultCategory()

@@ -224,7 +224,10 @@ a.sortelementLeft, a.sortelementRight {
 .editproperties .selectgrouptype{height:110px}
 .editproperties .selectgroupcategory{height:200px;margin-top:15px}
 .editproperties .removecategory.btn{margin-bottom:0}
-.editrelated{}
+.editproperties a.movedngroupcategory, .editproperties a.moveupgroupcategory{ cursor: pointer;}
+.editproperties a.movedngroupcategory:hover, .editproperties a.moveupgroupcategory:hover { color: #47BE27 }
+
+.editrelated {}
 .editrelated .productrelated{list-style: none outside none;margin: 0;padding: 0;}
 .editrelated .productrelated > li{float:left}
 .editrelated .relatedlistitem{list-style: none outside none;margin: 0 6px 6px 0;padding: 0;background:#FFFFFF;width:120px;height:160px;position: relative;border:1px dotted #E3E3E3}

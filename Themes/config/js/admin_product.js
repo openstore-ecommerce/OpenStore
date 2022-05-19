@@ -325,7 +325,7 @@ function Admin_product_nbxgetCompleted(e) {
         initImgDisplay();
     }
 
-    if (e.cmd == 'product_admin_populatecategorylist' || e.cmd == 'product_admin_addproperty' || e.cmd == 'product_admin_removeproperty') {
+    if (e.cmd == 'product_admin_populatecategorylist' || e.cmd == 'product_admin_addproperty' || e.cmd == 'product_admin_removeproperty' || e.cmd == 'product_admin_moveupproperty' || e.cmd == 'product_admin_movednproperty') {
         initPropertyDisplay();
     }
     if (e.cmd == 'product_admin_addproductcategory' || e.cmd == 'product_admin_removeproductcategory' || e.cmd == 'product_admin_setdefaultcategory') {
@@ -650,6 +650,22 @@ function initDocDisplay() {
             $('#p1_selectedcatid').val($(this).attr('categoryid'));
             $('#p1_razortemplate').val("Admin_ProductProperties.cshtml");
             nbxget('product_admin_removeproperty', '#selectparams_Product_Admin', '#productgroupcategories'); // load             
+        });
+
+        $('.moveupgroupcategory').unbind('click');
+        $('.moveupgroupcategory').click(function () {
+            $('.processing').show();
+            $('#p1_selectedcatid').val($(this).attr('categoryid'));
+            $('#p1_razortemplate').val("Admin_ProductProperties.cshtml");
+            nbxget('product_admin_moveupproperty', '#selectparams_Product_Admin', '#productgroupcategories'); // load             
+        });
+
+        $('.movedngroupcategory').unbind('click');
+        $('.movedngroupcategory').click(function () {
+            $('.processing').show();
+            $('#p1_selectedcatid').val($(this).attr('categoryid'));
+            $('#p1_razortemplate').val("Admin_ProductProperties.cshtml");
+            nbxget('product_admin_movednproperty', '#selectparams_Product_Admin', '#productgroupcategories'); // load             
         });
 
         $('.selectproperty').unbind('click');

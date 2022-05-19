@@ -316,10 +316,12 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         /// <param name="groupref">groupref for select, "" = all, "cat"= Category only, "!cat" = all non-category, "{groupref}"=this group only</param>
         /// <param name="cascade">get all cascade records to get all parent categories</param>
         /// <returns></returns>
-        public List<GroupCategoryData> GetProductCategories(int productid, String groupref = "", Boolean cascade = false)
+        public List<GroupCategoryData> GetProductCategories(int productid, String groupref = "", bool cascade = false, bool useSort = false)
         {
             var objCtrl = new NBrightBuyController();
             var catxrefList = objCtrl.GetList(-1, -1, "CATXREF", " and NB1.[ParentItemId] = " + productid);
+
+            var catxrefOrdered = new List<NBrightInfo>();
 
             if (cascade)
             {
@@ -329,7 +331,14 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     catxrefList.Add(c);
                 }                
             }
-
+            if(useSort)
+            {
+                // when not cascading, we want to use the sort property, if it's there
+                if (catxrefList.All(o => o.GetXmlPropertyInt("genxml/sort") >= 0))
+                {
+                    catxrefList.OrderBy(o => o.GetXmlPropertyInt("genxml/sort")).ToList().ForEach(o => catxrefOrdered.Add(o));
+                }
+            }
 
             var notcat = "";
             if (groupref == "!cat")
@@ -347,9 +356,56 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                              select d1).OrderBy(d1 => d1.grouptyperef).ThenBy(d1 => d1.breadcrumb).ToList<GroupCategoryData>();
 
             }
+
+            // apply the sort order if we have that
+            if (catxrefOrdered.Any())
+            {
+                var orderedItems = new List<GroupCategoryData>();
+                catxrefOrdered.ForEach(o =>
+                {
+                    if (joinItems.Any(i => i.categoryid == o.XrefItemId))
+                    {
+                        orderedItems.Add(joinItems.First(i => i.categoryid == o.XrefItemId));
+                    }
+                });
+                joinItems = orderedItems;
+            }
+
             return joinItems;
         }
 
+        public void MoveProductCategory(int productid, int categoryid, int positionchange)
+        {
+            var objCtrl = new NBrightBuyController();
+            var catxrefList = objCtrl.GetList(-1, -1, "CATXREF", " and NB1.[ParentItemId] = " + productid);
+
+            var catxrefOrdered = new List<NBrightInfo>();
+
+            // when not cascading, we want to use the sort property, if it's there
+            if (catxrefList.All(o => o.GetXmlPropertyInt("genxml/sort") >= 0))
+            {
+                catxrefList.OrderBy(o => o.GetXmlPropertyInt("genxml/sort")).ToList().ForEach(o => catxrefOrdered.Add(o));
+            }
+
+            var currentIndex = catxrefOrdered.FindIndex(o => o.XrefItemId == categoryid);
+            if (currentIndex < 0) return;
+
+            var moveItem = catxrefOrdered[currentIndex];
+            catxrefOrdered.Remove(moveItem);
+            catxrefOrdered.Insert(currentIndex + positionchange, moveItem);
+
+            var newSort = 0;
+            foreach (var catxref in catxrefOrdered)
+            {
+                var curSort = catxref.GetXmlPropertyInt("genxml/sort");
+                if (curSort != newSort)
+                {
+                    catxref.SetXmlProperty("genxml/sort", newSort.ToString());
+                    objCtrl.Update(catxref);
+                }
+                newSort++;
+            }
+        }
         #endregion
 
         #region "breadcrumbs"
