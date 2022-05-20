@@ -1260,4 +1260,10 @@
   <data name="QtyMinPurchase.Text" xml:space="preserve">
     <value>Minimum Purchase Qty</value>
   </data>
+  <data name="cmdMoveDownIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Down" class="fa fa-arrow-circle-down  fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="cmdMoveUpIcon.Text" xml:space="preserve">
+    <value>&lt;i title="Up" class="fa fa-arrow-circle-up  fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+  </data>
 </root>
