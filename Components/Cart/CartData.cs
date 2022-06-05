@@ -460,7 +460,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                             cartItemInfo.SetXmlProperty("genxml/validatecode", "STOCKADJ");
                         }
                         base.SetValidated(false);
-                        cartItemInfo.SetXmlPropertyDouble("genxml/qty", qty.ToString(""));
+                        cartItemInfo.SetXmlProperty("genxml/qty", ((int)qty).ToString());
                     }
                 }
                 #endregion
