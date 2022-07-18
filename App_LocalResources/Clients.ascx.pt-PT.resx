@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="cmdCreateOrder.Text" xml:space="preserve">
+        <value>Criar pedido</value>
+        <comment>Create Order</comment>
+    </data>
+    <data name="cmdResetPass.confirm" xml:space="preserve">
+        <value>Redefinir a palavra-chave do utilizador e enviar um e-mail com uma nova palavra-chave?</value>
+        <comment>Reset User Password and send email with new password?</comment>
+    </data>
+    <data name="cmdResetPass.Text" xml:space="preserve">
+        <value>Redefinir Palavra-passe</value>
+        <comment>Reset Password</comment>
+    </data>
+    <data name="cmdSearch.Text" xml:space="preserve">
+        <value>Pesquisar</value>
+        <comment>Search</comment>
+    </data>
+    <data name="cmdUnlockUser.confirm" xml:space="preserve">
+        <value>Desbloquear utilizador?</value>
+        <comment>Unlock User?</comment>
+    </data>
+    <data name="cmdUnlockUser.Text" xml:space="preserve">
+        <value>Desbloquear usuario</value>
+        <comment>Unlock User</comment>
+    </data>
+    <data name="cmdValidateUser.Text" xml:space="preserve">
+        <value>Autorizar o utilizador</value>
+        <comment>Authorise User</comment>
+    </data>
+    <data name="cmdViewOrders.Text" xml:space="preserve">
+        <value>Ver pedidos</value>
+        <comment>View Orders</comment>
+    </data>
+    <data name="lblauthorised.Text" xml:space="preserve">
+        <value>Autorizado</value>
+        <comment>Authorised</comment>
+    </data>
+    <data name="lblDisplayName.Text" xml:space="preserve">
+        <value>Nome a ser exibido</value>
+        <comment>Display Name</comment>
+    </data>
+    <data name="lblEmail.Text" xml:space="preserve">
+        <value>Email</value>
+        <comment>Email</comment>
+    </data>
+    <data name="lblFirstName.Text" xml:space="preserve">
+        <value>Primeiro nome</value>
+        <comment>First Name</comment>
+    </data>
+    <data name="lblisdeleted.Text" xml:space="preserve">
+        <value>É Apagado</value>
+        <comment>Is Deleted</comment>
+    </data>
+    <data name="lblLastName.Text" xml:space="preserve">
+        <value>Apelido</value>
+        <comment>Last Name</comment>
+    </data>
+    <data name="lblupdatepassword.Text" xml:space="preserve">
+        <value>Atualizar palavra-passe</value>
+        <comment>Update Password</comment>
+    </data>
+    <data name="lblUserID.Text" xml:space="preserve">
+        <value>ID do utilizador</value>
+        <comment>UserID</comment>
+    </data>
+    <data name="lblUserName.Text" xml:space="preserve">
+        <value>Nome do utilizador</value>
+        <comment>User Name</comment>
+    </data>
+    <data name="UserID.Header" xml:space="preserve">
+        <value>ID do utilizador</value>
+        <comment>UserID</comment>
+    </data>
+    <data name="cmdValidateUser.confirm" xml:space="preserve">
+        <value>Autorizar o utilizador e conceder acesso ao papel de cliente?</value>
+        <comment>Authorise User and grant client role access?</comment>
+    </data>
+    <data name="cmdViewAddressBook.Text" xml:space="preserve">
+        <value>Livro de endereços</value>
+        <comment>Address Book</comment>
+    </data>
+    <data name="cmdViewClient.Text" xml:space="preserve">
+        <value>Ver cliente</value>
+        <comment>View Client</comment>
+    </data>
+    <data name="cmdViewClientIcon.Text" xml:space="preserve">
+        <value>&lt;i  title="Ver cliente" class="fa fa-user fa-fw fa-2x"&gt;&lt;/i&gt;</value>
+        <comment>&lt;i  title="View Client" class="fa fa-user fa-fw fa-2x"&gt;&lt;/i&gt;</comment>
+    </data>
+    <data name="cmdViewClientButton.Text" xml:space="preserve">
+        <value>&lt;i  title="Ver cliente" class="fa fa-user fa-fw fa-lg"&gt;&lt;/i&gt;Ver cliente</value>
+        <comment>&lt;i  title="View Client" class="fa fa-user fa-fw fa-lg"&gt;&lt;/i&gt; View Client</comment>
+    </data>
+    <data name="usageleft.Text" xml:space="preserve">
+        <value>Utilização</value>
+        <comment>Usage</comment>
+    </data>
+    <data name="validuntil.Text" xml:space="preserve">
+        <value>Válido até</value>
+        <comment>Valid Until</comment>
+    </data>
+    <data name="notsale.Text" xml:space="preserve">
+        <value>Não válido para produtos à venda</value>
+        <comment>Not valid for products on sale </comment>
+    </data>
+    <data name="validcategory.Text" xml:space="preserve">
+        <value>Categoria válida</value>
+        <comment>Valid Category</comment>
+    </data>
+    <data name="FindaClient.Text" xml:space="preserve">
+        <value>Encontrar um Cliente</value>
+        <comment>Find a Client</comment>
+    </data>
+    <data name="Actions.Text" xml:space="preserve">
+        <value>Ações</value>
+        <comment>Actions</comment>
+    </data>
+    <data name="Ordering.Text" xml:space="preserve">
+        <value>Encomenda</value>
+        <comment>Ordering</comment>
+    </data>
+    <data name="UserAccount.Text" xml:space="preserve">
+        <value>Conta do utilizador</value>
+        <comment>UserAccount</comment>
+    </data>
+    <data name="Notes.Text" xml:space="preserve">
+        <value>Notas</value>
+        <comment>Notes</comment>
+    </data>
+    <data name="cmdDeleteUser.confirm" xml:space="preserve">
+        <value>Eliminar cliente?</value>
+        <comment>Delete Client?</comment>
+    </data>
+    <data name="cmdDeleteUser.Text" xml:space="preserve">
+        <value>Eliminar cliente</value>
+        <comment>Delete Client</comment>
+    </data>
+    <data name="cmdRemoveUser.confirm" xml:space="preserve">
+        <value>Eliminar o utilizador do sistema?</value>
+        <comment>Remove User from the system?</comment>
+    </data>
+    <data name="cmdRemoveUser.Text" xml:space="preserve">
+        <value>Eliminar utilizador</value>
+        <comment>Remove User</comment>
+    </data>
+    <data name="userlockedout.Text" xml:space="preserve">
+        <value>Utilizador bloqueado</value>
+        <comment>User Locked Out</comment>
+    </data>
+    <data name="ClientmenuTitle.Text" xml:space="preserve">
+        <value>Bem-vindo à sua conta!</value>
+        <comment>Welcome in your account !</comment>
+    </data>
+    <data name="ClientmenuManage.Text" xml:space="preserve">
+        <value>Gerir conta</value>
+        <comment>Manage account</comment>
+    </data>
+    <data name="ClientmenuProfile.Text" xml:space="preserve">
+        <value>O meu perfil</value>
+        <comment>My profile</comment>
+    </data>
+    <data name="ClientmenuAddresses.Text" xml:space="preserve">
+        <value>O meu endereço</value>
+        <comment>My address</comment>
+    </data>
+    <data name="ClientmenuOrders.Text" xml:space="preserve">
+        <value>O meus pedidos</value>
+        <comment>My orders</comment>
+    </data>
+    <data name="ClientmenuAccount.Text" xml:space="preserve">
+        <value>A minha conta</value>
+        <comment>My account</comment>
+    </data>
+    <data name="customerinfos.Text" xml:space="preserve">
+        <value>Informação do cliente</value>
+        <comment>Customer informations</comment>
+    </data>
+    <data name="AmountUsed.Text" xml:space="preserve">
+        <value>Quantidade utilizada</value>
+        <comment>Amount Used</comment>
+    </data>
+    <data name="VoucherAmount.Text" xml:space="preserve">
+        <value>Cupão</value>
+        <comment>Voucher</comment>
+    </data>
+    <data name="cmdAddClientEditorRole.Text" xml:space="preserve">
+        <value>Permitir que o cliente edite os artigos atribuídos</value>
+        <comment>Allow client to Edit assigned articles</comment>
+    </data>
+    <data name="cmdUnAuthoriseUser.confirm" xml:space="preserve">
+        <value>Remover a autorização para o utilizador e interromper o acesso ao sítio Web?</value>
+        <comment>Remove Authorization for User and stop website login access?</comment>
+    </data>
+    <data name="cmdUnAuthoriseUser.Text" xml:space="preserve">
+        <value>Remover Autorização</value>
+        <comment>Remove Authorization</comment>
+    </data>
+    <data name="cmdRestoreUser.confirm" xml:space="preserve">
+        <value>Restaurar usuario?</value>
+        <comment>Restore User?</comment>
+    </data>
+    <data name="cmdRestoreUser.Text" xml:space="preserve">
+        <value>Restaurar utilizador</value>
+        <comment>Restore User</comment>
+    </data>
+    <data name="CreateAddress.Text" xml:space="preserve">
+        <value>Criar um novo endereço</value>
+        <comment>Create a new address</comment>
+    </data>
+    <data name="ClientmenuShoppingLists.Text" xml:space="preserve">
+        <value>Listas de compras</value>
+        <comment>Shopping lists</comment>
+    </data>
+    <data name="preferedlanguage.Text" xml:space="preserve">
+        <value>Língua preferida</value>
+        <comment>Prefered Language</comment>
+    </data>
+    <data name="expirydate.Text" xml:space="preserve">
+        <value>Data de expiração do prémio</value>
+        <comment>Premium Expiry Date</comment>
+    </data>
+    <data name="premiumaccount.Text" xml:space="preserve">
+        <value>Conta Premium</value>
+        <comment>Premium Account</comment>
+    </data>
+</root>

@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="ControlTitle_settings.Text" xml:space="preserve">
+        <value>Definições do menu de categorias</value>
+        <comment>Category Menu Settings</comment>
+    </data>
+    <data name="lblalwaysshow.Help" xml:space="preserve">
+        <value>Mostrar sempre o menu no fim do ramo e para a visualização do produto quando não há registos de categoria. (A lista de categorias raiz será mostrada).</value>
+        <comment>Always show menu on end of branch and for product view when no category records exist. (Root category list will be shown)</comment>
+    </data>
+    <data name="lblalwaysshow.Text" xml:space="preserve">
+        <value>Mostrar Sempre:</value>
+        <comment>Always Show: </comment>
+    </data>
+    <data name="lbldefaultcatid.Help" xml:space="preserve">
+        <value>A categoria de exibição de raiz a partir da qual o menu começará a exibir é deixada em branco para começar a partir da raiz.</value>
+        <comment>Root display category the menu will start displaying from, leaft blank to start from root.</comment>
+    </data>
+    <data name="lbldefaultcatid.Text" xml:space="preserve">
+        <value>Categoria de exposição de raízes:</value>
+        <comment>Root Display Category: </comment>
+    </data>
+    <data name="lbldetailtab.Help" xml:space="preserve">
+        <value>A página para a qual o utilizador será redireccionado quando a categoria for clicada. Se estiver em branco, é utilizada a página atual.</value>
+        <comment>The page the user will be redirected to when the category is clicked. If blank the current page is used. </comment>
+    </data>
+    <data name="lbldetailtab.Text" xml:space="preserve">
+        <value>Página da lista de produtos:</value>
+        <comment>Product List Page : </comment>
+    </data>
+    <data name="lbllistbody.Help" xml:space="preserve">
+        <value>Modelo a ser utilizado como corpo de categoria, isto é repetido para cada categoria.</value>
+        <comment>Template to be used as category body, this is repeated for each category.</comment>
+    </data>
+    <data name="lbllistbody.Text" xml:space="preserve">
+        <value>Corpo da categoria:</value>
+        <comment>Category Body: </comment>
+    </data>
+    <data name="lbllistbodyfoot.Help" xml:space="preserve">
+        <value>Modelo a ser utilizado como fim de categoria, isto é repetido para cada categoria.</value>
+        <comment>Template to be used as category end, this is repeated for each category.</comment>
+    </data>
+    <data name="lbllistbodyfoot.Text" xml:space="preserve">
+        <value>Fim da categoria:</value>
+        <comment>Category End: </comment>
+    </data>
+    <data name="lbllistfooter.Help" xml:space="preserve">
+        <value>Modelo a ser utilizado como rodapé do menu de categorias.</value>
+        <comment>Template to be used as category menu footer.</comment>
+    </data>
+    <data name="lbllistfooter.Text" xml:space="preserve">
+        <value>Rodapé do menu:</value>
+        <comment>Menu Footer: </comment>
+    </data>
+    <data name="lbllistheader.Help" xml:space="preserve">
+        <value>Modelo a ser utilizado como cabeçalho do menu de categorias.</value>
+        <comment>Template to be used as category menu header.</comment>
+    </data>
+    <data name="lbllistheader.Text" xml:space="preserve">
+        <value>Título do menu:</value>
+        <comment>Menu Header: </comment>
+    </data>
+    <data name="lblmenutype.Help" xml:space="preserve">
+        <value>Tipo de visualização do menu</value>
+        <comment>Menu Display Type</comment>
+    </data>
+    <data name="lblmenutype.Text" xml:space="preserve">
+        <value>Tipo de menu:</value>
+        <comment>Menu Type: </comment>
+    </data>
+    <data name="lbltheme.Help" xml:space="preserve">
+        <value>Nome do tema a ser utilizado para esta lista de produtos.</value>
+        <comment>Name of the theme to use for this productlist.</comment>
+    </data>
+    <data name="lbltheme.Text" xml:space="preserve">
+        <value>Tema:</value>
+        <comment>Theme: </comment>
+    </data>
+    <data name="lblthemesettings.Text" xml:space="preserve">
+        <value>Configuração do tema</value>
+        <comment>Theme Settings</comment>
+    </data>
+    <data name="lbltreebehaviour.Text" xml:space="preserve">
+        <value>MMenu de árvores com auto-colapso:</value>
+        <comment>Auto-collapse Tree Menu: </comment>
+    </data>
+    <data name="lblplaceholderimage.Text" xml:space="preserve">
+        <value>Ativar a imagem de marcador de posição: </value>
+        <comment>Enable Placeholder Image: </comment>
+    </data>
+    <data name="lblnoimageicon.Text" xml:space="preserve">
+        <value>Ícone da imagem de marcador de posição (fontawesome.io):</value>
+        <comment>Placeholder Image Icon (fontawesome.io): </comment>
+    </data>
+    <data name="lblitemwidth.Text" xml:space="preserve">
+        <value>Largura do artigo da categoria em px:</value>
+        <comment>Category Item Width in px: </comment>
+    </data>
+    <data name="lblitemheight.Text" xml:space="preserve">
+        <value>Altura do artigo da categoria (incl unidade ou automático):</value>
+        <comment>Category Item Height (incl unit or auto): </comment>
+    </data>
+    <data name="lblitemimagecontainerheight.Text" xml:space="preserve">
+        <value>Categoria Artigo Altura do contentor de imagem (incl unidade ou automático):</value>
+        <comment>Category Item Image Container Height (incl unit or auto) : </comment>
+    </data>
+    <data name="lblitemgutter.Text" xml:space="preserve">
+        <value>Elemento da categoria Caleira em px:</value>
+        <comment>Category Item Gutter in px: </comment>
+    </data>
+    <data name="lblitembottommargin.Text" xml:space="preserve">
+        <value>Margem inferior do elemento da categoria em px:</value>
+        <comment>Category Item Bottom Margin in px : </comment>
+    </data>
+    <data name="lblthumbnailwidth.Text" xml:space="preserve">
+        <value>Largura da imagem da categoria em px ou 0 para automático:</value>
+        <comment>Category Image Width in px or 0 for auto : </comment>
+    </data>
+    <data name="lblthumbnailheight.Text" xml:space="preserve">
+        <value>Altura da imagem da categoria em px ou 0 para automático:</value>
+        <comment>Category Image Height in px or 0 for auto : </comment>
+    </data>
+    <data name="lbladvancedsettings.Text" xml:space="preserve">
+        <value>Avançado</value>
+        <comment>Advanced</comment>
+    </data>
+    <data name="lblbasicsettings.Text" xml:space="preserve">
+        <value>Geral</value>
+        <comment>General</comment>
+    </data>
+    <data name="lbldepth.Help" xml:space="preserve">
+        <value>O menu de profundidade será exibido.</value>
+        <comment>Depth the menu will display.</comment>
+    </data>
+    <data name="lbldepth.Text" xml:space="preserve">
+        <value>Profundidade:</value>
+        <comment>Depth: </comment>
+    </data>
+    <data name="lbltargetmodulekey.Help" xml:space="preserve">
+        <value>Chave do módulo que irá exibir os resultados.</value>
+        <comment>Module Key of the module that will display the results.</comment>
+    </data>
+    <data name="lbltargetmodulekey.Text" xml:space="preserve">
+        <value>Chave do módulo alvo:</value>
+        <comment>Target Module key :</comment>
+    </data>
+    <data name="lbltreeidentclass.Help" xml:space="preserve">
+        <value>Identificar o nome da classe CSS a ser colocada na raiz &amp;quot;ul&amp;quot; da estrutura da árvore. Isto será utilizado para identificar a árvore em JavaScript..</value>
+        <comment>Identifying CSS class name to be placed onto the root "ul" of the tree structure.  This will be used to identify the Tree to the Javascript.</comment>
+    </data>
+    <data name="lbltreeidentclass.Text" xml:space="preserve">
+        <value>Identificação de classe Css:</value>
+        <comment>Identifying Css Class : </comment>
+    </data>
+    <data name="lbltreerootclass.Help" xml:space="preserve">
+        <value>Nome opcional da classe CSS a ser colocada na raiz &amp;quot;ul&amp;quot; da estrutura da árvore. Para dar estilo à árvore.</value>
+        <comment>Optional CSS class name to be placed onto the root "ul" of the tree structure. For styling the tree.</comment>
+    </data>
+    <data name="lbltreerootclass.Text" xml:space="preserve">
+        <value>Classe CSS de estilo:</value>
+        <comment>Style Css Class : </comment>
+    </data>
+    <data name="themehidden.Text" xml:space="preserve">
+        <value>As definições do tema antigo foram desativadas, por favor atualize para ativar o novo tema.</value>
+        <comment>Old Theme Settings have been disabled, update to activate new theme. </comment>
+    </data>
+    <data name="injectseo.Help" xml:space="preserve">
+        <value>Insere os dados SEO da categoria selecionada na página, isto também é feito através da visualização do produto, portanto, se tiver uma visualização do produto na página, isto não é necessário.</value>
+        <comment>Injects the selected category SEO data into the page, this is also done byt he product view, so if you have aproduct view on the page tis is not required.</comment>
+    </data>
+    <data name="injectseo.Text" xml:space="preserve">
+        <value>Inserir SEO</value>
+        <comment>Inject SEO</comment>
+    </data>
+</root>
