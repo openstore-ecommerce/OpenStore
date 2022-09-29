@@ -1836,7 +1836,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 ////////////////////////////////////////////
                 // get ORDERBY SORT 
                 ////////////////////////////////////////////
-                if (_orderbyindex != "") // if we have orderby set in url, find the meta tags
+                if (_orderbyindex != "" || firstRender) // if we have orderby set in url, find the meta tags
                 {
                     if (metaTokens.ContainsKey("orderby" + _orderbyindex))
                     {
