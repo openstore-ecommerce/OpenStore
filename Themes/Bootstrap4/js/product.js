@@ -64,6 +64,23 @@ $(document).ready(function () {
         if ($('.quantity').val() === 'NaN') $('.quantity').val('1');
     });
 
+    // ensure min/max purchase qty updates with model changes
+    $("[id$='ddlmodelsel']").off("change");
+    $("[id$='ddlmodelsel']").on("change", function (e) {
+        var selectedIndex = $("[id$='ddlmodelsel']")[0].selectedIndex;
+        var minpurchaseqty = $(".models-option").eq(selectedIndex).data("minpurchaseqty") || 1;
+        var maxpurchaseqty = $(".models-option").eq(selectedIndex).data("maxpurchaseqty");
+        if (!isNaN(maxpurchaseqty) && maxpurchaseqty > 0) {
+            $("#selectedaddqty").attr("max", maxpurchaseqty);
+        }
+        else {
+            $("#selectedaddqty").removeAttr("max");
+        }
+        if (!isNaN(minpurchaseqty)) {
+            $("#selectedaddqty").attr("min", minpurchaseqty);
+        }
+    });
+
     addtobasketclick();
 
     $('.processingproduct').hide();

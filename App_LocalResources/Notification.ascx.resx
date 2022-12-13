@@ -327,4 +327,10 @@
   <data name="product01_fail.Text" xml:space="preserve">
     <value>Communication Error: Product Save Failed.  (Invalid Model Count)</value>
   </data>
+  <data name="maxpurchaseqty.Text" xml:space="preserve">
+    <value>Qty adjusted to match maximum purchase qty</value>
+  </data>
+  <data name="minpurchaseqty.Text" xml:space="preserve">
+    <value>Qty adjusted to match minimum purchase qty</value>
+  </data>
 </root>

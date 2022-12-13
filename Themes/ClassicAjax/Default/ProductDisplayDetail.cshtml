@@ -125,23 +125,29 @@
             {
                 <div class="buy">
                     @if (@product.IsInStock)
-    {
-                <div class="quantityoptions">
-                    <a class="qtyminus" href="javascript:void(0)"><i class="fa fa-minus"></i></a>
-                    <!-- "selectedaddqty"" expected by server as name of qty field -->
-                    @TextBox(info, "genxml/textbox/selectedaddqty", "min=" + @info.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase") + " class='quantity selectedaddqty'", "1")
-                    <a class="qtyplus" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
-                </div>
+                    {
 
-                if (!product.Disabled)
-                {
-                    <a class="actionbutton addtobasket " itemid="@(info.ItemID)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>@ResourceKey("ProductView.addtobasket")</a>
-                }
+                        if (!product.Disabled)
+                        {
+                            string maxAttribute = "";
+                            if (@info.GetXmlPropertyDouble("genxml/textbox/txtqtymaxpurchase") > 0)
+                            {
+                                maxAttribute = "max=" + @info.GetXmlPropertyDouble("genxml/textbox/txtqtymaxpurchase") + " ";
+                            }
+                            <div class="quantityoptions">
+                                <a class="qtyminus" href="javascript:void(0)"><i class="fa fa-minus"></i></a>
+                                <!-- "selectedaddqty"" expected by server as name of qty field -->
+                                @TextBox(info, "genxml/textbox/selectedaddqty", maxAttribute + "min=" + @info.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase") + " class='form-control quantity selectedaddqty'", "1")
+                                <a class="qtyplus" href="javascript:void(0)"><i class="fa fa-plus"></i></a>
+                            </div>
+                            <a class="actionbutton addtobasket " itemid="@(info.ItemID)" href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>@ResourceKey("ProductView.addtobasket")</a>
 
-                <!-- Shopping List buttons -->
-                <a id="shoppinglistadd-@(info.ItemID)" href="#shoppinglistpopup" class="shoppinglistadd actionbutton absec" itemid="@(info.ItemID)"><i class="fa fa-star-o"></i></a>
-                <a id="shoppinglistremove-@(info.ItemID)" href="javascript:void(0)" class="shoppinglistremove actionbutton absec" itemid="@(info.ItemID)" style="display:none;"><i class="fa fa-star"></i></a>
-                <script>
+                        }
+
+                        <!-- Shopping List buttons -->
+                        <a id="shoppinglistadd-@(info.ItemID)" href="#shoppinglistpopup" class="shoppinglistadd actionbutton absec" itemid="@(info.ItemID)"><i class="fa fa-star-o"></i></a>
+                        <a id="shoppinglistremove-@(info.ItemID)" href="javascript:void(0)" class="shoppinglistremove actionbutton absec" itemid="@(info.ItemID)" style="display:none;"><i class="fa fa-star"></i></a>
+                        <script>
                             if (IsInFavorites(@(info.ItemID))) {
                                 $('#shoppinglistadd-@(info.ItemID)').hide();
                                 $('#shoppinglistremove-@(info.ItemID)').show();
@@ -149,14 +155,14 @@
                                 $('#shoppinglistadd-@(info.ItemID)').show();
                                 $('#shoppinglistremove-@(info.ItemID)').hide();
                             }
-                </script>
+                        </script>
 
 
-}
-else
-{
-                <span class="outofstock">@ResourceKey("ProductView.outofstock")</span>
-}
+                    }
+                    else
+                    {
+                        <span class="outofstock">@ResourceKey("ProductView.outofstock")</span>
+                    }
 
                 </div>
             }
@@ -228,20 +234,23 @@ else
                             {
                                 if (!m.GetXmlPropertyBool("genxml/checkbox/chkishidden") && !m.GetXmlPropertyBool("genxml/checkbox/chkdeleted"))
                                 {
+                                    var maxpurchaseqty = m.GetXmlPropertyDouble("genxml/textbox/txtqtymaxpurchase");
+                                    var minpurchaseqty = m.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase");
+
                                     <tr>
-                                        <td class="models-option">@m.GetXmlProperty("genxml/lang/genxml/textbox/txtmodelname")</td><!-- Model Name -->
-                                          <td>@ResourceKey("ProductView.model")<text> </text>@m.GetXmlProperty("genxml/textbox/txtmodelref")</td>
-                                          <td>
-                                          @if (m.GetXmlPropertyDouble("genxml/textbox/txtsaleprice") > 0)
-                                          {
-                                              <span class="old">@NBrightBuyUtils.FormatToStoreCurrency(m.GetXmlPropertyDouble("genxml/textbox/txtunitcost"))</span>
-                                              <strong>@NBrightBuyUtils.FormatToStoreCurrency(m.GetXmlPropertyDouble("genxml/textbox/txtsaleprice"))</strong>
-                                          }
-                                          else
-                                          {
-                                              <span>@NBrightBuyUtils.FormatToStoreCurrency(m.GetXmlPropertyDouble("genxml/textbox/txtunitcost"))</span>
-                                          }
-                                          </td>
+                                        <td class="models-option" data-minpurchaseqty="@minpurchaseqty" data-maxpurchaseqty="@maxpurchaseqty">@m.GetXmlProperty("genxml/lang/genxml/textbox/txtmodelname")</td><!-- Model Name -->
+                                        <td>@ResourceKey("ProductView.model")<text> </text>@m.GetXmlProperty("genxml/textbox/txtmodelref")</td>
+                                        <td>
+                                            @if (m.GetXmlPropertyDouble("genxml/textbox/txtsaleprice") > 0)
+                                            {
+                                                <span class="old">@NBrightBuyUtils.FormatToStoreCurrency(m.GetXmlPropertyDouble("genxml/textbox/txtunitcost"))</span>
+                                                <strong>@NBrightBuyUtils.FormatToStoreCurrency(m.GetXmlPropertyDouble("genxml/textbox/txtsaleprice"))</strong>
+                                            }
+                                            else
+                                            {
+                                                <span>@NBrightBuyUtils.FormatToStoreCurrency(m.GetXmlPropertyDouble("genxml/textbox/txtunitcost"))</span>
+                                            }
+                                        </td>
                                         <td class="models-value">
                                             @if (m.GetXmlPropertyBool("genxml/checkbox/chkstockon") && (m.GetXmlPropertyDouble("genxml/textbox/txtqtyremaining") <= m.GetXmlPropertyDouble("genxml/textbox/txtqtyminstock")))
                                             {

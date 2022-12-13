@@ -147,7 +147,7 @@
 
                         <div class="quantityfields">
                             <a class="qtyminus" href="javascript:void(0)" itemcode="@(nbi.GetXmlProperty("genxml/itemcode").Replace(":","_"))"><i class="fa fa-minus"></i></a>
-                            @NBrightTextBox(nbi, "genxml/qty_" + lp, "class='quantity itemcode" + nbi.GetXmlProperty("genxml/itemcode").Replace(":","_") + "'", "1")
+                            @NBrightTextBox(nbi, "genxml/qty_" + lp, "class='quantity itemcode" + nbi.GetXmlProperty("genxml/itemcode").Replace(":", "_") + "'", "1")
                             <a class="qtyplus" href="javascript:void(0)" itemcode="@(nbi.GetXmlProperty("genxml/itemcode").Replace(":","_"))"><i class="fa fa-plus"></i></a>
                         </div>
 
@@ -159,6 +159,14 @@
                         @if (nbi.GetXmlProperty("genxml/validatecode") == "OUTOFSTOCK")
                         {
                             @ResourceKey("Notification.outofstock")
+                        }
+                        @if (nbi.GetXmlProperty("genxml/validatecode") == "MAXPURCHASEQTY")
+                        {
+                            @ResourceKey("Notification.maxpurchaseqty")
+                        }
+                        @if (nbi.GetXmlProperty("genxml/validatecode") == "MINPURCHASEQTY")
+                        {
+                            <br /> @ResourceKey("Notification.minpurchaseqty")
                         }
                     </td>
                     @if (!Model.GetSettingBool("cataloguemode"))
