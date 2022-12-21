@@ -1739,6 +1739,10 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
             {
                 ajaxInfo.SetXmlProperty("genxml/hidden/catid", Utils.RequestParam(context, "catid"));
             }
+            if (firstRender && Utils.RequestQueryStringParam(context, "search") != "")
+            {
+                ajaxInfo.SetXmlProperty("genxml/hidden/search", Utils.RequestParam(context, "search"));
+            }
 
             return ProductAjaxViewList(ajaxInfo, Utils.RequestParam(context, "pagemid"), Utils.RequestParam(context, "page"), firstRender);
         }
@@ -1934,6 +1938,13 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                     // NOTE: keeping search across categories is VERY confusing for cleint, although it works logically.
                     navigationdata.ResetSearch();
                     strFilter = sqlTemplateFilter;
+                    if (firstRender) {
+                        var search = ajaxInfo.GetXmlProperty("genxml/hidden/search");
+                        if (!string.IsNullOrWhiteSpace(search)) {
+                            var sqlFilterLikeText = NBrightCore.render.GenXmlFunctions.GetSqlFilterLikeText("", "", search);
+                            strFilter += sqlFilterLikeText;
+                        }
+                    }
                 }
 
                 var pageNumber = 1;
