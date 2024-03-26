@@ -528,6 +528,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public Boolean HasProperty(String propertyref)
         {
+            if (Info == null) return false;
             var objGrpCtrl = new GrpCatController(_lang);
             var l = objGrpCtrl.GetProductCategories(Info.ItemID, "!cat");
             return l.Any(i => (i.categoryref == propertyref || i.propertyref == propertyref));
@@ -535,6 +536,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
         public Boolean IsInCategory(String categoryref)
         {
+            if (Info == null) return false;
             var objGrpCtrl = new GrpCatController(_lang);
             var l = objGrpCtrl.GetProductCategories(Info.ItemID, "cat", true);
             return l.Any(i => i.categoryref == categoryref);

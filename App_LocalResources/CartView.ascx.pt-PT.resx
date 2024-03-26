@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="AddBill.Text" xml:space="preserve">
+        <value>Agregar dirección de facturación</value>
+        <comment>Add Billing Address</comment>
+    </data>
+    <data name="addnewaddress.Text" xml:space="preserve">
+        <value>Adicionar novo endereço</value>
+        <comment>Add New Address</comment>
+    </data>
+    <data name="AddShip.Text" xml:space="preserve">
+        <value>Adicionar endereço de envio</value>
+        <comment>Add Shipping Address</comment>
+    </data>
+    <data name="Back.Text" xml:space="preserve">
+        <value>Voltar</value>
+        <comment>Back</comment>
+    </data>
+    <data name="BillingAddress.Text" xml:space="preserve">
+        <value>Endereço de envio</value>
+        <comment>Billing Address</comment>
+    </data>
+    <data name="confirm.Text" xml:space="preserve">
+        <value>Confirmar</value>
+        <comment>Confirm</comment>
+    </data>
+    <data name="Next.Text" xml:space="preserve">
+        <value>Próximo</value>
+        <comment>Next</comment>
+    </data>
+    <data name="Order.Text" xml:space="preserve">
+        <value>Ordem de envio</value>
+        <comment>Submit Order</comment>
+    </data>
+    <data name="SelectBill.Text" xml:space="preserve">
+        <value>Selecionar morada de faturação</value>
+        <comment>Select Billing Address</comment>
+    </data>
+    <data name="SelectShip.Text" xml:space="preserve">
+        <value>Selecione o endereço de envio</value>
+        <comment>Select Shipping Address</comment>
+    </data>
+    <data name="ShippingAddress.Text" xml:space="preserve">
+        <value>Endereço de envio</value>
+        <comment>Shipping Address</comment>
+    </data>
+    <data name="ForCollection.Text" xml:space="preserve">
+        <value>Para recolha</value>
+        <comment>For Collection</comment>
+    </data>
+    <data name="UseBillingAddress.Text" xml:space="preserve">
+        <value>Utilize o endereço de faturação</value>
+        <comment>Use Billing Address</comment>
+    </data>
+    <data name="collectiontimes.Text" xml:space="preserve">
+        <value>Tempos de recolha</value>
+        <comment>Collection Times</comment>
+    </data>
+    <data name="selectaddress.Text" xml:space="preserve">
+        <value>Livro de endereços</value>
+        <comment>Address Book</comment>
+    </data>
+    <data name="AddressBookMessage.Text" xml:space="preserve">
+        <value>Ineciar sessão para selecionar um endereço guardado.</value>
+        <comment>Login to select a saved address.</comment>
+    </data>
+    <data name="shippingoption1.data" xml:space="preserve">
+        <value>Enviar para um endereço de faturação; Enviar para um endereço separado; Recolher na loja</value>
+        <comment>Ship to the billing address; Ship to a separate address; Collect from store</comment>
+    </data>
+    <data name="shippingoption1.datavalue" xml:space="preserve">
+        <value>1; 2; 3</value>
+        <comment>1;2;3</comment>
+    </data>
+    <data name="shippingoption2.data" xml:space="preserve">
+        <value>Utilizar morada de faturação; Introduzir morada de envio</value>
+        <comment>Use Billing Address;Enter Shipping Address</comment>
+    </data>
+    <data name="shippingoption2.datavalue" xml:space="preserve">
+        <value>1; 2</value>
+        <comment>1;2</comment>
+    </data>
+    <data name="SaveAddress.Text" xml:space="preserve">
+        <value>Guardar endereço</value>
+        <comment>Save Address</comment>
+    </data>
+    <data name="SaveAddress.Title" xml:space="preserve">
+        <value>Guardar endereço no Livro de endereços</value>
+        <comment>Save Address to Address Book</comment>
+    </data>
+    <data name="cmdAddItem.Text" xml:space="preserve">
+        <value>&lt;i class='fa fa-plus-square'&gt;&lt;/i&gt;</value>
+        <comment>&lt;i class='fa fa-plus-square'&gt;&lt;/i&gt;</comment>
+    </data>
+    <data name="cmdRemoveItem.Text" xml:space="preserve">
+        <value>&lt;i class='fa fa-minus-square'&gt;&lt;/i&gt;</value>
+        <comment>&lt;i class='fa fa-minus-square'&gt;&lt;/i&gt;</comment>
+    </data>
+    <data name="cmdDeleteItem.Text" xml:space="preserve">
+        <value>&lt;i class='fa fa-times-circle fa-2x'&gt;&lt;/i&gt;</value>
+        <comment>&lt;i class='fa fa-times-circle fa-2x'&gt;&lt;/i&gt;</comment>
+    </data>
+    <data name="UpdateCart.Text" xml:space="preserve">
+        <value>Recalcule</value>
+        <comment>Recalculate</comment>
+    </data>
+    <data name="cmdClearCart.Text" xml:space="preserve">
+        <value>Esvaziar Carrinho</value>
+        <comment>Clear Cart</comment>
+    </data>
+    <data name="cmdClearCart.confirm" xml:space="preserve">
+        <value>Eliminar todos os artigos e cancelar a encomenda?</value>
+        <comment>Remove all items and cancel order?</comment>
+    </data>
+    <data name="chknews.Text" xml:space="preserve">
+        <value>Receber a nossa newsletter</value>
+        <comment>Receive our newsletter</comment>
+    </data>
+    <data name="chkterms.Text" xml:space="preserve">
+        <value>Ao submeter a sua encomenda, confirma a sua aceitação dos termos e condições.</value>
+        <comment>Submitting your order confirms you accept the terms and conditions.</comment>
+    </data>
+    <data name="txtItems.Text" xml:space="preserve">
+        <value>Item(s)</value>
+        <comment>Item(s)</comment>
+    </data>
+    <data name="txtitemslower.Text" xml:space="preserve">
+        <value>item(s)</value>
+        <comment>item(s)</comment>
+    </data>
+    <data name="cartempty.Text" xml:space="preserve">
+        <value>Não há produtos no seu carrinho</value>
+        <comment>No products in cart</comment>
+    </data>
+    <data name="returntostore.Text" xml:space="preserve">
+        <value>Voltar à loja</value>
+        <comment>Return to Store</comment>
+    </data>
+    <data name="Totaltopay.Text" xml:space="preserve">
+        <value>Total a ser pago</value>
+        <comment>Total to pay</comment>
+    </data>
+    <data name="PaymentComplete.Text" xml:space="preserve">
+        <value>Pagamento Completo</value>
+        <comment>Payment Complete</comment>
+    </data>
+    <data name="PaymentFailed.Text" xml:space="preserve">
+        <value>Falha de pagamento</value>
+        <comment>Payment Failed</comment>
+    </data>
+    <data name="ManageOrders.Text" xml:space="preserve">
+        <value>Gerir pedidos</value>
+        <comment>Manage Orders</comment>
+    </data>
+    <data name="ViewOrder.Text" xml:space="preserve">
+        <value>Ver pedido</value>
+        <comment>View Order</comment>
+    </data>
+    <data name="ProcessingDiv.Text" xml:space="preserve">
+        <value>&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</value>
+        <comment>&lt;i class="fa fa-cog fa-spin fa-4x"&gt;&lt;/i&gt;</comment>
+    </data>
+    <data name="Previous.Text" xml:space="preserve">
+        <value>Anterior</value>
+        <comment>Previous</comment>
+    </data>
+    <data name="addressmessage.Text" xml:space="preserve">
+        <value>Certifique-se de que o seu endereço é preenchido corretamente, caso contrário a sua encomenda poderá ser atrasada.</value>
+        <comment>Please ensure your address is completed correctly, otherwise your order may be delayed.</comment>
+    </data>
+    <data name="PlaceOrder.Text" xml:space="preserve">
+        <value>Pedido</value>
+        <comment>Order</comment>
+    </data>
+    <data name="YourBasket.Text" xml:space="preserve">
+        <value>O seu carrinho de compras</value>
+        <comment>Your shopping basket</comment>
+    </data>
+    <data name="CartstepsProcess.Text" xml:space="preserve">
+        <value>Processo de encomenda</value>
+        <comment>Order process</comment>
+    </data>
+    <data name="CartstepsRecap.Text" xml:space="preserve">
+        <value>Cesto</value>
+        <comment>Basket</comment>
+    </data>
+    <data name="CartstepsAddresses.Text" xml:space="preserve">
+        <value>Endereço</value>
+        <comment>Address</comment>
+    </data>
+    <data name="CartstepsShipping.Text" xml:space="preserve">
+        <value>Resume</value>
+        <comment>Summary</comment>
+    </data>
+    <data name="CartstepsPayment.Text" xml:space="preserve">
+        <value>Pagamento</value>
+        <comment>Payment</comment>
+    </data>
+    <data name="CartstepsConfirm.Text" xml:space="preserve">
+        <value>Confirmação</value>
+        <comment>Confirmation</comment>
+    </data>
+    <data name="shippingoption1data.Text" xml:space="preserve">
+        <value>Enviar para o endereço de faturação, enviar para um endereço separado, cobrar na loja</value>
+        <comment>Ship to the billing address,Ship to a separate address,Collect from store</comment>
+    </data>
+    <data name="shippingoption1datavalue.Text" xml:space="preserve">
+        <value>1,2,3</value>
+        <comment>1,2,3</comment>
+    </data>
+    <data name="shippingoption2data.Text" xml:space="preserve">
+        <value>Use o endereço de faturação, introduza o endereço de envio</value>
+        <comment>Use Billing Address,Enter Shipping Address</comment>
+    </data>
+    <data name="shippingoption2datavalue.Text" xml:space="preserve">
+        <value>1,2</value>
+        <comment>1,2</comment>
+    </data>
+    <data name="editmodeC.Text" xml:space="preserve">
+        <value>Pedido a ser criado</value>
+        <comment>Order being created</comment>
+    </data>
+    <data name="editmodeE.Text" xml:space="preserve">
+        <value>Pedido a ser editado</value>
+        <comment>Order being edited</comment>
+    </data>
+    <data name="gdprterms.Text" xml:space="preserve">
+        <value>Ao enviar este formulário, concorda que as informações introduzidas poderão ser utilizadas para o contactar no contexto da relação comercial decorrente da sua encomenda.</value>
+        <comment>By submitting this form you accept that the information entered may be used to contact you in the context of the business relationship that arises from your order.</comment>
+    </data>
+    <data name="PaymentButton.Text" xml:space="preserve">
+        <value>Pagar</value>
+        <comment>Pay</comment>
+    </data>
+</root>

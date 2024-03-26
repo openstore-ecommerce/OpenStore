@@ -238,12 +238,18 @@
                                                     </div>
                                                     <div class="col-sm-2">
                                                         <label class="control-label">@ResourceKey("General.QtyMinPurchase")</label>
-                                                        @TextBox(nbiModel, "genxml/textbox/txtqtyminpurchase_" + lp1, "class='form-control input-sm' maxlength='10' datatype='double'", "0")
+                                                        @TextBox(nbiModel, "genxml/textbox/txtqtyminpurchase_" + lp1, "class='purchaseqty form-control input-sm' maxlength='8' datatype='double'", "0")
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label class="control-label">@ResourceKey("General.QtyMaxPurchase")</label>
+                                                        @TextBox(nbiModel, "genxml/textbox/txtqtymaxpurchase_" + lp1, "class='purchaseqty form-control input-sm' maxlength='8' datatype='double'", "0")
                                                     </div>
                                                     <div class="col-sm-1">
                                                         <label class="control-label">@ResourceKey("General.unit")</label>
                                                         @TextBox(nbiModel, "genxml/textbox/unit_" + lp1, "class='form-control input-sm'  ")
                                                     </div>
+                                                </div>
+                                                <div class="row">
                                                     <div class="col-sm-2">
                                                         <label class="control-label">@ResourceKey("General.status")</label>
                                                         @ModelStatusDropDown(nbiModel, "genxml/dropdownlist/modelstatus_" + lp1, "class='form-control input-sm'")

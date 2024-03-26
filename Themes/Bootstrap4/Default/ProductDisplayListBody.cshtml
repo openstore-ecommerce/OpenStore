@@ -88,7 +88,7 @@
 
                             @if (!cataloguemode && !product.Disabled && product.IsInStock)
                             {
-                                if (product.Models.Count > 1 || product.Models.Exists(x => x.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase") > 0))
+                                if (product.Models.Count > 1 || product.Models.Exists(x => x.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase") > 0) || product.Options.Count > 0)
                                 {
                                     <a href="@entryUrl" class="actionbutton btn btn-primary"><i class="fa fa-search mr-1"></i>@productdetail</a>
                                 }

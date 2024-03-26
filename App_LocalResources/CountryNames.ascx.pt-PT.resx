@@ -1,0 +1,846 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Country:AD.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AF.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AL.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AQ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AS.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AW.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:AZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BB.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BD.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BF.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BH.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BJ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BS.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BV.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BW.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BY.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:BZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CC.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CF.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CH.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CK.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CL.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CV.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CX.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CY.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:DE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:DJ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:DK.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:DM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:DO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:DZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:EC.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:EE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:EG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:EH.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ER.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ES.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ET.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:FI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:FJ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:FK.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:FM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:FO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:FR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GD.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GF.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GH.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GL.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GP.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GQ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GS.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GW.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GY.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:HK.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:HM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:HN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:HR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:HT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:HU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ID.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:IE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:IL.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:IN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:IO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:IQ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:IR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:IS.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:IT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:JM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:JO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:JP.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KH.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KP.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KW.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KY.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:KZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LB.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LC.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LK.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LS.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LV.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:LY.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MC.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MD.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MH.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MK.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ML.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MP.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MQ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MS.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MV.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MW.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MX.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MY.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:MZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NC.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NF.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NL.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NP.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:NZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:OM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PF.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PH.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PK.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PL.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PW.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:PY.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:QA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:RE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:RO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:RU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:RW.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SB.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SC.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SD.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SH.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SJ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SK.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SL.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ST.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SV.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SY.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:SZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TC.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TD.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TF.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TH.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TJ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TK.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TO.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TP.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TV.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TW.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:UA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:UG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:GB.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:UM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:US.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:UY.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:UZ.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:VC.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:VE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:VG.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:VI.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:VN.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:VU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:WF.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:WS.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:YE.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:YT.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:YU.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ZA.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ZM.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ZR.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ZW.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:CD.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:ME.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:RS.Text" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Country:TL.Text" xml:space="preserve">
+    <value></value>
+  </data>
+</root>

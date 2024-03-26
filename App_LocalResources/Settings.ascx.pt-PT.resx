@@ -1,0 +1,708 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="pagesize.Text" xml:space="preserve">
+        <value>Comprimento da página</value>
+        <comment>Page Length</comment>
+    </data>
+    <data name="Settings.Text" xml:space="preserve">
+        <value>Configurações</value>
+        <comment>Settings</comment>
+    </data>
+    <data name="productlisttab.Help" xml:space="preserve">
+        <value>Utilizado para redirecionar o utilizador/administrador para a página do produto quando certas acções são executadas.</value>
+        <comment>Used to redirect user/manager to the product page when certain actions are done.</comment>
+    </data>
+    <data name="productlisttab.Text" xml:space="preserve">
+        <value>Lista de productos</value>
+        <comment>Product List</comment>
+    </data>
+    <data name="adminemail.Help" xml:space="preserve">
+        <value>Endereço electrónico do administrador, este é o endereço de correio electrónico padrão de envio.</value>
+        <comment>Email Address of administrator, this is the default sending email address.</comment>
+    </data>
+    <data name="adminemail.Text" xml:space="preserve">
+        <value>Administrador</value>
+        <comment>Administrator</comment>
+    </data>
+    <data name="carttab.Help" xml:space="preserve">
+        <value>Utilizado para redirecionar o utilizador/administrador quando certas acções são executadas. Normalmente definido numa página contendo o OS_FullCart ou o módulo OS_Checkout.</value>
+        <comment>Used to redirect user/manager when certain actions are done.  Typically set to a page containing the OS_FullCart or OS_Checkout module.</comment>
+    </data>
+    <data name="carttab.Text" xml:space="preserve">
+        <value>Redireccionar para (carrito)</value>
+        <comment>Redirect To (Cart)</comment>
+    </data>
+    <data name="favoritestab.Text" xml:space="preserve">
+        <value>Favoritos</value>
+        <comment>Favorites</comment>
+    </data>
+    <data name="manageremail.Help" xml:space="preserve">
+        <value>Endereço(s) de correio electrónico do(s) gestor(es) da loja (separado por vírgulas).</value>
+        <comment>Email address(es) of the manager(s) of the store (separed by comas).</comment>
+    </data>
+    <data name="manageremail.Text" xml:space="preserve">
+        <value>Gerente</value>
+        <comment>Manager</comment>
+    </data>
+    <data name="resetpasswordonclientvalidate.Text" xml:space="preserve">
+        <value>Redefinir palavra-passe na validação do cliente</value>
+        <comment>Reset Password on Client Validation</comment>
+    </data>
+    <data name="cataloguemode.Text" xml:space="preserve">
+        <value>Modo do catálogo</value>
+        <comment>Catalogue mode</comment>
+    </data>
+    <data name="folderdocs.Text" xml:space="preserve">
+        <value>Carpeta de documentos</value>
+        <comment>Document Folder</comment>
+    </data>
+    <data name="folderimages.Text" xml:space="preserve">
+        <value>Pasta de imagem</value>
+        <comment>Image Folder</comment>
+    </data>
+    <data name="folderuploads.Text" xml:space="preserve">
+        <value>Pasta de Upload</value>
+        <comment>Upload Folder</comment>
+    </data>
+    <data name="minimumstocklevel.Text" xml:space="preserve">
+        <value>Stock mínimo</value>
+        <comment>Minimum Stock</comment>
+    </data>
+    <data name="pageactions.Text" xml:space="preserve">
+        <value>Ações da página</value>
+        <comment>Page Actions</comment>
+    </data>
+    <data name="backofficeexittab.Text" xml:space="preserve">
+        <value>Página de saída de Back Office</value>
+        <comment>Back Office Exit Page</comment>
+    </data>
+    <data name="sendclientroleemail.Text" xml:space="preserve">
+        <value>Enviar Email ao cliente quando adicionado ao papel de cliente</value>
+        <comment>Send Email to Client when added to Client role</comment>
+    </data>
+    <data name="defaultthemefolder.Text" xml:space="preserve">
+        <value>Pasta temática predefinida</value>
+        <comment>Default Theme Folder</comment>
+    </data>
+    <data name="devoptions.Text" xml:space="preserve">
+        <value>Opções do desenvolvedor</value>
+        <comment>Developer Options</comment>
+    </data>
+    <data name="enabledealer.Text" xml:space="preserve">
+        <value>Ativar distribuidor</value>
+        <comment>Enable Dealer</comment>
+    </data>
+    <data name="removelogo.confirm" xml:space="preserve">
+        <value>Remover logótipo?</value>
+        <comment>Remove logo?</comment>
+    </data>
+    <data name="removelogo.Text" xml:space="preserve">
+        <value>Eliminar</value>
+        <comment>Remove</comment>
+    </data>
+    <data name="orderprefix.Text" xml:space="preserve">
+        <value>Prefixo do pedido</value>
+        <comment>Order Prefix</comment>
+    </data>
+    <data name="currencysymbol.Text" xml:space="preserve">
+        <value>Símbolo da moeda</value>
+        <comment>Currency Symbol</comment>
+    </data>
+    <data name="paymenttab.Help" xml:space="preserve">
+        <value>Tab onde o cliente será redireccionado para seleccionar um método de pagamento.</value>
+        <comment>Tab where the client will be redirected to select a method of payment.</comment>
+    </data>
+    <data name="paymenttab.Text" xml:space="preserve">
+        <value>Pagamento</value>
+        <comment>Payment</comment>
+    </data>
+    <data name="fontawesome.Text" xml:space="preserve">
+        <value>Incluir FontAwesome</value>
+        <comment>Include FontAwesome</comment>
+    </data>
+    <data name="jqueryuicss.Text" xml:space="preserve">
+        <value>Incluir jQuery UI CSS</value>
+        <comment>Include jQuery UI CSS</comment>
+    </data>
+    <data name="jqueryuijs.Text" xml:space="preserve">
+        <value>Incluir jQuery UI JS</value>
+        <comment>Include jQuery UI JS</comment>
+    </data>
+    <data name="ordermanagertab.Text" xml:space="preserve">
+        <value>As minhas encomendas</value>
+        <comment>My Orders</comment>
+    </data>
+    <data name="addressestab.Text" xml:space="preserve">
+        <value>O meu endereço</value>
+        <comment>My Address</comment>
+    </data>
+    <data name="profiletab.Text" xml:space="preserve">
+        <value>O meu perfil</value>
+        <comment>My Profile</comment>
+    </data>
+    <data name="Enabled.Text" xml:space="preserve">
+        <value>Ativado</value>
+        <comment>Enabled</comment>
+    </data>
+    <data name="copyorderto.Text" xml:space="preserve">
+        <value>Pedido de cópia para Email</value>
+        <comment>Copy Order to Email</comment>
+    </data>
+    <data name="subscribenewsletter.Text" xml:space="preserve">
+        <value>Caixa de verificação da Newsletter</value>
+        <comment>Newsletter Checkbox</comment>
+    </data>
+    <data name="checkoutpromocode.Text" xml:space="preserve">
+        <value>Campo de código de promoção</value>
+        <comment>Promo Code Field</comment>
+    </data>
+    <data name="checkouttaxcode.Text" xml:space="preserve">
+        <value>Campo de código fiscal</value>
+        <comment>Tax Code Field</comment>
+    </data>
+    <data name="productimageresize.Text" xml:space="preserve">
+        <value>Mudar o tamanho da imagem</value>
+        <comment>Image Resize</comment>
+    </data>
+    <data name="bonoimageicon.Text" xml:space="preserve">
+        <value>Ícon de marcador da posição</value>
+        <comment>Placeholder Icon</comment>
+    </data>
+    <data name="productdetailtab.Text" xml:space="preserve">
+        <value>Detalhes do produto</value>
+        <comment>Product Detail</comment>
+    </data>
+    <data name="groupresults.Text" xml:space="preserve">
+        <value>Modelos de grupo por produto</value>
+        <comment>Group Models by Product</comment>
+    </data>
+    <data name="emailthemefolder.Help" xml:space="preserve">
+        <value>Pasta temática a ser utilizada para e-mails e impressões.</value>
+        <comment>The Theme folder that will be used for emails and prints.</comment>
+    </data>
+    <data name="emailthemefolder.Text" xml:space="preserve">
+        <value>Pasta de assuntos de Email</value>
+        <comment>Email Theme Folder</comment>
+    </data>
+    <data name="debugfileout.Text" xml:space="preserve">
+        <value>Saída de ficheiro de depuração</value>
+        <comment>Debug File Output</comment>
+    </data>
+    <data name="debugfileoutmsg.Text" xml:space="preserve">
+        <value>Produzir ficheiros de depuração, NÃO utilizar no local de produção.</value>
+        <comment>Outputs debug files, do NOT use on production site</comment>
+    </data>
+    <data name="shareproducts.Text" xml:space="preserve">
+        <value>Partilha de produtos</value>
+        <comment>Share products</comment>
+    </data>
+    <data name="shareproductsmsg.Text" xml:space="preserve">
+        <value>Partilhar PRODUTOS criados neste portal com todos os portais da instalação do DNN.</value>
+        <comment>Share PRODUCTS created in this portal with all portals in the DNN installation</comment>
+    </data>
+    <data name="alloweditorder.Text" xml:space="preserve">
+        <value>Permitir a edição de pedidos</value>
+        <comment>Allow Order Edit</comment>
+    </data>
+    <data name="carttitle.Text" xml:space="preserve">
+        <value>Mostrar título do carrinho</value>
+        <comment>Show Cart Title</comment>
+    </data>
+    <data name="cartsteps.Text" xml:space="preserve">
+        <value>Mostrar passos do carrinho</value>
+        <comment>Show Cart Steps</comment>
+    </data>
+    <data name="friendlyurlids.Help" xml:space="preserve">
+        <value>Em vez da identificação única da base de dados para produtos e categorias, a referência deve ser utilizada de preferência. Esta opção espera referências únicas e utilizáveis de produtos e categorias.</value>
+        <comment>Instead of the database unique id for products and cateogries the reference will be used in preference.  This option expect usable and unique category and product refs.</comment>
+    </data>
+    <data name="friendlyurlids.Text" xml:space="preserve">
+        <value>Usar IDs de URL amigáveis ao SEO</value>
+        <comment>Use SEO friendly URL ids</comment>
+    </data>
+    <data name="allowdnnindex.Text" xml:space="preserve">
+        <value>Permitir a indexação de produtos de pesquisa DNN</value>
+        <comment>Allow DNN Search Indexing of products</comment>
+    </data>
+    <data name="startupctrl.Text" xml:space="preserve">
+        <value>Controlo BO por defeito</value>
+        <comment>Default BO control</comment>
+    </data>
+    <data name="merchantdetails.Text" xml:space="preserve">
+        <value>Detalhes do comerciante</value>
+        <comment>Merchant details</comment>
+    </data>
+    <data name="emailaddresses.Text" xml:space="preserve">
+        <value>Endereço eletrónico</value>
+        <comment>Email address</comment>
+    </data>
+    <data name="supportemail.Text" xml:space="preserve">
+        <value>Suporte</value>
+        <comment>Support</comment>
+    </data>
+    <data name="supportemail.Help" xml:space="preserve">
+        <value>Mostrar com detalhes do comerciante dentro dos Emails de notificação da loja.</value>
+        <comment>Display with the merchant details inside the notifications emails from the store.</comment>
+    </data>
+    <data name="salesemail.Text" xml:space="preserve">
+        <value>Vendas</value>
+        <comment>Sales</comment>
+    </data>
+    <data name="salesemail.Help" xml:space="preserve">
+        <value>Mostrar com detalhes do comerciante dentro dos Emails de notificação da loja.</value>
+        <comment>Display with the merchant details inside the notifications emails from the store.</comment>
+    </data>
+    <data name="merchantaddress.Text" xml:space="preserve">
+        <value>Endereço do negociante</value>
+        <comment>Merchant address</comment>
+    </data>
+    <data name="merchantattention.Text" xml:space="preserve">
+        <value>Atenção</value>
+        <comment>Attention</comment>
+    </data>
+    <data name="merchantpostbox.Text" xml:space="preserve">
+        <value>Caixa de correio</value>
+        <comment>Post box</comment>
+    </data>
+    <data name="bankingdetails.Text" xml:space="preserve">
+        <value>Dados bancários</value>
+        <comment>Banking details</comment>
+    </data>
+    <data name="bank.Text" xml:space="preserve">
+        <value>Banco</value>
+        <comment>Bank</comment>
+    </data>
+    <data name="accountname.Text" xml:space="preserve">
+        <value>Nome da conta</value>
+        <comment>Account name</comment>
+    </data>
+    <data name="accountnumber.Text" xml:space="preserve">
+        <value>Número de conta</value>
+        <comment>Account number</comment>
+    </data>
+    <data name="bankinginstructions.Text" xml:space="preserve">
+        <value>Instruções bancárias</value>
+        <comment>Banking instructions</comment>
+    </data>
+    <data name="emailbranding.Text" xml:space="preserve">
+        <value>Marca de Email</value>
+        <comment>Email branding</comment>
+    </data>
+    <data name="storename.Text" xml:space="preserve">
+        <value>Nome da loja</value>
+        <comment>Store name</comment>
+    </data>
+    <data name="logoimage.Text" xml:space="preserve">
+        <value>Logótipo</value>
+        <comment>Logo image</comment>
+    </data>
+    <data name="emailmessage.Text" xml:space="preserve">
+        <value>Mensagem de Email</value>
+        <comment>Email message</comment>
+    </data>
+    <data name="socialnetworking.Text" xml:space="preserve">
+        <value>Redes sociais</value>
+        <comment>Social networking</comment>
+    </data>
+    <data name="twitterpage.Text" xml:space="preserve">
+        <value>Página do Twitter</value>
+        <comment>Twitter page</comment>
+    </data>
+    <data name="facebookpage.Text" xml:space="preserve">
+        <value>Página do Facebook</value>
+        <comment>Facebook page</comment>
+    </data>
+    <data name="sharingwidget.Text" xml:space="preserve">
+        <value>Partilha widget</value>
+        <comment>Sharing widget</comment>
+    </data>
+    <data name="checkout.Text" xml:space="preserve">
+        <value>Checkout</value>
+        <comment>Checkout</comment>
+    </data>
+    <data name="storepickupmessage.Text" xml:space="preserve">
+        <value>Mensagem de recolha da loja</value>
+        <comment>Store pickup message</comment>
+    </data>
+    <data name="successfulcheckoutmessage.Text" xml:space="preserve">
+        <value>Mensagem de pagamento bem sucedida</value>
+        <comment>Successful checkout message</comment>
+    </data>
+    <data name="failedcheckoutmessage.Text" xml:space="preserve">
+        <value>Mensagem de pagamento falhada</value>
+        <comment>Failed checkout message</comment>
+    </data>
+    <data name="folders.Text" xml:space="preserve">
+        <value>Pastas</value>
+        <comment>Folders</comment>
+    </data>
+    <data name="storeconfiguration.Text" xml:space="preserve">
+        <value>Configuração da loja</value>
+        <comment>Store configuration</comment>
+    </data>
+    <data name="countrydetails.Text" xml:space="preserve">
+        <value>Detalhes do país</value>
+        <comment>Country details</comment>
+    </data>
+    <data name="merchantculture.Text" xml:space="preserve">
+        <value>Cultura de mercado</value>
+        <comment>Merchant Culture</comment>
+    </data>
+    <data name="currencycode.Text" xml:space="preserve">
+        <value>Código da moeda</value>
+        <comment>Currency Code</comment>
+    </data>
+    <data name="commoncountries.Text" xml:space="preserve">
+        <value>Países comuns</value>
+        <comment>Common Countries</comment>
+    </data>
+    <data name="selectedcountries.Text" xml:space="preserve">
+        <value>Países seleccionados (arrastar para ordenar)</value>
+        <comment>Selected countries (Drag to sort)</comment>
+    </data>
+    <data name="othercountries.Text" xml:space="preserve">
+        <value>Outros países</value>
+        <comment>Other countries</comment>
+    </data>
+    <data name="checkall.Text" xml:space="preserve">
+        <value>Seleccionar todos</value>
+        <comment>Check all</comment>
+    </data>
+    <data name="Theme.Text" xml:space="preserve">
+        <value>Tema</value>
+        <comment>Theme</comment>
+    </data>
+    <data name="defaultcategory.Text" xml:space="preserve">
+        <value>Categoria predefinida</value>
+        <comment>Default Category</comment>
+    </data>
+    <data name="defaultproperty.Text" xml:space="preserve">
+        <value>Propriedade por defeito</value>
+        <comment>Default Property</comment>
+    </data>
+    <data name="productsearchmod.Text" xml:space="preserve">
+        <value>Módulo de resultados de pesquisa de produtos Ref</value>
+        <comment>Product Search Results Module Ref</comment>
+    </data>
+    <data name="productsearchtab.Text" xml:space="preserve">
+        <value>Página de resultados da pesquisa de produtos</value>
+        <comment>Product Search Results Page</comment>
+    </data>
+    <data name="boclass.Text" xml:space="preserve">
+        <value>Classe do Back Office</value>
+        <comment>Back Office Class</comment>
+    </data>
+    <data name="debugmode.Text" xml:space="preserve">
+        <value>Permitir a edição de modelos Razor, sem a necessidade de limpar a cache. Aviso!!!! NÃO utilizar na produção, isto pode causar fuga de memória e mau desempenho.</value>
+        <comment>Activate this to allow editing of razor templates, without the need to clear cache.  Warning!! Do NOT use in production, this can cause a memory leak and bad performance.</comment>
+    </data>
+    <data name="lbltemplate.Help" xml:space="preserve">
+        <value>Nome do modelo razor a ser utilizado.</value>
+        <comment>Name of razor template to use.</comment>
+    </data>
+    <data name="lbltemplate.Text" xml:space="preserve">
+        <value>Modelo Razor</value>
+        <comment>Razor Template</comment>
+    </data>
+    <data name="razordetailtemplate.Text" xml:space="preserve">
+        <value>Modelo detalhado</value>
+        <comment>Detail Template</comment>
+    </data>
+    <data name="razorlisttemplate.Text" xml:space="preserve">
+        <value>Modelo de lista</value>
+        <comment>List Template</comment>
+    </data>
+    <data name="razortemplate.Text" xml:space="preserve">
+        <value>Modelo</value>
+        <comment>Template</comment>
+    </data>
+    <data name="parentcategory.Text" xml:space="preserve">
+        <value>Categoría pai</value>
+        <comment>Parent Category</comment>
+    </data>
+    <data name="itemlistname.Help" xml:space="preserve">
+        <value>Nome da lista de desejos a ser acrescentada/eliminada, ou a ser exibida quando a lista selecionada for exibida.</value>
+        <comment>Name of wishlist to be added/remove to, or displayed in when displaying selected list.</comment>
+    </data>
+    <data name="itemlistname.Text" xml:space="preserve">
+        <value>Nome da lista de desejos</value>
+        <comment>Wishlist Name</comment>
+    </data>
+    <data name="addthispubid.Text" xml:space="preserve">
+        <value>AddThis PubID</value>
+        <comment>AddThis PubID</comment>
+    </data>
+    <data name="allowupload.Text" xml:space="preserve">
+        <value>Ativar a opção de carregamento de ficheiros do cliente</value>
+        <comment>Activate Client File Upload Option </comment>
+    </data>
+    <data name="folderclientuploads.Text" xml:space="preserve">
+        <value>Pasta de Carregamento de Clientes</value>
+        <comment>Client Upload Folder</comment>
+    </data>
+    <data name="fileregexpr.Text" xml:space="preserve">
+        <value>RegEx de carregamento de ficheiros aceitos</value>
+        <comment>Accepted File Upload RegEx</comment>
+    </data>
+    <data name="websiteurl.Text" xml:space="preserve">
+        <value>URL do sítio web</value>
+        <comment>Website URL</comment>
+    </data>
+    <data name="dealerrole.Text" xml:space="preserve">
+        <value>Papel do distribuidor (* = Todos)</value>
+        <comment>Dealer Role ( * = Everyone)</comment>
+    </data>
+    <data name="shareorders.Text" xml:space="preserve">
+        <value>Partilhar pedidos</value>
+        <comment>Share orders</comment>
+    </data>
+    <data name="shareordersmsg.Text" xml:space="preserve">
+        <value>Gerir PEDIDOS colocadas neste portal a partir de qualquer portal na instalação DNN</value>
+        <comment>Administer ORDERS made in this portal from any portal in the DNN installation</comment>
+    </data>
+    <data name="sharecategories.Text" xml:space="preserve">
+        <value>Partilhar categorias</value>
+        <comment>Share categories</comment>
+    </data>
+    <data name="sharecategoriesmsg.Text" xml:space="preserve">
+        <value>Partilhar CATEGORIAS criadas neste portal com todos os portais na instalação DNN. A partilha de categorias também partilhará quaisquer produtos que sejam adicionados à categoria em TODOS os portais.</value>
+        <comment>Share CATEGORIES created in this portal with all portals in the DNN installation. Sharing categories will also share any producs add to the category across ALL portals.</comment>
+    </data>
+    <data name="selectedfilters.Text" xml:space="preserve">
+        <value>Selecionar filtros&lt;br/&gt; &lt;span style="font-weight: normal;"&gt;(arrastar e largar para ordenar)&lt;/span&gt;</value>
+        <comment>Select Filters&lt;br/&gt;&lt;span style="font-weight: normal;"&gt;(drag-drop to sort)&lt;/span&gt;</comment>
+    </data>
+    <data name="filtertypeinsidedata.Text" xml:space="preserve">
+        <value>O produto deve ter todas as propriedades selecionadas, o produto deve ter uma ou mais das propriedades selecionadas</value>
+        <comment>Product must have all selected properties,Product must have one or more of selected properties</comment>
+    </data>
+    <data name="filtertypeinsidedatavalue.Text" xml:space="preserve">
+        <value>E, OU</value>
+        <comment>AND,OR</comment>
+    </data>
+    <data name="lblfiltertypeinsideproperty.Help" xml:space="preserve">
+        <value>Selecionar o tipo de filtro a utilizar quando múltiplas opções são verificadas dentro da mesma propriedade.</value>
+        <comment>Select the type of filter to be use when multiple options are checked within the same property.</comment>
+    </data>
+    <data name="lblfiltertypeinsideproperty.Text" xml:space="preserve">
+        <value>Tipo de filtro dentro da propriedade</value>
+        <comment>Filter Type Inside Property</comment>
+    </data>
+    <data name="filtertypeoutsidedata.Text" xml:space="preserve">
+        <value>O produto deve preencher as condições de todas as propriedades, o produto deve preencher as condições de uma ou mais propriedades</value>
+        <comment>Product must meet conditions of all properties,Product must meet conditions of one or more properties</comment>
+    </data>
+    <data name="filtertypeoutsidedatavalue.Text" xml:space="preserve">
+        <value>E, OU</value>
+        <comment>AND,OR</comment>
+    </data>
+    <data name="lblfiltertypeoutsideproperty.Help" xml:space="preserve">
+        <value>Selecionar o tipo de filtro a utilizar quando as opções são assinaladas dentro de diferentes propriedades.</value>
+        <comment>Select the type of filter to be use when options are checked within different properties.</comment>
+    </data>
+    <data name="lblfiltertypeoutsideproperty.Text" xml:space="preserve">
+        <value>Tipo de filtro fora da propriedade</value>
+        <comment>Filter Type Outside Property</comment>
+    </data>
+    <data name="selectedfilters.Help" xml:space="preserve">
+        <value>Arrastar e largar itens individuais para alterar a ordem de classificação.</value>
+        <comment>Drag and drop individual items to change the sort order.</comment>
+    </data>
+    <data name="enablefilelogging.Text" xml:space="preserve">
+        <value>Ativar o registo de ficheiros</value>
+        <comment>Enable File Logging</comment>
+    </data>
+    <data name="enablefileloggingmsg.Text" xml:space="preserve">
+        <value>A fim de ver realmente um ficheiro de registo, deve adicionar um logger e um appender ao ficheiro DotNetNuke.Log4Net.config na raiz da sua instalação DNN.</value>
+        <comment>To be able to actually see a logfile, you need to add a logger and an appender to the DotNetNuke.Log4Net.config file in the root of your DNN installation.</comment>
+    </data>
+    <data name="providercontrolpath.Text" xml:space="preserve">
+        <value>Provider Path</value>
+        <comment>Provider Path</comment>
+    </data>
+    <data name="providercontrolpath.Help" xml:space="preserve">
+        <value>Se for utilizado um provider plugin para exibir dados, esta configuração define o caminho de controlo a ser utilizado para encontrar os modelos (Default: NBrightBuy).</value>
+        <comment>If a provider plugin is being used to display data, this setting defines the control path which will be used to find the templates. (Default: NBrightBuy)</comment>
+    </data>
+    <data name="activateajax.Text" xml:space="preserve">
+        <value>Ativar Ajax</value>
+        <comment>Activate Ajax</comment>
+    </data>
+    <data name="logintab.Text" xml:space="preserve">
+        <value>Página de Login</value>
+        <comment>Login Page</comment>
+    </data>
+    <data name="cartmessages.Text" xml:space="preserve">
+        <value>Mensagens do carrito</value>
+        <comment>Cart Messages</comment>
+    </data>
+    <data name="activate404.Text" xml:space="preserve">
+        <value>Ativar produto 404</value>
+        <comment>Activate product 404</comment>
+    </data>
+    <data name="activate404msg.Text" xml:space="preserve">
+        <value>Ativar uma resposta de 404 status para qualquer URL de produto que já não se encontre no sistema.</value>
+        <comment>Activate a 404 status respsone for any product url which is no longer found in the system. </comment>
+    </data>
+    <data name="activategdpr.Text" xml:space="preserve">
+        <value>Ativar GDPR</value>
+        <comment>Activate GDPR</comment>
+    </data>
+    <data name="gdprmsg.Text" xml:space="preserve">
+        <value>Mensagem GDPR</value>
+        <comment>GDPR Message</comment>
+    </data>
+    <data name="checkoutstart.Text" xml:space="preserve">
+        <value>Verificar ponto de partida</value>
+        <comment>Check Start Point</comment>
+    </data>
+    <data name="checkoutstartlist.Text" xml:space="preserve">
+        <value>lista, endereço, resumo</value>
+        <comment>list,address,summary</comment>
+    </data>
+    <data name="singlepaymentoption.Text" xml:space="preserve">
+        <value>Saltar página de pagamento</value>
+        <comment>Skip payment page</comment>
+    </data>
+    <data name="singlepaymentoptionmsg.Text" xml:space="preserve">
+        <value>Saltar página de pagamento se houver apenas 1 fornecedor de pagamento</value>
+        <comment>Skip payment page if only 1 payment provider</comment>
+    </data>
+    <data name="linkmodulekey.Text" xml:space="preserve">
+        <value>Módulo de produto ligado Ref.</value>
+        <comment>Linked Product Module Ref.</comment>
+    </data>
+    <data name="linkmodulekey.Help" xml:space="preserve">
+        <value>Módulo Ref. do módulo de lista de produtos para o qual pretende ligar os filtros. Se estiver ligado a um módulo de lista de produtos, apenas serão exibidos os filtros que existem na lista de produtos. Pode encontrar a ref. do módulo na configuração do módulo de lista de produtos.</value>
+        <comment>Module Ref. of the product list module that you want to link the filters to.  If linked to a product list module only filters that exist in the product list will be displayed.  You can find the module ref. on the product list module settings. </comment>
+    </data>
+    <data name="seoimages.Text" xml:space="preserve">
+        <value>Imagens SEO</value>
+        <comment>SEO Images</comment>
+    </data>
+    <data name="seoimagesmsg.Text" xml:space="preserve">
+        <value>As imagens podem ser alteradas para a alteração da imagem no detalhe do produto, por defeito será o nome do produto. Criará um nome SEO amigável para cada língua e também criará vários tamanhos de imagem. Isto é opcional e NÃO proporciona uma enorme vantagem SEO ao produto, mas pode ajudar as imagens a serem referenciadas se precisar delas. Deve executar uma validação da loja para reconstruir todas as imagens depois de esta estar activada (demorará muito tempo, se tiver muitas imagens).</value>
+        <comment>Images can be renmaed to the alt of the image in the product detail, it will default to the product name.  A friendly SEO name will be created for each language and will also create mulitple sizes of images.  This is optional and does NOT give any great advantage to product SEO, but can help the images be reference if you require it.  You should run a store validation to rebuild all the images after this is turned on (It will take a LONG time, if you have a lot of images).</comment>
+    </data>
+    <data name="bidirectionrelatedproducts.Text" xml:space="preserve">
+        <value>Produtos relacionados bi-direcionais</value>
+        <comment>Bi-Directional Related Products</comment>
+    </data>
+</root>

@@ -189,6 +189,7 @@ a.sortelementLeft, a.sortelementRight {
 .editmodels .onedigit{margin-right:10px}
 .editmodels #productmodels{list-style: none outside none;margin: 0;padding: 0;}
 .editmodels .modelitem{background:#FFFFFF;border: 1px dotted #D6D6D6;overflow: hidden;padding: 15px 0;position:relative}
+.editmodels .modelitem .purchaseqty{width:50px;}
 .editoptions{}
 .editoptions #productoptions,.editoptions #productoptionvalues{list-style: none outside none;margin: 0;padding: 0;}
 .editoptions #productoptions{margin-right:12px}

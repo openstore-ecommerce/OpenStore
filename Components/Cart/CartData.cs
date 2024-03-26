@@ -462,6 +462,30 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                         base.SetValidated(false);
                         cartItemInfo.SetXmlProperty("genxml/qty", ((int)qty).ToString());
                     }
+
+                    // enforce max purchase qty
+                    var maxpurchaseqty = prdModel.GetXmlPropertyDouble("genxml/textbox/txtqtymaxpurchase");
+                    if (maxpurchaseqty > 0)
+                    {
+                        var cartQty = cartItemInfo.GetXmlPropertyDouble("genxml/qty");
+                        if (cartQty > maxpurchaseqty)
+                        {
+                            cartItemInfo.SetXmlProperty("genxml/validatecode", "MAXPURCHASEQTY");
+                            cartItemInfo.SetXmlPropertyDouble("genxml/qty", maxpurchaseqty);
+                        }
+                    }
+
+                    // enforce min purchase qty
+                    var minpurchaseqty = prdModel.GetXmlPropertyDouble("genxml/textbox/txtqtyminpurchase");
+                    if (minpurchaseqty > 0)
+                    {
+                        var cartQty = cartItemInfo.GetXmlPropertyDouble("genxml/qty");
+                        if (cartQty < minpurchaseqty)
+                        {
+                            cartItemInfo.SetXmlProperty("genxml/validatecode", "MINPURCHASEQTY");
+                            cartItemInfo.SetXmlPropertyDouble("genxml/qty", minpurchaseqty);
+                        }
+                    }
                 }
                 #endregion
 
