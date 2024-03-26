@@ -2045,12 +2045,19 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Products
                 // If we have a list,then always display the default category
                 if (ModSettings.Get("staticlist") == "True")
                 {
+                    // fix invalid select when no categories or properties exists.
+                    if (filterCatList == "()")
+                        filterCatList = "";
+                    else
+                        filterCatList = " and " + filterCatList;
+                    // fix invalid select when no categories or properties exists.
+
                     if (catseo == "") catseo = _catid;
                     _catid = defcatid;
                     if (ModSettings.Get("chkcascaderesults").ToLower() == "true")
-                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') and " + filterCatList + ") ";
+                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where (typecode = 'CATCASCADE' or typecode = 'CATXREF') " + filterCatList + ") ";
                     else
-                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' and " + filterCatList + ") ";
+                        strFilter = strFilter + " and NB1.[ItemId] in (select parentitemid from " + dbOwner + "[" + objQual + "NBrightBuy] where typecode = 'CATXREF' " + filterCatList + ") ";
 
                     if (ModSettings.Get("caturlfilter") == "True" && catseo != "" && catseo != _catid)
                     {
