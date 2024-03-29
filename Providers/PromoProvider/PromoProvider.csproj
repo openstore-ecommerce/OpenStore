@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="DiscountCodes.ascx.cs">
       <DependentUpon>DiscountCodes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DiscountCodes.ascx.designer.cs">
       <DependentUpon>DiscountCodes.ascx.cs</DependentUpon>

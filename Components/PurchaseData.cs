@@ -511,7 +511,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                 objInfo.AddSingleNode("itemcode", itemcode.TrimEnd('-'), "genxml");
 
                 // check if we have a client file upload
-                var clientfileuopload = objInfoIn.GetXmlProperty("genxml/hidden/optionfilelist") != "";
+                var clientfileuopload = objInfoIn.GetXmlProperty("genxml/textbox/clientuploadfilelist") != "";
+                if (!clientfileuopload) clientfileuopload = objInfoIn.GetXmlProperty("genxml/hidden/optionfilelist") != ""; // Legacy
 
                 //replace the item if it's already in the list.
                 var nodItem = PurchaseInfo.XMLDoc.SelectSingleNode("genxml/items/genxml[itemcode='" + itemcode.TrimEnd('-') + "']");
@@ -538,7 +539,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                     if (clientfileuopload)
                     {
                         // client has uploaded files, so save these to client upload folder and create link in cart data.
-                        var flist = objInfoIn.GetXmlProperty("genxml/hidden/optionfilelist").TrimEnd(',');
+                        var flist = objInfoIn.GetXmlProperty("genxml/textbox/clientuploadfilelist").TrimEnd(','); 
+                        if (flist == "") flist = objInfoIn.GetXmlProperty("genxml/hidden/optionfilelist").TrimEnd(','); // Legacy
                         foreach (var f in flist.Split(','))
                         {
                             if (f != "")
@@ -549,7 +551,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
                                     fn = fn.Replace(c, '_');
                                 }
                                 var extension = Path.GetExtension(f);
-                                var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + fn;
+                                var fullName = StoreSettings.Current.FolderTempMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + extension + "-" + fn;
                                 if (File.Exists(fullName))
                                 {
                                     var newDocFileName = StoreSettings.Current.FolderClientUploadsMapPath.TrimEnd(Convert.ToChar("\\")) + "\\" + Guid.NewGuid() + extension;
