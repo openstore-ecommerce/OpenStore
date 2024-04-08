@@ -1,4 +1,4 @@
-# OpenSource v4.2.0.1
+# OpenSource v4.2.0.2
 OpenStore - E-Commerce for DNN
 
 Developer please read this to get started:
