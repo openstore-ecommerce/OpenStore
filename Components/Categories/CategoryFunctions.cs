@@ -195,7 +195,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components.Category
         {
             var ajaxInfoList = NBrightBuyUtils.GetAjaxInfoList(context);
             var strOut = "";
-            var regex = new Regex(@"^[a-z0-9]+$");
+            var regex = new Regex("^[a-zA-Z0-9_]*$");
             var isPropertyList = (context.Request.QueryString.Get("cmd") == "property_admin_savelist");
 
             foreach (var nbi in ajaxInfoList)
