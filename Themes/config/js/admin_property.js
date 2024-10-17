@@ -173,11 +173,9 @@
                     }
                 });
 
-
                 $('#propertyAdmin_cmdSaveList').unbind("click");
                 $("#propertyAdmin_cmdSaveList").click(function () {
-
-                    var regEx = /[^a-z\d]/i;
+                    var regEx = /[^a-z\d_]/i;
                     var elems = ".propertyitemfields input#propertyref";
                     var isValid = ($(elems).length > 0);
                     $(elems).each(function(){

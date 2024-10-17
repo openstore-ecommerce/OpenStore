@@ -1,5 +1,5 @@
 <root>
-	<version>4.2.0</version>
+	<version>4.2.1</version>
   <websitedestrelpath>\DesktopModules\NBright\NBrightBuy</websitedestrelpath>
   <websitedestbinrelpath>\bin</websitedestbinrelpath>
   <!-- Include only files that match the regular expression -->
