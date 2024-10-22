@@ -167,7 +167,8 @@ namespace Nevoweb.DNN.NBrightBuy.Components
         public void Save()
         {
             _objCtrl.Update(DataRecord);
-            _objCtrl.Update(DataLangRecord);
+            if (String.IsNullOrEmpty(DataLangRecord.TypeCode)) DataLangRecord.TypeCode = "CATEGORYLANG";
+            DataLangRecord.ItemID = _objCtrl.Update(DataLangRecord);
             
             //do reindex of cascade records.
             if (_doCascadeIndex)

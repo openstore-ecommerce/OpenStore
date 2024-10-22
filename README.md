@@ -1,4 +1,4 @@
-# OpenSource v4.2.1.0
+# OpenSource v4.2.2.0
 OpenStore - E-Commerce for DNN
 
 **OpenStore is still maintained, it is now considered feature full.  More functionality will only be added as bug fixes and plugins.**  
