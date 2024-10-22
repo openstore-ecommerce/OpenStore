@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.Net;
 using System.Web;
@@ -277,7 +278,15 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
                 // do update
                 objInfo.ModifiedDate = DateTime.Now;
-                return DataProvider.Instance().Update(objInfo.ItemID, objInfo.PortalId, objInfo.ModuleId, objInfo.TypeCode, objInfo.XMLData, objInfo.GUIDKey, objInfo.ModifiedDate, objInfo.TextData, objInfo.XrefItemId, objInfo.ParentItemId, objInfo.UserId, objInfo.Lang);
+                if (String.IsNullOrEmpty(objInfo.TypeCode))
+                {
+                    Logging.Error($"NBrightBuyController.Update called with NULL typecode: Is is caused by invalid langauge records (usually Categories, when a langauge is added, they need to be edited and saved.)" );
+                    return -1;
+                }
+                else
+                {
+                    return DataProvider.Instance().Update(objInfo.ItemID, objInfo.PortalId, objInfo.ModuleId, objInfo.TypeCode, objInfo.XMLData, objInfo.GUIDKey, objInfo.ModifiedDate, objInfo.TextData, objInfo.XrefItemId, objInfo.ParentItemId, objInfo.UserId, objInfo.Lang);
+                }
             }
             catch (Exception e)
             {
@@ -399,7 +408,17 @@ namespace Nevoweb.DNN.NBrightBuy.Components
 
             if (rtnInfo == null)
             {
-                rtnInfo = CBO.FillObject<NBrightInfo>(DataProvider.Instance().Get(itemId, typeCodeLang, lang)); 
+                rtnInfo = CBO.FillObject<NBrightInfo>(DataProvider.Instance().Get(itemId, typeCodeLang, lang));
+                if (rtnInfo.Lang == "")
+                {
+                    // record does not exists, so add lang
+                    rtnInfo.Lang = lang; 
+                    if (rtnInfo.XMLDoc.SelectSingleNode("genxml/lang") == null)
+                    {
+                        rtnInfo.SetXmlProperty("genxml/lang", "", System.TypeCode.String, false);
+                    }
+                    rtnInfo.AddXmlNode("<genxml></genxml>", "/*", "genxml/lang");
+                }
                 if (debugMode == false) Utils.SetCache(strCacheKey, rtnInfo);
             }
             return rtnInfo;

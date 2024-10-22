@@ -1430,6 +1430,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             {
                 var g = grpCtrl.GetCategory(c.ItemID);
                 if (g != null) c.SetXmlProperty("genxml/entrycount", g.entrycount.ToString(""));
+                c.Lang = lang; // get correct language, even it it does not exists.
             }
 
             return levelList;
