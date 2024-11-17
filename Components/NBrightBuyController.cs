@@ -409,6 +409,7 @@ namespace Nevoweb.DNN.NBrightBuy.Components
             if (rtnInfo == null)
             {
                 rtnInfo = CBO.FillObject<NBrightInfo>(DataProvider.Instance().Get(itemId, typeCodeLang, lang));
+                if (rtnInfo == null) rtnInfo = new NBrightInfo();
                 if (rtnInfo.Lang == "")
                 {
                     // record does not exists, so add lang
