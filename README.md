@@ -1,4 +1,4 @@
-# OpenSource v4.2.3.0
+# OpenSource v4.2.4.0
 OpenStore - E-Commerce for DNN
 
 **OpenStore is still maintained, it is now considered feature full.  More functionality will only be added as bug fixes and plugins.**  
@@ -12,6 +12,4 @@ https://www.openstore-ecommerce.com
 
 https://www.openstore-ecommerce.com/Fonctionnalites
 
-
-To load MSBuild NuGet use Package Manager:
-PM> Install-Package MSBuildTasks -Version 1.5.0.235 
+[https://github.com/leedavi/DNNpackager](https://github.com/leedavi/DNNpackager)

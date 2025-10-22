@@ -168,7 +168,7 @@ namespace Nevoweb.DNN.NBrightBuy.Providers
             // loop through each item and calc the tax for each.
             Double taxtotal = 0;
 
-            var appliedcost = cartItemInfo.GetXmlPropertyDouble("genxml/appliedtotalcost");
+            var appliedcost = cartItemInfo.GetXmlPropertyDouble("genxml/appliedtotalcost") - cartItemInfo.GetXmlPropertyDouble("genxml/totaldiscount");
             // check if dealer and if dealertotal cost exists. ()
             //if (cartItemInfo.GetXmlPropertyBool("genxml/isdealer")) appliedcost = cartItemInfo.GetXmlPropertyDouble("genxml/dealercost");
 
