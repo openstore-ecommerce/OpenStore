@@ -202,17 +202,21 @@
               <name>NBrightBuy.dll</name>
               <sourceFileName>NBrightBuy.dll</sourceFileName>
             </assembly>
-            <assembly>
+			  <assembly>
+				  <name>NBrightBuy.DiscountCodesProvider.dll</name>
+				  <sourceFileName>NBrightBuy.DiscountCodesProvider.dll</sourceFileName>
+			  </assembly>
+			  <assembly>
+				  <name>NBrightBuy.EventProvider.dll</name>
+				  <sourceFileName>NBrightBuy.EventProvider.dll</sourceFileName>
+			  </assembly>			  
+			  <assembly>
               <name>NBrightBuy.ShippingProvider.dll</name>
               <sourceFileName>NBrightBuy.ShippingProvider.dll</sourceFileName>
             </assembly>
             <assembly>
               <name>NBrightBuy.ManualPaymentProvider.dll</name>
               <sourceFileName>NBrightBuy.ManualPaymentProvider.dll</sourceFileName>
-            </assembly>
-            <assembly>
-              <name>NBrightBuy.DiscountCodesProvider.dll</name>
-              <sourceFileName>NBrightBuy.DiscountCodesProvider.dll</sourceFileName>
             </assembly>
             <assembly>
               <name>NBrightBuy.TaxProvider.dll</name>
@@ -222,7 +226,15 @@
               <name>NBrightBuy.PromoProvider.dll</name>
               <sourceFileName>NBrightBuy.PromoProvider.dll</sourceFileName>
             </assembly>
-          </assemblies>
+			  <assembly>
+				  <name>NBrightCore.dll</name>
+				  <sourceFileName>NBrightCore.dll</sourceFileName>
+			  </assembly>
+			  <assembly>
+				  <name>NBrightDNN.dll</name>
+				  <sourceFileName>NBrightDNN.dll</sourceFileName>
+			  </assembly>
+		  </assemblies>
         </component>
        
         <component type="Module">

@@ -55,15 +55,15 @@
     <value>\Skins\OpenStoreBO\OpenStoreBO.ascx</value>
     <value>\Skins\OpenStoreBO\OpenStoreBO.doctype.xml</value>
   </file>
-	<assembly>
-		<value>NBrightBuy.dll</value>
-    <value>NBrightBuy.DiscountCodesProvider.dll</value>
-    <value>NBrightBuy.EventProvider.dll</value>
-    <value>NBrightBuy.ManualPaymentProvider.dll</value>
-    <value>NBrightBuy.PromoProvider.dll</value>
-    <value>NBrightBuy.ShippingProvider.dll</value>
-    <value>NBrightBuy.TaxProvider.dll</value>
-    <value>NBrightCore.dll</value>
-    <value>NBrightDNN.dll</value>
+    <assembly>
+	<value>\bin\NBrightBuy.dll</value>
+    <value>\bin\NBrightBuy.DiscountCodesProvider.dll</value>
+    <value>\bin\NBrightBuy.EventProvider.dll</value>
+    <value>\bin\NBrightBuy.ManualPaymentProvider.dll</value>
+    <value>\bin\NBrightBuy.PromoProvider.dll</value>
+    <value>\bin\NBrightBuy.ShippingProvider.dll</value>
+    <value>\bin\NBrightBuy.TaxProvider.dll</value>
+    <value>\bin\NBrightCore.dll</value>
+    <value>\bin\NBrightDNN.dll</value>
   </assembly>  
 </root>
